@@ -1,0 +1,537 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const testimonials = [
+  {
+    name: 'Mrs. Linda Tan',
+    context: 'Mother of Sec 4 student, Chung Cheng High',
+    avatar: '/images/avatars/avatar-linda.jpg',
+    stars: 5,
+    quote: 'My son was struggling badly with A Maths — he came home frustrated after every school exam. After joining A Worthy, his tutor Mr. Kevin broke down each topic patiently and drilled him with targeted practice papers. In just 8 months, he went from a C5 to an A2 at the O-Levels. We are so grateful. The difference in his confidence is night and day.',
+  },
+  {
+    name: 'Ethan Lim',
+    context: 'P6 student, Ai Tong School — PSLE 2025',
+    avatar: '/images/avatars/avatar-ethan.jpg',
+    stars: 5,
+    quote: 'I scored AL1 for both Maths and Science at PSLE! Teacher Jason always made lessons so fun and easy to understand. He taught me how to check my work properly and manage my time during exams. I even started looking forward to tuition every week. Thank you, A Worthy!',
+  },
+  {
+    name: 'Mr. Rajesh Kumar',
+    context: 'Father of Sec 3 student, Bukit Panjang Govt High School',
+    avatar: '/images/avatars/avatar-rajesh.jpg',
+    stars: 5,
+    quote: 'My daughter used to dread Chemistry — she would cry before every test. The small class sizes at A Worthy made all the difference. Her tutor Ms. Sarah was incredibly patient, using real-life analogies to explain abstract concepts. Now she actually enjoys the subject and scored an A2 for her end-of-year exam. We could not be happier.',
+  },
+  {
+    name: 'Mrs. Angela Wong',
+    context: 'Mother of JC2 student, Anglo-Chinese Junior College (ACJC)',
+    avatar: '/images/avatars/avatar-angela.jpg',
+    stars: 5,
+    quote: 'My daughter was getting D and E grades for H2 Chemistry in JC1. We were extremely worried. After one year at A Worthy, she scored a solid A at the A-Levels. The JC tutors here really know the Cambridge syllabus inside out and focus on exam technique, not just content. Worth every dollar.',
+  },
+  {
+    name: 'Mr. Muhammad Faisal',
+    context: 'Father of twin sons, PSLE 2025 — Haig Girls\' School area',
+    avatar: '/images/avatars/avatar-faisal.jpg',
+    stars: 5,
+    quote: 'Both my boys scored a PSLE aggregate under 10, Alhamdulillah. We enrolled them at A Worthy from P4. The structured approach — diagnostics, consistent practice, and mock exams — really prepared them well. The tutors always went the extra mile, even providing additional worksheets during the June holidays.',
+  },
+  {
+    name: 'Ms. Jennifer Lee',
+    context: 'Mother of P5 student, previously at another tuition centre',
+    avatar: '/images/avatars/avatar-jennifer.jpg',
+    stars: 5,
+    quote: 'We moved to A Worthy after being disappointed with a larger tuition chain where my son was just one of 20 students in a class. The difference was immediate. At A Worthy, the teachers actually know my son by name, understand his weak areas, and tailor their explanations. His CA2 results improved across all three subjects within the first term.',
+  },
+  {
+    name: 'Ryan Ong',
+    context: 'JC1 student, Victoria Junior College (VJC)',
+    avatar: '/images/avatars/avatar-ryan.jpg',
+    stars: 5,
+    quote: 'I was getting S grade for H2 Maths in my first promos — I seriously considered dropping to H1. My friend recommended A Worthy, and Mr. Lim literally saved my A-Level journey. He re-taught me everything from vectors to integration with so much clarity. I jumped from S to B in just one term. Highly recommend for any JC student struggling with Maths.',
+  },
+  {
+    name: 'Mrs. Deepa Nair',
+    context: 'Mother of Sec 2 student, Cedar Girls\' Secondary School',
+    avatar: '/images/avatars/avatar-deepa.jpg',
+    stars: 5,
+    quote: 'What I love most about A Worthy is the communication. After every lesson, the tutor sends a WhatsApp update on what was covered, how my daughter performed, and what to revise at home. I feel truly involved in her learning journey. The termly parent-teacher meetings are also very insightful. This level of care is rare in tuition centres.',
+  },
+  {
+    name: 'Wei Ling',
+    context: 'Sec 4 student, O-Levels 2025 — 7 distinctions',
+    avatar: '/images/avatars/avatar-weiling.jpg',
+    stars: 5,
+    quote: 'I scored 7 distinctions at the O-Levels, including A1 for both Pure Physics and Pure Chemistry! A huge thank you to the Science teachers at A Worthy — especially Mr. Tan, who made even the hardest topics feel manageable. The weekly timed practices and past-year paper drills really gave me the confidence I needed on exam day.',
+  },
+];
+---
+
+<BaseLayout title="Testimonials — A Worthy | What Our Families Say">
+  <Header slot="header" />
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container hero-inner animate-fade-in-up">
+      <span class="hero-badge">Trusted by 2,000+ families across Singapore</span>
+      <h1>What Our <span class="highlight">Families</span> Say</h1>
+      <p class="hero-subtitle">
+        Real stories from real parents and students. Hear how A Worthy
+        has helped families across Singapore achieve academic breakthroughs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== SUMMARY STATS ===== -->
+  <section class="stats-bar">
+    <div class="container stats-inner">
+      <div class="stat-item">
+        <span class="stat-number">200+</span>
+        <span class="stat-label">5-Star Reviews</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">Parent Satisfaction</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">4.9/5</span>
+        <span class="stat-label">Google Rating</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS GRID ===== -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <h2 class="section-title">Stories of Transformation</h2>
+      <p class="section-subtitle">Every testimonial represents a student who found their confidence, a parent who found peace of mind, and a family that chose A Worthy.</p>
+
+      <div class="testimonials-masonry">
+        {testimonials.map((t, i) => (
+          <div class:list={['card', 'testimonial-card', { 'featured-testimonial': i === 0 || i === 3 || i === 8 }]}>
+            <div class="testimonial-stars" aria-label={`${t.stars} out of 5 stars`}>
+              {Array.from({ length: t.stars }).map(() => (
+                <span class="star">&#9733;</span>
+              ))}
+            </div>
+            <blockquote>
+              &ldquo;{t.quote}&rdquo;
+            </blockquote>
+            <div class="testimonial-author">
+              <img src={t.avatar} alt="" class="testimonial-avatar" loading="lazy" />
+              <div class="testimonial-author-info">
+                <strong>{t.name}</strong>
+                <span>{t.context}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GOOGLE REVIEWS ===== -->
+  <section class="section google-reviews-section">
+    <div class="container google-reviews-inner">
+      <div class="google-badge">
+        <div class="google-logo">
+          <span class="g-letter g-blue">G</span><span class="g-letter g-red">o</span><span class="g-letter g-yellow">o</span><span class="g-letter g-blue">g</span><span class="g-letter g-green">l</span><span class="g-letter g-red">e</span>
+        </div>
+        <div class="google-rating-display">
+          <div class="google-stars">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+          <span class="google-score">4.9 out of 5</span>
+          <span class="google-count">Based on 200+ reviews</span>
+        </div>
+      </div>
+      <div class="google-cta">
+        <p>See what other parents are saying about us on Google.</p>
+        <a href="https://g.page/aworthy/review" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          Read Our Google Reviews
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <h2>Experience the A Worthy Difference</h2>
+      <p>Join the hundreds of families who trust A Worthy. Book a <strong>free trial lesson</strong> and see the results for yourself.</p>
+      <div class="cta-actions">
+        <a href="/contact/" class="btn btn-accent btn-lg">Book a Free Trial</a>
+        <a href="https://wa.me/6591234567" class="btn btn-outline-light btn-lg">WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    text-align: center;
+  }
+
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--bg-secondary);
+    border: 1px solid var(--color-accent);
+    color: var(--color-primary);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .highlight {
+    color: var(--color-primary);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+  }
+
+  /* ===== STATS BAR ===== */
+  .stats-bar {
+    background: var(--color-primary);
+    padding: var(--space-xl) 0;
+  }
+
+  .stats-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-item .stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .stat-item .stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    margin-top: var(--space-xs);
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* ===== TESTIMONIALS MASONRY ===== */
+  .testimonials-masonry {
+    columns: 3;
+    column-gap: var(--space-xl);
+  }
+
+  .testimonial-card {
+    break-inside: avoid;
+    margin-bottom: var(--space-xl);
+    padding: var(--space-xl);
+    display: inline-block;
+    width: 100%;
+  }
+
+  .featured-testimonial {
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .testimonial-stars {
+    margin-bottom: var(--space-md);
+    display: flex;
+    gap: 2px;
+  }
+
+  .star {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .testimonial-card blockquote {
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+    border: none;
+    padding: 0;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .testimonial-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--border-color);
+  }
+
+  .testimonial-author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-author-info strong {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+  }
+
+  .testimonial-author-info span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ===== GOOGLE REVIEWS SECTION ===== */
+  .google-reviews-section {
+    background: var(--bg-secondary);
+  }
+
+  .google-reviews-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3xl);
+    flex-wrap: wrap;
+  }
+
+  .google-badge {
+    text-align: center;
+  }
+
+  .google-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    letter-spacing: -1px;
+  }
+
+  .g-letter { font-family: var(--font-body); }
+  .g-blue { color: #4285F4; }
+  .g-red { color: #EA4335; }
+  .g-yellow { color: #FBBC05; }
+  .g-green { color: #34A853; }
+
+  .google-rating-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .google-stars {
+    display: flex;
+    gap: 4px;
+  }
+
+  .google-stars .star {
+    font-size: 1.6rem;
+  }
+
+  .google-score {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .google-count {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .google-cta {
+    text-align: center;
+  }
+
+  .google-cta p {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-lg);
+    color: var(--text-secondary);
+  }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: #FFFFFF;
+    padding: var(--space-4xl) 0;
+    text-align: center;
+  }
+
+  .cta-banner h2 {
+    color: #FFFFFF;
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-banner p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .btn-lg {
+    padding: 0.9rem 2rem;
+    font-size: 1.05rem;
+  }
+
+  .btn-outline-light {
+    background: transparent;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+  }
+
+  .btn-outline-light:hover {
+    background: #FFFFFF;
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .testimonials-masonry {
+      columns: 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-inner {
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .stat-divider {
+      width: 60px;
+      height: 1px;
+    }
+
+    .google-reviews-inner {
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .testimonials-masonry {
+      columns: 1;
+    }
+  }
+
+  /* Phone */
+  @media (max-width: 480px) {
+    .testimonials-masonry {
+      columns: 1;
+    }
+
+    .hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .stats-inner {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .stat-divider {
+      width: 60px;
+      height: 1px;
+    }
+
+    .stat-item .stat-number {
+      font-size: 1.8rem;
+    }
+
+    .google-reviews-inner {
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  /* Smart TV */
+  @media (min-width: 1921px) {
+    .hero-inner {
+      max-width: 900px;
+    }
+
+    .testimonials-masonry {
+      columns: 3;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .google-reviews-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1400px;
+    }
+  }
+</style>

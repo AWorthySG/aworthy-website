@@ -1,0 +1,664 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Contact Us — A Worthy">
+  <Header slot="header" />
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <h1>Get in Touch</h1>
+      <p class="hero-subtitle">Have questions or ready to enrol? Reach out to us and we'll get back to you within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT GRID: FORM + INFO ===== -->
+  <section class="section contact-section">
+    <div class="container contact-grid">
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
+        <h2>Enquiry Form</h2>
+        <form id="contact-form" class="contact-form" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="parent-name">Parent/Guardian Name <span class="required">*</span></label>
+              <input type="text" id="parent-name" name="parentName" required />
+            </div>
+            <div class="form-group">
+              <label for="student-name">Student Name <span class="required">*</span></label>
+              <input type="text" id="student-name" name="studentName" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" required placeholder="+65" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="student-level">Student Level <span class="required">*</span></label>
+              <select id="student-level" name="studentLevel" required>
+                <option value="">-- Select Level --</option>
+                <option value="P3">P3</option>
+                <option value="P4">P4</option>
+                <option value="P5">P5</option>
+                <option value="P6">P6</option>
+                <option value="Sec 1">Sec 1</option>
+                <option value="Sec 2">Sec 2</option>
+                <option value="Sec 3">Sec 3</option>
+                <option value="Sec 4">Sec 4</option>
+                <option value="Sec 5">Sec 5</option>
+                <option value="JC1">JC1</option>
+                <option value="JC2">JC2</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="referral">How did you hear about us?</label>
+              <select id="referral" name="referral">
+                <option value="">-- Select --</option>
+                <option value="Google">Google</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Friend/Family">Friend/Family</option>
+                <option value="School">School</option>
+                <option value="Walk-in">Walk-in</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Subjects of Interest</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label"><input type="checkbox" name="subjects" value="Mathematics" /> Mathematics</label>
+              <label class="checkbox-label"><input type="checkbox" name="subjects" value="Science" /> Science</label>
+              <label class="checkbox-label"><input type="checkbox" name="subjects" value="English" /> English</label>
+              <label class="checkbox-label"><input type="checkbox" name="subjects" value="Chinese" /> Chinese</label>
+              <label class="checkbox-label"><input type="checkbox" name="subjects" value="GP" /> GP</label>
+              <label class="checkbox-label"><input type="checkbox" name="subjects" value="Economics" /> Economics</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Centre <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="centre" value="Toa Payoh" required /> Toa Payoh</label>
+              <label class="radio-label"><input type="radio" name="centre" value="Bishan" /> Bishan</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your child's learning needs..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg submit-btn">Send Enquiry</button>
+
+          <div id="form-success" class="form-success" hidden>
+            Thank you for your enquiry! We will get back to you within 24 hours.
+          </div>
+
+          <div id="form-errors" class="form-errors" hidden></div>
+        </form>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="contact-info-wrapper">
+        <h2>Contact Information</h2>
+
+        <div class="info-card">
+          <h3>Toa Payoh Centre</h3>
+          <p>Blk 201 Toa Payoh Lorong 8, #01-12, Singapore 310201</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Bishan Centre</h3>
+          <p>Blk 283 Bishan Street 22, #02-08, Singapore 570283</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Reach Us</h3>
+          <ul class="contact-details">
+            <li><strong>Phone:</strong> <a href="tel:+6561234567">+65 6123 4567</a></li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/6591234567">9123 4567</a></li>
+            <li><strong>Email:</strong> <a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Operating Hours</h3>
+          <ul class="contact-details">
+            <li><strong>Mon &ndash; Fri:</strong> 2:00 PM &ndash; 9:30 PM</li>
+            <li><strong>Sat &ndash; Sun:</strong> 9:00 AM &ndash; 6:00 PM</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== MAP PLACEHOLDER ===== -->
+  <section class="section map-section">
+    <div class="container">
+      <h2 class="section-title">Find Us</h2>
+      <div class="maps-grid">
+        <div class="map-placeholder">
+          <div class="map-pin"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <p class="map-label"><strong>Toa Payoh Centre</strong></p>
+          <p>Blk 201 Toa Payoh Lorong 8, #01-12, Singapore 310201</p>
+        </div>
+        <div class="map-placeholder">
+          <div class="map-pin"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <p class="map-label"><strong>Bishan Centre</strong></p>
+          <p>Blk 283 Bishan Street 22, #02-08, Singapore 570283</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section faq-section">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Got questions? We've got answers.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is the class size?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>We maintain a maximum of 8 students per class to ensure every child receives individual attention and personalised feedback from our tutors.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Is there a trial lesson?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>Yes! We offer a free diagnostic assessment and trial lesson for all new students. This allows us to understand your child's learning needs and for your child to experience our teaching style before committing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What if my child misses a lesson?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>We understand that things come up. Students may attend a replacement lesson within the same term, subject to availability. Please inform us at least 24 hours in advance so we can arrange a make-up slot.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Do you follow the MOE syllabus?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>Absolutely. Our curriculum is fully aligned with the latest MOE syllabus for all levels. Our materials are regularly updated to reflect any syllabus changes, and we incorporate exam-focused strategies for PSLE, O-Level, and A-Level preparation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What are the payment methods?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>We accept PayNow, bank transfer, and GIRO. Monthly fees are due by the 5th of each month. We do not accept cash payments. Detailed payment instructions will be provided upon enrolment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<!-- ===== CLIENT-SIDE SCRIPTS ===== -->
+<script>
+  // --- Form Validation & Submission ---
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successMsg = document.getElementById('form-success') as HTMLDivElement;
+  const errorsMsg = document.getElementById('form-errors') as HTMLDivElement;
+
+  form.addEventListener('submit', (e: Event) => {
+    e.preventDefault();
+    const errors: string[] = [];
+
+    const parentName = (form.querySelector('#parent-name') as HTMLInputElement).value.trim();
+    const studentName = (form.querySelector('#student-name') as HTMLInputElement).value.trim();
+    const email = (form.querySelector('#email') as HTMLInputElement).value.trim();
+    const phone = (form.querySelector('#phone') as HTMLInputElement).value.trim();
+    const studentLevel = (form.querySelector('#student-level') as HTMLSelectElement).value;
+    const centre = form.querySelector('input[name="centre"]:checked') as HTMLInputElement | null;
+
+    if (!parentName) errors.push('Parent/Guardian Name is required.');
+    if (!studentName) errors.push('Student Name is required.');
+    if (!email) {
+      errors.push('Email is required.');
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.push('Please enter a valid email address.');
+    }
+    if (!phone) {
+      errors.push('Phone Number is required.');
+    } else if (!/^[\d\s\+\-()]{7,15}$/.test(phone)) {
+      errors.push('Please enter a valid phone number.');
+    }
+    if (!studentLevel) errors.push('Please select a Student Level.');
+    if (!centre) errors.push('Please select a Preferred Centre.');
+
+    if (errors.length > 0) {
+      errorsMsg.hidden = false;
+      errorsMsg.innerHTML = errors.map(err => `<p>${err}</p>`).join('');
+      successMsg.hidden = true;
+    } else {
+      errorsMsg.hidden = true;
+      successMsg.hidden = false;
+      form.reset();
+      successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  // --- FAQ Accordion ---
+  document.querySelectorAll('.faq-question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement as HTMLDivElement;
+      const answer = item.querySelector('.faq-answer') as HTMLDivElement;
+      const icon = btn.querySelector('.faq-icon') as HTMLSpanElement;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all others
+      document.querySelectorAll('.faq-item').forEach((otherItem) => {
+        if (otherItem !== item) {
+          const otherBtn = otherItem.querySelector('.faq-question') as HTMLButtonElement;
+          const otherAnswer = otherItem.querySelector('.faq-answer') as HTMLDivElement;
+          const otherIcon = otherItem.querySelector('.faq-icon') as HTMLSpanElement;
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherAnswer.hidden = true;
+          otherIcon.textContent = '+';
+        }
+      });
+
+      // Toggle current
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      answer.hidden = isOpen;
+      icon.textContent = isOpen ? '+' : '\u2212';
+    });
+  });
+</script>
+
+<style>
+  /* ===== HERO ===== */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    text-align: center;
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ===== CONTACT GRID ===== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .contact-form-wrapper h2,
+  .contact-info-wrapper h2 {
+    margin-bottom: var(--space-xl);
+    font-size: 1.5rem;
+  }
+
+  /* ===== FORM STYLES ===== */
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-lg);
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .required {
+    color: #c0392b;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.12);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+  }
+
+  .checkbox-group,
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-lg);
+    margin-top: var(--space-xs);
+  }
+
+  .checkbox-label,
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 400 !important;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+
+  .checkbox-label input,
+  .radio-label input {
+    accent-color: var(--color-primary);
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: var(--space-sm);
+  }
+
+  .form-success {
+    margin-top: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .form-errors {
+    margin-top: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+  }
+
+  .form-errors p {
+    margin: 0.25rem 0;
+  }
+
+  /* ===== CONTACT INFO CARDS ===== */
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .info-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+
+  .info-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .contact-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-details li {
+    padding: var(--space-xs) 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .contact-details a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contact-details a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== MAP PLACEHOLDER ===== */
+  .map-section {
+    background: var(--bg-secondary);
+  }
+
+  .maps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .map-placeholder {
+    background: var(--bg-card);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--space-3xl) var(--space-xl);
+    text-align: center;
+    color: var(--text-secondary);
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .map-pin {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .map-label {
+    margin-bottom: var(--space-xs);
+    font-size: 1rem;
+  }
+
+  .map-placeholder p {
+    font-size: 0.9rem;
+    max-width: 280px;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section {
+    background: var(--bg-primary);
+  }
+
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg) 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: left;
+    transition: color 0.2s ease;
+  }
+
+  .faq-question:hover {
+    color: var(--color-primary);
+  }
+
+  .faq-icon {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-left: var(--space-md);
+  }
+
+  .faq-answer {
+    padding: 0 0 var(--space-lg);
+  }
+
+  .faq-answer p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .maps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-question {
+      font-size: 1rem;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+  }
+
+  /* Phone */
+  @media (max-width: 480px) {
+    .hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .maps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-question {
+      font-size: 0.95rem;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+  }
+
+  /* Smart TV */
+  @media (min-width: 1921px) {
+    .contact-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .maps-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      max-width: 900px;
+    }
+
+    .container {
+      max-width: 1400px;
+    }
+  }
+</style>

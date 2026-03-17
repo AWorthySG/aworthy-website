@@ -1,0 +1,632 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const resources = [
+  {
+    title: "PSLE Maths: Mastering Model Drawing",
+    description: "A comprehensive guide to solving complex PSLE word problems using the Singapore Model Method. Includes step-by-step worked examples for before-after, comparison, and unchanged quantity models.",
+    category: "Mathematics",
+    type: "Guide",
+  },
+  {
+    title: "Top 10 Science Process Skills for PSLE",
+    description: "Learn the essential process skills tested in PSLE Science — from identifying variables to interpreting data tables. Includes real exam questions and model answers.",
+    category: "Science",
+    type: "Article",
+  },
+  {
+    title: "O-Level Chemistry: Organic Chemistry Cheat Sheet",
+    description: "A concise, exam-ready worksheet covering homologous series, functional groups, reaction types, and key equations for O-Level Pure Chemistry Paper 2.",
+    category: "Science",
+    type: "Worksheet",
+  },
+  {
+    title: "How to Write a Stellar Composition",
+    description: "A structured guide to PSLE and O-Level English composition writing. Covers planning techniques, strong openings, show-not-tell descriptions, and powerful conclusions.",
+    category: "English",
+    type: "Guide",
+  },
+  {
+    title: "A-Level H2 Maths: Integration Techniques",
+    description: "Practice worksheet on integration by substitution, by parts, and partial fractions. Includes 30 graded questions with full worked solutions for JC students.",
+    category: "Mathematics",
+    type: "Worksheet",
+  },
+  {
+    title: "5 Study Habits of Top Students",
+    description: "Discover the proven study strategies used by students who consistently score A's. From spaced repetition to active recall — backed by learning science research.",
+    category: "Study Tips",
+    type: "Article",
+  },
+  {
+    title: "PSLE English: Comprehension Cloze Tips",
+    description: "Master the comprehension cloze section with our proven strategies for contextual clues, grammar patterns, and vocabulary building. Includes practice passages.",
+    category: "English",
+    type: "Article",
+  },
+  {
+    title: "Secondary Physics: Electricity Formulas",
+    description: "Essential formulas and circuit analysis techniques for O-Level Physics. Covers Ohm's Law, series/parallel circuits, electrical power, and energy calculations.",
+    category: "Science",
+    type: "Worksheet",
+  },
+  {
+    title: "Time Management for JC Students",
+    description: "Practical tips for balancing H2 subjects, CCA commitments, and revision. Learn to create effective study timetables and avoid burnout during the A-Level journey.",
+    category: "Study Tips",
+    type: "Article",
+  },
+  {
+    title: "GP Essay Writing Framework",
+    description: "A step-by-step guide to structuring General Paper essays that score. Covers thesis statements, PEEL paragraphs, counter-arguments, and evaluative conclusions.",
+    category: "English",
+    type: "Guide",
+  },
+  {
+    title: "PSLE Science: Common Exam Mistakes",
+    description: "Avoid the top 15 mistakes students make in PSLE Science. From misreading questions to incomplete explanations — learn what examiners are really looking for.",
+    category: "Science",
+    type: "Article",
+  },
+  {
+    title: "O-Level A Math: Trigonometry Practice",
+    description: "Worksheet with 25 trigonometry questions covering identities, equations, R-formula, and applications. Graded from basic to challenging with full solutions.",
+    category: "Mathematics",
+    type: "Worksheet",
+  },
+];
+
+const categories = ["All", "Mathematics", "Science", "English", "Study Tips", "Exam Prep"];
+
+const typeIcons: Record<string, string> = {
+  Article: "",
+  Worksheet: "",
+  Video: "",
+  Guide: "",
+};
+---
+
+<BaseLayout title="Free Resources — A Worthy">
+  <Header slot="header" />
+
+  <!-- ===== HERO ===== -->
+  <section class="resources-hero">
+    <div class="container">
+      <div class="hero-content animate-fade-in-up">
+        <span class="hero-badge">100% Free &mdash; No Sign-Up Required</span>
+        <h1>Free Resources for <span class="highlight">Students & Parents</span></h1>
+        <p class="hero-subtitle">
+          Worksheets, guides, articles, and study tips curated by our experienced tutors.
+          Covering PSLE, O-Level, and A-Level subjects across the Singapore MOE syllabus.
+        </p>
+        <img src="/images/general/studying.jpg" alt="Student studying with books and notes" class="resources-hero-img" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEARCH & FILTER ===== -->
+  <section class="section resources-section">
+    <div class="container">
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <label for="resource-search" class="sr-only">Search resources</label>
+        <div class="search-input-wrapper">
+          <span class="search-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          <input
+            type="text"
+            id="resource-search"
+            placeholder="Search by title or description..."
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="filter-bar" role="group" aria-label="Filter by category">
+        {categories.map((cat) => (
+          <button
+            class:list={["filter-btn", { active: cat === "All" }]}
+            data-category={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Resource Cards Grid -->
+      <div class="resources-grid" id="resources-grid">
+        {resources.map((resource) => (
+          <article class="card resource-card" data-category={resource.category} data-title={resource.title.toLowerCase()} data-description={resource.description.toLowerCase()}>
+            <div class="resource-card-header">
+              <span class="category-tag">{resource.category}</span>
+              <span class="type-badge" data-type={resource.type}>
+                {typeIcons[resource.type]} {resource.type}
+              </span>
+            </div>
+            <h3>{resource.title}</h3>
+            <p>{resource.description}</p>
+            <a href="#" class="resource-link">
+              {resource.type === "Worksheet" ? "Download Worksheet" :
+               resource.type === "Guide" ? "Read Guide" :
+               resource.type === "Video" ? "Watch Video" :
+               "Read Article"} →
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <!-- No Results Message -->
+      <div class="no-results" id="no-results" style="display: none;">
+        <span class="no-results-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+        <h3>No resources found</h3>
+        <p>Try adjusting your search term or changing the category filter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <h2>Get Resources Delivered to Your Inbox</h2>
+          <p>Subscribe to our weekly newsletter for new worksheets, study tips, and exam prep materials — completely free.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form">
+          <div class="newsletter-inputs">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              placeholder="Enter your email address"
+              required
+            />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+          <p class="newsletter-note">Join 3,000+ parents and students. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <h2>Want Personalised Guidance?</h2>
+      <p>Our free resources are a great start — but nothing beats personalised tuition from our expert tutors. Book a <strong>free trial lesson</strong> today.</p>
+      <div class="cta-actions">
+        <a href="/contact/" class="btn btn-accent btn-lg">Book Free Trial</a>
+        <a href="https://wa.me/6591234567" class="btn btn-secondary btn-lg" style="border-color: #FFF; color: #FFF;">WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const searchInput = document.getElementById('resource-search') as HTMLInputElement;
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const resourceCards = document.querySelectorAll('.resource-card') as NodeListOf<HTMLElement>;
+  const noResults = document.getElementById('no-results') as HTMLElement;
+
+  let activeCategory = 'All';
+
+  function filterResources() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    resourceCards.forEach((card) => {
+      const title = card.getAttribute('data-title') || '';
+      const description = card.getAttribute('data-description') || '';
+      const category = card.getAttribute('data-category') || '';
+
+      const matchesCategory = activeCategory === 'All' || category === activeCategory;
+      const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+
+      if (matchesCategory && matchesSearch) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    noResults.style.display = visibleCount === 0 ? 'flex' : 'none';
+  }
+
+  searchInput.addEventListener('input', filterResources);
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCategory = btn.getAttribute('data-category') || 'All';
+      filterResources();
+    });
+  });
+
+  // Newsletter form
+  const newsletterForm = document.getElementById('newsletter-form');
+  newsletterForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
+    if (emailInput.value) {
+      emailInput.value = '';
+      alert('Thank you for subscribing! You will receive our next newsletter shortly.');
+    }
+  });
+</script>
+
+<style>
+  .resources-hero-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+    margin-top: var(--space-xl);
+    box-shadow: 0 4px 15px var(--shadow-color);
+  }
+
+  /* ===== HERO ===== */
+  .resources-hero {
+    padding: var(--space-3xl) 0 var(--space-4xl);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--bg-secondary);
+    border: 1px solid var(--color-accent);
+    color: var(--color-primary);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+  }
+
+  .resources-hero h1 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .highlight {
+    color: var(--color-primary);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  /* ===== SEARCH ===== */
+  .search-wrapper {
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: var(--space-md);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input-wrapper input {
+    padding-left: 3rem;
+    font-size: 1.05rem;
+    border-radius: 50px;
+    height: 52px;
+  }
+
+  /* ===== FILTER BAR ===== */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.25rem;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .filter-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #FFFFFF;
+  }
+
+  /* ===== RESOURCE CARDS GRID ===== */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .resource-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xl);
+  }
+
+  .resource-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .category-tag {
+    display: inline-block;
+    background: var(--bg-secondary);
+    color: var(--color-primary);
+    padding: 0.2rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .type-badge[data-type="Article"] { color: #2E86C1; }
+  .type-badge[data-type="Article"]::before { content: '\25B6'; margin-right: 0.25rem; }
+  .type-badge[data-type="Worksheet"] { color: #27AE60; }
+  .type-badge[data-type="Worksheet"]::before { content: '\2713'; margin-right: 0.25rem; }
+  .type-badge[data-type="Video"] { color: #E74C3C; }
+  .type-badge[data-type="Video"]::before { content: '\25B6'; margin-right: 0.25rem; }
+  .type-badge[data-type="Guide"] { color: #8E44AD; }
+  .type-badge[data-type="Guide"]::before { content: '\25A0'; margin-right: 0.25rem; }
+
+  .resource-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-sm);
+    line-height: 1.4;
+  }
+
+  .resource-card p {
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .resource-link {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    margin-top: var(--space-sm);
+    transition: gap var(--transition-fast);
+  }
+
+  .resource-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* ===== NO RESULTS ===== */
+  .no-results {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-4xl) 0;
+    gap: var(--space-sm);
+  }
+
+  .no-results-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .no-results h3 {
+    color: var(--text-muted);
+  }
+
+  .no-results p {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter-section {
+    background: var(--bg-secondary);
+  }
+
+  .newsletter-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-3xl);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+    box-shadow: 0 2px 8px var(--shadow-color);
+  }
+
+  .newsletter-content h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .newsletter-content p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 0;
+  }
+
+  .newsletter-inputs {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .newsletter-inputs input {
+    flex: 1;
+    border-radius: var(--border-radius);
+  }
+
+  .newsletter-inputs .btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .newsletter-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+  }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: #FFFFFF;
+    padding: var(--space-4xl) 0;
+    text-align: center;
+  }
+
+  .cta-banner h2 {
+    color: #FFFFFF;
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-banner p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .btn-lg {
+    padding: 0.9rem 2rem;
+    font-size: 1.05rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .resources-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .newsletter-card {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-bar {
+      gap: var(--space-xs);
+    }
+
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    .newsletter-card {
+      padding: var(--space-xl);
+    }
+
+    .newsletter-inputs {
+      flex-direction: column;
+    }
+  }
+
+  /* Phone */
+  @media (max-width: 480px) {
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-bar {
+      gap: var(--space-xs);
+    }
+
+    .filter-btn {
+      padding: 0.35rem 0.8rem;
+      font-size: 0.78rem;
+    }
+
+    .resources-hero {
+      padding: var(--space-2xl) 0 var(--space-3xl);
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  /* Smart TV */
+  @media (min-width: 1921px) {
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .resources-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .newsletter-card {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1400px;
+    }
+  }
+</style>
