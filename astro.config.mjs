@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://aworthy.com',
+  site: 'https://a-worthy.com',
   trailingSlash: 'always',
   build: {
     format: 'directory',
