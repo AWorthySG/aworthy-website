@@ -3,11 +3,11 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About Us' },
+  { href: '/about/', label: 'About' },
   { href: '/programmes/', label: 'Programmes' },
   { href: '/results/', label: 'Results' },
   { href: '/resources/', label: 'Resources' },
-  { href: '/testimonials/', label: 'Testimonials' },
+  { href: '/testimonials/', label: 'Reviews' },
   { href: '/contact/', label: 'Contact' },
 ];
 ---
@@ -16,11 +16,7 @@ const navLinks = [
   <div class="container header-inner">
     <!-- Logo -->
     <a href="/" class="logo" aria-label="A Worthy — Home">
-      <span class="logo-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2L2 26h24L14 2z" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M14 10v8M10 22h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-      <span class="logo-text">
-        <span class="logo-name">A Worthy</span>
-        <span class="logo-tagline">You're worth an A</span>
-      </span>
+      <span class="logo-name">A Worthy</span>
     </a>
 
     <!-- Desktop Nav -->
@@ -45,15 +41,15 @@ const navLinks = [
       <button
         class="theme-toggle"
         id="theme-toggle"
-        aria-label="Toggle dark mode"
-        title="Toggle dark mode"
+        aria-label="Toggle light mode"
+        title="Toggle light mode"
       >
-        <span class="theme-icon-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
-        <span class="theme-icon-dark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        <span class="theme-icon-light"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+        <span class="theme-icon-dark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
       </button>
 
       <!-- CTA -->
-      <a href="/contact/" class="btn btn-primary header-cta">Enrol Now</a>
+      <a href="/contact/" class="btn btn-accent header-cta"><span>Get Assessment</span></a>
 
       <!-- Mobile Hamburger -->
       <button
@@ -63,7 +59,6 @@ const navLinks = [
         aria-expanded="false"
         aria-controls="mobile-nav"
       >
-        <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
       </button>
@@ -85,22 +80,32 @@ const navLinks = [
         </li>
       ))}
     </ul>
-    <a href="/contact/" class="btn btn-primary mobile-cta">Enrol Now</a>
+    <a href="/contact/" class="btn btn-accent mobile-cta"><span>Get Assessment</span></a>
   </nav>
 </header>
 
 <style>
   .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    background: var(--bg-primary);
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color var(--transition-base), box-shadow var(--transition-base);
+    background: transparent;
+    transition: background-color var(--transition-base), border-color var(--transition-base);
+    border-bottom: 1px solid transparent;
   }
 
   .site-header.scrolled {
-    box-shadow: 0 2px 20px var(--shadow-color);
+    background: rgba(42, 44, 47, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  :global([data-theme="light"]) .site-header.scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
   }
 
   .header-inner {
@@ -111,60 +116,47 @@ const navLinks = [
     gap: var(--space-md);
   }
 
-  /* Logo */
+  /* Logo — minimal text only */
   .logo {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
     text-decoration: none;
     flex-shrink: 0;
   }
 
-  .logo-icon {
-    font-size: 1.8rem;
-    color: var(--color-primary);
-  }
-
   .logo-name {
-    display: block;
     font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: var(--color-primary);
-    line-height: 1.2;
-  }
-
-  .logo-tagline {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
   }
 
   /* Desktop Nav */
   .desktop-nav ul {
     display: flex;
     list-style: none;
-    gap: var(--space-xs);
+    gap: 0;
     padding: 0;
   }
 
   .desktop-nav a {
     padding: var(--space-sm) var(--space-md);
-    border-radius: var(--border-radius);
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     font-weight: 500;
     color: var(--text-secondary);
-    transition: all var(--transition-fast);
+    transition: color var(--transition-fast);
     white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
-  .desktop-nav a:hover,
+  .desktop-nav a:hover {
+    color: var(--text-primary);
+  }
+
   .desktop-nav a.active {
-    color: var(--color-primary);
-    background: var(--bg-secondary);
+    color: var(--color-accent);
   }
 
   /* Header Actions */
@@ -177,40 +169,40 @@ const navLinks = [
 
   .header-cta {
     padding: 0.5rem 1.25rem;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
   }
 
   /* Theme Toggle */
   .theme-toggle {
     background: none;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--border-color);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    color: var(--text-secondary);
     transition: all var(--transition-fast);
   }
 
   .theme-toggle:hover {
-    border-color: var(--color-primary);
-    background: var(--bg-secondary);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 
-  [data-theme="light"] .theme-icon-dark { display: none; }
-  [data-theme="dark"] .theme-icon-light { display: none; }
+  [data-theme="dark"] .theme-icon-dark,
+  [data-theme="light"] .theme-icon-light { display: none; }
 
-  /* Hamburger */
+  /* Hamburger — minimal 2-line */
   .hamburger {
     display: none;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
-    width: 40px;
-    height: 40px;
+    gap: 6px;
+    width: 36px;
+    height: 36px;
     background: none;
     border: none;
     cursor: pointer;
@@ -220,20 +212,16 @@ const navLinks = [
   .hamburger-line {
     display: block;
     width: 100%;
-    height: 2.5px;
+    height: 1.5px;
     background: var(--text-primary);
-    border-radius: 2px;
     transition: all var(--transition-base);
   }
 
   .hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(3px, 3px);
   }
   .hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(3px, -3px);
   }
 
   /* Mobile Nav */
@@ -241,7 +229,7 @@ const navLinks = [
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     z-index: 998;
   }
 
@@ -258,8 +246,9 @@ const navLinks = [
     background: var(--bg-primary);
     z-index: 999;
     padding: var(--space-3xl) var(--space-xl);
-    transition: right var(--transition-base);
+    transition: right var(--transition-slow);
     overflow-y: auto;
+    border-left: 1px solid var(--border-color);
   }
 
   .mobile-nav.open {
@@ -274,15 +263,17 @@ const navLinks = [
   .mobile-nav a {
     display: block;
     padding: var(--space-md) 0;
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border-color);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
+  .mobile-nav a:hover,
   .mobile-nav a.active {
-    color: var(--color-primary);
-    font-weight: 700;
+    color: var(--color-accent);
   }
 
   .mobile-cta {

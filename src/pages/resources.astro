@@ -80,127 +80,115 @@ const resources = [
 ];
 
 const categories = ["All", "Mathematics", "Science", "English", "Study Tips", "Exam Prep"];
-
-const typeIcons: Record<string, string> = {
-  Article: "",
-  Worksheet: "",
-  Video: "",
-  Guide: "",
-};
 ---
 
 <BaseLayout title="Free Resources — A Worthy">
   <Header slot="header" />
 
   <!-- ===== HERO ===== -->
-  <section class="resources-hero">
-    <div class="container">
-      <div class="hero-content animate-fade-in-up">
-        <span class="hero-badge">100% Free &mdash; No Sign-Up Required</span>
-        <h1>Free Resources for <span class="highlight">Students & Parents</span></h1>
-        <p class="hero-subtitle">
-          Worksheets, guides, articles, and study tips curated by our experienced tutors.
-          Covering PSLE, O-Level, and A-Level subjects across the Singapore MOE syllabus.
-        </p>
-        <img src="/images/general/studying.jpg" alt="Student studying with books and notes" class="resources-hero-img" loading="lazy" />
-      </div>
+  <section class="r-hero">
+    <div class="r-container">
+      <span class="eyebrow">Resources</span>
+      <h1 class="r-hero-heading">Free academic resources</h1>
+      <p class="r-hero-sub">No sign-up required. Worksheets, guides, and study tips curated by our experienced tutors.</p>
     </div>
   </section>
 
-  <!-- ===== SEARCH & FILTER ===== -->
-  <section class="section resources-section">
-    <div class="container">
-      <!-- Search Bar -->
-      <div class="search-wrapper">
+  <!-- ===== SEARCH + FILTERS ===== -->
+  <section class="r-filters">
+    <div class="r-container">
+      <div class="r-search-wrap">
         <label for="resource-search" class="sr-only">Search resources</label>
-        <div class="search-input-wrapper">
-          <span class="search-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-          <input
-            type="text"
-            id="resource-search"
-            placeholder="Search by title or description..."
-            autocomplete="off"
-          />
-        </div>
+        <input
+          type="text"
+          id="resource-search"
+          class="r-search"
+          placeholder="Search resources..."
+          autocomplete="off"
+        />
       </div>
 
-      <!-- Category Filters -->
-      <div class="filter-bar" role="group" aria-label="Filter by category">
+      <div class="r-filter-row" role="group" aria-label="Filter by category">
         {categories.map((cat) => (
           <button
-            class:list={["filter-btn", { active: cat === "All" }]}
+            class:list={["r-filter-btn", { active: cat === "All" }]}
             data-category={cat}
           >
             {cat}
           </button>
         ))}
       </div>
+    </div>
+  </section>
 
-      <!-- Resource Cards Grid -->
-      <div class="resources-grid" id="resources-grid">
+  <!-- ===== RESOURCE CARDS ===== -->
+  <section class="r-cards-section">
+    <div class="r-container">
+      <div class="r-grid" id="resources-grid">
         {resources.map((resource) => (
-          <article class="card resource-card" data-category={resource.category} data-title={resource.title.toLowerCase()} data-description={resource.description.toLowerCase()}>
-            <div class="resource-card-header">
-              <span class="category-tag">{resource.category}</span>
-              <span class="type-badge" data-type={resource.type}>
-                {typeIcons[resource.type]} {resource.type}
-              </span>
+          <article
+            class="r-card"
+            data-category={resource.category}
+            data-title={resource.title.toLowerCase()}
+            data-description={resource.description.toLowerCase()}
+          >
+            <div class="r-card-top">
+              <span class="eyebrow">{resource.category}</span>
+              <span class="r-type-badge">{resource.type}</span>
             </div>
-            <h3>{resource.title}</h3>
-            <p>{resource.description}</p>
-            <a href="#" class="resource-link">
+            <h3 class="r-card-title">{resource.title}</h3>
+            <p class="r-card-desc">{resource.description}</p>
+            <a href="#" class="r-card-link">
               {resource.type === "Worksheet" ? "Download Worksheet" :
                resource.type === "Guide" ? "Read Guide" :
                resource.type === "Video" ? "Watch Video" :
-               "Read Article"} →
+               "Read Article"}
+              <span class="r-arrow">&rarr;</span>
             </a>
           </article>
         ))}
       </div>
 
-      <!-- No Results Message -->
-      <div class="no-results" id="no-results" style="display: none;">
-        <span class="no-results-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-        <h3>No resources found</h3>
-        <p>Try adjusting your search term or changing the category filter.</p>
+      <!-- No Results -->
+      <div class="r-no-results" id="no-results" style="display: none;">
+        <p class="r-no-results-heading">No resources found</p>
+        <p class="r-no-results-sub">Try adjusting your search term or selecting a different category.</p>
       </div>
     </div>
   </section>
 
   <!-- ===== NEWSLETTER ===== -->
-  <section class="section newsletter-section">
-    <div class="container">
-      <div class="newsletter-card">
-        <div class="newsletter-content">
-          <h2>Get Resources Delivered to Your Inbox</h2>
-          <p>Subscribe to our weekly newsletter for new worksheets, study tips, and exam prep materials — completely free.</p>
-        </div>
-        <form class="newsletter-form" id="newsletter-form">
-          <div class="newsletter-inputs">
+  <section class="r-newsletter-section">
+    <div class="r-container">
+      <div class="r-newsletter-card">
+        <span class="eyebrow">Stay Updated</span>
+        <h2 class="r-newsletter-heading">Get new resources in your inbox</h2>
+        <p class="r-newsletter-sub">Free worksheets, study tips, and exam prep materials delivered weekly.</p>
+        <form class="r-newsletter-form" id="newsletter-form">
+          <div class="r-newsletter-row">
             <label for="newsletter-email" class="sr-only">Email address</label>
             <input
               type="email"
               id="newsletter-email"
-              placeholder="Enter your email address"
+              class="r-newsletter-input"
+              placeholder="you@email.com"
               required
             />
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+            <button type="submit" class="r-btn-subscribe">Subscribe</button>
           </div>
-          <p class="newsletter-note">Join 3,000+ parents and students. Unsubscribe anytime.</p>
+          <p class="r-newsletter-note">Join 3,000+ parents and students. Unsubscribe anytime.</p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA BANNER ===== -->
-  <section class="cta-banner">
-    <div class="container cta-inner">
-      <h2>Want Personalised Guidance?</h2>
-      <p>Our free resources are a great start — but nothing beats personalised tuition from our expert tutors. Book a <strong>free trial lesson</strong> today.</p>
-      <div class="cta-actions">
-        <a href="/contact/" class="btn btn-accent btn-lg">Book Free Trial</a>
-        <a href="https://wa.me/6591234567" class="btn btn-secondary btn-lg" style="border-color: #FFF; color: #FFF;">WhatsApp Us</a>
-      </div>
+  <!-- ===== CTA ===== -->
+  <section class="r-cta">
+    <div class="r-container">
+      <span class="eyebrow">Next Step</span>
+      <h2 class="r-cta-heading">Want personalised guidance?</h2>
+      <p class="r-cta-sub">Our resources are a great start — personalised tuition takes it further.</p>
+      <a href="/contact/" class="r-btn-cta">Get in Touch</a>
     </div>
   </section>
 
@@ -209,8 +197,8 @@ const typeIcons: Record<string, string> = {
 
 <script>
   const searchInput = document.getElementById('resource-search') as HTMLInputElement;
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const resourceCards = document.querySelectorAll('.resource-card') as NodeListOf<HTMLElement>;
+  const filterButtons = document.querySelectorAll('.r-filter-btn');
+  const resourceCards = document.querySelectorAll('.r-card') as NodeListOf<HTMLElement>;
   const noResults = document.getElementById('no-results') as HTMLElement;
 
   let activeCategory = 'All';
@@ -249,7 +237,6 @@ const typeIcons: Record<string, string> = {
     });
   });
 
-  // Newsletter form
   const newsletterForm = document.getElementById('newsletter-form');
   newsletterForm?.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -262,370 +249,427 @@ const typeIcons: Record<string, string> = {
 </script>
 
 <style>
-  .resources-hero-img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: var(--border-radius-lg);
-    margin-top: var(--space-xl);
-    box-shadow: 0 4px 15px var(--shadow-color);
+  /* ===== BASE / TOKENS ===== */
+  :root {
+    --r-bg: #2a2c2f;
+    --r-bg-card: #232527;
+    --r-bg-input: #222427;
+    --r-orange: #e8713a;
+    --r-orange-hover: #d4632f;
+    --r-white: #ffffff;
+    --r-white-70: rgba(255, 255, 255, 0.7);
+    --r-white-40: rgba(255, 255, 255, 0.4);
+    --r-border: rgba(255, 255, 255, 0.1);
+    --r-border-focus: rgba(232, 113, 58, 0.6);
+    --r-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --r-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  }
+
+  /* ===== SHARED ===== */
+  .r-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--r-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--r-orange);
+    margin-bottom: 1rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   /* ===== HERO ===== */
-  .resources-hero {
-    padding: var(--space-3xl) 0 var(--space-4xl);
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  .r-hero {
+    background: var(--r-bg);
+    padding: 7rem 0 4rem;
     text-align: center;
   }
 
-  .hero-content {
-    max-width: 720px;
+  .r-hero-heading {
+    font-family: var(--r-font);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    color: var(--r-white);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+  }
+
+  .r-hero-sub {
+    font-family: var(--r-font);
+    font-size: 1.1rem;
+    color: var(--r-white-70);
+    line-height: 1.7;
+    max-width: 540px;
     margin: 0 auto;
   }
 
-  .hero-badge {
-    display: inline-block;
-    background: var(--bg-secondary);
-    border: 1px solid var(--color-accent);
-    color: var(--color-primary);
-    padding: var(--space-xs) var(--space-md);
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: var(--space-lg);
+  /* ===== SEARCH + FILTERS ===== */
+  .r-filters {
+    background: var(--r-bg);
+    padding: 0 0 3rem;
   }
 
-  .resources-hero h1 {
-    margin-bottom: var(--space-lg);
+  .r-search-wrap {
+    max-width: 480px;
+    margin: 0 auto 2rem;
   }
 
-  .highlight {
-    color: var(--color-primary);
+  .r-search {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    font-family: var(--r-font);
+    font-size: 0.95rem;
+    color: var(--r-white);
+    background: var(--r-bg-input);
+    border: 1px solid var(--r-border);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease;
   }
 
-  .hero-subtitle {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
+  .r-search::placeholder {
+    color: var(--r-white-40);
   }
 
-  /* ===== SEARCH ===== */
-  .search-wrapper {
-    max-width: 600px;
-    margin: 0 auto var(--space-xl);
+  .r-search:focus {
+    border-color: var(--r-border-focus);
+    box-shadow: 0 0 0 3px rgba(232, 113, 58, 0.15);
   }
 
-  .search-input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  .search-icon {
-    position: absolute;
-    left: var(--space-md);
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-  }
-
-  .search-input-wrapper input {
-    padding-left: 3rem;
-    font-size: 1.05rem;
-    border-radius: 50px;
-    height: 52px;
-  }
-
-  /* ===== FILTER BAR ===== */
-  .filter-bar {
+  .r-filter-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-2xl);
+    gap: 0.25rem;
   }
 
-  .filter-btn {
-    padding: 0.5rem 1.25rem;
-    border: 2px solid var(--border-color);
-    border-radius: 50px;
-    background: var(--bg-card);
-    color: var(--text-secondary);
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
+  .r-filter-btn {
+    font-family: var(--r-font);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--r-white-40);
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: color 0.2s ease;
+    border-radius: 4px;
   }
 
-  .filter-btn:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+  .r-filter-btn:hover {
+    color: var(--r-white-70);
   }
 
-  .filter-btn.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: #FFFFFF;
+  .r-filter-btn.active {
+    color: var(--r-orange);
   }
 
-  /* ===== RESOURCE CARDS GRID ===== */
-  .resources-grid {
+  /* ===== RESOURCE CARDS ===== */
+  .r-cards-section {
+    background: var(--r-bg);
+    padding: 0 0 5rem;
+  }
+
+  .r-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
+    gap: 1.25rem;
   }
 
-  .resource-card {
+  .r-card {
     display: flex;
     flex-direction: column;
-    padding: var(--space-xl);
+    background: var(--r-bg-card);
+    border: 1px solid var(--r-border);
+    border-radius: 10px;
+    padding: 2rem 1.75rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .resource-card-header {
+  .r-card:hover {
+    transform: scale(0.98);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .r-card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-md);
+    margin-bottom: 0.75rem;
   }
 
-  .category-tag {
-    display: inline-block;
-    background: var(--bg-secondary);
-    color: var(--color-primary);
-    padding: 0.2rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 700;
+  .r-card-top .eyebrow {
+    margin-bottom: 0;
+  }
+
+  .r-type-badge {
+    font-family: var(--r-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    color: var(--r-white-40);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
   }
 
-  .type-badge {
+  .r-card-title {
+    font-family: var(--r-font);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--r-white);
+    line-height: 1.4;
+    margin: 0 0 0.75rem;
+  }
+
+  .r-card-desc {
+    font-family: var(--r-font);
+    font-size: 0.875rem;
+    color: var(--r-white-40);
+    line-height: 1.65;
+    flex-grow: 1;
+    margin: 0 0 1.25rem;
+  }
+
+  .r-card-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-muted);
+    gap: 0.4rem;
+    font-family: var(--r-font);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--r-orange);
+    text-decoration: none;
+    transition: gap 0.2s ease;
   }
 
-  .type-badge[data-type="Article"] { color: #2E86C1; }
-  .type-badge[data-type="Article"]::before { content: '\25B6'; margin-right: 0.25rem; }
-  .type-badge[data-type="Worksheet"] { color: #27AE60; }
-  .type-badge[data-type="Worksheet"]::before { content: '\2713'; margin-right: 0.25rem; }
-  .type-badge[data-type="Video"] { color: #E74C3C; }
-  .type-badge[data-type="Video"]::before { content: '\25B6'; margin-right: 0.25rem; }
-  .type-badge[data-type="Guide"] { color: #8E44AD; }
-  .type-badge[data-type="Guide"]::before { content: '\25A0'; margin-right: 0.25rem; }
-
-  .resource-card h3 {
-    font-size: 1.15rem;
-    margin-bottom: var(--space-sm);
-    line-height: 1.4;
+  .r-card-link:hover {
+    gap: 0.7rem;
   }
 
-  .resource-card p {
-    font-size: 0.95rem;
-    flex-grow: 1;
-  }
-
-  .resource-link {
-    display: inline-block;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--color-primary);
-    margin-top: var(--space-sm);
-    transition: gap var(--transition-fast);
-  }
-
-  .resource-link:hover {
-    color: var(--color-accent);
+  .r-arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
   }
 
   /* ===== NO RESULTS ===== */
-  .no-results {
+  .r-no-results {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    padding: var(--space-4xl) 0;
-    gap: var(--space-sm);
+    padding: 4rem 0;
   }
 
-  .no-results-icon {
-    display: flex;
-    justify-content: center;
-    margin-bottom: var(--space-sm);
+  .r-no-results-heading {
+    font-family: var(--r-font);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--r-white-70);
+    margin: 0 0 0.5rem;
   }
 
-  .no-results h3 {
-    color: var(--text-muted);
-  }
-
-  .no-results p {
-    color: var(--text-muted);
-    font-size: 1rem;
+  .r-no-results-sub {
+    font-family: var(--r-font);
+    font-size: 0.9rem;
+    color: var(--r-white-40);
+    margin: 0;
   }
 
   /* ===== NEWSLETTER ===== */
-  .newsletter-section {
-    background: var(--bg-secondary);
+  .r-newsletter-section {
+    background: var(--r-bg);
+    padding: 0 0 5rem;
   }
 
-  .newsletter-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    padding: var(--space-3xl);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2xl);
-    align-items: center;
-    box-shadow: 0 2px 8px var(--shadow-color);
+  .r-newsletter-card {
+    background: var(--r-bg-card);
+    border: 1px solid var(--r-border);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
-  .newsletter-content h2 {
-    margin-bottom: var(--space-sm);
+  .r-newsletter-heading {
+    font-family: var(--r-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--r-white);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
   }
 
-  .newsletter-content p {
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-    margin-bottom: 0;
+  .r-newsletter-sub {
+    font-family: var(--r-font);
+    font-size: 0.9rem;
+    color: var(--r-white-40);
+    line-height: 1.6;
+    margin: 0 0 1.75rem;
   }
 
-  .newsletter-inputs {
+  .r-newsletter-form {
+    width: 100%;
+  }
+
+  .r-newsletter-row {
     display: flex;
-    gap: var(--space-sm);
+    gap: 0.5rem;
   }
 
-  .newsletter-inputs input {
+  .r-newsletter-input {
     flex: 1;
-    border-radius: var(--border-radius);
+    padding: 0.8rem 1rem;
+    font-family: var(--r-font);
+    font-size: 0.9rem;
+    color: var(--r-white);
+    background: var(--r-bg-input);
+    border: 1px solid var(--r-border);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease;
   }
 
-  .newsletter-inputs .btn {
-    flex-shrink: 0;
+  .r-newsletter-input::placeholder {
+    color: var(--r-white-40);
+  }
+
+  .r-newsletter-input:focus {
+    border-color: var(--r-border-focus);
+    box-shadow: 0 0 0 3px rgba(232, 113, 58, 0.15);
+  }
+
+  .r-btn-subscribe {
+    font-family: var(--r-font);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--r-white);
+    background: var(--r-orange);
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
     white-space: nowrap;
+    transition: background 0.2s ease;
   }
 
-  .newsletter-note {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-top: var(--space-sm);
-    margin-bottom: 0;
+  .r-btn-subscribe:hover {
+    background: var(--r-orange-hover);
   }
 
-  /* ===== CTA BANNER ===== */
-  .cta-banner {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: #FFFFFF;
-    padding: var(--space-4xl) 0;
+  .r-newsletter-note {
+    font-family: var(--r-font);
+    font-size: 0.75rem;
+    color: var(--r-white-40);
+    margin: 0.75rem 0 0;
+  }
+
+  /* ===== CTA ===== */
+  .r-cta {
+    background: var(--r-bg);
+    padding: 3rem 0 7rem;
     text-align: center;
   }
 
-  .cta-banner h2 {
-    color: #FFFFFF;
-    margin-bottom: var(--space-md);
+  .r-cta-heading {
+    font-family: var(--r-font);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--r-white);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
   }
 
-  .cta-banner p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.15rem;
-    max-width: 600px;
-    margin: 0 auto var(--space-xl);
+  .r-cta-sub {
+    font-family: var(--r-font);
+    font-size: 1rem;
+    color: var(--r-white-40);
+    margin: 0 0 2rem;
   }
 
-  .cta-actions {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-md);
-    flex-wrap: wrap;
+  .r-btn-cta {
+    display: inline-block;
+    font-family: var(--r-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--r-white);
+    background: var(--r-orange);
+    border: none;
+    border-radius: 6px;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
   }
 
-  .btn-lg {
-    padding: 0.9rem 2rem;
-    font-size: 1.05rem;
+  .r-btn-cta:hover {
+    background: var(--r-orange-hover);
   }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
-    .resources-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .newsletter-card {
-      grid-template-columns: 1fr;
-      text-align: center;
+    .r-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (max-width: 640px) {
-    .resources-grid {
+    .r-hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .r-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
-    .filter-bar {
-      gap: var(--space-xs);
+    .r-card {
+      padding: 1.5rem 1.25rem;
     }
 
-    .filter-btn {
-      padding: 0.4rem 1rem;
+    .r-filter-row {
+      gap: 0;
+    }
+
+    .r-filter-btn {
       font-size: 0.8rem;
+      padding: 0.4rem 0.75rem;
     }
 
-    .newsletter-card {
-      padding: var(--space-xl);
+    .r-newsletter-card {
+      padding: 2rem 1.5rem;
     }
 
-    .newsletter-inputs {
+    .r-newsletter-row {
       flex-direction: column;
+    }
+
+    .r-cta {
+      padding: 2rem 0 5rem;
     }
   }
 
-  /* Phone */
-  @media (max-width: 480px) {
-    .resources-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .filter-bar {
-      gap: var(--space-xs);
-    }
-
-    .filter-btn {
-      padding: 0.35rem 0.8rem;
-      font-size: 0.78rem;
-    }
-
-    .resources-hero {
-      padding: var(--space-2xl) 0 var(--space-3xl);
-    }
-
-    .cta-actions {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-
-  /* Smart TV */
   @media (min-width: 1921px) {
-    .hero-content {
-      max-width: 900px;
-    }
-
-    .resources-grid {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .newsletter-card {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .container {
+    .r-container {
       max-width: 1400px;
     }
   }

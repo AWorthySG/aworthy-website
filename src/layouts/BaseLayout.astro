@@ -8,12 +8,12 @@ const { title, description = "A Worthy — Singapore's premier tuition centre fo
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#8B4513" />
+  <meta name="theme-color" content="#2a2c2f" />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
@@ -21,19 +21,18 @@ const { title, description = "A Worthy — Singapore's premier tuition centre fo
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_SG" />
 
-  <!-- Fonts -->
+  <!-- Fonts — Inter (close to Vast Space's Owners Text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <title>{title}</title>
 
-  <!-- Theme initialization (prevent flash) -->
+  <!-- Theme initialization (dark by default) -->
   <script is:inline>
     (function() {
       const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = saved || (prefersDark ? 'dark' : 'light');
+      const theme = saved || 'dark';
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>

@@ -9,355 +9,324 @@ import '../styles/global.css';
   <Header slot="header" />
 
   <!-- ===== PAGE HERO ===== -->
-  <section class="page-hero">
+  <section class="prog-hero">
     <div class="container">
-      <div class="hero-content animate-fade-in-up">
-        <span class="hero-badge">Structured Learning for Every Level</span>
-        <h1>Our <span class="highlight">Programmes</span></h1>
-        <p class="hero-subtitle">
-          From Primary 3 to JC2, our MOE-aligned programmes are designed to build deep understanding,
-          sharpen exam technique, and help every student achieve their personal best.
-        </p>
-        <nav class="programme-nav" aria-label="Programme quick links">
-          <a href="#primary" class="nav-pill">Primary</a>
-          <a href="#secondary" class="nav-pill">Secondary</a>
-          <a href="#jc" class="nav-pill">JC</a>
-          <a href="#enrichment" class="nav-pill">Enrichment</a>
-          <a href="#holiday" class="nav-pill">Holiday Intensives</a>
-        </nav>
-      </div>
+      <p class="eyebrow">Programmes</p>
+      <h1 class="prog-hero__heading">Academic programmes<br />designed for results</h1>
+      <p class="prog-hero__sub">A comprehensive, MOE-aligned curriculum from Primary 3 to JC2 &mdash; built to develop deep understanding, sharpen exam technique, and help every student achieve their personal best.</p>
     </div>
   </section>
 
+  <!-- ===== NAV PILLS ===== -->
+  <nav class="prog-nav" aria-label="Programme quick links">
+    <div class="container prog-nav__inner">
+      <a href="#primary" class="prog-nav__link">Primary</a>
+      <a href="#secondary" class="prog-nav__link">Secondary</a>
+      <a href="#jc" class="prog-nav__link">JC</a>
+      <a href="#enrichment" class="prog-nav__link">Enrichment</a>
+      <a href="#holiday" class="prog-nav__link">Holiday</a>
+      <a href="#schedule" class="prog-nav__link">Schedule</a>
+    </div>
+  </nav>
+
   <!-- ===== PRIMARY PROGRAMME ===== -->
-  <section class="section programme-section" id="primary">
+  <section class="prog-section" id="primary">
     <div class="container">
-      <div class="section-header">
-        <span class="level-tag">Primary</span>
-        <h2 class="section-title">Primary Programme (P3 &ndash; P6)</h2>
-        <p class="section-subtitle">Build strong foundations and PSLE confidence through hands-on, concept-driven learning.</p>
-      </div>
+      <p class="eyebrow">Primary</p>
+      <h2 class="prog-section__heading">Primary Programme (P3 &ndash; P6)</h2>
+      <p class="prog-section__sub">Build strong foundations and PSLE confidence through hands-on, concept-driven learning.</p>
 
-      <img src="/images/programmes/primary-students.jpg" alt="Primary students in class" class="programme-section-img" loading="lazy" />
-
-      <div class="subjects-grid">
-        <!-- Mathematics -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M2 2l20 20"/><path d="M2 2v16l4-4"/><path d="M2 2h16l-4 4"/></svg></div>
-          <h3>Mathematics</h3>
-          <p>Master problem-solving from the ground up with structured approaches tailored to the PSLE format.</p>
-          <ul class="topic-list">
-            <li>Model drawing & heuristics</li>
+      <div class="card-grid card-grid--4">
+        <div class="prog-card">
+          <h3 class="prog-card__title">Mathematics</h3>
+          <p class="prog-card__desc">Master problem-solving from the ground up with structured approaches tailored to the PSLE format.</p>
+          <ul class="prog-card__topics">
+            <li>Model drawing &amp; heuristics</li>
             <li>Problem sums (before/after, assumption, working backwards)</li>
-            <li>Whole numbers, fractions & decimals</li>
-            <li>Ratios & percentages</li>
-            <li>Geometry & mensuration</li>
-            <li>Data analysis & interpretation</li>
-            <li>PSLE format practice & timed drills</li>
+            <li>Whole numbers, fractions &amp; decimals</li>
+            <li>Ratios &amp; percentages</li>
+            <li>Geometry &amp; mensuration</li>
+            <li>Data analysis &amp; interpretation</li>
+            <li>PSLE format practice &amp; timed drills</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>1.5 hrs / week</span>
+            <span>Max 8 students</span>
+          </div>
+          <p class="prog-card__fee">$240 &ndash; $320 / month</p>
         </div>
 
-        <!-- Science -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M9 3h6v7l4 8H5l4-8V3z"/><path d="M9 3h6"/></svg></div>
-          <h3>Science</h3>
-          <p>Develop scientific reasoning and process skills through inquiry-based learning and structured answering techniques.</p>
-          <ul class="topic-list">
+        <div class="prog-card">
+          <h3 class="prog-card__title">Science</h3>
+          <p class="prog-card__desc">Develop scientific reasoning and process skills through inquiry-based learning and structured answering techniques.</p>
+          <ul class="prog-card__topics">
             <li>Process skills (comparing, classifying, inferring, predicting)</li>
             <li>Open-ended question techniques (CER method)</li>
-            <li>Experimental design & variables</li>
-            <li>Diversity of living & non-living things</li>
-            <li>Cycles in plants & animals</li>
+            <li>Experimental design &amp; variables</li>
+            <li>Diversity of living &amp; non-living things</li>
+            <li>Cycles in plants &amp; animals</li>
             <li>Systems (human body, plant, electrical)</li>
             <li>Interactions (forces, ecosystems)</li>
             <li>Energy (forms, conversion, heat)</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>1.5 hrs / week</span>
+            <span>Max 8 students</span>
+          </div>
+          <p class="prog-card__fee">$240 &ndash; $320 / month</p>
         </div>
 
-        <!-- English -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <h3>English Language</h3>
-          <p>Strengthen all four language pillars &mdash; reading, writing, listening, and speaking &mdash; for holistic English mastery.</p>
-          <ul class="topic-list">
-            <li>Comprehension: literal, inferential & applied questions</li>
-            <li>Composition writing using the STAR method (Setting, Trigger, Action, Result)</li>
-            <li>Grammar cloze & sentence synthesis</li>
-            <li>Vocabulary enrichment & contextual usage</li>
-            <li>Oral communication & stimulus-based conversation</li>
+        <div class="prog-card">
+          <h3 class="prog-card__title">English Language</h3>
+          <p class="prog-card__desc">Strengthen all four language pillars &mdash; reading, writing, listening, and speaking &mdash; for holistic English mastery.</p>
+          <ul class="prog-card__topics">
+            <li>Comprehension: literal, inferential &amp; applied questions</li>
+            <li>Composition writing using the STAR method</li>
+            <li>Grammar cloze &amp; sentence synthesis</li>
+            <li>Vocabulary enrichment &amp; contextual usage</li>
+            <li>Oral communication &amp; stimulus-based conversation</li>
             <li>Listening comprehension practice</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>1.5 hrs / week</span>
+            <span>Max 8 students</span>
+          </div>
+          <p class="prog-card__fee">$240 &ndash; $320 / month</p>
         </div>
 
-        <!-- Higher Chinese -->
-        <div class="card subject-card subject-card--compact">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div>
-          <h3>Higher Chinese</h3>
-          <p>Available for P5 &ndash; P6 students preparing for PSLE Higher Chinese. Focus on comprehension, composition, and oral examination skills.</p>
-        </div>
-      </div>
-
-      <div class="programme-meta">
-        <div class="meta-item">
-          <span class="meta-label">Schedule</span>
-          <span class="meta-value">1.5 hours per subject per week</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Class Size</span>
-          <span class="meta-value">Maximum 8 students</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Fees</span>
-          <span class="meta-value fees">$240 &ndash; $320 / month <span class="fee-note">(depending on level)</span></span>
+        <div class="prog-card">
+          <h3 class="prog-card__title">Higher Chinese</h3>
+          <p class="prog-card__desc">Available for P5 &ndash; P6 students preparing for PSLE Higher Chinese. Focus on comprehension, composition, and oral examination skills.</p>
+          <div class="prog-card__meta">
+            <span>1.5 hrs / week</span>
+            <span>Max 8 students</span>
+          </div>
+          <p class="prog-card__fee">$240 &ndash; $320 / month</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== SECONDARY PROGRAMME ===== -->
-  <section class="section programme-section alt-bg" id="secondary">
+  <section class="prog-section" id="secondary">
     <div class="container">
-      <div class="section-header">
-        <span class="level-tag">Secondary</span>
-        <h2 class="section-title">Secondary Programme (Sec 1 &ndash; 4/5)</h2>
-        <p class="section-subtitle">Structured revision, exam techniques, and consistent practice for O-Level and N-Level success.</p>
-      </div>
+      <p class="eyebrow">Secondary</p>
+      <h2 class="prog-section__heading">Secondary Programme (Sec 1 &ndash; 4/5)</h2>
+      <p class="prog-section__sub">Structured revision, exam techniques, and consistent practice for O-Level and N-Level success.</p>
 
-      <img src="/images/programmes/secondary-students.jpg" alt="Secondary students learning" class="programme-section-img" loading="lazy" />
-
-      <div class="subjects-grid">
-        <!-- E Math & A Math -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
-          <h3>E Math &amp; A Math</h3>
-          <p>From Elementary to Additional Mathematics, we cover the full O-Level and N-Level syllabus with rigour and clarity.</p>
-          <ul class="topic-list">
+      <div class="card-grid card-grid--3">
+        <div class="prog-card">
+          <h3 class="prog-card__title">E Math &amp; A Math</h3>
+          <p class="prog-card__desc">From Elementary to Additional Mathematics, we cover the full O-Level and N-Level syllabus with rigour and clarity.</p>
+          <ul class="prog-card__topics">
             <li>Algebra: equations, inequalities, functions</li>
             <li>Geometry: congruence, similarity, properties of circles</li>
             <li>Trigonometry: ratios, identities, graphs, R-formula</li>
-            <li>Calculus: differentiation & integration (A Math)</li>
-            <li>Statistics & probability</li>
-            <li>GCE O-Level & N-Level paper practice</li>
+            <li>Calculus: differentiation &amp; integration (A Math)</li>
+            <li>Statistics &amp; probability</li>
+            <li>GCE O-Level &amp; N-Level paper practice</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>2 hrs / week</span>
+            <span>Max 8 students</span>
+          </div>
+          <p class="prog-card__fee">$280 &ndash; $380 / month</p>
         </div>
 
-        <!-- Sciences -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M9 3h6v7l4 8H5l4-8V3z"/><path d="M9 3h6"/><circle cx="13" cy="15" r="1"/><circle cx="10" cy="17" r="1"/></svg></div>
-          <h3>Pure &amp; Combined Sciences</h3>
-          <p>Comprehensive coverage of Physics, Chemistry, and Biology for both Pure and Combined Science tracks.</p>
-          <ul class="topic-list">
-            <li><strong>Physics:</strong> mechanics, thermal physics, waves, electricity & magnetism</li>
-            <li><strong>Chemistry:</strong> atomic structure, chemical bonding, acids/bases, organic chemistry</li>
-            <li><strong>Biology:</strong> cell biology, nutrition, transport, homeostasis, inheritance</li>
-            <li>Practical lab skills & SPA preparation</li>
-            <li>Structured & free-response question techniques</li>
+        <div class="prog-card">
+          <h3 class="prog-card__title">Pure &amp; Combined Sciences</h3>
+          <p class="prog-card__desc">Comprehensive coverage of Physics, Chemistry, and Biology for both Pure and Combined Science tracks.</p>
+          <ul class="prog-card__topics">
+            <li>Physics: mechanics, thermal physics, waves, electricity &amp; magnetism</li>
+            <li>Chemistry: atomic structure, chemical bonding, acids/bases, organic chemistry</li>
+            <li>Biology: cell biology, nutrition, transport, homeostasis, inheritance</li>
+            <li>Practical lab skills &amp; SPA preparation</li>
+            <li>Structured &amp; free-response question techniques</li>
             <li>Data-based question strategies</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>2 hrs / week</span>
+            <span>Max 8 students</span>
+          </div>
+          <p class="prog-card__fee">$280 &ndash; $380 / month</p>
         </div>
 
-        <!-- English -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-          <h3>English Language</h3>
-          <p>Develop strong comprehension and writing skills to excel across all components of the GCE O-Level English paper.</p>
-          <ul class="topic-list">
+        <div class="prog-card">
+          <h3 class="prog-card__title">English Language</h3>
+          <p class="prog-card__desc">Develop strong comprehension and writing skills to excel across all components of the GCE O-Level English paper.</p>
+          <ul class="prog-card__topics">
             <li>Comprehension: inference, language use, summary writing</li>
-            <li>Summary writing techniques & paraphrasing skills</li>
-            <li>Situational writing (formal & informal)</li>
+            <li>Summary writing techniques &amp; paraphrasing skills</li>
+            <li>Situational writing (formal &amp; informal)</li>
             <li>Continuous writing: narrative, argumentative, expository</li>
             <li>Visual text comprehension</li>
-            <li>Editing & grammar accuracy</li>
+            <li>Editing &amp; grammar accuracy</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="programme-meta">
-        <div class="meta-item">
-          <span class="meta-label">Schedule</span>
-          <span class="meta-value">2 hours per subject per week</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Class Size</span>
-          <span class="meta-value">Maximum 8 students</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Fees</span>
-          <span class="meta-value fees">$280 &ndash; $380 / month</span>
+          <div class="prog-card__meta">
+            <span>2 hrs / week</span>
+            <span>Max 8 students</span>
+          </div>
+          <p class="prog-card__fee">$280 &ndash; $380 / month</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== JC PROGRAMME ===== -->
-  <section class="section programme-section" id="jc">
+  <section class="prog-section" id="jc">
     <div class="container">
-      <div class="section-header">
-        <span class="level-tag">Junior College</span>
-        <h2 class="section-title">JC Programme (JC1 &ndash; JC2)</h2>
-        <p class="section-subtitle">Rigorous content mastery and exam strategy for the GCE A-Level examinations.</p>
-      </div>
+      <p class="eyebrow">Junior College</p>
+      <h2 class="prog-section__heading">JC Programme (JC1 &ndash; JC2)</h2>
+      <p class="prog-section__sub">Rigorous content mastery and exam strategy for the GCE A-Level examinations.</p>
 
-      <img src="/images/programmes/jc-students.jpg" alt="JC students studying" class="programme-section-img" loading="lazy" />
-
-      <div class="subjects-grid">
-        <!-- H2 Mathematics -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <h3>H2 Mathematics</h3>
-          <p>Deep mastery of both Pure Mathematics and Statistics for H2 Maths, with extensive past-year paper drills.</p>
-          <ul class="topic-list">
-            <li>Functions & graphs</li>
-            <li>Sequences & series (AP, GP, method of differences)</li>
+      <div class="card-grid card-grid--3">
+        <div class="prog-card">
+          <h3 class="prog-card__title">H2 Mathematics</h3>
+          <p class="prog-card__desc">Deep mastery of both Pure Mathematics and Statistics for H2 Maths, with extensive past-year paper drills.</p>
+          <ul class="prog-card__topics">
+            <li>Functions &amp; graphs</li>
+            <li>Sequences &amp; series (AP, GP, method of differences)</li>
             <li>Vectors in 2D and 3D</li>
             <li>Complex numbers</li>
-            <li>Calculus: techniques of differentiation & integration, applications</li>
-            <li>Statistics & probability distributions</li>
-            <li>Hypothesis testing & regression</li>
+            <li>Calculus: techniques of differentiation &amp; integration, applications</li>
+            <li>Statistics &amp; probability distributions</li>
+            <li>Hypothesis testing &amp; regression</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>2 hrs / week</span>
+            <span>Max 6 students</span>
+          </div>
+          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
         </div>
 
-        <!-- H2 Physics -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-          <h3>H2 Physics</h3>
-          <p>From classical mechanics to modern physics, develop conceptual clarity and problem-solving rigour for the A-Level.</p>
-          <ul class="topic-list">
+        <div class="prog-card">
+          <h3 class="prog-card__title">H2 Physics</h3>
+          <p class="prog-card__desc">From classical mechanics to modern physics, develop conceptual clarity and problem-solving rigour for the A-Level.</p>
+          <ul class="prog-card__topics">
             <li>Mechanics: kinematics, dynamics, energy, momentum</li>
             <li>Waves: superposition, diffraction, interference</li>
-            <li>Electricity: circuits, electric & magnetic fields, electromagnetic induction</li>
+            <li>Electricity: circuits, electric &amp; magnetic fields, electromagnetic induction</li>
             <li>Modern physics: quantum theory, nuclear physics</li>
-            <li>Practical skills & planning questions</li>
+            <li>Practical skills &amp; planning questions</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>2 hrs / week</span>
+            <span>Max 6 students</span>
+          </div>
+          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
         </div>
 
-        <!-- H2 Chemistry -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M9 3h6v7l4 8a2 2 0 01-2 3H7a2 2 0 01-2-3l4-8V3z"/></svg></div>
-          <h3>H2 Chemistry</h3>
-          <p>Systematic coverage of physical, inorganic, and organic chemistry with emphasis on application and data analysis.</p>
-          <ul class="topic-list">
-            <li>Atomic structure & chemical bonding</li>
-            <li>Chemical energetics & thermodynamics</li>
-            <li>Reaction kinetics & equilibria</li>
+        <div class="prog-card">
+          <h3 class="prog-card__title">H2 Chemistry</h3>
+          <p class="prog-card__desc">Systematic coverage of physical, inorganic, and organic chemistry with emphasis on application and data analysis.</p>
+          <ul class="prog-card__topics">
+            <li>Atomic structure &amp; chemical bonding</li>
+            <li>Chemical energetics &amp; thermodynamics</li>
+            <li>Reaction kinetics &amp; equilibria</li>
             <li>Organic chemistry: mechanisms, synthesis, analysis</li>
-            <li>Transition metals & electrochemistry</li>
-            <li>Practical & planning question techniques</li>
+            <li>Transition metals &amp; electrochemistry</li>
+            <li>Practical &amp; planning question techniques</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>2 hrs / week</span>
+            <span>Max 6 students</span>
+          </div>
+          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
         </div>
 
-        <!-- H1 General Paper -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-          <h3>H1 General Paper</h3>
-          <p>Build critical thinking, argumentation, and comprehension skills for confident GP performance.</p>
-          <ul class="topic-list">
+        <div class="prog-card">
+          <h3 class="prog-card__title">H1 General Paper</h3>
+          <p class="prog-card__desc">Build critical thinking, argumentation, and comprehension skills for confident GP performance.</p>
+          <ul class="prog-card__topics">
             <li>Essay writing: structure, argumentation, evaluation</li>
             <li>Comprehension: summary, application, inference</li>
-            <li>Current affairs: Singapore & global issues</li>
-            <li>Content mastery across key themes (science & tech, media, environment, politics)</li>
+            <li>Current affairs: Singapore &amp; global issues</li>
+            <li>Content mastery across key themes (science &amp; tech, media, environment, politics)</li>
           </ul>
+          <div class="prog-card__meta">
+            <span>2 hrs / week</span>
+            <span>Max 6 students</span>
+          </div>
+          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
         </div>
 
-        <!-- H2 Economics -->
-        <div class="card subject-card">
-          <div class="subject-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-          <h3>H2 Economics</h3>
-          <p>Master both micro and macro economics with rigorous case study and essay preparation.</p>
-          <ul class="topic-list">
-            <li>Microeconomics: demand & supply, market failure, government intervention</li>
+        <div class="prog-card">
+          <h3 class="prog-card__title">H2 Economics</h3>
+          <p class="prog-card__desc">Master both micro and macro economics with rigorous case study and essay preparation.</p>
+          <ul class="prog-card__topics">
+            <li>Microeconomics: demand &amp; supply, market failure, government intervention</li>
             <li>Macroeconomics: national income, inflation, unemployment, trade</li>
             <li>Case study skills: data interpretation, analysis, evaluation</li>
-            <li>Essay planning & structuring techniques</li>
+            <li>Essay planning &amp; structuring techniques</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="programme-meta">
-        <div class="meta-item">
-          <span class="meta-label">Schedule</span>
-          <span class="meta-value">2 hours per subject per week</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Class Size</span>
-          <span class="meta-value">Maximum 6 students</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Fees</span>
-          <span class="meta-value fees">$360 &ndash; $450 / month</span>
+          <div class="prog-card__meta">
+            <span>2 hrs / week</span>
+            <span>Max 6 students</span>
+          </div>
+          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== ENRICHMENT PROGRAMMES ===== -->
-  <section class="section programme-section alt-bg" id="enrichment">
+  <section class="prog-section" id="enrichment">
     <div class="container">
-      <div class="section-header">
-        <span class="level-tag">Enrichment</span>
-        <h2 class="section-title">Enrichment Programmes</h2>
-        <p class="section-subtitle">Go beyond the syllabus with programmes that develop higher-order thinking and competitive edge.</p>
-      </div>
+      <p class="eyebrow">Enrichment</p>
+      <h2 class="prog-section__heading">Enrichment Programmes</h2>
+      <p class="prog-section__sub">Go beyond the syllabus with programmes that develop higher-order thinking and competitive edge.</p>
 
-      <div class="enrichment-grid">
-        <div class="card enrichment-card">
-          <div class="enrichment-icon"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/><path d="M10 21h4"/></svg></div>
-          <h3>Critical Thinking &amp; Problem Solving</h3>
-          <p>Sharpen logical reasoning, analytical skills, and creative problem-solving through structured challenges and real-world scenarios. Suitable for P4 &ndash; Sec 2 students looking to strengthen their thinking toolkit beyond the standard curriculum.</p>
+      <div class="card-grid card-grid--3">
+        <div class="prog-card">
+          <h3 class="prog-card__title">Critical Thinking &amp; Problem Solving</h3>
+          <p class="prog-card__desc">Sharpen logical reasoning, analytical skills, and creative problem-solving through structured challenges and real-world scenarios. Suitable for P4 &ndash; Sec 2 students looking to strengthen their thinking toolkit beyond the standard curriculum.</p>
         </div>
 
-        <div class="card enrichment-card">
-          <div class="enrichment-icon"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 18l-3 4"/><path d="M15 18l3 4"/><path d="M12 14v4"/></svg></div>
-          <h3>ICAS &amp; Math Olympiad Preparation</h3>
-          <p>Targeted training for students competing in ICAS (International Competitions and Assessments for Schools) and the Singapore Mathematical Olympiad. Covers advanced problem types, number theory, combinatorics, and competition strategies.</p>
+        <div class="prog-card">
+          <h3 class="prog-card__title">ICAS &amp; Math Olympiad Preparation</h3>
+          <p class="prog-card__desc">Targeted training for students competing in ICAS and the Singapore Mathematical Olympiad. Covers advanced problem types, number theory, combinatorics, and competition strategies.</p>
         </div>
 
-        <div class="card enrichment-card">
-          <div class="enrichment-icon"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <h3>Creative Writing Workshop</h3>
-          <p>Unleash your child's imagination with guided workshops on storytelling, character development, descriptive writing, and creative composition techniques. Perfect for students who want to elevate their writing from good to outstanding.</p>
+        <div class="prog-card">
+          <h3 class="prog-card__title">Creative Writing Workshop</h3>
+          <p class="prog-card__desc">Guided workshops on storytelling, character development, descriptive writing, and creative composition techniques. Perfect for students who want to elevate their writing from good to outstanding.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== HOLIDAY INTENSIVES ===== -->
-  <section class="section programme-section" id="holiday">
+  <section class="prog-section" id="holiday">
     <div class="container">
-      <div class="section-header">
-        <span class="level-tag">Seasonal</span>
-        <h2 class="section-title">Holiday Intensives</h2>
-        <p class="section-subtitle">Focused crash courses and revision bootcamps during the school holidays to maximise learning when it matters most.</p>
-      </div>
+      <p class="eyebrow">Holiday Intensives</p>
+      <h2 class="prog-section__heading">Holiday Programmes</h2>
+      <p class="prog-section__sub">Focused crash courses and revision bootcamps during the school holidays to maximise learning when it matters most.</p>
 
-      <div class="holiday-grid">
-        <div class="card holiday-card">
-          <div class="holiday-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
-          <h3>June Intensive Programme</h3>
-          <p>Use the mid-year break to close gaps and get ahead. Our June intensives cover key topics from Semester 1 and preview Semester 2 content so students return to school with confidence.</p>
-          <ul class="topic-list">
+      <div class="card-grid card-grid--3">
+        <div class="prog-card">
+          <h3 class="prog-card__title">June Intensive Programme</h3>
+          <p class="prog-card__desc">Use the mid-year break to close gaps and get ahead. Our June intensives cover key topics from Semester 1 and preview Semester 2 content so students return to school with confidence.</p>
+          <ul class="prog-card__topics">
             <li>3-hour daily sessions</li>
             <li>Topic-focused modules</li>
             <li>Available for all levels (P3 &ndash; JC2)</li>
           </ul>
         </div>
 
-        <div class="card holiday-card">
-          <div class="holiday-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M12 2L8 8h8l-4-6z"/><path d="M6 14h12l-6-6-6 6z"/><path d="M4 20h16l-8-6-8 6z"/><line x1="12" y1="20" x2="12" y2="22"/></svg></div>
-          <h3>Nov / Dec Intensive Programme</h3>
-          <p>Prepare for the year ahead or revise the entire year's syllabus during the long holidays. Ideal for students moving up to a new level (e.g., P6 to Sec 1, Sec 4 to JC1).</p>
-          <ul class="topic-list">
+        <div class="prog-card">
+          <h3 class="prog-card__title">Nov / Dec Intensive Programme</h3>
+          <p class="prog-card__desc">Prepare for the year ahead or revise the entire year's syllabus during the long holidays. Ideal for students moving up to a new level (e.g., P6 to Sec 1, Sec 4 to JC1).</p>
+          <ul class="prog-card__topics">
             <li>3-hour daily sessions</li>
-            <li>Bridging & head-start modules</li>
+            <li>Bridging &amp; head-start modules</li>
             <li>Full-year syllabus review option</li>
           </ul>
         </div>
 
-        <div class="card holiday-card">
-          <div class="holiday-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-          <h3>Exam Revision Bootcamps</h3>
-          <p>Intensive revision leading up to PSLE, GCE O-Level, and GCE A-Level exams. Drill past-year papers, refine exam technique, and boost confidence under timed conditions.</p>
-          <ul class="topic-list">
+        <div class="prog-card">
+          <h3 class="prog-card__title">Exam Revision Bootcamps</h3>
+          <p class="prog-card__desc">Intensive revision leading up to PSLE, GCE O-Level, and GCE A-Level exams. Drill past-year papers, refine exam technique, and boost confidence under timed conditions.</p>
+          <ul class="prog-card__topics">
             <li>PSLE Bootcamp (Sep &ndash; Oct)</li>
             <li>O-Level Bootcamp (Sep &ndash; Oct)</li>
             <li>A-Level Bootcamp (Oct &ndash; Nov)</li>
@@ -369,12 +338,13 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== WEEKLY SCHEDULE ===== -->
-  <section class="section schedule-section alt-bg" id="schedule">
+  <section class="prog-section" id="schedule">
     <div class="container">
-      <h2 class="section-title">Weekly Class Schedule</h2>
-      <p class="section-subtitle">Classes run on a regular weekly cycle. Contact us for the latest available slots.</p>
+      <p class="eyebrow">Schedule</p>
+      <h2 class="prog-section__heading">Weekly Class Schedule</h2>
+      <p class="prog-section__sub">Classes run on a regular weekly cycle. Contact us for the latest available slots.</p>
 
-      <div class="schedule-table-wrapper">
+      <div class="schedule-wrap">
         <table class="schedule-table">
           <thead>
             <tr>
@@ -477,14 +447,15 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <!-- ===== CTA BANNER ===== -->
-  <section class="cta-banner">
-    <div class="container cta-inner">
-      <h2>Not Sure Which Programme Is Right?</h2>
-      <p>Book a <strong>free diagnostic assessment and trial lesson</strong>. We will recommend the right programme and pace for your child &mdash; no obligations.</p>
-      <div class="cta-actions">
-        <a href="/contact/" class="btn btn-accent btn-lg">Book a Free Trial</a>
-        <a href="https://wa.me/6591234567" class="btn btn-outline-light btn-lg">WhatsApp Us</a>
+  <!-- ===== CTA ===== -->
+  <section class="prog-cta">
+    <div class="container prog-cta__inner">
+      <p class="eyebrow">Get Started</p>
+      <h2 class="prog-cta__heading">Not sure which programme is right?</h2>
+      <p class="prog-cta__sub">Book a free diagnostic assessment and trial lesson. We will recommend the right programme and pace for your child &mdash; no obligations.</p>
+      <div class="prog-cta__actions">
+        <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book a Free Trial</a>
+        <a href="https://wa.me/6591234567" class="prog-cta__btn prog-cta__btn--outline">WhatsApp Us</a>
       </div>
     </div>
   </section>
@@ -493,324 +464,261 @@ import '../styles/global.css';
 </BaseLayout>
 
 <style>
-  .programme-section-img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: var(--border-radius-lg);
-    margin-bottom: var(--space-xl);
-    box-shadow: 0 4px 15px var(--shadow-color);
+  /* ===== DESIGN TOKENS ===== */
+  :root {
+    --prog-bg: #2a2c2f;
+    --prog-bg-card: rgba(255, 255, 255, 0.03);
+    --prog-border: rgba(255, 255, 255, 0.1);
+    --prog-text: #ffffff;
+    --prog-text-secondary: rgba(255, 255, 255, 0.6);
+    --prog-accent: #e8713a;
+    --prog-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --prog-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
   }
 
-  /* ===== PAGE HERO ===== */
-  .page-hero {
-    padding: var(--space-3xl) 0 var(--space-4xl);
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  /* ===== EYEBROW ===== */
+  .eyebrow {
+    font-family: var(--prog-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--prog-accent);
+    margin-bottom: 1rem;
+  }
+
+  /* ===== HERO ===== */
+  .prog-hero {
+    background: var(--prog-bg);
+    padding: 8rem 0 5rem;
     text-align: center;
   }
 
-  .hero-content {
-    max-width: 760px;
+  .prog-hero__heading {
+    font-family: var(--prog-font);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--prog-text);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .prog-hero__sub {
+    font-family: var(--prog-font);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--prog-text-secondary);
+    max-width: 640px;
     margin: 0 auto;
   }
 
-  .hero-badge {
-    display: inline-block;
-    background: var(--bg-secondary);
-    border: 1px solid var(--color-accent);
-    color: var(--color-primary);
-    padding: var(--space-xs) var(--space-md);
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: var(--space-lg);
+  /* ===== NAV ===== */
+  .prog-nav {
+    background: var(--prog-bg);
+    border-bottom: 1px solid var(--prog-border);
+    padding: 1.25rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 90;
   }
 
-  .page-hero h1 {
-    margin-bottom: var(--space-lg);
-  }
-
-  .highlight {
-    color: var(--color-primary);
-  }
-
-  .hero-subtitle {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: var(--space-xl);
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Programme quick-nav pills */
-  .programme-nav {
+  .prog-nav__inner {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: var(--space-sm);
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 
-  .nav-pill {
-    display: inline-block;
-    padding: var(--space-sm) var(--space-lg);
-    border: 2px solid var(--color-primary);
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    transition: all var(--transition-fast);
-  }
-
-  .nav-pill:hover {
-    background: var(--color-primary);
-    color: #FFFFFF;
-    transform: translateY(-2px);
-  }
-
-  /* ===== PROGRAMME SECTIONS ===== */
-  .programme-section {
-    scroll-margin-top: calc(var(--header-height) + var(--space-md));
-  }
-
-  .alt-bg {
-    background: var(--bg-secondary);
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: var(--space-3xl);
-  }
-
-  .level-tag {
-    display: inline-block;
-    background: var(--color-primary);
-    color: #FFFFFF;
-    padding: var(--space-xs) var(--space-lg);
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 700;
+  .prog-nav__link {
+    font-family: var(--prog-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: var(--space-md);
+    color: var(--prog-text-secondary);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
 
-  .section-header .section-title {
-    margin-bottom: var(--space-sm);
+  .prog-nav__link:hover {
+    color: var(--prog-text);
+    border-bottom-color: var(--prog-accent);
   }
 
-  .section-header .section-subtitle {
-    margin-bottom: 0;
+  /* ===== SECTIONS ===== */
+  .prog-section {
+    background: var(--prog-bg);
+    padding: 6rem 0;
+    scroll-margin-top: 60px;
   }
 
-  /* ===== SUBJECT CARDS ===== */
-  .subjects-grid {
+  .prog-section + .prog-section {
+    border-top: 1px solid var(--prog-border);
+  }
+
+  .prog-section__heading {
+    font-family: var(--prog-font);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    color: var(--prog-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .prog-section__sub {
+    font-family: var(--prog-font);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--prog-text-secondary);
+    max-width: 600px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ===== CARD GRID ===== */
+  .card-grid {
     display: grid;
+    gap: 1.5rem;
+  }
+
+  .card-grid--3 {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-    margin-bottom: var(--space-2xl);
   }
 
-  .subject-card {
-    padding: var(--space-2xl);
+  .card-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  .subject-card--compact {
-    grid-column: span 1;
-  }
-
-  .subject-icon {
+  /* ===== PROGRAMME CARD ===== */
+  .prog-card {
+    background: var(--prog-bg-card);
+    border: 1px solid var(--prog-border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
     display: flex;
-    align-items: center;
-    margin-bottom: var(--space-md);
+    flex-direction: column;
   }
 
-  .subject-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-sm);
-    color: var(--color-primary);
+  .prog-card:hover {
+    transform: scale(0.98);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
-  .subject-card > p {
-    font-size: 0.95rem;
-    margin-bottom: var(--space-lg);
+  .prog-card__title {
+    font-family: var(--prog-font);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--prog-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
   }
 
-  .topic-list {
+  .prog-card__desc {
+    font-family: var(--prog-font);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--prog-text-secondary);
+    margin-bottom: 1.25rem;
+  }
+
+  .prog-card__topics {
     list-style: none;
     padding: 0;
+    margin: 0 0 auto;
+    flex-grow: 1;
   }
 
-  .topic-list li {
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 0.92rem;
-    color: var(--text-secondary);
+  .prog-card__topics li {
+    font-family: var(--prog-font);
+    font-size: 0.82rem;
     line-height: 1.5;
+    color: var(--prog-text-secondary);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-left: 1rem;
+    position: relative;
   }
 
-  .topic-list li:last-child {
+  .prog-card__topics li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--prog-accent);
+    transform: translateY(-50%);
+  }
+
+  .prog-card__topics li:last-child {
     border-bottom: none;
   }
 
-  .topic-list li::before {
-    content: '\2713\0020';
-    color: var(--color-primary);
-    font-weight: 700;
-  }
-
-  /* ===== PROGRAMME META (schedule/fees) ===== */
-  .programme-meta {
+  .prog-card__meta {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-xl);
-    padding: var(--space-xl) var(--space-2xl);
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    box-shadow: 0 2px 8px var(--shadow-color);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--prog-border);
   }
 
-  .meta-item {
-    text-align: center;
-    min-width: 180px;
-  }
-
-  .meta-label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
+  .prog-card__meta span {
+    font-family: var(--prog-mono);
+    font-size: 0.7rem;
     letter-spacing: 0.08em;
-    color: var(--text-muted);
-    margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    color: var(--prog-text-secondary);
   }
 
-  .meta-value {
-    display: block;
-    font-size: 1.05rem;
+  .prog-card__fee {
+    font-family: var(--prog-font);
+    font-size: 1rem;
     font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  .meta-value.fees {
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 700;
-  }
-
-  .fee-note {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-
-  /* ===== ENRICHMENT ===== */
-  .enrichment-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-  }
-
-  .enrichment-card {
-    padding: var(--space-2xl);
-    text-align: center;
-  }
-
-  .enrichment-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: var(--space-md);
-  }
-
-  .enrichment-card h3 {
-    font-size: 1.15rem;
-    margin-bottom: var(--space-md);
-    color: var(--color-primary);
-  }
-
-  .enrichment-card p {
-    font-size: 0.95rem;
-  }
-
-  /* ===== HOLIDAY INTENSIVES ===== */
-  .holiday-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-  }
-
-  .holiday-card {
-    padding: var(--space-2xl);
-  }
-
-  .holiday-icon {
-    display: flex;
-    align-items: center;
-    margin-bottom: var(--space-md);
-  }
-
-  .holiday-card h3 {
-    font-size: 1.15rem;
-    margin-bottom: var(--space-sm);
-    color: var(--color-primary);
-  }
-
-  .holiday-card > p {
-    font-size: 0.95rem;
-    margin-bottom: var(--space-lg);
-  }
-
-  .holiday-card .topic-list {
-    margin-top: var(--space-sm);
+    color: var(--prog-accent);
+    margin-top: 0.75rem;
+    margin-bottom: 0;
   }
 
   /* ===== SCHEDULE TABLE ===== */
-  .schedule-section {
-    scroll-margin-top: calc(var(--header-height) + var(--space-md));
-  }
-
-  .schedule-table-wrapper {
+  .schedule-wrap {
     overflow-x: auto;
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px var(--shadow-color);
-    margin-bottom: var(--space-xl);
+    border: 1px solid var(--prog-border);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
     -webkit-overflow-scrolling: touch;
   }
 
   .schedule-table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--bg-card);
-    font-size: 0.95rem;
+    font-family: var(--prog-font);
+    font-size: 0.9rem;
   }
 
   .schedule-table thead {
-    background: var(--color-primary);
-    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   .schedule-table th {
-    padding: var(--space-md) var(--space-lg);
+    font-family: var(--prog-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--prog-text-secondary);
+    padding: 1rem 1.25rem;
     text-align: left;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.03em;
     white-space: nowrap;
   }
 
   .schedule-table td {
-    padding: var(--space-md) var(--space-lg);
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-secondary);
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--prog-text-secondary);
     vertical-align: top;
   }
 
@@ -819,101 +727,135 @@ import '../styles/global.css';
   }
 
   .schedule-table tbody tr:hover {
-    background: var(--bg-secondary);
-  }
-
-  .schedule-table tbody tr:nth-child(even) {
-    background: var(--bg-secondary);
-  }
-
-  .schedule-table tbody tr:nth-child(even):hover {
-    background: var(--border-color);
+    background: rgba(255, 255, 255, 0.03);
   }
 
   .schedule-note {
     text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-muted);
+    font-family: var(--prog-font);
+    font-size: 0.85rem;
+    color: var(--prog-text-secondary);
   }
 
   .schedule-note a {
-    font-weight: 600;
+    color: var(--prog-accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
   }
 
-  /* ===== CTA BANNER ===== */
-  .cta-banner {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: #FFFFFF;
-    padding: var(--space-4xl) 0;
+  .schedule-note a:hover {
+    border-bottom-color: var(--prog-accent);
+  }
+
+  /* ===== CTA ===== */
+  .prog-cta {
+    background: var(--prog-bg);
+    border-top: 1px solid var(--prog-border);
+    padding: 6rem 0;
+  }
+
+  .prog-cta__inner {
     text-align: center;
-  }
-
-  .cta-banner h2 {
-    color: #FFFFFF;
-    margin-bottom: var(--space-md);
-  }
-
-  .cta-banner p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.15rem;
     max-width: 600px;
-    margin: 0 auto var(--space-xl);
+    margin: 0 auto;
   }
 
-  .cta-actions {
+  .prog-cta__heading {
+    font-family: var(--prog-font);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--prog-text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .prog-cta__sub {
+    font-family: var(--prog-font);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--prog-text-secondary);
+    margin-bottom: 2.5rem;
+  }
+
+  .prog-cta__actions {
     display: flex;
     justify-content: center;
-    gap: var(--space-md);
+    gap: 1rem;
     flex-wrap: wrap;
   }
 
-  .btn-lg {
-    padding: 0.9rem 2rem;
-    font-size: 1.05rem;
-  }
-
-  .btn-outline-light {
-    background: transparent;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: 0.75rem 1.75rem;
-    border-radius: var(--border-radius);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-base);
+  .prog-cta__btn {
+    font-family: var(--prog-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     text-decoration: none;
-    line-height: 1.4;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: inline-block;
   }
 
-  .btn-outline-light:hover {
-    background: #FFFFFF;
-    color: var(--color-primary);
-    transform: translateY(-2px);
+  .prog-cta__btn--primary {
+    background: var(--prog-accent);
+    color: #ffffff;
+    border: 1px solid var(--prog-accent);
+  }
+
+  .prog-cta__btn--primary:hover {
+    background: #d4632e;
+    transform: translateY(-1px);
+  }
+
+  .prog-cta__btn--outline {
+    background: transparent;
+    color: var(--prog-text);
+    border: 1px solid var(--prog-border);
+  }
+
+  .prog-cta__btn--outline:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
   }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
-    .subjects-grid {
-      grid-template-columns: 1fr 1fr;
+    .card-grid--4 {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .enrichment-grid,
-    .holiday-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .programme-meta {
-      gap: var(--space-lg);
-      padding: var(--space-lg);
+    .card-grid--3 {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (max-width: 768px) {
+    .prog-hero {
+      padding: 6rem 0 3.5rem;
+    }
+
+    .prog-section {
+      padding: 4rem 0;
+    }
+
+    .prog-nav__inner {
+      gap: 1rem;
+    }
+
+    .card-grid--4,
+    .card-grid--3 {
+      grid-template-columns: 1fr;
+    }
+
+    .prog-card {
+      padding: 1.5rem;
+    }
+
+    /* Mobile table */
     .schedule-table thead {
       display: none;
     }
@@ -927,118 +869,60 @@ import '../styles/global.css';
     }
 
     .schedule-table tr {
-      margin-bottom: var(--space-md);
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--prog-border);
+      border-radius: 8px;
       overflow: hidden;
     }
 
     .schedule-table td {
-      padding: var(--space-sm) var(--space-md);
+      padding: 0.6rem 1rem;
       text-align: right;
       position: relative;
       padding-left: 45%;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .schedule-table td::before {
       content: attr(data-label);
       position: absolute;
-      left: var(--space-md);
-      top: var(--space-sm);
-      font-weight: 700;
-      color: var(--text-primary);
+      left: 1rem;
+      top: 0.6rem;
+      font-family: var(--prog-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--prog-accent);
       text-align: left;
     }
 
-    .schedule-table tbody tr:nth-child(even) {
-      background: var(--bg-card);
+    .prog-cta {
+      padding: 4rem 0;
     }
   }
 
-  @media (max-width: 640px) {
-    .subjects-grid,
-    .enrichment-grid,
-    .holiday-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .programme-meta {
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-md);
-    }
-
-    .nav-pill {
-      padding: var(--space-xs) var(--space-md);
-      font-size: 0.82rem;
-    }
-
-    .page-hero {
-      padding: var(--space-2xl) 0 var(--space-3xl);
-    }
-  }
-
-  /* Phone */
   @media (max-width: 480px) {
-    .subjects-grid,
-    .enrichment-grid,
-    .holiday-grid {
-      grid-template-columns: 1fr;
+    .prog-hero__heading {
+      font-size: 1.8rem;
     }
 
-    .programme-meta {
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-md);
+    .prog-nav__inner {
+      gap: 0.6rem;
     }
 
-    .nav-pill {
-      padding: var(--space-xs) var(--space-md);
-      font-size: 0.8rem;
+    .prog-nav__link {
+      font-size: 0.65rem;
     }
 
-    .page-hero {
-      padding: var(--space-xl) 0 var(--space-2xl);
-    }
-
-    .cta-actions {
+    .prog-cta__actions {
       flex-direction: column;
       align-items: center;
     }
 
-    .schedule-table td {
-      padding-left: 40%;
-    }
-  }
-
-  /* Smart TV */
-  @media (min-width: 1921px) {
-    .hero-content {
-      max-width: 960px;
-    }
-
-    .subjects-grid {
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: var(--space-2xl);
-    }
-
-    .enrichment-grid,
-    .holiday-grid {
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .container {
-      max-width: 1400px;
-    }
-
-    .programme-meta {
-      max-width: 1000px;
-      margin: 0 auto;
+    .prog-cta__btn {
+      width: 100%;
+      text-align: center;
     }
   }
 </style>

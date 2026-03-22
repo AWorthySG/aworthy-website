@@ -9,41 +9,43 @@ import '../styles/global.css';
   <Header slot="header" />
 
   <!-- ===== HERO ===== -->
-  <section class="hero">
+  <section class="contact-hero">
     <div class="container">
-      <h1>Get in Touch</h1>
-      <p class="hero-subtitle">Have questions or ready to enrol? Reach out to us and we'll get back to you within 24 hours.</p>
+      <p class="eyebrow">Contact</p>
+      <h1>Get in touch</h1>
+      <p class="contact-hero__subtitle">We'll respond within 24 hours</p>
     </div>
   </section>
 
-  <!-- ===== CONTACT GRID: FORM + INFO ===== -->
+  <!-- ===== TWO-COLUMN: FORM + INFO ===== -->
   <section class="section contact-section">
     <div class="container contact-grid">
 
-      <!-- Contact Form -->
-      <div class="contact-form-wrapper">
-        <h2>Enquiry Form</h2>
-        <form id="contact-form" class="contact-form" novalidate>
+      <!-- Enquiry Form -->
+      <div class="contact-form-col">
+        <p class="eyebrow">Enquiry Form</p>
+        <h2 class="contact-form-col__heading">Send us a message</h2>
 
+        <form id="contact-form" class="contact-form" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label for="parent-name">Parent/Guardian Name <span class="required">*</span></label>
-              <input type="text" id="parent-name" name="parentName" required />
+              <label for="parent-name">Parent / Guardian Name <span class="required">*</span></label>
+              <input type="text" id="parent-name" name="parentName" required placeholder="Jane Doe" />
             </div>
             <div class="form-group">
               <label for="student-name">Student Name <span class="required">*</span></label>
-              <input type="text" id="student-name" name="studentName" required />
+              <input type="text" id="student-name" name="studentName" required placeholder="John Doe" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="email">Email <span class="required">*</span></label>
-              <input type="email" id="email" name="email" required />
+              <input type="email" id="email" name="email" required placeholder="jane@email.com" />
             </div>
             <div class="form-group">
               <label for="phone">Phone Number <span class="required">*</span></label>
-              <input type="tel" id="phone" name="phone" required placeholder="+65" />
+              <input type="tel" id="phone" name="phone" required placeholder="+65 9123 4567" />
             </div>
           </div>
 
@@ -71,7 +73,7 @@ import '../styles/global.css';
                 <option value="">-- Select --</option>
                 <option value="Google">Google</option>
                 <option value="Facebook">Facebook</option>
-                <option value="Friend/Family">Friend/Family</option>
+                <option value="Friend/Family">Friend / Family</option>
                 <option value="School">School</option>
                 <option value="Walk-in">Walk-in</option>
                 <option value="Other">Other</option>
@@ -82,103 +84,110 @@ import '../styles/global.css';
           <div class="form-group">
             <label>Subjects of Interest</label>
             <div class="checkbox-group">
-              <label class="checkbox-label"><input type="checkbox" name="subjects" value="Mathematics" /> Mathematics</label>
-              <label class="checkbox-label"><input type="checkbox" name="subjects" value="Science" /> Science</label>
-              <label class="checkbox-label"><input type="checkbox" name="subjects" value="English" /> English</label>
-              <label class="checkbox-label"><input type="checkbox" name="subjects" value="Chinese" /> Chinese</label>
-              <label class="checkbox-label"><input type="checkbox" name="subjects" value="GP" /> GP</label>
-              <label class="checkbox-label"><input type="checkbox" name="subjects" value="Economics" /> Economics</label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="Mathematics" /><span>Mathematics</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="Science" /><span>Science</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="English" /><span>English</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="Chinese" /><span>Chinese</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="GP" /><span>GP</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="Economics" /><span>Economics</span></label>
             </div>
           </div>
 
           <div class="form-group">
             <label>Preferred Centre <span class="required">*</span></label>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="centre" value="Toa Payoh" required /> Toa Payoh</label>
-              <label class="radio-label"><input type="radio" name="centre" value="Bishan" /> Bishan</label>
+              <label class="radio-label"><input type="radio" name="centre" value="Toa Payoh" required /><span>Toa Payoh</span></label>
+              <label class="radio-label"><input type="radio" name="centre" value="Bishan" /><span>Bishan</span></label>
             </div>
           </div>
 
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your child's learning needs..."></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us more about your child's learning needs..."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-lg submit-btn">Send Enquiry</button>
+          <button type="submit" class="btn btn-accent btn-submit"><span>Send Enquiry</span></button>
 
           <div id="form-success" class="form-success" hidden>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
             Thank you for your enquiry! We will get back to you within 24 hours.
           </div>
-
           <div id="form-errors" class="form-errors" hidden></div>
         </form>
       </div>
 
       <!-- Contact Information -->
-      <div class="contact-info-wrapper">
-        <h2>Contact Information</h2>
+      <div class="contact-info-col">
+        <p class="eyebrow">Contact Details</p>
+        <h2 class="contact-info-col__heading">Our centres</h2>
 
         <div class="info-card">
-          <h3>Toa Payoh Centre</h3>
-          <p>Blk 201 Toa Payoh Lorong 8, #01-12, Singapore 310201</p>
+          <div class="info-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h3>Toa Payoh Centre</h3>
+            <p>Blk 201 Toa Payoh Lorong 8, #01-12, Singapore 310201</p>
+          </div>
         </div>
 
         <div class="info-card">
-          <h3>Bishan Centre</h3>
-          <p>Blk 283 Bishan Street 22, #02-08, Singapore 570283</p>
+          <div class="info-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h3>Bishan Centre</h3>
+            <p>Blk 283 Bishan Street 22, #02-08, Singapore 570283</p>
+          </div>
         </div>
 
         <div class="info-card">
-          <h3>Reach Us</h3>
-          <ul class="contact-details">
-            <li><strong>Phone:</strong> <a href="tel:+6561234567">+65 6123 4567</a></li>
-            <li><strong>WhatsApp:</strong> <a href="https://wa.me/6591234567">9123 4567</a></li>
-            <li><strong>Email:</strong> <a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></li>
-          </ul>
+          <div class="info-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h3>Reach Us</h3>
+            <ul class="contact-details">
+              <li><strong>Phone:</strong> <a href="tel:+6561234567">+65 6123 4567</a></li>
+              <li><strong>WhatsApp:</strong> <a href="https://wa.me/6591234567">9123 4567</a></li>
+              <li><strong>Email:</strong> <a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></li>
+            </ul>
+          </div>
         </div>
 
         <div class="info-card">
-          <h3>Operating Hours</h3>
-          <ul class="contact-details">
-            <li><strong>Mon &ndash; Fri:</strong> 2:00 PM &ndash; 9:30 PM</li>
-            <li><strong>Sat &ndash; Sun:</strong> 9:00 AM &ndash; 6:00 PM</li>
-          </ul>
+          <div class="info-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h3>Operating Hours</h3>
+            <ul class="contact-details">
+              <li><strong>Mon &ndash; Fri:</strong> 2:00 PM &ndash; 9:30 PM</li>
+              <li><strong>Sat &ndash; Sun:</strong> 9:00 AM &ndash; 6:00 PM</li>
+            </ul>
+          </div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ===== MAP PLACEHOLDER ===== -->
-  <section class="section map-section">
-    <div class="container">
-      <h2 class="section-title">Find Us</h2>
-      <div class="maps-grid">
-        <div class="map-placeholder">
-          <div class="map-pin"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <p class="map-label"><strong>Toa Payoh Centre</strong></p>
-          <p>Blk 201 Toa Payoh Lorong 8, #01-12, Singapore 310201</p>
-        </div>
-        <div class="map-placeholder">
-          <div class="map-pin"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <p class="map-label"><strong>Bishan Centre</strong></p>
-          <p>Blk 283 Bishan Street 22, #02-08, Singapore 570283</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ ===== -->
+  <!-- ===== FAQ ACCORDION ===== -->
   <section class="section faq-section">
     <div class="container">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-subtitle">Got questions? We've got answers.</p>
+      <div class="faq-header">
+        <p class="eyebrow">FAQ</p>
+        <h2>Frequently asked questions</h2>
+        <p class="faq-header__subtitle">Got questions? We've got answers.</p>
+      </div>
 
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>What is the class size?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
           </button>
           <div class="faq-answer" hidden>
             <p>We maintain a maximum of 8 students per class to ensure every child receives individual attention and personalised feedback from our tutors.</p>
@@ -188,7 +197,9 @@ import '../styles/global.css';
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>Is there a trial lesson?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
           </button>
           <div class="faq-answer" hidden>
             <p>Yes! We offer a free diagnostic assessment and trial lesson for all new students. This allows us to understand your child's learning needs and for your child to experience our teaching style before committing.</p>
@@ -198,7 +209,9 @@ import '../styles/global.css';
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>What if my child misses a lesson?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
           </button>
           <div class="faq-answer" hidden>
             <p>We understand that things come up. Students may attend a replacement lesson within the same term, subject to availability. Please inform us at least 24 hours in advance so we can arrange a make-up slot.</p>
@@ -208,7 +221,9 @@ import '../styles/global.css';
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>Do you follow the MOE syllabus?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
           </button>
           <div class="faq-answer" hidden>
             <p>Absolutely. Our curriculum is fully aligned with the latest MOE syllabus for all levels. Our materials are regularly updated to reflect any syllabus changes, and we incorporate exam-focused strategies for PSLE, O-Level, and A-Level preparation.</p>
@@ -218,13 +233,30 @@ import '../styles/global.css';
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>What are the payment methods?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
           </button>
           <div class="faq-answer" hidden>
             <p>We accept PayNow, bank transfer, and GIRO. Monthly fees are due by the 5th of each month. We do not accept cash payments. Detailed payment instructions will be provided upon enrolment.</p>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section cta-section">
+    <div class="container cta-inner">
+      <p class="eyebrow">Enrol Now</p>
+      <h2>Ready to start?</h2>
+      <p class="cta-subtitle">Reach out on WhatsApp for the fastest response.</p>
+      <a href="https://wa.me/6591234567" class="btn btn-accent" target="_blank" rel="noopener noreferrer">
+        <span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </span>
+      </a>
     </div>
   </section>
 
@@ -268,6 +300,7 @@ import '../styles/global.css';
       errorsMsg.hidden = false;
       errorsMsg.innerHTML = errors.map(err => `<p>${err}</p>`).join('');
       successMsg.hidden = true;
+      errorsMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
       errorsMsg.hidden = true;
       successMsg.hidden = false;
@@ -276,12 +309,11 @@ import '../styles/global.css';
     }
   });
 
-  // --- FAQ Accordion ---
+  // --- FAQ Accordion (single-open) ---
   document.querySelectorAll('.faq-question').forEach((btn) => {
     btn.addEventListener('click', () => {
       const item = btn.parentElement as HTMLDivElement;
       const answer = item.querySelector('.faq-answer') as HTMLDivElement;
-      const icon = btn.querySelector('.faq-icon') as HTMLSpanElement;
       const isOpen = btn.getAttribute('aria-expanded') === 'true';
 
       // Close all others
@@ -289,56 +321,67 @@ import '../styles/global.css';
         if (otherItem !== item) {
           const otherBtn = otherItem.querySelector('.faq-question') as HTMLButtonElement;
           const otherAnswer = otherItem.querySelector('.faq-answer') as HTMLDivElement;
-          const otherIcon = otherItem.querySelector('.faq-icon') as HTMLSpanElement;
           otherBtn.setAttribute('aria-expanded', 'false');
           otherAnswer.hidden = true;
-          otherIcon.textContent = '+';
+          otherItem.classList.remove('is-open');
         }
       });
 
       // Toggle current
       btn.setAttribute('aria-expanded', String(!isOpen));
       answer.hidden = isOpen;
-      icon.textContent = isOpen ? '+' : '\u2212';
+      item.classList.toggle('is-open', !isOpen);
     });
   });
 </script>
 
 <style>
-  /* ===== HERO ===== */
-  .hero {
-    padding: var(--space-3xl) 0 var(--space-2xl);
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  /* ===== CONTACT HERO ===== */
+  .contact-hero {
+    padding: var(--space-4xl) 0 var(--space-3xl);
+    background: var(--bg-secondary);
     text-align: center;
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .hero h1 {
+  .contact-hero .eyebrow {
     margin-bottom: var(--space-md);
-    color: var(--color-primary);
   }
 
-  .hero-subtitle {
+  .contact-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-hero__subtitle {
     font-size: 1.15rem;
-    color: var(--text-secondary);
-    max-width: 600px;
+    color: var(--text-muted);
+    max-width: 480px;
     margin: 0 auto;
   }
 
   /* ===== CONTACT GRID ===== */
   .contact-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--space-3xl);
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-4xl);
     align-items: start;
   }
 
-  .contact-form-wrapper h2,
-  .contact-info-wrapper h2 {
-    margin-bottom: var(--space-xl);
-    font-size: 1.5rem;
+  /* ===== FORM COLUMN ===== */
+  .contact-form-col .eyebrow {
+    margin-bottom: var(--space-sm);
   }
 
-  /* ===== FORM STYLES ===== */
+  .contact-form-col__heading {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2xl);
+  }
+
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -351,14 +394,17 @@ import '../styles/global.css';
 
   .form-group label {
     display: block;
-    font-weight: 600;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
     margin-bottom: var(--space-xs);
-    font-size: 0.95rem;
-    color: var(--text-primary);
   }
 
   .required {
-    color: #c0392b;
+    color: var(--color-accent);
   }
 
   .form-group input[type="text"],
@@ -367,28 +413,43 @@ import '../styles/global.css';
   .form-group select,
   .form-group textarea {
     width: 100%;
-    padding: 0.7rem 0.9rem;
+    padding: 0.875rem 1rem;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 0.95rem;
-    transition: border-color 0.2s ease;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--text-muted);
   }
 
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.12);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(232, 113, 58, 0.15);
   }
 
   .form-group textarea {
     resize: vertical;
+    min-height: 120px;
   }
 
+  .form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8d93' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  /* Checkbox & Radio Groups */
   .checkbox-group,
   .radio-group {
     display: flex;
@@ -397,72 +458,124 @@ import '../styles/global.css';
     margin-top: var(--space-xs);
   }
 
-  .checkbox-label,
+  .check-label,
   .radio-label {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font-weight: 400 !important;
+    gap: 0.5rem;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
   }
 
-  .checkbox-label input,
+  .check-label:hover,
+  .radio-label:hover {
+    color: var(--text-primary);
+  }
+
+  .check-label input,
   .radio-label input {
-    accent-color: var(--color-primary);
+    accent-color: var(--color-accent);
     width: 1rem;
     height: 1rem;
+    flex-shrink: 0;
   }
 
-  .submit-btn {
+  /* Submit Button */
+  .btn-submit {
     width: 100%;
+    justify-content: center;
     margin-top: var(--space-sm);
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
   }
 
+  /* Success & Error Messages */
   .form-success {
     margin-top: var(--space-lg);
     padding: var(--space-md) var(--space-lg);
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background: rgba(232, 113, 58, 0.1);
+    color: var(--color-accent);
+    border: 1px solid rgba(232, 113, 58, 0.25);
     border-radius: var(--border-radius);
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    font-size: 0.95rem;
   }
 
   .form-errors {
     margin-top: var(--space-lg);
     padding: var(--space-md) var(--space-lg);
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background: rgba(192, 57, 43, 0.1);
+    color: #e74c3c;
+    border: 1px solid rgba(192, 57, 43, 0.25);
     border-radius: var(--border-radius);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .form-errors p {
-    margin: 0.25rem 0;
+    margin: 0.3rem 0;
+    color: #e74c3c;
   }
 
-  /* ===== CONTACT INFO CARDS ===== */
+  /* ===== CONTACT INFO COLUMN ===== */
+  .contact-info-col .eyebrow {
+    margin-bottom: var(--space-sm);
+  }
+
+  .contact-info-col__heading {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2xl);
+  }
+
   .info-card {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-lg);
     background: var(--bg-card);
     border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: var(--space-md);
+    transition: border-color var(--transition-fast);
+  }
+
+  .info-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card__icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(232, 113, 58, 0.1);
     border-radius: var(--border-radius);
-    padding: var(--space-lg);
-    margin-bottom: var(--space-lg);
   }
 
   .info-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-sm);
-    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    color: var(--text-primary);
   }
 
   .info-card p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
+    margin-bottom: 0;
   }
 
   .contact-details {
@@ -472,65 +585,48 @@ import '../styles/global.css';
   }
 
   .contact-details li {
-    padding: var(--space-xs) 0;
-    font-size: 0.95rem;
+    padding: 0.2rem 0;
+    font-size: 0.9rem;
     color: var(--text-secondary);
   }
 
   .contact-details a {
-    color: var(--color-primary);
+    color: var(--color-accent);
     text-decoration: none;
-    font-weight: 500;
+    transition: color var(--transition-fast);
   }
 
   .contact-details a:hover {
-    text-decoration: underline;
+    color: var(--color-accent-light);
   }
 
-  /* ===== MAP PLACEHOLDER ===== */
-  .map-section {
+  /* ===== FAQ SECTION ===== */
+  .faq-section {
     background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .maps-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
-  }
-
-  .map-placeholder {
-    background: var(--bg-card);
-    border: 2px dashed var(--border-color);
-    border-radius: var(--border-radius);
-    padding: var(--space-3xl) var(--space-xl);
+  .faq-header {
     text-align: center;
-    color: var(--text-secondary);
-    min-height: 240px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: var(--space-3xl);
   }
 
-  .map-pin {
-    display: flex;
-    justify-content: center;
+  .faq-header .eyebrow {
+    margin-bottom: var(--space-sm);
+  }
+
+  .faq-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: -0.03em;
     margin-bottom: var(--space-md);
   }
 
-  .map-label {
-    margin-bottom: var(--space-xs);
-    font-size: 1rem;
-  }
-
-  .map-placeholder p {
-    font-size: 0.9rem;
-    max-width: 280px;
-  }
-
-  /* ===== FAQ ===== */
-  .faq-section {
-    background: var(--bg-primary);
+  .faq-header__subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin: 0 auto;
+    max-width: 480px;
   }
 
   .faq-list {
@@ -540,6 +636,10 @@ import '../styles/global.css';
 
   .faq-item {
     border-bottom: 1px solid var(--border-color);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--border-color);
   }
 
   .faq-question {
@@ -552,23 +652,30 @@ import '../styles/global.css';
     border: none;
     cursor: pointer;
     font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 500;
     color: var(--text-primary);
     text-align: left;
-    transition: color 0.2s ease;
+    transition: color var(--transition-fast);
+    letter-spacing: -0.01em;
   }
 
   .faq-question:hover {
-    color: var(--color-primary);
+    color: var(--color-accent);
   }
 
   .faq-icon {
-    font-size: 1.4rem;
-    font-weight: 300;
-    color: var(--color-primary);
     flex-shrink: 0;
     margin-left: var(--space-md);
+    color: var(--text-muted);
+    transition: transform var(--transition-base), color var(--transition-fast);
+    display: flex;
+    align-items: center;
+  }
+
+  .faq-item.is-open .faq-icon {
+    transform: rotate(45deg);
+    color: var(--color-accent);
   }
 
   .faq-answer {
@@ -579,86 +686,88 @@ import '../styles/global.css';
     font-size: 0.95rem;
     line-height: 1.7;
     color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+
+  /* ===== CTA SECTION ===== */
+  .cta-section {
+    background: var(--bg-primary);
+  }
+
+  .cta-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-inner .eyebrow {
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-inner h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-2xl);
   }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
     .contact-grid {
       grid-template-columns: 1fr;
-      gap: var(--space-2xl);
+      gap: var(--space-3xl);
     }
   }
 
   @media (max-width: 640px) {
+    .contact-hero {
+      padding: var(--space-3xl) 0 var(--space-2xl);
+    }
+
     .form-row {
       grid-template-columns: 1fr;
       gap: 0;
-    }
-
-    .maps-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .faq-question {
-      font-size: 1rem;
     }
 
     .checkbox-group,
     .radio-group {
       flex-direction: column;
       gap: var(--space-sm);
-    }
-  }
-
-  /* Phone */
-  @media (max-width: 480px) {
-    .hero {
-      padding: var(--space-2xl) 0 var(--space-xl);
-    }
-
-    .contact-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
-    }
-
-    .form-row {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-
-    .maps-grid {
-      grid-template-columns: 1fr;
     }
 
     .faq-question {
       font-size: 0.95rem;
     }
 
-    .checkbox-group,
-    .radio-group {
+    .info-card {
       flex-direction: column;
       gap: var(--space-sm);
     }
   }
 
-  /* Smart TV */
+  @media (max-width: 480px) {
+    .contact-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .contact-grid {
+      gap: var(--space-2xl);
+    }
+  }
+
   @media (min-width: 1921px) {
     .contact-grid {
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    .maps-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
     .faq-list {
       max-width: 900px;
-    }
-
-    .container {
-      max-width: 1400px;
     }
   }
 </style>

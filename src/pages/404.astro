@@ -8,16 +8,15 @@ import '../styles/global.css';
 <BaseLayout title="Page Not Found — A Worthy">
   <Header slot="header" />
 
-  <section class="not-found">
-    <div class="container">
-      <div class="not-found-content">
-        <span class="not-found-code">404</span>
-        <h1>Page Not Found</h1>
-        <p>Oops! The page you're looking for doesn't exist or may have been moved.</p>
-        <div class="not-found-actions">
-          <a href="/" class="btn btn-primary">Back to Home</a>
-          <a href="/contact/" class="btn btn-secondary">Contact Us</a>
-        </div>
+  <section class="error-page">
+    <div class="error-bg">404</div>
+    <div class="error-content">
+      <span class="eyebrow">Error</span>
+      <h1 class="heading">Page not found</h1>
+      <p class="subtitle">The page you're looking for doesn't exist or has been moved.</p>
+      <div class="actions">
+        <a href="/" class="btn btn-primary">Go home</a>
+        <a href="/contact/" class="btn btn-secondary">Contact us</a>
       </div>
     </div>
   </section>
@@ -26,41 +25,107 @@ import '../styles/global.css';
 </BaseLayout>
 
 <style>
-  .not-found {
-    min-height: 60vh;
+  .error-page {
+    position: relative;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: var(--space-4xl) 0;
+    background: #2a2c2f;
+    overflow: hidden;
   }
 
-  .not-found-code {
-    font-family: var(--font-heading);
-    font-size: 8rem;
+  .error-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(16rem, 30vw, 28rem);
     font-weight: 800;
-    color: var(--color-primary);
-    opacity: 0.15;
-    display: block;
+    color: rgba(255, 255, 255, 0.05);
     line-height: 1;
+    letter-spacing: -0.04em;
+    user-select: none;
+    pointer-events: none;
   }
 
-  .not-found h1 {
-    margin-bottom: var(--space-md);
-  }
-
-  .not-found p {
-    font-size: 1.15rem;
-    margin-bottom: var(--space-xl);
+  .error-content {
+    position: relative;
+    z-index: 1;
     max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 2rem;
   }
 
-  .not-found-actions {
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e8713a;
+    margin-bottom: 1.5rem;
+  }
+
+  .heading {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 1rem 0;
+  }
+
+  .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 2.5rem 0;
+  }
+
+  .actions {
     display: flex;
-    gap: var(--space-md);
+    gap: 0.75rem;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .actions .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+
+  .actions .btn-primary {
+    background: #e8713a;
+    color: #ffffff;
+    border: 1px solid #e8713a;
+  }
+
+  .actions .btn-primary:hover {
+    background: #d4632f;
+    border-color: #d4632f;
+  }
+
+  .actions .btn-secondary {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .actions .btn-secondary:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
   }
 </style>
