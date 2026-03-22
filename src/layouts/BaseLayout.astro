@@ -4,16 +4,16 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "A Worthy — Singapore's premier tuition centre for primary, secondary, and JC students. Expert tutors, proven results, nurturing environment." } = Astro.props;
+const { title, description = "A-Worthy — Singapore's first analytical English tuition programme. The CASE Method brings legal reasoning precision to O-Level English mastery." } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#2a2c2f" />
+  <meta name="theme-color" content="#1B2A4A" />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
@@ -32,7 +32,7 @@ const { title, description = "A Worthy — Singapore's premier tuition centre fo
   <script is:inline>
     (function() {
       const saved = localStorage.getItem('theme');
-      const theme = saved || 'dark';
+      const theme = saved || 'light';
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>

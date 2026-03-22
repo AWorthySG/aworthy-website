@@ -5,457 +5,147 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Our Programmes — A Worthy | Primary, Secondary & JC Tuition in Singapore" description="Explore A Worthy's comprehensive tuition programmes for Primary (P3-P6), Secondary (Sec 1-4/5), and JC students in Singapore. Mathematics, Science, English & more.">
+<BaseLayout title="O-Level English Programmes — A Worthy | CASE Method Tuition in Singapore" description="O-Level English tuition built on the CASE Method. Small group online classes for Sec 1-4 students, plus one-to-one coaching. Book a free diagnostic assessment.">
   <Header slot="header" />
 
   <!-- ===== PAGE HERO ===== -->
   <section class="prog-hero">
     <div class="container">
       <p class="eyebrow">Programmes</p>
-      <h1 class="prog-hero__heading">Academic programmes<br />designed for results</h1>
-      <p class="prog-hero__sub">A comprehensive, MOE-aligned curriculum from Primary 3 to JC2 &mdash; built to develop deep understanding, sharpen exam technique, and help every student achieve their personal best.</p>
+      <h1 class="prog-hero__heading">O-Level English programmes<br />built on the CASE Method</h1>
+      <p class="prog-hero__sub">Every lesson follows the same four-stage architecture &mdash; Contextualise, Analyse, Structure, Evaluate &mdash; regardless of topic or level.</p>
     </div>
   </section>
 
   <!-- ===== NAV PILLS ===== -->
   <nav class="prog-nav" aria-label="Programme quick links">
     <div class="container prog-nav__inner">
-      <a href="#primary" class="prog-nav__link">Primary</a>
-      <a href="#secondary" class="prog-nav__link">Secondary</a>
-      <a href="#jc" class="prog-nav__link">JC</a>
-      <a href="#enrichment" class="prog-nav__link">Enrichment</a>
-      <a href="#holiday" class="prog-nav__link">Holiday</a>
-      <a href="#schedule" class="prog-nav__link">Schedule</a>
+      <a href="#sec1-2" class="prog-nav__link">Sec 1-2</a>
+      <a href="#sec3-4" class="prog-nav__link">Sec 3-4</a>
+      <a href="#one-to-one" class="prog-nav__link">One-to-One</a>
+      <a href="#lesson-structure" class="prog-nav__link">Lesson Structure</a>
     </div>
   </nav>
 
-  <!-- ===== PRIMARY PROGRAMME ===== -->
-  <section class="prog-section" id="primary">
+  <!-- ===== SEC 1-2 ENGLISH FOUNDATION ===== -->
+  <section class="prog-section" id="sec1-2">
     <div class="container">
-      <p class="eyebrow">Primary</p>
-      <h2 class="prog-section__heading">Primary Programme (P3 &ndash; P6)</h2>
-      <p class="prog-section__sub">Build strong foundations and PSLE confidence through hands-on, concept-driven learning.</p>
+      <p class="eyebrow">Sec 1 &ndash; 2</p>
+      <h2 class="prog-section__heading">Sec 1-2 English Foundation</h2>
+      <p class="prog-section__sub">Building analytical habits early for O-Level readiness.</p>
 
-      <div class="card-grid card-grid--4">
+      <div class="card-grid card-grid--1">
         <div class="prog-card">
-          <h3 class="prog-card__title">Mathematics</h3>
-          <p class="prog-card__desc">Master problem-solving from the ground up with structured approaches tailored to the PSLE format.</p>
+          <h3 class="prog-card__title">Foundation Programme</h3>
+          <p class="prog-card__desc">Small group online sessions designed to develop the core English skills that underpin O-Level success &mdash; starting from Secondary 1.</p>
           <ul class="prog-card__topics">
-            <li>Model drawing &amp; heuristics</li>
-            <li>Problem sums (before/after, assumption, working backwards)</li>
-            <li>Whole numbers, fractions &amp; decimals</li>
-            <li>Ratios &amp; percentages</li>
-            <li>Geometry &amp; mensuration</li>
-            <li>Data analysis &amp; interpretation</li>
-            <li>PSLE format practice &amp; timed drills</li>
+            <li>Close reading and inference techniques</li>
+            <li>Essay structure fundamentals (narrative, expository)</li>
+            <li>Vocabulary building and contextual usage</li>
+            <li>Comprehension answering frameworks</li>
+            <li>Grammar and editing accuracy</li>
           </ul>
           <div class="prog-card__meta">
-            <span>1.5 hrs / week</span>
-            <span>Max 8 students</span>
-          </div>
-          <p class="prog-card__fee">$240 &ndash; $320 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">Science</h3>
-          <p class="prog-card__desc">Develop scientific reasoning and process skills through inquiry-based learning and structured answering techniques.</p>
-          <ul class="prog-card__topics">
-            <li>Process skills (comparing, classifying, inferring, predicting)</li>
-            <li>Open-ended question techniques (CER method)</li>
-            <li>Experimental design &amp; variables</li>
-            <li>Diversity of living &amp; non-living things</li>
-            <li>Cycles in plants &amp; animals</li>
-            <li>Systems (human body, plant, electrical)</li>
-            <li>Interactions (forces, ecosystems)</li>
-            <li>Energy (forms, conversion, heat)</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>1.5 hrs / week</span>
-            <span>Max 8 students</span>
-          </div>
-          <p class="prog-card__fee">$240 &ndash; $320 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">English Language</h3>
-          <p class="prog-card__desc">Strengthen all four language pillars &mdash; reading, writing, listening, and speaking &mdash; for holistic English mastery.</p>
-          <ul class="prog-card__topics">
-            <li>Comprehension: literal, inferential &amp; applied questions</li>
-            <li>Composition writing using the STAR method</li>
-            <li>Grammar cloze &amp; sentence synthesis</li>
-            <li>Vocabulary enrichment &amp; contextual usage</li>
-            <li>Oral communication &amp; stimulus-based conversation</li>
-            <li>Listening comprehension practice</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>1.5 hrs / week</span>
-            <span>Max 8 students</span>
-          </div>
-          <p class="prog-card__fee">$240 &ndash; $320 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">Higher Chinese</h3>
-          <p class="prog-card__desc">Available for P5 &ndash; P6 students preparing for PSLE Higher Chinese. Focus on comprehension, composition, and oral examination skills.</p>
-          <div class="prog-card__meta">
-            <span>1.5 hrs / week</span>
-            <span>Max 8 students</span>
-          </div>
-          <p class="prog-card__fee">$240 &ndash; $320 / month</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECONDARY PROGRAMME ===== -->
-  <section class="prog-section" id="secondary">
-    <div class="container">
-      <p class="eyebrow">Secondary</p>
-      <h2 class="prog-section__heading">Secondary Programme (Sec 1 &ndash; 4/5)</h2>
-      <p class="prog-section__sub">Structured revision, exam techniques, and consistent practice for O-Level and N-Level success.</p>
-
-      <div class="card-grid card-grid--3">
-        <div class="prog-card">
-          <h3 class="prog-card__title">E Math &amp; A Math</h3>
-          <p class="prog-card__desc">From Elementary to Additional Mathematics, we cover the full O-Level and N-Level syllabus with rigour and clarity.</p>
-          <ul class="prog-card__topics">
-            <li>Algebra: equations, inequalities, functions</li>
-            <li>Geometry: congruence, similarity, properties of circles</li>
-            <li>Trigonometry: ratios, identities, graphs, R-formula</li>
-            <li>Calculus: differentiation &amp; integration (A Math)</li>
-            <li>Statistics &amp; probability</li>
-            <li>GCE O-Level &amp; N-Level paper practice</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>2 hrs / week</span>
-            <span>Max 8 students</span>
-          </div>
-          <p class="prog-card__fee">$280 &ndash; $380 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">Pure &amp; Combined Sciences</h3>
-          <p class="prog-card__desc">Comprehensive coverage of Physics, Chemistry, and Biology for both Pure and Combined Science tracks.</p>
-          <ul class="prog-card__topics">
-            <li>Physics: mechanics, thermal physics, waves, electricity &amp; magnetism</li>
-            <li>Chemistry: atomic structure, chemical bonding, acids/bases, organic chemistry</li>
-            <li>Biology: cell biology, nutrition, transport, homeostasis, inheritance</li>
-            <li>Practical lab skills &amp; SPA preparation</li>
-            <li>Structured &amp; free-response question techniques</li>
-            <li>Data-based question strategies</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>2 hrs / week</span>
-            <span>Max 8 students</span>
-          </div>
-          <p class="prog-card__fee">$280 &ndash; $380 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">English Language</h3>
-          <p class="prog-card__desc">Develop strong comprehension and writing skills to excel across all components of the GCE O-Level English paper.</p>
-          <ul class="prog-card__topics">
-            <li>Comprehension: inference, language use, summary writing</li>
-            <li>Summary writing techniques &amp; paraphrasing skills</li>
-            <li>Situational writing (formal &amp; informal)</li>
-            <li>Continuous writing: narrative, argumentative, expository</li>
-            <li>Visual text comprehension</li>
-            <li>Editing &amp; grammar accuracy</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>2 hrs / week</span>
-            <span>Max 8 students</span>
-          </div>
-          <p class="prog-card__fee">$280 &ndash; $380 / month</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== JC PROGRAMME ===== -->
-  <section class="prog-section" id="jc">
-    <div class="container">
-      <p class="eyebrow">Junior College</p>
-      <h2 class="prog-section__heading">JC Programme (JC1 &ndash; JC2)</h2>
-      <p class="prog-section__sub">Rigorous content mastery and exam strategy for the GCE A-Level examinations.</p>
-
-      <div class="card-grid card-grid--3">
-        <div class="prog-card">
-          <h3 class="prog-card__title">H2 Mathematics</h3>
-          <p class="prog-card__desc">Deep mastery of both Pure Mathematics and Statistics for H2 Maths, with extensive past-year paper drills.</p>
-          <ul class="prog-card__topics">
-            <li>Functions &amp; graphs</li>
-            <li>Sequences &amp; series (AP, GP, method of differences)</li>
-            <li>Vectors in 2D and 3D</li>
-            <li>Complex numbers</li>
-            <li>Calculus: techniques of differentiation &amp; integration, applications</li>
-            <li>Statistics &amp; probability distributions</li>
-            <li>Hypothesis testing &amp; regression</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>2 hrs / week</span>
+            <span>90 min / week</span>
             <span>Max 6 students</span>
+            <span>Online via Zoom</span>
           </div>
-          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">H2 Physics</h3>
-          <p class="prog-card__desc">From classical mechanics to modern physics, develop conceptual clarity and problem-solving rigour for the A-Level.</p>
-          <ul class="prog-card__topics">
-            <li>Mechanics: kinematics, dynamics, energy, momentum</li>
-            <li>Waves: superposition, diffraction, interference</li>
-            <li>Electricity: circuits, electric &amp; magnetic fields, electromagnetic induction</li>
-            <li>Modern physics: quantum theory, nuclear physics</li>
-            <li>Practical skills &amp; planning questions</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>2 hrs / week</span>
-            <span>Max 6 students</span>
-          </div>
-          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">H2 Chemistry</h3>
-          <p class="prog-card__desc">Systematic coverage of physical, inorganic, and organic chemistry with emphasis on application and data analysis.</p>
-          <ul class="prog-card__topics">
-            <li>Atomic structure &amp; chemical bonding</li>
-            <li>Chemical energetics &amp; thermodynamics</li>
-            <li>Reaction kinetics &amp; equilibria</li>
-            <li>Organic chemistry: mechanisms, synthesis, analysis</li>
-            <li>Transition metals &amp; electrochemistry</li>
-            <li>Practical &amp; planning question techniques</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>2 hrs / week</span>
-            <span>Max 6 students</span>
-          </div>
-          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">H1 General Paper</h3>
-          <p class="prog-card__desc">Build critical thinking, argumentation, and comprehension skills for confident GP performance.</p>
-          <ul class="prog-card__topics">
-            <li>Essay writing: structure, argumentation, evaluation</li>
-            <li>Comprehension: summary, application, inference</li>
-            <li>Current affairs: Singapore &amp; global issues</li>
-            <li>Content mastery across key themes (science &amp; tech, media, environment, politics)</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>2 hrs / week</span>
-            <span>Max 6 students</span>
-          </div>
-          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">H2 Economics</h3>
-          <p class="prog-card__desc">Master both micro and macro economics with rigorous case study and essay preparation.</p>
-          <ul class="prog-card__topics">
-            <li>Microeconomics: demand &amp; supply, market failure, government intervention</li>
-            <li>Macroeconomics: national income, inflation, unemployment, trade</li>
-            <li>Case study skills: data interpretation, analysis, evaluation</li>
-            <li>Essay planning &amp; structuring techniques</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span>2 hrs / week</span>
-            <span>Max 6 students</span>
-          </div>
-          <p class="prog-card__fee">$360 &ndash; $450 / month</p>
+          <p class="prog-card__fee">SGD 280 / month</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== ENRICHMENT PROGRAMMES ===== -->
-  <section class="prog-section" id="enrichment">
+  <!-- ===== SEC 3-4 O-LEVEL INTENSIVE ===== -->
+  <section class="prog-section" id="sec3-4">
     <div class="container">
-      <p class="eyebrow">Enrichment</p>
-      <h2 class="prog-section__heading">Enrichment Programmes</h2>
-      <p class="prog-section__sub">Go beyond the syllabus with programmes that develop higher-order thinking and competitive edge.</p>
+      <p class="eyebrow">Sec 3 &ndash; 4</p>
+      <h2 class="prog-section__heading">Sec 3-4 O-Level Intensive</h2>
+      <p class="prog-section__sub">Exam-focused preparation with monthly mock grading and detailed feedback.</p>
 
-      <div class="card-grid card-grid--3">
+      <div class="card-grid card-grid--1">
         <div class="prog-card">
-          <h3 class="prog-card__title">Critical Thinking &amp; Problem Solving</h3>
-          <p class="prog-card__desc">Sharpen logical reasoning, analytical skills, and creative problem-solving through structured challenges and real-world scenarios. Suitable for P4 &ndash; Sec 2 students looking to strengthen their thinking toolkit beyond the standard curriculum.</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">ICAS &amp; Math Olympiad Preparation</h3>
-          <p class="prog-card__desc">Targeted training for students competing in ICAS and the Singapore Mathematical Olympiad. Covers advanced problem types, number theory, combinatorics, and competition strategies.</p>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">Creative Writing Workshop</h3>
-          <p class="prog-card__desc">Guided workshops on storytelling, character development, descriptive writing, and creative composition techniques. Perfect for students who want to elevate their writing from good to outstanding.</p>
+          <h3 class="prog-card__title">O-Level Intensive Programme</h3>
+          <p class="prog-card__desc">Rigorous, exam-aligned preparation covering every component of the GCE O-Level English paper &mdash; with regular mock practice and individualised feedback.</p>
+          <ul class="prog-card__topics">
+            <li>Paper 1 Situational Writing (format, purpose, audience, register)</li>
+            <li>Paper 1 Continuous Writing (narrative, expository, argumentative)</li>
+            <li>Paper 2 Comprehension (literal, inferential, evaluative questions)</li>
+            <li>Paper 2 Summary (80-word paraphrase technique)</li>
+            <li>Oral Communication (video stimulus response)</li>
+            <li>Editing (grammar and vocabulary correction)</li>
+          </ul>
+          <div class="prog-card__meta">
+            <span>90 min / week</span>
+            <span>Max 6 students</span>
+            <span>Online via Zoom</span>
+          </div>
+          <p class="prog-card__fee">SGD 320 / month</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== HOLIDAY INTENSIVES ===== -->
-  <section class="prog-section" id="holiday">
+  <!-- ===== ONE-TO-ONE COACHING ===== -->
+  <section class="prog-section" id="one-to-one">
     <div class="container">
-      <p class="eyebrow">Holiday Intensives</p>
-      <h2 class="prog-section__heading">Holiday Programmes</h2>
-      <p class="prog-section__sub">Focused crash courses and revision bootcamps during the school holidays to maximise learning when it matters most.</p>
+      <p class="eyebrow">One-to-One</p>
+      <h2 class="prog-section__heading">One-to-One Coaching</h2>
+      <p class="prog-section__sub">For students requiring tailored support or intensive exam preparation.</p>
 
-      <div class="card-grid card-grid--3">
+      <div class="card-grid card-grid--1">
         <div class="prog-card">
-          <h3 class="prog-card__title">June Intensive Programme</h3>
-          <p class="prog-card__desc">Use the mid-year break to close gaps and get ahead. Our June intensives cover key topics from Semester 1 and preview Semester 2 content so students return to school with confidence.</p>
-          <ul class="prog-card__topics">
-            <li>3-hour daily sessions</li>
-            <li>Topic-focused modules</li>
-            <li>Available for all levels (P3 &ndash; JC2)</li>
-          </ul>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">Nov / Dec Intensive Programme</h3>
-          <p class="prog-card__desc">Prepare for the year ahead or revise the entire year's syllabus during the long holidays. Ideal for students moving up to a new level (e.g., P6 to Sec 1, Sec 4 to JC1).</p>
-          <ul class="prog-card__topics">
-            <li>3-hour daily sessions</li>
-            <li>Bridging &amp; head-start modules</li>
-            <li>Full-year syllabus review option</li>
-          </ul>
-        </div>
-
-        <div class="prog-card">
-          <h3 class="prog-card__title">Exam Revision Bootcamps</h3>
-          <p class="prog-card__desc">Intensive revision leading up to PSLE, GCE O-Level, and GCE A-Level exams. Drill past-year papers, refine exam technique, and boost confidence under timed conditions.</p>
-          <ul class="prog-card__topics">
-            <li>PSLE Bootcamp (Sep &ndash; Oct)</li>
-            <li>O-Level Bootcamp (Sep &ndash; Oct)</li>
-            <li>A-Level Bootcamp (Oct &ndash; Nov)</li>
-            <li>Daily 3-hour intensive sessions</li>
-          </ul>
+          <h3 class="prog-card__title">Individual Coaching</h3>
+          <p class="prog-card__desc">Fully customised to the student's specific gaps. Individual online sessions via Zoom, scheduled at your convenience.</p>
+          <div class="prog-card__meta">
+            <span>Per session</span>
+            <span>1 student</span>
+            <span>Online via Zoom</span>
+          </div>
+          <p class="prog-card__fee">SGD 120 / session</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== WEEKLY SCHEDULE ===== -->
-  <section class="prog-section" id="schedule">
+  <!-- ===== THE CASE LESSON STRUCTURE ===== -->
+  <section class="prog-section" id="lesson-structure">
     <div class="container">
-      <p class="eyebrow">Schedule</p>
-      <h2 class="prog-section__heading">Weekly Class Schedule</h2>
-      <p class="prog-section__sub">Classes run on a regular weekly cycle. Contact us for the latest available slots.</p>
+      <p class="eyebrow">Every Lesson</p>
+      <h2 class="prog-section__heading">How a CASE lesson works</h2>
 
-      <div class="schedule-wrap">
-        <table class="schedule-table">
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Time</th>
-              <th>Programme</th>
-              <th>Subjects</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Day">Monday</td>
-              <td data-label="Time">4:00 PM &ndash; 5:30 PM</td>
-              <td data-label="Programme">Primary (P3 &ndash; P4)</td>
-              <td data-label="Subjects">Mathematics, English</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Monday</td>
-              <td data-label="Time">6:00 PM &ndash; 8:00 PM</td>
-              <td data-label="Programme">Secondary (Sec 1 &ndash; 2)</td>
-              <td data-label="Subjects">E Math, Science</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Tuesday</td>
-              <td data-label="Time">4:00 PM &ndash; 5:30 PM</td>
-              <td data-label="Programme">Primary (P5 &ndash; P6)</td>
-              <td data-label="Subjects">Mathematics, Science</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Tuesday</td>
-              <td data-label="Time">6:00 PM &ndash; 8:00 PM</td>
-              <td data-label="Programme">Secondary (Sec 3 &ndash; 4/5)</td>
-              <td data-label="Subjects">A Math, Chemistry, Physics</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Wednesday</td>
-              <td data-label="Time">4:00 PM &ndash; 5:30 PM</td>
-              <td data-label="Programme">Primary (P3 &ndash; P6)</td>
-              <td data-label="Subjects">English, Science</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Wednesday</td>
-              <td data-label="Time">6:30 PM &ndash; 8:30 PM</td>
-              <td data-label="Programme">JC (JC1 &ndash; JC2)</td>
-              <td data-label="Subjects">H2 Maths, H2 Physics</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Thursday</td>
-              <td data-label="Time">4:00 PM &ndash; 5:30 PM</td>
-              <td data-label="Programme">Primary (P5 &ndash; P6)</td>
-              <td data-label="Subjects">Mathematics, Higher Chinese</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Thursday</td>
-              <td data-label="Time">6:30 PM &ndash; 8:30 PM</td>
-              <td data-label="Programme">JC (JC1 &ndash; JC2)</td>
-              <td data-label="Subjects">H2 Chemistry, H2 Economics</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Friday</td>
-              <td data-label="Time">4:00 PM &ndash; 6:00 PM</td>
-              <td data-label="Programme">Secondary (Sec 1 &ndash; 4/5)</td>
-              <td data-label="Subjects">English, E Math</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Friday</td>
-              <td data-label="Time">6:30 PM &ndash; 8:30 PM</td>
-              <td data-label="Programme">JC (JC1 &ndash; JC2)</td>
-              <td data-label="Subjects">H1 General Paper</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Saturday</td>
-              <td data-label="Time">9:00 AM &ndash; 11:00 AM</td>
-              <td data-label="Programme">Primary (P3 &ndash; P6)</td>
-              <td data-label="Subjects">Mathematics, Science, English</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Saturday</td>
-              <td data-label="Time">11:30 AM &ndash; 1:30 PM</td>
-              <td data-label="Programme">Secondary (Sec 1 &ndash; 4/5)</td>
-              <td data-label="Subjects">All subjects</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Saturday</td>
-              <td data-label="Time">2:00 PM &ndash; 4:00 PM</td>
-              <td data-label="Programme">JC (JC1 &ndash; JC2)</td>
-              <td data-label="Subjects">All subjects</td>
-            </tr>
-            <tr>
-              <td data-label="Day">Sunday</td>
-              <td data-label="Time">10:00 AM &ndash; 12:00 PM</td>
-              <td data-label="Programme">Enrichment</td>
-              <td data-label="Subjects">Olympiad Prep, Creative Writing</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card-grid card-grid--2">
+        <div class="prog-card">
+          <h3 class="prog-card__title">Contextualise (10 min)</h3>
+          <p class="prog-card__desc">Tutor presents the task or question type. Students identify context, purpose, and audience. Socratic questioning surfaces what students already know.</p>
+        </div>
+
+        <div class="prog-card">
+          <h3 class="prog-card__title">Analyse (20 min)</h3>
+          <p class="prog-card__desc">Tutor models analysis using a worked example, thinking aloud through the reasoning process. Students then analyse independently.</p>
+        </div>
+
+        <div class="prog-card">
+          <h3 class="prog-card__title">Structure (20 min)</h3>
+          <p class="prog-card__desc">Students produce a structured written or spoken response. Outline before drafting. Tutor provides immediate targeted feedback.</p>
+        </div>
+
+        <div class="prog-card">
+          <h3 class="prog-card__title">Evaluate (10 min)</h3>
+          <p class="prog-card__desc">Students self-assess using the CASE checklist. Tutor provides process-level feedback &mdash; not just what was wrong, but why. Students record one specific improvement goal.</p>
+        </div>
       </div>
-
-      <p class="schedule-note">Schedule is subject to change. Additional time slots may be available &mdash; <a href="/contact/">contact us</a> for the latest timetable.</p>
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
+  <!-- ===== FREE DIAGNOSTIC ASSESSMENT CTA ===== -->
   <section class="prog-cta">
     <div class="container prog-cta__inner">
       <p class="eyebrow">Get Started</p>
-      <h2 class="prog-cta__heading">Not sure which programme is right?</h2>
-      <p class="prog-cta__sub">Book a free diagnostic assessment and trial lesson. We will recommend the right programme and pace for your child &mdash; no obligations.</p>
+      <h2 class="prog-cta__heading">Not sure which programme?</h2>
+      <p class="prog-cta__sub">Book a free 20-minute diagnostic assessment. We'll analyse your child's recent English paper and identify specific areas for improvement &mdash; no obligation, no sales pitch.</p>
       <div class="prog-cta__actions">
-        <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book a Free Trial</a>
-        <a href="https://wa.me/6591234567" class="prog-cta__btn prog-cta__btn--outline">WhatsApp Us</a>
+        <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book Assessment</a>
       </div>
     </div>
   </section>
@@ -583,6 +273,15 @@ import '../styles/global.css';
     gap: 1.5rem;
   }
 
+  .card-grid--1 {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+  }
+
+  .card-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .card-grid--3 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -683,72 +382,6 @@ import '../styles/global.css';
     margin-bottom: 0;
   }
 
-  /* ===== SCHEDULE TABLE ===== */
-  .schedule-wrap {
-    overflow-x: auto;
-    border: 1px solid var(--prog-border);
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: var(--prog-font);
-    font-size: 0.9rem;
-  }
-
-  .schedule-table thead {
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .schedule-table th {
-    font-family: var(--prog-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--prog-text-secondary);
-    padding: 1rem 1.25rem;
-    text-align: left;
-    white-space: nowrap;
-  }
-
-  .schedule-table td {
-    padding: 0.85rem 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--prog-text-secondary);
-    vertical-align: top;
-  }
-
-  .schedule-table tbody tr:last-child td {
-    border-bottom: none;
-  }
-
-  .schedule-table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .schedule-note {
-    text-align: center;
-    font-family: var(--prog-font);
-    font-size: 0.85rem;
-    color: var(--prog-text-secondary);
-  }
-
-  .schedule-note a {
-    color: var(--prog-accent);
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
-  }
-
-  .schedule-note a:hover {
-    border-bottom-color: var(--prog-accent);
-  }
-
   /* ===== CTA ===== */
   .prog-cta {
     background: var(--prog-bg);
@@ -831,6 +464,10 @@ import '../styles/global.css';
     .card-grid--3 {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .card-grid--2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 768px) {
@@ -847,54 +484,13 @@ import '../styles/global.css';
     }
 
     .card-grid--4,
-    .card-grid--3 {
+    .card-grid--3,
+    .card-grid--2 {
       grid-template-columns: 1fr;
     }
 
     .prog-card {
       padding: 1.5rem;
-    }
-
-    /* Mobile table */
-    .schedule-table thead {
-      display: none;
-    }
-
-    .schedule-table,
-    .schedule-table tbody,
-    .schedule-table tr,
-    .schedule-table td {
-      display: block;
-      width: 100%;
-    }
-
-    .schedule-table tr {
-      margin-bottom: 0.75rem;
-      border: 1px solid var(--prog-border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .schedule-table td {
-      padding: 0.6rem 1rem;
-      text-align: right;
-      position: relative;
-      padding-left: 45%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .schedule-table td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 1rem;
-      top: 0.6rem;
-      font-family: var(--prog-mono);
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--prog-accent);
-      text-align: left;
     }
 
     .prog-cta {

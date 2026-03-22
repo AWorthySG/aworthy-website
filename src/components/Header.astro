@@ -15,8 +15,8 @@ const navLinks = [
 <header class="site-header" id="site-header">
   <div class="container header-inner">
     <!-- Logo -->
-    <a href="/" class="logo" aria-label="A Worthy — Home">
-      <span class="logo-name">A Worthy</span>
+    <a href="/" class="logo" aria-label="A-Worthy — Home">
+      <img src="/images/logo.svg" alt="A-Worthy" class="logo-img" />
     </a>
 
     <!-- Desktop Nav -->
@@ -97,15 +97,15 @@ const navLinks = [
   }
 
   .site-header.scrolled {
-    background: rgba(42, 44, 47, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom-color: rgba(255, 255, 255, 0.08);
+    border-bottom-color: var(--border-color);
   }
 
-  :global([data-theme="light"]) .site-header.scrolled {
-    background: rgba(255, 255, 255, 0.92);
-    border-bottom-color: rgba(0, 0, 0, 0.08);
+  :global([data-theme="dark"]) .site-header.scrolled {
+    background: rgba(15, 27, 51, 0.95);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
   }
 
   .header-inner {
@@ -124,12 +124,9 @@ const navLinks = [
     flex-shrink: 0;
   }
 
-  .logo-name {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    letter-spacing: -0.02em;
+  .logo-img {
+    height: 40px;
+    width: auto;
   }
 
   /* Desktop Nav */

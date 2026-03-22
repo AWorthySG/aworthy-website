@@ -6,80 +6,80 @@ import '../styles/global.css';
 
 const resources = [
   {
-    title: "PSLE Maths: Mastering Model Drawing",
-    description: "A comprehensive guide to solving complex PSLE word problems using the Singapore Model Method. Includes step-by-step worked examples for before-after, comparison, and unchanged quantity models.",
-    category: "Mathematics",
-    type: "Guide",
-  },
-  {
-    title: "Top 10 Science Process Skills for PSLE",
-    description: "Learn the essential process skills tested in PSLE Science — from identifying variables to interpreting data tables. Includes real exam questions and model answers.",
-    category: "Science",
+    title: "O-Level Comprehension Answering Techniques",
+    description: "Question-by-question guide covering literal, inferential, evaluative, and vocabulary-in-context questions with CASE reasoning",
+    category: "English",
     type: "Article",
   },
   {
-    title: "O-Level Chemistry: Organic Chemistry Cheat Sheet",
-    description: "A concise, exam-ready worksheet covering homologous series, functional groups, reaction types, and key equations for O-Level Pure Chemistry Paper 2.",
-    category: "Science",
-    type: "Worksheet",
-  },
-  {
-    title: "How to Write a Stellar Composition",
-    description: "A structured guide to PSLE and O-Level English composition writing. Covers planning techniques, strong openings, show-not-tell descriptions, and powerful conclusions.",
+    title: "The CASE Essay Blueprint",
+    description: "A visual guide to planning and structuring continuous writing essays using the CASE framework",
     category: "English",
     type: "Guide",
   },
   {
-    title: "A-Level H2 Maths: Integration Techniques",
-    description: "Practice worksheet on integration by substitution, by parts, and partial fractions. Includes 30 graded questions with full worked solutions for JC students.",
-    category: "Mathematics",
-    type: "Worksheet",
+    title: "50 High-Impact O-Level Vocabulary Words",
+    description: "Organised by theme with definitions, model sentences, and synonyms",
+    category: "English",
+    type: "Guide",
   },
   {
-    title: "5 Study Habits of Top Students",
-    description: "Discover the proven study strategies used by students who consistently score A's. From spaced repetition to active recall — backed by learning science research.",
+    title: "Situational Writing Format Guide",
+    description: "Text-type conventions for formal letter, email, report, and speech with register indicators",
+    category: "Exam Prep",
+    type: "Guide",
+  },
+  {
+    title: "Oral Preparation Checklist",
+    description: "Structure, timing, vocabulary lists by topic, and self-assessment rubric for the video stimulus response",
+    category: "Exam Prep",
+    type: "Guide",
+  },
+  {
+    title: "How to Score A1 for O-Level English",
+    description: "A systematic breakdown of what examiners reward across every component",
+    category: "Exam Prep",
+    type: "Article",
+  },
+  {
+    title: "Common Inference Question Patterns",
+    description: "The five most common inference question types and how to answer each using the CASE Method",
+    category: "English",
+    type: "Article",
+  },
+  {
+    title: "Summary Writing: The 80-Word Challenge",
+    description: "Step-by-step technique for identifying main ideas, paraphrasing, and staying within the word limit",
+    category: "English",
+    type: "Article",
+  },
+  {
+    title: "Editing Paper Strategies",
+    description: "How to spot and correct grammatical errors systematically in Paper 1 editing",
+    category: "Exam Prep",
+    type: "Article",
+  },
+  {
+    title: "Essay Hooks That Work",
+    description: "Opening techniques for narrative, expository, and argumentative essays that grab examiner attention",
     category: "Study Tips",
     type: "Article",
   },
   {
-    title: "PSLE English: Comprehension Cloze Tips",
-    description: "Master the comprehension cloze section with our proven strategies for contextual clues, grammar patterns, and vocabulary building. Includes practice passages.",
-    category: "English",
-    type: "Article",
-  },
-  {
-    title: "Secondary Physics: Electricity Formulas",
-    description: "Essential formulas and circuit analysis techniques for O-Level Physics. Covers Ohm's Law, series/parallel circuits, electrical power, and energy calculations.",
-    category: "Science",
-    type: "Worksheet",
-  },
-  {
-    title: "Time Management for JC Students",
-    description: "Practical tips for balancing H2 subjects, CCA commitments, and revision. Learn to create effective study timetables and avoid burnout during the A-Level journey.",
+    title: "The Legal Reasoning Approach to Comprehension",
+    description: "How lawyers read passages — and why this skill transfers directly to O-Level English",
     category: "Study Tips",
     type: "Article",
   },
   {
-    title: "GP Essay Writing Framework",
-    description: "A step-by-step guide to structuring General Paper essays that score. Covers thesis statements, PEEL paragraphs, counter-arguments, and evaluative conclusions.",
-    category: "English",
+    title: "Mock Paper Self-Assessment Guide",
+    description: "How to review your own mock papers using the CASE checklist for maximum improvement",
+    category: "Exam Prep",
     type: "Guide",
-  },
-  {
-    title: "PSLE Science: Common Exam Mistakes",
-    description: "Avoid the top 15 mistakes students make in PSLE Science. From misreading questions to incomplete explanations — learn what examiners are really looking for.",
-    category: "Science",
-    type: "Article",
-  },
-  {
-    title: "O-Level A Math: Trigonometry Practice",
-    description: "Worksheet with 25 trigonometry questions covering identities, equations, R-formula, and applications. Graded from basic to challenging with full solutions.",
-    category: "Mathematics",
-    type: "Worksheet",
   },
 ];
 
-const categories = ["All", "Mathematics", "Science", "English", "Study Tips", "Exam Prep"];
+const categories = ["All", "English", "Exam Prep", "Study Tips"];
 ---
 
 <BaseLayout title="Free Resources — A Worthy">
@@ -139,9 +139,7 @@ const categories = ["All", "Mathematics", "Science", "English", "Study Tips", "E
             <h3 class="r-card-title">{resource.title}</h3>
             <p class="r-card-desc">{resource.description}</p>
             <a href="#" class="r-card-link">
-              {resource.type === "Worksheet" ? "Download Worksheet" :
-               resource.type === "Guide" ? "Read Guide" :
-               resource.type === "Video" ? "Watch Video" :
+              {resource.type === "Guide" ? "Read Guide" :
                "Read Article"}
               <span class="r-arrow">&rarr;</span>
             </a>
