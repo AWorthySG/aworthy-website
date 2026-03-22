@@ -1,5 +1,5 @@
 /* ===== CSS Custom Properties ===== */
-/* A-Worthy — Light, clean, premium. Navy + Gold palette. */
+/* A-Worthy — Optimistic, sleek, professional. Teal + Amber palette. */
 /* Breakpoints reference:
    Phone: up to 480px
    Phone landscape / small tablet: 481px - 768px
@@ -9,27 +9,27 @@
    Smart TV / 4K: 1921px+
 */
 :root {
-  /* Brand palette — Navy + Gold */
-  --color-primary: #1B2A4A;       /* Navy — trust, authority */
-  --color-primary-light: #2C3E6B;
-  --color-primary-dark: #0F1B33;
-  --color-accent: #B8972B;        /* Gold — achievement, premium */
-  --color-accent-light: #D4AE3A;
-  --color-secondary: #5A6A7A;     /* Cool slate */
-  --color-secondary-light: #7A8A9A;
+  /* Brand palette — Deep Teal + Warm Amber */
+  --color-primary: #0C4A4A;       /* Deep Teal — growth, trust, freshness */
+  --color-primary-light: #14706E;
+  --color-primary-dark: #063333;
+  --color-accent: #E8923A;        /* Warm Amber — optimism, energy, achievement */
+  --color-accent-light: #F0A85E;
+  --color-secondary: #3D6B6B;     /* Muted teal */
+  --color-secondary-light: #5A8A8A;
 
   /* Light-first design */
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F8F7F4;        /* Warm off-white */
+  --bg-secondary: #F6F9F8;        /* Subtle cool-warm white */
   --bg-card: #FFFFFF;
-  --bg-footer: #1B2A4A;           /* Navy footer */
-  --text-primary: #1B2A4A;
-  --text-secondary: #4A5568;
-  --text-muted: #8A8D93;
+  --bg-footer: #0C3535;           /* Deep teal footer */
+  --text-primary: #1A2F2F;
+  --text-secondary: #4A5E5E;
+  --text-muted: #8A9696;
   --text-on-dark: #FFFFFF;
-  --border-color: #E8E6E1;
-  --shadow-color: rgba(27, 42, 74, 0.06);
-  --shadow-hover: rgba(27, 42, 74, 0.12);
+  --border-color: #E2E8E6;
+  --shadow-color: rgba(12, 74, 74, 0.06);
+  --shadow-hover: rgba(12, 74, 74, 0.12);
 
   /* Typography */
   --font-heading: 'Inter', 'Segoe UI', -apple-system, sans-serif;
@@ -60,21 +60,21 @@
   --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #1B2A4A 0%, #2C3E6B 100%);
-  --gradient-accent: linear-gradient(135deg, #B8972B 0%, #D4AE3A 100%);
-  --gradient-hero: linear-gradient(180deg, rgba(27,42,74,0.6) 0%, rgba(27,42,74,0.85) 100%);
-  --gradient-footer-top: linear-gradient(180deg, transparent 0%, #1B2A4A 100%);
+  --gradient-primary: linear-gradient(135deg, #0C4A4A 0%, #14706E 100%);
+  --gradient-accent: linear-gradient(135deg, #E8923A 0%, #F0A85E 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(12,74,74,0.55) 0%, rgba(12,74,74,0.8) 100%);
+  --gradient-footer-top: linear-gradient(180deg, transparent 0%, #0C3535 100%);
 }
 
 /* ===== Dark Mode ===== */
 [data-theme="dark"] {
-  --bg-primary: #0F1B33;
-  --bg-secondary: #162240;
-  --bg-card: #1B2A4A;
-  --bg-footer: #0A1225;
-  --text-primary: #F0EDE8;
-  --text-secondary: #B0B8C8;
-  --text-muted: #6A7A8A;
+  --bg-primary: #0A1E1E;
+  --bg-secondary: #0F2A2A;
+  --bg-card: #133535;
+  --bg-footer: #061515;
+  --text-primary: #E8F0EE;
+  --text-secondary: #A0B8B5;
+  --text-muted: #607A78;
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow-color: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.5);
@@ -264,7 +264,7 @@ li {
   background: var(--color-accent-light);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(184, 151, 43, 0.3);
+  box-shadow: 0 4px 12px rgba(232, 146, 58, 0.3);
 }
 
 /* Outline variant for dark sections */
@@ -311,7 +311,7 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(27, 42, 74, 0.15);
+  box-shadow: 0 0 0 2px rgba(12, 74, 74, 0.15);
 }
 
 textarea {
