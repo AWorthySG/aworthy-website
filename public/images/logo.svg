@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" fill="none">
   <!-- A shape with rounded top -->
-  <path d="M100 20 C100 20 60 20 60 60 L60 160 L80 160 L80 60 C80 40 100 40 100 40 C100 40 120 40 120 60 L120 160 L140 160 L140 60 C140 20 100 20 100 20Z" fill="#0C4A4A"/>
+  <path d="M100 20 C100 20 60 20 60 60 L60 160 L80 160 L80 60 C80 40 100 40 100 40 C100 40 120 40 120 60 L120 160 L140 160 L140 60 C140 20 100 20 100 20Z" fill="#2B5A8C"/>
   <!-- Plus sign inside the A -->
-  <line x1="100" y1="55" x2="100" y2="85" stroke="#0C4A4A" stroke-width="6" stroke-linecap="round"/>
-  <line x1="85" y1="70" x2="115" y2="70" stroke="#0C4A4A" stroke-width="6" stroke-linecap="round"/>
+  <line x1="100" y1="55" x2="100" y2="85" stroke="#2B5A8C" stroke-width="6" stroke-linecap="round"/>
+  <line x1="85" y1="70" x2="115" y2="70" stroke="#2B5A8C" stroke-width="6" stroke-linecap="round"/>
   <!-- W shape -->
-  <path d="M40 180 Q70 240 100 200 Q130 240 160 180" fill="none" stroke="#0C4A4A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 180 Q70 240 100 200 Q130 240 160 180" fill="none" stroke="#2B5A8C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- A WORTHY text -->
-  <text x="100" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="500" letter-spacing="8" fill="#0C4A4A">A WORTHY</text>
+  <text x="100" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="500" letter-spacing="8" fill="#2B5A8C">A WORTHY</text>
 </svg>

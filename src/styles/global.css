@@ -1,5 +1,5 @@
 /* ===== CSS Custom Properties ===== */
-/* A-Worthy — Optimistic, sleek, professional. Teal + Amber palette. */
+/* A-Worthy — Warm, editorial, optimistic. Inspired by Cornerstone Athens. */
 /* Breakpoints reference:
    Phone: up to 480px
    Phone landscape / small tablet: 481px - 768px
@@ -9,30 +9,30 @@
    Smart TV / 4K: 1921px+
 */
 :root {
-  /* Brand palette — Deep Teal + Warm Amber */
-  --color-primary: #0C4A4A;       /* Deep Teal — growth, trust, freshness */
-  --color-primary-light: #14706E;
-  --color-primary-dark: #063333;
-  --color-accent: #E8923A;        /* Warm Amber — optimism, energy, achievement */
-  --color-accent-light: #F0A85E;
-  --color-secondary: #3D6B6B;     /* Muted teal */
-  --color-secondary-light: #5A8A8A;
+  /* Brand palette — Calm Blue + Warm tones */
+  --color-primary: #2B5A8C;       /* Calm blue — trust, optimism */
+  --color-primary-light: #3B7AB5;
+  --color-primary-dark: #1D3D5F;
+  --color-accent: #D4853A;        /* Warm gold-orange — energy, achievement */
+  --color-accent-light: #E29A55;
+  --color-secondary: #4A6A82;     /* Muted slate blue */
+  --color-secondary-light: #6A8AA2;
 
-  /* Light-first design */
+  /* Light, warm design */
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F6F9F8;        /* Subtle cool-warm white */
+  --bg-secondary: #F5F8FA;        /* Very light blue-gray */
   --bg-card: #FFFFFF;
-  --bg-footer: #0C3535;           /* Deep teal footer */
-  --text-primary: #1A2F2F;
-  --text-secondary: #4A5E5E;
-  --text-muted: #8A9696;
+  --bg-footer: #1A2A3A;           /* Deep slate */
+  --text-primary: #1A1A1A;        /* Near-black */
+  --text-secondary: #4A4A4A;
+  --text-muted: #8A8A8A;
   --text-on-dark: #FFFFFF;
-  --border-color: #E2E8E6;
-  --shadow-color: rgba(12, 74, 74, 0.06);
-  --shadow-hover: rgba(12, 74, 74, 0.12);
+  --border-color: #E8EAED;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --shadow-hover: rgba(0, 0, 0, 0.1);
 
-  /* Typography */
-  --font-heading: 'Inter', 'Segoe UI', -apple-system, sans-serif;
+  /* Typography — Serif headings (editorial) + Clean sans body */
+  --font-heading: 'Playfair Display', 'Georgia', serif;
   --font-body: 'Inter', 'Segoe UI', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
 
@@ -49,8 +49,8 @@
   /* Layout */
   --max-width: 1400px;
   --header-height: 72px;
-  --border-radius: 4px;
-  --border-radius-lg: 8px;
+  --border-radius: 6px;
+  --border-radius-lg: 12px;
   --page-padding: 4rem;
 
   /* Transitions */
@@ -60,21 +60,21 @@
   --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #0C4A4A 0%, #14706E 100%);
-  --gradient-accent: linear-gradient(135deg, #E8923A 0%, #F0A85E 100%);
-  --gradient-hero: linear-gradient(180deg, rgba(12,74,74,0.55) 0%, rgba(12,74,74,0.8) 100%);
-  --gradient-footer-top: linear-gradient(180deg, transparent 0%, #0C3535 100%);
+  --gradient-primary: linear-gradient(135deg, #2B5A8C 0%, #3B7AB5 100%);
+  --gradient-accent: linear-gradient(135deg, #D4853A 0%, #E29A55 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(26,26,26,0.4) 0%, rgba(26,26,26,0.65) 100%);
+  --gradient-footer-top: linear-gradient(180deg, transparent 0%, #1A2A3A 100%);
 }
 
 /* ===== Dark Mode ===== */
 [data-theme="dark"] {
-  --bg-primary: #0A1E1E;
-  --bg-secondary: #0F2A2A;
-  --bg-card: #133535;
-  --bg-footer: #061515;
-  --text-primary: #E8F0EE;
-  --text-secondary: #A0B8B5;
-  --text-muted: #607A78;
+  --bg-primary: #111820;
+  --bg-secondary: #1A2230;
+  --bg-card: #1E2838;
+  --bg-footer: #0A1018;
+  --text-primary: #EAF0F5;
+  --text-secondary: #A0B0C0;
+  --text-muted: #607080;
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow-color: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.5);
@@ -107,10 +107,10 @@ body {
 /* ===== Typography ===== */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--text-primary);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
@@ -264,7 +264,7 @@ li {
   background: var(--color-accent-light);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(232, 146, 58, 0.3);
+  box-shadow: 0 4px 12px rgba(212, 133, 58, 0.3);
 }
 
 /* Outline variant for dark sections */
@@ -311,7 +311,7 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(12, 74, 74, 0.15);
+  box-shadow: 0 0 0 2px rgba(43, 90, 140, 0.15);
 }
 
 textarea {
