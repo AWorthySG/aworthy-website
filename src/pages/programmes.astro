@@ -19,7 +19,7 @@ import '../styles/global.css';
 
   <!-- ===== PROGRAMME OVERVIEW VISUAL PLACEHOLDER ===== -->
   <div class="container">
-    <div class="prog-placeholder" style="aspect-ratio: 21/9; width: 100%;">Programme Overview Visual</div>
+    <img src="/images/illustrations/case-method.svg" alt="The CASE Method" class="prog-hero-illustration" />
   </div>
 
   <!-- ===== NAV PILLS ===== -->
@@ -41,7 +41,7 @@ import '../styles/global.css';
 
       <div class="card-grid card-grid--1">
         <div class="prog-card" data-animate="fade-up" data-animate-delay="1">
-          <div class="prog-placeholder" style="aspect-ratio: 16/9; width: 100%; margin-bottom: 1.25rem;">Sec 1-2 Foundation</div>
+          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" />
           <h3 class="prog-card__title">Foundation Programme</h3>
           <p class="prog-card__desc">Small group online sessions designed to develop the core English skills that underpin O-Level success &mdash; starting from Secondary 1.</p>
           <ul class="prog-card__topics">
@@ -71,7 +71,7 @@ import '../styles/global.css';
 
       <div class="card-grid card-grid--1">
         <div class="prog-card" data-animate="fade-up" data-animate-delay="1">
-          <div class="prog-placeholder" style="aspect-ratio: 16/9; width: 100%; margin-bottom: 1.25rem;">Sec 3-4 O-Level Intensive</div>
+          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" />
           <h3 class="prog-card__title">O-Level Intensive Programme</h3>
           <p class="prog-card__desc">Rigorous, exam-aligned preparation covering every component of the GCE O-Level English paper &mdash; with regular mock practice and individualised feedback.</p>
           <ul class="prog-card__topics">
@@ -102,7 +102,7 @@ import '../styles/global.css';
 
       <div class="card-grid card-grid--1">
         <div class="prog-card" data-animate="fade-up" data-animate-delay="1">
-          <div class="prog-placeholder" style="aspect-ratio: 16/9; width: 100%; margin-bottom: 1.25rem;">One-to-One Coaching</div>
+          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" />
           <h3 class="prog-card__title">Individual Coaching</h3>
           <p class="prog-card__desc">Fully customised to the student's specific gaps. Individual online sessions via Zoom, scheduled at your convenience.</p>
           <div class="prog-card__meta">
@@ -461,6 +461,18 @@ import '../styles/global.css';
   .prog-cta__btn--outline:hover {
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-1px);
+  }
+
+  .prog-hero-illustration {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    display: block;
+  }
+
+  .prog-card-illustration {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
   }
 
   /* ===== PROGRAMME PLACEHOLDER ===== */

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <!-- Isometric laptop with floating education elements -->
+
+  <!-- Shadow -->
+  <ellipse cx="300" cy="350" rx="160" ry="25" fill="#2B5A8C" opacity="0.06"/>
+
+  <!-- Laptop base -->
+  <path d="M160 300 L300 360 L440 300 L300 240Z" fill="#E8EAED"/>
+  <path d="M160 300 L160 310 L300 370 L300 360Z" fill="#D0D3D8"/>
+  <path d="M300 360 L300 370 L440 310 L440 300Z" fill="#D8DBDF"/>
+
+  <!-- Laptop screen back -->
+  <path d="M180 290 L180 160 L300 100 L420 160 L420 290 L300 350Z" fill="#2B5A8C"/>
+
+  <!-- Screen -->
+  <path d="M195 280 L195 175 L300 120 L405 175 L405 280 L300 335Z" fill="#F5F8FA"/>
+
+  <!-- Screen content lines -->
+  <path d="M230 190 L300 155 L370 190" fill="none" stroke="#2B5A8C" stroke-width="1.5" opacity="0.3"/>
+  <line x1="220" y1="210" x2="330" y2="155" stroke="#2B5A8C" stroke-width="2" opacity="0.15"/>
+  <line x1="220" y1="225" x2="310" y2="180" stroke="#2B5A8C" stroke-width="2" opacity="0.15"/>
+  <line x1="220" y1="240" x2="290" y2="205" stroke="#D4853A" stroke-width="2" opacity="0.3"/>
+  <line x1="220" y1="255" x2="340" y2="195" stroke="#2B5A8C" stroke-width="2" opacity="0.15"/>
+  <line x1="220" y1="270" x2="320" y2="220" stroke="#2B5A8C" stroke-width="2" opacity="0.15"/>
+
+  <!-- Video call avatar circles on screen -->
+  <circle cx="360" cy="210" r="18" fill="#2B5A8C" opacity="0.15"/>
+  <circle cx="360" cy="250" r="18" fill="#D4853A" opacity="0.15"/>
+  <text x="360" y="214" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#2B5A8C" opacity="0.5">T</text>
+  <text x="360" y="254" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#D4853A" opacity="0.5">S</text>
+
+  <!-- Floating elements -->
+
+  <!-- Floating book (top left) -->
+  <g transform="translate(100, 120) rotate(-10)">
+    <rect x="0" y="0" width="40" height="50" rx="3" fill="#3B7AB5" opacity="0.8"/>
+    <rect x="5" y="5" width="30" height="40" rx="2" fill="#5B9AD5" opacity="0.6"/>
+    <line x1="10" y1="15" x2="30" y2="15" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
+    <line x1="10" y1="22" x2="25" y2="22" stroke="#fff" stroke-width="1.5" opacity="0.3"/>
+    <line x1="10" y1="29" x2="28" y2="29" stroke="#fff" stroke-width="1.5" opacity="0.3"/>
+  </g>
+
+  <!-- Floating A+ badge (top right) -->
+  <g transform="translate(460, 100)">
+    <circle cx="0" cy="0" r="28" fill="#D4853A" opacity="0.15"/>
+    <circle cx="0" cy="0" r="20" fill="#D4853A" opacity="0.25"/>
+    <text x="0" y="6" text-anchor="middle" font-family="Inter" font-size="16" font-weight="700" fill="#D4853A">A+</text>
+  </g>
+
+  <!-- Floating lightbulb (top center) -->
+  <g transform="translate(300, 60)">
+    <circle cx="0" cy="0" r="16" fill="#F0B870" opacity="0.2"/>
+    <path d="M-6 -8 C-6 -16 6 -16 6 -8 C6 -2 2 2 2 5 L-2 5 C-2 2 -6 -2 -6 -8Z" fill="#D4853A" opacity="0.6"/>
+    <rect x="-3" y="5" width="6" height="4" rx="1" fill="#D4853A" opacity="0.4"/>
+  </g>
+
+  <!-- Floating magnifying glass (right) -->
+  <g transform="translate(480, 220)">
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#2B5A8C" stroke-width="2.5" opacity="0.3"/>
+    <line x1="10" y1="10" x2="20" y2="20" stroke="#2B5A8C" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+  </g>
+
+  <!-- Decorative dots -->
+  <circle cx="130" cy="200" r="3" fill="#D4853A" opacity="0.3"/>
+  <circle cx="480" cy="160" r="4" fill="#2B5A8C" opacity="0.2"/>
+  <circle cx="150" cy="280" r="3" fill="#2B5A8C" opacity="0.2"/>
+  <circle cx="460" cy="290" r="3" fill="#D4853A" opacity="0.25"/>
+</svg>

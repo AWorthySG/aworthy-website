@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" fill="none">
+  <!-- Isometric rising bar chart with achievement elements -->
+
+  <!-- Grid floor -->
+  <g opacity="0.08">
+    <line x1="100" y1="280" x2="500" y2="280" stroke="#2B5A8C" stroke-width="1"/>
+    <line x1="100" y1="240" x2="500" y2="240" stroke="#2B5A8C" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="100" y1="200" x2="500" y2="200" stroke="#2B5A8C" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="100" y1="160" x2="500" y2="160" stroke="#2B5A8C" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="100" y1="120" x2="500" y2="120" stroke="#2B5A8C" stroke-width="1" stroke-dasharray="4,4"/>
+  </g>
+
+  <!-- Bar 1 (2022) -->
+  <g>
+    <rect x="140" y="210" width="50" height="70" rx="4" fill="#2B5A8C" opacity="0.25"/>
+    <rect x="140" y="210" width="50" height="70" rx="4" fill="url(#bar1)" opacity="0.5"/>
+    <text x="165" y="300" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#8A8A8A">2022</text>
+    <text x="165" y="202" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#2B5A8C">78%</text>
+  </g>
+
+  <!-- Bar 2 (2023) -->
+  <g>
+    <rect x="230" y="180" width="50" height="100" rx="4" fill="#2B5A8C" opacity="0.4"/>
+    <text x="255" y="300" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#8A8A8A">2023</text>
+    <text x="255" y="172" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#2B5A8C">83%</text>
+  </g>
+
+  <!-- Bar 3 (2024) -->
+  <g>
+    <rect x="320" y="150" width="50" height="130" rx="4" fill="#3B7AB5" opacity="0.6"/>
+    <text x="345" y="300" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#8A8A8A">2024</text>
+    <text x="345" y="142" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#2B5A8C">88%</text>
+  </g>
+
+  <!-- Bar 4 (2025) - tallest, accent colour -->
+  <g>
+    <rect x="410" y="110" width="50" height="170" rx="4" fill="#D4853A"/>
+    <text x="435" y="300" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#4A4A4A" font-weight="500">2025</text>
+    <text x="435" y="102" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#D4853A">90%</text>
+  </g>
+
+  <!-- Trend line -->
+  <polyline points="165,210 255,180 345,150 435,110" fill="none" stroke="#D4853A" stroke-width="2" stroke-dasharray="6,3" opacity="0.5"/>
+
+  <!-- Arrow tip on trend -->
+  <polygon points="440,108 435,103 445,105" fill="#D4853A" opacity="0.5"/>
+
+  <!-- Star burst on top bar -->
+  <g transform="translate(435, 85)">
+    <circle cx="0" cy="0" r="12" fill="#D4853A" opacity="0.12"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Inter" font-size="10" fill="#D4853A">★</text>
+  </g>
+
+  <!-- Y-axis label -->
+  <text x="90" y="285" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#8A8A8A">0%</text>
+  <text x="90" y="125" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#8A8A8A">100%</text>
+
+  <!-- Title -->
+  <text x="300" y="40" text-anchor="middle" font-family="Inter" font-size="13" font-weight="500" fill="#4A4A4A" letter-spacing="0.04em">O-LEVEL ENGLISH A1-B3 RATE</text>
+
+  <defs>
+    <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3B7AB5"/>
+      <stop offset="100%" stop-color="#2B5A8C"/>
+    </linearGradient>
+  </defs>
+</svg>
