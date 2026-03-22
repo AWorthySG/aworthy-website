@@ -318,7 +318,7 @@ import '../styles/global.css';
       <h2 class="r-heading">Real transformations, real students</h2>
       <p class="r-subtitle">See how A Worthy made the difference.</p>
 
-      <img src="/images/general/results-celebration.jpg" alt="Students celebrating their exam results" class="r-celebration-img" loading="lazy" />
+      <div class="r-placeholder-img">Celebration Photo</div>
 
       <div class="r-cards-3">
         <div class="r-card r-story-card">
@@ -655,13 +655,20 @@ import '../styles/global.css';
     text-align: right;
   }
 
-  /* ===== CELEBRATION IMAGE ===== */
-  .r-celebration-img {
+  /* ===== PLACEHOLDER IMAGE ===== */
+  .r-placeholder-img {
+    background: #1a1c1f;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
     width: 100%;
-    max-height: 320px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid var(--r-border);
     margin-bottom: 2.5rem;
   }
 

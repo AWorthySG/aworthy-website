@@ -8,7 +8,7 @@ const testimonials = [
   {
     name: 'Mrs. Linda Tan',
     context: 'Mother of Sec 4 student, Chung Cheng High',
-    avatar: '/images/avatars/avatar-linda.jpg',
+    avatar: 'LT',
     stars: 5,
     quote: 'My son was struggling badly with A Maths — he came home frustrated after every school exam. After joining A Worthy, his tutor Mr. Kevin broke down each topic patiently and drilled him with targeted practice papers. In just 8 months, he went from a C5 to an A2 at the O-Levels. We are so grateful. The difference in his confidence is night and day.',
     featured: true,
@@ -16,7 +16,7 @@ const testimonials = [
   {
     name: 'Ethan Lim',
     context: 'P6 student, Ai Tong School — PSLE 2025',
-    avatar: '/images/avatars/avatar-ethan.jpg',
+    avatar: 'EL',
     stars: 5,
     quote: 'I scored AL1 for both Maths and Science at PSLE! Teacher Jason always made lessons so fun and easy to understand. He taught me how to check my work properly and manage my time during exams. I even started looking forward to tuition every week. Thank you, A Worthy!',
     featured: false,
@@ -24,7 +24,7 @@ const testimonials = [
   {
     name: 'Mr. Rajesh Kumar',
     context: 'Father of Sec 3 student, Bukit Panjang Govt High School',
-    avatar: '/images/avatars/avatar-rajesh.jpg',
+    avatar: 'RK',
     stars: 5,
     quote: 'My daughter used to dread Chemistry — she would cry before every test. The small class sizes at A Worthy made all the difference. Her tutor Ms. Sarah was incredibly patient, using real-life analogies to explain abstract concepts. Now she actually enjoys the subject and scored an A2 for her end-of-year exam. We could not be happier.',
     featured: false,
@@ -32,7 +32,7 @@ const testimonials = [
   {
     name: 'Mrs. Angela Wong',
     context: 'Mother of JC2 student, Anglo-Chinese Junior College (ACJC)',
-    avatar: '/images/avatars/avatar-angela.jpg',
+    avatar: 'AW',
     stars: 5,
     quote: 'My daughter was getting D and E grades for H2 Chemistry in JC1. We were extremely worried. After one year at A Worthy, she scored a solid A at the A-Levels. The JC tutors here really know the Cambridge syllabus inside out and focus on exam technique, not just content. Worth every dollar.',
     featured: true,
@@ -40,7 +40,7 @@ const testimonials = [
   {
     name: 'Mr. Muhammad Faisal',
     context: 'Father of twin sons, PSLE 2025 — Haig Girls\' School area',
-    avatar: '/images/avatars/avatar-faisal.jpg',
+    avatar: 'MF',
     stars: 5,
     quote: 'Both my boys scored a PSLE aggregate under 10, Alhamdulillah. We enrolled them at A Worthy from P4. The structured approach — diagnostics, consistent practice, and mock exams — really prepared them well. The tutors always went the extra mile, even providing additional worksheets during the June holidays.',
     featured: false,
@@ -48,7 +48,7 @@ const testimonials = [
   {
     name: 'Ms. Jennifer Lee',
     context: 'Mother of P5 student, previously at another tuition centre',
-    avatar: '/images/avatars/avatar-jennifer.jpg',
+    avatar: 'JL',
     stars: 5,
     quote: 'We moved to A Worthy after being disappointed with a larger tuition chain where my son was just one of 20 students in a class. The difference was immediate. At A Worthy, the teachers actually know my son by name, understand his weak areas, and tailor their explanations. His CA2 results improved across all three subjects within the first term.',
     featured: false,
@@ -56,7 +56,7 @@ const testimonials = [
   {
     name: 'Ryan Ong',
     context: 'JC1 student, Victoria Junior College (VJC)',
-    avatar: '/images/avatars/avatar-ryan.jpg',
+    avatar: 'RO',
     stars: 5,
     quote: 'I was getting S grade for H2 Maths in my first promos — I seriously considered dropping to H1. My friend recommended A Worthy, and Mr. Lim literally saved my A-Level journey. He re-taught me everything from vectors to integration with so much clarity. I jumped from S to B in just one term. Highly recommend for any JC student struggling with Maths.',
     featured: false,
@@ -64,7 +64,7 @@ const testimonials = [
   {
     name: 'Mrs. Deepa Nair',
     context: 'Mother of Sec 2 student, Cedar Girls\' Secondary School',
-    avatar: '/images/avatars/avatar-deepa.jpg',
+    avatar: 'DN',
     stars: 5,
     quote: 'What I love most about A Worthy is the communication. After every lesson, the tutor sends a WhatsApp update on what was covered, how my daughter performed, and what to revise at home. I feel truly involved in her learning journey. The termly parent-teacher meetings are also very insightful. This level of care is rare in tuition centres.',
     featured: false,
@@ -72,7 +72,7 @@ const testimonials = [
   {
     name: 'Wei Ling',
     context: 'Sec 4 student, O-Levels 2025 — 7 distinctions',
-    avatar: '/images/avatars/avatar-weiling.jpg',
+    avatar: 'WL',
     stars: 5,
     quote: 'I scored 7 distinctions at the O-Levels, including A1 for both Pure Physics and Pure Chemistry! A huge thank you to the Science teachers at A Worthy — especially Mr. Tan, who made even the hardest topics feel manageable. The weekly timed practices and past-year paper drills really gave me the confidence I needed on exam day.',
     featured: true,
@@ -130,7 +130,7 @@ const testimonials = [
               &ldquo;{t.quote}&rdquo;
             </blockquote>
             <div class="t-card-author">
-              <img src={t.avatar} alt="" class="t-card-avatar" loading="lazy" />
+              <div class="t-placeholder-avatar">{t.avatar}</div>
               <div class="t-card-author-info">
                 <strong>{t.name}</strong>
                 <span>{t.context}</span>
@@ -358,13 +358,18 @@ const testimonials = [
     border-top: 1px solid var(--t-border);
   }
 
-  .t-card-avatar {
-    width: 44px;
-    height: 44px;
+  .t-placeholder-avatar {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    object-fit: cover;
+    background: #3a3d42;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    border: 2px solid var(--t-border);
   }
 
   .t-card-author-info {
