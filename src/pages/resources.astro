@@ -249,15 +249,15 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
 <style>
   /* ===== BASE / TOKENS ===== */
   :root {
-    --r-bg: #2a2c2f;
-    --r-bg-card: #232527;
-    --r-bg-input: #222427;
-    --r-orange: #e8713a;
+    --r-bg: var(--bg-primary);
+    --r-bg-card: var(--bg-secondary);
+    --r-bg-input: var(--bg-secondary);
+    --r-orange: var(--color-accent);
     --r-orange-hover: #d4632f;
     --r-white: #ffffff;
-    --r-white-70: rgba(255, 255, 255, 0.7);
-    --r-white-40: rgba(255, 255, 255, 0.4);
-    --r-border: rgba(255, 255, 255, 0.1);
+    --r-white-70: var(--text-secondary);
+    --r-white-40: var(--text-muted);
+    --r-border: var(--border-color);
     --r-border-focus: rgba(232, 113, 58, 0.6);
     --r-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --r-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;

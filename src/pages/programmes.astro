@@ -156,12 +156,12 @@ import '../styles/global.css';
 <style>
   /* ===== DESIGN TOKENS ===== */
   :root {
-    --prog-bg: #2a2c2f;
+    --prog-bg: var(--bg-primary);
     --prog-bg-card: rgba(255, 255, 255, 0.03);
-    --prog-border: rgba(255, 255, 255, 0.1);
+    --prog-border: var(--border-color);
     --prog-text: #ffffff;
-    --prog-text-secondary: rgba(255, 255, 255, 0.6);
-    --prog-accent: #e8713a;
+    --prog-text-secondary: var(--text-secondary);
+    --prog-accent: var(--color-accent);
     --prog-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --prog-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
   }
@@ -303,7 +303,7 @@ import '../styles/global.css';
 
   .prog-card:hover {
     transform: scale(0.98);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--border-color);
   }
 
   .prog-card__title {
@@ -336,7 +336,7 @@ import '../styles/global.css';
     line-height: 1.5;
     color: var(--prog-text-secondary);
     padding: 0.45rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--bg-secondary);
     padding-left: 1rem;
     position: relative;
   }
@@ -435,7 +435,7 @@ import '../styles/global.css';
 
   .prog-cta__btn--primary {
     background: var(--prog-accent);
-    color: #ffffff;
+    color: var(--text-primary);
     border: 1px solid var(--prog-accent);
   }
 

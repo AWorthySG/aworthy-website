@@ -232,13 +232,13 @@ import '../styles/global.css';
 <style>
   /* ===== DESIGN TOKENS ===== */
   :root {
-    --r-bg: #2a2c2f;
+    --r-bg: var(--bg-primary);
     --r-bg-card: rgba(255, 255, 255, 0.03);
-    --r-border: rgba(255, 255, 255, 0.1);
-    --r-orange: #e8713a;
+    --r-border: var(--border-color);
+    --r-orange: var(--color-accent);
     --r-white: #ffffff;
-    --r-white-70: rgba(255, 255, 255, 0.7);
-    --r-white-50: rgba(255, 255, 255, 0.5);
+    --r-white-70: var(--text-secondary);
+    --r-white-50: var(--text-muted);
     --r-white-30: rgba(255, 255, 255, 0.3);
     --r-white-10: rgba(255, 255, 255, 0.06);
     --r-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -489,16 +489,16 @@ import '../styles/global.css';
 
   /* ===== PLACEHOLDER IMAGE ===== */
   .r-placeholder-img {
-    background: #1a1c1f;
+    background: var(--bg-secondary);
     aspect-ratio: 16 / 9;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.15);
+    color: var(--border-color);
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border: 1px dashed var(--border-color);
     border-radius: 6px;
     width: 100%;
     margin-bottom: 2.5rem;

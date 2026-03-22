@@ -32,7 +32,7 @@ import '../styles/global.css';
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #2a2c2f;
+    background: var(--bg-primary);
     overflow: hidden;
   }
 
@@ -44,7 +44,7 @@ import '../styles/global.css';
     font-family: 'Inter', sans-serif;
     font-size: clamp(16rem, 30vw, 28rem);
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.05);
+    color: var(--bg-secondary);
     line-height: 1;
     letter-spacing: -0.04em;
     user-select: none;
@@ -65,7 +65,7 @@ import '../styles/global.css';
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #e8713a;
+    color: var(--color-accent);
     margin-bottom: 1.5rem;
   }
 
@@ -73,7 +73,7 @@ import '../styles/global.css';
     font-family: 'Inter', sans-serif;
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
     line-height: 1.1;
     margin: 0 0 1rem 0;
@@ -84,7 +84,7 @@ import '../styles/global.css';
     font-size: 1.05rem;
     font-weight: 400;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
     margin: 0 0 2.5rem 0;
   }
 
@@ -108,9 +108,9 @@ import '../styles/global.css';
   }
 
   .actions .btn-primary {
-    background: #e8713a;
-    color: #ffffff;
-    border: 1px solid #e8713a;
+    background: var(--color-accent);
+    color: var(--text-primary);
+    border: 1px solid var(--color-accent);
   }
 
   .actions .btn-primary:hover {
@@ -120,12 +120,12 @@ import '../styles/global.css';
 
   .actions .btn-secondary {
     background: transparent;
-    color: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
   }
 
   .actions .btn-secondary:hover {
-    color: #ffffff;
+    color: var(--text-primary);
     border-color: rgba(255, 255, 255, 0.35);
   }
 </style>

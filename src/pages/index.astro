@@ -198,14 +198,14 @@ import '../styles/global.css';
 <style>
   /* ===== DESIGN TOKENS ===== */
   :root {
-    --dark-bg: #2a2c2f;
+    --dark-bg: var(--bg-primary);
     --dark-bg-lighter: #323538;
     --dark-bg-card: #2f3134;
-    --accent-orange: #e8713a;
+    --accent-orange: var(--color-accent);
     --white: #ffffff;
-    --white-60: rgba(255, 255, 255, 0.6);
-    --white-10: rgba(255, 255, 255, 0.1);
-    --white-05: rgba(255, 255, 255, 0.05);
+    --white-60: var(--text-secondary);
+    --white-10: var(--border-color);
+    --white-05: var(--bg-secondary);
   }
 
   /* ===== EYEBROW ===== */
@@ -261,16 +261,16 @@ import '../styles/global.css';
 
   /* ===== PLACEHOLDER IMAGES ===== */
   .placeholder-img {
-    background: #1a1c1f;
+    background: var(--bg-secondary);
     aspect-ratio: 16 / 9;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.15);
+    color: var(--border-color);
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border: 1px dashed var(--border-color);
   }
 
   .hero-placeholder {
@@ -285,8 +285,8 @@ import '../styles/global.css';
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #3a3d42;
-    color: rgba(255, 255, 255, 0.5);
+    background: var(--color-primary-light);
+    color: var(--text-muted);
     font-size: 0.75rem;
     font-weight: 600;
     display: flex;

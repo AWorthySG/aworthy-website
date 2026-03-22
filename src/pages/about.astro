@@ -157,12 +157,12 @@ import '../styles/global.css';
 <style>
   /* ===== DESIGN TOKENS ===== */
   :root {
-    --about-bg: #2a2c2f;
-    --about-bg-alt: #232527;
+    --about-bg: var(--bg-primary);
+    --about-bg-alt: var(--bg-secondary);
     --about-white: #ffffff;
-    --about-gray: rgba(255, 255, 255, 0.6);
-    --about-border: rgba(255, 255, 255, 0.1);
-    --about-accent: #e8713a;
+    --about-gray: var(--text-secondary);
+    --about-border: var(--border-color);
+    --about-accent: var(--color-accent);
     --about-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --about-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
   }
@@ -206,16 +206,16 @@ import '../styles/global.css';
 
   /* ===== PLACEHOLDER IMAGES ===== */
   .placeholder-img {
-    background: #1a1c1f;
+    background: var(--bg-secondary);
     aspect-ratio: 16 / 9;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.15);
+    color: var(--border-color);
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border: 1px dashed var(--border-color);
   }
 
   .hero-placeholder {
