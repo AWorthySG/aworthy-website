@@ -1,528 +1,421 @@
-// A Worthy — Immersive 3D Education Scene
-// Three.js cinematic hero with floating education elements
+// A Worthy — Immersive Shader-Based 3D Hero
+// Custom GLSL shaders for flowing abstract visuals
 
 import * as THREE from 'three';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
-// ─── Brand Palette ───
-const NAVY    = 0x1B2A4A;
-const GOLD    = 0xC9A84C;
-const OFFWHITE = 0xF5F0E8;
-const WARMGOLD = 0xD4A853;
-const DEEPNAVY = 0x0D1A2F;
-
-// ─── Scene Setup ───
 const canvas = document.getElementById('hero-3d');
-if (!canvas) { console.warn('Canvas #hero-3d not found — 3D scene disabled'); }
+if (!canvas) console.warn('Canvas #hero-3d not found');
 
 if (canvas) {
-// Use parent dimensions (the hero section) since canvas starts at 0x0
+
 const parent = canvas.parentElement;
 const w = parent.clientWidth || window.innerWidth;
 const h = parent.clientHeight || window.innerHeight;
 
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xF0F4F8);
-scene.fog = new THREE.FogExp2(0xF0F4F8, 0.018);
-
-const camera = new THREE.PerspectiveCamera(55, w / h, 0.1, 100);
-camera.position.set(0, 1.5, 8);
-camera.lookAt(0, 0, 0);
-
+// ─── Renderer ───
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setSize(w, h);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.outputColorSpace = THREE.SRGBColorSpace;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.6;
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.setClearColor(0x000000, 0);
 
-// ─── Post-Processing ───
-const composer = new EffectComposer(renderer);
-composer.addPass(new RenderPass(scene, camera));
+// ─── Scene & Camera ───
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 100);
+camera.position.set(0, 0, 3);
 
-const bloomPass = new UnrealBloomPass(
-  new THREE.Vector2(canvas.clientWidth, canvas.clientHeight),
-  0.3, 0.4, 0.92
-);
-composer.addPass(bloomPass);
-composer.addPass(new OutputPass());
+// ═══════════════════════════════════════════════
+// SHADER 1: Flowing Gradient Mesh (fullscreen BG)
+// ═══════════════════════════════════════════════
 
-// ─── Lighting ───
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1.2);
-scene.add(ambientLight);
+const bgVertexShader = `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
 
-const hemisphereLight = new THREE.HemisphereLight(0xF0F4F8, 0xC9A84C, 0.8);
-scene.add(hemisphereLight);
+const bgFragmentShader = `
+  uniform float uTime;
+  uniform vec2 uResolution;
+  uniform vec2 uMouse;
+  varying vec2 vUv;
 
-const goldLight = new THREE.PointLight(GOLD, 4.0, 40);
-goldLight.position.set(4, 5, 3);
-goldLight.castShadow = true;
-scene.add(goldLight);
+  // Simplex noise helpers
+  vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+  vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+  vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
 
-const blueLight = new THREE.PointLight(0x6699DD, 3.0, 35);
-blueLight.position.set(-5, -2, 4);
-scene.add(blueLight);
+  float snoise(vec2 v) {
+    const vec4 C = vec4(0.211324865405187, 0.366025403784439,
+                       -0.577350269189626, 0.024390243902439);
+    vec2 i = floor(v + dot(v, C.yy));
+    vec2 x0 = v - i + dot(i, C.xx);
+    vec2 i1;
+    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+    vec4 x12 = x0.xyxy + C.xxzz;
+    x12.xy -= i1;
+    i = mod289(i);
+    vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0))
+                            + i.x + vec3(0.0, i1.x, 1.0));
+    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy),
+                            dot(x12.zw,x12.zw)), 0.0);
+    m = m*m;
+    m = m*m;
+    vec3 x = 2.0 * fract(p * C.www) - 1.0;
+    vec3 h = abs(x) - 0.5;
+    vec3 ox = floor(x + 0.5);
+    vec3 a0 = x - ox;
+    m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+    vec3 g;
+    g.x = a0.x * x0.x + h.x * x0.y;
+    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+    return 130.0 * dot(m, g);
+  }
 
-const rimLight = new THREE.PointLight(WARMGOLD, 2.0, 25);
-rimLight.position.set(0, 3, -5);
-scene.add(rimLight);
+  void main() {
+    vec2 uv = vUv;
 
-const frontLight = new THREE.DirectionalLight(0xFFFFFF, 0.6);
-frontLight.position.set(0, 2, 8);
-scene.add(frontLight);
+    // Flowing noise field
+    float n1 = snoise(uv * 2.0 + uTime * 0.08);
+    float n2 = snoise(uv * 3.5 - uTime * 0.06 + 10.0);
+    float n3 = snoise(uv * 1.5 + uTime * 0.04 + vec2(n1, n2) * 0.3);
 
-// ─── Materials ───
-const navyMat = new THREE.MeshPhysicalMaterial({
-  color: 0x2E4A7A,
-  metalness: 0.2,
-  roughness: 0.3,
-  clearcoat: 0.8,
-  clearcoatRoughness: 0.1,
-});
+    // Mouse influence (subtle warp)
+    float mouseDist = length(uv - uMouse * 0.5 - 0.5);
+    float mouseInfluence = smoothstep(0.6, 0.0, mouseDist) * 0.15;
 
-const goldMat = new THREE.MeshPhysicalMaterial({
-  color: 0xD4A84C,
-  metalness: 0.6,
-  roughness: 0.2,
-  clearcoat: 1.0,
-  clearcoatRoughness: 0.05,
-  emissive: 0xD4A84C,
-  emissiveIntensity: 0.15,
-});
+    // Brand colours
+    vec3 navy   = vec3(0.106, 0.165, 0.290);   // #1B2A4A
+    vec3 gold   = vec3(0.788, 0.659, 0.298);   // #C9A84C
+    vec3 cream  = vec3(0.961, 0.941, 0.910);   // #F5F0E8
+    vec3 blue   = vec3(0.290, 0.478, 0.710);   // #4A7AB5
+    vec3 white  = vec3(1.0, 1.0, 1.0);
 
-const glassMat = new THREE.MeshPhysicalMaterial({
-  color: 0xD0E4F8,
-  metalness: 0.0,
-  roughness: 0.05,
-  transmission: 0.7,
+    // Layer blending
+    float blend1 = smoothstep(-0.3, 0.6, n1 + mouseInfluence);
+    float blend2 = smoothstep(-0.2, 0.5, n2);
+    float blend3 = smoothstep(-0.1, 0.4, n3);
+
+    // Base is cream/white, with flowing navy and gold veins
+    vec3 color = cream;
+    color = mix(color, white, blend1 * 0.3);
+    color = mix(color, mix(navy, blue, 0.3), blend2 * 0.25);
+    color = mix(color, gold, blend3 * 0.2);
+
+    // Soft gold highlights in certain areas
+    float highlight = smoothstep(0.3, 0.8, n1 * n2 + 0.2);
+    color = mix(color, mix(gold, cream, 0.5), highlight * 0.15);
+
+    // Subtle vignette from edges
+    float vignette = 1.0 - smoothstep(0.3, 1.2, length(uv - 0.5) * 1.4);
+    color *= 0.92 + vignette * 0.08;
+
+    gl_FragColor = vec4(color, 0.85);
+  }
+`;
+
+const bgMat = new THREE.ShaderMaterial({
+  vertexShader: bgVertexShader,
+  fragmentShader: bgFragmentShader,
+  uniforms: {
+    uTime: { value: 0 },
+    uResolution: { value: new THREE.Vector2(w, h) },
+    uMouse: { value: new THREE.Vector2(0, 0) },
+  },
   transparent: true,
-  thickness: 0.5,
-  ior: 1.5,
-  clearcoat: 1.0,
-});
-
-const whiteMat = new THREE.MeshPhysicalMaterial({
-  color: 0xFAF6F0,
-  metalness: 0.05,
-  roughness: 0.5,
-  clearcoat: 0.4,
-});
-
-// ─── Floating Objects ───
-const floatingGroup = new THREE.Group();
-scene.add(floatingGroup);
-
-// Helper: create a 3D book shape
-function createBook(width, height, depth, material, spineMat) {
-  const group = new THREE.Group();
-  // Book body
-  const body = new THREE.Mesh(new THREE.BoxGeometry(width, height, depth), material);
-  body.castShadow = true;
-  group.add(body);
-  // Spine accent
-  const spine = new THREE.Mesh(
-    new THREE.BoxGeometry(depth * 0.15, height * 1.01, depth * 1.01),
-    spineMat || goldMat
-  );
-  spine.position.x = -width / 2;
-  group.add(spine);
-  // Pages (visible edge)
-  const pages = new THREE.Mesh(
-    new THREE.BoxGeometry(width * 0.92, height * 0.96, depth * 0.02),
-    whiteMat
-  );
-  pages.position.x = width * 0.03;
-  pages.position.z = depth / 2;
-  group.add(pages);
-  return group;
-}
-
-// Book stack
-const book1 = createBook(1.2, 0.18, 0.9, navyMat, goldMat);
-book1.position.set(-1.5, -0.5, 0);
-book1.rotation.y = 0.3;
-floatingGroup.add(book1);
-
-const book2 = createBook(1.1, 0.15, 0.85, goldMat, navyMat);
-book2.position.set(-1.4, -0.2, 0.1);
-book2.rotation.y = -0.15;
-book2.rotation.z = 0.05;
-floatingGroup.add(book2);
-
-const book3 = createBook(1.0, 0.14, 0.8, new THREE.MeshPhysicalMaterial({
-  color: 0x8B4513,
-  metalness: 0.2,
-  roughness: 0.5,
-  clearcoat: 0.4,
-}), goldMat);
-book3.position.set(-1.6, 0.05, -0.05);
-book3.rotation.y = 0.5;
-book3.rotation.z = -0.08;
-floatingGroup.add(book3);
-
-// Graduation cap
-function createGradCap() {
-  const group = new THREE.Group();
-  // Board
-  const board = new THREE.Mesh(
-    new THREE.BoxGeometry(1.2, 0.06, 1.2),
-    navyMat
-  );
-  board.castShadow = true;
-  group.add(board);
-  // Button on top
-  const button = new THREE.Mesh(
-    new THREE.SphereGeometry(0.06, 16, 16),
-    goldMat
-  );
-  button.position.y = 0.06;
-  group.add(button);
-  // Tassel cord
-  const tasselCurve = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(0, 0.06, 0),
-    new THREE.Vector3(0.3, -0.1, 0.1),
-    new THREE.Vector3(0.5, -0.4, 0.15),
-  ]);
-  const tasselGeo = new THREE.TubeGeometry(tasselCurve, 16, 0.012, 8, false);
-  const tassel = new THREE.Mesh(tasselGeo, goldMat);
-  group.add(tassel);
-  // Tassel end
-  const tEnd = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.03, 0.015, 0.12, 8),
-    goldMat
-  );
-  tEnd.position.set(0.5, -0.46, 0.15);
-  group.add(tEnd);
-  // Crown
-  const crown = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.3, 0.45, 0.25, 4),
-    navyMat
-  );
-  crown.position.y = -0.15;
-  crown.rotation.y = Math.PI / 4;
-  group.add(crown);
-  return group;
-}
-
-const gradCap = createGradCap();
-gradCap.position.set(1.8, 1.5, -1);
-gradCap.rotation.z = -0.2;
-gradCap.rotation.x = 0.15;
-floatingGroup.add(gradCap);
-
-// CASE letter cubes
-const letterGeo = new THREE.BoxGeometry(0.55, 0.55, 0.55);
-const letters = ['C', 'A', 'S', 'E'];
-const letterMeshes = [];
-
-letters.forEach((letter, i) => {
-  const group = new THREE.Group();
-
-  // Cube
-  const mat = i % 2 === 0 ? navyMat.clone() : goldMat.clone();
-  const cube = new THREE.Mesh(letterGeo, mat);
-  cube.castShadow = true;
-  group.add(cube);
-
-  // Glow shell
-  const glow = new THREE.Mesh(
-    new THREE.BoxGeometry(0.6, 0.6, 0.6),
-    new THREE.MeshBasicMaterial({
-      color: i % 2 === 0 ? NAVY : GOLD,
-      transparent: true,
-      opacity: 0.08,
-    })
-  );
-  group.add(glow);
-
-  // Letter label using canvas texture
-  const labelCanvas = document.createElement('canvas');
-  labelCanvas.width = 128;
-  labelCanvas.height = 128;
-  const ctx = labelCanvas.getContext('2d');
-  ctx.fillStyle = 'transparent';
-  ctx.fillRect(0, 0, 128, 128);
-  ctx.fillStyle = i % 2 === 0 ? '#C9A84C' : '#1B2A4A';
-  ctx.font = 'bold 80px Inter, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(letter, 64, 64);
-
-  const labelTex = new THREE.CanvasTexture(labelCanvas);
-  const labelMat = new THREE.MeshBasicMaterial({
-    map: labelTex,
-    transparent: true,
-    depthWrite: false,
-  });
-  const labelMesh = new THREE.Mesh(new THREE.PlaneGeometry(0.45, 0.45), labelMat);
-  labelMesh.position.z = 0.281;
-  group.add(labelMesh);
-
-  // Position in arc
-  const angle = (i - 1.5) * 0.5;
-  group.position.set(Math.sin(angle) * 2.5, 0.8 + Math.cos(i * 1.2) * 0.3, -1.5);
-  group.rotation.y = angle * 0.3;
-
-  floatingGroup.add(group);
-  letterMeshes.push(group);
-});
-
-// Pencil
-function createPencil() {
-  const group = new THREE.Group();
-  const body = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.04, 0.04, 1.4, 6),
-    new THREE.MeshPhysicalMaterial({ color: WARMGOLD, metalness: 0.3, roughness: 0.5 })
-  );
-  body.castShadow = true;
-  group.add(body);
-  // Tip
-  const tip = new THREE.Mesh(
-    new THREE.ConeGeometry(0.04, 0.15, 6),
-    new THREE.MeshPhysicalMaterial({ color: 0x2a2a2a, metalness: 0.1, roughness: 0.7 })
-  );
-  tip.position.y = -0.775;
-  group.add(tip);
-  // Eraser
-  const eraser = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.045, 0.045, 0.1, 6),
-    new THREE.MeshPhysicalMaterial({ color: 0xE87461, metalness: 0.0, roughness: 0.8 })
-  );
-  eraser.position.y = 0.75;
-  group.add(eraser);
-  // Metal band
-  const band = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.048, 0.048, 0.06, 6),
-    goldMat
-  );
-  band.position.y = 0.69;
-  group.add(band);
-  return group;
-}
-
-const pencil = createPencil();
-pencil.position.set(2.2, -0.3, 1);
-pencil.rotation.z = -0.6;
-pencil.rotation.x = 0.2;
-floatingGroup.add(pencil);
-
-// A+ badge (glass sphere with text)
-const badgeSphere = new THREE.Mesh(
-  new THREE.SphereGeometry(0.45, 32, 32),
-  glassMat
-);
-badgeSphere.position.set(-2.5, 1.2, -0.5);
-floatingGroup.add(badgeSphere);
-
-// A+ text on badge
-const aplusCanvas = document.createElement('canvas');
-aplusCanvas.width = 256;
-aplusCanvas.height = 256;
-const apCtx = aplusCanvas.getContext('2d');
-apCtx.fillStyle = 'rgba(27, 42, 74, 0.0)';
-apCtx.fillRect(0, 0, 256, 256);
-apCtx.fillStyle = '#C9A84C';
-apCtx.font = 'bold 120px Inter, sans-serif';
-apCtx.textAlign = 'center';
-apCtx.textBaseline = 'middle';
-apCtx.fillText('A+', 128, 128);
-const aplusTex = new THREE.CanvasTexture(aplusCanvas);
-const aplusLabel = new THREE.Mesh(
-  new THREE.PlaneGeometry(0.6, 0.6),
-  new THREE.MeshBasicMaterial({ map: aplusTex, transparent: true, depthWrite: false })
-);
-aplusLabel.position.copy(badgeSphere.position);
-aplusLabel.position.z += 0.46;
-floatingGroup.add(aplusLabel);
-
-// Magnifying glass
-function createMagnifier() {
-  const group = new THREE.Group();
-  // Lens ring
-  const ring = new THREE.Mesh(
-    new THREE.TorusGeometry(0.35, 0.04, 16, 32),
-    goldMat
-  );
-  group.add(ring);
-  // Lens
-  const lens = new THREE.Mesh(
-    new THREE.CircleGeometry(0.34, 32),
-    new THREE.MeshPhysicalMaterial({
-      color: 0xffffff,
-      transmission: 0.95,
-      transparent: true,
-      roughness: 0.0,
-      metalness: 0.0,
-      thickness: 0.2,
-      ior: 1.6,
-    })
-  );
-  group.add(lens);
-  // Handle
-  const handle = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.035, 0.04, 0.6, 8),
-    new THREE.MeshPhysicalMaterial({ color: 0x3a2a1a, metalness: 0.2, roughness: 0.6 })
-  );
-  handle.position.y = -0.6;
-  handle.rotation.z = 0;
-  group.add(handle);
-  return group;
-}
-
-const magnifier = createMagnifier();
-magnifier.position.set(2.8, 0.5, 0.5);
-magnifier.rotation.z = 0.4;
-magnifier.rotation.y = -0.3;
-floatingGroup.add(magnifier);
-
-// ─── Particle Field ───
-const particleCount = 1500;
-const particleGeo = new THREE.BufferGeometry();
-const particlePositions = new Float32Array(particleCount * 3);
-const particleSizes = new Float32Array(particleCount);
-
-for (let i = 0; i < particleCount; i++) {
-  const r = 15 + Math.random() * 25;
-  const theta = Math.random() * Math.PI * 2;
-  const phi = Math.acos(2 * Math.random() - 1);
-  particlePositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-  particlePositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-  particlePositions[i * 3 + 2] = r * Math.cos(phi);
-  particleSizes[i] = 0.02 + Math.random() * 0.06;
-}
-
-particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-particleGeo.setAttribute('size', new THREE.BufferAttribute(particleSizes, 1));
-
-const particleMat = new THREE.PointsMaterial({
-  color: 0xC9A84C,
-  size: 0.06,
-  transparent: true,
-  opacity: 0.6,
-  sizeAttenuation: true,
-  blending: THREE.NormalBlending,
   depthWrite: false,
 });
 
-const particles = new THREE.Points(particleGeo, particleMat);
-scene.add(particles);
+const bgPlane = new THREE.Mesh(new THREE.PlaneGeometry(12, 8), bgMat);
+bgPlane.position.z = -3;
+scene.add(bgPlane);
 
-// ─── Ground Plane ───
-const groundGeo = new THREE.PlaneGeometry(40, 40);
-const groundMat = new THREE.MeshStandardMaterial({
-  color: NAVY,
+// ═══════════════════════════════════════════════
+// SHADER 2: Glowing Orb Mesh (floating sphere)
+// ═══════════════════════════════════════════════
+
+const orbVertexShader = `
+  uniform float uTime;
+  varying vec3 vNormal;
+  varying vec3 vPosition;
+  varying vec2 vUv;
+
+  // Noise for vertex displacement
+  vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+  vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+  vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
+  vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
+
+  float snoise3D(vec3 v) {
+    const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+    const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+    vec3 i = floor(v + dot(v, C.yyy));
+    vec3 x0 = v - i + dot(i, C.xxx);
+    vec3 g = step(x0.yzx, x0.xyz);
+    vec3 l = 1.0 - g;
+    vec3 i1 = min(g.xyz, l.zxy);
+    vec3 i2 = max(g.xyz, l.zxy);
+    vec3 x1 = x0 - i1 + C.xxx;
+    vec3 x2 = x0 - i2 + C.yyy;
+    vec3 x3 = x0 - D.yyy;
+    i = mod289(i);
+    vec4 p = permute(permute(permute(
+      i.z + vec4(0.0, i1.z, i2.z, 1.0))
+      + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+      + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+    float n_ = 0.142857142857;
+    vec3 ns = n_ * D.wyz - D.xzx;
+    vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
+    vec4 x_ = floor(j * ns.z);
+    vec4 y_ = floor(j - 7.0 * x_);
+    vec4 x = x_ * ns.x + ns.yyyy;
+    vec4 y = y_ * ns.x + ns.yyyy;
+    vec4 h = 1.0 - abs(x) - abs(y);
+    vec4 b0 = vec4(x.xy, y.xy);
+    vec4 b1 = vec4(x.zw, y.zw);
+    vec4 s0 = floor(b0)*2.0 + 1.0;
+    vec4 s1 = floor(b1)*2.0 + 1.0;
+    vec4 sh = -step(h, vec4(0.0));
+    vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+    vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+    vec3 p0 = vec3(a0.xy, h.x);
+    vec3 p1 = vec3(a0.zw, h.y);
+    vec3 p2 = vec3(a1.xy, h.z);
+    vec3 p3 = vec3(a1.zw, h.w);
+    vec4 norm = taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));
+    p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+    vec4 m = max(0.6 - vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)), 0.0);
+    m = m * m;
+    return 42.0 * dot(m*m, vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+  }
+
+  void main() {
+    vUv = uv;
+    vNormal = normal;
+
+    // Displace vertices with noise
+    float displacement = snoise3D(position * 1.5 + uTime * 0.3) * 0.15;
+    displacement += snoise3D(position * 3.0 - uTime * 0.2) * 0.08;
+
+    vec3 newPos = position + normal * displacement;
+    vPosition = newPos;
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPos, 1.0);
+  }
+`;
+
+const orbFragmentShader = `
+  uniform float uTime;
+  varying vec3 vNormal;
+  varying vec3 vPosition;
+  varying vec2 vUv;
+
+  void main() {
+    vec3 navy = vec3(0.106, 0.165, 0.290);
+    vec3 gold = vec3(0.788, 0.659, 0.298);
+    vec3 blue = vec3(0.290, 0.478, 0.710);
+    vec3 cream = vec3(0.96, 0.94, 0.91);
+
+    // Fresnel effect (edges glow)
+    vec3 viewDir = normalize(cameraPosition - vPosition);
+    float fresnel = pow(1.0 - max(dot(viewDir, normalize(vNormal)), 0.0), 3.0);
+
+    // Flowing colour bands
+    float band = sin(vPosition.y * 4.0 + uTime * 0.5) * 0.5 + 0.5;
+    float band2 = cos(vPosition.x * 3.0 - uTime * 0.3 + vPosition.z * 2.0) * 0.5 + 0.5;
+
+    vec3 baseColor = mix(navy, blue, band);
+    baseColor = mix(baseColor, gold, band2 * 0.4);
+
+    // Gold rim glow
+    vec3 rimColor = mix(gold, cream, 0.3);
+    vec3 finalColor = mix(baseColor, rimColor, fresnel * 0.7);
+
+    // Subtle inner glow
+    finalColor += gold * fresnel * 0.2;
+
+    float alpha = 0.85 + fresnel * 0.15;
+    gl_FragColor = vec4(finalColor, alpha);
+  }
+`;
+
+const orbMat = new THREE.ShaderMaterial({
+  vertexShader: orbVertexShader,
+  fragmentShader: orbFragmentShader,
+  uniforms: {
+    uTime: { value: 0 },
+  },
   transparent: true,
-  opacity: 0.06,
-  metalness: 0.5,
-  roughness: 0.5,
+  side: THREE.DoubleSide,
 });
-const ground = new THREE.Mesh(groundGeo, groundMat);
-ground.rotation.x = -Math.PI / 2;
-ground.position.y = -2;
-scene.add(ground);
 
-// ─── Mouse Tracking ───
+const orbGeo = new THREE.IcosahedronGeometry(0.9, 64);
+const orbMesh = new THREE.Mesh(orbGeo, orbMat);
+orbMesh.position.set(1.8, 0.2, 0);
+scene.add(orbMesh);
+
+// ═══════════════════════════════════════════════
+// SHADER 3: Particle Ring (orbiting dots)
+// ═══════════════════════════════════════════════
+
+const ringCount = 300;
+const ringGeo = new THREE.BufferGeometry();
+const ringPositions = new Float32Array(ringCount * 3);
+const ringPhases = new Float32Array(ringCount);
+const ringRadii = new Float32Array(ringCount);
+
+for (let i = 0; i < ringCount; i++) {
+  const angle = (i / ringCount) * Math.PI * 2;
+  const r = 1.2 + (Math.random() - 0.5) * 0.3;
+  ringPositions[i * 3] = Math.cos(angle) * r;
+  ringPositions[i * 3 + 1] = (Math.random() - 0.5) * 0.2;
+  ringPositions[i * 3 + 2] = Math.sin(angle) * r;
+  ringPhases[i] = Math.random() * Math.PI * 2;
+  ringRadii[i] = r;
+}
+
+ringGeo.setAttribute('position', new THREE.BufferAttribute(ringPositions, 3));
+ringGeo.setAttribute('aPhase', new THREE.BufferAttribute(ringPhases, 1));
+ringGeo.setAttribute('aRadius', new THREE.BufferAttribute(ringRadii, 1));
+
+const ringVertexShader = `
+  uniform float uTime;
+  attribute float aPhase;
+  attribute float aRadius;
+  varying float vAlpha;
+
+  void main() {
+    float angle = aPhase + uTime * 0.3;
+    vec3 pos = vec3(
+      cos(angle) * aRadius,
+      position.y + sin(uTime * 0.5 + aPhase * 3.0) * 0.15,
+      sin(angle) * aRadius
+    );
+
+    vAlpha = 0.3 + sin(uTime + aPhase * 5.0) * 0.2;
+
+    vec4 mvPos = modelViewMatrix * vec4(pos, 1.0);
+    gl_PointSize = (3.0 + sin(aPhase + uTime) * 1.5) * (200.0 / -mvPos.z);
+    gl_Position = projectionMatrix * mvPos;
+  }
+`;
+
+const ringFragmentShader = `
+  varying float vAlpha;
+
+  void main() {
+    float dist = length(gl_PointCoord - vec2(0.5));
+    if (dist > 0.5) discard;
+
+    float glow = 1.0 - smoothstep(0.0, 0.5, dist);
+    glow = pow(glow, 2.0);
+
+    vec3 gold = vec3(0.788, 0.659, 0.298);
+    gl_FragColor = vec4(gold, glow * vAlpha);
+  }
+`;
+
+const ringMat = new THREE.ShaderMaterial({
+  vertexShader: ringVertexShader,
+  fragmentShader: ringFragmentShader,
+  uniforms: {
+    uTime: { value: 0 },
+  },
+  transparent: true,
+  depthWrite: false,
+});
+
+const ringMesh = new THREE.Points(ringGeo, ringMat);
+ringMesh.position.copy(orbMesh.position);
+scene.add(ringMesh);
+
+// ═══════════════════════════════════════════════
+// Ambient floating particles
+// ═══════════════════════════════════════════════
+
+const dustCount = 500;
+const dustGeo = new THREE.BufferGeometry();
+const dustPos = new Float32Array(dustCount * 3);
+for (let i = 0; i < dustCount; i++) {
+  dustPos[i * 3] = (Math.random() - 0.5) * 12;
+  dustPos[i * 3 + 1] = (Math.random() - 0.5) * 7;
+  dustPos[i * 3 + 2] = (Math.random() - 0.5) * 5 - 1;
+}
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+const dustMat = new THREE.PointsMaterial({
+  color: 0xC9A84C,
+  size: 0.012,
+  transparent: true,
+  opacity: 0.25,
+  sizeAttenuation: true,
+  depthWrite: false,
+});
+const dustMesh = new THREE.Points(dustGeo, dustMat);
+scene.add(dustMesh);
+
+// ─── Mouse ───
 let mouseX = 0, mouseY = 0;
-let targetMouseX = 0, targetMouseY = 0;
-
+let targetMX = 0, targetMY = 0;
 document.addEventListener('mousemove', (e) => {
-  targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-  targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  targetMX = (e.clientX / window.innerWidth - 0.5) * 2;
+  targetMY = (e.clientY / window.innerHeight - 0.5) * 2;
 });
 
-// ─── Scroll Tracking ───
-let scrollY = 0;
-window.addEventListener('scroll', () => {
-  scrollY = window.scrollY;
-});
-
-// ─── Animation Loop ───
+// ─── Animation ───
 const clock = new THREE.Clock();
 
 function animate() {
   requestAnimationFrame(animate);
   const t = clock.getElapsedTime();
 
-  // Smooth mouse following
-  mouseX += (targetMouseX - mouseX) * 0.03;
-  mouseY += (targetMouseY - mouseY) * 0.03;
+  mouseX += (targetMX - mouseX) * 0.03;
+  mouseY += (targetMY - mouseY) * 0.03;
 
-  // Camera idle drift + mouse parallax
-  camera.position.x = Math.sin(t * 0.12) * 0.5 + mouseX * 0.4;
-  camera.position.y = 1.5 + Math.cos(t * 0.08) * 0.3 - mouseY * 0.2;
-  camera.position.z = 8 - scrollY * 0.002;
-  camera.lookAt(0, 0.3, 0);
+  // Camera
+  camera.position.x = Math.sin(t * 0.08) * 0.3 + mouseX * 0.3;
+  camera.position.y = Math.cos(t * 0.06) * 0.15 - mouseY * 0.15;
+  camera.lookAt(0.5, 0, 0);
 
-  // Float the entire group gently
-  floatingGroup.position.y = Math.sin(t * 0.5) * 0.15;
-  floatingGroup.rotation.y = Math.sin(t * 0.15) * 0.08;
+  // Update shader uniforms
+  bgMat.uniforms.uTime.value = t;
+  bgMat.uniforms.uMouse.value.set(mouseX, mouseY);
+  orbMat.uniforms.uTime.value = t;
+  ringMat.uniforms.uTime.value = t;
 
-  // Individual object animations
-  // Books bob
-  book1.position.y = -0.5 + Math.sin(t * 0.7) * 0.08;
-  book2.position.y = -0.2 + Math.sin(t * 0.8 + 1) * 0.06;
-  book3.position.y = 0.05 + Math.sin(t * 0.6 + 2) * 0.07;
+  // Orb gentle rotation
+  orbMesh.rotation.y = t * 0.1;
+  orbMesh.rotation.x = Math.sin(t * 0.07) * 0.1;
+  orbMesh.position.y = 0.2 + Math.sin(t * 0.3) * 0.1;
 
-  // Grad cap floats and tilts
-  gradCap.position.y = 1.5 + Math.sin(t * 0.4) * 0.2;
-  gradCap.rotation.z = -0.2 + Math.sin(t * 0.3) * 0.1;
+  // Ring follows orb
+  ringMesh.position.copy(orbMesh.position);
+  ringMesh.rotation.x = Math.sin(t * 0.15) * 0.2;
+  ringMesh.rotation.z = t * 0.05;
 
-  // CASE cubes rotate gently
-  letterMeshes.forEach((mesh, i) => {
-    mesh.rotation.y = t * 0.2 + i * 0.5;
-    mesh.rotation.x = Math.sin(t * 0.3 + i) * 0.15;
-    mesh.position.y = 0.8 + Math.sin(t * 0.5 + i * 1.5) * 0.15;
-  });
+  // Dust
+  dustMesh.rotation.y = t * 0.008;
 
-  // Pencil spins slowly
-  pencil.rotation.z = -0.6 + Math.sin(t * 0.25) * 0.15;
-  pencil.position.y = -0.3 + Math.sin(t * 0.45 + 0.5) * 0.12;
-
-  // A+ badge pulses
-  const badgeScale = 1 + Math.sin(t * 1.5) * 0.05;
-  badgeSphere.scale.set(badgeScale, badgeScale, badgeScale);
-  aplusLabel.position.z = badgeSphere.position.z + 0.46;
-
-  // Magnifier tilts
-  magnifier.rotation.z = 0.4 + Math.sin(t * 0.35) * 0.12;
-  magnifier.position.y = 0.5 + Math.sin(t * 0.55) * 0.1;
-
-  // Particles rotate slowly
-  particles.rotation.y = t * 0.015;
-  particles.rotation.x = Math.sin(t * 0.01) * 0.1;
-
-  // Light animation
-  goldLight.position.x = 4 + Math.sin(t * 0.2) * 1.5;
-  goldLight.position.z = 3 + Math.cos(t * 0.15) * 1;
-
-  // Render
-  composer.render();
+  renderer.render(scene, camera);
 }
 
 animate();
 
-// ─── Resize Handler ───
+// ─── Resize ───
 function onResize() {
   const pw = parent.clientWidth || window.innerWidth;
   const ph = parent.clientHeight || window.innerHeight;
   camera.aspect = pw / ph;
   camera.updateProjectionMatrix();
   renderer.setSize(pw, ph);
-  composer.setSize(pw, ph);
+  bgMat.uniforms.uResolution.value.set(pw, ph);
 }
-
 window.addEventListener('resize', onResize);
 
 // ─── Reduced Motion ───
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  // Stop auto-animation, just render once
   clock.stop();
-  composer.render();
+  renderer.render(scene, camera);
 }
 
 } // end if (canvas)
