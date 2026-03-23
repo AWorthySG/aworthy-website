@@ -1,11 +1,11 @@
 // A Worthy — Immersive 3D Education Scene
 // Three.js cinematic hero with floating education elements
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js';
-import { EffectComposer } from 'https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { OutputPass } from 'https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/postprocessing/OutputPass.js';
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 // ─── Brand Palette ───
 const NAVY    = 0x1B2A4A;
@@ -16,21 +16,28 @@ const DEEPNAVY = 0x0D1A2F;
 
 // ─── Scene Setup ───
 const canvas = document.getElementById('hero-3d');
-if (!canvas) throw new Error('Canvas #hero-3d not found');
+if (!canvas) { console.warn('Canvas #hero-3d not found — 3D scene disabled'); }
+
+if (canvas) {
+// Use parent dimensions (the hero section) since canvas starts at 0x0
+const parent = canvas.parentElement;
+const w = parent.clientWidth || window.innerWidth;
+const h = parent.clientHeight || window.innerHeight;
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(DEEPNAVY, 0.025);
+scene.background = new THREE.Color(0xF0F4F8);
+scene.fog = new THREE.FogExp2(0xF0F4F8, 0.018);
 
-const camera = new THREE.PerspectiveCamera(55, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(55, w / h, 0.1, 100);
 camera.position.set(0, 1.5, 8);
 camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+renderer.setSize(w, h);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.1;
+renderer.toneMappingExposure = 1.6;
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -40,52 +47,59 @@ composer.addPass(new RenderPass(scene, camera));
 
 const bloomPass = new UnrealBloomPass(
   new THREE.Vector2(canvas.clientWidth, canvas.clientHeight),
-  0.5, 0.4, 0.88
+  0.3, 0.4, 0.92
 );
 composer.addPass(bloomPass);
 composer.addPass(new OutputPass());
 
 // ─── Lighting ───
-const ambientLight = new THREE.AmbientLight(OFFWHITE, 0.3);
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1.2);
 scene.add(ambientLight);
 
-const goldLight = new THREE.PointLight(GOLD, 2.5, 30);
+const hemisphereLight = new THREE.HemisphereLight(0xF0F4F8, 0xC9A84C, 0.8);
+scene.add(hemisphereLight);
+
+const goldLight = new THREE.PointLight(GOLD, 4.0, 40);
 goldLight.position.set(4, 5, 3);
 goldLight.castShadow = true;
 scene.add(goldLight);
 
-const blueLight = new THREE.PointLight(0x3366AA, 1.5, 25);
+const blueLight = new THREE.PointLight(0x6699DD, 3.0, 35);
 blueLight.position.set(-5, -2, 4);
 scene.add(blueLight);
 
-const rimLight = new THREE.PointLight(WARMGOLD, 1.0, 20);
+const rimLight = new THREE.PointLight(WARMGOLD, 2.0, 25);
 rimLight.position.set(0, 3, -5);
 scene.add(rimLight);
 
+const frontLight = new THREE.DirectionalLight(0xFFFFFF, 0.6);
+frontLight.position.set(0, 2, 8);
+scene.add(frontLight);
+
 // ─── Materials ───
 const navyMat = new THREE.MeshPhysicalMaterial({
-  color: NAVY,
-  metalness: 0.3,
-  roughness: 0.4,
-  clearcoat: 0.6,
+  color: 0x2E4A7A,
+  metalness: 0.2,
+  roughness: 0.3,
+  clearcoat: 0.8,
   clearcoatRoughness: 0.1,
 });
 
 const goldMat = new THREE.MeshPhysicalMaterial({
-  color: GOLD,
-  metalness: 0.8,
-  roughness: 0.15,
+  color: 0xD4A84C,
+  metalness: 0.6,
+  roughness: 0.2,
   clearcoat: 1.0,
   clearcoatRoughness: 0.05,
-  emissive: GOLD,
-  emissiveIntensity: 0.08,
+  emissive: 0xD4A84C,
+  emissiveIntensity: 0.15,
 });
 
 const glassMat = new THREE.MeshPhysicalMaterial({
-  color: 0xffffff,
+  color: 0xD0E4F8,
   metalness: 0.0,
   roughness: 0.05,
-  transmission: 0.92,
+  transmission: 0.7,
   transparent: true,
   thickness: 0.5,
   ior: 1.5,
@@ -93,10 +107,10 @@ const glassMat = new THREE.MeshPhysicalMaterial({
 });
 
 const whiteMat = new THREE.MeshPhysicalMaterial({
-  color: OFFWHITE,
-  metalness: 0.1,
-  roughness: 0.6,
-  clearcoat: 0.3,
+  color: 0xFAF6F0,
+  metalness: 0.05,
+  roughness: 0.5,
+  clearcoat: 0.4,
 });
 
 // ─── Floating Objects ───
@@ -386,12 +400,12 @@ particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions
 particleGeo.setAttribute('size', new THREE.BufferAttribute(particleSizes, 1));
 
 const particleMat = new THREE.PointsMaterial({
-  color: GOLD,
-  size: 0.05,
+  color: 0xC9A84C,
+  size: 0.06,
   transparent: true,
-  opacity: 0.5,
+  opacity: 0.6,
   sizeAttenuation: true,
-  blending: THREE.AdditiveBlending,
+  blending: THREE.NormalBlending,
   depthWrite: false,
 });
 
@@ -494,12 +508,12 @@ animate();
 
 // ─── Resize Handler ───
 function onResize() {
-  const w = canvas.clientWidth;
-  const h = canvas.clientHeight;
-  camera.aspect = w / h;
+  const pw = parent.clientWidth || window.innerWidth;
+  const ph = parent.clientHeight || window.innerHeight;
+  camera.aspect = pw / ph;
   camera.updateProjectionMatrix();
-  renderer.setSize(w, h);
-  composer.setSize(w, h);
+  renderer.setSize(pw, ph);
+  composer.setSize(pw, ph);
 }
 
 window.addEventListener('resize', onResize);
@@ -510,3 +524,5 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   clock.stop();
   composer.render();
 }
+
+} // end if (canvas)
