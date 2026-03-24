@@ -5,6 +5,36 @@ interface Props {
 }
 
 const { title, description = "A-Worthy — Singapore's first analytical English tuition programme. The CASE Method brings legal reasoning precision to O-Level English mastery." } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/images/general/hero-students.jpg', Astro.site);
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "A-Worthy",
+  "url": Astro.site?.toString(),
+  "logo": new URL('/images/logo.png', Astro.site).toString(),
+  "description": "Singapore's first analytical English tuition programme. The CASE Method brings legal reasoning precision to O-Level English mastery.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "SG",
+    "addressLocality": "Singapore"
+  },
+  "telephone": "+6561234567",
+  "email": "hello@aworthy.sg",
+  "sameAs": ["https://wa.me/6591234567"],
+  "areaServed": {
+    "@type": "Country",
+    "name": "Singapore"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "50",
+    "bestRating": "5"
+  }
+};
 ---
 
 <!DOCTYPE html>
@@ -15,11 +45,26 @@ const { title, description = "A-Worthy — Singapore's first analytical English 
   <meta name="description" content={description} />
   <meta name="theme-color" content="#2B5A8C" />
 
+  <!-- Canonical -->
+  <link rel="canonical" href={canonicalURL.toString()} />
+
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_SG" />
+  <meta property="og:url" content={canonicalURL.toString()} />
+  <meta property="og:image" content={ogImageURL.toString()} />
+  <meta property="og:site_name" content="A-Worthy" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL.toString()} />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
   <!-- Fonts — Inter (close to Vast Space's Owners Text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

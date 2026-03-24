@@ -25,7 +25,7 @@
   --bg-footer: #1A2A3A;           /* Deep slate */
   --text-primary: #1A1A1A;        /* Near-black */
   --text-secondary: #4A4A4A;
-  --text-muted: #8A8A8A;
+  --text-muted: #6B6B6B;
   --text-on-dark: #FFFFFF;
   --border-color: #E8EAED;
   --shadow-color: rgba(0, 0, 0, 0.05);
@@ -74,7 +74,7 @@
   --bg-footer: #0A1018;
   --text-primary: #EAF0F5;
   --text-secondary: #A0B0C0;
-  --text-muted: #607080;
+  --text-muted: #8A9AAA;
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow-color: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.5);
@@ -591,4 +591,47 @@ label {
 /* Smooth scroll — native CSS, no library needed */
 html {
   scroll-behavior: smooth;
+}
+
+/* ─── Print Styles ─── */
+@media print {
+  .site-header,
+  .site-footer,
+  .whatsapp-float,
+  .sticky-cta,
+  .marquee,
+  .hero-actions,
+  .cta-section,
+  .prog-cta,
+  .r-cta,
+  .t-cta {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12pt;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .section {
+    padding: 1rem 0 !important;
+    break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    break-inside: avoid;
+  }
 }
