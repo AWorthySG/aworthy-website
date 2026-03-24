@@ -361,34 +361,34 @@ import '../styles/global.css';
     font-family: 'Inter', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
-    color: var(--on-dark);
+    color: var(--text-primary);
     line-height: 1.15;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
     max-width: 640px;
     letter-spacing: -0.02em;
   }
 
   /* ===== SECTION SPACING ===== */
   .section {
-    padding: 7rem 0;
+    padding: 4rem 0;
     background: var(--section-bg);
   }
 
   /* ===== HERO ===== */
   .hero {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: center;
     background: var(--bg-primary);
-    padding-top: calc(var(--header-height) + 2rem);
-    padding-bottom: 4rem;
+    padding-top: calc(var(--header-height) + 3rem);
+    padding-bottom: 3rem;
     overflow: hidden;
   }
 
   .hero-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 3rem;
     align-items: center;
   }
 
@@ -945,8 +945,8 @@ import '../styles/global.css';
     line-height: 1.7;
     color: var(--text-secondary);
     max-width: 640px;
-    margin-bottom: 3.5rem;
-    margin-top: -2rem;
+    margin-bottom: 2rem;
+    margin-top: -1rem;
   }
 
   .approach-grid {
@@ -1096,7 +1096,7 @@ import '../styles/global.css';
   .cta-section {
     background: var(--section-bg-alt);
     border-top: 1px solid var(--divider);
-    padding: 7rem 0;
+    padding: 4rem 0;
     text-align: center;
   }
 
@@ -1113,7 +1113,7 @@ import '../styles/global.css';
     font-family: 'Inter', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
-    color: var(--on-dark);
+    color: var(--text-primary);
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
@@ -1121,8 +1121,8 @@ import '../styles/global.css';
 
   .cta-section p {
     font-size: 1.1rem;
-    color: var(--on-dark-muted);
-    margin-bottom: 2.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
     line-height: 1.7;
   }
 
@@ -1149,8 +1149,8 @@ import '../styles/global.css';
 
   .btn-secondary {
     background: transparent;
-    color: var(--on-dark);
-    border: 1px solid var(--divider);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.85rem;
@@ -1163,7 +1163,7 @@ import '../styles/global.css';
   }
 
   .btn-secondary:hover {
-    border-color: var(--on-dark);
+    border-color: var(--text-primary);
     transform: translateY(-1px);
   }
 
