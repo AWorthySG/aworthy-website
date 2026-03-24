@@ -42,7 +42,21 @@ import '../styles/global.css';
         </div>
       </div>
       <div class="hero-visual">
-        <img src="/images/illustrations/hero-books.svg" alt="" class="hero-illustration" />
+        <div class="hero-type-element" aria-hidden="true">
+          <span class="type-letter type-c">C</span>
+          <span class="type-dot">·</span>
+          <span class="type-letter type-a">A</span>
+          <span class="type-dot">·</span>
+          <span class="type-letter type-s">S</span>
+          <span class="type-dot">·</span>
+          <span class="type-letter type-e">E</span>
+        </div>
+        <p class="hero-type-label">The Method</p>
+      </div>
+      <div class="hero-badges">
+        <span class="hero-badge">MOE-Aligned</span>
+        <span class="hero-badge">100% Online via Zoom</span>
+        <span class="hero-badge">NUS Law Graduate Founder</span>
       </div>
     </div>
   </section>
@@ -91,6 +105,32 @@ import '../styles/global.css';
       <span class="marquee-item"><span class="marquee-dot"></span> English Mastery</span>
     </div>
   </div>
+
+  <!-- ===== PROBLEM → SOLUTION ===== -->
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-col" data-animate="reveal-up">
+          <span class="eyebrow">The Problem</span>
+          <h2 class="problem-heading">Most English tuition teaches content.<br/>Not thinking.</h2>
+          <ul class="problem-list">
+            <li>Students memorise model answers instead of learning how to reason</li>
+            <li>Large class sizes mean generic, one-size-fits-all instruction</li>
+            <li>No systematic framework — just "practise more papers"</li>
+          </ul>
+        </div>
+        <div class="solution-col" data-animate="reveal-up" data-animate-delay="1">
+          <span class="eyebrow">Our Approach</span>
+          <h2 class="problem-heading">A-Worthy teaches students<br/>how to think.</h2>
+          <ul class="solution-list">
+            <li><strong>The CASE Method</strong> — a proprietary framework from legal reasoning</li>
+            <li><strong>Max 6 students</strong> — every student gets individual attention</li>
+            <li><strong>Structured mastery</strong> — not rote learning, but analytical precision</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== PROGRAMMES OVERVIEW ===== -->
   <section class="section programmes-section">
@@ -234,6 +274,46 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== VIDEO TESTIMONIAL ===== -->
+  <section class="section video-section">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">See the Difference</span>
+      <h2 class="section-heading" data-animate="reveal-up">Hear from our families</h2>
+      <div class="video-placeholder" data-animate="reveal-up">
+        <div class="video-play-btn" aria-label="Play video">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p>Parent testimonial video coming soon</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section faq-section">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">Common Questions</span>
+      <h2 class="section-heading" data-animate="reveal-up">What parents ask us</h2>
+      <div class="faq-list">
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="1">
+          <summary>How is A-Worthy different from other English tuition centres?</summary>
+          <p>We use the CASE Method — a proprietary framework adapted from legal reasoning. Instead of memorising model answers, students learn structured analytical thinking that applies to every question type.</p>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="2">
+          <summary>Why are classes online only?</summary>
+          <p>Online delivery via Zoom lets us keep class sizes small (max 6) while keeping fees accessible. Every student gets screen-shared feedback on their work in real time — something difficult in a physical classroom of 15-20.</p>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="3">
+          <summary>What if my child doesn't improve?</summary>
+          <p>We offer a free diagnostic assessment before any commitment. If after 3 months your child hasn't shown measurable improvement, we'll work with you on a revised plan at no extra cost.</p>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="4">
+          <summary>How much does it cost?</summary>
+          <p>Sec 1-2 Foundation: SGD 280/month. Sec 3-4 O-Level Intensive: SGD 320/month. One-to-One Coaching: SGD 120/session. All classes are 90 minutes weekly.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CTA ===== -->
   <section class="cta-section">
     <div class="container cta-inner">
@@ -244,8 +324,31 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- Sticky Mobile CTA -->
+  <div class="sticky-cta" id="sticky-cta">
+    <a href="/contact/" class="btn btn-accent sticky-cta-btn">Book Free Trial Class</a>
+  </div>
+
   <Footer />
 </BaseLayout>
+
+<script is:inline>
+  // Show sticky CTA after scrolling past hero
+  (function() {
+    const sticky = document.getElementById('sticky-cta');
+    if (!sticky) return;
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          sticky.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.8);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+</script>
 
 <style>
   /* ===== DESIGN TOKENS ===== */
@@ -401,14 +504,273 @@ import '../styles/global.css';
 
   .hero-visual {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .hero-illustration {
+  .hero-type-element {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+  }
+
+  .type-letter {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--color-primary);
+    opacity: 0.12;
+    transition: opacity 0.4s ease, color 0.4s ease;
+  }
+
+  .hero-visual:hover .type-letter {
+    opacity: 0.25;
+  }
+
+  .type-c { color: var(--color-primary); }
+  .type-a { color: var(--color-accent); }
+  .type-s { color: var(--color-primary); }
+  .type-e { color: var(--color-accent); }
+
+  .type-dot {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--text-muted);
+    opacity: 0.3;
+  }
+
+  .hero-type-label {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .hero-badge {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+  }
+
+  /* ===== PROBLEM → SOLUTION ===== */
+  .problem-section {
+    background: var(--section-bg);
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .problem-heading {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+  }
+
+  .problem-list, .solution-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .problem-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .problem-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: #c44;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  .solution-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .solution-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  /* ===== VIDEO TESTIMONIAL ===== */
+  .video-section {
+    background: var(--section-bg-alt);
+  }
+
+  .video-placeholder {
+    max-width: 700px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 2px dashed var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+
+  .video-placeholder:hover {
+    border-color: var(--color-accent);
+  }
+
+  .video-play-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .video-placeholder:hover .video-play-btn {
+    transform: scale(1.08);
+  }
+
+  .video-placeholder p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section {
+    background: var(--section-bg);
+  }
+
+  .faq-list {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .faq-item summary {
+    padding: 1.25rem 0;
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-item p {
+    padding: 0 0 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem 1rem;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    z-index: 90;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    display: none;
+  }
+
+  .sticky-cta.is-visible {
+    transform: translateY(0);
+  }
+
+  .sticky-cta-btn {
     width: 100%;
-    max-width: 450px;
-    height: auto;
+    text-align: center;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .sticky-cta {
+      display: block;
+    }
+    .problem-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-badges {
+      justify-content: center;
+    }
   }
 
   /* ===== PLACEHOLDER IMAGES ===== */
@@ -915,9 +1277,6 @@ import '../styles/global.css';
     }
     .hero-visual {
       order: -1;
-    }
-    .hero-illustration {
-      max-width: 280px;
     }
     .section {
       padding: 5rem 0;
