@@ -216,7 +216,7 @@ import '../styles/global.css';
             "My son's English improved from C5 to A2 in just three months. The CASE Method gave him a systematic way to approach every comprehension question."
           </blockquote>
           <div class="testimonial-author">
-            <img src="/images/avatars/avatar-linda.jpg" alt="Mrs. Linda Tan" class="testimonial-avatar" loading="lazy" />
+            <div class="testimonial-initials">LT</div>
             <div>
               <strong>Mrs. Linda Tan</strong>
               <span>Mother of Sec 4 student</span>
@@ -230,7 +230,7 @@ import '../styles/global.css';
             "I used to hate essay writing. Now I actually enjoy it because I know how to structure my arguments properly."
           </blockquote>
           <div class="testimonial-author">
-            <img src="/images/avatars/avatar-ethan.jpg" alt="Ethan Lim" class="testimonial-avatar" loading="lazy" />
+            <div class="testimonial-initials">EL</div>
             <div>
               <strong>Ethan Lim</strong>
               <span>Sec 4 student</span>
@@ -244,7 +244,7 @@ import '../styles/global.css';
             "What impressed me most was how the legal reasoning approach made inference questions click for my daughter."
           </blockquote>
           <div class="testimonial-author">
-            <img src="/images/avatars/avatar-rajesh.jpg" alt="Mr. Rajesh Kumar" class="testimonial-avatar" loading="lazy" />
+            <div class="testimonial-initials">RK</div>
             <div>
               <strong>Mr. Rajesh Kumar</strong>
               <span>Father of Sec 3 student</span>
@@ -719,11 +719,18 @@ import '../styles/global.css';
     }
   }
 
-  .testimonial-avatar {
-    width: 48px;
-    height: 48px;
+  .testimonial-initials {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    object-fit: cover;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
   }
 

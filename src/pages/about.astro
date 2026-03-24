@@ -10,10 +10,6 @@ import '../styles/global.css';
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <div class="hero-image-wrap">
-      <img src="/images/heroes/about-hero.jpg" alt="A-Worthy classroom" class="hero-image" />
-      <div class="hero-overlay"></div>
-    </div>
     <div class="hero-content">
       <span class="eyebrow">About A-Worthy</span>
       <h1>Where legal precision meets English mastery</h1>
@@ -190,48 +186,20 @@ import '../styles/global.css';
 
   /* ===== HERO ===== */
   .hero {
-    position: relative;
     width: 100%;
-    height: 50vh;
-    min-height: 360px;
-    max-height: 560px;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    overflow: hidden;
-  }
-
-  .hero-image-wrap {
-    position: absolute;
-    inset: 0;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(42, 44, 47, 0.95) 0%,
-      rgba(42, 44, 47, 0.6) 40%,
-      rgba(42, 44, 47, 0.3) 100%
-    );
+    align-items: center;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--about-border);
+    padding: calc(var(--header-height) + 3rem) 0 3rem;
+    text-align: center;
   }
 
   .hero-content {
-    position: relative;
-    z-index: 2;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 4rem 2rem 5rem;
+    padding: 0 2rem;
   }
 
   .hero-content h1 {
@@ -239,9 +207,9 @@ import '../styles/global.css';
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     line-height: 1.15;
-    color: var(--about-white);
+    color: var(--text-primary);
     max-width: 700px;
-    margin: 0;
+    margin: 0 auto;
     letter-spacing: -0.02em;
   }
 
@@ -521,15 +489,6 @@ import '../styles/global.css';
   }
 
   @media (max-width: 768px) {
-    .hero {
-      height: 40vh;
-      min-height: 280px;
-    }
-
-    .hero-content {
-      padding: 2.5rem 1.5rem 3.5rem;
-    }
-
     .section {
       padding: 4rem 0;
     }
@@ -552,15 +511,6 @@ import '../styles/global.css';
   }
 
   @media (max-width: 480px) {
-    .hero {
-      height: 35vh;
-      min-height: 240px;
-    }
-
-    .hero-content {
-      padding: 2rem 1.25rem 3rem;
-    }
-
     .section {
       padding: 3rem 0;
     }
