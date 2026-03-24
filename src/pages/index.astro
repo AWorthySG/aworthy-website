@@ -145,28 +145,38 @@ import '../styles/global.css';
       <h2 class="section-heading" data-animate="reveal-up">Legal precision meets English mastery</h2>
       <p class="approach-subtitle">Our proprietary framework applies legal reasoning structures to every O-Level English component</p>
 
-      <div class="approach-scroll-track">
-        <div class="approach-scroll-inner">
-          <div class="approach-card" data-animate="reveal-up" data-animate-delay="1">
-            <span class="approach-number">C</span>
-            <h3>Contextualise</h3>
-            <p>Identify the task, purpose, audience, and text type. What is being asked? What kind of response is required? Just as lawyers issue-spot before applying any rule.</p>
+      <div class="approach-grid">
+        <div class="approach-card" data-animate="reveal-up" data-animate-delay="1">
+          <div class="approach-card-header">
+            <span class="approach-letter">C</span>
+            <span class="approach-time">10 min</span>
           </div>
-          <div class="approach-card" data-animate="reveal-up" data-animate-delay="2">
-            <span class="approach-number">A</span>
-            <h3>Analyse</h3>
-            <p>Read closely for explicit and implicit meaning, language technique, and writer's purpose. The analytical step is where marks are won or lost.</p>
+          <h3>Contextualise</h3>
+          <p>Identify the task, purpose, audience, and text type. What is being asked? What kind of response is required? Just as lawyers issue-spot before applying any rule.</p>
+        </div>
+        <div class="approach-card" data-animate="reveal-up" data-animate-delay="2">
+          <div class="approach-card-header">
+            <span class="approach-letter">A</span>
+            <span class="approach-time">20 min</span>
           </div>
-          <div class="approach-card" data-animate="reveal-up" data-animate-delay="3">
-            <span class="approach-number">S</span>
-            <h3>Structure</h3>
-            <p>Organise ideas into a coherent response. Build paragraphs with claim, evidence, and reasoned explanation. Structure is not decoration — it is the argument itself.</p>
+          <h3>Analyse</h3>
+          <p>Read closely for explicit and implicit meaning, language technique, and writer's purpose. The analytical step is where marks are won or lost.</p>
+        </div>
+        <div class="approach-card" data-animate="reveal-up" data-animate-delay="3">
+          <div class="approach-card-header">
+            <span class="approach-letter">S</span>
+            <span class="approach-time">20 min</span>
           </div>
-          <div class="approach-card" data-animate="reveal-up" data-animate-delay="4">
-            <span class="approach-number">E</span>
-            <h3>Evaluate</h3>
-            <p>Review, revise, and reflect. Does the response address the question? Is the evidence well-chosen? Is the language precise? The deliberate checking of reasoning.</p>
+          <h3>Structure</h3>
+          <p>Organise ideas into a coherent response. Build paragraphs with claim, evidence, and reasoned explanation. Structure is not decoration — it is the argument itself.</p>
+        </div>
+        <div class="approach-card" data-animate="reveal-up" data-animate-delay="4">
+          <div class="approach-card-header">
+            <span class="approach-letter">E</span>
+            <span class="approach-time">10 min</span>
           </div>
+          <h3>Evaluate</h3>
+          <p>Review, revise, and reflect. Does the response address the question? Is the evidence well-chosen? Is the language precise? The deliberate checking of reasoning.</p>
         </div>
       </div>
     </div>
@@ -596,52 +606,62 @@ import '../styles/global.css';
     margin-top: -2rem;
   }
 
-  .approach-scroll-track {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    margin: 0 -2rem;
-    padding: 0 2rem;
-  }
-  .approach-scroll-track::-webkit-scrollbar { display: none; }
-  .approach-scroll-inner {
-    display: flex;
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    padding-bottom: 1rem;
-  }
-  .approach-scroll-inner .approach-card {
-    min-width: 300px;
-    flex-shrink: 0;
   }
 
   .approach-card {
     background: var(--section-bg);
     border: 1px solid var(--divider);
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 2rem;
     transition: transform 0.25s ease, border-color 0.25s ease;
   }
 
   .approach-card:hover {
-    transform: scale(0.98);
+    transform: translateY(-2px);
     border-color: var(--accent);
   }
 
-  .approach-number {
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 2.5rem;
+  .approach-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .approach-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-primary);
-    opacity: 0.12;
-    line-height: 1;
-    margin-bottom: 1.25rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
+  }
+
+  .approach-time {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    background: var(--section-bg-alt);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid var(--divider);
   }
 
   .approach-card h3 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', 'Inter', sans-serif;
     font-size: 1.15rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -652,6 +672,12 @@ import '../styles/global.css';
     font-size: 0.9rem;
     line-height: 1.65;
     color: var(--text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .approach-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* ===== TESTIMONIALS ===== */
