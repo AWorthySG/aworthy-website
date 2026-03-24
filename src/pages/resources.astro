@@ -145,11 +145,9 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
             </div>
             <h3 class="r-card-title">{resource.title}</h3>
             <p class="r-card-desc">{resource.description}</p>
-            <a href="#" class="r-card-link">
-              {resource.type === "Guide" ? "Read Guide" :
-               "Read Article"}
-              <span class="r-arrow">&rarr;</span>
-            </a>
+            <span class="r-card-link r-card-link--soon">
+              Coming Soon
+            </span>
           </article>
         ))}
       </div>
@@ -169,19 +167,21 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
         <span class="eyebrow">Stay Updated</span>
         <h2 class="r-newsletter-heading">Get new resources in your inbox</h2>
         <p class="r-newsletter-sub">Free worksheets, study tips, and exam prep materials delivered weekly.</p>
-        <form class="r-newsletter-form" id="newsletter-form">
+        <form class="r-newsletter-form" id="newsletter-form" action="https://formspree.io/f/xnewsletter" method="POST">
           <div class="r-newsletter-row">
             <label for="newsletter-email" class="sr-only">Email address</label>
             <input
               type="email"
               id="newsletter-email"
+              name="email"
               class="r-newsletter-input"
               placeholder="you@email.com"
               required
             />
-            <button type="submit" class="r-btn-subscribe">Subscribe</button>
+            <button type="submit" class="r-btn-subscribe" id="newsletter-submit">Subscribe</button>
           </div>
           <p class="r-newsletter-note">Join 3,000+ parents and students. Unsubscribe anytime.</p>
+          <p class="r-newsletter-success" id="newsletter-success" hidden>Thanks for subscribing! You'll receive our next newsletter shortly.</p>
         </form>
       </div>
     </div>
@@ -242,33 +242,44 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     });
   });
 
-  const newsletterForm = document.getElementById('newsletter-form');
-  newsletterForm?.addEventListener('submit', (e) => {
+  const newsletterForm = document.getElementById('newsletter-form') as HTMLFormElement;
+  const newsletterSuccess = document.getElementById('newsletter-success') as HTMLElement;
+  const newsletterSubmit = document.getElementById('newsletter-submit') as HTMLButtonElement;
+
+  newsletterForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
-    if (emailInput.value) {
-      emailInput.value = '';
-      alert('Thank you for subscribing! You will receive our next newsletter shortly.');
+    if (!emailInput.value) return;
+
+    newsletterSubmit.disabled = true;
+    newsletterSubmit.textContent = 'Subscribing...';
+
+    try {
+      const formData = new FormData(newsletterForm);
+      const response = await fetch(newsletterForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' },
+      });
+
+      if (response.ok) {
+        emailInput.value = '';
+        newsletterSuccess.hidden = false;
+      } else {
+        throw new Error('Failed');
+      }
+    } catch {
+      newsletterSuccess.hidden = false;
+      newsletterSuccess.textContent = 'Something went wrong. Please try again.';
+    } finally {
+      newsletterSubmit.disabled = false;
+      newsletterSubmit.textContent = 'Subscribe';
     }
   });
 </script>
 
 <style>
-  /* ===== BASE / TOKENS ===== */
-  :root {
-    --r-bg: var(--bg-primary);
-    --r-bg-card: var(--bg-secondary);
-    --r-bg-input: var(--bg-secondary);
-    --r-orange: var(--color-accent);
-    --r-orange-hover: #d4632f;
-    --r-white: #ffffff;
-    --r-white-70: var(--text-secondary);
-    --r-white-40: var(--text-muted);
-    --r-border: var(--border-color);
-    --r-border-focus: rgba(232, 113, 58, 0.6);
-    --r-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --r-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-  }
+  /* Uses global design tokens from global.css */
 
   /* ===== SHARED ===== */
   .r-container {
@@ -279,12 +290,12 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
 
   .eyebrow {
     display: inline-block;
-    font-family: var(--r-mono);
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--r-orange);
+    color: var(--color-accent);
     margin-bottom: 1rem;
   }
 
@@ -302,25 +313,25 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
 
   /* ===== HERO ===== */
   .r-hero {
-    background: var(--r-bg);
-    padding: 7rem 0 4rem;
+    background: var(--bg-primary);
+    padding: calc(var(--header-height) + 3rem) 0 2rem;
     text-align: center;
   }
 
   .r-hero-heading {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: clamp(2.2rem, 5vw, 3.4rem);
     font-weight: 700;
-    color: var(--r-white);
+    color: var(--text-primary);
     letter-spacing: -0.025em;
     line-height: 1.1;
     margin: 0 0 1.25rem;
   }
 
   .r-hero-sub {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 1.1rem;
-    color: var(--r-white-70);
+    color: var(--text-secondary);
     line-height: 1.7;
     max-width: 540px;
     margin: 0 auto;
@@ -328,7 +339,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
 
   /* ===== SEARCH + FILTERS ===== */
   .r-filters {
-    background: var(--r-bg);
+    background: var(--bg-primary);
     padding: 0 0 3rem;
   }
 
@@ -340,22 +351,22 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   .r-search {
     width: 100%;
     padding: 0.85rem 1.25rem;
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.95rem;
-    color: var(--r-white);
-    background: var(--r-bg-input);
-    border: 1px solid var(--r-border);
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     outline: none;
     transition: border-color 0.2s ease;
   }
 
   .r-search::placeholder {
-    color: var(--r-white-40);
+    color: var(--text-muted);
   }
 
   .r-search:focus {
-    border-color: var(--r-border-focus);
+    border-color: rgba(232, 113, 58, 0.6);
     box-shadow: 0 0 0 3px rgba(232, 113, 58, 0.15);
   }
 
@@ -367,10 +378,10 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   }
 
   .r-filter-btn {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--r-white-40);
+    color: var(--text-muted);
     background: none;
     border: none;
     padding: 0.5rem 1rem;
@@ -380,16 +391,16 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   }
 
   .r-filter-btn:hover {
-    color: var(--r-white-70);
+    color: var(--text-secondary);
   }
 
   .r-filter-btn.active {
-    color: var(--r-orange);
+    color: var(--color-accent);
   }
 
   /* ===== RESOURCE CARDS ===== */
   .r-cards-section {
-    background: var(--r-bg);
+    background: var(--bg-primary);
     padding: 0 0 5rem;
   }
 
@@ -402,8 +413,8 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   .r-card {
     display: flex;
     flex-direction: column;
-    background: var(--r-bg-card);
-    border: 1px solid var(--r-border);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 2rem 1.75rem;
     transition: transform 0.2s ease, border-color 0.2s ease;
@@ -426,30 +437,30 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   }
 
   .r-type-badge {
-    font-family: var(--r-mono);
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--r-white-40);
+    color: var(--text-muted);
     background: rgba(255, 255, 255, 0.06);
     padding: 0.25rem 0.6rem;
     border-radius: 4px;
   }
 
   .r-card-title {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--r-white);
+    color: var(--text-primary);
     line-height: 1.4;
     margin: 0 0 0.75rem;
   }
 
   .r-card-desc {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.875rem;
-    color: var(--r-white-40);
+    color: var(--text-muted);
     line-height: 1.65;
     flex-grow: 1;
     margin: 0 0 1.25rem;
@@ -459,16 +470,26 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--r-orange);
+    color: var(--color-accent);
     text-decoration: none;
     transition: gap 0.2s ease;
   }
 
   .r-card-link:hover {
     gap: 0.7rem;
+  }
+
+  .r-card-link--soon {
+    color: var(--text-muted);
+    font-style: italic;
+    cursor: default;
+  }
+
+  .r-card-link--soon:hover {
+    gap: 0.4rem;
   }
 
   .r-arrow {
@@ -485,29 +506,29 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   }
 
   .r-no-results-heading {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 1.15rem;
     font-weight: 600;
-    color: var(--r-white-70);
+    color: var(--text-secondary);
     margin: 0 0 0.5rem;
   }
 
   .r-no-results-sub {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--r-white-40);
+    color: var(--text-muted);
     margin: 0;
   }
 
   /* ===== NEWSLETTER ===== */
   .r-newsletter-section {
-    background: var(--r-bg);
+    background: var(--bg-primary);
     padding: 0 0 5rem;
   }
 
   .r-newsletter-card {
-    background: var(--r-bg-card);
-    border: 1px solid var(--r-border);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 3rem;
     text-align: center;
@@ -516,18 +537,18 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   }
 
   .r-newsletter-heading {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--r-white);
+    color: var(--text-primary);
     letter-spacing: -0.02em;
     margin: 0 0 0.75rem;
   }
 
   .r-newsletter-sub {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--r-white-40);
+    color: var(--text-muted);
     line-height: 1.6;
     margin: 0 0 1.75rem;
   }
@@ -544,31 +565,31 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   .r-newsletter-input {
     flex: 1;
     padding: 0.8rem 1rem;
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--r-white);
-    background: var(--r-bg-input);
-    border: 1px solid var(--r-border);
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     outline: none;
     transition: border-color 0.2s ease;
   }
 
   .r-newsletter-input::placeholder {
-    color: var(--r-white-40);
+    color: var(--text-muted);
   }
 
   .r-newsletter-input:focus {
-    border-color: var(--r-border-focus);
+    border-color: rgba(232, 113, 58, 0.6);
     box-shadow: 0 0 0 3px rgba(232, 113, 58, 0.15);
   }
 
   .r-btn-subscribe {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--r-white);
-    background: var(--r-orange);
+    color: var(--text-primary);
+    background: var(--color-accent);
     border: none;
     border-radius: 6px;
     padding: 0.8rem 1.5rem;
@@ -578,46 +599,54 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   }
 
   .r-btn-subscribe:hover {
-    background: var(--r-orange-hover);
+    background: #d4632f;
   }
 
   .r-newsletter-note {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.75rem;
-    color: var(--r-white-40);
+    color: var(--text-muted);
     margin: 0.75rem 0 0;
+  }
+
+  .r-newsletter-success {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    margin: 0.75rem 0 0;
+    font-weight: 500;
   }
 
   /* ===== CTA ===== */
   .r-cta {
-    background: var(--r-bg);
+    background: var(--bg-primary);
     padding: 3rem 0 7rem;
     text-align: center;
   }
 
   .r-cta-heading {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
-    color: var(--r-white);
+    color: var(--text-primary);
     letter-spacing: -0.02em;
     margin: 0 0 0.75rem;
   }
 
   .r-cta-sub {
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 1rem;
-    color: var(--r-white-40);
+    color: var(--text-muted);
     margin: 0 0 2rem;
   }
 
   .r-btn-cta {
     display: inline-block;
-    font-family: var(--r-font);
+    font-family: var(--font-body);
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--r-white);
-    background: var(--r-orange);
+    color: var(--text-primary);
+    background: var(--color-accent);
     border: none;
     border-radius: 6px;
     padding: 0.85rem 2rem;
@@ -627,7 +656,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   }
 
   .r-btn-cta:hover {
-    background: var(--r-orange-hover);
+    background: #d4632f;
   }
 
   .resources-hero-illustration {

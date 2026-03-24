@@ -11,7 +11,7 @@ import '../styles/global.css';
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="hero-image-wrap">
-      <div class="placeholder-img hero-placeholder"></div>
+      <img src="/images/heroes/about-hero.jpg" alt="A-Worthy classroom" class="hero-image" />
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -59,7 +59,7 @@ import '../styles/global.css';
           </p>
         </div>
         <div class="story-image-wrap" data-animate="reveal-right">
-          <img src="/images/illustrations/online-learning.svg" alt="Online learning illustration" class="story-illustration" />
+          <img src="/images/illustrations/online-learning.svg" alt="Online learning illustration" class="story-illustration" loading="lazy" />
         </div>
       </div>
     </div>
@@ -192,9 +192,9 @@ import '../styles/global.css';
   .hero {
     position: relative;
     width: 100%;
-    height: 75vh;
-    min-height: 480px;
-    max-height: 800px;
+    height: 50vh;
+    min-height: 360px;
+    max-height: 560px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
@@ -213,27 +213,6 @@ import '../styles/global.css';
     display: block;
   }
 
-  /* ===== PLACEHOLDER IMAGES ===== */
-  .placeholder-img {
-    background: var(--bg-secondary);
-    aspect-ratio: 16 / 9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--border-color);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border: 1px dashed var(--border-color);
-  }
-
-  .hero-placeholder {
-    position: absolute;
-    inset: 0;
-    aspect-ratio: auto;
-    font-size: 0;
-    color: transparent;
-  }
 
   .hero-overlay {
     position: absolute;
@@ -269,7 +248,7 @@ import '../styles/global.css';
   /* ===== SECTIONS ===== */
   .section {
     background: var(--about-bg);
-    padding: 6rem 0;
+    padding: 4rem 0;
   }
 
   .section:nth-child(even) {
@@ -543,8 +522,8 @@ import '../styles/global.css';
 
   @media (max-width: 768px) {
     .hero {
-      height: 60vh;
-      min-height: 380px;
+      height: 40vh;
+      min-height: 280px;
     }
 
     .hero-content {
@@ -574,8 +553,8 @@ import '../styles/global.css';
 
   @media (max-width: 480px) {
     .hero {
-      height: 50vh;
-      min-height: 320px;
+      height: 35vh;
+      min-height: 240px;
     }
 
     .hero-content {

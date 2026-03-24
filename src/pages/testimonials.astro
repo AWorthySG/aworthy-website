@@ -8,7 +8,8 @@ const testimonials = [
   {
     name: 'Mrs. Linda Tan',
     context: 'Mother of Sec 4 student',
-    avatar: 'LT',
+    avatar: '/images/avatars/avatar-linda.jpg',
+    initials: 'LT',
     stars: 5,
     quote: 'My son\'s English went from C5 to A2 in three months. The CASE Method gave him a systematic way to approach every comprehension question — no more guessing.',
     featured: true,
@@ -16,7 +17,8 @@ const testimonials = [
   {
     name: 'Ethan Lim',
     context: 'Sec 4 student',
-    avatar: 'EL',
+    avatar: '/images/avatars/avatar-ethan.jpg',
+    initials: 'EL',
     stars: 5,
     quote: 'I used to dread essay writing. The structured approach taught me how to plan and argue properly. Got A1 for O-Levels.',
     featured: false,
@@ -24,7 +26,8 @@ const testimonials = [
   {
     name: 'Mr. Rajesh Kumar',
     context: 'Father of Sec 3 student',
-    avatar: 'RK',
+    avatar: '/images/avatars/avatar-rajesh.jpg',
+    initials: 'RK',
     stars: 5,
     quote: 'What impressed me most was how the legal reasoning approach made inference questions click for my daughter. She actually enjoys English now.',
     featured: false,
@@ -32,7 +35,8 @@ const testimonials = [
   {
     name: 'Mrs. Angela Wong',
     context: 'Mother of Sec 4 student',
-    avatar: 'AW',
+    avatar: '/images/avatars/avatar-angela.jpg',
+    initials: 'AW',
     stars: 5,
     quote: 'After switching to A-Worthy, my daughter\'s English jumped from D7 to B3. The small class size means real attention.',
     featured: true,
@@ -40,7 +44,8 @@ const testimonials = [
   {
     name: 'Mr. Muhammad Faisal',
     context: 'Father of Sec 2 twins',
-    avatar: 'MF',
+    avatar: '/images/avatars/avatar-faisal.jpg',
+    initials: 'MF',
     stars: 5,
     quote: 'Both my boys have improved significantly in their English. The analytical approach builds skills that help across all subjects.',
     featured: false,
@@ -48,7 +53,8 @@ const testimonials = [
   {
     name: 'Ms. Jennifer Lee',
     context: 'Mother of Sec 3 student',
-    avatar: 'JL',
+    avatar: '/images/avatars/avatar-jennifer.jpg',
+    initials: 'JL',
     stars: 5,
     quote: 'We switched from a large tuition chain. The difference is night and day — focused, systematic, and my son actually understands why he\'s learning what he\'s learning.',
     featured: false,
@@ -56,7 +62,8 @@ const testimonials = [
   {
     name: 'Ryan Ong',
     context: 'Sec 4 student',
-    avatar: 'RO',
+    avatar: '/images/avatars/avatar-ryan.jpg',
+    initials: 'RO',
     stars: 5,
     quote: 'The CASE Method helped me go from barely passing to B3 in English. Summary was my weakest section and now it\'s my strongest.',
     featured: false,
@@ -64,7 +71,8 @@ const testimonials = [
   {
     name: 'Mrs. Deepa Nair',
     context: 'Mother of Sec 2 student',
-    avatar: 'DN',
+    avatar: '/images/avatars/avatar-deepa.jpg',
+    initials: 'DN',
     stars: 5,
     quote: 'I appreciate the detailed feedback after every mock paper. I can see exactly what my daughter needs to work on.',
     featured: false,
@@ -72,7 +80,8 @@ const testimonials = [
   {
     name: 'Wei Ling',
     context: 'Sec 4 student',
-    avatar: 'WL',
+    avatar: '/images/avatars/avatar-weiling.jpg',
+    initials: 'WL',
     stars: 5,
     quote: 'Got A2 for O-Level English! The comprehension techniques and essay frameworks were exactly what I needed.',
     featured: true,
@@ -129,7 +138,7 @@ const testimonials = [
               &ldquo;{t.quote}&rdquo;
             </blockquote>
             <div class="t-card-author">
-              <div class="t-placeholder-avatar">{t.avatar}</div>
+              <img src={t.avatar} alt={t.name} class="t-avatar-img" loading="lazy" />
               <div class="t-card-author-info">
                 <strong>{t.name}</strong>
                 <span>{t.context}</span>
@@ -188,18 +197,7 @@ const testimonials = [
 </BaseLayout>
 
 <style>
-  /* ===== DESIGN TOKENS ===== */
-  :root {
-    --t-bg: var(--bg-primary);
-    --t-bg-card: var(--bg-secondary);
-    --t-bg-elevated: #1e2022;
-    --t-orange: var(--color-accent);
-    --t-white: #ffffff;
-    --t-text: rgba(255, 255, 255, 0.85);
-    --t-text-muted: var(--text-muted);
-    --t-border: var(--border-color);
-    --t-radius: 8px;
-  }
+  /* Uses global design tokens from global.css */
 
   /* ===== BASE ===== */
   .t-container {
@@ -209,7 +207,7 @@ const testimonials = [
   }
 
   .t-section {
-    padding: 96px 0;
+    padding: 4rem 0;
   }
 
   .eyebrow {
@@ -219,14 +217,14 @@ const testimonials = [
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--t-orange);
+    color: var(--color-accent);
     margin-bottom: 20px;
   }
 
   /* ===== HERO ===== */
   .t-hero {
-    background: var(--t-bg);
-    padding: 120px 0 80px;
+    background: var(--bg-primary);
+    padding: calc(var(--header-height) + 3rem) 0 2rem;
     text-align: center;
   }
 
@@ -238,7 +236,7 @@ const testimonials = [
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(2.5rem, 5vw, 3.75rem);
     font-weight: 700;
-    color: var(--t-white);
+    color: var(--text-primary);
     line-height: 1.1;
     letter-spacing: -0.03em;
     margin: 0 0 24px;
@@ -247,7 +245,7 @@ const testimonials = [
   .t-hero-subtitle {
     font-size: 1.125rem;
     line-height: 1.7;
-    color: var(--t-text-muted);
+    color: var(--text-muted);
     margin: 0;
     max-width: 560px;
     margin-left: auto;
@@ -256,9 +254,9 @@ const testimonials = [
 
   /* ===== STATS BAR ===== */
   .t-stats-bar {
-    background: var(--t-bg-elevated);
-    border-top: 1px solid var(--t-border);
-    border-bottom: 1px solid var(--t-border);
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     padding: 48px 0;
   }
 
@@ -278,7 +276,7 @@ const testimonials = [
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 2.25rem;
     font-weight: 700;
-    color: var(--t-white);
+    color: var(--text-primary);
     line-height: 1.2;
     letter-spacing: -0.02em;
   }
@@ -286,7 +284,7 @@ const testimonials = [
   .t-stat-label {
     display: block;
     font-size: 0.85rem;
-    color: var(--t-text-muted);
+    color: var(--text-muted);
     margin-top: 6px;
     letter-spacing: 0.02em;
   }
@@ -294,12 +292,12 @@ const testimonials = [
   .t-stat-divider {
     width: 1px;
     height: 48px;
-    background: var(--t-border);
+    background: var(--border-color);
   }
 
   /* ===== TESTIMONIALS GRID ===== */
   .t-testimonials-section {
-    background: var(--t-bg);
+    background: var(--bg-primary);
   }
 
   .t-testimonials-grid {
@@ -311,9 +309,9 @@ const testimonials = [
     break-inside: avoid;
     display: inline-block;
     width: 100%;
-    background: var(--t-bg-card);
-    border: 1px solid var(--t-border);
-    border-radius: var(--t-radius);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
     padding: 32px;
     margin-bottom: 24px;
     transition: border-color 0.2s ease;
@@ -324,7 +322,7 @@ const testimonials = [
   }
 
   .t-card--featured {
-    border-left: 3px solid var(--t-orange);
+    border-left: 3px solid var(--color-accent);
   }
 
   .t-card-stars {
@@ -334,7 +332,7 @@ const testimonials = [
   }
 
   .t-star {
-    color: var(--t-orange);
+    color: var(--color-accent);
     font-size: 1.1rem;
     line-height: 1;
   }
@@ -343,7 +341,7 @@ const testimonials = [
     font-size: 0.95rem;
     font-style: normal;
     line-height: 1.75;
-    color: var(--t-text);
+    color: var(--text-secondary);
     margin: 0 0 24px;
     padding: 0;
     border: none;
@@ -354,20 +352,14 @@ const testimonials = [
     align-items: center;
     gap: 14px;
     padding-top: 20px;
-    border-top: 1px solid var(--t-border);
+    border-top: 1px solid var(--border-color);
   }
 
-  .t-placeholder-avatar {
+  .t-avatar-img {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: var(--color-primary-light);
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
     flex-shrink: 0;
   }
 
@@ -378,21 +370,21 @@ const testimonials = [
   }
 
   .t-card-author-info strong {
-    color: var(--t-white);
+    color: var(--text-primary);
     font-size: 0.9rem;
     font-weight: 600;
   }
 
   .t-card-author-info span {
     font-size: 0.8rem;
-    color: var(--t-text-muted);
+    color: var(--text-muted);
     line-height: 1.4;
   }
 
   /* ===== GOOGLE REVIEWS ===== */
   .t-google-section {
-    background: var(--t-bg-elevated);
-    border-top: 1px solid var(--t-border);
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
     padding: 64px 0;
   }
 
@@ -440,12 +432,12 @@ const testimonials = [
   .t-google-score {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--t-white);
+    color: var(--text-primary);
   }
 
   .t-google-count {
     font-size: 0.85rem;
-    color: var(--t-text-muted);
+    color: var(--text-muted);
   }
 
   /* ===== BUTTONS ===== */
@@ -456,7 +448,7 @@ const testimonials = [
     padding: 14px 28px;
     font-size: 0.95rem;
     font-weight: 600;
-    border-radius: var(--t-radius);
+    border-radius: var(--border-radius);
     text-decoration: none;
     transition: all 0.2s ease;
     cursor: pointer;
@@ -464,8 +456,8 @@ const testimonials = [
   }
 
   .t-btn--primary {
-    background: var(--t-orange);
-    color: var(--t-white);
+    background: var(--color-accent);
+    color: var(--text-primary);
   }
 
   .t-btn--primary:hover {
@@ -475,8 +467,8 @@ const testimonials = [
 
   .t-btn--outline {
     background: transparent;
-    color: var(--t-white);
-    border: 1px solid var(--t-border);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
   }
 
   .t-btn--outline:hover {
@@ -487,8 +479,8 @@ const testimonials = [
 
   /* ===== CTA ===== */
   .t-cta {
-    background: var(--t-bg);
-    border-top: 1px solid var(--t-border);
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
     text-align: center;
   }
 
@@ -500,7 +492,7 @@ const testimonials = [
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 700;
-    color: var(--t-white);
+    color: var(--text-primary);
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin: 0 0 16px;
@@ -509,7 +501,7 @@ const testimonials = [
   .t-cta-subtitle {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: var(--t-text-muted);
+    color: var(--text-muted);
     margin: 0 0 40px;
   }
 
@@ -529,11 +521,11 @@ const testimonials = [
 
   @media (max-width: 768px) {
     .t-hero {
-      padding: 96px 0 64px;
+      padding: calc(var(--header-height) + 2rem) 0 1.5rem;
     }
 
     .t-section {
-      padding: 72px 0;
+      padding: 3rem 0;
     }
 
     .t-stats-inner {

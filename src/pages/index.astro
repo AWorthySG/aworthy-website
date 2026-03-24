@@ -120,7 +120,7 @@ import '../styles/global.css';
       <h2 class="section-heading" data-animate="reveal-up">Structured learning pathways for every stage</h2>
 
       <div class="programmes-grid">
-        <a href="/programmes/#foundation" class="programme-card" data-animate="reveal-up" data-animate-delay="1">
+        <a href="/programmes/#sec1-2" class="programme-card" data-animate="reveal-up" data-animate-delay="1">
           <div class="programme-body">
             <span class="programme-level">Small Group Online (Max 6)</span>
             <h3>Sec 1&ndash;2 English Foundation</h3>
@@ -132,7 +132,7 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/programmes/#intensive" class="programme-card" data-animate="reveal-up" data-animate-delay="2">
+        <a href="/programmes/#sec3-4" class="programme-card" data-animate="reveal-up" data-animate-delay="2">
           <div class="programme-body">
             <span class="programme-level">Small Group Online (Max 6)</span>
             <h3>Sec 3&ndash;4 O-Level Intensive</h3>
@@ -144,7 +144,7 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/programmes/#coaching" class="programme-card" data-animate="reveal-up" data-animate-delay="3">
+        <a href="/programmes/#one-to-one" class="programme-card" data-animate="reveal-up" data-animate-delay="3">
           <div class="programme-body">
             <span class="programme-level">Individual Online</span>
             <h3>One-to-One Coaching</h3>
@@ -216,7 +216,7 @@ import '../styles/global.css';
             "My son's English improved from C5 to A2 in just three months. The CASE Method gave him a systematic way to approach every comprehension question."
           </blockquote>
           <div class="testimonial-author">
-            <div class="placeholder-avatar">LT</div>
+            <img src="/images/avatars/avatar-linda.jpg" alt="Mrs. Linda Tan" class="testimonial-avatar" loading="lazy" />
             <div>
               <strong>Mrs. Linda Tan</strong>
               <span>Mother of Sec 4 student</span>
@@ -230,7 +230,7 @@ import '../styles/global.css';
             "I used to hate essay writing. Now I actually enjoy it because I know how to structure my arguments properly."
           </blockquote>
           <div class="testimonial-author">
-            <div class="placeholder-avatar">EL</div>
+            <img src="/images/avatars/avatar-ethan.jpg" alt="Ethan Lim" class="testimonial-avatar" loading="lazy" />
             <div>
               <strong>Ethan Lim</strong>
               <span>Sec 4 student</span>
@@ -244,27 +244,13 @@ import '../styles/global.css';
             "What impressed me most was how the legal reasoning approach made inference questions click for my daughter."
           </blockquote>
           <div class="testimonial-author">
-            <div class="placeholder-avatar">RK</div>
+            <img src="/images/avatars/avatar-rajesh.jpg" alt="Mr. Rajesh Kumar" class="testimonial-avatar" loading="lazy" />
             <div>
               <strong>Mr. Rajesh Kumar</strong>
               <span>Father of Sec 3 student</span>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== VIDEO TESTIMONIAL ===== -->
-  <section class="section video-section">
-    <div class="container">
-      <span class="eyebrow" data-animate="reveal-up">See the Difference</span>
-      <h2 class="section-heading" data-animate="reveal-up">Hear from our families</h2>
-      <div class="video-placeholder" data-animate="reveal-up">
-        <div class="video-play-btn" aria-label="Play video">
-          <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <p>Parent testimonial video coming soon</p>
       </div>
     </div>
   </section>
@@ -308,18 +294,22 @@ import '../styles/global.css';
   <!-- Sticky Mobile CTA -->
   <div class="sticky-cta" id="sticky-cta">
     <a href="/contact/" class="btn btn-accent sticky-cta-btn">Book Free Trial Class</a>
+    <button class="sticky-cta-dismiss" id="sticky-cta-dismiss" aria-label="Dismiss booking prompt">&times;</button>
   </div>
 
   <Footer />
 </BaseLayout>
 
 <script is:inline>
-  // Show sticky CTA after scrolling past hero
+  // Show sticky CTA after scrolling past hero, with dismiss support
   (function() {
     const sticky = document.getElementById('sticky-cta');
+    const dismissBtn = document.getElementById('sticky-cta-dismiss');
     if (!sticky) return;
+    let dismissed = false;
     let ticking = false;
     window.addEventListener('scroll', function() {
+      if (dismissed) return;
       if (!ticking) {
         requestAnimationFrame(function() {
           sticky.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.8);
@@ -327,6 +317,10 @@ import '../styles/global.css';
         });
         ticking = true;
       }
+    });
+    dismissBtn?.addEventListener('click', function() {
+      dismissed = true;
+      sticky.classList.remove('is-visible');
     });
   })();
 </script>
@@ -498,12 +492,12 @@ import '../styles/global.css';
 
   .type-letter {
     font-family: 'DM Sans', 'Inter', sans-serif;
-    font-size: clamp(4rem, 8vw, 7rem);
+    font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 800;
     letter-spacing: -0.04em;
     line-height: 1;
     color: var(--color-primary);
-    opacity: 0.12;
+    opacity: 0.15;
     transition: opacity 0.4s ease, color 0.4s ease;
   }
 
@@ -615,52 +609,6 @@ import '../styles/global.css';
     font-size: 0.9rem;
   }
 
-  /* ===== VIDEO TESTIMONIAL ===== */
-  .video-section {
-    background: var(--section-bg-alt);
-  }
-
-  .video-placeholder {
-    max-width: 700px;
-    margin: 0 auto;
-    aspect-ratio: 16 / 9;
-    border-radius: 12px;
-    background: var(--bg-card);
-    border: 2px dashed var(--border-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-  }
-
-  .video-placeholder:hover {
-    border-color: var(--color-accent);
-  }
-
-  .video-play-btn {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-  }
-
-  .video-placeholder:hover .video-play-btn {
-    transform: scale(1.08);
-  }
-
-  .video-placeholder p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
   /* ===== FAQ ===== */
   .faq-section {
     background: var(--section-bg);
@@ -733,9 +681,26 @@ import '../styles/global.css';
   }
 
   .sticky-cta-btn {
-    width: 100%;
+    flex: 1;
     text-align: center;
     display: block;
+  }
+
+  .sticky-cta-dismiss {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+  }
+
+  .sticky-cta-dismiss:hover {
+    color: var(--text-primary);
   }
 
   @media (max-width: 768px) {
@@ -754,31 +719,11 @@ import '../styles/global.css';
     }
   }
 
-  /* ===== PLACEHOLDER IMAGES ===== */
-  .placeholder-img {
-    background: var(--bg-secondary);
-    aspect-ratio: 16 / 9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--border-color);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border: 1px dashed var(--border-color);
-  }
-
-  .placeholder-avatar {
+  .testimonial-avatar {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: var(--color-primary-light);
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
     flex-shrink: 0;
   }
 
@@ -1260,11 +1205,11 @@ import '../styles/global.css';
       order: -1;
     }
     .section {
-      padding: 5rem 0;
+      padding: 3rem 0;
     }
 
     .cta-section {
-      padding: 5rem 0;
+      padding: 3rem 0;
     }
 
     .stats-inner {

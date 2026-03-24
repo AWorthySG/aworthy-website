@@ -41,7 +41,7 @@ import '../styles/global.css';
 
       <div class="card-grid card-grid--1">
         <div class="prog-card" data-animate="reveal-up" data-animate-delay="1">
-          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" />
+          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" loading="lazy" />
           <h3 class="prog-card__title">Foundation Programme</h3>
           <p class="prog-card__desc">Small group online sessions designed to develop the core English skills that underpin O-Level success &mdash; starting from Secondary 1.</p>
           <ul class="prog-card__topics">
@@ -71,7 +71,7 @@ import '../styles/global.css';
 
       <div class="card-grid card-grid--1">
         <div class="prog-card" data-animate="reveal-up" data-animate-delay="1">
-          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" />
+          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" loading="lazy" />
           <h3 class="prog-card__title">O-Level Intensive Programme</h3>
           <p class="prog-card__desc">Rigorous, exam-aligned preparation covering every component of the GCE O-Level English paper &mdash; with regular mock practice and individualised feedback.</p>
           <ul class="prog-card__topics">
@@ -102,7 +102,7 @@ import '../styles/global.css';
 
       <div class="card-grid card-grid--1">
         <div class="prog-card" data-animate="reveal-up" data-animate-delay="1">
-          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" />
+          <img src="/images/illustrations/writing.svg" alt="" class="prog-card-illustration" loading="lazy" />
           <h3 class="prog-card__title">Individual Coaching</h3>
           <p class="prog-card__desc">Fully customised to the student's specific gaps. Individual online sessions via Zoom, scheduled at your convenience.</p>
           <div class="prog-card__meta">
@@ -188,7 +188,7 @@ import '../styles/global.css';
   /* ===== HERO ===== */
   .prog-hero {
     background: var(--prog-bg);
-    padding: 8rem 0 5rem;
+    padding: calc(var(--header-height) + 3rem) 0 3rem;
     text-align: center;
   }
 
@@ -249,7 +249,7 @@ import '../styles/global.css';
   /* ===== SECTIONS ===== */
   .prog-section {
     background: var(--prog-bg);
-    padding: 6rem 0;
+    padding: 4rem 0;
     scroll-margin-top: 60px;
   }
 
@@ -394,7 +394,7 @@ import '../styles/global.css';
   .prog-cta {
     background: var(--prog-bg);
     border-top: 1px solid var(--prog-border);
-    padding: 6rem 0;
+    padding: 4rem 0;
   }
 
   .prog-cta__inner {
