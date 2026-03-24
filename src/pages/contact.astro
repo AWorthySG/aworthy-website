@@ -380,9 +380,9 @@ import '../styles/global.css';
   /* ===== CONTACT HERO ===== */
   .contact-hero {
     padding: calc(var(--header-height) + 3rem) 0 var(--space-2xl);
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     text-align: center;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .contact-hero .eyebrow {
@@ -391,8 +391,9 @@ import '../styles/global.css';
 
   .contact-hero h1 {
     font-size: clamp(2.4rem, 5vw, 4rem);
-    font-weight: 600;
+    font-weight: 200;
     letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-md);
   }
 
@@ -418,8 +419,9 @@ import '../styles/global.css';
 
   .contact-form-col__heading {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-2xl);
   }
 
@@ -455,9 +457,9 @@ import '../styles/global.css';
   .form-group textarea {
     width: 100%;
     padding: 0.875rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.03);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 0.95rem;
@@ -574,8 +576,9 @@ import '../styles/global.css';
 
   .contact-info-col__heading {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-2xl);
   }
 
@@ -584,8 +587,9 @@ import '../styles/global.css';
     gap: var(--space-md);
     padding: var(--space-lg);
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border-radius: 4px;
     margin-bottom: var(--space-md);
     transition: border-color var(--transition-fast);
   }
@@ -602,14 +606,15 @@ import '../styles/global.css';
     align-items: center;
     justify-content: center;
     background: rgba(232, 113, 58, 0.1);
-    border-radius: var(--border-radius);
+    border-radius: 4px;
   }
 
   .info-card h3 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 300;
     margin-bottom: var(--space-xs);
     color: var(--text-primary);
+    letter-spacing: -0.03em;
   }
 
   .info-card p {
@@ -648,8 +653,9 @@ import '../styles/global.css';
 
   .enrol-heading {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-2xl);
   }
 
@@ -687,9 +693,10 @@ import '../styles/global.css';
 
   .enrol-step-content h3 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 300;
     margin-bottom: var(--space-xs);
     color: var(--text-primary);
+    letter-spacing: -0.03em;
   }
 
   .enrol-step-content p {
@@ -717,7 +724,9 @@ import '../styles/global.css';
 
   .faq-header h2 {
     font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 200;
     letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-md);
   }
 
@@ -805,7 +814,9 @@ import '../styles/global.css';
 
   .cta-inner h2 {
     font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 200;
     letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-md);
   }
 
