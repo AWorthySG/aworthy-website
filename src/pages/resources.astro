@@ -361,9 +361,9 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: var(--text-primary);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
     outline: none;
     transition: border-color 0.2s ease;
   }
@@ -420,9 +420,10 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   .r-card {
     display: flex;
     flex-direction: column;
-    background: var(--bg-secondary);
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 2rem 1.75rem;
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
@@ -450,7 +451,8 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.06);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 0.25rem 0.6rem;
     border-radius: 4px;
   }
@@ -458,10 +460,11 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   .r-card-title {
     font-family: var(--font-body);
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 300;
     color: var(--text-primary);
     line-height: 1.4;
     margin: 0 0 0.75rem;
+    letter-spacing: -0.03em;
   }
 
   .r-card-desc {
@@ -526,9 +529,10 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   }
 
   .r-newsletter-card {
-    background: var(--bg-secondary);
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 4px;
     padding: 3rem;
     text-align: center;
     max-width: 600px;
@@ -538,9 +542,9 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   .r-newsletter-heading {
     font-family: var(--font-body);
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 200;
     color: var(--text-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     margin: 0 0 0.75rem;
   }
 
@@ -567,9 +571,9 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     font-family: var(--font-body);
     font-size: 0.9rem;
     color: var(--text-primary);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
     outline: none;
     transition: border-color 0.2s ease;
   }
@@ -590,7 +594,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     color: var(--text-primary);
     background: var(--color-accent);
     border: none;
-    border-radius: 6px;
+    border-radius: 0;
     padding: 0.8rem 1.5rem;
     cursor: pointer;
     white-space: nowrap;
@@ -626,9 +630,9 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   .r-cta-heading {
     font-family: var(--font-body);
     font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
+    font-weight: 200;
     color: var(--text-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     margin: 0 0 0.75rem;
   }
 
@@ -647,7 +651,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     color: var(--text-primary);
     background: var(--color-accent);
     border: none;
-    border-radius: 6px;
+    border-radius: 0;
     padding: 0.85rem 2rem;
     text-decoration: none;
     cursor: pointer;

@@ -983,7 +983,7 @@ import '../styles/global.css';
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--accent);
+    color: var(--color-accent);
     margin-bottom: 0.5rem;
   }
 
@@ -1020,7 +1020,7 @@ import '../styles/global.css';
 
   .programme-link {
     font-size: 0.85rem;
-    color: var(--accent);
+    color: var(--color-accent);
     font-weight: 500;
     letter-spacing: 0.02em;
   }
@@ -1129,7 +1129,7 @@ import '../styles/global.css';
 
   /* ===== CASE FLOW DIAGRAM ===== */
   .case-flow-section {
-    background: var(--section-bg-alt);
+    background: var(--bg-secondary);
   }
 
   .case-flow {
@@ -1150,19 +1150,20 @@ import '../styles/global.css';
   }
 
   .case-flow-icon {
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
-    background: var(--color-primary);
-    color: #fff;
-    font-family: 'Inter', sans-serif;
+    background: rgba(43, 90, 140, 0.1);
+    border: 1px solid rgba(43, 90, 140, 0.2);
+    color: var(--text-primary);
+    font-family: var(--font-heading);
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 200;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    box-shadow: 0 4px 16px rgba(43, 90, 140, 0.2);
+    box-shadow: none;
   }
 
   .case-flow-step h3 {
@@ -1214,33 +1215,32 @@ import '../styles/global.css';
   }
 
   .testimonial-card {
-    background: var(--card-bg);
-    border: 1px solid var(--divider);
-    border-radius: 8px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     padding: 2rem;
-    transition: transform 0.25s ease, border-color 0.25s ease;
+    transition: all 0.4s ease;
   }
 
   .testimonial-card:hover {
-    transform: scale(0.98);
-    border-color: var(--accent);
+    background: var(--bg-card-hover);
+    border-color: rgba(255, 255, 255, 0.12);
   }
 
   .testimonial-stars {
-    color: var(--accent);
-    font-size: 1rem;
-    letter-spacing: 2px;
-    margin-bottom: 1.25rem;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
   }
 
   .testimonial-card blockquote {
-    font-size: 0.95rem;
-    font-style: normal;
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    margin: 0 0 1.5rem 0;
-    padding: 0;
-    border: none;
+    margin-bottom: 1.5rem;
+    font-style: normal;
   }
 
   .testimonial-author {
@@ -1273,15 +1273,25 @@ import '../styles/global.css';
 
   /* ===== CTA ===== */
   .cta-section {
-    background: var(--section-bg-alt);
-    border-top: 1px solid var(--divider);
-    padding: 4rem 0;
+    padding: 8rem 0;
+    background: var(--bg-secondary);
     text-align: center;
+    position: relative;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(212, 133, 58, 0.06) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .cta-inner {
+    text-align: center;
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
   }
 
   .cta-section .eyebrow {
@@ -1390,10 +1400,11 @@ import '../styles/global.css';
 
   /* ===== TESTIMONIAL FEATURED ===== */
   .testimonial-featured {
-    transform: translateY(-1rem);
+    border-color: rgba(212, 133, 58, 0.2);
+    background: rgba(212, 133, 58, 0.03);
   }
   @media (max-width: 768px) {
-    .testimonial-featured { transform: none; }
+    .testimonial-featured { transform: none; background: rgba(212, 133, 58, 0.03); }
   }
 
   /* ===== RESPONSIVE ===== */
