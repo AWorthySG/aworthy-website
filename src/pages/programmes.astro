@@ -187,11 +187,11 @@ import '../styles/global.css';
   .prog-hero__heading {
     font-family: var(--prog-font);
     font-size: clamp(2.4rem, 5vw, 3.6rem);
-    font-weight: 600;
+    font-weight: 200;
     line-height: 1.15;
-    color: var(--prog-text);
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   .prog-hero__sub {
@@ -252,10 +252,10 @@ import '../styles/global.css';
   .prog-section__heading {
     font-family: var(--prog-font);
     font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-    font-weight: 600;
-    color: var(--prog-text);
+    font-weight: 200;
+    color: var(--text-primary);
     margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   .prog-section__sub {
@@ -292,9 +292,10 @@ import '../styles/global.css';
 
   /* ===== PROGRAMME CARD ===== */
   .prog-card {
-    background: var(--prog-bg-card);
-    border: 1px solid var(--prog-border);
-    border-radius: 12px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     padding: 2rem;
     transition: transform 0.2s ease, border-color 0.2s ease;
     display: flex;
@@ -309,17 +310,17 @@ import '../styles/global.css';
   .prog-card__title {
     font-family: var(--prog-font);
     font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--prog-text);
+    font-weight: 300;
+    color: var(--text-primary);
     margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
   }
 
   .prog-card__desc {
     font-family: var(--prog-font);
     font-size: 0.9rem;
     line-height: 1.65;
-    color: var(--prog-text-secondary);
+    color: var(--text-secondary);
     margin-bottom: 1.25rem;
   }
 
@@ -377,7 +378,7 @@ import '../styles/global.css';
     font-family: var(--prog-font);
     font-size: 1rem;
     font-weight: 600;
-    color: var(--prog-accent);
+    color: var(--color-accent);
     margin-top: 0.75rem;
     margin-bottom: 0;
   }
@@ -398,10 +399,10 @@ import '../styles/global.css';
   .prog-cta__heading {
     font-family: var(--prog-font);
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    color: var(--prog-text);
+    font-weight: 200;
+    color: var(--text-primary);
     margin-bottom: 1rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   .prog-cta__sub {
@@ -427,7 +428,7 @@ import '../styles/global.css';
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.9rem 2rem;
-    border-radius: 8px;
+    border-radius: 0;
     transition: all 0.2s ease;
     cursor: pointer;
     display: inline-block;
