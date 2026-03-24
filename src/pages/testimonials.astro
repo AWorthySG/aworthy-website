@@ -8,7 +8,6 @@ const testimonials = [
   {
     name: 'Mrs. Linda Tan',
     context: 'Mother of Sec 4 student',
-    avatar: '/images/avatars/avatar-linda.jpg',
     initials: 'LT',
     stars: 5,
     quote: 'My son\'s English went from C5 to A2 in three months. The CASE Method gave him a systematic way to approach every comprehension question — no more guessing.',
@@ -17,7 +16,6 @@ const testimonials = [
   {
     name: 'Ethan Lim',
     context: 'Sec 4 student',
-    avatar: '/images/avatars/avatar-ethan.jpg',
     initials: 'EL',
     stars: 5,
     quote: 'I used to dread essay writing. The structured approach taught me how to plan and argue properly. Got A1 for O-Levels.',
@@ -26,7 +24,6 @@ const testimonials = [
   {
     name: 'Mr. Rajesh Kumar',
     context: 'Father of Sec 3 student',
-    avatar: '/images/avatars/avatar-rajesh.jpg',
     initials: 'RK',
     stars: 5,
     quote: 'What impressed me most was how the legal reasoning approach made inference questions click for my daughter. She actually enjoys English now.',
@@ -35,7 +32,6 @@ const testimonials = [
   {
     name: 'Mrs. Angela Wong',
     context: 'Mother of Sec 4 student',
-    avatar: '/images/avatars/avatar-angela.jpg',
     initials: 'AW',
     stars: 5,
     quote: 'After switching to A-Worthy, my daughter\'s English jumped from D7 to B3. The small class size means real attention.',
@@ -44,7 +40,6 @@ const testimonials = [
   {
     name: 'Mr. Muhammad Faisal',
     context: 'Father of Sec 2 twins',
-    avatar: '/images/avatars/avatar-faisal.jpg',
     initials: 'MF',
     stars: 5,
     quote: 'Both my boys have improved significantly in their English. The analytical approach builds skills that help across all subjects.',
@@ -53,7 +48,6 @@ const testimonials = [
   {
     name: 'Ms. Jennifer Lee',
     context: 'Mother of Sec 3 student',
-    avatar: '/images/avatars/avatar-jennifer.jpg',
     initials: 'JL',
     stars: 5,
     quote: 'We switched from a large tuition chain. The difference is night and day — focused, systematic, and my son actually understands why he\'s learning what he\'s learning.',
@@ -62,7 +56,6 @@ const testimonials = [
   {
     name: 'Ryan Ong',
     context: 'Sec 4 student',
-    avatar: '/images/avatars/avatar-ryan.jpg',
     initials: 'RO',
     stars: 5,
     quote: 'The CASE Method helped me go from barely passing to B3 in English. Summary was my weakest section and now it\'s my strongest.',
@@ -71,7 +64,6 @@ const testimonials = [
   {
     name: 'Mrs. Deepa Nair',
     context: 'Mother of Sec 2 student',
-    avatar: '/images/avatars/avatar-deepa.jpg',
     initials: 'DN',
     stars: 5,
     quote: 'I appreciate the detailed feedback after every mock paper. I can see exactly what my daughter needs to work on.',
@@ -80,7 +72,6 @@ const testimonials = [
   {
     name: 'Wei Ling',
     context: 'Sec 4 student',
-    avatar: '/images/avatars/avatar-weiling.jpg',
     initials: 'WL',
     stars: 5,
     quote: 'Got A2 for O-Level English! The comprehension techniques and essay frameworks were exactly what I needed.',
@@ -138,7 +129,7 @@ const testimonials = [
               &ldquo;{t.quote}&rdquo;
             </blockquote>
             <div class="t-card-author">
-              <img src={t.avatar} alt={t.name} class="t-avatar-img" loading="lazy" />
+              <div class="t-avatar-initials">{t.initials}</div>
               <div class="t-card-author-info">
                 <strong>{t.name}</strong>
                 <span>{t.context}</span>
@@ -355,11 +346,18 @@ const testimonials = [
     border-top: 1px solid var(--border-color);
   }
 
-  .t-avatar-img {
+  .t-avatar-initials {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    object-fit: cover;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
   }
 
