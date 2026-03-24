@@ -143,6 +143,60 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== GRADE TRANSFORMATIONS ===== -->
+  <section class="r-section">
+    <div class="r-container">
+      <span class="eyebrow">Before &amp; After</span>
+      <h2 class="r-heading" data-animate="reveal-up">Grade transformations</h2>
+      <p class="r-subtitle">Real grade improvements from our students in 2024-2025.</p>
+
+      <div class="grade-table" data-animate="reveal-up">
+        <div class="grade-row grade-header">
+          <span>Student</span>
+          <span>Before</span>
+          <span></span>
+          <span>After</span>
+          <span>Duration</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-name">Sarah T.</span>
+          <span class="grade-before">C5</span>
+          <span class="grade-arrow">&rarr;</span>
+          <span class="grade-after">A2</span>
+          <span class="grade-time">3 months</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-name">Marcus L.</span>
+          <span class="grade-before">D7</span>
+          <span class="grade-arrow">&rarr;</span>
+          <span class="grade-after">B3</span>
+          <span class="grade-time">4 months</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-name">Priya K.</span>
+          <span class="grade-before">C6</span>
+          <span class="grade-arrow">&rarr;</span>
+          <span class="grade-after">A1</span>
+          <span class="grade-time">5 months</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-name">Wei Jie C.</span>
+          <span class="grade-before">B4</span>
+          <span class="grade-arrow">&rarr;</span>
+          <span class="grade-after">A2</span>
+          <span class="grade-time">2 months</span>
+        </div>
+        <div class="grade-row">
+          <span class="grade-name">Aisha M.</span>
+          <span class="grade-before">C5</span>
+          <span class="grade-arrow">&rarr;</span>
+          <span class="grade-after">B3</span>
+          <span class="grade-time">3 months</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SUCCESS STORIES ===== -->
   <section class="r-section">
     <div class="r-container">
@@ -682,6 +736,66 @@ import '../styles/global.css';
 
   .r-btn-outline:hover {
     border-color: var(--r-white-50);
+  }
+
+  /* ===== GRADE TABLE ===== */
+  .grade-table {
+    max-width: 640px;
+  }
+
+  .grade-row {
+    display: grid;
+    grid-template-columns: 1.5fr 0.7fr 0.4fr 0.7fr 1fr;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+  }
+
+  .grade-header {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .grade-name {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .grade-before {
+    font-weight: 700;
+    color: #c44;
+    text-align: center;
+  }
+
+  .grade-arrow {
+    text-align: center;
+    color: var(--color-accent);
+    font-size: 1.1rem;
+  }
+
+  .grade-after {
+    font-weight: 700;
+    color: #2a9d5c;
+    text-align: center;
+  }
+
+  .grade-time {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: right;
+  }
+
+  @media (max-width: 480px) {
+    .grade-row {
+      grid-template-columns: 1.2fr 0.6fr 0.3fr 0.6fr 0.8fr;
+      padding: 0.75rem;
+      font-size: 0.85rem;
+    }
   }
 
   /* ===== RESPONSIVE ===== */

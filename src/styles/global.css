@@ -588,6 +588,60 @@ label {
   animation-play-state: paused;
 }
 
+/* ─── Decorative Accent Shapes ─── */
+.section-heading::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--color-accent);
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
+
+.section-heading.text-center::before {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── Gradient Section Dividers ─── */
+.section + .section {
+  border-top: none;
+  position: relative;
+}
+
+.section + .section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80%, 600px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-accent) 50%, transparent 100%);
+  opacity: 0.3;
+}
+
+/* ─── Card Hover Glow Effects ─── */
+.card:hover,
+.programme-card:hover,
+.approach-card:hover,
+.testimonial-card:hover {
+  border-color: rgba(212, 133, 58, 0.3);
+  box-shadow: 0 0 20px rgba(212, 133, 58, 0.08);
+}
+
+/* ─── Subtle Background Dot Pattern ─── */
+.section:nth-child(odd) {
+  background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center;
+}
+
+[data-theme="dark"] .section:nth-child(odd) {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+}
+
 /* Smooth scroll — native CSS, no library needed */
 html {
   scroll-behavior: smooth;

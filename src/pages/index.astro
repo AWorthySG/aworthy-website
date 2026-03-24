@@ -132,8 +132,9 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/programmes/#sec3-4" class="programme-card" data-animate="reveal-up" data-animate-delay="2">
+        <a href="/programmes/#sec3-4" class="programme-card programme-card--popular" data-animate="reveal-up" data-animate-delay="2">
           <div class="programme-body">
+            <span class="programme-popular-badge">Most Popular</span>
             <span class="programme-level">Small Group Online (Max 6)</span>
             <h3>Sec 3&ndash;4 O-Level Intensive</h3>
             <p>90-minute exam-focused sessions with monthly mock grading. Master every O-Level English component with the CASE Method and targeted practice.</p>
@@ -155,6 +156,45 @@ import '../styles/global.css';
             </div>
           </div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE FLOW DIAGRAM ===== -->
+  <section class="section case-flow-section">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">How It Works</span>
+      <h2 class="section-heading" data-animate="reveal-up">Every lesson follows the CASE Method</h2>
+      <div class="case-flow" data-animate="reveal-up">
+        <div class="case-flow-step">
+          <div class="case-flow-icon">C</div>
+          <h3>Contextualise</h3>
+          <p>Identify the task and purpose</p>
+        </div>
+        <div class="case-flow-connector" aria-hidden="true">
+          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h32m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </div>
+        <div class="case-flow-step">
+          <div class="case-flow-icon">A</div>
+          <h3>Analyse</h3>
+          <p>Read closely for meaning</p>
+        </div>
+        <div class="case-flow-connector" aria-hidden="true">
+          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h32m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </div>
+        <div class="case-flow-step">
+          <div class="case-flow-icon">S</div>
+          <h3>Structure</h3>
+          <p>Organise and write</p>
+        </div>
+        <div class="case-flow-connector" aria-hidden="true">
+          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h32m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </div>
+        <div class="case-flow-step">
+          <div class="case-flow-icon">E</div>
+          <h3>Evaluate</h3>
+          <p>Review and reflect</p>
+        </div>
       </div>
     </div>
   </section>
@@ -745,7 +785,7 @@ import '../styles/global.css';
     background: var(--section-bg-alt);
     border-top: 1px solid var(--divider);
     border-bottom: 1px solid var(--divider);
-    padding: 2.5rem 0;
+    padding: 3.5rem 0;
   }
 
   .stats-inner {
@@ -764,11 +804,11 @@ import '../styles/global.css';
   .stat-number {
     display: block;
     font-family: 'Inter', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
   }
 
   .stat-label {
@@ -887,6 +927,26 @@ import '../styles/global.css';
     letter-spacing: 0.02em;
   }
 
+  /* ===== POPULAR BADGE ===== */
+  .programme-card--popular {
+    border-color: var(--accent);
+    position: relative;
+  }
+
+  .programme-popular-badge {
+    display: inline-block;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+  }
+
   /* ===== APPROACH ===== */
   .approach-section {
     background: var(--section-bg-alt);
@@ -972,6 +1032,81 @@ import '../styles/global.css';
   @media (max-width: 640px) {
     .approach-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== CASE FLOW DIAGRAM ===== */
+  .case-flow-section {
+    background: var(--section-bg-alt);
+  }
+
+  .case-flow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    margin-top: 2rem;
+  }
+
+  .case-flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 0 0 auto;
+    max-width: 160px;
+  }
+
+  .case-flow-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 16px rgba(43, 90, 140, 0.2);
+  }
+
+  .case-flow-step h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .case-flow-step p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .case-flow-connector {
+    display: flex;
+    align-items: center;
+    padding-top: 1.25rem;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .case-flow {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .case-flow-connector {
+      transform: rotate(90deg);
+      padding-top: 0;
+    }
+    .case-flow-step {
+      max-width: 200px;
     }
   }
 

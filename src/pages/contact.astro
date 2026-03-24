@@ -143,6 +143,38 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== HOW TO ENROL ===== -->
+  <section class="section enrol-section">
+    <div class="container">
+      <p class="eyebrow">How to Enrol</p>
+      <h2 class="enrol-heading" data-animate="reveal-up">Three simple steps to get started</h2>
+
+      <div class="enrol-timeline" data-animate="reveal-up">
+        <div class="enrol-step">
+          <div class="enrol-step-num">1</div>
+          <div class="enrol-step-content">
+            <h3>Book a Free Assessment</h3>
+            <p>A 20-minute diagnostic session where we analyse your child's recent English paper and identify specific areas for improvement.</p>
+          </div>
+        </div>
+        <div class="enrol-step">
+          <div class="enrol-step-num">2</div>
+          <div class="enrol-step-content">
+            <h3>Get a Personalised Plan</h3>
+            <p>We recommend the right programme based on your child's level, goals, and areas that need the most attention.</p>
+          </div>
+        </div>
+        <div class="enrol-step">
+          <div class="enrol-step-num">3</div>
+          <div class="enrol-step-content">
+            <h3>Start Learning</h3>
+            <p>Join a small group class or start one-to-one coaching. See measurable improvement within the first month.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FAQ ACCORDION ===== -->
   <section class="section faq-section">
     <div class="container">
@@ -606,6 +638,64 @@ import '../styles/global.css';
 
   .contact-details a:hover {
     color: var(--color-accent-light);
+  }
+
+  /* ===== ENROL TIMELINE ===== */
+  .enrol-section {
+    border-top: 1px solid var(--border-color);
+  }
+
+  .enrol-heading {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .enrol-timeline {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .enrol-step {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .enrol-step:last-child {
+    border-bottom: none;
+  }
+
+  .enrol-step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .enrol-step-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    color: var(--text-primary);
+  }
+
+  .enrol-step-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 0;
   }
 
   /* ===== FAQ SECTION ===== */
