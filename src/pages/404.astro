@@ -5,13 +5,12 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Page Not Found — A Worthy">
+<BaseLayout title="Page Not Found — A Worthy" description="Page not found. Return to A-Worthy's homepage for O-Level English tuition in Singapore.">
   <Header slot="header" />
 
   <section class="error-page">
     <div class="error-bg">404</div>
     <div class="error-content">
-      <img src="/images/illustrations/hero-books.svg" alt="" class="error-illustration" data-animate="scale-in" />
       <span class="eyebrow">Error</span>
       <h1 class="heading" data-animate="fade-up">Page not found</h1>
       <p class="subtitle" data-animate="fade-up" data-animate-delay="1">The page you're looking for doesn't exist or has been moved.</p>
@@ -128,13 +127,6 @@ import '../styles/global.css';
   .actions .btn-secondary:hover {
     color: var(--text-primary);
     border-color: rgba(255, 255, 255, 0.35);
-  }
-
-  .error-illustration {
-    width: 160px;
-    margin: 0 auto 2rem;
-    display: block;
-    opacity: 0.6;
   }
 
   /* ===== VISUAL PLACEHOLDER ===== */

@@ -6,83 +6,95 @@ import '../styles/global.css';
 
 const resources = [
   {
-    title: "O-Level Comprehension Answering Techniques",
-    description: "Question-by-question guide covering literal, inferential, evaluative, and vocabulary-in-context questions with CASE reasoning",
-    category: "English",
-    type: "Article",
+    title: "O-Level English Scoring Guide",
+    description: "A free PDF covering exactly how each component is marked, what examiners reward, and a step-by-step plan to move from C to A. Includes grade benchmarks and sample answers.",
+    category: "Exam Prep",
+    type: "PDF Guide",
+    cta: "Request Free Copy",
   },
   {
-    title: "The CASE Essay Blueprint",
-    description: "A visual guide to planning and structuring continuous writing essays using the CASE framework",
+    title: "Comprehension Techniques Checklist",
+    description: "A downloadable one-page checklist for literal, inferential, evaluative, and vocabulary-in-context questions. Tick off each technique as you practise.",
     category: "English",
-    type: "Guide",
+    type: "Checklist",
+    cta: "Request Free Copy",
   },
   {
-    title: "50 High-Impact O-Level Vocabulary Words",
-    description: "Organised by theme with definitions, model sentences, and synonyms",
+    title: "Essay Writing Framework",
+    description: "Quick-reference sheet for the CASE Method applied to continuous writing. Covers essay planning, paragraph structure, introductions, and conclusions in one printable page.",
     category: "English",
-    type: "Guide",
+    type: "Quick Reference",
+    cta: "Request Free Copy",
+  },
+  {
+    title: "Common Grammar Mistakes to Avoid",
+    description: "Practice sheet listing the 20 most frequent grammar errors in O-Level scripts — with corrections, explanations, and exercises to reinforce each rule.",
+    category: "English",
+    type: "Practice Sheet",
+    cta: "Request Free Copy",
   },
   {
     title: "Situational Writing Format Guide",
-    description: "Text-type conventions for formal letter, email, report, and speech with register indicators",
+    description: "Text-type conventions for formal letter, email, report, and speech with register indicators. Includes annotated model answers for each format.",
     category: "Exam Prep",
-    type: "Guide",
+    type: "PDF Guide",
+    cta: "Request Free Copy",
   },
   {
     title: "Oral Preparation Checklist",
-    description: "Structure, timing, vocabulary lists by topic, and self-assessment rubric for the video stimulus response",
+    description: "Structure, timing, vocabulary lists by topic, and self-assessment rubric for the video stimulus response. Use it to practise independently before each session.",
     category: "Exam Prep",
-    type: "Guide",
+    type: "Checklist",
+    cta: "Request Free Copy",
   },
   {
-    title: "How to Score A1 for O-Level English",
-    description: "A systematic breakdown of what examiners reward across every component",
-    category: "Exam Prep",
-    type: "Article",
-  },
-  {
-    title: "Common Inference Question Patterns",
-    description: "The five most common inference question types and how to answer each using the CASE Method",
+    title: "50 High-Impact O-Level Vocabulary Words",
+    description: "Organised by theme with definitions, model sentences, and synonyms. Print it out and work through five words a day for ten days of focused revision.",
     category: "English",
-    type: "Article",
+    type: "PDF Guide",
+    cta: "Request Free Copy",
   },
   {
     title: "Summary Writing: The 80-Word Challenge",
-    description: "Step-by-step technique for identifying main ideas, paraphrasing, and staying within the word limit",
+    description: "Step-by-step technique for identifying main ideas, paraphrasing, and staying within the word limit. Includes three timed practice passages with answer keys.",
     category: "English",
-    type: "Article",
+    type: "Practice Sheet",
+    cta: "Request Free Copy",
+  },
+  {
+    title: "Common Inference Question Patterns",
+    description: "The five most common inference question types and how to answer each using the CASE Method. Worked examples from past papers included.",
+    category: "English",
+    type: "Quick Reference",
+    cta: "Request Free Copy",
   },
   {
     title: "Editing Paper Strategies",
-    description: "How to spot and correct grammatical errors systematically in Paper 1 editing",
+    description: "How to spot and correct grammatical errors systematically in Paper 1 editing. Covers the top error categories with practice exercises and an answer key.",
     category: "Exam Prep",
-    type: "Article",
+    type: "Practice Sheet",
+    cta: "Request Free Copy",
   },
   {
     title: "Essay Hooks That Work",
-    description: "Opening techniques for narrative, expository, and argumentative essays that grab examiner attention",
+    description: "Opening techniques for narrative, expository, and argumentative essays that grab examiner attention. Ten proven openers with before-and-after examples.",
     category: "Study Tips",
-    type: "Article",
-  },
-  {
-    title: "The Legal Reasoning Approach to Comprehension",
-    description: "How lawyers read passages — and why this skill transfers directly to O-Level English",
-    category: "Study Tips",
-    type: "Article",
+    type: "Quick Reference",
+    cta: "Request Free Copy",
   },
   {
     title: "Mock Paper Self-Assessment Guide",
-    description: "How to review your own mock papers using the CASE checklist for maximum improvement",
+    description: "How to review your own mock papers using the CASE checklist for maximum improvement. Includes a printable marking rubric and reflection template.",
     category: "Exam Prep",
-    type: "Guide",
+    type: "PDF Guide",
+    cta: "Request Free Copy",
   },
 ];
 
 const categories = ["All", "English", "Exam Prep", "Study Tips"];
 ---
 
-<BaseLayout title="Free Resources — A Worthy">
+<BaseLayout title="Free Resources — A Worthy" description="Free O-Level English worksheets, study guides, and exam prep tips curated by A-Worthy tutors. No sign-up required.">
   <Header slot="header" />
 
   <!-- ===== HERO ===== -->
@@ -93,11 +105,6 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
       <p class="r-hero-sub">No sign-up required. Worksheets, guides, and study tips curated by our experienced tutors.</p>
     </div>
   </section>
-
-  <!-- ===== HERO VISUAL PLACEHOLDER ===== -->
-  <div class="r-container">
-    <img src="/images/illustrations/hero-books.svg" alt="Educational resources" class="resources-hero-illustration" />
-  </div>
 
   <!-- ===== SEARCH + FILTERS ===== -->
   <section class="r-filters" data-animate="reveal-up">
@@ -145,9 +152,9 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
             </div>
             <h3 class="r-card-title">{resource.title}</h3>
             <p class="r-card-desc">{resource.description}</p>
-            <span class="r-card-link r-card-link--soon">
-              Coming Soon
-            </span>
+            <a href="/contact/" class="r-card-link">
+              {resource.cta} <span class="r-arrow">&rarr;</span>
+            </a>
           </article>
         ))}
       </div>
@@ -482,15 +489,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     gap: 0.7rem;
   }
 
-  .r-card-link--soon {
-    color: var(--text-muted);
-    font-style: italic;
-    cursor: default;
-  }
-
-  .r-card-link--soon:hover {
-    gap: 0.4rem;
-  }
+  /* --soon styles removed — all resources now link to /contact/ */
 
   .r-arrow {
     font-size: 1rem;
@@ -657,12 +656,6 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
 
   .r-btn-cta:hover {
     background: #d4632f;
-  }
-
-  .resources-hero-illustration {
-    max-width: 500px;
-    margin: 0 auto 2rem;
-    display: block;
   }
 
   /* ===== VISUAL PLACEHOLDER ===== */
