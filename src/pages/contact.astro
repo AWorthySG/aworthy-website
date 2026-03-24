@@ -27,6 +27,12 @@ import '../styles/global.css';
         <h2 class="contact-form-col__heading">Send us a message</h2>
 
         <form id="contact-form" class="contact-form" action="https://formspree.io/f/xcontact" method="POST" novalidate>
+          <!-- Honeypot — hidden from real users, catches bots -->
+          <div class="form-hp" aria-hidden="true" tabindex="-1">
+            <label for="website">Website</label>
+            <input type="text" name="_gotcha" id="website" tabindex="-1" autocomplete="off" />
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="parent-name">Parent / Guardian Name <span class="required">*</span></label>
@@ -87,7 +93,7 @@ import '../styles/global.css';
             <textarea id="message" name="message" rows="5" placeholder="Tell us more about your child's learning needs..."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-accent btn-submit"><span>Send Enquiry</span></button>
+          <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Send Enquiry</span></button>
 
           <div id="form-success" class="form-success" hidden>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
@@ -272,7 +278,6 @@ import '../styles/global.css';
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const successMsg = document.getElementById('form-success') as HTMLDivElement;
   const errorsMsg = document.getElementById('form-errors') as HTMLDivElement;
-  const submitBtn = form.querySelector('.btn-submit') as HTMLButtonElement;
 
   form.addEventListener('submit', async (e: Event) => {
     e.preventDefault();
@@ -311,8 +316,9 @@ import '../styles/global.css';
     }
 
     // Submit form data
+    var submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement;
     submitBtn.disabled = true;
-    submitBtn.querySelector('span')!.textContent = 'Sending...';
+    submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
 
     try {
       const formData = new FormData(form);
@@ -340,7 +346,7 @@ import '../styles/global.css';
       errorsMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } finally {
       submitBtn.disabled = false;
-      submitBtn.querySelector('span')!.textContent = 'Send Enquiry';
+      submitBtn.textContent = 'Send Enquiry';
     }
   });
 
@@ -876,5 +882,36 @@ import '../styles/global.css';
     .faq-list {
       max-width: 900px;
     }
+  }
+
+  /* ===== HONEYPOT ===== */
+  .form-hp {
+    position: absolute;
+    left: -9999px;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  /* ===== SPINNER & DISABLED SUBMIT ===== */
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .btn-submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
   }
 </style>

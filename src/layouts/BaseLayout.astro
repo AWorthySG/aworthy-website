@@ -7,14 +7,14 @@ interface Props {
 const { title, description = "A-Worthy — Singapore's first analytical English tuition programme. The CASE Method brings legal reasoning precision to O-Level English mastery." } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL('/images/logo.png', Astro.site);
+const ogImageURL = new URL('/images/logo.svg', Astro.site);
 
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
-  "logo": new URL('/images/logo.png', Astro.site).toString(),
+  "logo": new URL('/images/logo.svg', Astro.site).toString(),
   "description": "Singapore's first analytical English tuition programme. The CASE Method brings legal reasoning precision to O-Level English mastery.",
   "address": {
     "@type": "PostalAddress",
@@ -66,10 +66,12 @@ const schemaData = {
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
-  <!-- Fonts — Inter (close to Vast Space's Owners Text) -->
+  <!-- Fonts — non-render-blocking async load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
 
   <title>{title}</title>
 
@@ -185,8 +187,15 @@ const schemaData = {
     (function(){
       var btn=document.getElementById('back-to-top');
       if(!btn)return;
+      var topTicking=false;
       window.addEventListener('scroll',function(){
-        btn.classList.toggle('is-visible',window.scrollY>600);
+        if(!topTicking){
+          requestAnimationFrame(function(){
+            btn.classList.toggle('is-visible',window.scrollY>600);
+            topTicking=false;
+          });
+          topTicking=true;
+        }
       });
       btn.addEventListener('click',function(){
         window.scrollTo({top:0,behavior:'smooth'});
