@@ -100,7 +100,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   </div>
 
   <!-- ===== SEARCH + FILTERS ===== -->
-  <section class="r-filters" data-animate="fade-up">
+  <section class="r-filters" data-animate="reveal-up">
     <div class="r-container">
       <div class="r-search-wrap">
         <label for="resource-search" class="sr-only">Search resources</label>
@@ -136,7 +136,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
             data-category={resource.category}
             data-title={resource.title.toLowerCase()}
             data-description={resource.description.toLowerCase()}
-            data-animate="fade-up"
+            data-animate="reveal-up"
             data-animate-delay={String((i % 3) + 1)}
           >
             <div class="r-card-top">
@@ -165,7 +165,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   <!-- ===== NEWSLETTER ===== -->
   <section class="r-newsletter-section">
     <div class="r-container">
-      <div class="r-newsletter-card" data-animate="fade-up">
+      <div class="r-newsletter-card" data-animate="reveal-up">
         <span class="eyebrow">Stay Updated</span>
         <h2 class="r-newsletter-heading">Get new resources in your inbox</h2>
         <p class="r-newsletter-sub">Free worksheets, study tips, and exam prep materials delivered weekly.</p>
@@ -191,7 +191,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   <section class="r-cta">
     <div class="r-container">
       <span class="eyebrow">Next Step</span>
-      <h2 class="r-cta-heading" data-animate="fade-up">Want personalised guidance?</h2>
+      <h2 class="r-cta-heading" data-animate="reveal-up">Want personalised guidance?</h2>
       <p class="r-cta-sub">Our resources are a great start — personalised tuition takes it further.</p>
       <a href="/contact/" class="r-btn-cta">Get in Touch</a>
     </div>

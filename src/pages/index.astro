@@ -50,36 +50,56 @@ import '../styles/global.css';
   <!-- ===== STATS BAR ===== -->
   <section class="stats-bar">
     <div class="container stats-inner">
-      <div class="stat-item" data-animate="fade-up" data-animate-delay="1">
-        <span class="stat-number">95%</span>
+      <div class="stat-item" data-animate="reveal-up" data-animate-delay="1">
+        <span class="stat-number" data-count="95" data-count-suffix="%">0%</span>
         <span class="stat-label">O-Level English pass rate</span>
       </div>
       <div class="stat-divider"></div>
-      <div class="stat-item" data-animate="fade-up" data-animate-delay="2">
+      <div class="stat-item" data-animate="reveal-up" data-animate-delay="2">
         <span class="stat-number">6:1</span>
         <span class="stat-label">Maximum class size</span>
       </div>
       <div class="stat-divider"></div>
-      <div class="stat-item" data-animate="fade-up" data-animate-delay="3">
-        <span class="stat-number">500+</span>
+      <div class="stat-item" data-animate="reveal-up" data-animate-delay="3">
+        <span class="stat-number" data-count="500" data-count-suffix="+">0+</span>
         <span class="stat-label">Students taught</span>
       </div>
       <div class="stat-divider"></div>
-      <div class="stat-item" data-animate="fade-up" data-animate-delay="4">
+      <div class="stat-item" data-animate="reveal-up" data-animate-delay="4">
         <span class="stat-number">Law</span>
         <span class="stat-label">Graduate founder</span>
       </div>
     </div>
   </section>
 
+  <!-- ===== MARQUEE TICKER ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-inner">
+      <span class="marquee-item"><span class="marquee-dot"></span> Think Sharper</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Write Stronger</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Score Higher</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> The CASE Method</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> A-Worthy</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Legal Precision</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> English Mastery</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Think Sharper</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Write Stronger</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Score Higher</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> The CASE Method</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> A-Worthy</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Legal Precision</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> English Mastery</span>
+    </div>
+  </div>
+
   <!-- ===== PROGRAMMES OVERVIEW ===== -->
   <section class="section programmes-section">
     <div class="container">
-      <span class="eyebrow" data-animate="fade-up">Our Programmes</span>
-      <h2 class="section-heading" data-animate="fade-up">Structured learning pathways for every stage</h2>
+      <span class="eyebrow" data-animate="reveal-up">Our Programmes</span>
+      <h2 class="section-heading" data-animate="reveal-up">Structured learning pathways for every stage</h2>
 
       <div class="programmes-grid">
-        <a href="/programmes/#foundation" class="programme-card" data-animate="fade-up" data-animate-delay="1">
+        <a href="/programmes/#foundation" class="programme-card" data-animate="reveal-up" data-animate-delay="1">
           <div class="programme-body">
             <span class="programme-level">Small Group Online (Max 6)</span>
             <h3>Sec 1&ndash;2 English Foundation</h3>
@@ -91,7 +111,7 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/programmes/#intensive" class="programme-card" data-animate="fade-up" data-animate-delay="2">
+        <a href="/programmes/#intensive" class="programme-card" data-animate="reveal-up" data-animate-delay="2">
           <div class="programme-body">
             <span class="programme-level">Small Group Online (Max 6)</span>
             <h3>Sec 3&ndash;4 O-Level Intensive</h3>
@@ -103,7 +123,7 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/programmes/#coaching" class="programme-card" data-animate="fade-up" data-animate-delay="3">
+        <a href="/programmes/#coaching" class="programme-card" data-animate="reveal-up" data-animate-delay="3">
           <div class="programme-body">
             <span class="programme-level">Individual Online</span>
             <h3>One-to-One Coaching</h3>
@@ -121,30 +141,32 @@ import '../styles/global.css';
   <!-- ===== APPROACH ===== -->
   <section id="approach" class="section approach-section">
     <div class="container">
-      <span class="eyebrow" data-animate="fade-up">The CASE Method</span>
-      <h2 class="section-heading" data-animate="fade-up">Legal precision meets English mastery</h2>
+      <span class="eyebrow" data-animate="reveal-up">The CASE Method</span>
+      <h2 class="section-heading" data-animate="reveal-up">Legal precision meets English mastery</h2>
       <p class="approach-subtitle">Our proprietary framework applies legal reasoning structures to every O-Level English component</p>
 
-      <div class="approach-grid">
-        <div class="approach-card" data-animate="fade-up" data-animate-delay="1">
-          <span class="approach-number">C</span>
-          <h3>Contextualise</h3>
-          <p>Identify the task, purpose, audience, and text type. What is being asked? What kind of response is required? Just as lawyers issue-spot before applying any rule.</p>
-        </div>
-        <div class="approach-card" data-animate="fade-up" data-animate-delay="2">
-          <span class="approach-number">A</span>
-          <h3>Analyse</h3>
-          <p>Read closely for explicit and implicit meaning, language technique, and writer's purpose. The analytical step is where marks are won or lost.</p>
-        </div>
-        <div class="approach-card" data-animate="fade-up" data-animate-delay="3">
-          <span class="approach-number">S</span>
-          <h3>Structure</h3>
-          <p>Organise ideas into a coherent response. Build paragraphs with claim, evidence, and reasoned explanation. Structure is not decoration — it is the argument itself.</p>
-        </div>
-        <div class="approach-card" data-animate="fade-up" data-animate-delay="4">
-          <span class="approach-number">E</span>
-          <h3>Evaluate</h3>
-          <p>Review, revise, and reflect. Does the response address the question? Is the evidence well-chosen? Is the language precise? The deliberate checking of reasoning.</p>
+      <div class="approach-scroll-track">
+        <div class="approach-scroll-inner">
+          <div class="approach-card" data-animate="reveal-up" data-animate-delay="1">
+            <span class="approach-number">C</span>
+            <h3>Contextualise</h3>
+            <p>Identify the task, purpose, audience, and text type. What is being asked? What kind of response is required? Just as lawyers issue-spot before applying any rule.</p>
+          </div>
+          <div class="approach-card" data-animate="reveal-up" data-animate-delay="2">
+            <span class="approach-number">A</span>
+            <h3>Analyse</h3>
+            <p>Read closely for explicit and implicit meaning, language technique, and writer's purpose. The analytical step is where marks are won or lost.</p>
+          </div>
+          <div class="approach-card" data-animate="reveal-up" data-animate-delay="3">
+            <span class="approach-number">S</span>
+            <h3>Structure</h3>
+            <p>Organise ideas into a coherent response. Build paragraphs with claim, evidence, and reasoned explanation. Structure is not decoration — it is the argument itself.</p>
+          </div>
+          <div class="approach-card" data-animate="reveal-up" data-animate-delay="4">
+            <span class="approach-number">E</span>
+            <h3>Evaluate</h3>
+            <p>Review, revise, and reflect. Does the response address the question? Is the evidence well-chosen? Is the language precise? The deliberate checking of reasoning.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -153,11 +175,11 @@ import '../styles/global.css';
   <!-- ===== TESTIMONIALS ===== -->
   <section class="section testimonials-section">
     <div class="container">
-      <span class="eyebrow" data-animate="fade-up">What Families Say</span>
-      <h2 class="section-heading" data-animate="fade-up">Don't just take our word for it</h2>
+      <span class="eyebrow" data-animate="reveal-up">What Families Say</span>
+      <h2 class="section-heading" data-animate="reveal-up">Don't just take our word for it</h2>
 
       <div class="testimonials-grid">
-        <div class="testimonial-card" data-animate="fade-up" data-animate-delay="1">
+        <div class="testimonial-card" data-animate="reveal-up" data-animate-delay="1">
           <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>
             "My son's English improved from C5 to A2 in just three months. The CASE Method gave him a systematic way to approach every comprehension question."
@@ -171,7 +193,7 @@ import '../styles/global.css';
           </div>
         </div>
 
-        <div class="testimonial-card" data-animate="fade-up" data-animate-delay="2">
+        <div class="testimonial-card testimonial-featured" data-animate="reveal-up" data-animate-delay="2">
           <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>
             "I used to hate essay writing. Now I actually enjoy it because I know how to structure my arguments properly."
@@ -185,7 +207,7 @@ import '../styles/global.css';
           </div>
         </div>
 
-        <div class="testimonial-card" data-animate="fade-up" data-animate-delay="3">
+        <div class="testimonial-card" data-animate="reveal-up" data-animate-delay="3">
           <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>
             "What impressed me most was how the legal reasoning approach made inference questions click for my daughter."
@@ -205,8 +227,8 @@ import '../styles/global.css';
   <!-- ===== CTA ===== -->
   <section class="cta-section">
     <div class="container cta-inner">
-      <span class="eyebrow" data-animate="fade-up">Get Started</span>
-      <h2 data-animate="fade-up">Your child is A-Worthy</h2>
+      <span class="eyebrow" data-animate="reveal-up">Get Started</span>
+      <h2 data-animate="reveal-up">Your child is A-Worthy</h2>
       <p>Book a free diagnostic assessment — a 20-minute session analysing your child's recent English paper</p>
       <a href="/contact/" class="btn btn-primary btn-lg">Book Free Assessment</a>
     </div>
@@ -282,7 +304,7 @@ import '../styles/global.css';
 
   .hero-heading {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -574,10 +596,23 @@ import '../styles/global.css';
     margin-top: -2rem;
   }
 
-  .approach-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  .approach-scroll-track {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -2rem;
+    padding: 0 2rem;
+  }
+  .approach-scroll-track::-webkit-scrollbar { display: none; }
+  .approach-scroll-inner {
+    display: flex;
     gap: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  .approach-scroll-inner .approach-card {
+    min-width: 300px;
+    flex-shrink: 0;
   }
 
   .approach-card {
@@ -768,17 +803,72 @@ import '../styles/global.css';
     font-size: 0.9rem;
   }
 
+  /* ===== MARQUEE ===== */
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--section-bg-alt);
+    border-bottom: 1px solid var(--divider);
+    padding: 1rem 0;
+  }
+  .marquee-inner {
+    display: inline-flex;
+    animation: marquee-scroll 30s linear infinite;
+  }
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    padding: 0 2rem;
+  }
+  .marquee-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+  }
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===== TESTIMONIAL FEATURED ===== */
+  .testimonial-featured {
+    transform: translateY(-1rem);
+  }
+  @media (max-width: 768px) {
+    .testimonial-featured { transform: none; }
+  }
+
   /* ===== RESPONSIVE ===== */
+  @media (min-width: 1024px) {
+    .approach-scroll-track {
+      overflow: visible;
+      margin: 0;
+      padding: 0;
+    }
+    .approach-scroll-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .approach-scroll-inner .approach-card {
+      min-width: unset;
+    }
+  }
+
   @media (max-width: 1024px) {
     .programmes-grid,
     .testimonials-grid {
       grid-template-columns: 1fr 1fr;
     }
-
-    .approach-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
   }
 
   @media (max-width: 768px) {
@@ -827,8 +917,7 @@ import '../styles/global.css';
 
   @media (max-width: 640px) {
     .programmes-grid,
-    .testimonials-grid,
-    .approach-grid {
+    .testimonials-grid {
       grid-template-columns: 1fr;
     }
 

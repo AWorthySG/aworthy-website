@@ -511,3 +511,124 @@ label {
   html { font-size: 150%; }
   .container { max-width: 2200px; }
 }
+
+/* ─── Clip-path Scroll Reveals ─── */
+[data-animate="reveal-up"] {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+[data-animate="reveal-up"].is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+[data-animate="reveal-left"] {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+[data-animate="reveal-left"].is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+[data-animate="reveal-right"] {
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+[data-animate="reveal-right"].is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Stagger delays for reveal animations */
+[data-animate-delay="1"] { transition-delay: 0.1s; }
+[data-animate-delay="2"] { transition-delay: 0.25s; }
+[data-animate-delay="3"] { transition-delay: 0.4s; }
+[data-animate-delay="4"] { transition-delay: 0.55s; }
+[data-animate-delay="5"] { transition-delay: 0.7s; }
+
+/* ─── Film Grain Overlay ─── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ─── Custom Cursor ─── */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.cursor-dot.active {
+  opacity: 1;
+}
+.cursor-dot.hovering {
+  transform: translate(-50%, -50%) scale(4);
+  opacity: 0.15;
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  .cursor-dot { display: none; }
+}
+
+/* ─── Marquee Ticker ─── */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+.marquee-inner {
+  display: inline-flex;
+  animation: marquee-scroll 25s linear infinite;
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  font-family: var(--font-heading);
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.marquee-item .marquee-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pause marquee on hover */
+.marquee:hover .marquee-inner {
+  animation-play-state: paused;
+}
+
+/* ─── Smooth Scroll ─── */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}

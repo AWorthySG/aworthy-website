@@ -97,17 +97,17 @@ const testimonials = [
   <!-- ===== STATS BAR ===== -->
   <section class="t-stats-bar">
     <div class="t-container t-stats-inner">
-      <div class="t-stat" data-animate="fade-up" data-animate-delay="1">
+      <div class="t-stat" data-animate="reveal-up" data-animate-delay="1">
         <span class="t-stat-number">50+</span>
         <span class="t-stat-label">Five-Star Reviews</span>
       </div>
       <div class="t-stat-divider"></div>
-      <div class="t-stat" data-animate="fade-up" data-animate-delay="2">
+      <div class="t-stat" data-animate="reveal-up" data-animate-delay="2">
         <span class="t-stat-number">98%</span>
         <span class="t-stat-label">Parent Satisfaction</span>
       </div>
       <div class="t-stat-divider"></div>
-      <div class="t-stat" data-animate="fade-up" data-animate-delay="3">
+      <div class="t-stat" data-animate="reveal-up" data-animate-delay="3">
         <span class="t-stat-number">4.9/5</span>
         <span class="t-stat-label">Google Rating</span>
       </div>
@@ -119,7 +119,7 @@ const testimonials = [
     <div class="t-container">
       <div class="t-testimonials-grid">
         {testimonials.map((t, i) => (
-          <div class:list={['t-card', { 't-card--featured': t.featured }]} data-animate="fade-up" data-animate-delay={String((i % 3) + 1)}>
+          <div class:list={['t-card', { 't-card--featured': t.featured }]} data-animate="reveal-up" data-animate-delay={String((i % 3) + 1)}>
             <div class="t-card-stars" aria-label={`${t.stars} out of 5 stars`}>
               {Array.from({ length: t.stars }).map(() => (
                 <span class="t-star">&#9733;</span>
@@ -170,7 +170,7 @@ const testimonials = [
   <section class="t-section t-cta">
     <div class="t-container t-cta-inner">
       <span class="eyebrow">Get Started</span>
-      <h2 class="t-cta-heading" data-animate="fade-up">Experience the A Worthy difference</h2>
+      <h2 class="t-cta-heading" data-animate="reveal-up">Experience the A Worthy difference</h2>
       <p class="t-cta-subtitle">Join the hundreds of families who trust A Worthy. Book a free trial lesson and see the results for yourself.</p>
       <div class="t-cta-actions">
         <a href="/contact/" class="t-btn t-btn--primary">Book a Free Trial</a>

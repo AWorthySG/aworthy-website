@@ -88,6 +88,8 @@ const { title, description = "A-Worthy — Singapore's first analytical English 
     }
   </style>
 
+  <div class="cursor-dot" id="cursor-dot"></div>
+
   <!-- Scroll reveal animation observer -->
   <script is:inline>
     (function() {
@@ -104,6 +106,66 @@ const { title, description = "A-Worthy — Singapore's first analytical English 
         observer.observe(el);
       });
     })();
+  </script>
+
+  <script>
+    // ─── Lenis Smooth Scroll ───
+    const lenisScript = document.createElement('script');
+    lenisScript.src = 'https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js';
+    lenisScript.onload = () => {
+      const lenis = new Lenis({ lerp: 0.07, smoothWheel: true });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    };
+    document.head.appendChild(lenisScript);
+
+    // ─── Custom Cursor ───
+    const dot = document.getElementById('cursor-dot');
+    if (dot && window.matchMedia('(hover: hover)').matches) {
+      let mx = 0, my = 0, dx = 0, dy = 0;
+      document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; dot.classList.add('active'); });
+      document.addEventListener('mouseleave', () => dot.classList.remove('active'));
+      (function moveDot() {
+        dx += (mx - dx) * 0.15;
+        dy += (my - dy) * 0.15;
+        dot.style.left = dx + 'px';
+        dot.style.top = dy + 'px';
+        requestAnimationFrame(moveDot);
+      })();
+      // Hover expand on interactive elements
+      document.querySelectorAll('a, button, [role="button"]').forEach(el => {
+        el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
+      });
+    }
+
+    // ─── Number Counter Animation ───
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.countSuffix || '';
+      const prefix = el.dataset.countPrefix || '';
+      let counted = false;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !counted) {
+            counted = true;
+            let start = 0;
+            const duration = 1500;
+            const startTime = performance.now();
+            function step(now) {
+              const elapsed = now - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(eased * target);
+              el.textContent = prefix + current + suffix;
+              if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(el);
+    });
   </script>
 </body>
 </html>
