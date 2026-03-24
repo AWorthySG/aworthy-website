@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="A-Worthy — Singapore's First Analytical English Tuition">
+<BaseLayout title="A-Worthy — Singapore's First Analytical English Tuition" description="A-Worthy uses the CASE Method — a proprietary legal-analytical framework — to help secondary students master O-Level English. Small classes, proven results. Book a free trial.">
   <Header slot="header" />
 
   <!-- ===== HERO ===== -->
@@ -33,6 +33,7 @@ import '../styles/global.css';
             <span class="proof-label">max class size</span>
           </div>
         </div>
+        <p class="hero-intake">Next intake: <strong>Term 3, July 2026</strong> — Limited slots available</p>
         <div class="hero-actions">
           <a href="/contact/" class="btn btn-accent hero-cta-primary">Book a Free Trial Class</a>
           <a href="https://wa.me/6591234567" class="btn btn-outline hero-cta-secondary" target="_blank" rel="noopener">
@@ -86,6 +87,31 @@ import '../styles/global.css';
     </div>
   </section>
 
+
+  <!-- ===== TRUST STRIP ===== -->
+  <section class="trust-strip">
+    <div class="container trust-inner">
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-accent)" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span>4.9/5 from 50+ parent reviews</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>MOE-aligned curriculum</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>NUS Law graduate founder</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>100% online via Zoom</span>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== PROBLEM → SOLUTION ===== -->
   <section class="section problem-section">
@@ -489,10 +515,29 @@ import '../styles/global.css';
     align-items: center;
   }
 
+  .hero-intake {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-intake strong {
+    color: var(--text-primary);
+  }
+
   .hero-cta-primary {
-    padding: 0.875rem 2rem;
-    font-size: 0.9rem;
+    padding: 1rem 2.25rem;
+    font-size: 0.95rem;
     font-weight: 600;
+    box-shadow: 0 4px 14px rgba(212, 133, 58, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hero-cta-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(212, 133, 58, 0.4);
   }
 
   .hero-cta-secondary {
@@ -825,6 +870,45 @@ import '../styles/global.css';
     height: 40px;
     background: var(--divider);
     flex-shrink: 0;
+  }
+
+  /* ===== TRUST STRIP ===== */
+  .trust-strip {
+    background: var(--section-bg);
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .trust-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .trust-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--border-color);
+  }
+
+  @media (max-width: 640px) {
+    .trust-inner {
+      gap: 1rem 1.5rem;
+    }
+    .trust-divider {
+      display: none;
+    }
   }
 
   /* ===== PROGRAMMES ===== */

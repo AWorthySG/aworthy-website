@@ -151,35 +151,47 @@ const schemaData = {
     })();
   </script>
 
-  <script>
-
-    // ─── Number Counter Animation ───
-    document.querySelectorAll('[data-count]').forEach(el => {
-      const target = parseFloat(el.dataset.count);
-      const suffix = el.dataset.countSuffix || '';
-      const prefix = el.dataset.countPrefix || '';
-      let counted = false;
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !counted) {
-            counted = true;
-            let start = 0;
-            const duration = 1500;
-            const startTime = performance.now();
-            function step(now) {
-              const elapsed = now - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3);
-              const current = Math.round(eased * target);
-              el.textContent = prefix + current + suffix;
-              if (progress < 1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
+  <script is:inline>
+    (function(){
+      var counters = document.querySelectorAll('[data-count]');
+      if (!counters.length) return;
+      var animated = new Set();
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting || animated.has(entry.target)) return;
+          animated.add(entry.target);
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-count'), 10);
+          var suffix = el.getAttribute('data-count-suffix') || el.getAttribute('data-suffix') || '';
+          var duration = 1500;
+          var start = performance.now();
+          function tick(now) {
+            var progress = Math.min((now - start) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(target * ease) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
           }
+          requestAnimationFrame(tick);
         });
       }, { threshold: 0.3 });
-      observer.observe(el);
-    });
+      counters.forEach(function(c) { observer.observe(c); });
+    })();
+  </script>
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <script is:inline>
+    (function(){
+      var btn=document.getElementById('back-to-top');
+      if(!btn)return;
+      window.addEventListener('scroll',function(){
+        btn.classList.toggle('is-visible',window.scrollY>600);
+      });
+      btn.addEventListener('click',function(){
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    })();
   </script>
 </body>
 </html>

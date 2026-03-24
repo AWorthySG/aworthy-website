@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="About Us — A Worthy | Singapore Tuition Centre">
+<BaseLayout title="About Us — A Worthy | Singapore Tuition Centre" description="Founded by an NUS Law graduate, A-Worthy brings legal reasoning precision to English tuition. Learn about our story, mission, and the CASE Method.">
   <Header slot="header" />
 
   <!-- ===== HERO ===== -->
@@ -53,8 +53,6 @@ import '../styles/global.css';
             in small groups of six, delivering 90-minute sessions weekly through Zoom. This format
             ensures every student receives focused attention while keeping tuition accessible.
           </p>
-        </div>
-        <div class="story-image-wrap" data-animate="reveal-right">
         </div>
       </div>
     </div>
@@ -253,29 +251,11 @@ import '../styles/global.css';
 
   /* ===== OUR STORY ===== */
   .story-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
+    max-width: 720px;
   }
 
   .story-text h2 {
     max-width: 100%;
-  }
-
-  .story-image-wrap {
-    position: relative;
-  }
-
-  .story-image,
-  .story-image-wrap .placeholder-img {
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   /* ===== TEAM ===== */
@@ -471,16 +451,6 @@ import '../styles/global.css';
   }
 
   /* ===== RESPONSIVE ===== */
-  @media (max-width: 1024px) {
-    .story-layout {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .story-image {
-      min-height: 300px;
-    }
-  }
 
   @media (max-width: 768px) {
     .section {
