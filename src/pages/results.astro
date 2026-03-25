@@ -416,6 +416,7 @@ import '../styles/global.css';
 
   .r-card {
     background: var(--bg-card);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -735,10 +736,14 @@ import '../styles/global.css';
   .grade-table {
     max-width: 640px;
     background: var(--bg-card);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 4px;
     overflow: hidden;
+    /* Allow horizontal scroll on very small screens */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .grade-row {
@@ -792,8 +797,12 @@ import '../styles/global.css';
   @media (max-width: 480px) {
     .grade-row {
       grid-template-columns: 1.2fr 0.6fr 0.3fr 0.6fr 0.8fr;
-      padding: 0.75rem;
-      font-size: 0.85rem;
+      padding: 0.75rem 0.5rem;
+      font-size: 0.8rem;
+      min-width: 320px;
+    }
+    .grade-header {
+      font-size: 0.65rem;
     }
   }
 
@@ -867,6 +876,28 @@ import '../styles/global.css';
   @media (min-width: 1921px) {
     .r-container {
       max-width: 1400px;
+    }
+    .r-section {
+      padding: 7rem 0;
+    }
+    .r-stat-num {
+      font-size: 3.5rem;
+    }
+    .r-cards-3 {
+      gap: 2rem;
+    }
+    .r-cta {
+      padding: 8rem 0;
+    }
+  }
+
+  /* Tablet portrait */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .r-stats-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .r-cards-3 {
+      grid-template-columns: 1fr;
     }
   }
 </style>

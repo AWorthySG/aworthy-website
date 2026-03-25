@@ -421,6 +421,7 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     display: flex;
     flex-direction: column;
     background: var(--bg-card);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -428,9 +429,11 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .r-card:hover {
-    transform: scale(0.98);
-    border-color: rgba(255, 255, 255, 0.18);
+  @media (hover: hover) {
+    .r-card:hover {
+      transform: scale(0.98);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
   }
 
   .r-card-top {
