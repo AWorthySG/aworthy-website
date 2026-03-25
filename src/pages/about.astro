@@ -186,8 +186,8 @@ import '../styles/global.css';
     width: 100%;
     display: flex;
     align-items: center;
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--about-border);
+    background: var(--bg-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: calc(var(--header-height) + 3rem) 0 3rem;
     text-align: center;
   }
@@ -202,12 +202,12 @@ import '../styles/global.css';
   .hero-content h1 {
     font-family: var(--about-font);
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
+    font-weight: 200;
     line-height: 1.15;
     color: var(--text-primary);
     max-width: 700px;
     margin: 0 auto;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   /* ===== SECTIONS ===== */
@@ -229,9 +229,9 @@ import '../styles/global.css';
   .section h2 {
     font-family: var(--about-font);
     font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 700;
-    color: var(--about-white);
-    letter-spacing: -0.02em;
+    font-weight: 200;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
     line-height: 1.2;
     margin: 0 0 3rem;
     max-width: 600px;
@@ -266,11 +266,12 @@ import '../styles/global.css';
   }
 
   .team-card {
-    border: 1px solid var(--about-border);
-    border-radius: 6px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     padding: 2.5rem;
     transition: transform 0.2s ease, border-color 0.2s ease;
-    background: transparent;
   }
 
   .team-card:hover {
@@ -297,9 +298,10 @@ import '../styles/global.css';
   .team-card h3 {
     font-family: var(--about-font);
     font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--about-white);
+    font-weight: 300;
+    color: var(--text-primary);
     margin: 0 0 0.35rem;
+    letter-spacing: -0.03em;
   }
 
   .team-role {
@@ -343,8 +345,10 @@ import '../styles/global.css';
   }
 
   .value-item {
-    border: 1px solid var(--about-border);
-    border-radius: 6px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     padding: 2.5rem;
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
@@ -357,9 +361,10 @@ import '../styles/global.css';
   .value-item h3 {
     font-family: var(--about-font);
     font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--about-white);
+    font-weight: 300;
+    color: var(--text-primary);
     margin: 0 0 0.75rem;
+    letter-spacing: -0.03em;
   }
 
   .value-item p {
@@ -375,8 +380,10 @@ import '../styles/global.css';
   }
 
   .centre-card {
-    border: 1px solid var(--about-border);
-    border-radius: 6px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     padding: 2.5rem;
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
@@ -389,9 +396,10 @@ import '../styles/global.css';
   .centre-card h3 {
     font-family: var(--about-font);
     font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--about-white);
+    font-weight: 300;
+    color: var(--text-primary);
     margin: 0 0 0.5rem;
+    letter-spacing: -0.03em;
   }
 
   .centre-address {
@@ -436,10 +444,10 @@ import '../styles/global.css';
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    color: var(--about-white);
-    background: var(--about-accent);
+    color: var(--text-primary);
+    background: var(--color-accent);
     border: none;
-    border-radius: 4px;
+    border-radius: 0;
     padding: 0.9rem 2.5rem;
     text-decoration: none;
     transition: opacity 0.2s ease, transform 0.2s ease;

@@ -27,6 +27,12 @@ import '../styles/global.css';
         <h2 class="contact-form-col__heading">Send us a message</h2>
 
         <form id="contact-form" class="contact-form" action="https://formspree.io/f/xcontact" method="POST" novalidate>
+          <!-- Honeypot — hidden from real users, catches bots -->
+          <div class="form-hp" aria-hidden="true" tabindex="-1">
+            <label for="website">Website</label>
+            <input type="text" name="_gotcha" id="website" tabindex="-1" autocomplete="off" />
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="parent-name">Parent / Guardian Name <span class="required">*</span></label>
@@ -87,7 +93,7 @@ import '../styles/global.css';
             <textarea id="message" name="message" rows="5" placeholder="Tell us more about your child's learning needs..."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-accent btn-submit"><span>Send Enquiry</span></button>
+          <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Send Enquiry</span></button>
 
           <div id="form-success" class="form-success" hidden>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
@@ -272,7 +278,6 @@ import '../styles/global.css';
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const successMsg = document.getElementById('form-success') as HTMLDivElement;
   const errorsMsg = document.getElementById('form-errors') as HTMLDivElement;
-  const submitBtn = form.querySelector('.btn-submit') as HTMLButtonElement;
 
   form.addEventListener('submit', async (e: Event) => {
     e.preventDefault();
@@ -311,8 +316,9 @@ import '../styles/global.css';
     }
 
     // Submit form data
+    var submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement;
     submitBtn.disabled = true;
-    submitBtn.querySelector('span')!.textContent = 'Sending...';
+    submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
 
     try {
       const formData = new FormData(form);
@@ -340,7 +346,7 @@ import '../styles/global.css';
       errorsMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } finally {
       submitBtn.disabled = false;
-      submitBtn.querySelector('span')!.textContent = 'Send Enquiry';
+      submitBtn.textContent = 'Send Enquiry';
     }
   });
 
@@ -374,9 +380,9 @@ import '../styles/global.css';
   /* ===== CONTACT HERO ===== */
   .contact-hero {
     padding: calc(var(--header-height) + 3rem) 0 var(--space-2xl);
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     text-align: center;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .contact-hero .eyebrow {
@@ -385,8 +391,9 @@ import '../styles/global.css';
 
   .contact-hero h1 {
     font-size: clamp(2.4rem, 5vw, 4rem);
-    font-weight: 600;
+    font-weight: 200;
     letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-md);
   }
 
@@ -412,8 +419,9 @@ import '../styles/global.css';
 
   .contact-form-col__heading {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-2xl);
   }
 
@@ -449,9 +457,9 @@ import '../styles/global.css';
   .form-group textarea {
     width: 100%;
     padding: 0.875rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.03);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 0.95rem;
@@ -536,7 +544,7 @@ import '../styles/global.css';
     background: rgba(232, 113, 58, 0.1);
     color: var(--color-accent);
     border: 1px solid rgba(232, 113, 58, 0.25);
-    border-radius: var(--border-radius);
+    border-radius: 4px;
     font-weight: 500;
     text-align: center;
     display: flex;
@@ -552,7 +560,7 @@ import '../styles/global.css';
     background: rgba(192, 57, 43, 0.1);
     color: #e74c3c;
     border: 1px solid rgba(192, 57, 43, 0.25);
-    border-radius: var(--border-radius);
+    border-radius: 4px;
     font-size: 0.875rem;
   }
 
@@ -568,8 +576,9 @@ import '../styles/global.css';
 
   .contact-info-col__heading {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-2xl);
   }
 
@@ -578,8 +587,9 @@ import '../styles/global.css';
     gap: var(--space-md);
     padding: var(--space-lg);
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border-radius: 4px;
     margin-bottom: var(--space-md);
     transition: border-color var(--transition-fast);
   }
@@ -596,14 +606,15 @@ import '../styles/global.css';
     align-items: center;
     justify-content: center;
     background: rgba(232, 113, 58, 0.1);
-    border-radius: var(--border-radius);
+    border-radius: 4px;
   }
 
   .info-card h3 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 300;
     margin-bottom: var(--space-xs);
     color: var(--text-primary);
+    letter-spacing: -0.03em;
   }
 
   .info-card p {
@@ -642,8 +653,9 @@ import '../styles/global.css';
 
   .enrol-heading {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-2xl);
   }
 
@@ -681,9 +693,10 @@ import '../styles/global.css';
 
   .enrol-step-content h3 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 300;
     margin-bottom: var(--space-xs);
     color: var(--text-primary);
+    letter-spacing: -0.03em;
   }
 
   .enrol-step-content p {
@@ -711,7 +724,9 @@ import '../styles/global.css';
 
   .faq-header h2 {
     font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 200;
     letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-md);
   }
 
@@ -799,7 +814,9 @@ import '../styles/global.css';
 
   .cta-inner h2 {
     font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 200;
     letter-spacing: -0.03em;
+    color: var(--text-primary);
     margin-bottom: var(--space-md);
   }
 
@@ -876,5 +893,36 @@ import '../styles/global.css';
     .faq-list {
       max-width: 900px;
     }
+  }
+
+  /* ===== HONEYPOT ===== */
+  .form-hp {
+    position: absolute;
+    left: -9999px;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  /* ===== SPINNER & DISABLED SUBMIT ===== */
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .btn-submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
   }
 </style>

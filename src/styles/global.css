@@ -1,5 +1,5 @@
 /* ===== CSS Custom Properties ===== */
-/* A-Worthy — Warm, editorial, optimistic. Inspired by Cornerstone Athens. */
+/* A-Worthy — Dark, cinematic, immersive. Inspired by luxury resort aesthetics. */
 /* Breakpoints reference:
    Phone: up to 480px
    Phone landscape / small tablet: 481px - 768px
@@ -9,75 +9,41 @@
    Smart TV / 4K: 1921px+
 */
 :root {
-  /* Brand palette — Calm Blue + Warm tones */
-  --color-primary: #2B5A8C;       /* Calm blue — trust, optimism */
-  --color-primary-light: #3B7AB5;
-  --color-primary-dark: #1D3D5F;
-  --color-accent: #D4853A;        /* Warm gold-orange — energy, achievement */
-  --color-accent-light: #E29A55;
-  --color-secondary: #4A6A82;     /* Muted slate blue */
-  --color-secondary-light: #6A8AA2;
+  /* ── Cinematic dark palette ── */
+  --bg-primary: #0b0b0f;
+  --bg-secondary: #111118;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --text-primary: #f0f0f2;
+  --text-secondary: rgba(240, 240, 242, 0.65);
+  --text-muted: rgba(240, 240, 242, 0.4);
+  --color-primary: #2B5A8C;
+  --color-accent: #D4853A;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --header-height: 72px;
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Light, warm design */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F5F8FA;        /* Very light blue-gray */
-  --bg-card: #FFFFFF;
-  --bg-footer: #1A2A3A;           /* Deep slate */
-  --text-primary: #1A1A1A;        /* Near-black */
-  --text-secondary: #4A4A4A;
-  --text-muted: #6B6B6B;
-  --text-on-dark: #FFFFFF;
-  --border-color: #E8EAED;
-  --shadow-color: rgba(0, 0, 0, 0.05);
-  --shadow-hover: rgba(0, 0, 0, 0.1);
-
-  /* Typography — Serif headings (editorial) + Clean sans body */
-  --font-heading: 'Playfair Display', 'Georgia', serif;
-  --font-body: 'Inter', 'Segoe UI', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
-
-  /* Spacing scale */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
+  /* ── Spacing scale ── */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
   --space-2xl: 3rem;
-  --space-3xl: 4rem;
-  --space-4xl: 6rem;
+  --space-3xl: 5rem;
 
-  /* Layout */
-  --max-width: 1400px;
-  --header-height: 72px;
-  --border-radius: 6px;
-  --border-radius-lg: 12px;
+  /* ── Layout ── */
+  --container-max: 1200px;
   --page-padding: 4rem;
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 300ms ease;
-  --transition-slow: 650ms cubic-bezier(0.62, 0.05, 0.01, 0.99);
-  --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #2B5A8C 0%, #3B7AB5 100%);
-  --gradient-accent: linear-gradient(135deg, #D4853A 0%, #E29A55 100%);
-  --gradient-hero: linear-gradient(180deg, rgba(26,26,26,0.4) 0%, rgba(26,26,26,0.65) 100%);
-  --gradient-footer-top: linear-gradient(180deg, transparent 0%, #1A2A3A 100%);
 }
 
 /* ===== Dark Mode ===== */
 [data-theme="dark"] {
-  --bg-primary: #111820;
-  --bg-secondary: #1A2230;
-  --bg-card: #1E2838;
-  --bg-footer: #0A1018;
-  --text-primary: #EAF0F5;
-  --text-secondary: #A0B0C0;
-  --text-muted: #8A9AAA;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --shadow-hover: rgba(0, 0, 0, 0.5);
+  /* Already dark by default — no overrides needed */
 }
 
 /* ===== Reset & Base ===== */
@@ -96,10 +62,10 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  font-size: 1rem;
   line-height: 1.6;
-  transition: background-color var(--transition-base), color var(--transition-base);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -107,16 +73,15 @@ body {
 /* ===== Typography ===== */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  line-height: 1.2;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   color: var(--text-primary);
-  font-weight: 400;
-  letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
-h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); }
-h4 { font-size: 1.25rem; }
+h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 200; }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 400; }
 
 p {
   margin-bottom: var(--space-md);
@@ -125,25 +90,23 @@ p {
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-accent);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-accent);
-}
-
-a:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: 2px;
+  color: #e8a060;
 }
 
 *:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline: 1px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(212, 133, 58, 0.3);
+  color: #fff;
 }
 
 img {
@@ -174,7 +137,7 @@ li {
 /* ===== Utility Classes ===== */
 .container {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--page-padding);
 }
@@ -214,33 +177,37 @@ li {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: 0.875rem 2rem;
-  border: none;
-  border-radius: var(--border-radius);
+  justify-content: center;
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.875rem 2rem;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: var(--text-primary);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all var(--transition-fast);
   text-decoration: none;
   line-height: 1.4;
-  position: relative;
-  overflow: hidden;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .btn-primary {
-  background: var(--color-primary);
-  color: #ffffff;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
 }
 
 .btn-primary:hover {
-  background: var(--color-primary-light);
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow-hover);
+  background: #e8a060;
+  border-color: #e8a060;
 }
 
 .btn-secondary {
@@ -250,21 +217,20 @@ li {
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--text-primary);
 }
 
 .btn-accent {
   background: var(--color-accent);
-  color: #ffffff;
+  border-color: var(--color-accent);
+  color: #fff;
 }
 
 .btn-accent:hover {
-  background: var(--color-accent-light);
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 133, 58, 0.3);
+  background: #e8a060;
+  border-color: #e8a060;
+  transform: none;
 }
 
 /* Outline variant for dark sections */
@@ -282,17 +248,17 @@ li {
 /* ===== Cards ===== */
 .card {
   background: var(--bg-card);
-  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
+  border-radius: 8px;
   padding: var(--space-xl);
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
+  transition: all var(--transition-fast);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px var(--shadow-hover);
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* ===== Forms ===== */
@@ -357,19 +323,24 @@ label {
 /* Elements start invisible and animate in when scrolled into view */
 [data-animate] {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 [data-animate="fade-up"].is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 [data-animate="fade-in"].is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 [data-animate="fade-left"] {
@@ -408,11 +379,9 @@ label {
   transition: background-color 0.4s ease;
 }
 
-/* Card hover lift with smooth shadow transition */
+/* Card hover with smooth transition */
 .card {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
+  transition: all var(--transition-fast);
 }
 
 /* Link underline animation */
@@ -592,11 +561,10 @@ label {
 .section-heading::before {
   content: '';
   display: block;
-  width: 40px;
-  height: 3px;
+  width: 32px;
+  height: 1px;
   background: var(--color-accent);
-  margin-bottom: 1rem;
-  border-radius: 2px;
+  margin-bottom: 1.5rem;
 }
 
 .section-heading.text-center::before {
@@ -616,10 +584,10 @@ label {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: min(80%, 600px);
+  width: min(90%, 800px);
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--color-accent) 50%, transparent 100%);
-  opacity: 0.3;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
+  opacity: 1;
 }
 
 /* ─── Card Hover Glow Effects ─── */
@@ -627,20 +595,11 @@ label {
 .programme-card:hover,
 .approach-card:hover,
 .testimonial-card:hover {
-  border-color: rgba(212, 133, 58, 0.3);
-  box-shadow: 0 0 20px rgba(212, 133, 58, 0.08);
+  border-color: rgba(212, 133, 58, 0.2);
+  box-shadow: 0 0 40px rgba(212, 133, 58, 0.05);
 }
 
-/* ─── Subtle Background Dot Pattern ─── */
-.section:nth-child(odd) {
-  background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-position: center;
-}
-
-[data-theme="dark"] .section:nth-child(odd) {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-}
+/* Dot pattern backgrounds removed for cinematic look */
 
 /* ─── Back to Top Button ─── */
 .back-to-top {
@@ -649,10 +608,11 @@ label {
   right: 2rem;
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  color: #fff;
-  border: none;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -662,7 +622,7 @@ label {
   transform: translateY(10px);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   z-index: 90;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  box-shadow: none;
 }
 
 .back-to-top.is-visible {
@@ -672,7 +632,24 @@ label {
 }
 
 .back-to-top:hover {
-  background: var(--color-primary);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 640px) {
+  .back-to-top {
+    bottom: 5rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ─── FAQ Focus Styles ─── */
+details summary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Smooth scroll — native CSS, no library needed */
