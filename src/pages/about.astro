@@ -267,6 +267,7 @@ import '../styles/global.css';
 
   .team-card {
     background: var(--bg-card);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -274,9 +275,11 @@ import '../styles/global.css';
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .team-card:hover {
-    transform: scale(0.98);
-    border-color: rgba(255, 255, 255, 0.18);
+  @media (hover: hover) {
+    .team-card:hover {
+      transform: scale(0.98);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
   }
 
   .team-initials {
@@ -346,6 +349,7 @@ import '../styles/global.css';
 
   .value-item {
     background: var(--bg-card);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -353,9 +357,11 @@ import '../styles/global.css';
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .value-item:hover {
-    transform: scale(0.98);
-    border-color: rgba(255, 255, 255, 0.18);
+  @media (hover: hover) {
+    .value-item:hover {
+      transform: scale(0.98);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
   }
 
   .value-item h3 {
@@ -381,6 +387,7 @@ import '../styles/global.css';
 
   .centre-card {
     background: var(--bg-card);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -388,9 +395,11 @@ import '../styles/global.css';
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .centre-card:hover {
-    transform: scale(0.98);
-    border-color: rgba(255, 255, 255, 0.18);
+  @media (hover: hover) {
+    .centre-card:hover {
+      transform: scale(0.98);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
   }
 
   .centre-card h3 {

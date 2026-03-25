@@ -1,14 +1,11 @@
 ---
-const currentPath = Astro.url.pathname;
-
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About' },
-  { href: '/programmes/', label: 'Programmes' },
-  { href: '/results/', label: 'Results' },
-  { href: '/resources/', label: 'Resources' },
-  { href: '/testimonials/', label: 'Reviews' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '#about', label: 'About' },
+  { href: '#method', label: 'Method' },
+  { href: '#programmes', label: 'Programmes' },
+  { href: '#results', label: 'Results' },
+  { href: '#reviews', label: 'Reviews' },
+  { href: '#contact', label: 'Contact' },
 ];
 ---
 
@@ -24,10 +21,7 @@ const navLinks = [
       <ul>
         {navLinks.map(link => (
           <li>
-            <a
-              href={link.href}
-              class:list={[{ active: currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) }]}
-            >
+            <a href={link.href}>
               {link.label}
             </a>
           </li>
@@ -49,7 +43,7 @@ const navLinks = [
       </button>
 
       <!-- CTA -->
-      <a href="/contact/" class="btn btn-accent header-cta"><span>Get Assessment</span></a>
+      <a href="#contact" class="btn btn-accent header-cta"><span>Get Assessment</span></a>
 
       <!-- Mobile Hamburger -->
       <button
@@ -71,16 +65,13 @@ const navLinks = [
     <ul>
       {navLinks.map(link => (
         <li>
-          <a
-            href={link.href}
-            class:list={[{ active: currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) }]}
-          >
+          <a href={link.href}>
             {link.label}
           </a>
         </li>
       ))}
     </ul>
-    <a href="/contact/" class="btn btn-accent mobile-cta"><span>Get Assessment</span></a>
+    <a href="#contact" class="btn btn-accent mobile-cta"><span>Get Assessment</span></a>
   </nav>
 </header>
 
@@ -92,18 +83,20 @@ const navLinks = [
     right: 0;
     z-index: 200;
     padding: 0 var(--space-xl);
-    height: var(--header-height);
+    /* Safe area for notched devices */
+    padding-top: env(safe-area-inset-top, 0px);
+    height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
     display: flex;
     align-items: center;
     background: transparent;
-    transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+    transition: background 0.4s ease, border-color 0.4s ease;
     border-bottom: 1px solid transparent;
   }
 
   .site-header.scrolled {
     background: rgba(11, 11, 15, 0.85);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
@@ -216,6 +209,8 @@ const navLinks = [
     cursor: pointer;
     padding: 0;
     color: var(--text-primary);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .hamburger-line {
@@ -223,7 +218,7 @@ const navLinks = [
     width: 100%;
     height: 1.5px;
     background: var(--text-primary);
-    transition: all var(--transition-base);
+    transition: all 0.3s ease;
   }
 
   .hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
@@ -254,15 +249,20 @@ const navLinks = [
     top: 0;
     right: -320px;
     width: 320px;
+    /* Use dvh for mobile browser chrome awareness, fallback to vh */
     height: 100vh;
+    height: 100dvh;
     background: rgba(11, 11, 15, 0.95);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border-left: 1px solid rgba(255, 255, 255, 0.06);
     z-index: 300;
     transition: right var(--transition-slow);
-    padding: 5rem 2rem 2rem;
+    padding: calc(5rem + env(safe-area-inset-top, 0px)) 2rem calc(2rem + env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
+    /* Smooth momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   .mobile-nav.open {
@@ -276,17 +276,21 @@ const navLinks = [
 
   .mobile-nav a {
     display: block;
+    /* Minimum 44px touch target */
     padding: var(--space-md) 0;
-    font-size: 0.85rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border-color);
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    touch-action: manipulation;
   }
 
-  .mobile-nav a:hover,
-  .mobile-nav a.active {
+  .mobile-nav a:active {
     color: var(--color-accent);
   }
 
@@ -301,6 +305,29 @@ const navLinks = [
     .desktop-nav { display: none; }
     .header-cta { display: none; }
     .hamburger { display: flex; }
+  }
+
+  /* Wider mobile nav on tablets */
+  @media (min-width: 481px) and (max-width: 1024px) {
+    .mobile-nav {
+      width: min(400px, 80vw);
+      right: -400px;
+    }
+  }
+
+  /* TV / Large screen — larger nav text and logo */
+  @media (min-width: 1921px) {
+    .logo-img {
+      height: 36px;
+    }
+    .desktop-nav a {
+      font-size: 0.8rem;
+      padding: 0.75rem 1.25rem;
+    }
+    .header-cta {
+      font-size: 0.8rem;
+      padding: 0.75rem 2rem;
+    }
   }
 </style>
 

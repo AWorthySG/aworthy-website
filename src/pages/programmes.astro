@@ -211,13 +211,24 @@ import '../styles/global.css';
     position: sticky;
     top: 0;
     z-index: 90;
+    /* Allow horizontal scroll on small screens */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .prog-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .prog-nav__inner {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-width: max-content;
   }
 
   .prog-nav__link {
@@ -293,6 +304,7 @@ import '../styles/global.css';
   /* ===== PROGRAMME CARD ===== */
   .prog-card {
     background: var(--bg-card);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -302,9 +314,11 @@ import '../styles/global.css';
     flex-direction: column;
   }
 
-  .prog-card:hover {
-    transform: scale(0.98);
-    border-color: var(--border-color);
+  @media (hover: hover) {
+    .prog-card:hover {
+      transform: scale(0.98);
+      border-color: var(--border-color);
+    }
   }
 
   .prog-card__title {
@@ -364,6 +378,7 @@ import '../styles/global.css';
     margin-top: 1.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--prog-border);
+    flex-wrap: wrap;
   }
 
   .prog-card__meta span {
