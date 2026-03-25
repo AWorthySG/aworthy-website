@@ -39,6 +39,11 @@
   /* ── Layout ── */
   --container-max: 1200px;
   --page-padding: 4rem;
+  --border-radius: 4px;
+  --border-radius-lg: 8px;
+  --transition-base: 0.3s ease;
+  --color-accent-light: #e8a060;
+  --bg-footer: var(--bg-primary);
 
   /* ── Safe area insets for notched devices ── */
   --safe-area-top: env(safe-area-inset-top, 0px);
