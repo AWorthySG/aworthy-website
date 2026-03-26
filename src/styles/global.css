@@ -1,5 +1,5 @@
 /* ===== CSS Custom Properties ===== */
-/* A-Worthy — Dark, cinematic, immersive. Inspired by luxury resort aesthetics. */
+/* A-Worthy — Warm, professional, and inviting. Premium education brand. */
 /* Breakpoints reference:
    Phone: up to 480px
    Phone landscape / small tablet: 481px - 768px
@@ -9,17 +9,17 @@
    Smart TV / 4K: 1921px+
 */
 :root {
-  /* ── Cinematic dark palette ── */
-  --bg-primary: #0b0b0f;
-  --bg-secondary: #111118;
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.06);
-  --text-primary: #f0f0f2;
-  --text-secondary: rgba(240, 240, 242, 0.65);
-  --text-muted: rgba(240, 240, 242, 0.4);
+  /* ── Warm light palette ── */
+  --bg-primary: #FDFBF7;
+  --bg-secondary: #F5F1EB;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-card-hover: rgba(255, 255, 255, 0.9);
+  --text-primary: #1A2A3A;
+  --text-secondary: rgba(26, 42, 58, 0.7);
+  --text-muted: rgba(26, 42, 58, 0.45);
   --color-primary: #2B5A8C;
   --color-accent: #D4853A;
-  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(26, 42, 58, 0.1);
   --header-height: 72px;
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -43,7 +43,7 @@
   --border-radius-lg: 8px;
   --transition-base: 0.3s ease;
   --color-accent-light: #e8a060;
-  --bg-footer: var(--bg-primary);
+  --bg-footer: #1A2A3A;
 
   /* ── Safe area insets for notched devices ── */
   --safe-area-top: env(safe-area-inset-top, 0px);
@@ -54,7 +54,15 @@
 
 /* ===== Dark Mode ===== */
 [data-theme="dark"] {
-  /* Already dark by default — no overrides needed */
+  --bg-primary: #0b0b0f;
+  --bg-secondary: #111118;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --text-primary: #f0f0f2;
+  --text-secondary: rgba(240, 240, 242, 0.65);
+  --text-muted: rgba(240, 240, 242, 0.4);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --bg-footer: #0b0b0f;
 }
 
 /* ===== Reset & Base ===== */
@@ -225,7 +233,7 @@ li {
   text-transform: uppercase;
   padding: 0.875rem 2rem;
   border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-color);
   background: transparent;
   color: var(--text-primary);
   cursor: pointer;
@@ -243,15 +251,15 @@ li {
 
 @media (hover: hover) {
   .btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(26, 42, 58, 0.05);
+    border-color: rgba(26, 42, 58, 0.3);
   }
 }
 
 @media (hover: none) {
   .btn:active {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(26, 42, 58, 0.05);
+    border-color: rgba(26, 42, 58, 0.3);
   }
 }
 
@@ -276,7 +284,7 @@ li {
 
 @media (hover: hover) {
   .btn-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(26, 42, 58, 0.3);
     color: var(--text-primary);
   }
 }
@@ -295,7 +303,7 @@ li {
   }
 }
 
-/* Outline variant for dark sections */
+/* Outline variant for dark sections (footer, etc.) */
 .btn-outline-light {
   background: transparent;
   color: #ffffff;
@@ -318,12 +326,14 @@ li {
   border-radius: 8px;
   padding: var(--space-xl);
   transition: all var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 
 @media (hover: hover) {
   .card:hover {
     background: var(--bg-card-hover);
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(26, 42, 58, 0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   }
 }
 
@@ -644,7 +654,7 @@ label {
 
 @keyframes shimmer-glow {
   0%, 100% { text-shadow: 0 0 0px transparent; }
-  50%      { text-shadow: 0 0 20px rgba(212, 133, 58, 0.35), 0 0 40px rgba(201, 169, 110, 0.15); }
+  50%      { text-shadow: 0 0 16px rgba(212, 133, 58, 0.25), 0 0 30px rgba(201, 169, 110, 0.1); }
 }
 
 @keyframes shimmer-border {
@@ -658,9 +668,9 @@ label {
     110deg,
     var(--text-primary) 0%,
     var(--text-primary) 35%,
-    #c9a96e 45%,
-    #e8a060 50%,
-    #c9a96e 55%,
+    #B87333 45%,
+    #D4853A 50%,
+    #B87333 55%,
     var(--text-primary) 65%,
     var(--text-primary) 100%
   );
@@ -791,7 +801,7 @@ label {
   transform: translateX(-50%);
   width: min(90%, 800px);
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(26,42,58,0.08) 50%, transparent 100%);
   opacity: 1;
 }
 
@@ -802,7 +812,7 @@ label {
   .approach-card:hover,
   .testimonial-card:hover {
     border-color: rgba(212, 133, 58, 0.2);
-    box-shadow: 0 0 40px rgba(212, 133, 58, 0.05);
+    box-shadow: 0 4px 20px rgba(212, 133, 58, 0.08), 0 1px 4px rgba(0,0,0,0.04);
   }
 }
 
@@ -816,11 +826,11 @@ label {
   width: 44px;
   height: 44px;
   border-radius: 0;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -845,8 +855,9 @@ label {
 
 @media (hover: hover) {
   .back-to-top:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(26, 42, 58, 0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 }
 
