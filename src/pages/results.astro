@@ -285,14 +285,14 @@ import '../styles/global.css';
   /* ===== DESIGN TOKENS ===== */
   :root {
     --r-bg: var(--bg-primary);
-    --r-bg-card: rgba(255, 255, 255, 0.03);
+    --r-bg-card: var(--bg-card);
     --r-border: var(--border-color);
     --r-orange: var(--color-accent);
-    --r-white: #ffffff;
+    --r-white: var(--text-primary);
     --r-white-70: var(--text-secondary);
     --r-white-50: var(--text-muted);
-    --r-white-30: rgba(255, 255, 255, 0.3);
-    --r-white-10: rgba(255, 255, 255, 0.06);
+    --r-white-30: rgba(26, 42, 58, 0.2);
+    --r-white-10: rgba(26, 42, 58, 0.06);
     --r-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --r-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
   }
@@ -751,7 +751,7 @@ import '../styles/global.css';
     grid-template-columns: 1.5fr 0.7fr 0.4fr 0.7fr 1fr;
     align-items: center;
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.95rem;
   }
 
@@ -761,8 +761,8 @@ import '../styles/global.css';
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--text-muted);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 2px solid var(--border-color);
+    background: var(--bg-card);
   }
 
   .grade-name {

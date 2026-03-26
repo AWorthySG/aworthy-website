@@ -63,12 +63,12 @@ const currentYear = new Date().getFullYear();
 
 <style>
   .site-footer {
-    background: var(--bg-primary);
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: #1A2A3A;
+    border-top: none;
     padding: 4rem 0 2rem;
     /* Safe area for notched devices */
     padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.65);
     position: relative;
   }
 
@@ -78,7 +78,7 @@ const currentYear = new Date().getFullYear();
     left: 0;
     right: 0;
     height: 80px;
-    background: linear-gradient(180deg, transparent 0%, var(--bg-footer) 100%);
+    background: linear-gradient(180deg, transparent 0%, #1A2A3A 100%);
     pointer-events: none;
   }
 
@@ -100,7 +100,7 @@ const currentYear = new Date().getFullYear();
     height: 24px;
     width: auto;
     filter: brightness(0) invert(1);
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   .footer-socials {
@@ -121,7 +121,7 @@ const currentYear = new Date().getFullYear();
   .footer-links h4,
   .footer-contact h4 {
     font-family: var(--font-mono);
-    color: var(--text-primary);
+    color: #ffffff;
     margin-bottom: var(--space-md);
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -138,24 +138,24 @@ const currentYear = new Date().getFullYear();
   .footer-links li,
   .footer-contact li {
     margin-bottom: var(--space-sm);
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.9rem;
     line-height: 1.6;
   }
 
   .footer-links a,
   .footer-contact a {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.6);
     transition: color 0.3s ease;
   }
 
   .footer-links a:hover,
   .footer-contact a:hover {
-    color: var(--text-primary);
+    color: #ffffff;
   }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 2rem;
     margin-top: 3rem;
     font-size: 0.8rem;
@@ -166,7 +166,7 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-bottom p {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.35);
     font-size: 0.8rem;
     margin-bottom: 0;
   }
