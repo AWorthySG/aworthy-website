@@ -1,0 +1,241 @@
+---
+/* Fountain pen writing animation — "You are A-Worthy" */
+---
+
+<div class="pen-animation" aria-label="Animated fountain pen writing: You are A-Worthy">
+  <svg
+    class="pen-svg"
+    viewBox="0 0 520 200"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <defs>
+      <!-- Ink gradient for the written text -->
+      <linearGradient id="ink-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#c9a96e" />
+        <stop offset="50%" stop-color="#d4853a" />
+        <stop offset="100%" stop-color="#c9a96e" />
+      </linearGradient>
+
+      <!-- Glow filter for fresh ink effect -->
+      <filter id="ink-glow" x="-10%" y="-10%" width="120%" height="120%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
+        <feFlood flood-color="#d4853a" flood-opacity="0.3" result="color" />
+        <feComposite in="color" in2="blur" operator="in" result="glow" />
+        <feMerge>
+          <feMergeNode in="glow" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <!-- Pen nib shape -->
+      <g id="fountain-pen">
+        <!-- Pen body -->
+        <rect x="-2" y="-28" width="4" height="24" rx="1.5" fill="#1a1a2e" />
+        <!-- Nib collar -->
+        <rect x="-3" y="-6" width="6" height="4" rx="1" fill="#8b7355" />
+        <!-- Nib -->
+        <polygon points="0,6 -2.5,-2 2.5,-2" fill="#c9a96e" />
+        <!-- Nib slit -->
+        <line x1="0" y1="5" x2="0" y2="-1" stroke="#1a1a2e" stroke-width="0.4" />
+        <!-- Ink feed detail -->
+        <rect x="-0.5" y="-5" width="1" height="3" fill="#2b5a8c" opacity="0.6" />
+      </g>
+    </defs>
+
+    <!-- Line 1: "You are" -->
+    <text
+      class="pen-text pen-line-1"
+      x="40"
+      y="75"
+      font-family="'Cormorant Garamond', 'Playfair Display', Georgia, serif"
+      font-size="42"
+      font-weight="300"
+      font-style="italic"
+      fill="none"
+      stroke="url(#ink-gradient)"
+      stroke-width="1.2"
+      filter="url(#ink-glow)"
+    >You are</text>
+
+    <!-- Line 2: "A-Worthy" -->
+    <text
+      class="pen-text pen-line-2"
+      x="100"
+      y="150"
+      font-family="'Cormorant Garamond', 'Playfair Display', Georgia, serif"
+      font-size="62"
+      font-weight="600"
+      font-style="italic"
+      fill="none"
+      stroke="url(#ink-gradient)"
+      stroke-width="1.5"
+      filter="url(#ink-glow)"
+    >A-Worthy</text>
+
+    <!-- Decorative flourish under text -->
+    <path
+      class="pen-flourish"
+      d="M 120 165 Q 200 185 280 165 Q 340 150 380 165"
+      fill="none"
+      stroke="#c9a96e"
+      stroke-width="0.8"
+      opacity="0.5"
+    />
+
+    <!-- The fountain pen that follows the writing -->
+    <use
+      href="#fountain-pen"
+      class="pen-cursor"
+    />
+
+    <!-- Small ink dots (splatter effect) -->
+    <circle class="ink-dot ink-dot-1" cx="95" cy="58" r="1" fill="#c9a96e" opacity="0" />
+    <circle class="ink-dot ink-dot-2" cx="270" cy="130" r="0.8" fill="#d4853a" opacity="0" />
+    <circle class="ink-dot ink-dot-3" cx="375" cy="142" r="1.2" fill="#c9a96e" opacity="0" />
+  </svg>
+</div>
+
+<style>
+  .pen-animation {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .pen-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* ── Text stroke animation ── */
+  .pen-text {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+
+  .pen-line-1 {
+    animation: write-stroke 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards,
+               fill-ink 1s ease 2.8s forwards;
+  }
+
+  .pen-line-2 {
+    animation: write-stroke 3s cubic-bezier(0.4, 0, 0.2, 1) 3s forwards,
+               fill-ink 1s ease 5.8s forwards;
+  }
+
+  /* Flourish draws in after the text */
+  .pen-flourish {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: write-stroke 1.2s cubic-bezier(0.4, 0, 0.2, 1) 6.2s forwards;
+  }
+
+  @keyframes write-stroke {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fill-ink {
+    to {
+      fill: #c9a96e;
+      fill-opacity: 1;
+    }
+  }
+
+  /* ── Fountain pen cursor movement ── */
+  .pen-cursor {
+    opacity: 0;
+    animation:
+      pen-appear 0.01s linear 0.4s forwards,
+      pen-write-line-1 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards,
+      pen-transition 0.5s ease 3s forwards,
+      pen-write-line-2 3s cubic-bezier(0.4, 0, 0.2, 1) 3s forwards,
+      pen-write-flourish 1.2s ease 6.2s forwards,
+      pen-fade-out 0.6s ease 7.4s forwards;
+  }
+
+  @keyframes pen-appear {
+    to { opacity: 1; }
+  }
+
+  @keyframes pen-write-line-1 {
+    0%   { transform: translate(38px, 60px) rotate(25deg); }
+    100% { transform: translate(220px, 60px) rotate(25deg); }
+  }
+
+  @keyframes pen-transition {
+    0%   { transform: translate(220px, 60px) rotate(25deg); }
+    100% { transform: translate(98px, 135px) rotate(25deg); }
+  }
+
+  @keyframes pen-write-line-2 {
+    0%   { transform: translate(98px, 135px) rotate(25deg); }
+    100% { transform: translate(390px, 135px) rotate(25deg); }
+  }
+
+  @keyframes pen-write-flourish {
+    0%   { transform: translate(120px, 155px) rotate(35deg); }
+    100% { transform: translate(380px, 155px) rotate(30deg); }
+  }
+
+  @keyframes pen-fade-out {
+    to {
+      opacity: 0;
+      transform: translate(400px, 140px) rotate(20deg);
+    }
+  }
+
+  /* ── Ink splatter dots ── */
+  .ink-dot-1 {
+    animation: dot-appear 0.15s ease 1.2s forwards;
+  }
+  .ink-dot-2 {
+    animation: dot-appear 0.15s ease 4.5s forwards;
+  }
+  .ink-dot-3 {
+    animation: dot-appear 0.15s ease 5.6s forwards;
+  }
+
+  @keyframes dot-appear {
+    0%   { opacity: 0; r: 0; }
+    60%  { opacity: 0.6; r: 1.5; }
+    100% { opacity: 0.3; r: 1; }
+  }
+
+  /* ── Reduced motion: skip animation, show result ── */
+  @media (prefers-reduced-motion: reduce) {
+    .pen-text {
+      stroke-dashoffset: 0;
+      fill: #c9a96e;
+      animation: none;
+    }
+    .pen-flourish {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+    .pen-cursor {
+      display: none;
+    }
+    .ink-dot {
+      opacity: 0.3;
+      animation: none;
+    }
+  }
+
+  /* ── Responsive adjustments ── */
+  @media (max-width: 768px) {
+    .pen-animation {
+      max-width: 360px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pen-animation {
+      max-width: 280px;
+    }
+  }
+</style>

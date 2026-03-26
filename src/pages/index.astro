@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PenAnimation from '../components/PenAnimation.astro';
 import '../styles/global.css';
 ---
 
@@ -43,16 +44,7 @@ import '../styles/global.css';
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-type-element" aria-hidden="true">
-          <span class="type-letter type-c">C</span>
-          <span class="type-dot">·</span>
-          <span class="type-letter type-a">A</span>
-          <span class="type-dot">·</span>
-          <span class="type-letter type-s">S</span>
-          <span class="type-dot">·</span>
-          <span class="type-letter type-e">E</span>
-        </div>
-        <p class="hero-type-label">The Method</p>
+        <PenAnimation />
       </div>
       <div class="hero-badges">
         <span class="hero-badge">MOE-Aligned</span>
@@ -595,40 +587,6 @@ import '../styles/global.css';
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-
-  .hero-type-element {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-  }
-
-  .type-letter {
-    font-family: var(--font-heading);
-    font-size: clamp(4rem, 8vw, 7rem);
-    font-weight: 100;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: rgba(255, 255, 255, 0.08);
-    text-shadow: 0 0 80px rgba(43, 90, 140, 0.3);
-    transition: color 0.5s ease;
-  }
-
-  .type-dot {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 300;
-    color: var(--text-muted);
-    opacity: 0.3;
-  }
-
-  .hero-type-label {
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--text-muted);
-    margin-top: 0.75rem;
   }
 
   .hero-badges {
