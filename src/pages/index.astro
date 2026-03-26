@@ -14,7 +14,7 @@ import '../styles/global.css';
     <div class="container hero-inner">
       <div class="hero-content">
         <span class="eyebrow">Singapore's First Analytical English Tuition</span>
-        <h1 class="hero-heading">Think sharper.<br/>Write stronger.<br/>Score higher.</h1>
+        <h1 class="hero-heading shimmer-text">Think sharper.<br/>Write stronger.<br/>Score higher.</h1>
         <p class="hero-subtitle">
           Founded by a law graduate, A-Worthy uses the CASE Method — a proprietary framework that brings legal-analytical precision to help secondary students master O-Level English.
         </p>
@@ -343,7 +343,7 @@ import '../styles/global.css';
   <section id="contact" class="cta-section">
     <div class="container cta-inner">
       <span class="eyebrow" data-animate="reveal-up">Get Started</span>
-      <h2 data-animate="reveal-up">Your child is A-Worthy</h2>
+      <h2 class="shimmer-text" data-animate="reveal-up">Your child is A-Worthy</h2>
       <p>Book a free diagnostic assessment — a 20-minute session analysing your child's recent English paper</p>
       <a href="/contact/" class="btn btn-primary btn-lg">Book Free Assessment</a>
     </div>
@@ -506,6 +506,7 @@ import '../styles/global.css';
     font-size: 1.8rem;
     font-weight: 200;
     color: var(--text-primary);
+    animation: shimmer-glow 5s ease-in-out 2s infinite;
   }
 
   .proof-label {
@@ -839,6 +840,7 @@ import '../styles/global.css';
     color: var(--text-primary);
     letter-spacing: -0.03em;
     line-height: 1;
+    animation: shimmer-glow 6s ease-in-out infinite;
   }
 
   .stat-label {
@@ -1018,6 +1020,8 @@ import '../styles/global.css';
     padding: 0.3rem 0.75rem;
     border-radius: 0;
     margin-bottom: 0.75rem;
+    animation: shimmer-border 3s ease-in-out infinite,
+               shimmer-glow 3s ease-in-out infinite;
   }
 
   /* ===== APPROACH ===== */
@@ -1069,7 +1073,14 @@ import '../styles/global.css';
     font-size: 1.8rem;
     font-weight: 200;
     color: var(--color-accent);
+    animation: shimmer-glow 4s ease-in-out infinite;
+    animation-delay: calc(var(--letter-index, 0) * 0.5s);
   }
+
+  .approach-card:nth-child(1) .approach-letter { --letter-index: 0; }
+  .approach-card:nth-child(2) .approach-letter { --letter-index: 1; }
+  .approach-card:nth-child(3) .approach-letter { --letter-index: 2; }
+  .approach-card:nth-child(4) .approach-letter { --letter-index: 3; }
 
   .approach-time {
     font-family: 'SF Mono', 'Fira Code', monospace;
@@ -1141,6 +1152,24 @@ import '../styles/global.css';
     justify-content: center;
     margin-bottom: 1rem;
     box-shadow: none;
+    animation: case-icon-shimmer 5s ease-in-out infinite;
+    animation-delay: calc(var(--step-index, 0) * 0.6s);
+  }
+
+  .case-flow-step:nth-child(1) .case-flow-icon { --step-index: 0; }
+  .case-flow-step:nth-child(3) .case-flow-icon { --step-index: 1; }
+  .case-flow-step:nth-child(5) .case-flow-icon { --step-index: 2; }
+  .case-flow-step:nth-child(7) .case-flow-icon { --step-index: 3; }
+
+  @keyframes case-icon-shimmer {
+    0%, 100% {
+      box-shadow: 0 0 0 transparent;
+      border-color: rgba(43, 90, 140, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 18px rgba(212, 133, 58, 0.2), 0 0 40px rgba(201, 169, 110, 0.08);
+      border-color: rgba(212, 133, 58, 0.35);
+    }
   }
 
   .case-flow-step h3 {
@@ -1213,6 +1242,7 @@ import '../styles/global.css';
     font-size: 0.9rem;
     letter-spacing: 0.1em;
     margin-bottom: 1rem;
+    animation: shimmer-glow 4s ease-in-out infinite;
   }
 
   .testimonial-card blockquote {
@@ -1537,6 +1567,18 @@ import '../styles/global.css';
     }
     .stat-number {
       font-size: 4.5rem;
+    }
+  }
+
+  /* ── Reduced motion: disable shimmer animations ── */
+  @media (prefers-reduced-motion: reduce) {
+    .proof-number,
+    .stat-number,
+    .testimonial-stars,
+    .programme-popular-badge,
+    .approach-letter,
+    .case-flow-icon {
+      animation: none;
     }
   }
 </style>

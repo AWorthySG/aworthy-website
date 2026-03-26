@@ -324,6 +324,19 @@ const testimonials = [
     color: var(--color-accent);
     font-size: 1.1rem;
     line-height: 1;
+    animation: star-shimmer 4s ease-in-out infinite;
+    animation-delay: calc(var(--star-i, 0) * 0.15s);
+  }
+
+  .t-star:nth-child(1) { --star-i: 0; }
+  .t-star:nth-child(2) { --star-i: 1; }
+  .t-star:nth-child(3) { --star-i: 2; }
+  .t-star:nth-child(4) { --star-i: 3; }
+  .t-star:nth-child(5) { --star-i: 4; }
+
+  @keyframes star-shimmer {
+    0%, 100% { text-shadow: 0 0 0 transparent; opacity: 1; }
+    50% { text-shadow: 0 0 10px rgba(212, 133, 58, 0.5), 0 0 25px rgba(201, 169, 110, 0.2); opacity: 1; }
   }
 
   .t-card-quote {
@@ -578,6 +591,12 @@ const testimonials = [
     .t-testimonials-grid {
       max-width: 1400px;
       margin: 0 auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .t-star {
+      animation: none;
     }
   }
 </style>

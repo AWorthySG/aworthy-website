@@ -28,6 +28,23 @@
         </feMerge>
       </filter>
 
+      <!-- Shimmer sweep gradient for post-write effect -->
+      <linearGradient id="shimmer-sweep" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="rgba(255,255,255,0)" />
+        <stop offset="45%" stop-color="rgba(255,255,255,0)" />
+        <stop offset="50%" stop-color="rgba(255,255,255,0.25)" />
+        <stop offset="55%" stop-color="rgba(255,255,255,0)" />
+        <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+        <animateTransform
+          attributeName="gradientTransform"
+          type="translate"
+          from="-520 0" to="520 0"
+          dur="3.5s"
+          begin="8s"
+          repeatCount="indefinite"
+        />
+      </linearGradient>
+
       <!-- Pen nib shape -->
       <g id="fountain-pen">
         <!-- Pen body -->
@@ -72,6 +89,15 @@
       stroke-width="1.5"
       filter="url(#ink-glow)"
     >A-Worthy</text>
+
+    <!-- Shimmer sweep overlay — sweeps across text after writing completes -->
+    <rect
+      class="pen-shimmer-overlay"
+      x="0" y="30" width="520" height="140"
+      fill="url(#shimmer-sweep)"
+      opacity="0"
+      pointer-events="none"
+    />
 
     <!-- Decorative flourish under text -->
     <path
@@ -118,12 +144,14 @@
 
   .pen-line-1 {
     animation: write-stroke 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards,
-               fill-ink 1s ease 2.8s forwards;
+               fill-ink 1s ease 2.8s forwards,
+               ink-shimmer-glow 4s ease-in-out 8s infinite;
   }
 
   .pen-line-2 {
     animation: write-stroke 3s cubic-bezier(0.4, 0, 0.2, 1) 3s forwards,
-               fill-ink 1s ease 5.8s forwards;
+               fill-ink 1s ease 5.8s forwards,
+               ink-shimmer-glow 4s ease-in-out 8.5s infinite;
   }
 
   /* Flourish draws in after the text */
@@ -144,6 +172,25 @@
       fill: #c9a96e;
       fill-opacity: 1;
     }
+  }
+
+  /* Shimmer glow that pulses after writing completes */
+  @keyframes ink-shimmer-glow {
+    0%, 100% {
+      filter: url(#ink-glow);
+    }
+    50% {
+      filter: url(#ink-glow) drop-shadow(0 0 12px rgba(212, 133, 58, 0.5)) drop-shadow(0 0 30px rgba(201, 169, 110, 0.2));
+    }
+  }
+
+  /* ── Shimmer sweep overlay ── */
+  .pen-shimmer-overlay {
+    animation: shimmer-overlay-in 0.01s linear 8s forwards;
+  }
+
+  @keyframes shimmer-overlay-in {
+    to { opacity: 1; }
   }
 
   /* ── Fountain pen cursor movement ── */
@@ -223,6 +270,9 @@
     .ink-dot {
       opacity: 0.3;
       animation: none;
+    }
+    .pen-shimmer-overlay {
+      display: none;
     }
   }
 
