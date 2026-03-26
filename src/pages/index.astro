@@ -11,6 +11,21 @@ import '../styles/global.css';
 
   <!-- ===== HERO ===== -->
   <section class="hero">
+    <!-- Animated floating orbs -->
+    <div class="hero-orbs" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="orb orb-4"></div>
+      <div class="orb orb-5"></div>
+    </div>
+    <!-- Grid lines decoration -->
+    <div class="hero-grid-lines" aria-hidden="true">
+      <div class="grid-line grid-line-v1"></div>
+      <div class="grid-line grid-line-v2"></div>
+      <div class="grid-line grid-line-v3"></div>
+      <div class="grid-line grid-line-h1"></div>
+    </div>
     <div class="container hero-inner">
       <div class="hero-content">
         <span class="eyebrow">Singapore's First Analytical English Tuition</span>
@@ -185,31 +200,41 @@ import '../styles/global.css';
       <h2 class="section-heading" data-animate="reveal-up">Every lesson follows the CASE Method</h2>
       <div class="case-flow" data-animate="reveal-up">
         <div class="case-flow-step">
-          <div class="case-flow-icon">C</div>
+          <div class="case-flow-icon"><span>C</span><div class="icon-ring"></div></div>
           <h3>Contextualise</h3>
           <p>Identify the task and purpose</p>
         </div>
         <div class="case-flow-connector" aria-hidden="true">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h32m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <svg width="60" height="24" viewBox="0 0 60 24">
+            <defs><linearGradient id="arrow-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--color-accent)" stop-opacity="1"/></linearGradient></defs>
+            <path class="connector-line" d="M0 12h48" stroke="url(#arrow-grad)" stroke-width="2" fill="none" stroke-dasharray="48" stroke-dashoffset="48"/>
+            <path class="connector-arrow" d="M44 6l8 6-8 6" stroke="var(--color-accent)" stroke-width="2" fill="none" opacity="0"/>
+          </svg>
         </div>
         <div class="case-flow-step">
-          <div class="case-flow-icon">A</div>
+          <div class="case-flow-icon"><span>A</span><div class="icon-ring"></div></div>
           <h3>Analyse</h3>
           <p>Read closely for meaning</p>
         </div>
         <div class="case-flow-connector" aria-hidden="true">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h32m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <svg width="60" height="24" viewBox="0 0 60 24">
+            <path class="connector-line" d="M0 12h48" stroke="url(#arrow-grad)" stroke-width="2" fill="none" stroke-dasharray="48" stroke-dashoffset="48"/>
+            <path class="connector-arrow" d="M44 6l8 6-8 6" stroke="var(--color-accent)" stroke-width="2" fill="none" opacity="0"/>
+          </svg>
         </div>
         <div class="case-flow-step">
-          <div class="case-flow-icon">S</div>
+          <div class="case-flow-icon"><span>S</span><div class="icon-ring"></div></div>
           <h3>Structure</h3>
           <p>Organise and write</p>
         </div>
         <div class="case-flow-connector" aria-hidden="true">
-          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h32m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <svg width="60" height="24" viewBox="0 0 60 24">
+            <path class="connector-line" d="M0 12h48" stroke="url(#arrow-grad)" stroke-width="2" fill="none" stroke-dasharray="48" stroke-dashoffset="48"/>
+            <path class="connector-arrow" d="M44 6l8 6-8 6" stroke="var(--color-accent)" stroke-width="2" fill="none" opacity="0"/>
+          </svg>
         </div>
         <div class="case-flow-step">
-          <div class="case-flow-icon">E</div>
+          <div class="case-flow-icon"><span>E</span><div class="icon-ring"></div></div>
           <h3>Evaluate</h3>
           <p>Review and reflect</p>
         </div>
@@ -313,6 +338,89 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== RESULTS ===== -->
+  <section id="results" class="section results-section">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">Results</span>
+      <h2 class="section-heading" data-animate="reveal-up">Proven track record</h2>
+
+      <div class="results-stats" data-animate="reveal-up">
+        <div class="result-stat">
+          <span class="result-stat-number" data-count="90" data-count-suffix="%">0%</span>
+          <span class="result-stat-label">A1–B3 Rate</span>
+        </div>
+        <div class="result-stat-divider"></div>
+        <div class="result-stat">
+          <span class="result-stat-number">6:1</span>
+          <span class="result-stat-label">Max Class Size</span>
+        </div>
+        <div class="result-stat-divider"></div>
+        <div class="result-stat">
+          <span class="result-stat-number" data-count="100" data-count-suffix="+">0+</span>
+          <span class="result-stat-label">Students Taught</span>
+        </div>
+        <div class="result-stat-divider"></div>
+        <div class="result-stat">
+          <span class="result-stat-number">3 mo</span>
+          <span class="result-stat-label">Avg. Improvement</span>
+        </div>
+      </div>
+
+      <h3 class="results-sub-heading" data-animate="reveal-up">Component Performance</h3>
+      <div class="results-bars" data-animate="reveal-up">
+        <div class="result-bar-item">
+          <div class="result-bar-header"><span>Comprehension</span><span class="result-bar-pct">92%</span></div>
+          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 92%"></div></div>
+        </div>
+        <div class="result-bar-item">
+          <div class="result-bar-header"><span>Continuous Writing</span><span class="result-bar-pct">88%</span></div>
+          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 88%"></div></div>
+        </div>
+        <div class="result-bar-item">
+          <div class="result-bar-header"><span>Summary</span><span class="result-bar-pct">90%</span></div>
+          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 90%"></div></div>
+        </div>
+        <div class="result-bar-item">
+          <div class="result-bar-header"><span>Situational Writing</span><span class="result-bar-pct">91%</span></div>
+          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 91%"></div></div>
+        </div>
+        <div class="result-bar-item">
+          <div class="result-bar-header"><span>Oral</span><span class="result-bar-pct">85%</span></div>
+          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 85%"></div></div>
+        </div>
+      </div>
+
+      <h3 class="results-sub-heading" data-animate="reveal-up">Grade Transformations</h3>
+      <div class="results-transforms" data-animate="reveal-up">
+        <div class="transform-card">
+          <strong>Sarah T.</strong>
+          <div class="transform-grades"><span class="grade-before">C5</span><span class="grade-arrow">&rarr;</span><span class="grade-after">A2</span></div>
+          <span class="transform-duration">3 months</span>
+        </div>
+        <div class="transform-card">
+          <strong>Marcus L.</strong>
+          <div class="transform-grades"><span class="grade-before">D7</span><span class="grade-arrow">&rarr;</span><span class="grade-after">B3</span></div>
+          <span class="transform-duration">4 months</span>
+        </div>
+        <div class="transform-card">
+          <strong>Priya K.</strong>
+          <div class="transform-grades"><span class="grade-before">C6</span><span class="grade-arrow">&rarr;</span><span class="grade-after">A1</span></div>
+          <span class="transform-duration">5 months</span>
+        </div>
+        <div class="transform-card">
+          <strong>Wei Jie C.</strong>
+          <div class="transform-grades"><span class="grade-before">B4</span><span class="grade-arrow">&rarr;</span><span class="grade-after">A2</span></div>
+          <span class="transform-duration">2 months</span>
+        </div>
+        <div class="transform-card">
+          <strong>Aisha M.</strong>
+          <div class="transform-grades"><span class="grade-before">C5</span><span class="grade-arrow">&rarr;</span><span class="grade-after">B3</span></div>
+          <span class="transform-duration">3 months</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FAQ ===== -->
   <section class="section faq-section">
     <div class="container">
@@ -339,19 +447,123 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section id="contact" class="cta-section">
-    <div class="container cta-inner">
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Get Started</span>
-      <h2 class="shimmer-text" data-animate="reveal-up">Your child is A-Worthy</h2>
-      <p>Book a free diagnostic assessment — a 20-minute session analysing your child's recent English paper</p>
-      <a href="/contact/" class="btn btn-primary btn-lg">Book Free Assessment</a>
+      <h2 class="section-heading" data-animate="reveal-up">Your child is A-Worthy</h2>
+
+      <div class="contact-grid">
+        <!-- Enquiry Form -->
+        <div class="contact-form-col" data-animate="reveal-up" data-animate-delay="1">
+          <h3 class="contact-col-heading">Send us a message</h3>
+          <form id="contact-form" class="contact-form" action="https://formspree.io/f/xcontact" method="POST" novalidate>
+            <div class="form-hp" aria-hidden="true" tabindex="-1">
+              <label for="website">Website</label>
+              <input type="text" name="_gotcha" id="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="parent-name">Parent / Guardian Name <span class="required">*</span></label>
+                <input type="text" id="parent-name" name="parentName" required placeholder="Jane Doe" />
+              </div>
+              <div class="form-group">
+                <label for="student-name">Student Name <span class="required">*</span></label>
+                <input type="text" id="student-name" name="studentName" required placeholder="John Doe" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="jane@email.com" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="+65 9123 4567" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="student-level">Student Level <span class="required">*</span></label>
+                <select id="student-level" name="studentLevel" required>
+                  <option value="">-- Select Level --</option>
+                  <option value="Sec 1">Sec 1</option>
+                  <option value="Sec 2">Sec 2</option>
+                  <option value="Sec 3">Sec 3</option>
+                  <option value="Sec 4">Sec 4</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="referral">How did you hear about us?</label>
+                <select id="referral" name="referral">
+                  <option value="">-- Select --</option>
+                  <option value="Google">Google</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Friend/Family">Friend / Family</option>
+                  <option value="School">School</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us more about your child's learning needs..."></textarea>
+            </div>
+            <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Send Enquiry</span></button>
+            <div id="form-success" class="form-success" hidden>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Thank you! We'll get back to you within 24 hours.
+            </div>
+            <div id="form-errors" class="form-errors" hidden></div>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info-col" data-animate="reveal-up" data-animate-delay="2">
+          <h3 class="contact-col-heading">Contact details</h3>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <strong>Online via Zoom</strong>
+              <p>All lessons conducted via Zoom Pro from anywhere in Singapore</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <strong>Reach Us</strong>
+              <p><a href="tel:+6561234567">+65 6123 4567</a> &middot; <a href="https://wa.me/6591234567">WhatsApp 9123 4567</a><br/><a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <strong>Operating Hours</strong>
+              <p>Mon&ndash;Fri: 2 PM&ndash;9:30 PM<br/>Sat&ndash;Sun: 9 AM&ndash;6 PM</p>
+            </div>
+          </div>
+
+          <!-- Enrol Steps -->
+          <div class="enrol-steps">
+            <h4 class="enrol-steps-heading">How to enrol</h4>
+            <div class="enrol-step"><span class="enrol-num">1</span><span>Book a free diagnostic assessment</span></div>
+            <div class="enrol-step"><span class="enrol-num">2</span><span>Get a personalised learning plan</span></div>
+            <div class="enrol-step"><span class="enrol-num">3</span><span>Start learning — see results in weeks</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Sticky Mobile CTA -->
   <div class="sticky-cta" id="sticky-cta">
-    <a href="/contact/" class="btn btn-accent sticky-cta-btn">Book Free Trial Class</a>
+    <a href="/#contact" class="btn btn-accent sticky-cta-btn">Book Free Trial Class</a>
     <button class="sticky-cta-dismiss" id="sticky-cta-dismiss" aria-label="Dismiss booking prompt">&times;</button>
   </div>
 
@@ -383,6 +595,98 @@ import '../styles/global.css';
   })();
 </script>
 
+<!-- Contact form handling -->
+<script is:inline>
+(function(){
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var btn = document.getElementById('form-submit-btn');
+  var successEl = document.getElementById('form-success');
+  var errorsEl = document.getElementById('form-errors');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    errorsEl.hidden = true;
+    var errors = [];
+    var parentName = form.querySelector('[name="parentName"]');
+    var studentName = form.querySelector('[name="studentName"]');
+    var email = form.querySelector('[name="email"]');
+    var phone = form.querySelector('[name="phone"]');
+    var level = form.querySelector('[name="studentLevel"]');
+    if (!parentName.value.trim()) errors.push('Parent name is required');
+    if (!studentName.value.trim()) errors.push('Student name is required');
+    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) errors.push('Valid email is required');
+    if (!phone.value.trim()) errors.push('Phone number is required');
+    if (!level.value) errors.push('Student level is required');
+    if (errors.length) {
+      errorsEl.innerHTML = errors.join('<br>');
+      errorsEl.hidden = false;
+      return;
+    }
+    btn.disabled = true;
+    btn.innerHTML = '<span>Sending...</span>';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        successEl.hidden = false;
+        form.reset();
+        btn.innerHTML = '<span>Sent!</span>';
+      } else {
+        errorsEl.textContent = 'Something went wrong. Please try again or WhatsApp us.';
+        errorsEl.hidden = false;
+        btn.disabled = false;
+        btn.innerHTML = '<span>Send Enquiry</span>';
+      }
+    }).catch(function() {
+      errorsEl.textContent = 'Network error. Please try again or WhatsApp us.';
+      errorsEl.hidden = false;
+      btn.disabled = false;
+      btn.innerHTML = '<span>Send Enquiry</span>';
+    });
+  });
+})();
+</script>
+
+<!-- Parallax scroll effect on orbs -->
+<script is:inline>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var orbs = document.querySelectorAll('.orb');
+  var bars = document.querySelectorAll('.result-bar-fill');
+  var ticking = false;
+
+  // Animate result bars when visible
+  var barObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.style.getPropertyValue('--bar-width');
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(function(bar) { barObserver.observe(bar); });
+
+  // Subtle parallax on orbs
+  window.addEventListener('scroll', function() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function() {
+      var scrollY = window.scrollY;
+      if (scrollY < window.innerHeight * 1.5) {
+        orbs.forEach(function(orb, i) {
+          var speed = 0.02 + (i * 0.01);
+          orb.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+        });
+      }
+      ticking = false;
+    });
+  });
+})();
+</script>
+
 <style>
   /* ===== DESIGN TOKENS ===== */
   :root {
@@ -394,6 +698,95 @@ import '../styles/global.css';
     --on-dark-muted: rgba(255,255,255,0.7);
     --divider: var(--border-color);
     --on-dark-subtle: rgba(255,255,255,0.05);
+  }
+
+  /* ===== FLOATING ORBS ===== */
+  .hero-orbs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    will-change: transform;
+  }
+  .orb-1 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(43,90,140,0.5) 0%, transparent 70%);
+    top: 10%; left: 5%;
+    animation: orb-float-1 18s ease-in-out infinite;
+  }
+  .orb-2 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(212,133,58,0.35) 0%, transparent 70%);
+    top: 60%; right: 10%;
+    animation: orb-float-2 22s ease-in-out infinite;
+  }
+  .orb-3 {
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(43,90,140,0.3) 0%, transparent 70%);
+    bottom: 10%; left: 30%;
+    animation: orb-float-3 20s ease-in-out infinite;
+  }
+  .orb-4 {
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(212,133,58,0.2) 0%, transparent 70%);
+    top: 20%; right: 25%;
+    animation: orb-float-4 25s ease-in-out infinite;
+  }
+  .orb-5 {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(74,106,130,0.25) 0%, transparent 70%);
+    top: 40%; left: 50%;
+    animation: orb-float-5 16s ease-in-out infinite;
+  }
+  @keyframes orb-float-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(60px, -40px) scale(1.1); }
+    66% { transform: translate(-30px, 30px) scale(0.95); }
+  }
+  @keyframes orb-float-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-50px, 30px) scale(1.05); }
+    66% { transform: translate(40px, -20px) scale(0.9); }
+  }
+  @keyframes orb-float-3 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(70px, -50px); }
+  }
+  @keyframes orb-float-4 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-40px, 40px) scale(1.15); }
+  }
+  @keyframes orb-float-5 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(-60px, -30px); }
+    66% { transform: translate(30px, 50px); }
+  }
+
+  /* ===== HERO GRID LINES ===== */
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .grid-line {
+    position: absolute;
+    background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
+  }
+  .grid-line-v1 { width: 1px; height: 100%; left: 20%; top: 0; }
+  .grid-line-v2 { width: 1px; height: 100%; left: 50%; top: 0; }
+  .grid-line-v3 { width: 1px; height: 100%; left: 80%; top: 0; }
+  .grid-line-h1 {
+    height: 1px; width: 100%; top: 40%; left: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
   }
 
   /* ===== EYEBROW ===== */
@@ -613,6 +1006,16 @@ import '../styles/global.css';
   /* ===== PROBLEM → SOLUTION ===== */
   .problem-section {
     background: var(--section-bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-section::after {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(43,90,140,0.06) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .problem-grid {
@@ -1027,6 +1430,16 @@ import '../styles/global.css';
   /* ===== APPROACH ===== */
   .approach-section {
     background: var(--section-bg-alt);
+    position: relative;
+    overflow: hidden;
+  }
+  .approach-section::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -150px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,133,58,0.05) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .approach-subtitle {
@@ -1170,6 +1583,42 @@ import '../styles/global.css';
       box-shadow: 0 0 18px rgba(212, 133, 58, 0.2), 0 0 40px rgba(201, 169, 110, 0.08);
       border-color: rgba(212, 133, 58, 0.35);
     }
+  }
+
+  .case-flow-icon {
+    position: relative;
+  }
+  .icon-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,133,58,0.15);
+    animation: ring-pulse 4s ease-in-out infinite;
+    animation-delay: calc(var(--step-index, 0) * 0.6s);
+  }
+  @keyframes ring-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.15); opacity: 0; }
+  }
+
+  /* Animated connector lines */
+  .case-flow.is-visible .connector-line {
+    animation: draw-line 0.6s ease-out forwards;
+  }
+  .case-flow.is-visible .case-flow-connector:nth-child(2) .connector-line { animation-delay: 0.3s; }
+  .case-flow.is-visible .case-flow-connector:nth-child(4) .connector-line { animation-delay: 0.6s; }
+  .case-flow.is-visible .case-flow-connector:nth-child(6) .connector-line { animation-delay: 0.9s; }
+  .case-flow.is-visible .connector-arrow {
+    animation: show-arrow 0.3s ease-out forwards;
+  }
+  .case-flow.is-visible .case-flow-connector:nth-child(2) .connector-arrow { animation-delay: 0.8s; }
+  .case-flow.is-visible .case-flow-connector:nth-child(4) .connector-arrow { animation-delay: 1.1s; }
+  .case-flow.is-visible .case-flow-connector:nth-child(6) .connector-arrow { animation-delay: 1.4s; }
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes show-arrow {
+    to { opacity: 1; }
   }
 
   .case-flow-step h3 {
@@ -1420,6 +1869,349 @@ import '../styles/global.css';
     .testimonial-featured { transform: none; background: rgba(212, 133, 58, 0.03); }
   }
 
+  /* ===== RESULTS SECTION ===== */
+  .results-section {
+    background: var(--section-bg-alt);
+    position: relative;
+    overflow: hidden;
+  }
+  .results-section::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(212,133,58,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .results-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+  }
+  .result-stat {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+  }
+  .result-stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 200;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    animation: shimmer-glow 6s ease-in-out infinite;
+  }
+  .result-stat-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+  }
+  .result-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border-color);
+    flex-shrink: 0;
+  }
+  .results-sub-heading {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+  }
+  .results-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+  .result-bar-item { display: flex; flex-direction: column; gap: 0.4rem; }
+  .result-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .result-bar-pct {
+    font-weight: 600;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+  .result-bar-track {
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .result-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-accent), #f5a623);
+    border-radius: 2px;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .results-section.is-visible .result-bar-fill,
+  .results-bars.is-visible .result-bar-fill {
+    width: var(--bar-width);
+  }
+  .results-transforms {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  .transform-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1.25rem;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+  }
+  .transform-card:hover {
+    border-color: rgba(212,133,58,0.2);
+    transform: translateY(-2px);
+  }
+  .transform-card strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+  .transform-grades {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .grade-before {
+    font-weight: 600;
+    color: #f87171;
+    font-size: 1.1rem;
+  }
+  .grade-arrow {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .grade-after {
+    font-weight: 600;
+    color: #6ee7b7;
+    font-size: 1.1rem;
+  }
+  .transform-duration {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== CONTACT SECTION ===== */
+  .contact-section {
+    background: var(--section-bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(43,90,140,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-col-heading {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .form-hp { position: absolute; left: -9999px; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 0.25rem; }
+  .form-group label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .required { color: var(--color-accent); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: var(--font-body);
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(212,133,58,0.15);
+  }
+  .form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2rem;
+  }
+  .btn-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .form-success {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(212,133,58,0.1);
+    border: 1px solid rgba(212,133,58,0.2);
+    border-radius: 4px;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  .form-errors {
+    padding: 1rem;
+    background: rgba(248,113,113,0.1);
+    border: 1px solid rgba(248,113,113,0.2);
+    border-radius: 4px;
+    color: #f87171;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .info-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .info-card:last-of-type { border-bottom: none; }
+  .info-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(212,133,58,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-card strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  .info-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .info-card a {
+    color: var(--color-accent);
+  }
+  .enrol-steps {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+  .enrol-steps-heading {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+  .enrol-step {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .enrol-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* ===== ENHANCED CTA GRADIENT ===== */
+  .cta-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(212,133,58,0.03) 60deg,
+      transparent 120deg,
+      rgba(43,90,140,0.03) 180deg,
+      transparent 240deg,
+      rgba(212,133,58,0.02) 300deg,
+      transparent 360deg
+    );
+    animation: cta-rotate 30s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes cta-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (min-width: 1024px) {
     .approach-scroll-track {
@@ -1482,6 +2274,27 @@ import '../styles/global.css';
     .stat-item {
       flex: 0 0 45%;
     }
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    .results-transforms {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .results-stats {
+      flex-wrap: wrap;
+    }
+    .result-stat-divider {
+      display: none;
+    }
+    .result-stat {
+      flex: 0 0 45%;
+    }
+    .hero-orbs .orb {
+      transform: scale(0.6);
+    }
   }
 
   @media (max-width: 640px) {
@@ -1491,6 +2304,12 @@ import '../styles/global.css';
     }
 
     .stat-item {
+      flex: 0 0 100%;
+    }
+    .results-transforms {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .result-stat {
       flex: 0 0 100%;
     }
 
@@ -1577,8 +2396,16 @@ import '../styles/global.css';
     .testimonial-stars,
     .programme-popular-badge,
     .approach-letter,
-    .case-flow-icon {
+    .case-flow-icon,
+    .orb,
+    .icon-ring,
+    .result-stat-number,
+    .cta-section::after {
       animation: none;
     }
+    .connector-line { stroke-dashoffset: 0; }
+    .connector-arrow { opacity: 1; }
+    .result-bar-fill { transition: none; width: var(--bar-width); }
+    .hero-orbs { display: none; }
   }
 </style>
