@@ -8,25 +8,18 @@
 
   <svg
     class="pen-svg"
-    viewBox="0 0 1200 400"
+    viewBox="0 0 620 220"
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="xMidYMid meet"
   >
     <defs>
-      <!-- Paper texture filter -->
-      <filter id="paper-noise" x="0%" y="0%" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch" result="noise"/>
-        <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
-        <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="textured"/>
-      </filter>
-
       <!-- Wet ink sheen effect -->
       <filter id="wet-ink" x="-5%" y="-5%" width="110%" height="110%">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur"/>
-        <feFlood flood-color="#2a3f6b" flood-opacity="0.4" result="color"/>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" result="blur"/>
+        <feFlood flood-color="#2a3f6b" flood-opacity="0.35" result="color"/>
         <feComposite in="color" in2="blur" operator="in" result="glow"/>
-        <feSpecularLighting in="blur" surfaceScale="3" specularConstant="0.6" specularExponent="20" lighting-color="#ffffff" result="specular">
-          <fePointLight x="600" y="-100" z="200"/>
+        <feSpecularLighting in="blur" surfaceScale="2" specularConstant="0.5" specularExponent="25" lighting-color="#ffffff" result="specular">
+          <fePointLight x="300" y="-80" z="150"/>
         </feSpecularLighting>
         <feComposite in="specular" in2="SourceAlpha" operator="in" result="specClip"/>
         <feMerge>
@@ -38,8 +31,8 @@
 
       <!-- Dry ink look -->
       <filter id="dry-ink" x="-2%" y="-2%" width="104%" height="104%">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
-        <feFlood flood-color="#1B2A4A" flood-opacity="0.15" result="color"/>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="0.4" result="blur"/>
+        <feFlood flood-color="#1B2A4A" flood-opacity="0.12" result="color"/>
         <feComposite in="color" in2="blur" operator="in" result="shadow"/>
         <feMerge>
           <feMergeNode in="shadow"/>
@@ -49,7 +42,7 @@
 
       <!-- Gold glow for final pulse -->
       <filter id="gold-glow" x="-10%" y="-10%" width="120%" height="120%">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
         <feFlood flood-color="#C9A84C" flood-opacity="0.3" result="color"/>
         <feComposite in="color" in2="blur" operator="in" result="glow"/>
         <feMerge>
@@ -57,6 +50,12 @@
           <feMergeNode in="SourceGraphic"/>
         </feMerge>
       </filter>
+
+      <!-- Ink gradient (deep indigo wet → navy-black dry) -->
+      <linearGradient id="ink-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#1B2A4A"/>
+        <stop offset="100%" stop-color="#1B2A4A"/>
+      </linearGradient>
 
       <!-- Pen nib metallic gradient -->
       <linearGradient id="nib-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -67,7 +66,7 @@
         <stop offset="100%" stop-color="#8B7340"/>
       </linearGradient>
 
-      <!-- Pen barrel gradient -->
+      <!-- Pen barrel gradient (black resin) -->
       <linearGradient id="barrel-grad" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="#0a0a12"/>
         <stop offset="15%" stop-color="#1a1a2e"/>
@@ -86,200 +85,120 @@
         <stop offset="100%" stop-color="#8B7340"/>
       </linearGradient>
 
-      <!-- Specular highlight for pen -->
+      <!-- Barrel specular highlight -->
       <linearGradient id="barrel-highlight" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="transparent"/>
-        <stop offset="35%" stop-color="transparent"/>
-        <stop offset="45%" stop-color="rgba(255,255,255,0.12)"/>
-        <stop offset="55%" stop-color="rgba(255,255,255,0.08)"/>
-        <stop offset="65%" stop-color="transparent"/>
+        <stop offset="38%" stop-color="transparent"/>
+        <stop offset="46%" stop-color="rgba(255,255,255,0.12)"/>
+        <stop offset="54%" stop-color="rgba(255,255,255,0.08)"/>
+        <stop offset="62%" stop-color="transparent"/>
         <stop offset="100%" stop-color="transparent"/>
       </linearGradient>
 
-      <!-- Drop shadow for pen -->
+      <!-- Pen drop shadow -->
       <filter id="pen-shadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.35"/>
+        <feDropShadow dx="2" dy="3" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.3"/>
       </filter>
 
-      <!-- Ink color -->
-      <linearGradient id="ink-color" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#1B2A4A"/>
-        <stop offset="100%" stop-color="#1B2A4A"/>
-      </linearGradient>
-
-      <!-- Fountain pen group -->
+      <!-- Photorealistic fountain pen -->
       <g id="fountain-pen">
-        <!-- Drop shadow layer -->
         <g filter="url(#pen-shadow)">
-          <!-- Pen barrel (main body) -->
+          <!-- Barrel -->
           <rect x="-5" y="-70" width="10" height="52" rx="3" fill="url(#barrel-grad)"/>
-          <!-- Barrel specular highlight -->
           <rect x="-5" y="-70" width="10" height="52" rx="3" fill="url(#barrel-highlight)"/>
-          <!-- Cap ring (gold band at top) -->
+          <!-- Cap ring -->
           <rect x="-6" y="-72" width="12" height="4" rx="1.5" fill="url(#gold-trim)"/>
-          <!-- Second gold band -->
+          <!-- Band -->
           <rect x="-6" y="-20" width="12" height="3" rx="1" fill="url(#gold-trim)"/>
           <!-- Clip -->
           <path d="M5 -70 L6 -70 L6 -40 L4.5 -38 L5 -40 L5 -70" fill="url(#gold-trim)"/>
           <circle cx="5.5" cy="-38" r="1.2" fill="#C9A84C"/>
-          <!-- Grip section -->
+          <!-- Grip -->
           <rect x="-4.5" y="-17" width="9" height="14" rx="2" fill="#12121e"/>
-          <!-- Grip texture lines -->
           <line x1="-3" y1="-14" x2="3" y2="-14" stroke="rgba(255,255,255,0.06)" stroke-width="0.3"/>
           <line x1="-3" y1="-11" x2="3" y2="-11" stroke="rgba(255,255,255,0.06)" stroke-width="0.3"/>
           <line x1="-3" y1="-8" x2="3" y2="-8" stroke="rgba(255,255,255,0.06)" stroke-width="0.3"/>
           <!-- Nib collar -->
-          <path d="M-4 -3 L-3.5 -3 L-2.5 4 L2.5 4 L3.5 -3 L4 -3 L4 -3 L3 6 L-3 6 Z" fill="url(#gold-trim)"/>
-          <!-- Nib feed (ebonite) -->
+          <path d="M-4 -3 L-3.5 -3 L-2.5 4 L2.5 4 L3.5 -3 L4 -3 L3 6 L-3 6 Z" fill="url(#gold-trim)"/>
+          <!-- Nib feed -->
           <path d="M-2 4 L0 14 L2 4" fill="#1a1a2e"/>
-          <!-- Ink channel -->
-          <line x1="0" y1="4" x2="0" y2="13" stroke="#2a3f6b" stroke-width="0.6" opacity="0.5"/>
-          <!-- Nib (iridium-tipped gold) -->
+          <line x1="0" y1="4" x2="0" y2="13" stroke="#2a3f6b" stroke-width="0.5" opacity="0.5"/>
+          <!-- Nib -->
           <path d="M-3 3 L0 16 L3 3" fill="url(#nib-grad)"/>
-          <!-- Nib slit -->
           <line x1="0" y1="15" x2="0" y2="5" stroke="#1a1a2e" stroke-width="0.5"/>
-          <!-- Breather hole -->
           <circle cx="0" cy="6" r="0.8" fill="#1a1a2e"/>
-          <!-- Nib specular highlight -->
+          <!-- Nib highlight -->
           <path d="M-1.5 4 L0 14 L0.2 14 L1 4" fill="rgba(255,255,255,0.15)"/>
-          <!-- Tipping point (iridium ball) -->
+          <!-- Iridium tipping -->
           <circle cx="0" cy="15.5" r="0.6" fill="#E8D5A3"/>
         </g>
       </g>
     </defs>
 
-    <!-- "You are" text path - elegant cursive script -->
-    <path
-      id="text-line-1"
-      class="text-path text-line-1"
-      d="M 150 160
-         C 150 120, 165 105, 172 115
-         C 180 130, 155 170, 165 175
-         C 170 178, 180 145, 185 130
-         C 188 122, 195 115, 198 130
-         C 200 140, 195 165, 200 170
-         C 210 175, 215 125, 222 115
-         Q 230 105, 238 130
-         C 242 145, 235 170, 250 168
-
-         M 290 175
-         C 285 170, 282 145, 295 130
-         C 308 115, 315 140, 308 155
-         C 302 168, 285 178, 290 175
-
-         M 290 175
-         C 295 170, 320 145, 325 135
-         C 330 125, 338 155, 325 172
-
-         M 360 160
-         C 355 130, 375 108, 385 120
-         C 390 128, 370 155, 375 170
-         C 378 178, 395 140, 402 125
-
-         M 410 165
-         C 408 155, 415 135, 428 128
-         C 440 120, 450 140, 442 155
-         C 435 168, 415 175, 410 165
-         Z"
+    <!-- Line 1: "You are" — cursive script text with stroke animation -->
+    <text
+      class="pen-text pen-line-1"
+      x="50"
+      y="85"
+      font-family="'Pinyon Script', 'Great Vibes', 'Dancing Script', 'Segoe Script', cursive"
+      font-size="52"
+      font-weight="400"
       fill="none"
       stroke="#1B2A4A"
-      stroke-width="2.8"
+      stroke-width="1.5"
       stroke-linecap="round"
       stroke-linejoin="round"
-    />
+      filter="url(#wet-ink)"
+    >You are</text>
 
-    <!-- "worth the A" text path -->
-    <path
-      id="text-line-2"
-      class="text-path text-line-2"
-      d="M 260 265
-         C 255 230, 270 210, 278 225
-         C 282 235, 272 260, 280 268
-         C 285 272, 295 230, 302 215
-         C 305 210, 310 225, 308 240
-         C 306 255, 298 270, 310 268
-
-         M 318 262
-         C 315 240, 330 215, 342 225
-         C 350 232, 338 260, 348 268
-         C 352 270, 358 230, 365 215
-
-         M 365 215
-         C 360 225, 362 265, 370 268
-
-         Q 375 270, 380 250
-         C 382 238, 390 218, 388 265
-
-         M 400 225
-         C 405 218, 412 222, 408 240
-         C 405 255, 395 268, 405 270
-         C 410 272, 418 240, 425 225
-
-         M 460 260
-         C 455 230, 470 208, 478 220
-         C 482 228, 468 255, 475 265
-         C 480 268, 495 230, 502 218
-
-         M 510 250
-         C 508 240, 515 225, 525 220
-         C 535 215, 540 230, 535 245
-         C 530 258, 515 268, 510 258
-
-         M 565 265
-         C 560 230, 575 205, 585 215
-         C 592 225, 575 250, 580 268
-         C 585 275, 600 220, 608 205
-
-         M 650 220
-         C 640 280, 680 220, 660 280
-         C 660 280, 700 218, 700 220
-
-         Q 700 220, 700 268
-         Q 700 268, 720 268"
+    <!-- Line 2: "worth the A" — larger, bolder -->
+    <text
+      class="pen-text pen-line-2"
+      x="100"
+      y="170"
+      font-family="'Pinyon Script', 'Great Vibes', 'Dancing Script', 'Segoe Script', cursive"
+      font-size="72"
+      font-weight="400"
       fill="none"
       stroke="#1B2A4A"
-      stroke-width="3.2"
+      stroke-width="1.8"
       stroke-linecap="round"
       stroke-linejoin="round"
-    />
+      filter="url(#wet-ink)"
+    >worth the A</text>
 
-    <!-- Decorative underline flourish -->
+    <!-- Decorative flourish underline -->
     <path
-      id="flourish"
-      class="text-flourish"
-      d="M 300 290 Q 420 320 540 290 Q 620 272 700 290"
+      class="pen-flourish"
+      d="M 140 185 Q 260 210 380 185 Q 440 175 490 185"
       fill="none"
       stroke="#C9A84C"
-      stroke-width="1.2"
+      stroke-width="0.8"
       stroke-linecap="round"
       opacity="0.5"
     />
 
-    <!-- Wet ink sheen overlay (follows text, fades as ink "dries") -->
-    <use href="#text-line-1" class="wet-sheen wet-sheen-1" stroke="#3a5a8a" stroke-width="3.5" fill="none" opacity="0"/>
-    <use href="#text-line-2" class="wet-sheen wet-sheen-2" stroke="#3a5a8a" stroke-width="4" fill="none" opacity="0"/>
-
-    <!-- The fountain pen -->
+    <!-- The fountain pen that follows the writing -->
     <use href="#fountain-pen" class="pen-cursor"/>
 
-    <!-- Ink dots (splatter) -->
-    <circle class="ink-dot ink-dot-1" cx="250" cy="165" r="1.2" fill="#1B2A4A" opacity="0"/>
-    <circle class="ink-dot ink-dot-2" cx="450" cy="260" r="1" fill="#1B2A4A" opacity="0"/>
-    <circle class="ink-dot ink-dot-3" cx="680" cy="275" r="1.5" fill="#1B2A4A" opacity="0"/>
+    <!-- Ink splatter dots -->
+    <circle class="ink-dot ink-dot-1" cx="130" cy="70" r="1" fill="#1B2A4A" opacity="0"/>
+    <circle class="ink-dot ink-dot-2" cx="330" cy="150" r="0.8" fill="#1B2A4A" opacity="0"/>
+    <circle class="ink-dot ink-dot-3" cx="470" cy="162" r="1.2" fill="#1B2A4A" opacity="0"/>
   </svg>
 </div>
 
 <style>
   .pen-animation {
     width: 100%;
-    max-width: 600px;
+    max-width: 620px;
     margin: 0 auto;
     position: relative;
     border-radius: 8px;
     overflow: hidden;
   }
 
-  /* Parchment background */
+  /* Parchment-tinted ambient glow */
   .pen-animation::before {
     content: '';
     position: absolute;
@@ -291,17 +210,16 @@
     z-index: 0;
   }
 
-  /* Vignette overlay */
+  /* Vignette */
   .pen-vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(11,11,15,0.5) 100%);
+    background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(11,11,15,0.45) 100%);
     pointer-events: none;
     z-index: 2;
     opacity: 0;
-    animation: vignette-in 1.5s ease-out 0.2s forwards;
+    animation: vignette-in 1.2s ease-out 0.2s forwards;
   }
-
   @keyframes vignette-in {
     to { opacity: 1; }
   }
@@ -314,200 +232,164 @@
     z-index: 1;
   }
 
-  /* ── Text stroke drawing animation ── */
-  .text-path {
-    stroke-dasharray: 3000;
-    stroke-dashoffset: 3000;
-    filter: url(#wet-ink);
-    opacity: 0;
+  /* ── Text stroke drawing ── */
+  .pen-text {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
   }
 
-  .text-line-1 {
+  .pen-line-1 {
     animation:
-      path-appear 0.01s linear 0.5s forwards,
-      write-text 2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards,
-      ink-dry-1 1.5s ease 2s forwards;
+      write-stroke 2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards,
+      fill-ink-1 0.8s ease 2.2s forwards,
+      ink-dry-1 1s ease 2.5s forwards,
+      gold-pulse 1s ease 4.8s forwards;
   }
 
-  .text-line-2 {
+  .pen-line-2 {
     animation:
-      path-appear 0.01s linear 2.2s forwards,
-      write-text 2s cubic-bezier(0.25, 0.1, 0.25, 1) 2.2s forwards,
-      ink-dry-2 1.5s ease 3.5s forwards;
+      write-stroke 2s cubic-bezier(0.4, 0, 0.2, 1) 2.2s forwards,
+      fill-ink-2 0.8s ease 3.8s forwards,
+      ink-dry-2 1s ease 4s forwards,
+      gold-pulse 1s ease 4.8s forwards;
   }
 
-  @keyframes path-appear {
-    to { opacity: 1; }
-  }
-
-  @keyframes write-text {
+  @keyframes write-stroke {
     to { stroke-dashoffset: 0; }
   }
 
-  /* Ink drying — transition from wet filter to dry filter */
+  /* Ink fill reveals as text dries */
+  @keyframes fill-ink-1 {
+    to {
+      fill: #1B2A4A;
+      fill-opacity: 1;
+    }
+  }
+  @keyframes fill-ink-2 {
+    to {
+      fill: #1B2A4A;
+      fill-opacity: 1;
+    }
+  }
+
+  /* Wet → dry transition: changes filter and slightly darkens stroke */
   @keyframes ink-dry-1 {
     0% { filter: url(#wet-ink); stroke: #2a3f6b; }
     100% { filter: url(#dry-ink); stroke: #1B2A4A; }
   }
-
   @keyframes ink-dry-2 {
     0% { filter: url(#wet-ink); stroke: #2a3f6b; }
     100% { filter: url(#dry-ink); stroke: #1B2A4A; }
   }
 
-  /* ── Wet sheen overlay ── */
-  .wet-sheen {
-    stroke-dasharray: 3000;
-    stroke-dashoffset: 3000;
-    mix-blend-mode: screen;
-  }
-  .wet-sheen-1 {
-    animation:
-      wet-appear 0.01s linear 0.5s forwards,
-      write-text 2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards,
-      sheen-fade 1s ease 2.5s forwards;
-  }
-  .wet-sheen-2 {
-    animation:
-      wet-appear 0.01s linear 2.2s forwards,
-      write-text 2s cubic-bezier(0.25, 0.1, 0.25, 1) 2.2s forwards,
-      sheen-fade 1s ease 4s forwards;
-  }
-  @keyframes wet-appear {
-    to { opacity: 0.25; }
-  }
-  @keyframes sheen-fade {
-    to { opacity: 0; }
+  /* Single warm-gold pulse after writing completes */
+  @keyframes gold-pulse {
+    0%   { filter: url(#dry-ink); }
+    50%  { filter: url(#gold-glow); }
+    100% { filter: url(#dry-ink); }
   }
 
   /* ── Flourish ── */
-  .text-flourish {
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
-    animation: write-flourish 0.8s ease 4.2s forwards;
-  }
-  @keyframes write-flourish {
-    to { stroke-dashoffset: 0; }
+  .pen-flourish {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: write-stroke 0.8s ease 4.2s forwards;
   }
 
-  /* ── Pen cursor movement ── */
+  /* ── Fountain pen cursor ── */
   .pen-cursor {
     opacity: 0;
     transform-origin: 0 16px;
     animation:
       pen-enter 0.4s ease-out 0.3s forwards,
-      pen-line1 2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards,
-      pen-move-to-line2 0.3s ease 2.5s forwards,
-      pen-line2 2s cubic-bezier(0.25, 0.1, 0.25, 1) 2.2s forwards,
-      pen-exit 0.6s ease-in 4.5s forwards;
+      pen-write-1 2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards,
+      pen-lift 0.25s ease 2.4s forwards,
+      pen-write-2 2s cubic-bezier(0.4, 0, 0.2, 1) 2.2s forwards,
+      pen-exit 0.6s ease-in 4.3s forwards;
   }
 
+  /* Pen enters from right */
   @keyframes pen-enter {
     0% {
       opacity: 0;
-      transform: translate(120px, 100px) rotate(30deg);
+      transform: translate(100px, 30px) rotate(28deg);
     }
     100% {
       opacity: 1;
-      transform: translate(148px, 140px) rotate(28deg);
+      transform: translate(48px, 65px) rotate(28deg);
     }
   }
 
-  @keyframes pen-line1 {
-    0%   { transform: translate(148px, 140px) rotate(28deg); }
-    15%  { transform: translate(195px, 135px) rotate(25deg); }
-    30%  { transform: translate(250px, 148px) rotate(30deg); }
-    45%  { transform: translate(310px, 140px) rotate(24deg); }
-    60%  { transform: translate(360px, 145px) rotate(28deg); }
-    80%  { transform: translate(410px, 138px) rotate(26deg); }
-    100% { transform: translate(445px, 142px) rotate(27deg); }
+  /* Pen follows "You are" */
+  @keyframes pen-write-1 {
+    0%   { transform: translate(48px, 65px) rotate(28deg); }
+    15%  { transform: translate(88px, 62px) rotate(25deg); }
+    30%  { transform: translate(128px, 66px) rotate(30deg); }
+    50%  { transform: translate(175px, 63px) rotate(26deg); }
+    70%  { transform: translate(220px, 65px) rotate(28deg); }
+    85%  { transform: translate(255px, 62px) rotate(25deg); }
+    100% { transform: translate(280px, 64px) rotate(27deg); }
   }
 
-  @keyframes pen-move-to-line2 {
-    0%   { transform: translate(445px, 142px) rotate(27deg); }
-    100% { transform: translate(258px, 245px) rotate(28deg); }
+  /* Pen lifts between lines */
+  @keyframes pen-lift {
+    0%   { transform: translate(280px, 64px) rotate(27deg); }
+    100% { transform: translate(98px, 148px) rotate(28deg); }
   }
 
-  @keyframes pen-line2 {
-    0%   { transform: translate(258px, 245px) rotate(28deg); }
-    10%  { transform: translate(310px, 240px) rotate(25deg); }
-    20%  { transform: translate(365px, 238px) rotate(30deg); }
-    35%  { transform: translate(420px, 242px) rotate(24deg); }
-    50%  { transform: translate(500px, 236px) rotate(28deg); }
-    65%  { transform: translate(565px, 245px) rotate(26deg); }
-    80%  { transform: translate(650px, 238px) rotate(30deg); }
-    100% { transform: translate(720px, 244px) rotate(27deg); }
+  /* Pen follows "worth the A" */
+  @keyframes pen-write-2 {
+    0%   { transform: translate(98px, 148px) rotate(28deg); }
+    10%  { transform: translate(148px, 145px) rotate(25deg); }
+    25%  { transform: translate(218px, 148px) rotate(30deg); }
+    40%  { transform: translate(288px, 145px) rotate(26deg); }
+    55%  { transform: translate(348px, 148px) rotate(28deg); }
+    70%  { transform: translate(408px, 145px) rotate(25deg); }
+    85%  { transform: translate(458px, 148px) rotate(30deg); }
+    100% { transform: translate(505px, 146px) rotate(27deg); }
   }
 
+  /* Pen lifts off and fades */
   @keyframes pen-exit {
     0% {
       opacity: 1;
-      transform: translate(720px, 244px) rotate(27deg);
+      transform: translate(505px, 146px) rotate(27deg);
     }
     40% {
       opacity: 1;
-      transform: translate(720px, 200px) rotate(20deg);
+      transform: translate(505px, 110px) rotate(20deg);
     }
     100% {
       opacity: 0;
-      transform: translate(750px, 160px) rotate(15deg);
+      transform: translate(530px, 80px) rotate(15deg);
     }
   }
 
-  /* ── Final gold glow pulse ── */
-  .text-line-1,
-  .text-line-2 {
-    /* After writing + drying, pulse once */
-  }
-
-  .pen-animation .text-line-1 {
-    animation:
-      path-appear 0.01s linear 0.5s forwards,
-      write-text 2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards,
-      ink-dry-1 1.5s ease 2s forwards,
-      gold-pulse 1s ease 5s forwards;
-  }
-
-  .pen-animation .text-line-2 {
-    animation:
-      path-appear 0.01s linear 2.2s forwards,
-      write-text 2s cubic-bezier(0.25, 0.1, 0.25, 1) 2.2s forwards,
-      ink-dry-2 1.5s ease 3.5s forwards,
-      gold-pulse 1s ease 5s forwards;
-  }
-
-  @keyframes gold-pulse {
-    0% { filter: url(#dry-ink); }
-    50% { filter: url(#gold-glow); }
-    100% { filter: url(#dry-ink); }
-  }
-
   /* ── Ink splatter dots ── */
-  .ink-dot-1 { animation: dot-splash 0.2s ease 1.5s forwards; }
-  .ink-dot-2 { animation: dot-splash 0.2s ease 3.2s forwards; }
-  .ink-dot-3 { animation: dot-splash 0.2s ease 4s forwards; }
+  .ink-dot-1 { animation: dot-splash 0.2s ease 1.3s forwards; }
+  .ink-dot-2 { animation: dot-splash 0.2s ease 3.0s forwards; }
+  .ink-dot-3 { animation: dot-splash 0.2s ease 3.8s forwards; }
 
   @keyframes dot-splash {
     0%   { opacity: 0; r: 0; }
-    50%  { opacity: 0.5; r: 2; }
-    100% { opacity: 0.25; r: 1.2; }
+    50%  { opacity: 0.5; r: 1.8; }
+    100% { opacity: 0.2; r: 1; }
   }
 
   /* ── Reduced motion: show final result immediately ── */
   @media (prefers-reduced-motion: reduce) {
-    .text-path {
+    .pen-text {
       stroke-dashoffset: 0;
-      opacity: 1;
+      fill: #1B2A4A;
       filter: url(#dry-ink);
       animation: none;
     }
-    .text-flourish {
+    .pen-flourish {
       stroke-dashoffset: 0;
       animation: none;
     }
     .pen-cursor { display: none; }
-    .wet-sheen { display: none; }
-    .ink-dot { opacity: 0.25; animation: none; }
+    .ink-dot { opacity: 0.2; animation: none; }
     .pen-vignette { opacity: 1; animation: none; }
   }
 
@@ -517,10 +399,9 @@
       max-width: 420px;
     }
   }
-
   @media (max-width: 480px) {
     .pen-animation {
-      max-width: 320px;
+      max-width: 300px;
     }
   }
 </style>
