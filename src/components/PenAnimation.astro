@@ -7,6 +7,7 @@
 
 <div class="pen-animation" aria-label="Animated fountain pen writing: You are worth the A">
   <div class="pen-paper" aria-hidden="true"></div>
+  <div class="pen-paper-curl" aria-hidden="true"></div>
   <div class="pen-vignette" aria-hidden="true"></div>
 
   <svg
@@ -150,10 +151,26 @@
     <!-- Ink pool — small blob at pen's starting point -->
     <ellipse class="ink-pool" cx="62" cy="82" rx="0" ry="0" fill="#1B2A4A" opacity="0"/>
 
-    <!-- Flourish -->
-    <path class="fl"
+    <!-- Ink settle shadow — grows under text as ink "pools" into paper -->
+    <text class="ink-shadow ink-sh1" x="60" y="92"
+      font-family="'Pinyon Script','Great Vibes','Dancing Script',cursive"
+      font-size="54" fill="rgba(26,42,58,0.06)" filter="url(#pa-bleed)">You are</text>
+    <text class="ink-shadow ink-sh2" x="85" y="187"
+      font-family="'Pinyon Script','Great Vibes','Dancing Script',cursive"
+      font-size="76" fill="rgba(26,42,58,0.06)" filter="url(#pa-bleed)">worth the A</text>
+
+    <!-- Primary flourish -->
+    <path class="fl fl1"
       d="M 140 200 C 220 225, 360 225, 440 200 C 475 190, 510 197, 545 200"
       fill="none" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" opacity="0"/>
+
+    <!-- Second decorative flourish — elegant swirl -->
+    <path class="fl fl2"
+      d="M 100 205 C 80 215, 75 230, 95 235 C 115 240, 130 225, 120 215"
+      fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round" opacity="0"/>
+
+    <!-- End dot — final punctuation -->
+    <circle class="end-dot" cx="548" cy="200" r="0" fill="#C9A84C" opacity="0"/>
 
     <!-- Ink particles -->
     <circle class="pt pt1" cx="105" cy="78" r="0.5" fill="#1B2A4A" opacity="0"/>
@@ -179,20 +196,31 @@
 </div>
 
 <style>
-  /* ═══ CONTAINER ═══ */
+  /* ═══ CONTAINER — 3D perspective ═══ */
   .pen-animation {
     width: 100%; max-width: 640px; margin: 0 auto;
     position: relative; border-radius: 8px; overflow: hidden;
     contain: layout style paint;
+    perspective: 900px;
+    transform-style: preserve-3d;
   }
 
-  /* Paper surface */
+  /* Paper surface — with subtle 3D tilt on hover */
   .pen-paper {
     position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background:
       repeating-conic-gradient(rgba(26,42,58,0.007) 0% 25%, transparent 0% 50%) 0 0 / 3px 3px,
       radial-gradient(ellipse at 30% 35%, rgba(212,168,76,0.03) 0%, transparent 50%),
       radial-gradient(ellipse at 70% 65%, rgba(43,90,140,0.02) 0%, transparent 50%);
+  }
+
+  /* Paper curl — folded corner effect bottom-right */
+  .pen-paper-curl {
+    position: absolute; bottom: 0; right: 0; z-index: 3;
+    width: 32px; height: 32px; pointer-events: none;
+    background: linear-gradient(135deg, transparent 50%, rgba(230,225,218,0.7) 50%);
+    box-shadow: -2px -2px 4px rgba(0,0,0,0.04);
+    border-top-left-radius: 4px;
   }
 
   /* Vignette */
@@ -206,7 +234,18 @@
   }
   @keyframes pa-vig { to { opacity: 1; } }
 
-  .pen-svg { width: 100%; height: auto; overflow: visible; position: relative; z-index: 1; }
+  .pen-svg {
+    width: 100%; height: auto; overflow: visible; position: relative; z-index: 1;
+    transform: rotateX(0deg);
+    transition: transform 0.6s ease;
+  }
+  .pen-animation.is-active .pen-svg {
+    animation: pa-tilt 1.2s cubic-bezier(0.22,0.61,0.36,1) 0.1s both;
+  }
+  @keyframes pa-tilt {
+    0%   { transform: rotateX(4deg) scale(0.97); }
+    100% { transform: rotateX(0deg) scale(1); }
+  }
 
   /* ═══ MASK REVEAL — paused until .is-active ═══ */
   .mp {
@@ -251,10 +290,31 @@
   }
   .pen-animation.is-active .ink-pool { animation-play-state: running; }
 
-  /* ═══ FLOURISH ═══ */
-  .fl { stroke-dasharray: 520; stroke-dashoffset: 520; animation: pa-fl 1s cubic-bezier(0.22,0.61,0.36,1) 5.6s both; animation-play-state: paused; }
+  /* ═══ INK SETTLE SHADOW — grows under text ═══ */
+  .ink-shadow { opacity: 0; animation-play-state: paused; }
+  .ink-sh1 { animation: pa-shad 1.5s ease 2.5s both; }
+  .ink-sh2 { animation: pa-shad 1.5s ease 4.8s both; }
+  @keyframes pa-shad {
+    0%   { opacity: 0; transform: translateY(1px); }
+    100% { opacity: 1; transform: translateY(2px); }
+  }
+  .pen-animation.is-active .ink-shadow { animation-play-state: running; }
+
+  /* ═══ FLOURISHES ═══ */
+  .fl { animation-play-state: paused; }
+  .fl1 { stroke-dasharray: 520; stroke-dashoffset: 520; animation: pa-fl 1s cubic-bezier(0.22,0.61,0.36,1) 5.6s both; }
+  .fl2 { stroke-dasharray: 200; stroke-dashoffset: 200; animation: pa-fl 0.6s cubic-bezier(0.22,0.61,0.36,1) 6.2s both; }
   @keyframes pa-fl { to { stroke-dashoffset: 0; opacity: 0.4; } }
   .pen-animation.is-active .fl { animation-play-state: running; }
+
+  /* ═══ END DOT — final accent ═══ */
+  .end-dot { animation: pa-dot 0.4s ease 6.5s both; animation-play-state: paused; }
+  @keyframes pa-dot {
+    0%   { r: 0; opacity: 0; }
+    50%  { r: 3; opacity: 0.5; }
+    100% { r: 2; opacity: 0.3; }
+  }
+  .pen-animation.is-active .end-dot { animation-play-state: running; }
 
   /* ═══ INK PARTICLES ═══ */
   .pt { will-change: transform, opacity; animation-play-state: paused; }
@@ -351,8 +411,10 @@
   @media (prefers-reduced-motion: reduce) {
     .mp { stroke-dashoffset: 0 !important; animation: none !important; }
     .tg { filter: url(#pa-dry) !important; animation: none !important; }
-    .ts, .pt, .sp, .ink-pool { display: none; }
+    .ts, .pt, .sp, .ink-pool, .end-dot { display: none; }
     .fl { stroke-dashoffset: 0; opacity: 0.4; animation: none; }
+    .ink-shadow { opacity: 1; transform: translateY(2px); animation: none; }
+    .pen-svg { transform: none; animation: none; }
     .pc { display: none; }
     .pen-vignette { opacity: 1; }
     .pen-animation { contain: layout style; }

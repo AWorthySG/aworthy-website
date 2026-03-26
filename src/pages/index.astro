@@ -28,12 +28,12 @@ import '../styles/global.css';
     </div>
     <div class="container hero-inner">
       <div class="hero-content">
-        <span class="eyebrow">Singapore's First Analytical English Tuition</span>
-        <h1 class="hero-heading shimmer-text">Think sharper.<br/>Write stronger.<br/>Score higher.</h1>
-        <p class="hero-subtitle">
+        <span class="eyebrow hero-stagger" style="--stagger:0">Singapore's First Analytical English Tuition</span>
+        <h1 class="hero-heading shimmer-text hero-stagger" style="--stagger:1">Think sharper.<br/>Write stronger.<br/>Score higher.</h1>
+        <p class="hero-subtitle hero-stagger" style="--stagger:2">
           Founded by a law graduate, A-Worthy uses the CASE Method — a proprietary framework that brings legal-analytical precision to help secondary students master O-Level English.
         </p>
-        <div class="hero-proof">
+        <div class="hero-proof hero-stagger" style="--stagger:3">
           <div class="proof-item">
             <span class="proof-number">95%</span>
             <span class="proof-label">pass rate</span>
@@ -49,8 +49,8 @@ import '../styles/global.css';
             <span class="proof-label">max class size</span>
           </div>
         </div>
-        <p class="hero-intake">Next intake: <strong>Term 3, July 2026</strong> — Limited slots available</p>
-        <div class="hero-actions">
+        <p class="hero-intake hero-stagger" style="--stagger:4">Next intake: <strong>Term 3, July 2026</strong> — Limited slots available</p>
+        <div class="hero-actions hero-stagger" style="--stagger:5">
           <a href="/contact/" class="btn btn-accent hero-cta-primary">Book a Free Trial Class</a>
           <a href="https://wa.me/6591234567" class="btn btn-outline hero-cta-secondary" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -804,10 +804,10 @@ import '../styles/global.css';
   /* ===== SECTION HEADING ===== */
   .section-heading {
     font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
     font-weight: 200;
     color: var(--text-primary);
-    line-height: 1.1;
+    line-height: 1.08;
     margin-bottom: 2.5rem;
     max-width: 700px;
     letter-spacing: -0.03em;
@@ -827,15 +827,31 @@ import '../styles/global.css';
   /* ===== HERO ===== */
   .hero {
     min-height: 100vh;
-    /* Use dvh for mobile browser chrome awareness */
     min-height: 100dvh;
     display: flex;
     align-items: center;
     background: var(--bg-primary);
+    /* Atmospheric depth: layered radial gradients */
+    background:
+      radial-gradient(ellipse at 10% 90%, rgba(212,133,58,0.04) 0%, transparent 40%),
+      radial-gradient(ellipse at 90% 10%, rgba(43,90,140,0.05) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 50%, rgba(245,241,235,0.6) 0%, transparent 70%),
+      var(--bg-primary);
     padding-top: var(--header-height);
     padding-bottom: 0;
     overflow: hidden;
     position: relative;
+  }
+
+  /* ── Orchestrated hero entrance — staggered cascade ── */
+  .hero-stagger {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: hero-cascade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(0.15s + var(--stagger) * 0.12s);
+  }
+  @keyframes hero-cascade {
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .hero::before {
@@ -863,9 +879,9 @@ import '../styles/global.css';
 
   .hero-heading {
     font-family: var(--font-heading);
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    font-weight: 200;
-    line-height: 1.05;
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    font-weight: 100;
+    line-height: 1.02;
     letter-spacing: -0.04em;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
@@ -1302,7 +1318,9 @@ import '../styles/global.css';
 
   /* ===== PROGRAMMES ===== */
   .programmes-section {
-    background: var(--section-bg);
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(43,90,140,0.04) 0%, transparent 50%),
+      var(--section-bg);
   }
 
   .programmes-grid {
@@ -1356,7 +1374,7 @@ import '../styles/global.css';
   }
 
   .programme-level {
-    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -1366,7 +1384,7 @@ import '../styles/global.css';
   }
 
   .programme-body h3 {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -1405,20 +1423,22 @@ import '../styles/global.css';
 
   /* ===== POPULAR BADGE ===== */
   .programme-card--popular {
-    border-color: rgba(212, 133, 58, 0.2);
+    border-color: var(--color-accent);
+    border-width: 2px;
     position: relative;
+    background: rgba(212, 133, 58, 0.03);
   }
 
   .programme-popular-badge {
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 0.6rem;
-    font-weight: 400;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    background: transparent;
+    background: var(--color-accent);
     border: 1px solid var(--color-accent);
-    color: var(--color-accent);
+    color: #ffffff;
     padding: 0.3rem 0.75rem;
     border-radius: 0;
     margin-bottom: 0.75rem;
@@ -1428,7 +1448,10 @@ import '../styles/global.css';
 
   /* ===== APPROACH ===== */
   .approach-section {
-    background: var(--section-bg-alt);
+    background:
+      radial-gradient(circle at 2px 2px, rgba(26,42,58,0.03) 1px, transparent 1px) 0 0 / 24px 24px,
+      radial-gradient(ellipse at 75% 25%, rgba(212,133,58,0.04) 0%, transparent 50%),
+      var(--section-bg-alt);
     position: relative;
     overflow: hidden;
   }
@@ -1495,7 +1518,7 @@ import '../styles/global.css';
   .approach-card:nth-child(4) .approach-letter { --letter-index: 3; }
 
   .approach-time {
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -1508,7 +1531,7 @@ import '../styles/global.css';
   }
 
   .approach-card h3 {
-    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.15rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -1621,7 +1644,7 @@ import '../styles/global.css';
   }
 
   .case-flow-step h3 {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -1659,7 +1682,9 @@ import '../styles/global.css';
 
   /* ===== TESTIMONIALS ===== */
   .testimonials-section {
-    background: var(--section-bg);
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(212,133,58,0.03) 0%, transparent 45%),
+      var(--section-bg);
   }
 
   .testimonials-grid {
@@ -1760,7 +1785,7 @@ import '../styles/global.css';
   }
 
   .cta-section h2 {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
     color: var(--text-primary);
@@ -2021,16 +2046,17 @@ import '../styles/global.css';
 
   /* ===== CONTACT SECTION ===== */
   .contact-section {
-    background: var(--section-bg);
+    background:
+      linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     position: relative;
     overflow: hidden;
+    border-top: 3px solid var(--color-accent);
   }
   .contact-section::before {
     content: '';
     position: absolute;
-    bottom: 0; left: 0;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(43,90,140,0.08) 0%, transparent 70%);
+    top: -1px; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
     pointer-events: none;
   }
   .contact-grid {
@@ -2406,5 +2432,6 @@ import '../styles/global.css';
     .connector-arrow { opacity: 1; }
     .result-bar-fill { transition: none; width: var(--bar-width); }
     .hero-orbs { display: none; }
+    .hero-stagger { opacity: 1; transform: none; animation: none; }
   }
 </style>
