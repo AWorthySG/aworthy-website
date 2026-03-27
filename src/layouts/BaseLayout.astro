@@ -102,6 +102,15 @@ const schemaData = {
 
   <slot name="footer" />
 
+  <!-- Global Sticky CTA Bar (#13) -->
+  <div class="sticky-cta-global" id="sticky-cta-global">
+    <div class="sticky-cta-global-inner">
+      <span class="sticky-cta-global-text">Book a free diagnostic assessment — limited spots available</span>
+      <a href="/contact/" class="sticky-cta-global-btn">Book Now</a>
+    </div>
+    <button class="sticky-cta-global-dismiss" id="sticky-cta-global-dismiss" aria-label="Dismiss">&times;</button>
+  </div>
+
   <a href="https://wa.me/6591234567?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition"
      class="whatsapp-float"
      target="_blank"
@@ -142,6 +151,90 @@ const schemaData = {
         right: calc(1rem + env(safe-area-inset-right, 0px));
         width: 52px;
         height: 52px;
+      }
+    }
+    .sticky-cta-global {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 42, 58, 0.95);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      padding: 0.65rem 1.5rem;
+      padding-bottom: calc(0.65rem + env(safe-area-inset-bottom, 0px));
+      z-index: 95;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .sticky-cta-global.is-visible {
+      transform: translateY(0);
+    }
+
+    .sticky-cta-global-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sticky-cta-global-text {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 400;
+    }
+
+    .sticky-cta-global-btn {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #1A2A3A;
+      background: var(--color-accent);
+      padding: 0.5rem 1.25rem;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s ease;
+    }
+
+    .sticky-cta-global-btn:hover {
+      background: #e8a060;
+      color: #1A2A3A;
+    }
+
+    .sticky-cta-global-dismiss {
+      position: absolute;
+      top: 0.15rem;
+      right: 0.75rem;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.25rem;
+      line-height: 1;
+    }
+
+    .sticky-cta-global-dismiss:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @media (max-width: 640px) {
+      .sticky-cta-global-text {
+        font-size: 0.72rem;
+      }
+      .sticky-cta-global-inner {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .sticky-cta-global-btn {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
@@ -212,6 +305,31 @@ const schemaData = {
         window.scrollTo({top:0,behavior:'smooth'});
       });
     })();
+  </script>
+  <script is:inline>
+  (function(){
+    var el = document.getElementById('sticky-cta-global');
+    var dismiss = document.getElementById('sticky-cta-global-dismiss');
+    if (!el) return;
+    // Don't show on homepage (it has its own sticky CTA)
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') return;
+    var dismissed = false;
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if (dismissed) return;
+      if (!ticking) {
+        requestAnimationFrame(function(){
+          el.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.5);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    dismiss?.addEventListener('click', function(){
+      dismissed = true;
+      el.classList.remove('is-visible');
+    });
+  })();
   </script>
 </body>
 </html>

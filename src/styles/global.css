@@ -63,6 +63,31 @@
   --text-muted: rgba(240, 240, 242, 0.4);
   --border-color: rgba(255, 255, 255, 0.08);
   --bg-footer: #0b0b0f;
+  /* Dark mode accent tuned for dark backgrounds — softer, warmer */
+  --color-accent: #E09850;
+  --color-accent-light: #f0b878;
+}
+
+/* Dark mode ambient noise texture */
+[data-theme="dark"] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Dark mode ambient glow on cards */
+[data-theme="dark"] .card,
+[data-theme="dark"] .t-card,
+[data-theme="dark"] .r-card,
+[data-theme="dark"] .programme-card,
+[data-theme="dark"] .approach-card {
+  box-shadow: 0 0 40px rgba(224, 152, 80, 0.03), 0 1px 3px rgba(0,0,0,0.2);
 }
 
 /* ===== Reset & Base ===== */
@@ -112,9 +137,9 @@ h1, h2, h3, h4, h5, h6 {
   word-break: break-word;
 }
 
-/* Extreme weight contrasts: ultralight h1 vs bold h3 */
-h1 { font-size: clamp(3.2rem, 9vw, 6.5rem); font-weight: 100; letter-spacing: -0.03em; }
-h2 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 200; }
+/* Weight contrasts: light h1 vs bold h3 — bumped for readability */
+h1 { font-size: clamp(3.2rem, 9vw, 6.5rem); font-weight: 200; letter-spacing: -0.03em; }
+h2 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 300; }
 h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); font-family: var(--font-body); font-weight: 700; letter-spacing: -0.01em; }
 
 p {
@@ -334,7 +359,8 @@ li {
   .card:hover {
     background: var(--bg-card-hover);
     border-color: rgba(26, 42, 58, 0.15);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
   }
 }
 
@@ -788,7 +814,7 @@ label {
   margin-right: auto;
 }
 
-/* ─── Gradient Section Dividers ─── */
+/* ─── SVG Wave Section Dividers ─── */
 .section + .section {
   border-top: none;
   position: relative;
@@ -797,13 +823,18 @@ label {
 .section + .section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(90%, 800px);
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(26,42,58,0.08) 50%, transparent 100%);
-  opacity: 1;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0 48V24C240 0 480 0 720 24s480 24 720 0V0H0z' fill='rgba(26,42,58,0.03)'/%3E%3C/svg%3E") no-repeat center;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .section + .section::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0 48V24C240 0 480 0 720 24s480 24 720 0V0H0z' fill='rgba(255,255,255,0.02)'/%3E%3C/svg%3E") no-repeat center;
+  background-size: 100% 100%;
 }
 
 /* ─── Card Hover Glow Effects ─── */
@@ -813,7 +844,40 @@ label {
   .approach-card:hover,
   .testimonial-card:hover {
     border-color: rgba(212, 133, 58, 0.2);
-    box-shadow: 0 4px 20px rgba(212, 133, 58, 0.08), 0 1px 4px rgba(0,0,0,0.04);
+    box-shadow: 0 8px 30px rgba(212, 133, 58, 0.1), 0 2px 8px rgba(0,0,0,0.04);
+    transform: translateY(-3px);
+  }
+}
+
+/* ─── CTA Button Shine Sweep ─── */
+@keyframes btn-shine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.btn-accent,
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-accent::after,
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  pointer-events: none;
+  transition: none;
+}
+
+@media (hover: hover) {
+  .btn-accent:hover::after,
+  .btn-primary:hover::after {
+    animation: btn-shine 0.6s ease forwards;
   }
 }
 

@@ -119,7 +119,7 @@ const testimonials = [
     <div class="t-container">
       <div class="t-testimonials-grid">
         {testimonials.map((t, i) => (
-          <div class:list={['t-card', { 't-card--featured': t.featured }]} data-animate="reveal-up" data-animate-delay={String((i % 3) + 1)}>
+          <div class:list={['t-card', { 't-card--featured': t.featured }]} style={`--card-tint: ${i % 3 === 0 ? 'rgba(212, 133, 58, 0.03)' : i % 3 === 1 ? 'rgba(43, 90, 140, 0.03)' : 'transparent'}`} data-animate="reveal-up" data-animate-delay={String((i % 3) + 1)}>
             <div class="t-card-stars" aria-label={`${t.stars} out of 5 stars`}>
               {Array.from({ length: t.stars }).map(() => (
                 <span class="t-star">&#9733;</span>
@@ -137,6 +137,23 @@ const testimonials = [
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO TESTIMONIAL (#12) ===== -->
+  <section class="t-section t-video-section">
+    <div class="t-container">
+      <span class="eyebrow">See It In Action</span>
+      <h2 class="t-video-heading" data-animate="reveal-up">A glimpse into the A-Worthy experience</h2>
+      <p class="t-video-sub">Watch how the CASE Method transforms the way students approach English.</p>
+      <div class="t-video-wrap" data-animate="scale-in">
+        <div class="t-video-placeholder">
+          <div class="t-video-play">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <p class="t-video-caption">Coming soon — testimonial video from our students and parents</p>
+        </div>
       </div>
     </div>
   </section>
@@ -300,7 +317,7 @@ const testimonials = [
     break-inside: avoid;
     display: inline-block;
     width: 100%;
-    background: var(--bg-card);
+    background: var(--card-tint, var(--bg-card));
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
@@ -312,6 +329,10 @@ const testimonials = [
 
   .t-card--featured {
     border-left: 3px solid var(--color-accent);
+  }
+
+  .t-card--featured .t-card-quote {
+    font-size: 1.05rem;
   }
 
   .t-card-stars {
@@ -521,6 +542,70 @@ const testimonials = [
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+  }
+
+  /* ===== VIDEO SECTION (#12) ===== */
+  .t-video-section {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+  }
+
+  .t-video-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 200;
+    color: var(--text-primary);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+  }
+
+  .t-video-sub {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0 0 2.5rem;
+    max-width: 560px;
+  }
+
+  .t-video-wrap {
+    max-width: 720px;
+  }
+
+  .t-video-placeholder {
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, rgba(43, 90, 140, 0.08), rgba(212, 133, 58, 0.06));
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .t-video-play {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(212, 133, 58, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .t-video-play:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 32px rgba(212, 133, 58, 0.3);
+  }
+
+  .t-video-caption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 0;
   }
 
   /* ===== RESPONSIVE ===== */
