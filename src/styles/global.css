@@ -948,11 +948,20 @@ label {
   transform: translateY(0);
 }
 
+[data-theme="dark"] .back-to-top {
+  background: rgba(17, 17, 24, 0.8);
+}
+
 @media (hover: hover) {
   .back-to-top:hover {
     background: rgba(255, 255, 255, 0.95);
     border-color: rgba(26, 42, 58, 0.2);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  [data-theme="dark"] .back-to-top:hover {
+    background: rgba(17, 17, 24, 0.95);
+    border-color: rgba(255, 255, 255, 0.15);
   }
 }
 

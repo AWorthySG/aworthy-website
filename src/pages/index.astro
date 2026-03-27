@@ -1472,6 +1472,10 @@ import '../styles/global.css';
     border-top: 1px solid var(--border-color);
   }
 
+  :global([data-theme="dark"]) .sticky-cta {
+    background: rgba(11, 11, 15, 0.95);
+  }
+
   .sticky-cta.is-visible {
     transform: translateY(0);
   }
@@ -2534,7 +2538,7 @@ import '../styles/global.css';
   .form-group textarea {
     padding: 0.75rem 0.875rem;
     font-size: 0.9rem;
-    background: #ffffff;
+    background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: 4px;
     color: var(--text-primary);
