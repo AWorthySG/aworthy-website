@@ -69,30 +69,47 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <!-- ===== STATS BAR ===== -->
+  <!-- ===== STATS BAR with Story Context (#14) ===== -->
   <section class="stats-bar">
     <div class="container stats-inner">
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="1">
         <span class="stat-number" data-count="95" data-count-suffix="%">0%</span>
         <span class="stat-label">O-Level English pass rate</span>
+        <span class="stat-story">Including Sarah, who went from D7 to A2</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="2">
         <span class="stat-number">6:1</span>
         <span class="stat-label">Maximum class size</span>
+        <span class="stat-story">Every student gets personal attention</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="3">
         <span class="stat-number" data-count="500" data-count-suffix="+">0+</span>
         <span class="stat-label">Students taught</span>
+        <span class="stat-story">Across all secondary levels since 2022</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="4">
         <span class="stat-number">Law</span>
         <span class="stat-label">Graduate founder</span>
+        <span class="stat-story">NUS Law — analytical precision in teaching</span>
       </div>
     </div>
   </section>
+
+  <!-- ===== SOCIAL PROOF TICKER (#10) ===== -->
+  <div class="social-proof-ticker" aria-live="polite">
+    <div class="container">
+      <div class="proof-ticker-inner" id="proof-ticker">
+        <div class="proof-ticker-item">
+          <span class="proof-ticker-dot"></span>
+          <span class="proof-ticker-text">A parent in Bukit Timah just enrolled their Sec 3 child</span>
+          <span class="proof-ticker-time">2 hours ago</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- ===== TRUST STRIP ===== -->
@@ -190,6 +207,45 @@ import '../styles/global.css';
           </div>
         </a>
       </div>
+
+      <!-- Programme Selector Quiz (#8) -->
+      <div class="quiz-section" data-animate="reveal-up">
+        <div class="quiz-card">
+          <span class="eyebrow">Not Sure Which Programme?</span>
+          <h3 class="quiz-heading">Find the right programme in 30 seconds</h3>
+          <div class="quiz-body" id="programme-quiz">
+            <div class="quiz-step" data-step="1">
+              <p class="quiz-question">What level is your child in?</p>
+              <div class="quiz-options">
+                <button class="quiz-option" data-value="sec1-2" data-next="2">Sec 1 or 2</button>
+                <button class="quiz-option" data-value="sec3-4" data-next="2">Sec 3 or 4</button>
+              </div>
+            </div>
+            <div class="quiz-step" data-step="2" hidden>
+              <p class="quiz-question">What's the biggest challenge?</p>
+              <div class="quiz-options">
+                <button class="quiz-option" data-value="comprehension" data-next="3">Comprehension & inference</button>
+                <button class="quiz-option" data-value="writing" data-next="3">Essay writing & structure</button>
+                <button class="quiz-option" data-value="overall" data-next="3">Overall grade improvement</button>
+              </div>
+            </div>
+            <div class="quiz-step" data-step="3" hidden>
+              <p class="quiz-question">What kind of support does your child need?</p>
+              <div class="quiz-options">
+                <button class="quiz-option" data-value="group" data-next="result">Small group learning</button>
+                <button class="quiz-option" data-value="individual" data-next="result">Individual attention</button>
+              </div>
+            </div>
+            <div class="quiz-result" id="quiz-result" hidden>
+              <div class="quiz-result-icon">&#10003;</div>
+              <h4 class="quiz-result-heading" id="quiz-result-title"></h4>
+              <p class="quiz-result-desc" id="quiz-result-desc"></p>
+              <a href="/programmes/" class="btn btn-accent quiz-result-cta">View Programme Details</a>
+              <button class="quiz-restart" id="quiz-restart">Start again</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -282,6 +338,64 @@ import '../styles/global.css';
           <h3>Evaluate</h3>
           <p>Review, revise, and reflect. Does the response address the question? Is the evidence well-chosen? Is the language precise? The deliberate checking of reasoning.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPARISON TABLE (#15) ===== -->
+  <section class="section comparison-section">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">Why A-Worthy</span>
+      <h2 class="section-heading" data-animate="reveal-up">How we compare</h2>
+      <div class="comparison-table-wrap" data-animate="reveal-up">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="comparison-highlight">A-Worthy</th>
+              <th>Large Tuition Chains</th>
+              <th>Self-Study</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="comparison-feature">Class Size</td>
+              <td class="comparison-highlight"><strong>Max 6 students</strong></td>
+              <td>15-30 students</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Teaching Method</td>
+              <td class="comparison-highlight"><strong>CASE Method (proprietary)</strong></td>
+              <td>Generic worksheets</td>
+              <td>Model answer memorisation</td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Individual Feedback</td>
+              <td class="comparison-highlight"><strong>Every session</strong></td>
+              <td>Periodic, if any</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Founder Qualification</td>
+              <td class="comparison-highlight"><strong>NUS Law graduate</strong></td>
+              <td>Varies</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">A1-B3 Rate</td>
+              <td class="comparison-highlight"><strong>90%</strong></td>
+              <td>Undisclosed</td>
+              <td>Varies</td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Monthly Fee</td>
+              <td class="comparison-highlight"><strong>From SGD 280</strong></td>
+              <td>SGD 200-500</td>
+              <td>Free</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -757,6 +871,102 @@ import '../styles/global.css';
       ticking = false;
     });
   });
+})();
+</script>
+
+<!-- Programme Quiz Logic (#8) -->
+<script is:inline>
+(function(){
+  var quiz = document.getElementById('programme-quiz');
+  if (!quiz) return;
+  var answers = {};
+
+  quiz.addEventListener('click', function(e) {
+    var btn = e.target.closest('.quiz-option');
+    if (!btn) return;
+    var step = btn.closest('.quiz-step');
+    var stepNum = step.getAttribute('data-step');
+    answers[stepNum] = btn.getAttribute('data-value');
+
+    // Highlight selected
+    step.querySelectorAll('.quiz-option').forEach(function(b){ b.classList.remove('selected'); });
+    btn.classList.add('selected');
+
+    var next = btn.getAttribute('data-next');
+    if (next === 'result') {
+      setTimeout(function(){ showResult(); }, 300);
+    } else {
+      setTimeout(function(){
+        step.hidden = true;
+        var nextStep = quiz.querySelector('[data-step="' + next + '"]');
+        if (nextStep) nextStep.hidden = false;
+      }, 300);
+    }
+  });
+
+  function showResult() {
+    quiz.querySelectorAll('.quiz-step').forEach(function(s){ s.hidden = true; });
+    var result = document.getElementById('quiz-result');
+    var title = document.getElementById('quiz-result-title');
+    var desc = document.getElementById('quiz-result-desc');
+    var isIndividual = answers['3'] === 'individual';
+    var isJunior = answers['1'] === 'sec1-2';
+
+    if (isIndividual) {
+      title.textContent = 'One-to-One Coaching';
+      desc.textContent = 'Tailored individual sessions focused on your child\'s specific needs. Flexible scheduling with personalised feedback — SGD 120/session.';
+    } else if (isJunior) {
+      title.textContent = 'Sec 1-2 English Foundation';
+      desc.textContent = 'Build a strong analytical foundation early. 90-minute weekly sessions in small groups of 6 — SGD 280/month.';
+    } else {
+      title.textContent = 'Sec 3-4 O-Level Intensive';
+      desc.textContent = 'Exam-focused preparation with monthly mock grading. Master every O-Level component with the CASE Method — SGD 320/month.';
+    }
+    result.hidden = false;
+  }
+
+  var restart = document.getElementById('quiz-restart');
+  if (restart) {
+    restart.addEventListener('click', function(){
+      answers = {};
+      document.getElementById('quiz-result').hidden = true;
+      quiz.querySelectorAll('.quiz-step').forEach(function(s){ s.hidden = true; });
+      quiz.querySelector('[data-step="1"]').hidden = false;
+      quiz.querySelectorAll('.quiz-option').forEach(function(b){ b.classList.remove('selected'); });
+    });
+  }
+})();
+</script>
+
+<!-- Social Proof Ticker (#10) -->
+<script is:inline>
+(function(){
+  var ticker = document.getElementById('proof-ticker');
+  if (!ticker) return;
+  var messages = [
+    { text: 'A parent in Bukit Timah just enrolled their Sec 3 child', time: '2 hours ago' },
+    { text: 'New 5-star Google review received', time: '5 hours ago' },
+    { text: 'A Sec 4 student just scored A2 on their mock paper', time: 'Yesterday' },
+    { text: 'A family in Tampines signed up for the free assessment', time: '1 day ago' },
+    { text: 'New enrolment from Jurong East — Sec 2 student', time: '2 days ago' },
+    { text: 'A parent left a 5-star review: "Transformative teaching"', time: '3 days ago' },
+  ];
+  var idx = 0;
+
+  function showNext() {
+    idx = (idx + 1) % messages.length;
+    var item = ticker.querySelector('.proof-ticker-item');
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(8px)';
+    setTimeout(function(){
+      item.querySelector('.proof-ticker-text').textContent = messages[idx].text;
+      item.querySelector('.proof-ticker-time').textContent = messages[idx].time;
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)';
+    }, 400);
+  }
+
+  setInterval(showNext, 5000);
 })();
 </script>
 
@@ -2611,5 +2821,247 @@ import '../styles/global.css';
     .result-bar-fill { transition: none; width: var(--bar-width); }
     .hero-orbs { display: none; }
     .hero-stagger { opacity: 1; transform: none; animation: none; }
+  }
+
+  /* ===== STAT STORY CONTEXT (#14) ===== */
+  .stat-story {
+    display: block;
+    font-size: 0.72rem;
+    font-style: italic;
+    color: var(--color-accent);
+    margin-top: 0.35rem;
+    opacity: 0.8;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== SOCIAL PROOF TICKER (#10) ===== */
+  .social-proof-ticker {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 0;
+  }
+
+  .proof-ticker-inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .proof-ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .proof-ticker-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34d399;
+    flex-shrink: 0;
+    animation: proof-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes proof-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+  }
+
+  .proof-ticker-text {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .proof-ticker-time {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .proof-ticker-time { display: none; }
+    .proof-ticker-text { font-size: 0.75rem; }
+  }
+
+  /* ===== PROGRAMME QUIZ (#8) ===== */
+  .quiz-section {
+    margin-top: 3rem;
+  }
+
+  .quiz-card {
+    background: var(--bg-card);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .quiz-heading {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .quiz-question {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .quiz-option {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+  }
+
+  .quiz-option:hover {
+    border-color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.05);
+  }
+
+  .quiz-option.selected {
+    border-color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.1);
+    color: var(--color-accent);
+  }
+
+  .quiz-result-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(52, 211, 153, 0.1);
+    color: #34d399;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+  }
+
+  .quiz-result-heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .quiz-result-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quiz-result-cta {
+    margin-bottom: 1rem;
+  }
+
+  .quiz-restart {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0.5rem;
+  }
+
+  .quiz-restart:hover {
+    color: var(--text-primary);
+  }
+
+  /* ===== COMPARISON TABLE (#15) ===== */
+  .comparison-section {
+    background: var(--section-bg);
+  }
+
+  .comparison-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 600px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .comparison-table th {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+  }
+
+  .comparison-table th.comparison-highlight {
+    color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.06);
+  }
+
+  .comparison-table td {
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .comparison-table td.comparison-highlight {
+    background: rgba(212, 133, 58, 0.03);
+    color: var(--text-primary);
+  }
+
+  .comparison-feature {
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .comparison-table {
+      font-size: 0.8rem;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem 0.5rem;
+    }
   }
 </style>
