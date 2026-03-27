@@ -349,7 +349,7 @@ import '../styles/global.css';
       errorsMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Enquiry';
+      submitBtn.innerHTML = '<span>Send Enquiry</span>';
     }
   });
 

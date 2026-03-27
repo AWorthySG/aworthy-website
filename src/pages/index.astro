@@ -472,7 +472,7 @@ import '../styles/global.css';
           <span class="vault-dl">View Sample PDF &rarr;</span>
         </a>
 
-        <a href="/docs/samples/grammar-mistakes-sample.pdf" target="_blank" rel="noopener" class="vault-card" data-animate="reveal-up" data-animate-delay="5">
+        <a href="/docs/samples/grammar-mistakes-sample.pdf" target="_blank" rel="noopener" class="vault-card" data-animate="reveal-up" data-animate-delay="6">
           <div class="vault-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
           </div>
@@ -840,6 +840,7 @@ import '../styles/global.css';
       if (r.ok) {
         successEl.hidden = false;
         form.reset();
+        btn.disabled = false;
         btn.innerHTML = '<span>Sent!</span>';
       } else {
         errorsEl.textContent = 'Something went wrong. Please try again or WhatsApp us.';
