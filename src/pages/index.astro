@@ -195,7 +195,20 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/programmes/#one-to-one" class="programme-card" data-animate="reveal-up" data-animate-delay="3">
+        <a href="/programmes/#h1-gp" class="programme-card programme-card--new" data-animate="reveal-up" data-animate-delay="3">
+          <div class="programme-body">
+            <span class="programme-new-badge">New</span>
+            <span class="programme-level">Small Group Online (Max 6)</span>
+            <h3>H1 General Paper</h3>
+            <p>A-Level GP preparation using the CASE Method's legal-analytical framework. Build argumentation, critical reading, and essay writing skills across all content themes.</p>
+            <div class="programme-meta">
+              <span class="programme-price">SGD 360/month</span>
+              <span class="programme-link">Learn more &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/programmes/#one-to-one" class="programme-card" data-animate="reveal-up" data-animate-delay="4">
           <div class="programme-body">
             <span class="programme-level">Individual Online</span>
             <h3>One-to-One Coaching</h3>
@@ -219,6 +232,7 @@ import '../styles/global.css';
               <div class="quiz-options">
                 <button class="quiz-option" data-value="sec1-2" data-next="2">Sec 1 or 2</button>
                 <button class="quiz-option" data-value="sec3-4" data-next="2">Sec 3 or 4</button>
+                <button class="quiz-option" data-value="jc" data-next="2">JC 1 or 2</button>
               </div>
             </div>
             <div class="quiz-step" data-step="2" hidden>
@@ -682,6 +696,8 @@ import '../styles/global.css';
                   <option value="Sec 2">Sec 2</option>
                   <option value="Sec 3">Sec 3</option>
                   <option value="Sec 4">Sec 4</option>
+                  <option value="JC 1">JC 1</option>
+                  <option value="JC 2">JC 2</option>
                 </select>
               </div>
               <div class="form-group">
@@ -915,10 +931,14 @@ import '../styles/global.css';
     var desc = document.getElementById('quiz-result-desc');
     var isIndividual = answers['3'] === 'individual';
     var isJunior = answers['1'] === 'sec1-2';
+    var isJC = answers['1'] === 'jc';
 
     if (isIndividual) {
       title.textContent = 'One-to-One Coaching';
       desc.textContent = 'Tailored individual sessions focused on your child\'s specific needs. Flexible scheduling with personalised feedback — SGD 120/session.';
+    } else if (isJC) {
+      title.textContent = 'H1 General Paper';
+      desc.textContent = 'A-Level GP preparation using the CASE Method\'s legal-analytical framework. Argumentation, critical reading, and essay writing across all content themes — SGD 360/month.';
     } else if (isJunior) {
       title.textContent = 'Sec 1-2 English Foundation';
       desc.textContent = 'Build a strong analytical foundation early. 90-minute weekly sessions in small groups of 6 — SGD 280/month.';
@@ -1612,7 +1632,7 @@ import '../styles/global.css';
 
   .programmes-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
   }
 
@@ -1731,6 +1751,28 @@ import '../styles/global.css';
     margin-bottom: 0.75rem;
     animation: shimmer-border 3s ease-in-out infinite,
                shimmer-glow 3s ease-in-out infinite;
+  }
+
+  .programme-card--new {
+    border-color: var(--color-primary);
+    border-width: 2px;
+    position: relative;
+    background: rgba(43, 90, 140, 0.03);
+  }
+
+  .programme-new-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    color: #ffffff;
+    padding: 0.3rem 0.75rem;
+    border-radius: 0;
+    margin-bottom: 0.75rem;
   }
 
   /* ===== APPROACH ===== */
