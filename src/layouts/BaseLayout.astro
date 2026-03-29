@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "A-Worthy — Singapore's first analytical English tuition programme. The CASE Method brings legal reasoning precision to O-Level English mastery." } = Astro.props;
+const { title, description = "A-Worthy — O-Level English, H1 General Paper, and H2 Economics tuition in Singapore. The CASE Method brings legal-analytical precision to academic mastery." } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('/images/logo.svg', Astro.site);
@@ -15,7 +15,7 @@ const schemaData = {
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
   "logo": new URL('/images/logo.svg', Astro.site).toString(),
-  "description": "Singapore's first analytical English tuition programme. The CASE Method brings legal reasoning precision to O-Level English mastery.",
+  "description": "O-Level English, H1 General Paper, and H2 Economics tuition in Singapore. The CASE Method brings legal-analytical precision to academic mastery.",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "SG",
