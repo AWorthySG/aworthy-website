@@ -11,61 +11,56 @@ import '../styles/global.css';
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <!-- Animated floating orbs -->
-    <div class="hero-orbs" aria-hidden="true">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
-      <div class="orb orb-4"></div>
-      <div class="orb orb-5"></div>
-    </div>
-    <!-- Grid lines decoration -->
-    <div class="hero-grid-lines" aria-hidden="true">
-      <div class="grid-line grid-line-v1"></div>
-      <div class="grid-line grid-line-v2"></div>
-      <div class="grid-line grid-line-v3"></div>
-      <div class="grid-line grid-line-h1"></div>
-    </div>
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <span class="eyebrow hero-stagger" style="--stagger:0">Singapore's First Analytical English Tuition</span>
-        <h1 class="hero-heading shimmer-text hero-stagger" style="--stagger:1">Think sharper.<br/>Write stronger.<br/>Score higher.</h1>
-        <p class="hero-subtitle hero-stagger" style="--stagger:2">
-          Founded by a law graduate, A-Worthy uses the CASE Method — a proprietary framework that brings legal-analytical precision to help secondary students master O-Level English.
-        </p>
-        <div class="hero-proof hero-stagger" style="--stagger:3">
-          <div class="proof-item">
-            <span class="proof-number">95%</span>
-            <span class="proof-label">pass rate</span>
-          </div>
-          <div class="proof-divider"></div>
-          <div class="proof-item">
-            <span class="proof-number">50+</span>
-            <span class="proof-label">5-star reviews</span>
-          </div>
-          <div class="proof-divider"></div>
-          <div class="proof-item">
-            <span class="proof-number">6</span>
-            <span class="proof-label">max class size</span>
-          </div>
+    <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-depth-layer" aria-hidden="true"></div>
+
+    <div class="hero-centre">
+      <div class="hero-reveal-line hero-anim" style="--d:0">
+        <span class="hero-kicker">Singapore&rsquo;s First Analytical English &amp; Economics Tuition</span>
+      </div>
+      <h1 class="hero-display hero-anim" style="--d:1">
+        <span class="hero-display-line"><span class="hero-word">You</span> <span class="hero-word">are</span></span>
+        <span class="hero-display-line hero-display-accent"><span class="hero-word">A</span> <span class="hero-word">Worthy</span></span>
+      </h1>
+      <p class="hero-sub hero-anim" style="--d:2">Founded by a law graduate, A-Worthy uses the CASE Method &mdash; a proprietary framework that brings legal-analytical precision to O-Level English and H2 Economics.</p>
+
+      <div class="hero-proof-row hero-anim" style="--d:3">
+        <div class="hero-proof-item">
+          <span class="hero-proof-num">95%</span>
+          <span class="hero-proof-lbl">pass rate</span>
         </div>
-        <p class="hero-intake hero-stagger" style="--stagger:4">Next intake: <strong>Term 3, July 2026</strong> — Limited slots available</p>
-        <div class="hero-actions hero-stagger" style="--stagger:5">
-          <a href="/#contact" class="btn btn-accent hero-cta-primary">Get Your A</a>
-          <a href="https://wa.me/6591234567" class="btn btn-outline hero-cta-secondary" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            WhatsApp Us
-          </a>
+        <div class="hero-proof-sep"></div>
+        <div class="hero-proof-item">
+          <span class="hero-proof-num">50+</span>
+          <span class="hero-proof-lbl">5-star reviews</span>
+        </div>
+        <div class="hero-proof-sep"></div>
+        <div class="hero-proof-item">
+          <span class="hero-proof-num">6</span>
+          <span class="hero-proof-lbl">max class size</span>
         </div>
       </div>
-      <div class="hero-visual">
-        <PenAnimation />
+
+      <p class="hero-intake hero-anim" style="--d:4">Next intake: <strong>Term 3, July 2026</strong> &mdash; Limited slots available</p>
+
+      <div class="hero-btns hero-anim" style="--d:5">
+        <a href="/#contact" class="btn btn-accent hero-cta-primary">Get Your A</a>
+        <a href="https://wa.me/6583384033" class="btn btn-outline hero-cta-secondary" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
       </div>
-      <div class="hero-badges">
+
+      <div class="hero-badges-row hero-anim" style="--d:6">
         <span class="hero-badge">MOE-Aligned</span>
         <span class="hero-badge">100% Online via Zoom</span>
         <span class="hero-badge">NUS Law Graduate Founder</span>
       </div>
+    </div>
+
+    <div class="hero-scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
     </div>
   </section>
 
@@ -170,51 +165,51 @@ import '../styles/global.css';
       <h2 class="section-heading" data-animate="reveal-up">Structured learning pathways for every stage</h2>
 
       <div class="programmes-grid">
-        <a href="/programmes/#sec1-2" class="programme-card" data-animate="reveal-up" data-animate-delay="1">
-          <div class="programme-body">
-            <span class="programme-level">Small Group Online (Max 6)</span>
-            <h3>Sec 1&ndash;2 English Foundation</h3>
-            <p>90-minute weekly sessions covering Paper 1 and Paper 2 skills. Build a strong analytical foundation in comprehension, composition, and language use.</p>
-            <div class="programme-meta">
-              <span class="programme-price">SGD 280/month</span>
-              <span class="programme-link">Learn more &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <a href="/programmes/#sec3-4" class="programme-card programme-card--popular" data-animate="reveal-up" data-animate-delay="2">
+        <a href="/o-level-english/" class="programme-card programme-card--popular" data-animate="reveal-up" data-animate-delay="1">
           <div class="programme-body">
             <span class="programme-popular-badge">Most Popular</span>
-            <span class="programme-level">Small Group Online (Max 6)</span>
-            <h3>Sec 3&ndash;4 O-Level Intensive</h3>
-            <p>90-minute exam-focused sessions with monthly mock grading. Master every O-Level English component with the CASE Method and targeted practice.</p>
+            <span class="programme-level">Sec 1 &ndash; 4</span>
+            <h3>O-Level English</h3>
+            <p>Foundation and intensive programmes for Secondary 1&ndash;4. Master comprehension, composition, oral, and editing with the CASE Method.</p>
             <div class="programme-meta">
-              <span class="programme-price">SGD 320/month</span>
+              <span class="programme-price">From SGD 280/month</span>
               <span class="programme-link">Learn more &rarr;</span>
             </div>
           </div>
         </a>
 
-        <a href="/programmes/#h1-gp" class="programme-card programme-card--new" data-animate="reveal-up" data-animate-delay="3">
+        <a href="/h1-general-paper/" class="programme-card" data-animate="reveal-up" data-animate-delay="2">
+          <div class="programme-body">
+            <span class="programme-level">JC 1 &ndash; 2</span>
+            <h3>H1 General Paper</h3>
+            <p>A-Level GP preparation using the CASE Method&rsquo;s legal-analytical framework. Build argumentation, critical reading, and essay writing skills across all content themes.</p>
+            <div class="programme-meta">
+              <span class="programme-price">From SGD 360/month</span>
+              <span class="programme-link">Learn more &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/h2-economics/" class="programme-card programme-card--new" data-animate="reveal-up" data-animate-delay="3">
           <div class="programme-body">
             <span class="programme-new-badge">New</span>
-            <span class="programme-level">Small Group Online (Max 6)</span>
-            <h3>H1 General Paper</h3>
-            <p>A-Level GP preparation using the CASE Method's legal-analytical framework. Build argumentation, critical reading, and essay writing skills across all content themes.</p>
+            <span class="programme-level">JC 1 &ndash; 2</span>
+            <h3>H2 Economics</h3>
+            <p>Rigorous A-Level Economics preparation covering micro and macro. Diagram precision, essay technique, and case study mastery for the full 9570 syllabus.</p>
             <div class="programme-meta">
-              <span class="programme-price">SGD 360/month</span>
+              <span class="programme-price">From SGD 360/month</span>
               <span class="programme-link">Learn more &rarr;</span>
             </div>
           </div>
         </a>
 
-        <a href="/programmes/#one-to-one" class="programme-card" data-animate="reveal-up" data-animate-delay="4">
+        <a href="/programmes/" class="programme-card" data-animate="reveal-up" data-animate-delay="4">
           <div class="programme-body">
-            <span class="programme-level">Individual Online</span>
+            <span class="programme-level">All Subjects</span>
             <h3>One-to-One Coaching</h3>
-            <p>Intensive exam prep or tailored support designed around your child's specific needs. Flexible scheduling with personalised feedback every session.</p>
+            <p>Intensive exam prep or tailored support designed around your child&rsquo;s specific needs. Flexible scheduling with personalised feedback every session.</p>
             <div class="programme-meta">
-              <span class="programme-price">SGD 120/session</span>
+              <span class="programme-price">SGD 120&ndash;140/session</span>
               <span class="programme-link">Learn more &rarr;</span>
             </div>
           </div>
@@ -232,7 +227,14 @@ import '../styles/global.css';
               <div class="quiz-options">
                 <button class="quiz-option" data-value="sec1-2" data-next="2">Sec 1 or 2</button>
                 <button class="quiz-option" data-value="sec3-4" data-next="2">Sec 3 or 4</button>
-                <button class="quiz-option" data-value="jc" data-next="2">JC 1 or 2</button>
+                <button class="quiz-option" data-value="jc" data-next="1b">JC 1 or 2</button>
+              </div>
+            </div>
+            <div class="quiz-step" data-step="1b" hidden>
+              <p class="quiz-question">Which subject?</p>
+              <div class="quiz-options">
+                <button class="quiz-option" data-value="gp" data-next="2">H1 General Paper</button>
+                <button class="quiz-option" data-value="econs" data-next="2">H2 Economics</button>
               </div>
             </div>
             <div class="quiz-step" data-step="2" hidden>
@@ -254,7 +256,7 @@ import '../styles/global.css';
               <div class="quiz-result-icon">&#10003;</div>
               <h4 class="quiz-result-heading" id="quiz-result-title"></h4>
               <p class="quiz-result-desc" id="quiz-result-desc"></p>
-              <a href="/programmes/" class="btn btn-accent quiz-result-cta">View Programme Details</a>
+              <a href="/programmes/" class="btn btn-accent quiz-result-cta" id="quiz-result-link">View Programme Details</a>
               <button class="quiz-restart" id="quiz-restart">Start again</button>
             </div>
           </div>
@@ -270,6 +272,8 @@ import '../styles/global.css';
       <h2 class="section-heading" data-animate="reveal-up">Every lesson follows the CASE Method</h2>
       <div class="case-flow" data-animate="reveal-up">
         <div class="case-flow-step">
+          <span class="case-flow-watermark" aria-hidden="true">C</span>
+          <span class="case-flow-step-num" aria-hidden="true">01</span>
           <div class="case-flow-icon"><span>C</span><div class="icon-ring"></div></div>
           <h3>Contextualise</h3>
           <p>Identify the task and purpose</p>
@@ -282,6 +286,8 @@ import '../styles/global.css';
           </svg>
         </div>
         <div class="case-flow-step">
+          <span class="case-flow-watermark" aria-hidden="true">A</span>
+          <span class="case-flow-step-num" aria-hidden="true">02</span>
           <div class="case-flow-icon"><span>A</span><div class="icon-ring"></div></div>
           <h3>Analyse</h3>
           <p>Read closely for meaning</p>
@@ -293,6 +299,8 @@ import '../styles/global.css';
           </svg>
         </div>
         <div class="case-flow-step">
+          <span class="case-flow-watermark" aria-hidden="true">S</span>
+          <span class="case-flow-step-num" aria-hidden="true">03</span>
           <div class="case-flow-icon"><span>S</span><div class="icon-ring"></div></div>
           <h3>Structure</h3>
           <p>Organise and write</p>
@@ -304,6 +312,8 @@ import '../styles/global.css';
           </svg>
         </div>
         <div class="case-flow-step">
+          <span class="case-flow-watermark" aria-hidden="true">E</span>
+          <span class="case-flow-step-num" aria-hidden="true">04</span>
           <div class="case-flow-icon"><span>E</span><div class="icon-ring"></div></div>
           <h3>Evaluate</h3>
           <p>Review and reflect</p>
@@ -743,7 +753,7 @@ import '../styles/global.css';
             </div>
             <div>
               <strong>Reach Us</strong>
-              <p><a href="tel:+6561234567">+65 6123 4567</a> &middot; <a href="https://wa.me/6591234567">WhatsApp 9123 4567</a><br/><a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></p>
+              <p><a href="tel:+6561234567">+65 6123 4567</a> &middot; <a href="https://wa.me/6583384033">WhatsApp 8338 4033</a><br/><a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></p>
             </div>
           </div>
           <div class="info-card">
@@ -862,9 +872,7 @@ import '../styles/global.css';
 <script is:inline>
 (function(){
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var orbs = document.querySelectorAll('.orb');
   var bars = document.querySelectorAll('.result-bar-fill');
-  var ticking = false;
 
   // Animate result bars when visible
   var barObserver = new IntersectionObserver(function(entries) {
@@ -876,22 +884,157 @@ import '../styles/global.css';
     });
   }, { threshold: 0.3 });
   bars.forEach(function(bar) { barObserver.observe(bar); });
+})();
+</script>
 
-  // Subtle parallax on orbs
-  window.addEventListener('scroll', function() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function() {
-      var scrollY = window.scrollY;
-      if (scrollY < window.innerHeight * 1.5) {
-        orbs.forEach(function(orb, i) {
-          var speed = 0.02 + (i * 0.01);
-          orb.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
-        });
-      }
-      ticking = false;
+<!-- Immersive 3D particle canvas -->
+<script is:inline>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var c = document.getElementById('hero-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  var W, H;
+  var mouseX = 0.5, mouseY = 0.5;
+  var particles = [];
+  var PARTICLE_COUNT = 120;
+
+  function resize() {
+    W = c.parentElement.clientWidth;
+    H = c.parentElement.clientHeight;
+    c.width = W * dpr;
+    c.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Create particles at different depth layers
+  for (var i = 0; i < PARTICLE_COUNT; i++) {
+    var depth = Math.random(); // 0 = far, 1 = near
+    particles.push({
+      x: Math.random() * 2 - 0.5,
+      y: Math.random() * 2 - 0.5,
+      z: depth,
+      baseX: Math.random() * 2 - 0.5,
+      baseY: Math.random() * 2 - 0.5,
+      size: 1 + depth * 2.5,
+      speed: 0.0002 + depth * 0.0005,
+      drift: Math.random() * Math.PI * 2,
+      alpha: 0.08 + depth * 0.25,
+      hue: Math.random() > 0.65 ? 30 : 210, // gold or blue
     });
+  }
+
+  // Mouse / touch tracking
+  document.addEventListener('mousemove', function(e) {
+    mouseX = e.clientX / window.innerWidth;
+    mouseY = e.clientY / window.innerHeight;
   });
+  document.addEventListener('touchmove', function(e) {
+    if (e.touches[0]) {
+      mouseX = e.touches[0].clientX / window.innerWidth;
+      mouseY = e.touches[0].clientY / window.innerHeight;
+    }
+  }, { passive: true });
+
+  var startTime = performance.now();
+
+  function draw(now) {
+    var elapsed = now - startTime;
+    ctx.clearRect(0, 0, W, H);
+
+    // Background atmosphere — subtle radial glow that follows mouse
+    var gx = W * (0.3 + mouseX * 0.4);
+    var gy = H * (0.3 + mouseY * 0.4);
+    var grad = ctx.createRadialGradient(gx, gy, 0, gx, gy, W * 0.7);
+    grad.addColorStop(0, 'rgba(43,90,140,0.08)');
+    grad.addColorStop(0.5, 'rgba(212,133,58,0.03)');
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Draw particles with parallax depth
+    var mx = (mouseX - 0.5) * 2;
+    var my = (mouseY - 0.5) * 2;
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      // Organic drift
+      p.drift += p.speed;
+      var driftX = Math.sin(p.drift) * 0.02 * (1 + p.z);
+      var driftY = Math.cos(p.drift * 0.7) * 0.015 * (1 + p.z);
+
+      // Parallax: deeper particles move less
+      var parallaxX = mx * p.z * 0.08;
+      var parallaxY = my * p.z * 0.08;
+
+      var px = (p.baseX + driftX + parallaxX + 0.5) * W;
+      var py = (p.baseY + driftY + parallaxY + 0.5) * H;
+
+      // Wrap around
+      if (px < -20) px += W + 40;
+      if (px > W + 20) px -= W + 40;
+      if (py < -20) py += H + 40;
+      if (py > H + 20) py -= H + 40;
+
+      // Depth-based glow
+      var s = p.size;
+      var a = p.alpha;
+
+      // Pulse subtly
+      a *= 0.7 + 0.3 * Math.sin(elapsed * 0.001 + p.drift);
+
+      if (p.hue === 30) {
+        ctx.fillStyle = 'rgba(212,158,80,' + a + ')';
+      } else {
+        ctx.fillStyle = 'rgba(100,150,200,' + a + ')';
+      }
+
+      ctx.beginPath();
+      ctx.arc(px, py, s, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Glow for near particles
+      if (p.z > 0.6) {
+        ctx.beginPath();
+        ctx.arc(px, py, s * 3, 0, Math.PI * 2);
+        if (p.hue === 30) {
+          ctx.fillStyle = 'rgba(212,133,58,' + (a * 0.15) + ')';
+        } else {
+          ctx.fillStyle = 'rgba(43,90,140,' + (a * 0.12) + ')';
+        }
+        ctx.fill();
+      }
+    }
+
+    // Draw faint connection lines between nearby particles
+    ctx.strokeStyle = 'rgba(43,90,140,0.04)';
+    ctx.lineWidth = 0.5;
+    for (var i = 0; i < particles.length; i++) {
+      var p1 = particles[i];
+      var p1x = (p1.baseX + Math.sin(p1.drift) * 0.02 + (mx * p1.z * 0.08) + 0.5) * W;
+      var p1y = (p1.baseY + Math.cos(p1.drift * 0.7) * 0.015 + (my * p1.z * 0.08) + 0.5) * H;
+      for (var j = i + 1; j < particles.length; j++) {
+        var p2 = particles[j];
+        var p2x = (p2.baseX + Math.sin(p2.drift) * 0.02 + (mx * p2.z * 0.08) + 0.5) * W;
+        var p2y = (p2.baseY + Math.cos(p2.drift * 0.7) * 0.015 + (my * p2.z * 0.08) + 0.5) * H;
+        var dx = p1x - p2x;
+        var dy = p1y - p2y;
+        var dist = dx * dx + dy * dy;
+        if (dist < 15000) {
+          ctx.beginPath();
+          ctx.moveTo(p1x, p1y);
+          ctx.lineTo(p2x, p2y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
 })();
 </script>
 
@@ -933,19 +1076,29 @@ import '../styles/global.css';
     var isIndividual = answers['3'] === 'individual';
     var isJunior = answers['1'] === 'sec1-2';
     var isJC = answers['1'] === 'jc';
+    var isEcons = answers['1b'] === 'econs';
+    var link = document.getElementById('quiz-result-link');
 
     if (isIndividual) {
       title.textContent = 'One-to-One Coaching';
-      desc.textContent = 'Tailored individual sessions focused on your child\'s specific needs. Flexible scheduling with personalised feedback — SGD 120/session.';
+      desc.textContent = 'Tailored individual sessions focused on your child\'s specific needs. Flexible scheduling with personalised feedback — SGD 120–140/session.';
+      link.href = '/programmes/';
+    } else if (isJC && isEcons) {
+      title.textContent = 'H2 Economics';
+      desc.textContent = 'Rigorous A-Level Economics preparation covering micro and macro. Diagram precision, essay technique, and case study mastery — from SGD 360/month.';
+      link.href = '/h2-economics/';
     } else if (isJC) {
       title.textContent = 'H1 General Paper';
-      desc.textContent = 'A-Level GP preparation using the CASE Method\'s legal-analytical framework. Argumentation, critical reading, and essay writing across all content themes — SGD 360/month.';
+      desc.textContent = 'A-Level GP preparation using the CASE Method\'s legal-analytical framework. Argumentation, critical reading, and essay writing across all content themes — from SGD 360/month.';
+      link.href = '/h1-general-paper/';
     } else if (isJunior) {
       title.textContent = 'Sec 1-2 English Foundation';
       desc.textContent = 'Build a strong analytical foundation early. 90-minute weekly sessions in small groups of 6 — SGD 280/month.';
+      link.href = '/o-level-english/#sec1-2';
     } else {
       title.textContent = 'Sec 3-4 O-Level Intensive';
       desc.textContent = 'Exam-focused preparation with monthly mock grading. Master every O-Level component with the CASE Method — SGD 320/month.';
+      link.href = '/o-level-english/#sec3-4';
     }
     result.hidden = false;
   }
@@ -1009,92 +1162,23 @@ import '../styles/global.css';
   }
 
   /* ===== FLOATING ORBS ===== */
-  .hero-orbs {
+  /* ===== HERO CANVAS (3D particle field) ===== */
+  .hero-canvas {
     position: absolute;
     inset: 0;
-    overflow: hidden;
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
     z-index: 0;
-  }
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
-    will-change: transform;
-  }
-  .orb-1 {
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(43,90,140,0.12) 0%, transparent 70%);
-    top: 10%; left: 5%;
-    animation: orb-float-1 18s ease-in-out infinite;
-  }
-  .orb-2 {
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(212,133,58,0.1) 0%, transparent 70%);
-    top: 60%; right: 10%;
-    animation: orb-float-2 22s ease-in-out infinite;
-  }
-  .orb-3 {
-    width: 250px; height: 250px;
-    background: radial-gradient(circle, rgba(43,90,140,0.08) 0%, transparent 70%);
-    bottom: 10%; left: 30%;
-    animation: orb-float-3 20s ease-in-out infinite;
-  }
-  .orb-4 {
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(212,133,58,0.06) 0%, transparent 70%);
-    top: 20%; right: 25%;
-    animation: orb-float-4 25s ease-in-out infinite;
-  }
-  .orb-5 {
-    width: 350px; height: 350px;
-    background: radial-gradient(circle, rgba(74,106,130,0.08) 0%, transparent 70%);
-    top: 40%; left: 50%;
-    animation: orb-float-5 16s ease-in-out infinite;
-  }
-  @keyframes orb-float-1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(60px, -40px) scale(1.1); }
-    66% { transform: translate(-30px, 30px) scale(0.95); }
-  }
-  @keyframes orb-float-2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-50px, 30px) scale(1.05); }
-    66% { transform: translate(40px, -20px) scale(0.9); }
-  }
-  @keyframes orb-float-3 {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(70px, -50px); }
-  }
-  @keyframes orb-float-4 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-40px, 40px) scale(1.15); }
-  }
-  @keyframes orb-float-5 {
-    0%, 100% { transform: translate(0, 0); }
-    33% { transform: translate(-60px, -30px); }
-    66% { transform: translate(30px, 50px); }
+    pointer-events: none;
   }
 
-  /* ===== HERO GRID LINES ===== */
-  .hero-grid-lines {
+  .hero-depth-layer {
     position: absolute;
     inset: 0;
+    z-index: 1;
     pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .grid-line {
-    position: absolute;
-    background: linear-gradient(180deg, transparent 0%, rgba(26,42,58,0.04) 50%, transparent 100%);
-  }
-  .grid-line-v1 { width: 1px; height: 100%; left: 20%; top: 0; }
-  .grid-line-v2 { width: 1px; height: 100%; left: 50%; top: 0; }
-  .grid-line-v3 { width: 1px; height: 100%; left: 80%; top: 0; }
-  .grid-line-h1 {
-    height: 1px; width: 100%; top: 40%; left: 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(26,42,58,0.04) 50%, transparent 100%);
+    background:
+      radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(245,241,235,0.4) 100%);
   }
 
   /* ===== EYEBROW ===== */
@@ -1138,87 +1222,103 @@ import '../styles/global.css';
     min-height: 100dvh;
     display: flex;
     align-items: center;
-    background: var(--bg-primary);
-    /* Atmospheric depth: layered radial gradients */
-    background:
-      radial-gradient(ellipse at 10% 90%, rgba(212,133,58,0.04) 0%, transparent 40%),
-      radial-gradient(ellipse at 90% 10%, rgba(43,90,140,0.05) 0%, transparent 40%),
-      radial-gradient(ellipse at 50% 50%, rgba(245,241,235,0.6) 0%, transparent 70%),
-      var(--bg-primary);
-    padding-top: var(--header-height);
-    padding-bottom: 0;
+    justify-content: center;
+    background: #FAF7F2;
+    padding: 0;
     overflow: hidden;
     position: relative;
   }
 
   /* ── Orchestrated hero entrance — staggered cascade ── */
-  .hero-stagger {
+  .hero-anim {
     opacity: 0;
-    transform: translateY(30px);
-    animation: hero-cascade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: calc(0.15s + var(--stagger) * 0.12s);
+    transform: translateY(40px);
+    animation: hero-rise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(0.6s + var(--d) * 0.15s);
   }
-  @keyframes hero-cascade {
+  @keyframes hero-rise {
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(43, 90, 140, 0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 20%, rgba(212, 133, 58, 0.08) 0%, transparent 50%);
-    pointer-events: none;
+  .hero-centre {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 2rem;
   }
 
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
+  .hero-kicker {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: rgba(212,133,58,0.9);
+    margin-bottom: 2rem;
   }
 
-  .hero-content {
-    max-width: 560px;
-  }
-
-  .hero-heading {
-    font-family: var(--font-heading);
-    font-size: clamp(3.5rem, 10vw, 7.5rem);
+  .hero-display {
+    font-family: 'Fraunces', var(--font-heading), serif;
+    font-size: clamp(4rem, 12vw, 9rem);
     font-weight: 100;
-    line-height: 1.02;
-    letter-spacing: -0.04em;
+    font-style: italic;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
     color: var(--text-primary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
-  .hero-subtitle {
+  .hero-display-line {
+    display: block;
+  }
+
+  .hero-display-accent {
+    color: transparent;
+    background: linear-gradient(135deg, #B87333 0%, #D4853A 40%, #e8a060 60%, #B87333 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: hero-gold-shift 6s ease-in-out infinite;
+  }
+
+  @keyframes hero-gold-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .hero-word {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .hero-sub {
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    margin-bottom: 2.5rem;
-    max-width: 480px;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
   }
 
-  .hero-proof {
+  .hero-proof-row {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
-    margin-bottom: 3rem;
-    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    padding: 1.25rem 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
   }
 
-  .proof-item {
+  .hero-proof-item {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
-  .proof-number {
+  .hero-proof-num {
     font-family: var(--font-heading);
     font-size: 1.8rem;
     font-weight: 200;
@@ -1232,52 +1332,6 @@ import '../styles/global.css';
     letter-spacing: 0.08em;
     color: var(--text-muted);
     margin-top: 0.15rem;
-  }
-
-  .proof-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--border-color);
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .hero-intake {
-    font-size: 0.8rem;
-    color: var(--color-accent);
-    margin-bottom: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-
-  .hero-intake strong {
-    color: var(--text-primary);
-  }
-
-  .hero-cta-primary {
-    padding: 1rem 2.5rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-radius: 0;
-    box-shadow: none;
-    transition: all 0.3s ease;
-  }
-
-  .hero-cta-primary:hover {
-    transform: none;
-    box-shadow: none;
-    background: #e8a060;
-  }
-
-  .hero-cta-secondary {
-    display: inline-flex;
-    align-items: center;
   }
 
   .btn-outline {
@@ -1300,31 +1354,133 @@ import '../styles/global.css';
     color: var(--text-primary);
   }
 
-  .hero-visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .hero-proof-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
   }
 
-  .hero-badges {
+  .hero-proof-sep {
+    width: 1px;
+    height: 2rem;
+    background: var(--border-color);
+  }
+
+  .hero-intake {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .hero-intake strong {
+    color: var(--text-primary);
+  }
+
+  .hero-btns {
     display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta-primary {
+    background: var(--color-accent);
+    color: #ffffff;
+    border: 1px solid var(--color-accent);
+    padding: 0.875rem 2.5rem;
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .hero-cta-primary:hover {
+    background: #c4752e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212,133,58,0.3);
+  }
+
+  .hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.875rem 2rem;
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .hero-cta-secondary:hover {
+    border-color: rgba(26,42,58,0.25);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  .hero-badges-row {
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 2rem;
   }
 
   .hero-badge {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.4rem 1rem;
+    padding: 0.35rem 0.8rem;
     border: 1px solid var(--border-color);
     border-radius: 0;
     color: var(--text-muted);
     background: transparent;
+  }
+
+  /* Scroll cue */
+  .hero-scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: hero-rise 1s ease forwards 2s;
+  }
+
+  .hero-scroll-cue span {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(26,42,58,0.2), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); }
+    50% { opacity: 0.3; transform: scaleY(0.6); }
   }
 
   /* ===== PROBLEM → SOLUTION ===== */
@@ -1515,8 +1671,25 @@ import '../styles/global.css';
   }
 
   @media (max-width: 640px) {
-    .hero-badges {
+    .hero-badges-row {
       justify-content: center;
+    }
+    .hero-proof-row {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .hero-proof-sep {
+      display: none;
+    }
+    .hero-display {
+      font-size: clamp(3rem, 14vw, 5rem);
+    }
+    .hero-btns {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero-scroll-cue {
+      display: none;
     }
   }
 
@@ -1543,10 +1716,23 @@ import '../styles/global.css';
 
   /* ===== STATS BAR ===== */
   .stats-bar {
-    background: var(--bg-secondary);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(212, 133, 58, 0.04) 50%, var(--bg-secondary) 100%);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     padding: 4rem 0;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    position: relative;
+  }
+  .stats-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.25);
+    pointer-events: none;
+  }
+  :global([data-theme="dark"]) .stats-bar::before {
+    background: rgba(255, 255, 255, 0.02);
   }
 
   .stats-inner {
@@ -1658,6 +1844,7 @@ import '../styles/global.css';
       background: var(--bg-card-hover);
       border-color: rgba(26, 42, 58, 0.15);
       transform: translateY(-4px);
+      border-left: 3px solid var(--color-accent);
     }
   }
 
@@ -1739,6 +1926,16 @@ import '../styles/global.css';
     border-width: 2px;
     position: relative;
     background: rgba(212, 133, 58, 0.03);
+    overflow: hidden;
+  }
+  .programme-card--popular::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(212, 133, 58, 0.07) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   .programme-popular-badge {
@@ -1763,6 +1960,16 @@ import '../styles/global.css';
     border-width: 2px;
     position: relative;
     background: rgba(43, 90, 140, 0.03);
+    overflow: hidden;
+  }
+  .programme-card--new::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(43, 90, 140, 0.07) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   .programme-new-badge {
@@ -1904,6 +2111,37 @@ import '../styles/global.css';
     text-align: center;
     flex: 0 0 auto;
     max-width: 160px;
+    position: relative;
+  }
+
+  .case-flow-watermark {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    font-weight: 200;
+    color: var(--color-accent);
+    opacity: 0.06;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  :global([data-theme="dark"]) .case-flow-watermark {
+    opacity: 0.04;
+  }
+
+  .case-flow-step-num {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+    z-index: 1;
   }
 
   .case-flow-icon {
@@ -2141,9 +2379,28 @@ import '../styles/global.css';
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
+    border-top: 2px solid var(--color-accent);
     border-radius: 4px;
     padding: 2rem;
     transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 0.5rem;
+    right: 1.25rem;
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--color-accent);
+    opacity: 0.07;
+    pointer-events: none;
+    user-select: none;
+  }
+  :global([data-theme="dark"]) .testimonial-card::before {
+    opacity: 0.05;
   }
 
   @media (hover: hover) {
@@ -2490,7 +2747,9 @@ import '../styles/global.css';
   /* ===== CONTACT SECTION ===== */
   .contact-section {
     background:
-      linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      radial-gradient(ellipse at 30% 20%, rgba(212, 133, 58, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(43, 90, 140, 0.04) 0%, transparent 50%),
+      linear-gradient(180deg, var(--bg-secondary) 0%, rgba(212, 133, 58, 0.02) 50%, var(--bg-primary) 100%);
     position: relative;
     overflow: hidden;
     border-top: 3px solid var(--color-accent);
@@ -2551,7 +2810,7 @@ import '../styles/global.css';
   .form-group textarea:focus {
     outline: none;
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 2px rgba(212,133,58,0.15);
+    box-shadow: 0 0 0 3px rgba(212,133,58,0.12), 0 0 16px rgba(212,133,58,0.06);
   }
   .form-group select {
     appearance: none;
@@ -2704,24 +2963,6 @@ import '../styles/global.css';
   }
 
   @media (max-width: 768px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      text-align: center;
-    }
-    .hero-content {
-      max-width: 100%;
-    }
-    .hero-proof {
-      justify-content: center;
-    }
-    .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .hero-visual {
-      order: -1;
-    }
     .section {
       padding: 3rem 0;
     }
@@ -2760,9 +3001,6 @@ import '../styles/global.css';
     .result-stat {
       flex: 0 0 45%;
     }
-    .hero-orbs .orb {
-      transform: scale(0.6);
-    }
   }
 
   @media (max-width: 640px) {
@@ -2786,40 +3024,10 @@ import '../styles/global.css';
       margin-bottom: 2.5rem;
     }
 
-    .hero-proof {
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .proof-divider {
-      display: none;
-    }
-
-    .proof-item {
-      flex: 0 0 calc(50% - 0.5rem);
-      text-align: center;
-      align-items: center;
-    }
   }
 
   /* Tablet portrait */
   @media (min-width: 481px) and (max-width: 768px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-    .hero-content {
-      max-width: 100%;
-    }
-    .hero-proof {
-      justify-content: center;
-    }
-    .hero-actions {
-      justify-content: center;
-    }
-    .hero-visual {
-      order: -1;
-    }
     .programmes-grid {
       grid-template-columns: 1fr 1fr;
     }
@@ -2830,10 +3038,10 @@ import '../styles/global.css';
 
   /* TV / Large screens */
   @media (min-width: 1921px) {
-    .hero-heading {
-      font-size: clamp(5rem, 8vw, 9rem);
+    .hero-display {
+      font-size: clamp(7rem, 10vw, 12rem);
     }
-    .hero-subtitle {
+    .hero-sub {
       font-size: 1.3rem;
       max-width: 600px;
     }
@@ -2874,8 +3082,8 @@ import '../styles/global.css';
     .connector-line { stroke-dashoffset: 0; }
     .connector-arrow { opacity: 1; }
     .result-bar-fill { transition: none; width: var(--bar-width); }
-    .hero-orbs { display: none; }
-    .hero-stagger { opacity: 1; transform: none; animation: none; }
+    .hero-anim { opacity: 1; transform: none; animation: none; }
+    .hero-canvas { display: none; }
   }
 
   /* ===== STAT STORY CONTEXT (#14) ===== */

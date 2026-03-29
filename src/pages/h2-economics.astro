@@ -5,92 +5,177 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Programmes — A Worthy | O-Level English, H1 GP & H2 Economics Tuition in Singapore" description="Explore A-Worthy's programmes: O-Level English, H1 General Paper, and H2 Economics. Small group online classes and one-to-one coaching built on the CASE Method.">
+<BaseLayout title="H2 Economics Tuition — A Worthy | Analytical Economics Tuition in Singapore" description="H2 Economics tuition built on rigorous analytical frameworks. Small group online classes for JC 1-2 students, plus one-to-one coaching. Book a free diagnostic assessment.">
   <Header slot="header" />
 
   <!-- ===== PAGE HERO ===== -->
   <section class="prog-hero">
     <div class="container">
-      <p class="eyebrow">Programmes</p>
-      <h1 class="prog-hero__heading">Three subjects, one method</h1>
-      <p class="prog-hero__sub">Every A-Worthy programme is built on the CASE Method &mdash; Contextualise, Analyse, Structure, Evaluate. Choose the subject that fits your child.</p>
+      <p class="eyebrow">H2 Economics</p>
+      <h1 class="prog-hero__heading">H2 Economics tuition<br />built on analytical rigour</h1>
+      <p class="prog-hero__sub">Every lesson develops the economic reasoning and essay technique required for A-Level success &mdash; from diagrams and definitions to evaluation and application.</p>
     </div>
   </section>
 
-  <!-- ===== PROGRAMME CARDS ===== -->
-  <section class="prog-section">
+  <!-- ===== NAV PILLS ===== -->
+  <nav class="prog-nav" aria-label="Programme quick links">
+    <div class="container prog-nav__inner" data-animate="reveal-up">
+      <a href="#jc1" class="prog-nav__link">JC 1</a>
+      <a href="#jc2" class="prog-nav__link">JC 2</a>
+      <a href="#one-to-one" class="prog-nav__link">One-to-One</a>
+      <a href="#syllabus" class="prog-nav__link">Syllabus Coverage</a>
+      <a href="#approach" class="prog-nav__link">Our Approach</a>
+    </div>
+  </nav>
+
+  <!-- ===== JC 1 PROGRAMME ===== -->
+  <section class="prog-section" id="jc1">
     <div class="container">
-      <div class="card-grid card-grid--3">
-        <a href="/o-level-english/" class="prog-card prog-card--link" data-animate="reveal-up" data-animate-delay="1">
-          <p class="prog-card__eyebrow">Sec 1 &ndash; 4</p>
-          <h3 class="prog-card__title">O-Level English</h3>
-          <p class="prog-card__desc">Foundation and intensive programmes for Secondary 1&ndash;4 students. Master comprehension, composition, oral, and editing with the CASE Method.</p>
-          <ul class="prog-card__topics">
-            <li>Sec 1-2 Foundation &mdash; SGD 280/month</li>
-            <li>Sec 3-4 Intensive &mdash; SGD 320/month</li>
-            <li>One-to-One &mdash; SGD 120/session</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span class="prog-card__link-text">View programme &rarr;</span>
-          </div>
-        </a>
+      <p class="eyebrow">JC 1</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">JC 1 H2 Economics Foundation</h2>
+      <p class="prog-section__sub">Building a strong conceptual foundation in micro and macroeconomics from the start.</p>
 
-        <a href="/h1-general-paper/" class="prog-card prog-card--link" data-animate="reveal-up" data-animate-delay="2">
-          <p class="prog-card__eyebrow">JC 1 &ndash; 2</p>
-          <h3 class="prog-card__title">H1 General Paper</h3>
-          <p class="prog-card__desc">A-Level GP preparation using the CASE Method&rsquo;s legal-analytical framework. Build argumentation, critical reading, and essay writing across all 12 content themes.</p>
+      <div class="card-grid card-grid--1">
+        <div class="prog-card" data-animate="reveal-up" data-animate-delay="1">
+          <h3 class="prog-card__title">Foundation Programme</h3>
+          <p class="prog-card__desc">Small group online sessions designed to build core economic reasoning skills &mdash; demand-supply analysis, market failure, and introductory macro concepts &mdash; with emphasis on diagram accuracy and essay structure from day one.</p>
           <ul class="prog-card__topics">
-            <li>JC 1 Foundation &mdash; SGD 360/month</li>
-            <li>JC 2 Intensive &mdash; SGD 400/month</li>
-            <li>One-to-One &mdash; SGD 140/session</li>
+            <li>Scarcity, choice, and opportunity cost</li>
+            <li>Demand and supply analysis with diagrams</li>
+            <li>Elasticity (PED, YED, XED, PES)</li>
+            <li>Market failure: externalities, public goods, merit goods</li>
+            <li>Government intervention and its limitations</li>
+            <li>Introduction to macroeconomic indicators</li>
+            <li>Essay planning and paragraph structure (PEEL)</li>
           </ul>
           <div class="prog-card__meta">
-            <span class="prog-card__link-text">View programme &rarr;</span>
+            <span>120 min / week</span>
+            <span>Max 6 students</span>
+            <span>Online via Zoom</span>
           </div>
-        </a>
-
-        <a href="/h2-economics/" class="prog-card prog-card--link prog-card--accent" data-animate="reveal-up" data-animate-delay="3">
-          <p class="prog-card__eyebrow prog-card__eyebrow--new">New</p>
-          <h3 class="prog-card__title">H2 Economics</h3>
-          <p class="prog-card__desc">Rigorous A-Level Economics preparation covering the full 9570 syllabus. Diagram precision, essay technique, and case study mastery.</p>
-          <ul class="prog-card__topics">
-            <li>JC 1 Foundation &mdash; SGD 360/month</li>
-            <li>JC 2 Intensive &mdash; SGD 400/month</li>
-            <li>One-to-One &mdash; SGD 140/session</li>
-          </ul>
-          <div class="prog-card__meta">
-            <span class="prog-card__link-text">View programme &rarr;</span>
-          </div>
-        </a>
+          <p class="prog-card__fee">SGD 360 / month</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== THE CASE METHOD ===== -->
-  <section class="prog-section" id="lesson-structure">
+  <!-- ===== JC 2 A-LEVEL INTENSIVE ===== -->
+  <section class="prog-section" id="jc2">
     <div class="container">
-      <p class="eyebrow">Every Lesson</p>
-      <h2 class="prog-section__heading" data-animate="reveal-up">How a CASE lesson works</h2>
+      <p class="eyebrow">JC 2</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">JC 2 A-Level Intensive</h2>
+      <p class="prog-section__sub">Exam-focused preparation with timed essay practice, case study drills, and detailed marker-style feedback.</p>
+
+      <div class="card-grid card-grid--1">
+        <div class="prog-card" data-animate="reveal-up" data-animate-delay="1">
+          <h3 class="prog-card__title">A-Level Intensive Programme</h3>
+          <p class="prog-card__desc">Rigorous, exam-aligned preparation covering every component of the GCE A-Level H2 Economics papers &mdash; with regular timed practice and individualised feedback on essay and case study technique.</p>
+          <ul class="prog-card__topics">
+            <li>Paper 1 Case Study: data interpretation, application, evaluation</li>
+            <li>Paper 2 Essays: thesis-driven structure with balanced evaluation</li>
+            <li>Microeconomics: firm theory, market structures, factor markets</li>
+            <li>Macroeconomics: AD-AS, fiscal/monetary/supply-side policies</li>
+            <li>International trade: comparative advantage, protectionism, globalisation</li>
+            <li>Diagram precision and annotation technique</li>
+            <li>Anti-thesis, synthesis, and higher-order evaluation</li>
+          </ul>
+          <div class="prog-card__meta">
+            <span>120 min / week</span>
+            <span>Max 6 students</span>
+            <span>Online via Zoom</span>
+          </div>
+          <p class="prog-card__fee">SGD 400 / month</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ONE-TO-ONE COACHING ===== -->
+  <section class="prog-section" id="one-to-one">
+    <div class="container">
+      <p class="eyebrow">One-to-One</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">One-to-One Economics Coaching</h2>
+      <p class="prog-section__sub">For students requiring targeted support on specific topics or intensive exam preparation.</p>
+
+      <div class="card-grid card-grid--1">
+        <div class="prog-card" data-animate="reveal-up" data-animate-delay="1">
+          <h3 class="prog-card__title">Individual Coaching</h3>
+          <p class="prog-card__desc">Fully customised to the student&rsquo;s specific gaps &mdash; whether it&rsquo;s essay technique, diagram accuracy, case study interpretation, or conceptual understanding. Individual online sessions via Zoom, scheduled at your convenience.</p>
+          <div class="prog-card__meta">
+            <span>Per session</span>
+            <span>1 student</span>
+            <span>Online via Zoom</span>
+          </div>
+          <p class="prog-card__fee">SGD 140 / session</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SYLLABUS COVERAGE ===== -->
+  <section class="prog-section" id="syllabus">
+    <div class="container">
+      <p class="eyebrow">9570 Syllabus</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">Full H2 Economics syllabus coverage</h2>
+      <p class="prog-section__sub">Every topic in the Singapore-Cambridge GCE A-Level H2 Economics syllabus (9570), taught with depth and precision.</p>
 
       <div class="card-grid card-grid--2">
         <div class="prog-card" data-animate="reveal-up" data-animate-delay="1">
-          <h3 class="prog-card__title">Contextualise (10 min)</h3>
-          <p class="prog-card__desc">Tutor presents the task or question type. Students identify context, purpose, and audience. Socratic questioning surfaces what students already know.</p>
+          <h3 class="prog-card__title">Microeconomics</h3>
+          <ul class="prog-card__topics">
+            <li>Scarcity, choice, and opportunity cost</li>
+            <li>Demand and supply</li>
+            <li>Elasticity of demand and supply</li>
+            <li>Market failure</li>
+            <li>Government microeconomic intervention</li>
+            <li>Theory of the firm and costs</li>
+            <li>Market structures (perfect competition, monopoly, monopolistic competition, oligopoly)</li>
+            <li>Factor markets and income distribution</li>
+          </ul>
         </div>
 
         <div class="prog-card" data-animate="reveal-up" data-animate-delay="2">
-          <h3 class="prog-card__title">Analyse (20 min)</h3>
-          <p class="prog-card__desc">Tutor models analysis using a worked example, thinking aloud through the reasoning process. Students then analyse independently.</p>
+          <h3 class="prog-card__title">Macroeconomics</h3>
+          <ul class="prog-card__topics">
+            <li>Key macroeconomic indicators</li>
+            <li>National income determination (Keynesian model)</li>
+            <li>Aggregate demand and aggregate supply</li>
+            <li>Inflation, unemployment, and economic growth</li>
+            <li>Fiscal, monetary, and supply-side policies</li>
+            <li>International trade and comparative advantage</li>
+            <li>Balance of payments and exchange rates</li>
+            <li>Globalisation and economic development</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR APPROACH ===== -->
+  <section class="prog-section" id="approach">
+    <div class="container">
+      <p class="eyebrow">Our Approach</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">How we teach H2 Economics</h2>
+
+      <div class="card-grid card-grid--2">
+        <div class="prog-card" data-animate="reveal-up" data-animate-delay="1">
+          <h3 class="prog-card__title">Conceptual Clarity</h3>
+          <p class="prog-card__desc">We teach economics as a way of thinking, not a set of facts to memorise. Every concept is explained with real-world context and linked to exam application.</p>
+        </div>
+
+        <div class="prog-card" data-animate="reveal-up" data-animate-delay="2">
+          <h3 class="prog-card__title">Diagram Precision</h3>
+          <p class="prog-card__desc">Accurate, well-labelled diagrams are essential for H2 Economics. Students practise diagram technique every lesson until it becomes second nature.</p>
         </div>
 
         <div class="prog-card" data-animate="reveal-up" data-animate-delay="3">
-          <h3 class="prog-card__title">Structure (20 min)</h3>
-          <p class="prog-card__desc">Students produce a structured written or spoken response. Outline before drafting. Tutor provides immediate targeted feedback.</p>
+          <h3 class="prog-card__title">Essay Technique</h3>
+          <p class="prog-card__desc">We drill thesis-driven essay structure with balanced evaluation. Students learn to build arguments, counter-argue, and synthesise &mdash; the skills that separate A from B grades.</p>
         </div>
 
         <div class="prog-card" data-animate="reveal-up" data-animate-delay="4">
-          <h3 class="prog-card__title">Evaluate (10 min)</h3>
-          <p class="prog-card__desc">Students self-assess using the CASE checklist. Tutor provides process-level feedback &mdash; not just what was wrong, but why. Students record one specific improvement goal.</p>
+          <h3 class="prog-card__title">Case Study Mastery</h3>
+          <p class="prog-card__desc">Systematic practice with data interpretation, extract analysis, and application questions. Students develop the confidence to tackle unseen case studies under timed conditions.</p>
         </div>
       </div>
     </div>
@@ -101,7 +186,7 @@ import '../styles/global.css';
     <div class="container prog-cta__inner">
       <p class="eyebrow">Get Started</p>
       <h2 class="prog-cta__heading" data-animate="reveal-up">Not sure which programme?</h2>
-      <p class="prog-cta__sub">Book a free 20-minute diagnostic assessment. We&rsquo;ll review your child&rsquo;s recent paper and identify specific areas for improvement &mdash; no obligation, no sales pitch.</p>
+      <p class="prog-cta__sub">Book a free 20-minute diagnostic assessment. We&rsquo;ll review your child&rsquo;s recent Economics paper and identify specific areas for improvement &mdash; no obligation, no sales pitch.</p>
       <div class="prog-cta__actions">
         <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book Assessment</a>
       </div>
@@ -169,10 +254,8 @@ import '../styles/global.css';
     position: sticky;
     top: 0;
     z-index: 90;
-    /* Allow horizontal scroll on small screens */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    /* Hide scrollbar */
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -249,14 +332,6 @@ import '../styles/global.css';
 
   .card-grid--2 {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .card-grid--3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .card-grid--4 {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   /* ===== PROGRAMME CARD ===== */
@@ -356,40 +431,6 @@ import '../styles/global.css';
     margin-bottom: 0;
   }
 
-  /* ===== HUB CARD VARIANTS ===== */
-  .prog-card--link {
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .prog-card--link:hover {
-    border-color: var(--color-accent);
-  }
-
-  .prog-card--accent {
-    border-color: rgba(212,133,58,0.3);
-  }
-
-  .prog-card__eyebrow {
-    font-family: var(--prog-mono);
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--prog-text-secondary);
-    margin-bottom: 0.5rem;
-  }
-
-  .prog-card__eyebrow--new {
-    color: var(--color-accent);
-    font-weight: 600;
-  }
-
-  .prog-card__link-text {
-    color: var(--color-accent);
-    font-weight: 500;
-  }
-
   /* ===== CTA ===== */
   .prog-cta {
     background: var(--prog-bg);
@@ -452,41 +493,8 @@ import '../styles/global.css';
     transform: translateY(-1px);
   }
 
-  .prog-cta__btn--outline {
-    background: transparent;
-    color: var(--prog-text);
-    border: 1px solid var(--prog-border);
-  }
-
-  .prog-cta__btn--outline:hover {
-    border-color: rgba(26, 42, 58, 0.2);
-    transform: translateY(-1px);
-  }
-
-  /* ===== PROGRAMME PLACEHOLDER ===== */
-  .prog-placeholder {
-    background: var(--bg-secondary);
-    border: 1px dashed var(--border-color);
-    border-radius: var(--border-radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
-    .card-grid--4 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .card-grid--3 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     .card-grid--2 {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -505,8 +513,6 @@ import '../styles/global.css';
       gap: 1rem;
     }
 
-    .card-grid--4,
-    .card-grid--3,
     .card-grid--2 {
       grid-template-columns: 1fr;
     }
