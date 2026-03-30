@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "A-Worthy — O-Level English, H1 General Paper, and H2 Economics tuition in Singapore. The CASE Method brings legal-analytical precision to academic mastery." } = Astro.props;
+const { title, description = "A-Worthy is Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes of 6, proven CASE Method, 95% pass rate. Book a free assessment." } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('/images/logo.svg', Astro.site);
@@ -15,7 +15,7 @@ const schemaData = {
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
   "logo": new URL('/images/logo.svg', Astro.site).toString(),
-  "description": "O-Level English, H1 General Paper, and H2 Economics tuition in Singapore. The CASE Method brings legal-analytical precision to academic mastery.",
+  "description": "Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes, proven CASE Method, 95% pass rate.",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "SG",
@@ -105,8 +105,8 @@ const schemaData = {
   <!-- Global Sticky CTA Bar (#13) -->
   <div class="sticky-cta-global" id="sticky-cta-global">
     <div class="sticky-cta-global-inner">
-      <span class="sticky-cta-global-text">Book a free diagnostic assessment — limited spots available</span>
-      <a href="/contact/" class="sticky-cta-global-btn">Book Now</a>
+      <span class="sticky-cta-global-text">Book a free diagnostic assessment for O-Level English, GP, or H2 Economics &mdash; limited spots</span>
+      <a href="/contact/" class="sticky-cta-global-btn">Book Free Assessment</a>
     </div>
     <button class="sticky-cta-global-dismiss" id="sticky-cta-global-dismiss" aria-label="Dismiss">&times;</button>
   </div>
