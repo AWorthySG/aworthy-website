@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <!-- Left page -->
+  <path d="M40 18 L40 66 Q28 60 14 62 L14 14 Q28 12 40 18Z" stroke="#2B5A8C" stroke-width="1.5" fill="rgba(43,90,140,0.15)" stroke-linejoin="round"/>
+  <!-- Right page -->
+  <path d="M40 18 L40 66 Q52 60 66 62 L66 14 Q52 12 40 18Z" stroke="#2B5A8C" stroke-width="1.5" fill="rgba(43,90,140,0.10)" stroke-linejoin="round"/>
+  <!-- Spine -->
+  <line x1="40" y1="18" x2="40" y2="66" stroke="#2B5A8C" stroke-width="1.5"/>
+  <!-- Text lines on left page -->
+  <line x1="20" y1="28" x2="35" y2="26" stroke="#2B5A8C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <line x1="20" y1="35" x2="35" y2="33" stroke="#2B5A8C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <line x1="20" y1="42" x2="34" y2="40" stroke="#2B5A8C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <!-- Floating "A" letter -->
+  <text x="26" y="12" font-family="serif" font-size="16" font-weight="bold" fill="#D4853A" text-anchor="middle">A</text>
+  <!-- Floating "a" letter -->
+  <text x="56" y="10" font-family="serif" font-size="13" font-weight="bold" fill="#D4853A" text-anchor="middle" opacity="0.7">a</text>
+  <!-- Small floating letters -->
+  <text x="48" y="5" font-family="serif" font-size="9" fill="#2B5A8C" text-anchor="middle" opacity="0.4">b</text>
+  <text x="64" y="8" font-family="serif" font-size="8" fill="#2B5A8C" text-anchor="middle" opacity="0.3">z</text>
+</svg>

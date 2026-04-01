@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#2B5A8C"/>
+
+  <!-- Subtle background pattern -->
+  <defs>
+    <pattern id="dots-ec" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.2" fill="rgba(255,255,255,0.05)"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#dots-ec)"/>
+
+  <!-- Gold accent bar at top -->
+  <rect width="1200" height="8" fill="#D4853A"/>
+
+  <!-- A+ Logo Mark -->
+  <g transform="translate(80, 50)">
+    <rect x="0" y="0" width="64" height="64" rx="12" fill="rgba(255,255,255,0.12)"/>
+    <text x="32" y="36" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#FDFBF7" text-anchor="middle" dominant-baseline="central">A</text>
+    <text x="50" y="20" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#D4853A" text-anchor="middle" dominant-baseline="central">+</text>
+  </g>
+
+  <!-- Chart icon -->
+  <g transform="translate(600, 200)" opacity="0.9">
+    <!-- Axis lines -->
+    <line x1="-35" y1="30" x2="-35" y2="-30" stroke="#D4853A" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-35" y1="30" x2="40" y2="30" stroke="#D4853A" stroke-width="3" stroke-linecap="round"/>
+    <!-- Bars -->
+    <rect x="-25" y="10" width="14" height="20" rx="2" fill="rgba(212,133,58,0.5)"/>
+    <rect x="-5" y="-5" width="14" height="35" rx="2" fill="rgba(212,133,58,0.7)"/>
+    <rect x="15" y="-25" width="14" height="55" rx="2" fill="#D4853A"/>
+    <!-- Trend line -->
+    <polyline points="-18,15 2,0 22,-20" fill="none" stroke="#FDFBF7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Arrow tip -->
+    <polygon points="22,-20 16,-16 20,-12" fill="#FDFBF7"/>
+  </g>
+
+  <!-- Subject label -->
+  <text x="600" y="300" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#D4853A" text-anchor="middle" letter-spacing="4">SUBJECT</text>
+
+  <!-- Main title -->
+  <text x="600" y="370" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="700" fill="#FDFBF7" text-anchor="middle">H2 Economics</text>
+
+  <!-- Gold underline -->
+  <rect x="410" y="392" width="380" height="4" rx="2" fill="#D4853A"/>
+
+  <!-- Subtitle -->
+  <text x="600" y="445" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FDFBF7" text-anchor="middle" letter-spacing="1">Tuition</text>
+
+  <!-- Brand name -->
+  <text x="600" y="510" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="rgba(253,251,247,0.7)" text-anchor="middle">A-Worthy Singapore</text>
+
+  <!-- Bottom bar -->
+  <rect y="580" width="1200" height="50" fill="rgba(0,0,0,0.2)"/>
+  <text x="1120" y="612" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="rgba(253,251,247,0.6)" text-anchor="end">a-worthy.com</text>
+</svg>

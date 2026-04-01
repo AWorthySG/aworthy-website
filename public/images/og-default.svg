@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.5" fill="rgba(255,255,255,0.06)"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#2B5A8C"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- Subtle diagonal lines in corner -->
+  <g opacity="0.04">
+    <line x1="900" y1="630" x2="1200" y2="330" stroke="#fff" stroke-width="2"/>
+    <line x1="950" y1="630" x2="1200" y2="380" stroke="#fff" stroke-width="2"/>
+    <line x1="1000" y1="630" x2="1200" y2="430" stroke="#fff" stroke-width="2"/>
+    <line x1="1050" y1="630" x2="1200" y2="480" stroke="#fff" stroke-width="2"/>
+    <line x1="1100" y1="630" x2="1200" y2="530" stroke="#fff" stroke-width="2"/>
+  </g>
+
+  <!-- Gold accent bar at top -->
+  <rect width="1200" height="8" fill="#D4853A"/>
+
+  <!-- A+ Logo Mark -->
+  <g transform="translate(80, 50)">
+    <rect x="0" y="0" width="64" height="64" rx="12" fill="rgba(255,255,255,0.12)"/>
+    <text x="32" y="36" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#FDFBF7" text-anchor="middle" dominant-baseline="central">A</text>
+    <text x="50" y="20" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#D4853A" text-anchor="middle" dominant-baseline="central">+</text>
+  </g>
+
+  <!-- Main title -->
+  <text x="600" y="220" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#FDFBF7" text-anchor="middle" letter-spacing="2">A-Worthy</text>
+
+  <!-- Gold underline -->
+  <rect x="460" y="245" width="280" height="4" rx="2" fill="#D4853A"/>
+
+  <!-- Tagline -->
+  <text x="600" y="320" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="rgba(253,251,247,0.92)" text-anchor="middle">Singapore's Top-Rated English, GP &amp; Economics Tuition</text>
+
+  <!-- Divider dots -->
+  <circle cx="540" cy="380" r="3" fill="#D4853A"/>
+  <circle cx="600" cy="380" r="3" fill="#D4853A"/>
+  <circle cx="660" cy="380" r="3" fill="#D4853A"/>
+
+  <!-- Stats row -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="22" fill="rgba(253,251,247,0.8)" text-anchor="middle">
+    <text x="240" y="440" font-weight="700" font-size="36" fill="#D4853A">95%</text>
+    <text x="240" y="470">Pass Rate</text>
+
+    <text x="600" y="440" font-weight="700" font-size="36" fill="#D4853A">6</text>
+    <text x="600" y="470">Max Per Class</text>
+
+    <text x="960" y="440" font-weight="700" font-size="36" fill="#D4853A">NUS</text>
+    <text x="960" y="470">Law Graduate</text>
+  </g>
+
+  <!-- Separator lines between stats -->
+  <line x1="420" y1="425" x2="420" y2="480" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="780" y1="425" x2="780" y2="480" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+  <!-- Bottom bar -->
+  <rect y="580" width="1200" height="50" fill="rgba(0,0,0,0.2)"/>
+  <text x="1120" y="612" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="rgba(253,251,247,0.6)" text-anchor="end">a-worthy.com</text>
+</svg>

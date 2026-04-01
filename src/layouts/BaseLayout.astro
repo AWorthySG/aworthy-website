@@ -2,12 +2,13 @@
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title, description = "A-Worthy is Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes of 6, proven CASE Method, 95% pass rate. Book a free assessment." } = Astro.props;
+const { title, description = "A-Worthy is Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes of 6, proven CASE Method, 95% pass rate. Book a free assessment.", ogImage } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL('/images/logo.svg', Astro.site);
+const ogImageURL = new URL(ogImage || '/images/og-default.svg', Astro.site);
 
 const schemaData = {
   "@context": "https://schema.org",

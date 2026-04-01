@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <!-- Background -->
+  <rect width="400" height="240" fill="#F5F1EB"/>
+
+  <!-- Decorative dots -->
+  <circle cx="35" cy="28" r="2" fill="#2B5A8C" opacity="0.1"/>
+  <circle cx="55" cy="45" r="1.5" fill="#D4853A" opacity="0.08"/>
+  <circle cx="360" cy="32" r="2" fill="#D4853A" opacity="0.12"/>
+  <circle cx="380" cy="55" r="1.5" fill="#2B5A8C" opacity="0.08"/>
+  <circle cx="28" cy="210" r="2" fill="#D4853A" opacity="0.1"/>
+  <circle cx="370" cy="200" r="1.5" fill="#2B5A8C" opacity="0.08"/>
+
+  <!-- Desk surface -->
+  <rect x="60" y="165" width="280" height="8" rx="2" fill="#2B5A8C" opacity="0.12"/>
+  <!-- Desk legs -->
+  <rect x="75" y="173" width="6" height="35" rx="1" fill="#2B5A8C" opacity="0.08"/>
+  <rect x="319" y="173" width="6" height="35" rx="1" fill="#2B5A8C" opacity="0.08"/>
+
+  <!-- Teacher figure (left) -->
+  <g transform="translate(140, 60)">
+    <!-- Head -->
+    <circle cx="0" cy="0" r="18" fill="#2B5A8C" opacity="0.75"/>
+    <!-- Body -->
+    <path d="M-18 20 Q-22 50 -20 100 L20 100 Q22 50 18 20Z" fill="#2B5A8C" opacity="0.6"/>
+    <!-- Arm pointing/teaching (right arm reaching toward student) -->
+    <path d="M15 35 Q35 40 55 50" stroke="#2B5A8C" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <!-- Left arm on desk -->
+    <path d="M-15 35 Q-25 55 -20 100" stroke="#2B5A8C" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.4"/>
+  </g>
+
+  <!-- Student figure (right) -->
+  <g transform="translate(260, 68)">
+    <!-- Head (slightly smaller - student) -->
+    <circle cx="0" cy="0" r="16" fill="#2B5A8C" opacity="0.55"/>
+    <!-- Body -->
+    <path d="M-16 18 Q-20 45 -18 92 L18 92 Q20 45 16 18Z" fill="#2B5A8C" opacity="0.4"/>
+    <!-- Arm writing/on desk -->
+    <path d="M-13 32 Q-30 48 -40 55" stroke="#2B5A8C" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+    <!-- Right arm on desk -->
+    <path d="M13 32 Q18 50 15 92" stroke="#2B5A8C" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.3"/>
+  </g>
+
+  <!-- Shared document/screen on desk -->
+  <g transform="translate(170, 125)">
+    <!-- Document -->
+    <rect x="0" y="0" width="58" height="40" rx="3" fill="white" stroke="#D4853A" stroke-width="1.5"/>
+    <!-- Document header highlight -->
+    <rect x="4" y="4" width="50" height="6" rx="1.5" fill="#D4853A" opacity="0.2"/>
+    <!-- Document text lines -->
+    <line x1="4" y1="16" x2="54" y2="16" stroke="#2B5A8C" stroke-width="1" opacity="0.15"/>
+    <line x1="4" y1="22" x2="50" y2="22" stroke="#2B5A8C" stroke-width="1" opacity="0.15"/>
+    <line x1="4" y1="28" x2="52" y2="28" stroke="#2B5A8C" stroke-width="1" opacity="0.15"/>
+    <line x1="4" y1="34" x2="40" y2="34" stroke="#2B5A8C" stroke-width="1" opacity="0.15"/>
+    <!-- Gold checkmark on document -->
+    <path d="M42 30 L46 34 L54 24" stroke="#D4853A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+  </g>
+
+  <!-- Knowledge/idea indicators - small floating elements -->
+  <!-- Light bulb hint -->
+  <g transform="translate(195, 48)" opacity="0.25">
+    <circle cx="0" cy="0" r="8" fill="#D4853A"/>
+    <line x1="-2" y1="8" x2="2" y2="8" stroke="#D4853A" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Rays -->
+    <line x1="0" y1="-12" x2="0" y2="-15" stroke="#D4853A" stroke-width="1" stroke-linecap="round"/>
+    <line x1="10" y1="-6" x2="13" y2="-8" stroke="#D4853A" stroke-width="1" stroke-linecap="round"/>
+    <line x1="-10" y1="-6" x2="-13" y2="-8" stroke="#D4853A" stroke-width="1" stroke-linecap="round"/>
+    <line x1="10" y1="6" x2="13" y2="8" stroke="#D4853A" stroke-width="1" stroke-linecap="round"/>
+    <line x1="-10" y1="6" x2="-13" y2="8" stroke="#D4853A" stroke-width="1" stroke-linecap="round"/>
+  </g>
+
+  <!-- Connection arc between teacher and student -->
+  <path d="M158 70 Q200 40 242 70" stroke="#D4853A" stroke-width="1.5" fill="none" stroke-dasharray="4,3" opacity="0.25"/>
+
+  <!-- Small decorative stars/sparkles -->
+  <g opacity="0.12">
+    <path d="M100 45 L102 40 L104 45 L109 47 L104 49 L102 54 L100 49 L95 47Z" fill="#D4853A"/>
+    <path d="M305 42 L306.5 38 L308 42 L312 43.5 L308 45 L306.5 49 L305 45 L301 43.5Z" fill="#D4853A"/>
+  </g>
+
+  <!-- Small book on desk -->
+  <g transform="translate(108, 148)">
+    <rect x="0" y="0" width="30" height="20" rx="1" fill="#2B5A8C" opacity="0.15"/>
+    <line x1="15" y1="0" x2="15" y2="20" stroke="#2B5A8C" stroke-width="0.5" opacity="0.15"/>
+  </g>
+
+  <!-- Pen on desk -->
+  <g transform="translate(262, 155) rotate(-15)">
+    <rect x="0" y="0" width="25" height="4" rx="1" fill="#D4853A" opacity="0.25"/>
+    <path d="M0 0 L-5 2 L0 4Z" fill="#2B5A8C" opacity="0.2"/>
+  </g>
+
+  <!-- Decorative corner lines -->
+  <g opacity="0.08" stroke="#2B5A8C" stroke-width="1">
+    <line x1="20" y1="20" x2="50" y2="20"/>
+    <line x1="20" y1="20" x2="20" y2="50"/>
+    <line x1="380" y1="220" x2="350" y2="220"/>
+    <line x1="380" y1="220" x2="380" y2="190"/>
+  </g>
+</svg>

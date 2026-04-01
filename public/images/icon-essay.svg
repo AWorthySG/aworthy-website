@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <!-- Paper -->
+  <rect x="16" y="10" width="40" height="52" rx="2" stroke="#2B5A8C" stroke-width="1.5" fill="rgba(43,90,140,0.15)"/>
+  <!-- Folded corner -->
+  <path d="M44 10 L56 10 L56 22 Z" fill="rgba(43,90,140,0.15)" stroke="#2B5A8C" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M44 10 L44 22 L56 22" stroke="#2B5A8C" stroke-width="1.5" stroke-linejoin="round" fill="white"/>
+  <!-- Text lines -->
+  <line x1="24" y1="30" x2="48" y2="30" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="24" y1="37" x2="44" y2="37" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="24" y1="44" x2="46" y2="44" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="24" y1="51" x2="38" y2="51" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Fountain pen -->
+  <g transform="translate(46, 38) rotate(35)">
+    <rect x="0" y="-3" width="28" height="6" rx="1.5" stroke="#D4853A" stroke-width="1.5" fill="none"/>
+    <path d="M28 -2 L34 0 L28 2" stroke="#D4853A" stroke-width="1.5" stroke-linejoin="round" fill="#D4853A"/>
+    <line x1="8" y1="-3" x2="8" y2="3" stroke="#D4853A" stroke-width="1"/>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <!-- Background -->
+  <rect width="400" height="240" fill="#F5F1EB"/>
+
+  <!-- Decorative dots -->
+  <circle cx="40" cy="30" r="2" fill="#2B5A8C" opacity="0.1"/>
+  <circle cx="60" cy="45" r="1.5" fill="#2B5A8C" opacity="0.08"/>
+  <circle cx="350" cy="40" r="2.5" fill="#D4853A" opacity="0.12"/>
+  <circle cx="370" cy="60" r="1.5" fill="#D4853A" opacity="0.08"/>
+  <circle cx="30" cy="200" r="2" fill="#D4853A" opacity="0.1"/>
+  <circle cx="380" cy="190" r="2" fill="#2B5A8C" opacity="0.08"/>
+
+  <!-- Subtle lined paper texture behind book -->
+  <g opacity="0.06">
+    <line x1="100" y1="80" x2="300" y2="80" stroke="#2B5A8C" stroke-width="0.5"/>
+    <line x1="100" y1="92" x2="300" y2="92" stroke="#2B5A8C" stroke-width="0.5"/>
+    <line x1="100" y1="104" x2="300" y2="104" stroke="#2B5A8C" stroke-width="0.5"/>
+    <line x1="100" y1="116" x2="300" y2="116" stroke="#2B5A8C" stroke-width="0.5"/>
+    <line x1="100" y1="128" x2="300" y2="128" stroke="#2B5A8C" stroke-width="0.5"/>
+    <line x1="100" y1="140" x2="300" y2="140" stroke="#2B5A8C" stroke-width="0.5"/>
+    <line x1="100" y1="152" x2="300" y2="152" stroke="#2B5A8C" stroke-width="0.5"/>
+    <line x1="100" y1="164" x2="300" y2="164" stroke="#2B5A8C" stroke-width="0.5"/>
+  </g>
+
+  <!-- Open book - left page -->
+  <path d="M200 65 L200 195 Q160 185 105 188 L105 68 Q160 60 200 65Z" fill="white" stroke="#2B5A8C" stroke-width="1.5"/>
+  <!-- Open book - right page -->
+  <path d="M200 65 L200 195 Q240 185 295 188 L295 68 Q240 60 200 65Z" fill="white" stroke="#2B5A8C" stroke-width="1.5"/>
+  <!-- Book spine shadow -->
+  <path d="M198 65 L198 195" stroke="#2B5A8C" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Text lines on left page -->
+  <g opacity="0.2">
+    <line x1="120" y1="90" x2="185" y2="88" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="120" y1="102" x2="180" y2="100" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="120" y1="114" x2="175" y2="112" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="120" y1="126" x2="182" y2="124" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="120" y1="138" x2="170" y2="136" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="120" y1="150" x2="178" y2="149" stroke="#2B5A8C" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Cursive writing on right page (decorative wavy lines) -->
+  <g opacity="0.25">
+    <path d="M215 90 Q225 85 235 90 Q245 95 255 90 Q265 85 275 90" stroke="#2B5A8C" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M215 104 Q228 98 240 104 Q252 110 265 104" stroke="#2B5A8C" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M215 118 Q230 112 245 118 Q260 124 275 118" stroke="#2B5A8C" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M215 132 Q225 126 240 132 Q255 138 268 132" stroke="#2B5A8C" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Fountain pen -->
+  <g transform="translate(260, 80) rotate(35)">
+    <!-- Pen body -->
+    <rect x="0" y="-5" width="90" height="10" rx="2" fill="#2B5A8C"/>
+    <!-- Pen cap band -->
+    <rect x="60" y="-6" width="4" height="12" rx="1" fill="#D4853A"/>
+    <!-- Pen grip section -->
+    <path d="M0 -5 L-15 -2 L-15 2 L0 5Z" fill="#2B5A8C" opacity="0.85"/>
+    <!-- Pen nib -->
+    <path d="M-15 -2 L-28 0 L-15 2Z" fill="#D4853A"/>
+    <!-- Nib detail line -->
+    <line x1="-15" y1="0" x2="-26" y2="0" stroke="#F5F1EB" stroke-width="0.5"/>
+  </g>
+
+  <!-- Ink drops -->
+  <circle cx="240" cy="155" r="3" fill="#2B5A8C" opacity="0.3"/>
+  <circle cx="248" cy="160" r="1.8" fill="#2B5A8C" opacity="0.2"/>
+  <circle cx="235" cy="162" r="1.2" fill="#2B5A8C" opacity="0.15"/>
+  <circle cx="252" cy="152" r="1" fill="#D4853A" opacity="0.25"/>
+
+  <!-- Decorative corner lines -->
+  <g opacity="0.08" stroke="#2B5A8C" stroke-width="1">
+    <line x1="20" y1="20" x2="50" y2="20"/>
+    <line x1="20" y1="20" x2="20" y2="50"/>
+    <line x1="380" y1="220" x2="350" y2="220"/>
+    <line x1="380" y1="220" x2="380" y2="190"/>
+  </g>
+</svg>

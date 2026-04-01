@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#2B5A8C"/>
+
+  <!-- Subtle background pattern -->
+  <defs>
+    <pattern id="dots-en" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.2" fill="rgba(255,255,255,0.05)"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#dots-en)"/>
+
+  <!-- Gold accent bar at top -->
+  <rect width="1200" height="8" fill="#D4853A"/>
+
+  <!-- A+ Logo Mark -->
+  <g transform="translate(80, 50)">
+    <rect x="0" y="0" width="64" height="64" rx="12" fill="rgba(255,255,255,0.12)"/>
+    <text x="32" y="36" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#FDFBF7" text-anchor="middle" dominant-baseline="central">A</text>
+    <text x="50" y="20" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#D4853A" text-anchor="middle" dominant-baseline="central">+</text>
+  </g>
+
+  <!-- Book/Pen icon -->
+  <g transform="translate(600, 200)" opacity="0.9">
+    <!-- Book -->
+    <rect x="-40" y="-30" width="50" height="60" rx="3" fill="none" stroke="#D4853A" stroke-width="3"/>
+    <line x1="-15" y1="-30" x2="-15" y2="30" stroke="#D4853A" stroke-width="2"/>
+    <line x1="-5" y1="-15" x2="0" y2="-15" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+    <line x1="-5" y1="-5" x2="5" y2="-5" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+    <line x1="-5" y1="5" x2="3" y2="5" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+    <!-- Pen -->
+    <g transform="translate(25, -20) rotate(30)">
+      <rect x="-3" y="-25" width="6" height="40" rx="2" fill="#D4853A"/>
+      <polygon points="-3,15 3,15 0,25" fill="#FDFBF7"/>
+      <rect x="-3" y="-25" width="6" height="8" rx="1" fill="rgba(255,255,255,0.3)"/>
+    </g>
+  </g>
+
+  <!-- Subject label -->
+  <text x="600" y="300" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#D4853A" text-anchor="middle" letter-spacing="4" text-transform="uppercase">SUBJECT</text>
+
+  <!-- Main title -->
+  <text x="600" y="370" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="700" fill="#FDFBF7" text-anchor="middle">O-Level English</text>
+
+  <!-- Gold underline -->
+  <rect x="430" y="392" width="340" height="4" rx="2" fill="#D4853A"/>
+
+  <!-- Subtitle -->
+  <text x="600" y="445" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FDFBF7" text-anchor="middle" letter-spacing="1">Tuition</text>
+
+  <!-- Brand name -->
+  <text x="600" y="510" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="rgba(253,251,247,0.7)" text-anchor="middle">A-Worthy Singapore</text>
+
+  <!-- Bottom bar -->
+  <rect y="580" width="1200" height="50" fill="rgba(0,0,0,0.2)"/>
+  <text x="1120" y="612" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="rgba(253,251,247,0.6)" text-anchor="end">a-worthy.com</text>
+</svg>

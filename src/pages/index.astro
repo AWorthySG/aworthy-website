@@ -13,6 +13,33 @@ import '../styles/global.css';
   <section class="hero">
     <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-depth-layer" aria-hidden="true"></div>
+    <div class="hero-geometric-decor" aria-hidden="true">
+      <svg class="hero-decor-svg" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Subtle geometric shapes -->
+        <circle cx="150" cy="120" r="80" stroke="#2B5A8C" stroke-width="0.5" opacity="0.08"/>
+        <circle cx="150" cy="120" r="120" stroke="#2B5A8C" stroke-width="0.3" opacity="0.05"/>
+        <circle cx="1050" cy="650" r="100" stroke="#D4853A" stroke-width="0.5" opacity="0.06"/>
+        <circle cx="1050" cy="650" r="150" stroke="#D4853A" stroke-width="0.3" opacity="0.04"/>
+        <!-- Diagonal accent lines -->
+        <line x1="0" y1="600" x2="300" y2="800" stroke="#2B5A8C" stroke-width="0.5" opacity="0.06"/>
+        <line x1="900" y1="0" x2="1200" y2="200" stroke="#D4853A" stroke-width="0.5" opacity="0.05"/>
+        <!-- Dot grid pattern in corners -->
+        <g opacity="0.04" fill="#2B5A8C">
+          <circle cx="50" cy="700" r="2"/><circle cx="70" cy="700" r="2"/><circle cx="90" cy="700" r="2"/>
+          <circle cx="50" cy="720" r="2"/><circle cx="70" cy="720" r="2"/><circle cx="90" cy="720" r="2"/>
+          <circle cx="50" cy="740" r="2"/><circle cx="70" cy="740" r="2"/><circle cx="90" cy="740" r="2"/>
+        </g>
+        <g opacity="0.04" fill="#D4853A">
+          <circle cx="1110" cy="60" r="2"/><circle cx="1130" cy="60" r="2"/><circle cx="1150" cy="60" r="2"/>
+          <circle cx="1110" cy="80" r="2"/><circle cx="1130" cy="80" r="2"/><circle cx="1150" cy="80" r="2"/>
+          <circle cx="1110" cy="100" r="2"/><circle cx="1130" cy="100" r="2"/><circle cx="1150" cy="100" r="2"/>
+        </g>
+        <!-- Floating diamond accents -->
+        <rect x="200" y="500" width="12" height="12" transform="rotate(45 206 506)" stroke="#D4853A" stroke-width="0.8" opacity="0.08"/>
+        <rect x="1000" y="200" width="8" height="8" transform="rotate(45 1004 204)" stroke="#2B5A8C" stroke-width="0.8" opacity="0.06"/>
+        <rect x="600" y="50" width="6" height="6" transform="rotate(45 603 53)" fill="#D4853A" opacity="0.08"/>
+      </svg>
+    </div>
 
     <div class="hero-centre">
       <div class="hero-reveal-line hero-anim" style="--d:0">
@@ -93,6 +120,10 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <div class="section-divider" aria-hidden="true">
+    <img src="/images/section-divider.svg" alt="" width="1200" height="40" />
+  </div>
+
   <!-- ===== SOCIAL PROOF TICKER (#10) ===== -->
   <div class="social-proof-ticker" aria-live="polite">
     <div class="container">
@@ -132,6 +163,10 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <div class="section-divider" aria-hidden="true">
+    <img src="/images/section-divider.svg" alt="" width="1200" height="40" />
+  </div>
+
   <!-- ===== PROBLEM → SOLUTION ===== -->
   <section id="about" class="section problem-section">
     <div class="container">
@@ -166,6 +201,9 @@ import '../styles/global.css';
 
       <div class="programmes-grid">
         <a href="/o-level-english/" class="programme-card programme-card--popular" data-animate="reveal-up" data-animate-delay="1">
+          <div class="programme-card-illustration">
+            <img src="/images/illustration-english.svg" alt="" width="400" height="240" loading="lazy" />
+          </div>
           <div class="programme-body">
             <span class="programme-popular-badge">Most Popular</span>
             <span class="programme-level">Sec 1 &ndash; 4</span>
@@ -179,6 +217,9 @@ import '../styles/global.css';
         </a>
 
         <a href="/h1-general-paper/" class="programme-card" data-animate="reveal-up" data-animate-delay="2">
+          <div class="programme-card-illustration">
+            <img src="/images/illustration-gp.svg" alt="" width="400" height="240" loading="lazy" />
+          </div>
           <div class="programme-body">
             <span class="programme-level">JC 1 &ndash; 2</span>
             <h3>H1 General Paper</h3>
@@ -191,6 +232,9 @@ import '../styles/global.css';
         </a>
 
         <a href="/h2-economics/" class="programme-card programme-card--new" data-animate="reveal-up" data-animate-delay="3">
+          <div class="programme-card-illustration">
+            <img src="/images/illustration-econs.svg" alt="" width="400" height="240" loading="lazy" />
+          </div>
           <div class="programme-body">
             <span class="programme-new-badge">New</span>
             <span class="programme-level">JC 1 &ndash; 2</span>
@@ -204,6 +248,9 @@ import '../styles/global.css';
         </a>
 
         <a href="/programmes/" class="programme-card" data-animate="reveal-up" data-animate-delay="4">
+          <div class="programme-card-illustration">
+            <img src="/images/illustration-coaching.svg" alt="" width="400" height="240" loading="lazy" />
+          </div>
           <div class="programme-body">
             <span class="programme-level">All Subjects</span>
             <h3>One-to-One Coaching</h3>
@@ -322,6 +369,10 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <div class="section-divider" aria-hidden="true">
+    <img src="/images/section-divider.svg" alt="" width="1200" height="40" />
+  </div>
+
   <!-- ===== APPROACH ===== -->
   <section id="method" class="section approach-section">
     <div class="container">
@@ -434,7 +485,7 @@ import '../styles/global.css';
       <div class="vault-grid">
         <a href="/docs/samples/scoring-guide-sample.pdf" target="_blank" rel="noopener" class="vault-card" data-animate="reveal-up" data-animate-delay="1">
           <div class="vault-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <img src="/images/icon-scoring.svg" alt="" width="28" height="28" />
           </div>
           <span class="vault-tag">Exam Prep</span>
           <h3>O-Level Scoring Guide</h3>
@@ -444,7 +495,7 @@ import '../styles/global.css';
 
         <a href="/docs/samples/essay-framework-sample.pdf" target="_blank" rel="noopener" class="vault-card" data-animate="reveal-up" data-animate-delay="2">
           <div class="vault-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <img src="/images/icon-essay.svg" alt="" width="28" height="28" />
           </div>
           <span class="vault-tag">Writing</span>
           <h3>Essay Writing Framework</h3>
@@ -454,7 +505,7 @@ import '../styles/global.css';
 
         <a href="/docs/samples/comprehension-checklist-sample.pdf" target="_blank" rel="noopener" class="vault-card" data-animate="reveal-up" data-animate-delay="3">
           <div class="vault-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            <img src="/images/icon-comprehension.svg" alt="" width="28" height="28" />
           </div>
           <span class="vault-tag">Comprehension</span>
           <h3>Techniques Checklist</h3>
@@ -464,7 +515,7 @@ import '../styles/global.css';
 
         <a href="/docs/samples/vocabulary-50-sample.pdf" target="_blank" rel="noopener" class="vault-card" data-animate="reveal-up" data-animate-delay="4">
           <div class="vault-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            <img src="/images/icon-vocabulary.svg" alt="" width="28" height="28" />
           </div>
           <span class="vault-tag">Vocabulary</span>
           <h3>50 High-Impact Words</h3>
@@ -474,7 +525,7 @@ import '../styles/global.css';
 
         <a href="/docs/samples/situational-writing-sample.pdf" target="_blank" rel="noopener" class="vault-card" data-animate="reveal-up" data-animate-delay="5">
           <div class="vault-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+            <img src="/images/icon-situational.svg" alt="" width="28" height="28" />
           </div>
           <span class="vault-tag">Situational Writing</span>
           <h3>Format Guide</h3>
@@ -484,7 +535,7 @@ import '../styles/global.css';
 
         <a href="/docs/samples/grammar-mistakes-sample.pdf" target="_blank" rel="noopener" class="vault-card" data-animate="reveal-up" data-animate-delay="6">
           <div class="vault-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <img src="/images/icon-grammar.svg" alt="" width="28" height="28" />
           </div>
           <span class="vault-tag">Grammar</span>
           <h3>20 Mistakes to Avoid</h3>
@@ -514,7 +565,9 @@ import '../styles/global.css';
             "My son's English improved from C5 to A2 in just three months. The CASE Method gave him a systematic way to approach every comprehension question."
           </blockquote>
           <div class="testimonial-author">
-            <div class="testimonial-initials">LT</div>
+            <div class="testimonial-avatar-circle" style="--avatar-hue: 30">
+              <span>LT</span>
+            </div>
             <div>
               <strong>Mrs. Linda Tan</strong>
               <span>Mother of Sec 4 student</span>
@@ -528,7 +581,9 @@ import '../styles/global.css';
             "I used to hate essay writing. Now I actually enjoy it because I know how to structure my arguments properly."
           </blockquote>
           <div class="testimonial-author">
-            <div class="testimonial-initials">EL</div>
+            <div class="testimonial-avatar-circle" style="--avatar-hue: 210">
+              <span>EL</span>
+            </div>
             <div>
               <strong>Ethan Lim</strong>
               <span>Sec 4 student</span>
@@ -542,7 +597,9 @@ import '../styles/global.css';
             "What impressed me most was how the legal reasoning approach made inference questions click for my daughter."
           </blockquote>
           <div class="testimonial-author">
-            <div class="testimonial-initials">RK</div>
+            <div class="testimonial-avatar-circle" style="--avatar-hue: 150">
+              <span>RK</span>
+            </div>
             <div>
               <strong>Mr. Rajesh Kumar</strong>
               <span>Father of Sec 3 student</span>
@@ -1179,6 +1236,27 @@ import '../styles/global.css';
     pointer-events: none;
     background:
       radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(245,241,235,0.4) 100%);
+  }
+  .hero-geometric-decor {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .hero-decor-svg {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    animation: hero-decor-float 20s ease-in-out infinite;
+  }
+  @keyframes hero-decor-float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-8px, 5px); }
+  }
+  :global([data-theme="dark"]) .hero-geometric-decor {
+    filter: invert(1) hue-rotate(180deg);
+    opacity: 0.5;
   }
 
   /* ===== EYEBROW ===== */
@@ -3326,5 +3404,91 @@ import '../styles/global.css';
     .comparison-table td {
       padding: 0.75rem 0.5rem;
     }
+  }
+
+  /* ===== PROGRAMME CARD ILLUSTRATIONS ===== */
+  .programme-card-illustration {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    background: #F5F1EB;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  :global([data-theme="dark"]) .programme-card-illustration {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .programme-card-illustration img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .programme-card:hover .programme-card-illustration img {
+    transform: scale(1.05);
+  }
+
+  /* ===== SECTION DIVIDERS ===== */
+  .section-divider {
+    width: 100%;
+    line-height: 0;
+    overflow: hidden;
+    background: var(--bg-primary);
+  }
+  .section-divider img {
+    width: 100%;
+    height: 24px;
+    display: block;
+  }
+  :global([data-theme="dark"]) .section-divider {
+    opacity: 0.5;
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  /* ===== ENHANCED TESTIMONIAL AVATARS ===== */
+  .testimonial-avatar-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--avatar-hue, 30), 60%, 92%) 0%,
+      hsl(var(--avatar-hue, 30), 50%, 85%) 100%
+    );
+    border: 2px solid hsl(var(--avatar-hue, 30), 50%, 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonial-avatar-circle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+  }
+  .testimonial-avatar-circle span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: hsl(var(--avatar-hue, 30), 40%, 35%);
+    position: relative;
+    z-index: 1;
+  }
+  :global([data-theme="dark"]) .testimonial-avatar-circle {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--avatar-hue, 30), 40%, 20%) 0%,
+      hsl(var(--avatar-hue, 30), 35%, 15%) 100%
+    );
+    border-color: hsl(var(--avatar-hue, 30), 40%, 30%);
+  }
+  :global([data-theme="dark"]) .testimonial-avatar-circle span {
+    color: hsl(var(--avatar-hue, 30), 50%, 70%);
   }
 </style>
