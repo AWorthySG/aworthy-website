@@ -607,6 +607,14 @@ import '../styles/global.css';
           </div>
         </div>
       </div>
+
+      <div class="reviews-cta" data-animate="reveal-up">
+        <a href="https://g.page/r/aworthy-sg/review" target="_blank" rel="noopener" class="reviews-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Read all 50+ reviews on Google
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -719,6 +727,45 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is A-Worthy different from other tuition centres in Singapore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most tuition centres hand out worksheets and model answers. The CASE Method is a four-step analytical system adapted from how lawyers are trained — Contextualise, Analyse, Structure, Evaluate. Instead of memorising responses, your child develops a repeatable thinking process that works across English, General Paper, and Economics."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are classes online only?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Online delivery via Zoom lets us keep class sizes small (max 6) while keeping fees accessible. Every student gets screen-shared feedback on their work in real time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if my child doesn't improve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer a free diagnostic assessment before any commitment. If after 3 months your child hasn't shown measurable improvement, we'll work with you on a revised plan at no extra cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O-Level English tuition: SGD 280–320/month. H1 GP tuition: SGD 360–400/month. H2 Economics tuition: SGD 360–400/month. One-to-One coaching: SGD 120–140/session. All classes are online via Zoom with a maximum of 6 students."
+        }
+      }
+    ]
+  })} />
+
   <!-- ===== CONTACT ===== -->
   <section id="contact" class="section contact-section">
     <div class="container">
@@ -729,6 +776,7 @@ import '../styles/global.css';
         <!-- Enquiry Form -->
         <div class="contact-form-col" data-animate="reveal-up" data-animate-delay="1">
           <h3 class="contact-col-heading">Send us a message</h3>
+          <!-- TODO: Replace 'xcontact' with your actual Formspree form ID from https://formspree.io -->
           <form id="contact-form" class="contact-form" action="https://formspree.io/f/xcontact" method="POST" novalidate>
             <div class="form-hp" aria-hidden="true" tabindex="-1">
               <label for="website">Website</label>
@@ -2450,6 +2498,28 @@ import '../styles/global.css';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+  }
+
+  .reviews-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  .reviews-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(212, 133, 58, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  .reviews-link:hover {
+    background: rgba(212, 133, 58, 0.08);
+    border-color: var(--color-accent);
   }
 
   .testimonial-card {

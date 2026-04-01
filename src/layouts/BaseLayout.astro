@@ -8,7 +8,7 @@ interface Props {
 const { title, description = "A-Worthy is Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes of 6, proven CASE Method, 95% pass rate. Book a free assessment.", ogImage } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL(ogImage || '/images/og-default.svg', Astro.site);
+const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
 
 const schemaData = {
   "@context": "https://schema.org",
@@ -36,6 +36,7 @@ const schemaData = {
     "bestRating": "5"
   }
 };
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!DOCTYPE html>
@@ -75,13 +76,24 @@ const schemaData = {
   <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
   <!-- Fonts — non-render-blocking async load -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
 
+  <!-- Analytics -->
+  <script defer data-domain="a-worthy.com" src="https://plausible.io/js/script.js"></script>
+
+  <!-- Manifest & icons -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+
   <title>{title}</title>
+
+  <ClientRouter />
 
   <!-- Theme initialization (dark by default) -->
   <script is:inline>
@@ -238,6 +250,60 @@ const schemaData = {
         text-align: center;
       }
     }
+
+    /* Privacy / Cookie Notice */
+    .privacy-notice {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 42, 58, 0.95);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      padding: 1rem 1.5rem;
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+      z-index: 1000;
+      display: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .privacy-notice-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .privacy-notice p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.75);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .privacy-notice-btn {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--color-accent);
+      color: #1A2A3A;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s ease;
+    }
+    .privacy-notice-btn:hover {
+      background: #e8a060;
+    }
+    @media (max-width: 640px) {
+      .privacy-notice-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+      }
+    }
   </style>
 
   <!-- Scroll reveal animation observer -->
@@ -282,6 +348,14 @@ const schemaData = {
         });
       }, { threshold: 0.3 });
       counters.forEach(function(c) { observer.observe(c); });
+
+      // Re-trigger counters on back/forward navigation (bfcache)
+      window.addEventListener('pageshow', function(e) {
+        if (e.persisted) {
+          animated.clear();
+          counters.forEach(function(c) { observer.observe(c); });
+        }
+      });
     })();
   </script>
   <!-- Back to Top -->
@@ -329,6 +403,31 @@ const schemaData = {
     dismiss?.addEventListener('click', function(){
       dismissed = true;
       el.classList.remove('is-visible');
+    });
+  })();
+  </script>
+
+  <!-- Privacy / Cookie Notice -->
+  <div class="privacy-notice" id="privacy-notice">
+    <div class="privacy-notice-inner">
+      <p>We use cookies and analytics to improve your experience. By continuing to use this site, you agree to our use of cookies.</p>
+      <button class="privacy-notice-btn" id="privacy-accept">Got it</button>
+    </div>
+  </div>
+
+  <script is:inline>
+  (function(){
+    var notice = document.getElementById('privacy-notice');
+    var btn = document.getElementById('privacy-accept');
+    if (!notice || !btn) return;
+    if (localStorage.getItem('privacy-accepted')) {
+      notice.style.display = 'none';
+      return;
+    }
+    notice.style.display = 'block';
+    btn.addEventListener('click', function() {
+      localStorage.setItem('privacy-accepted', '1');
+      notice.style.display = 'none';
     });
   })();
   </script>

@@ -114,6 +114,25 @@ const testimonials = [
     </div>
   </section>
 
+  <!-- ===== VIDEO TESTIMONIALS ===== -->
+  <section class="section video-testimonials-section">
+    <div class="t-container">
+      <span class="eyebrow" data-animate="reveal-up">Video Testimonials</span>
+      <h2 class="section-title" data-animate="reveal-up">Hear directly from our students and parents</h2>
+      <div class="video-grid" data-animate="reveal-up">
+        <div class="video-placeholder">
+          <div class="video-placeholder-inner">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <p>Video testimonials coming soon</p>
+            <span>In the meantime, read what our families have to say below</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== TESTIMONIALS GRID ===== -->
   <section class="t-section t-testimonials-section">
     <div class="t-container">
@@ -606,6 +625,42 @@ const testimonials = [
     color: var(--text-muted);
     font-style: italic;
     margin: 0;
+  }
+
+  /* ===== VIDEO TESTIMONIALS ===== */
+  .video-testimonials-section {
+    background: var(--bg-secondary);
+    padding: 4rem 0;
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 700px;
+  }
+  .video-placeholder {
+    aspect-ratio: 16/9;
+    background: var(--bg-card);
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-placeholder-inner {
+    text-align: center;
+    color: var(--text-muted);
+  }
+  .video-placeholder-inner p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+  }
+  .video-placeholder-inner span {
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 0.5rem;
   }
 
   /* ===== RESPONSIVE ===== */

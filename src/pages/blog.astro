@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Study Tips & Exam Guides | A-Worthy Blog" description="Free study tips, exam strategies, and guides for O-Level English, H1 General Paper & H2 Economics from A-Worthy's CASE Method experts.">
+  <Header slot="header" />
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">Blog</span>
+      <h1 class="page-title" data-animate="reveal-up">Study tips, exam strategies &amp; guides</h1>
+      <p class="page-subtitle" data-animate="reveal-up">Expert insights from our CASE Method tutors to help your child excel in O-Level English, H1 General Paper, and H2 Economics.</p>
+
+      <div class="blog-grid" data-animate="reveal-up">
+        <article class="blog-card blog-card--featured">
+          <span class="blog-tag">O-Level English</span>
+          <h2>10 Comprehension Techniques That Top Students Use</h2>
+          <p>Master inference, vocabulary-in-context, and summary writing with these proven strategies from the CASE Method.</p>
+          <div class="blog-meta">
+            <span>Coming Soon</span>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <span class="blog-tag">H1 General Paper</span>
+          <h2>How to Structure a GP Essay for Band 3 and Above</h2>
+          <p>The CASE Method approach to GP essay writing — from thesis formation to counter-argument integration.</p>
+          <div class="blog-meta">
+            <span>Coming Soon</span>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <span class="blog-tag">H2 Economics</span>
+          <h2>The Complete Guide to Economics Essay Diagrams</h2>
+          <p>Every diagram you need for H2 Economics, with step-by-step drawing guides and common examiner expectations.</p>
+          <div class="blog-meta">
+            <span>Coming Soon</span>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <span class="blog-tag">Study Tips</span>
+          <h2>Why Smart Students Still Fail — And How to Fix It</h2>
+          <p>The gap between understanding content and scoring well in exams, and how the CASE Method bridges it.</p>
+          <div class="blog-meta">
+            <span>Coming Soon</span>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <span class="blog-tag">O-Level English</span>
+          <h2>Situational Writing: The Format Guide Every Student Needs</h2>
+          <p>Formal letters, emails, reports, and speeches — every format convention with annotated examples.</p>
+          <div class="blog-meta">
+            <span>Coming Soon</span>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <span class="blog-tag">Exam Strategy</span>
+          <h2>The 3-Month Exam Prep Timeline That Actually Works</h2>
+          <p>A week-by-week study plan for O-Level and A-Level students leading up to the national exams.</p>
+          <div class="blog-meta">
+            <span>Coming Soon</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="blog-subscribe" data-animate="reveal-up">
+        <h3>Get notified when new articles are published</h3>
+        <p>Join our mailing list for free study tips and exam strategies delivered to your inbox.</p>
+        <div class="subscribe-form">
+          <input type="email" placeholder="Your email address" aria-label="Email address" />
+          <button class="btn btn-accent">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+    font-weight: 200;
+    color: var(--text-primary);
+    line-height: 1.08;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+  .page-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .blog-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .blog-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212, 133, 58, 0.2);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .blog-card--featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  .blog-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+  .blog-card h2 {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .blog-card--featured h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 300;
+  }
+  .blog-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    flex: 1;
+  }
+  .blog-meta {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+  }
+  .blog-subscribe {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .blog-subscribe h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .blog-subscribe p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  .subscribe-form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .subscribe-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+  }
+  .subscribe-form input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(212,133,58,0.12);
+  }
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .blog-card--featured {
+      grid-column: 1;
+    }
+    .subscribe-form {
+      flex-direction: column;
+    }
+  }
+</style>

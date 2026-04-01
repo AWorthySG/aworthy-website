@@ -6,6 +6,7 @@ const navLinks = [
   { href: '/#results', label: 'Results' },
   { href: '/#vault', label: 'Free Resources' },
   { href: '/#reviews', label: 'Reviews' },
+  { href: '/blog/', label: 'Blog' },
   { href: '/contact/', label: 'Contact' },
 ];
 ---
@@ -377,6 +378,13 @@ const navLinks = [
   });
 
   overlay?.addEventListener('click', closeMobileNav);
+
+  // Close mobile nav on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobileNav?.classList.contains('open')) {
+      closeMobileNav();
+    }
+  });
 
   // Auto-close mobile nav on link click
   var mobileNavLinks = document.querySelectorAll('#mobile-nav a, .mobile-cta');
