@@ -12,7 +12,7 @@ const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
 
 const schemaData = {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
   "logo": new URL('/images/logo.svg', Astro.site).toString(),
@@ -34,6 +34,30 @@ const schemaData = {
     "ratingValue": "4.9",
     "reviewCount": "50",
     "bestRating": "5"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "14:00",
+      "closes": "21:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "SGD 280-400/month",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Tuition Programmes",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level English Tuition"}, "price": "280", "priceCurrency": "SGD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H1 General Paper Tuition"}, "price": "360", "priceCurrency": "SGD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H2 Economics Tuition"}, "price": "360", "priceCurrency": "SGD"}
+    ]
   }
 };
 import { ClientRouter } from 'astro:transitions';

@@ -311,6 +311,42 @@ import '../styles/global.css';
     border-left: 2px solid var(--color-accent);
     margin-left: -2px;
   }
+  .related-section { background: var(--bg-secondary); }
+  .related-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .related-link {
+    display: block;
+    text-decoration: none;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  .related-link:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  .related-link strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  .related-link span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  @media (max-width: 768px) {
+    .related-links { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .related-links { grid-template-columns: 1fr; }
+  }
 </style>
 
 <script is:inline>
