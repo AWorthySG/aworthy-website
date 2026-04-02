@@ -355,12 +355,12 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 <script is:inline>
 (function(){
   // Gate resource downloads behind email
-  var cards = document.querySelectorAll('.vault-card');
+  var cards = document.querySelectorAll('.r-card-download-btn');
   cards.forEach(function(card) {
     card.addEventListener('click', function(e) {
       if (localStorage.getItem('resource-email')) return; // Already captured
       e.preventDefault();
-      var url = card.getAttribute('href');
+      var url = card.getAttribute('href') || '#';
       var overlay = document.createElement('div');
       overlay.className = 'resource-gate-overlay';
       overlay.innerHTML = '<div class="resource-gate">' +

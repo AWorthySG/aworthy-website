@@ -878,7 +878,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section class="section faq-section">
+  <section id="faq" class="section faq-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Common Questions</span>
       <h2 class="section-heading" data-animate="reveal-up">Frequently asked questions about our Singapore tuition programmes</h2>
@@ -3251,7 +3251,7 @@ import '../styles/global.css';
     margin-top: 0.5rem;
   }
   .form-success {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 0.5rem;
     padding: 1rem;
@@ -3262,6 +3262,8 @@ import '../styles/global.css';
     font-size: 0.9rem;
     margin-top: 0.5rem;
   }
+  .form-success[hidden] { display: none; }
+  .form-success:not([hidden]) { display: flex; }
   .form-errors {
     padding: 1rem;
     background: rgba(248,113,113,0.1);

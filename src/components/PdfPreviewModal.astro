@@ -58,7 +58,7 @@
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 1rem;
@@ -66,6 +66,9 @@
     transition: opacity 0.3s ease;
     pointer-events: none;
   }
+
+  .pdf-modal-overlay[hidden] { display: none; }
+  .pdf-modal-overlay:not([hidden]) { display: flex; }
 
   .pdf-modal-overlay.is-open {
     opacity: 1;
@@ -126,7 +129,7 @@
   }
 
   .pdf-modal-title {
-    font-family: var(--font-body, Inter, sans-serif);
+    font-family: var(--font-body, 'Space Grotesk', sans-serif);
     font-size: 0.95rem;
     font-weight: 400;
     color: var(--text-primary, #f0f0f2);
@@ -147,7 +150,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-family: var(--font-body, Inter, sans-serif);
+    font-family: var(--font-body, 'Space Grotesk', sans-serif);
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -221,11 +224,13 @@
   .pdf-modal-fallback {
     position: absolute;
     inset: 0;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     background: #111118;
   }
+  .pdf-modal-fallback[hidden] { display: none; }
+  .pdf-modal-fallback:not([hidden]) { display: flex; }
 
   .pdf-modal-fallback-inner {
     text-align: center;
@@ -233,7 +238,7 @@
   }
 
   .pdf-fallback-heading {
-    font-family: var(--font-body, Inter, sans-serif);
+    font-family: var(--font-body, 'Space Grotesk', sans-serif);
     font-size: 1.1rem;
     font-weight: 400;
     color: var(--text-primary, #f0f0f2);
@@ -261,7 +266,7 @@
   }
 
   .pdf-modal-footer p {
-    font-family: var(--font-body, Inter, sans-serif);
+    font-family: var(--font-body, 'Space Grotesk', sans-serif);
     font-size: 0.7rem;
     color: var(--text-muted, rgba(240, 240, 242, 0.4));
     margin: 0;

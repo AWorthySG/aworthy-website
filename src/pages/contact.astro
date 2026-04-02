@@ -638,12 +638,14 @@ import '../styles/global.css';
     border-radius: 4px;
     font-weight: 500;
     text-align: center;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     gap: var(--space-sm);
     font-size: 0.95rem;
   }
+  .form-success[hidden] { display: none; }
+  .form-success:not([hidden]) { display: flex; }
 
   .form-errors {
     margin-top: var(--space-lg);
