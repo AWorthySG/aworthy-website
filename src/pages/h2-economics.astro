@@ -193,6 +193,16 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "H2 Economics Tuition",
+    "description": "Top-rated H2 Economics tuition in Singapore for JC 1-2 students. Master the full 9570 syllabus with diagram precision, essay technique, and case study mastery.",
+    "provider": {"@type": "EducationalOrganization", "name": "A-Worthy", "url": "https://a-worthy.com"},
+    "offers": {"@type": "Offer", "price": "360", "priceCurrency": "SGD", "availability": "https://schema.org/InStock"},
+    "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT6H/month"}
+  })} />
+
   <Footer />
 </BaseLayout>
 

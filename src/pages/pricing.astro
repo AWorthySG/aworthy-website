@@ -1,0 +1,583 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Pricing | O-Level English, GP & H2 Economics Tuition Fees | A-Worthy Singapore" description="Transparent pricing for A-Worthy tuition programmes. O-Level English from SGD 280/month, H1 GP and H2 Economics from SGD 360/month. Small groups of 6, all materials included. Book a free assessment.">
+  <Header slot="header" />
+
+  <!-- ===== HERO ===== -->
+  <section class="pricing-hero">
+    <div class="container">
+      <p class="eyebrow">Pricing</p>
+      <h1 class="pricing-hero__heading">Transparent Pricing</h1>
+      <p class="pricing-hero__sub">No hidden fees, no lock-in contracts. Every programme includes materials, assessments, and WhatsApp support &mdash; so you know exactly what you&rsquo;re paying for.</p>
+    </div>
+  </section>
+
+  <!-- ===== PRICING TABLE ===== -->
+  <section class="section pricing-table-section">
+    <div class="container">
+      <div class="pricing-table-wrap" data-animate="reveal-up">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th class="pricing-table__label-col"></th>
+              <th>
+                <span class="pricing-table__programme-name">O-Level English</span>
+                <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
+              </th>
+              <th>
+                <span class="pricing-table__programme-name">H1 General Paper</span>
+                <span class="pricing-table__programme-level">JC 1 &ndash; 2</span>
+              </th>
+              <th>
+                <span class="pricing-table__programme-name">H2 Economics</span>
+                <span class="pricing-table__programme-level">JC 1 &ndash; 2</span>
+              </th>
+              <th>
+                <span class="pricing-table__programme-name">1-to-1 Coaching</span>
+                <span class="pricing-table__programme-level">All Subjects</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="pricing-table__row-label">Monthly Fee</td>
+              <td><strong>SGD 280&ndash;320</strong></td>
+              <td><strong>SGD 360&ndash;400</strong></td>
+              <td><strong>SGD 360&ndash;400</strong></td>
+              <td><strong>SGD 120&ndash;140</strong><span class="pricing-table__note">/session</span></td>
+            </tr>
+            <tr>
+              <td class="pricing-table__row-label">Session Duration</td>
+              <td>90 min</td>
+              <td>90 min</td>
+              <td>90 min</td>
+              <td>60&ndash;90 min</td>
+            </tr>
+            <tr>
+              <td class="pricing-table__row-label">Sessions / Month</td>
+              <td>4&times;</td>
+              <td>4&times;</td>
+              <td>4&times;</td>
+              <td>Flexible</td>
+            </tr>
+            <tr>
+              <td class="pricing-table__row-label">Class Size</td>
+              <td>Max 6</td>
+              <td>Max 6</td>
+              <td>Max 6</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td class="pricing-table__row-label">Materials</td>
+              <td>Included</td>
+              <td>Included</td>
+              <td>Included</td>
+              <td>Included</td>
+            </tr>
+            <tr>
+              <td class="pricing-table__row-label">Assessment</td>
+              <td>Free</td>
+              <td>Free</td>
+              <td>Free</td>
+              <td>Free</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile pricing cards (visible on small screens) -->
+      <div class="pricing-cards" data-animate="reveal-up">
+        <div class="pricing-card">
+          <h3 class="pricing-card__name">O-Level English</h3>
+          <p class="pricing-card__level">Sec 1 &ndash; 4</p>
+          <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
+          <ul class="pricing-card__details">
+            <li>90 min sessions</li>
+            <li>4&times; per month</li>
+            <li>Max 6 students</li>
+            <li>Materials included</li>
+            <li>Free assessment</li>
+          </ul>
+          <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
+        </div>
+        <div class="pricing-card">
+          <h3 class="pricing-card__name">H1 General Paper</h3>
+          <p class="pricing-card__level">JC 1 &ndash; 2</p>
+          <p class="pricing-card__price">SGD 360&ndash;400<span>/month</span></p>
+          <ul class="pricing-card__details">
+            <li>90 min sessions</li>
+            <li>4&times; per month</li>
+            <li>Max 6 students</li>
+            <li>Materials included</li>
+            <li>Free assessment</li>
+          </ul>
+          <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
+        </div>
+        <div class="pricing-card">
+          <h3 class="pricing-card__name">H2 Economics</h3>
+          <p class="pricing-card__level">JC 1 &ndash; 2</p>
+          <p class="pricing-card__price">SGD 360&ndash;400<span>/month</span></p>
+          <ul class="pricing-card__details">
+            <li>90 min sessions</li>
+            <li>4&times; per month</li>
+            <li>Max 6 students</li>
+            <li>Materials included</li>
+            <li>Free assessment</li>
+          </ul>
+          <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
+        </div>
+        <div class="pricing-card">
+          <h3 class="pricing-card__name">1-to-1 Coaching</h3>
+          <p class="pricing-card__level">All Subjects</p>
+          <p class="pricing-card__price">SGD 120&ndash;140<span>/session</span></p>
+          <ul class="pricing-card__details">
+            <li>60&ndash;90 min sessions</li>
+            <li>Flexible schedule</li>
+            <li>1 student</li>
+            <li>Materials included</li>
+            <li>Free assessment</li>
+          </ul>
+          <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ALL PROGRAMMES INCLUDE ===== -->
+  <section class="section pricing-includes">
+    <div class="container">
+      <h2 class="section-title" data-animate="reveal-up">All programmes include</h2>
+      <p class="section-subtitle" data-animate="reveal-up">Everything your child needs to succeed &mdash; no extras to pay for.</p>
+      <div class="includes-grid" data-animate="reveal-up" data-animate-delay="1">
+        <div class="includes-item">
+          <svg class="includes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <h3>Free Diagnostic Assessment</h3>
+          <p>20-minute assessment to identify gaps and recommend the right programme.</p>
+        </div>
+        <div class="includes-item">
+          <svg class="includes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <h3>Monthly Progress Reports</h3>
+          <p>Detailed feedback on your child&rsquo;s strengths, areas for improvement, and next steps.</p>
+        </div>
+        <div class="includes-item">
+          <svg class="includes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <h3>WhatsApp Support</h3>
+          <p>Ask questions between sessions &mdash; your child gets help when they need it most.</p>
+        </div>
+        <div class="includes-item">
+          <svg class="includes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          <h3>CASE Method Resources</h3>
+          <p>Proprietary notes, practice papers, and model answers &mdash; all included in the fee.</p>
+        </div>
+        <div class="includes-item">
+          <svg class="includes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h3>Money-Back Guarantee</h3>
+          <p>Not satisfied after the first month? We&rsquo;ll refund your fees &mdash; no questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section pricing-cta">
+    <div class="container">
+      <div class="pricing-cta__inner" data-animate="reveal-up">
+        <h2>Ready to get started?</h2>
+        <p>Book a free 20-minute diagnostic assessment &mdash; we&rsquo;ll identify your child&rsquo;s gaps and recommend the right programme.</p>
+        <a href="/contact/" class="btn btn-accent pricing-cta__btn">Book Free Assessment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section pricing-faq">
+    <div class="container">
+      <h2 class="section-title" data-animate="reveal-up">Frequently Asked Questions</h2>
+      <div class="faq-list" data-animate="reveal-up" data-animate-delay="1">
+        <details class="faq-item">
+          <summary class="faq-question">Are there any registration or material fees?</summary>
+          <p class="faq-answer">No. The monthly fee covers everything &mdash; lesson materials, practice papers, model answers, and access to the resource vault. There are no hidden fees.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Is there a lock-in contract?</summary>
+          <p class="faq-answer">No. All programmes are month-to-month. You can stop at any time with no penalty &mdash; we believe in earning your trust every month.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Why is the fee range (e.g. SGD 280&ndash;320) instead of a fixed price?</summary>
+          <p class="faq-answer">The lower end is for Sec 1&ndash;2 or JC 1 foundation programmes, and the higher end is for Sec 3&ndash;4 or JC 2 intensive programmes, which include more exam-focused content and additional practice materials.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How does the money-back guarantee work?</summary>
+          <p class="faq-answer">If you&rsquo;re not satisfied after the first month of lessons, contact us within 7 days of the last session and we&rsquo;ll issue a full refund &mdash; no questions asked.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I switch between group and 1-to-1 coaching?</summary>
+          <p class="faq-answer">Yes. Many students start with group sessions and add occasional 1-to-1 coaching closer to exams. You can mix and match as needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Are there sibling or multi-subject discounts?</summary>
+          <p class="faq-answer">Yes, we offer a 10% sibling discount and a 5% discount for students enrolled in two or more subjects. Contact us for details.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .pricing-hero {
+    padding: 8rem 0 4rem;
+    text-align: center;
+    background: var(--bg-primary);
+  }
+
+  .pricing-hero__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 200;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-md);
+  }
+
+  .pricing-hero__sub {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* ===== PRICING TABLE ===== */
+  .pricing-table-section {
+    background: var(--bg-secondary);
+  }
+
+  .pricing-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .pricing-table thead th {
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    vertical-align: bottom;
+  }
+
+  .pricing-table__label-col {
+    width: 160px;
+  }
+
+  .pricing-table__programme-name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-table__programme-level {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .pricing-table tbody td {
+    padding: 1rem 1.25rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .pricing-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .pricing-table__row-label {
+    text-align: left !important;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .pricing-table__note {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .pricing-table tbody td strong {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* Mobile pricing cards — hidden on desktop, shown on mobile */
+  .pricing-cards {
+    display: none;
+  }
+
+  .pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .pricing-card__name {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+  }
+
+  .pricing-card__level {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 1rem;
+  }
+
+  .pricing-card__price {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin: 0 0 1.5rem;
+  }
+
+  .pricing-card__price span {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .pricing-card__details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: left;
+  }
+
+  .pricing-card__details li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .pricing-card__details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    transform: translateY(-50%);
+  }
+
+  .pricing-card__details li:last-child {
+    border-bottom: none;
+  }
+
+  .pricing-card__cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-table-wrap {
+      display: none;
+    }
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    .pricing-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ===== INCLUDES ===== */
+  .pricing-includes {
+    background: var(--bg-primary);
+  }
+
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: var(--space-xl);
+  }
+
+  .includes-item {
+    text-align: center;
+  }
+
+  .includes-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .includes-item h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+
+  .includes-item p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* ===== CTA ===== */
+  .pricing-cta {
+    background: var(--bg-secondary);
+  }
+
+  .pricing-cta__inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .pricing-cta__inner h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 200;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.03em;
+  }
+
+  .pricing-cta__inner p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .pricing-cta__btn {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2.5rem;
+    display: inline-block;
+  }
+
+  /* ===== FAQ ===== */
+  .pricing-faq {
+    background: var(--bg-primary);
+  }
+
+  .faq-list {
+    max-width: 720px;
+    margin: var(--space-xl) auto 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .faq-question {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: '\2212';
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    padding: 0 0 1.25rem;
+    margin: 0;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 480px) {
+    .pricing-hero {
+      padding: 6rem 0 3rem;
+    }
+    .pricing-hero__heading {
+      font-size: 1.8rem;
+    }
+    .includes-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

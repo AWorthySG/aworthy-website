@@ -187,6 +187,16 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "H1 General Paper Tuition",
+    "description": "Top-rated GP tuition in Singapore for JC 1-2 students. Master essay argumentation, comprehension, and AQ with the CASE Method's legal-analytical framework.",
+    "provider": {"@type": "EducationalOrganization", "name": "A-Worthy", "url": "https://a-worthy.com"},
+    "offers": {"@type": "Offer", "price": "360", "priceCurrency": "SGD", "availability": "https://schema.org/InStock"},
+    "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT6H/month"}
+  })} />
+
   <Footer />
 </BaseLayout>
 

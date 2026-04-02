@@ -95,19 +95,30 @@ import { ClientRouter } from 'astro:transitions';
 
   <ClientRouter />
 
-  <!-- Theme initialization (dark by default) -->
+  <!-- Theme initialization (auto-detect system preference) -->
   <script is:inline>
     (function() {
       const saved = localStorage.getItem('theme');
-      const theme = saved || 'light';
-      document.documentElement.setAttribute('data-theme', theme);
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      }
     })();
   </script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <slot name="header" />
+
+  <nav class="breadcrumb" aria-label="Breadcrumb" id="breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="/">Home</a></li>
+    </ol>
+  </nav>
 
   <main id="main-content">
     <slot />
@@ -304,6 +315,58 @@ import { ClientRouter } from 'astro:transitions';
         gap: 0.75rem;
       }
     }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-accent), #e8a060);
+      z-index: 9999;
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      background: var(--bg-secondary);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      display: none;
+    }
+    .breadcrumb-list {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      font-size: 0.75rem;
+    }
+    .breadcrumb-list li::after {
+      content: '/';
+      margin-left: 0.5rem;
+      color: var(--text-muted);
+    }
+    .breadcrumb-list li:last-child::after {
+      display: none;
+    }
+    .breadcrumb-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+    .breadcrumb-list a:hover {
+      color: var(--color-accent);
+    }
+    .breadcrumb-list li:last-child a {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    @media (max-width: 768px) {
+      .breadcrumb-list { padding: 0 1.5rem; }
+    }
   </style>
 
   <!-- Scroll reveal animation observer -->
@@ -428,6 +491,47 @@ import { ClientRouter } from 'astro:transitions';
     btn.addEventListener('click', function() {
       localStorage.setItem('privacy-accepted', '1');
       notice.style.display = 'none';
+    });
+  })();
+  </script>
+
+  <script is:inline>
+  (function(){
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+  </script>
+
+  <script is:inline>
+  (function(){
+    var bc = document.getElementById('breadcrumb');
+    if (!bc) return;
+    var path = window.location.pathname.replace(/\/$/, '');
+    if (!path || path === '') return; // Don't show on homepage
+    bc.style.display = 'block';
+    var parts = path.split('/').filter(Boolean);
+    var ol = bc.querySelector('ol');
+    var href = '';
+    parts.forEach(function(part, i) {
+      href += '/' + part;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = href + '/';
+      a.textContent = part.replace(/-/g, ' ');
+      li.appendChild(a);
+      ol.appendChild(li);
     });
   })();
   </script>
