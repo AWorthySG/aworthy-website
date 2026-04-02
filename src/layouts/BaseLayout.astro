@@ -221,11 +221,17 @@ import { ClientRouter } from 'astro:transitions';
       inset: 0;
       background: rgba(0,0,0,0.5);
       z-index: 3000;
-      display: flex;
+      display: none;
       align-items: flex-start;
       justify-content: center;
       padding: 10vh 1rem 1rem;
       backdrop-filter: blur(4px);
+    }
+    .search-overlay[hidden] {
+      display: none;
+    }
+    .search-overlay:not([hidden]) {
+      display: flex;
     }
     .search-container {
       background: var(--bg-primary);
@@ -376,12 +382,18 @@ import { ClientRouter } from 'astro:transitions';
       inset: 0;
       background: rgba(0,0,0,0.5);
       z-index: 2000;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       padding: 1rem;
       -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
+    }
+    .email-popup-overlay[hidden] {
+      display: none;
+    }
+    .email-popup-overlay:not([hidden]) {
+      display: flex;
     }
     .email-popup {
       background: var(--bg-primary);
@@ -822,7 +834,7 @@ import { ClientRouter } from 'astro:transitions';
 
     // Or on exit intent (mouse leaves viewport)
     document.addEventListener('mouseout', function(e) {
-      if (e.clientY < 5 && !popup.hidden === false) {
+      if (e.clientY < 5 && popup.hidden) {
         clearTimeout(timer);
         showPopup();
       }
@@ -922,9 +934,15 @@ import { ClientRouter } from 'astro:transitions';
       border: 1px solid var(--border-color);
       border-radius: 12px;
       box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-      display: flex;
+      display: none;
       flex-direction: column;
       overflow: hidden;
+    }
+    .chatbot-panel[hidden] {
+      display: none;
+    }
+    .chatbot-panel:not([hidden]) {
+      display: flex;
     }
     .chatbot-header {
       display: flex;
