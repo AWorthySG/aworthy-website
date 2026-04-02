@@ -10,13 +10,15 @@ Marketing website for **A-Worthy**, a Singapore-based tuition centre offering O-
 - **Language**: TypeScript (strict mode via `astro/tsconfigs/strict`)
 - **Styling**: Plain CSS with CSS custom properties — no Tailwind, no preprocessors
 - **JavaScript**: Vanilla JS only — no React, Vue, jQuery, or other UI frameworks
+- **Search**: Fuse.js for client-side fuzzy search
+- **Images**: sharp for SVG→PNG OG image conversion at build time
 - **Node**: >=22.12.0
 
 ## Commands
 
 ```bash
 npm run dev       # Start dev server at localhost:4321
-npm run build     # Build to ./dist/
+npm run build     # Build to ./dist/ (prebuild converts OG SVGs to PNGs via sharp)
 npm run preview   # Preview production build
 ```
 
@@ -27,30 +29,47 @@ There are no tests, linting, or formatting commands configured.
 ```
 src/
 ├── components/     # Reusable Astro components
-│   ├── Header.astro          # Desktop + mobile nav, theme toggle
+│   ├── Header.astro          # Desktop + mobile nav, theme toggle, search trigger
 │   ├── Footer.astro          # Site footer with links and contact info
 │   ├── PdfPreviewModal.astro # Full-screen PDF preview overlay for resource samples
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
-│   └── BaseLayout.astro      # Master HTML template (meta, fonts, scroll animations, sticky CTA, WhatsApp button)
-├── pages/          # File-based routing
-│   ├── index.astro           # Homepage (~3300 lines — largest page)
-│   ├── about.astro           # About the centre
+│   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
+├── pages/          # File-based routing (14 pages)
+│   ├── index.astro           # Homepage (~4000+ lines — largest page)
+│   ├── about.astro           # About the centre, founder profile
 │   ├── programmes.astro      # Programme overview
-│   ├── h2-economics.astro    # Dedicated H2 Economics subject page
-│   ├── h1-general-paper.astro # Dedicated H1 GP subject page
-│   ├── o-level-english.astro # Dedicated O-Level English subject page
+│   ├── h2-economics.astro    # Dedicated H2 Economics subject page (sticky TOC, related links)
+│   ├── h1-general-paper.astro # Dedicated H1 GP subject page (sticky TOC, related links)
+│   ├── o-level-english.astro # Dedicated O-Level English subject page (sticky TOC, related links)
 │   ├── results.astro         # Student results and statistics
-│   ├── resources.astro       # Free resource vault with PDF samples
-│   ├── testimonials.astro    # Student and parent testimonials
-│   ├── contact.astro         # Contact form and details
-│   └── 404.astro             # Not found page
+│   ├── resources.astro       # Free resource vault with PDF samples and email gating
+│   ├── testimonials.astro    # Student/parent testimonials with featured carousel
+│   ├── contact.astro         # Contact form, details, and calendar booking placeholder
+│   ├── pricing.astro         # Pricing comparison table with FAQ
+│   ├── blog.astro            # Blog article previews
+│   ├── success-stories.astro # Student transformation case studies (4 stories)
+│   └── 404.astro             # Not found page with navigation links
 └── styles/
     └── global.css            # Design system with CSS custom properties
+scripts/
+└── convert-og-images.mjs     # Prebuild script: converts SVG OG images to PNG via sharp
 public/
 ├── images/
-│   └── logo.svg              # Site logo
+│   ├── logo.svg              # Site logo
+│   ├── og-default.svg/png    # Default Open Graph image
+│   ├── og-english.svg/png    # O-Level English OG image
+│   ├── og-gp.svg/png         # H1 GP OG image
+│   ├── og-econs.svg/png      # H2 Economics OG image
+│   ├── illustration-*.svg    # Programme card illustrations (english, gp, econs, coaching)
+│   ├── icon-*.svg            # Resource vault icons (scoring, essay, comprehension, vocabulary, situational, grammar)
+│   ├── case-method-infographic.svg # CASE Method cyclical diagram
+│   └── section-divider.svg   # Decorative section divider
 ├── docs/samples/             # Sample PDF resources (grammar, essays, vocabulary, etc.)
+├── sw.js                     # Service worker (cache-first for assets, network-first for navigation)
+├── manifest.json             # PWA manifest
+├── robots.txt                # Search engine directives
+├── apple-touch-icon.svg      # iOS home screen icon
 ├── favicon.ico
 └── favicon.svg
 ```
@@ -84,15 +103,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ```
 
 All pages wrap content in `<BaseLayout>` which provides:
-- Meta tags (Open Graph, Twitter Card, canonical URL)
-- Schema.org structured data (EducationalOrganization)
+- Meta tags (Open Graph with `ogImage` prop, Twitter Card, canonical URL)
+- Schema.org structured data (EducationalOrganization + LocalBusiness, Course, FAQPage)
 - Google Fonts async loading
-- Theme initialization from localStorage
+- Theme initialization from localStorage (with `prefers-color-scheme` auto-detect)
+- ClientRouter for page transitions (`astro:transitions`)
+- Scroll progress bar (fixed top)
+- Breadcrumb navigation
 - Scroll-reveal animation observer
-- Animated number counters
+- Animated number counters (with bfcache `pageshow` fix)
 - Back-to-top button
 - Global sticky CTA bar (hidden on homepage)
-- WhatsApp floating button
+- WhatsApp chat widget (with preview bubble)
+- FAQ chatbot widget (pre-defined Q&A)
+- Email capture popup (exit-intent + 45s timer, localStorage dismissal)
+- Site search overlay (Ctrl+K / Cmd+K)
+- Service worker registration
+- Privacy consent notice
 
 ## Design System (global.css)
 
@@ -194,22 +221,55 @@ Scroll-triggered animations via IntersectionObserver (defined in BaseLayout):
 
 ## Key Conventions
 
-1. **Minimal dependencies** — only Astro and @astrojs/sitemap; no UI frameworks or CSS libraries
+1. **Minimal dependencies** — Astro, @astrojs/sitemap, sharp (build), fuse.js (search); no UI frameworks or CSS libraries
 2. **CSS variables over hardcoded values** — always use design tokens from global.css
 3. **Semantic HTML** — proper heading hierarchy, ARIA labels, landmark elements, skip-link
 4. **Content is inline** — no CMS; all copy lives directly in `.astro` page files
-5. **Images go in `public/images/`**, PDFs in `public/docs/samples/`
+5. **Images go in `public/images/`**, PDFs in `public/docs/samples/`, SVG illustrations are programmatic (not Canva)
 6. **Mobile-first responsive** — design for small screens first, scale up with media queries
 7. **Scoped styles** — component-specific CSS goes in `<style>` tags, global styles in `global.css`
 8. **No build-time data fetching** — purely static, no API calls at build time
 9. **Safe area insets** — all fixed/sticky elements account for notched device insets
+10. **OG images** — source SVGs in `public/images/og-*.svg`, converted to PNG by `scripts/convert-og-images.mjs` at prebuild
+11. **Service worker** — `public/sw.js` provides offline caching; registered in BaseLayout
+12. **localStorage keys** — `theme` (dark/light), `email-popup-dismissed`, `privacy-accepted`, `whatsapp-bubble-shown`, `resource-email`
+
+## Homepage Sections (index.astro)
+
+The homepage is the largest file (~4000+ lines) and contains these sections in order:
+1. Hero with geometric SVG decoration and pen animation
+2. Stats bar (animated counters)
+3. Social proof ticker (scrolling messages including student count)
+4. Trust strip / media mentions strip
+5. Problem → Solution narrative
+6. Programmes grid (with SVG illustrations)
+7. CASE Method quiz
+8. CASE flow diagram
+9. CASE Method infographic
+10. Interactive worked example
+11. Approach cards
+12. Comparison table
+13. Resource vault preview
+14. Testimonials
+15. Google Reviews CTA
+16. Results statistics
+17. FAQ (with JSON-LD FAQPage schema)
+18. Referral programme banner
+19. Parent portal teaser
+20. Trial lesson booking section
+21. Contact form
 
 ## Common Pitfalls
 
 - The site URL is `https://a-worthy.com` — update `astro.config.mjs` if this changes
 - CSS custom properties have separate light/dark values — always check both themes when modifying colors
-- Pages are very large (index.astro is ~3300 lines) since content is inline — use offset/limit when reading
+- Pages are very large (index.astro is ~4000+ lines) since content is inline — use offset/limit when reading
 - The Header component handles both desktop and mobile nav with distinct markup sections
 - The homepage has its own sticky CTA; the global sticky CTA bar in BaseLayout is hidden on `/`
 - Dark mode accent is a different shade (#E09850 vs #D4853A) — update both if changing accent color
 - Font families changed from the original design: Fraunces replaced Playfair Display, Space Grotesk replaced Inter
+- BaseLayout is ~900+ lines — use offset/limit when reading; many widgets are appended before `</body>`
+- Astro 6.x uses `ClientRouter` from `astro:transitions`, NOT the old `ViewTransitions` export
+- Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes
+- The prebuild step (`scripts/convert-og-images.mjs`) requires `sharp` — run `npm install` if missing
+- Email popup and resource gating both collect emails but are independent systems with separate localStorage keys
