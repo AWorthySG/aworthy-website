@@ -35,20 +35,33 @@ src/
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
-├── pages/          # File-based routing (14 pages)
-│   ├── index.astro           # Homepage (~4000+ lines — largest page)
-│   ├── about.astro           # About the centre, founder profile
+├── pages/          # File-based routing (25 pages)
+│   ├── index.astro           # Homepage (~4000+ lines — largest page, audience selector)
+│   ├── about.astro           # About the centre, founder profile, video placeholder
 │   ├── programmes.astro      # Programme overview
-│   ├── h2-economics.astro    # Dedicated H2 Economics subject page (sticky TOC, related links)
-│   ├── h1-general-paper.astro # Dedicated H1 GP subject page (sticky TOC, related links)
-│   ├── o-level-english.astro # Dedicated O-Level English subject page (sticky TOC, related links)
+│   ├── h2-economics.astro    # H2 Economics subject page (sticky TOC, schedule, related links)
+│   ├── h1-general-paper.astro # H1 GP subject page (sticky TOC, schedule, related links)
+│   ├── o-level-english.astro # O-Level English subject page (sticky TOC, schedule, related links)
 │   ├── results.astro         # Student results and statistics
-│   ├── resources.astro       # Free resource vault with PDF samples and email gating
-│   ├── testimonials.astro    # Student/parent testimonials with featured carousel
-│   ├── contact.astro         # Contact form, details, and calendar booking placeholder
+│   ├── resources.astro       # Resource vault with email gating (16 resources, 6 categories)
+│   ├── testimonials.astro    # Testimonials with carousel and video section
+│   ├── contact.astro         # Contact form, trial booking form, online badge
 │   ├── pricing.astro         # Pricing comparison table with FAQ
-│   ├── blog.astro            # Blog article previews
+│   ├── blog/
+│   │   ├── index.astro       # Blog article previews (links to 6 posts)
+│   │   ├── comprehension-techniques.astro
+│   │   ├── gp-essay-structure.astro
+│   │   ├── economics-essay-diagrams.astro
+│   │   ├── why-smart-students-fail.astro
+│   │   ├── situational-writing-guide.astro
+│   │   └── exam-prep-timeline.astro
+│   ├── lp/                   # Landing pages for paid traffic
+│   │   ├── gp-tuition.astro
+│   │   ├── english-tuition.astro
+│   │   └── econs-tuition.astro
 │   ├── success-stories.astro # Student transformation case studies (4 stories)
+│   ├── parent-portal.astro   # Parent portal preview with feature cards (coming soon)
+│   ├── accessibility.astro   # WCAG 2.2 AA accessibility statement
 │   └── 404.astro             # Not found page with navigation links
 └── styles/
     └── global.css            # Design system with CSS custom properties
