@@ -114,6 +114,18 @@ import { ClientRouter } from 'astro:transitions';
 
   <slot name="header" />
 
+  <!-- Site Search -->
+  <div class="search-overlay" id="search-overlay" hidden>
+    <div class="search-container">
+      <div class="search-input-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" class="search-input" id="search-input" placeholder="Search A-Worthy..." autocomplete="off" />
+        <button class="search-close" id="search-close" aria-label="Close search">Esc</button>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
   <nav class="breadcrumb" aria-label="Breadcrumb" id="breadcrumb">
     <ol class="breadcrumb-list">
       <li><a href="/">Home</a></li>
@@ -135,48 +147,278 @@ import { ClientRouter } from 'astro:transitions';
     <button class="sticky-cta-global-dismiss" id="sticky-cta-global-dismiss" aria-label="Dismiss">&times;</button>
   </div>
 
-  <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition"
-     class="whatsapp-float"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-  </a>
+  <div class="whatsapp-widget" id="whatsapp-widget">
+    <div class="whatsapp-preview" id="whatsapp-preview" hidden>
+      <div class="whatsapp-preview-header">
+        <strong>A-Worthy</strong>
+        <span>Typically replies within an hour</span>
+      </div>
+      <div class="whatsapp-preview-msg">
+        <p>Hi! 👋 How can we help you today? Ask us about our programmes or book a free assessment.</p>
+        <span class="whatsapp-preview-time">Just now</span>
+      </div>
+      <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener" class="whatsapp-preview-cta">
+        <input type="text" placeholder="Type a message..." readonly style="flex:1;border:none;background:transparent;color:var(--text-muted);font-size:0.8rem;cursor:pointer;" />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent)"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </a>
+    </div>
+    <button class="whatsapp-float-btn" id="whatsapp-float-btn" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </button>
+  </div>
+
+  <script is:inline>
+  (function(){
+    var btn = document.getElementById('whatsapp-float-btn');
+    var preview = document.getElementById('whatsapp-preview');
+    if (!btn || !preview) return;
+
+    // Show preview after 10 seconds on first visit
+    if (!sessionStorage.getItem('wa-shown')) {
+      setTimeout(function() {
+        preview.hidden = false;
+        sessionStorage.setItem('wa-shown', '1');
+        setTimeout(function() { preview.hidden = true; }, 8000);
+      }, 10000);
+    }
+
+    btn.addEventListener('click', function() {
+      preview.hidden = !preview.hidden;
+    });
+  })();
+  </script>
 
   <style>
-    .whatsapp-float {
+    /* Search overlay */
+    .search-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 3000;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 10vh 1rem 1rem;
+      backdrop-filter: blur(4px);
+    }
+    .search-container {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 560px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      outline: none;
+    }
+    .search-close {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .search-results {
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 0.5rem;
+    }
+    .search-hint {
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .search-result-item {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+    .search-result-item:hover {
+      background: var(--bg-secondary);
+    }
+    .search-result-item strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+    .search-result-item span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .whatsapp-widget {
       position: fixed;
       bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
       right: calc(2rem + env(safe-area-inset-right, 0px));
+      z-index: 900;
+    }
+    .whatsapp-float-btn {
       width: 56px;
       height: 56px;
       background: #25D366;
       border-radius: 50%;
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 900;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
-    @media (hover: hover) {
-      .whatsapp-float:hover {
-        transform: scale(1.1);
-        box-shadow: 0 6px 20px rgba(37,211,102,0.4);
-      }
+    .whatsapp-float-btn:hover { transform: scale(1.1); }
+    .whatsapp-preview {
+      position: absolute;
+      bottom: 64px;
+      right: 0;
+      width: 300px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      animation: wa-slide-up 0.3s ease;
+    }
+    @keyframes wa-slide-up {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .whatsapp-preview-header {
+      background: #075e54;
+      color: #fff;
+      padding: 0.75rem 1rem;
+    }
+    .whatsapp-preview-header strong { font-size: 0.85rem; display: block; }
+    .whatsapp-preview-header span { font-size: 0.7rem; opacity: 0.7; }
+    .whatsapp-preview-msg {
+      padding: 1rem;
+      background: var(--bg-secondary);
+    }
+    .whatsapp-preview-msg p {
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0 8px 8px 8px;
+      position: relative;
+    }
+    .whatsapp-preview-time {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      display: block;
+      text-align: right;
+      margin-top: 0.25rem;
+    }
+    .whatsapp-preview-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.8rem;
+      text-decoration: none;
+      border-top: 1px solid var(--border-color);
     }
     @media (max-width: 480px) {
-      .whatsapp-float {
-        bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-        right: calc(1rem + env(safe-area-inset-right, 0px));
-        width: 52px;
-        height: 52px;
-      }
+      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
+      .whatsapp-preview { width: calc(100vw - 3rem); }
+      .whatsapp-float-btn { width: 52px; height: 52px; }
     }
+    .email-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+    .email-popup {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .email-popup-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .email-popup-title {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text-primary);
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+    .email-popup-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .email-popup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .email-popup-form input {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+    }
+    .email-popup-form input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+    .email-popup-note {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+
     .sticky-cta-global {
       position: fixed;
       bottom: 0;
@@ -514,6 +756,70 @@ import { ClientRouter } from 'astro:transitions';
   })();
   </script>
 
+  <!-- Email Capture Popup -->
+  <div class="email-popup-overlay" id="email-popup" hidden>
+    <div class="email-popup">
+      <button class="email-popup-close" id="email-popup-close" aria-label="Close">&times;</button>
+      <span class="eyebrow" style="text-align:center;display:block;">Free Download</span>
+      <h3 class="email-popup-title">Get our top-scoring essay framework</h3>
+      <p class="email-popup-desc">Download the same CASE Method essay template our A1 students use &mdash; free for your email.</p>
+      <form class="email-popup-form" id="email-popup-form">
+        <input type="email" placeholder="Your email address" required aria-label="Email address" />
+        <button type="submit" class="btn btn-accent" style="width:100%;">Download Free PDF</button>
+      </form>
+      <p class="email-popup-note">We respect your privacy. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <script is:inline>
+  (function(){
+    var popup = document.getElementById('email-popup');
+    var closeBtn = document.getElementById('email-popup-close');
+    var form = document.getElementById('email-popup-form');
+    if (!popup) return;
+
+    // Don't show if already dismissed or on contact page
+    if (localStorage.getItem('email-popup-dismissed')) return;
+    if (window.location.pathname.indexOf('/contact') > -1) return;
+
+    function showPopup() {
+      popup.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function hidePopup() {
+      popup.hidden = true;
+      document.body.style.overflow = '';
+      localStorage.setItem('email-popup-dismissed', '1');
+    }
+
+    // Show after 45 seconds
+    var timer = setTimeout(showPopup, 45000);
+
+    // Or on exit intent (mouse leaves viewport)
+    document.addEventListener('mouseout', function(e) {
+      if (e.clientY < 5 && !popup.hidden === false) {
+        clearTimeout(timer);
+        showPopup();
+      }
+    }, { once: true });
+
+    closeBtn.addEventListener('click', hidePopup);
+    popup.addEventListener('click', function(e) { if (e.target === popup) hidePopup(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !popup.hidden) hidePopup(); });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = form.querySelector('input').value;
+      if (email) {
+        form.innerHTML = '<p style="text-align:center;color:var(--color-accent);font-weight:500;">Thanks! Check your inbox for the download link.</p>';
+        localStorage.setItem('email-popup-dismissed', '1');
+        setTimeout(hidePopup, 3000);
+      }
+    });
+  })();
+  </script>
+
   <script is:inline>
   (function(){
     var bc = document.getElementById('breadcrumb');
@@ -534,6 +840,256 @@ import { ClientRouter } from 'astro:transitions';
       ol.appendChild(li);
     });
   })();
+  </script>
+
+  <!-- FAQ Chatbot -->
+  <div class="chatbot-widget" id="chatbot-widget">
+    <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open FAQ chat">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </button>
+    <div class="chatbot-panel" id="chatbot-panel" hidden>
+      <div class="chatbot-header">
+        <strong>A-Worthy Help</strong>
+        <button class="chatbot-close" id="chatbot-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="chatbot-body" id="chatbot-body">
+        <div class="chatbot-msg chatbot-msg--bot">Hi! I can help answer common questions. What would you like to know?</div>
+        <div class="chatbot-options" id="chatbot-options">
+          <button class="chatbot-option" data-q="pricing">How much does it cost?</button>
+          <button class="chatbot-option" data-q="schedule">What are the class schedules?</button>
+          <button class="chatbot-option" data-q="method">What is the CASE Method?</button>
+          <button class="chatbot-option" data-q="enrol">How do I enrol?</button>
+          <button class="chatbot-option" data-q="trial">Can I try a free lesson?</button>
+          <button class="chatbot-option" data-q="online">Are classes online or in-person?</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .chatbot-widget {
+      position: fixed;
+      bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+      right: calc(2rem + env(safe-area-inset-right, 0px));
+      z-index: 950;
+    }
+    .chatbot-toggle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(43,90,140,0.3);
+      transition: transform 0.2s ease;
+    }
+    .chatbot-toggle:hover { transform: scale(1.1); }
+    .chatbot-panel {
+      position: absolute;
+      bottom: 56px;
+      right: 0;
+      width: 320px;
+      max-height: 420px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chatbot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 0.85rem;
+    }
+    .chatbot-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .chatbot-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: 340px;
+    }
+    .chatbot-msg {
+      padding: 0.6rem 0.85rem;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      max-width: 85%;
+    }
+    .chatbot-msg a { color: var(--color-accent); }
+    .chatbot-msg--bot {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .chatbot-msg--user {
+      background: var(--color-primary);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .chatbot-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+    .chatbot-option {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all 0.2s ease;
+    }
+    .chatbot-option:hover {
+      border-color: var(--color-accent);
+      background: rgba(212,133,58,0.05);
+    }
+    @media (max-width: 480px) {
+      .chatbot-panel { width: calc(100vw - 2rem); right: -1rem; }
+      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+    }
+  </style>
+
+  <script is:inline>
+  (function(){
+    var toggle = document.getElementById('chatbot-toggle');
+    var panel = document.getElementById('chatbot-panel');
+    var close = document.getElementById('chatbot-close');
+    var body = document.getElementById('chatbot-body');
+    var opts = document.getElementById('chatbot-options');
+    if (!toggle || !panel) return;
+
+    var answers = {
+      pricing: 'O-Level English: SGD 280\u2013320/month. H1 GP: SGD 360\u2013400/month. H2 Economics: SGD 360\u2013400/month. 1-to-1: SGD 120\u2013140/session. <a href="/pricing/">View full pricing \u2192</a>',
+      schedule: 'Classes run Mon\u2013Fri 2pm\u20139:30pm and Sat\u2013Sun 9am\u20136pm. All sessions are conducted via Zoom. <a href="/contact/">Contact us for available slots \u2192</a>',
+      method: 'The CASE Method is our proprietary 4-step system: Contextualise, Analyse, Structure, Evaluate. Adapted from legal reasoning, it teaches students how to think systematically. <a href="/#method">Learn more \u2192</a>',
+      enrol: 'Step 1: Book a free diagnostic assessment. Step 2: Get a personalised learning plan. Step 3: Start learning! <a href="/contact/">Book assessment \u2192</a>',
+      trial: 'Yes! We offer a free diagnostic assessment for all new students. This helps us understand your child\'s needs before recommending a programme. <a href="/contact/">Book free assessment \u2192</a>',
+      online: 'All classes are 100% online via Zoom Pro. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>'
+    };
+
+    toggle.addEventListener('click', function() {
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) toggle.style.display = 'none';
+    });
+    close.addEventListener('click', function() {
+      panel.hidden = true;
+      toggle.style.display = 'flex';
+    });
+
+    opts.addEventListener('click', function(e) {
+      var btn = e.target.closest('.chatbot-option');
+      if (!btn) return;
+      var q = btn.getAttribute('data-q');
+      var questionText = btn.textContent;
+      // Add user message
+      var userMsg = document.createElement('div');
+      userMsg.className = 'chatbot-msg chatbot-msg--user';
+      userMsg.textContent = questionText;
+      body.insertBefore(userMsg, opts);
+      // Add bot response
+      setTimeout(function() {
+        var botMsg = document.createElement('div');
+        botMsg.className = 'chatbot-msg chatbot-msg--bot';
+        botMsg.innerHTML = answers[q] || 'Sorry, I don\'t have an answer for that. Please <a href="/contact/">contact us</a>.';
+        body.insertBefore(botMsg, opts);
+        body.scrollTop = body.scrollHeight;
+      }, 400);
+      body.scrollTop = body.scrollHeight;
+    });
+  })();
+  </script>
+
+  <!-- Site Search Script -->
+  <script is:inline>
+  (function(){
+    var overlay = document.getElementById('search-overlay');
+    var input = document.getElementById('search-input');
+    var results = document.getElementById('search-results');
+    var closeBtn = document.getElementById('search-close');
+    if (!overlay) return;
+
+    var pages = [
+      { title: 'Home', url: '/', desc: 'A-Worthy tuition centre — O-Level English, GP & H2 Economics' },
+      { title: 'O-Level English', url: '/o-level-english/', desc: 'Comprehensive O-Level English tuition with the CASE Method' },
+      { title: 'H1 General Paper', url: '/h1-general-paper/', desc: 'A-Level GP tuition using legal-analytical framework' },
+      { title: 'H2 Economics', url: '/h2-economics/', desc: 'Rigorous H2 Economics tuition covering micro and macro' },
+      { title: 'Programmes', url: '/programmes/', desc: 'View all tuition programmes from Sec 1 to JC 2' },
+      { title: 'Pricing', url: '/pricing/', desc: 'Transparent pricing for all programmes' },
+      { title: 'Results', url: '/results/', desc: 'Student results and grade transformations' },
+      { title: 'Resources', url: '/resources/', desc: 'Free O-Level English and Economics resources' },
+      { title: 'Testimonials', url: '/testimonials/', desc: 'What parents and students say about A-Worthy' },
+      { title: 'Success Stories', url: '/success-stories/', desc: 'Student transformation case studies' },
+      { title: 'Blog', url: '/blog/', desc: 'Study tips, exam strategies and guides' },
+      { title: 'About', url: '/about/', desc: 'About A-Worthy and the CASE Method' },
+      { title: 'Contact', url: '/contact/', desc: 'Book a free diagnostic assessment' },
+      { title: 'CASE Method', url: '/#method', desc: 'Our proprietary 4-step teaching system' },
+      { title: 'FAQ', url: '/#faq', desc: 'Frequently asked questions about tuition' },
+    ];
+
+    function open() { overlay.hidden = false; input.value = ''; input.focus(); renderResults(''); }
+    function close() { overlay.hidden = true; }
+
+    document.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); open(); }
+      if (e.key === 'Escape' && !overlay.hidden) close();
+    });
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+
+    function renderResults(query) {
+      if (!query) {
+        results.innerHTML = '<div class="search-hint">Start typing to search pages, programmes, and resources...</div>';
+        return;
+      }
+      var q = query.toLowerCase();
+      var matches = pages.filter(function(p) {
+        return p.title.toLowerCase().indexOf(q) > -1 || p.desc.toLowerCase().indexOf(q) > -1;
+      });
+      if (!matches.length) {
+        results.innerHTML = '<div class="search-hint">No results found for "' + query + '"</div>';
+        return;
+      }
+      results.innerHTML = matches.map(function(p) {
+        return '<a href="' + p.url + '" class="search-result-item"><strong>' + p.title + '</strong><span>' + p.desc + '</span></a>';
+      }).join('');
+    }
+
+    input.addEventListener('input', function() { renderResults(input.value); });
+  })();
+  </script>
+
+  <!-- Service Worker Registration -->
+  <script is:inline>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  }
   </script>
 </body>
 </html>

@@ -16,57 +16,69 @@ import '../styles/global.css';
 
       <div class="blog-grid" data-animate="reveal-up">
         <article class="blog-card blog-card--featured">
-          <span class="blog-tag">O-Level English</span>
-          <h2>10 Comprehension Techniques That Top Students Use</h2>
-          <p>Master inference, vocabulary-in-context, and summary writing with these proven strategies from the CASE Method.</p>
-          <div class="blog-meta">
-            <span>Coming Soon</span>
-          </div>
+          <a href="#" class="blog-card-link">
+            <span class="blog-tag">O-Level English</span>
+            <h2>10 Comprehension Techniques That Top Students Use</h2>
+            <p>Most students lose marks on comprehension not because they can't read, but because they don't know what the examiner is really asking. Here are 10 techniques from the CASE Method that our A1 students use to decode every question type&hellip;</p>
+            <div class="blog-meta">
+              <span>25 Mar 2026</span>
+            </div>
+          </a>
         </article>
 
         <article class="blog-card">
-          <span class="blog-tag">H1 General Paper</span>
-          <h2>How to Structure a GP Essay for Band 3 and Above</h2>
-          <p>The CASE Method approach to GP essay writing — from thesis formation to counter-argument integration.</p>
-          <div class="blog-meta">
-            <span>Coming Soon</span>
-          </div>
+          <a href="#" class="blog-card-link">
+            <span class="blog-tag">H1 General Paper</span>
+            <h2>How to Structure a GP Essay for Band 3 and Above</h2>
+            <p>The difference between a Band 2 and Band 3 GP essay isn't knowledge &mdash; it's structure. Learn the three-part framework that transforms scattered arguments into compelling, examiner-ready essays&hellip;</p>
+            <div class="blog-meta">
+              <span>18 Mar 2026</span>
+            </div>
+          </a>
         </article>
 
         <article class="blog-card">
-          <span class="blog-tag">H2 Economics</span>
-          <h2>The Complete Guide to Economics Essay Diagrams</h2>
-          <p>Every diagram you need for H2 Economics, with step-by-step drawing guides and common examiner expectations.</p>
-          <div class="blog-meta">
-            <span>Coming Soon</span>
-          </div>
+          <a href="#" class="blog-card-link">
+            <span class="blog-tag">H2 Economics</span>
+            <h2>The Complete Guide to Economics Essay Diagrams</h2>
+            <p>Diagrams account for up to 30% of your H2 Economics essay marks. This guide covers every diagram from market failure to exchange rates, with step-by-step drawing instructions&hellip;</p>
+            <div class="blog-meta">
+              <span>11 Mar 2026</span>
+            </div>
+          </a>
         </article>
 
         <article class="blog-card">
-          <span class="blog-tag">Study Tips</span>
-          <h2>Why Smart Students Still Fail — And How to Fix It</h2>
-          <p>The gap between understanding content and scoring well in exams, and how the CASE Method bridges it.</p>
-          <div class="blog-meta">
-            <span>Coming Soon</span>
-          </div>
+          <a href="#" class="blog-card-link">
+            <span class="blog-tag">Study Tips</span>
+            <h2>Why Smart Students Still Fail &mdash; And How to Fix It</h2>
+            <p>They understand the content. They can explain concepts verbally. But when the exam paper lands, they freeze. Here's why the gap between knowing and scoring exists, and the systematic approach that closes it&hellip;</p>
+            <div class="blog-meta">
+              <span>4 Mar 2026</span>
+            </div>
+          </a>
         </article>
 
         <article class="blog-card">
-          <span class="blog-tag">O-Level English</span>
-          <h2>Situational Writing: The Format Guide Every Student Needs</h2>
-          <p>Formal letters, emails, reports, and speeches — every format convention with annotated examples.</p>
-          <div class="blog-meta">
-            <span>Coming Soon</span>
-          </div>
+          <a href="#" class="blog-card-link">
+            <span class="blog-tag">O-Level English</span>
+            <h2>Situational Writing: The Format Guide Every Student Needs</h2>
+            <p>Formal letter? Email? Report? Speech? Each format has specific conventions that examiners check before they even read your content. Here's every format requirement with annotated examples&hellip;</p>
+            <div class="blog-meta">
+              <span>25 Feb 2026</span>
+            </div>
+          </a>
         </article>
 
         <article class="blog-card">
-          <span class="blog-tag">Exam Strategy</span>
-          <h2>The 3-Month Exam Prep Timeline That Actually Works</h2>
-          <p>A week-by-week study plan for O-Level and A-Level students leading up to the national exams.</p>
-          <div class="blog-meta">
-            <span>Coming Soon</span>
-          </div>
+          <a href="#" class="blog-card-link">
+            <span class="blog-tag">Exam Strategy</span>
+            <h2>The 3-Month Exam Prep Timeline That Actually Works</h2>
+            <p>With 12 weeks until O-Levels or A-Levels, most students panic and do everything at once. This week-by-week plan prioritises what matters most, when it matters most&hellip;</p>
+            <div class="blog-meta">
+              <span>18 Feb 2026</span>
+            </div>
+          </a>
         </article>
       </div>
 
@@ -120,6 +132,13 @@ import '../styles/global.css';
     transform: translateY(-3px);
     border-color: rgba(212, 133, 58, 0.2);
     box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .blog-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   .blog-card--featured {
     grid-column: 1 / -1;

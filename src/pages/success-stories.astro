@@ -1,0 +1,426 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const stories = [
+  {
+    name: 'Sarah T.',
+    before: 'C5',
+    after: 'A2',
+    duration: '3 months',
+    subject: 'O-Level English',
+    quote: '"I used to dread comprehension passages. Now I actually enjoy pulling them apart — it\'s like solving a puzzle."',
+    quoteAttr: '— Sarah T., Sec 4',
+    paragraphs: [
+      'When Sarah first joined A-Worthy, she struggled most with inference questions and summary writing. Her answers were vague and lacked the precision examiners look for. She would often write what she felt the passage meant rather than what the text actually supported.',
+      'Through the CASE Method, Sarah learned to treat every comprehension passage like a legal brief — identifying key claims, tracing the author\'s argument, and backing every answer with direct textual evidence. Her tutor worked with her weekly on structured annotation techniques that made even the trickiest inference questions approachable.',
+      'By her third month, the transformation was unmistakable. Sarah\'s summary scores jumped from 4/8 to 7/8 consistently, and her overall English grade moved from C5 to A2. More importantly, she developed a confidence in analytical reading that carried over to her other subjects.'
+    ],
+    milestones: [
+      { week: 'Week 2', text: 'Mastered CASE annotation technique for comprehension' },
+      { week: 'Week 6', text: 'Summary scores improved from 4/8 to 7/8' },
+      { week: 'Week 12', text: 'Achieved A2 in school preliminary examinations' }
+    ]
+  },
+  {
+    name: 'Marcus L.',
+    before: 'D7',
+    after: 'B3',
+    duration: '4 months',
+    subject: 'O-Level English',
+    quote: '"My parents couldn\'t believe the change. I went from failing English to actually looking forward to the exam."',
+    quoteAttr: '— Marcus L., Sec 4',
+    paragraphs: [
+      'Marcus came to A-Worthy with a D7 in English and very little confidence. His compositions were disorganised, his vocabulary limited, and he often ran out of time during exams. His parents were worried that English would pull down his entire L1R5 score.',
+      'His tutor started by rebuilding Marcus\'s fundamentals: sentence construction, paragraph organisation, and time management. The CASE Method gave Marcus a repeatable structure for both composition and comprehension — instead of staring at a blank page, he had a clear framework to follow every time.',
+      'Over four months, Marcus progressed steadily. His compositions went from rambling narratives to tightly structured essays with clear topic sentences and supporting evidence. His reading speed improved as he learned to identify question types quickly. By the end, Marcus achieved a B3 — a jump of four grades that opened up his JC options.'
+    ],
+    milestones: [
+      { week: 'Week 3', text: 'Built structured composition framework using CASE' },
+      { week: 'Week 8', text: 'Reading speed and comprehension accuracy doubled' },
+      { week: 'Week 16', text: 'Jumped from D7 to B3 in O-Level English' }
+    ]
+  },
+  {
+    name: 'Priya K.',
+    before: 'C6',
+    after: 'A1',
+    duration: '5 months',
+    subject: 'O-Level English',
+    quote: '"The CASE Method didn\'t just help me in English — it changed how I think about every subject."',
+    quoteAttr: '— Priya K., Sec 4',
+    paragraphs: [
+      'Priya was a diligent student who worked hard but couldn\'t seem to break past the C grade barrier. She understood the content but struggled to express her ideas with the sophistication that A-grade answers require. Her oral communication scores were also pulling her down.',
+      'At A-Worthy, Priya\'s tutor identified that her main challenge was analytical depth. She would describe what a passage said but rarely explored why the author made specific choices. The CASE Method taught her to evaluate language, tone, and rhetorical strategies — skills that transformed both her written and oral responses.',
+      'The breakthrough came in month three when Priya scored her first A for a timed essay. From there, her confidence snowballed. She began volunteering for oral practice sessions, and her spoken English improved dramatically. By the O-Level exam, Priya achieved an A1 — the top grade — a result that surprised even her school teachers.'
+    ],
+    milestones: [
+      { week: 'Week 4', text: 'Developed analytical vocabulary for language evaluation' },
+      { week: 'Week 12', text: 'Scored first A grade in timed essay practice' },
+      { week: 'Week 20', text: 'Achieved A1 in O-Level English examination' }
+    ]
+  },
+  {
+    name: 'Wei Jie C.',
+    before: 'B4',
+    after: 'A2',
+    duration: '2 months',
+    subject: 'O-Level English',
+    quote: '"I was so close to an A but couldn\'t figure out what was missing. A-Worthy showed me exactly what examiners want."',
+    quoteAttr: '— Wei Jie\'s mother',
+    paragraphs: [
+      'Wei Jie was already a competent English student with a B4, but his family felt he had the potential for a distinction. His school teachers praised his effort but couldn\'t pinpoint why his answers consistently fell just short of the A grade.',
+      'His A-Worthy tutor quickly identified the gap: Wei Jie\'s answers were accurate but lacked the evaluative depth that distinguishes A-grade responses. He was answering what the text said but not engaging with how and why it was effective. Two targeted adjustments — adding evaluative commentary to comprehension answers and strengthening his essay conclusions — made an immediate difference.',
+      'In just two months of focused work, Wei Jie\'s grades crossed the A threshold. His comprehension scores improved by 8 marks on average, and his compositions gained the analytical edge they had been missing. He achieved an A2 in the O-Level exam, proving that sometimes the difference between good and excellent is a matter of technique, not effort.'
+    ],
+    milestones: [
+      { week: 'Week 1', text: 'Diagnostic identified evaluative depth as key gap' },
+      { week: 'Week 4', text: 'Comprehension scores improved by 8 marks on average' },
+      { week: 'Week 8', text: 'Achieved A2 — crossed into distinction territory' }
+    ]
+  }
+];
+---
+
+<BaseLayout title="Success Stories | A-Worthy Student Transformations" description="Read how A-Worthy students transformed their O-Level English grades through the CASE Method. Real stories from Sarah, Marcus, Priya, and Wei Jie.">
+  <Header slot="header" />
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">Success Stories</span>
+      <h1>Real students, real transformations</h1>
+      <p class="hero-subtitle">Every grade improvement starts with the right method. Here are four students who proved it.</p>
+    </div>
+  </section>
+
+  <!-- ===== STORIES ===== -->
+  <section class="section stories-section">
+    <div class="container">
+      {stories.map((story, i) => (
+        <article class="story-card" data-animate="reveal-up" data-animate-delay={String(i % 2)}>
+          <div class="story-header">
+            <div class="story-grade-change">
+              <span class="grade grade-before">{story.before}</span>
+              <span class="grade-arrow" aria-label="to">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+              <span class="grade grade-after">{story.after}</span>
+            </div>
+            <div class="story-meta">
+              <h2 class="story-name">{story.name}</h2>
+              <span class="story-subject">{story.subject}</span>
+              <span class="story-duration-badge">{story.duration}</span>
+            </div>
+          </div>
+
+          <div class="story-body">
+            {story.paragraphs.map((p: string) => (
+              <p>{p}</p>
+            ))}
+          </div>
+
+          <div class="story-timeline">
+            <h3 class="timeline-heading">Key Milestones</h3>
+            <div class="timeline">
+              {story.milestones.map((m: { week: string; text: string }) => (
+                <div class="timeline-item">
+                  <span class="timeline-marker"></span>
+                  <div class="timeline-content">
+                    <span class="timeline-week">{m.week}</span>
+                    <span class="timeline-text">{m.text}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <blockquote class="story-quote">
+            <p>{story.quote}</p>
+            <cite>{story.quoteAttr}</cite>
+          </blockquote>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section cta-section" data-animate="reveal-up">
+    <div class="container" style="text-align: center; max-width: 640px;">
+      <span class="eyebrow">Your Turn</span>
+      <h2 class="section-heading">Your child could be next</h2>
+      <p class="cta-desc">Every success story started with a free diagnostic assessment. Book one today and discover your child&rsquo;s potential.</p>
+      <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .hero {
+    padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background: var(--bg-secondary);
+  }
+  .hero-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 var(--page-padding);
+  }
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 200;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ===== STORY CARDS ===== */
+  .stories-section {
+    background: var(--bg-primary);
+  }
+  .story-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .story-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .story-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .story-grade-change {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+  .grade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .grade-before {
+    background: rgba(220, 80, 80, 0.1);
+    color: #c0392b;
+    border: 1.5px solid rgba(220, 80, 80, 0.25);
+  }
+  .grade-after {
+    background: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+    border: 1.5px solid rgba(39, 174, 96, 0.25);
+  }
+  :global([data-theme="dark"]) .grade-before {
+    background: rgba(220, 80, 80, 0.15);
+    color: #e74c3c;
+    border-color: rgba(220, 80, 80, 0.3);
+  }
+  :global([data-theme="dark"]) .grade-after {
+    background: rgba(39, 174, 96, 0.15);
+    color: #2ecc71;
+    border-color: rgba(39, 174, 96, 0.3);
+  }
+  .grade-arrow {
+    display: flex;
+    align-items: center;
+  }
+
+  .story-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .story-name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .story-subject {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .story-duration-badge {
+    display: inline-block;
+    width: fit-content;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.1);
+    border: 1px solid rgba(212, 133, 58, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-top: 0.25rem;
+  }
+
+  /* Body */
+  .story-body p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+  .story-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Timeline */
+  .story-timeline {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+  .timeline-heading {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 4px;
+    bottom: 4px;
+    width: 1px;
+    background: var(--border-color);
+  }
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    position: relative;
+  }
+  .timeline-marker {
+    position: absolute;
+    left: -1.5rem;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 2px solid var(--bg-primary);
+    flex-shrink: 0;
+  }
+  .timeline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .timeline-week {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+  }
+  .timeline-text {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Quote */
+  .story-quote {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(43, 90, 140, 0.04);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+  :global([data-theme="dark"]) .story-quote {
+    background: rgba(43, 90, 140, 0.08);
+  }
+  .story-quote p {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin: 0 0 0.5rem;
+  }
+  .story-quote cite {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--bg-secondary);
+  }
+  .cta-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .story-card {
+      padding: 1.5rem;
+    }
+    .story-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .grade {
+      width: 44px;
+      height: 44px;
+      font-size: 0.95rem;
+    }
+    .story-name {
+      font-size: 1.25rem;
+    }
+    .hero {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+</style>

@@ -8,6 +8,10 @@ import '../styles/global.css';
 <BaseLayout title="O-Level English Tuition Singapore | Best Sec 1-4 English Tutor | A-Worthy" description="Looking for the best O-Level English tuition in Singapore? A-Worthy's CASE Method delivers a 90% A1-B3 rate. Small groups of 6, online via Zoom. Sec 1-4 foundation & intensive programmes. Book a free assessment." ogImage="/images/og-english.png">
   <Header slot="header" />
 
+  <nav class="sticky-toc" id="sticky-toc" aria-label="Table of contents">
+    <ul class="sticky-toc-list" id="sticky-toc-list"></ul>
+  </nav>
+
   <!-- ===== PAGE HERO ===== -->
   <section class="prog-hero">
     <div class="container">
@@ -196,6 +200,30 @@ import '../styles/global.css';
     "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT6H/month"}
   })} />
 
+  <section class="section related-section">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">Explore More</span>
+      <div class="related-links" data-animate="reveal-up">
+        <a href="/resources/" class="related-link">
+          <strong>Free Resources</strong>
+          <span>Download sample worksheets and study guides</span>
+        </a>
+        <a href="/results/" class="related-link">
+          <strong>Our Results</strong>
+          <span>See grade transformations and pass rates</span>
+        </a>
+        <a href="/blog/" class="related-link">
+          <strong>Study Tips</strong>
+          <span>Expert guides and exam strategies</span>
+        </a>
+        <a href="/success-stories/" class="related-link">
+          <strong>Success Stories</strong>
+          <span>Read how students improved their grades</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <Footer />
 </BaseLayout>
 
@@ -247,4 +275,74 @@ import '../styles/global.css';
   .prog-cta__btn--primary:hover { background: #d4632e; transform: translateY(-1px); }
   @media (max-width: 768px) { .prog-hero { padding: 6rem 0 3.5rem; } .prog-nav__inner { gap: 1rem; } .card-grid--2 { grid-template-columns: 1fr; } .prog-card { padding: 1.5rem; } }
   @media (max-width: 480px) { .prog-hero__heading { font-size: 1.8rem; } .prog-nav__inner { gap: 0.6rem; } .prog-nav__link { font-size: 0.65rem; } .prog-cta__actions { flex-direction: column; align-items: center; } .prog-cta__btn { width: 100%; text-align: center; } }
+
+  /* ===== STICKY TOC ===== */
+  .sticky-toc {
+    position: fixed;
+    top: calc(var(--header-height) + 1rem);
+    right: 1.5rem;
+    z-index: 50;
+    max-width: 180px;
+    display: none;
+  }
+  @media (min-width: 1280px) {
+    .sticky-toc { display: block; }
+  }
+  .sticky-toc-list {
+    list-style: none;
+    padding: 0;
+    border-left: 2px solid var(--border-color);
+  }
+  .sticky-toc-item {
+    padding: 0.35rem 0 0.35rem 1rem;
+  }
+  .sticky-toc-link {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    display: block;
+  }
+  .sticky-toc-link:hover, .sticky-toc-link.is-active {
+    color: var(--color-accent);
+  }
+  .sticky-toc-item.is-active {
+    border-left: 2px solid var(--color-accent);
+    margin-left: -2px;
+  }
 </style>
+
+<script is:inline>
+(function(){
+  var toc = document.getElementById('sticky-toc-list');
+  if (!toc) return;
+  var sections = document.querySelectorAll('section[id]');
+  sections.forEach(function(s) {
+    var heading = s.querySelector('h2, h1');
+    if (!heading) return;
+    var li = document.createElement('li');
+    li.className = 'sticky-toc-item';
+    var a = document.createElement('a');
+    a.className = 'sticky-toc-link';
+    a.href = '#' + s.id;
+    a.textContent = heading.textContent.substring(0, 30) + (heading.textContent.length > 30 ? '…' : '');
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+
+  if (!toc.children.length) { document.getElementById('sticky-toc').style.display = 'none'; return; }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        toc.querySelectorAll('.sticky-toc-item').forEach(function(li) { li.classList.remove('is-active'); });
+        toc.querySelectorAll('.sticky-toc-link').forEach(function(a) { a.classList.remove('is-active'); });
+        var link = toc.querySelector('a[href="#' + entry.target.id + '"]');
+        if (link) { link.classList.add('is-active'); link.parentElement.classList.add('is-active'); }
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '-20% 0px -60% 0px' });
+  sections.forEach(function(s) { observer.observe(s); });
+})();
+</script>

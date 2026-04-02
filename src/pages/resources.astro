@@ -322,6 +322,110 @@ const categories = ["All", "English", "Exam Prep", "Study Tips"];
   });
 </script>
 
+<script is:inline>
+(function(){
+  // Gate resource downloads behind email
+  var cards = document.querySelectorAll('.vault-card');
+  cards.forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      if (localStorage.getItem('resource-email')) return; // Already captured
+      e.preventDefault();
+      var url = card.getAttribute('href');
+      var overlay = document.createElement('div');
+      overlay.className = 'resource-gate-overlay';
+      overlay.innerHTML = '<div class="resource-gate">' +
+        '<button class="resource-gate-close" aria-label="Close">&times;</button>' +
+        '<h4>Enter your email to access free resources</h4>' +
+        '<p>Get instant access to all sample PDFs and future resource updates.</p>' +
+        '<form class="resource-gate-form">' +
+        '<input type="email" placeholder="Your email address" required />' +
+        '<button type="submit" class="btn btn-accent" style="width:100%">Access Resource</button>' +
+        '</form></div>';
+      document.body.appendChild(overlay);
+      document.body.style.overflow = 'hidden';
+
+      overlay.querySelector('.resource-gate-close').addEventListener('click', function() {
+        overlay.remove();
+        document.body.style.overflow = '';
+      });
+      overlay.addEventListener('click', function(ev) {
+        if (ev.target === overlay) { overlay.remove(); document.body.style.overflow = ''; }
+      });
+      overlay.querySelector('form').addEventListener('submit', function(ev) {
+        ev.preventDefault();
+        var email = overlay.querySelector('input').value;
+        if (email) {
+          localStorage.setItem('resource-email', email);
+          overlay.remove();
+          document.body.style.overflow = '';
+          window.open(url, '_blank');
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+  .resource-gate-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+  }
+  .resource-gate {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 380px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .resource-gate-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .resource-gate h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .resource-gate p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .resource-gate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .resource-gate-form input {
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+  }
+</style>
+
 <style>
   /* Uses global design tokens from global.css */
 

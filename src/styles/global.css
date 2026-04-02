@@ -925,6 +925,20 @@ label {
   }
 }
 
+/* ─── CTA Button Ripple Effect ─── */
+.btn-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(255,255,255,0.3) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.btn-accent:active::before {
+  opacity: 1;
+}
+
 /* Dot pattern backgrounds removed for cinematic look */
 
 /* ─── Back to Top Button ─── */
