@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Parent Portal | A-Worthy Tuition Centre Singapore" description="Track your child's progress, view lesson summaries, and communicate with tutors through the A-Worthy Parent Portal.">
+  <Header slot="header" />
+
+  <section class="section portal-hero">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">Parent Portal</span>
+      <h1 class="portal-title" data-animate="reveal-up">Stay connected to your child&rsquo;s progress</h1>
+      <p class="portal-subtitle" data-animate="reveal-up">Monthly progress reports, lesson summaries, and direct tutor communication &mdash; everything you need to support your child&rsquo;s learning journey.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="portal-features" data-animate="reveal-up">
+        <div class="portal-feature">
+          <div class="portal-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-5"/></svg>
+          </div>
+          <h3>Progress Tracking</h3>
+          <p>Monthly reports showing grade progression, topic mastery, and areas for improvement across every component of the syllabus.</p>
+        </div>
+        <div class="portal-feature">
+          <div class="portal-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Lesson Summaries</h3>
+          <p>After every session, receive a brief summary of what was covered, your child&rsquo;s participation, and recommended practice for the week.</p>
+        </div>
+        <div class="portal-feature">
+          <div class="portal-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>Direct Messaging</h3>
+          <p>Message your child&rsquo;s tutor directly for questions about homework, upcoming assessments, or learning strategies.</p>
+        </div>
+        <div class="portal-feature">
+          <div class="portal-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Attendance &amp; Schedule</h3>
+          <p>View your child&rsquo;s attendance history, upcoming sessions, and any schedule changes or make-up lessons.</p>
+        </div>
+        <div class="portal-feature">
+          <div class="portal-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
+          <h3>Resource Library</h3>
+          <p>Access all worksheets, practice papers, and supplementary materials shared during your child&rsquo;s sessions.</p>
+        </div>
+        <div class="portal-feature">
+          <div class="portal-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Goal Setting</h3>
+          <p>Set term-by-term targets with your child&rsquo;s tutor and track progress toward specific grade goals.</p>
+        </div>
+      </div>
+
+      <div class="portal-cta" data-animate="reveal-up">
+        <div class="portal-badge">Coming Soon</div>
+        <h2>The Parent Portal is launching in Term 3, 2026</h2>
+        <p>We&rsquo;re building a dedicated platform for parents to stay informed and engaged. In the meantime, all enrolled families receive monthly progress updates via email.</p>
+        <div class="portal-actions">
+          <a href="/contact/" class="btn btn-accent">Enquire About Enrolment</a>
+          <a href="https://wa.me/6583384033" class="btn" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .portal-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+    font-weight: 200;
+    color: var(--text-primary);
+    line-height: 1.08;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+  .portal-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin-bottom: 1rem;
+  }
+  .portal-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .portal-feature {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+  .portal-feature:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212, 133, 58, 0.2);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .portal-feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(43, 90, 140, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    color: var(--color-primary);
+  }
+  .portal-feature h3 {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .portal-feature p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .portal-cta {
+    text-align: center;
+    padding: 3rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .portal-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    background: rgba(212,133,58,0.1);
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+  }
+  .portal-cta h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .portal-cta p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .portal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 768px) {
+    .portal-features { grid-template-columns: 1fr; }
+  }
+</style>

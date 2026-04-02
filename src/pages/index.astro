@@ -91,6 +91,25 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== AUDIENCE SELECTOR ===== -->
+  <section class="audience-selector" data-animate="reveal-up">
+    <div class="container">
+      <p class="audience-prompt">I am a&hellip;</p>
+      <div class="audience-options">
+        <a href="#programmes" class="audience-option audience-option--parent">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <span class="audience-label">Parent</span>
+          <span class="audience-desc">See results, testimonials &amp; pricing</span>
+        </a>
+        <a href="#method" class="audience-option audience-option--student">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          <span class="audience-label">Student</span>
+          <span class="audience-desc">See the CASE Method &amp; resources</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== STATS BAR with Story Context (#14) ===== -->
   <section class="stats-bar">
     <div class="container stats-inner">
@@ -2077,6 +2096,17 @@ import '../styles/global.css';
     height: auto;
     margin-bottom: 1rem;
   }
+
+  /* ===== AUDIENCE SELECTOR ===== */
+  .audience-selector { padding: 2rem 0; border-bottom: 1px solid var(--border-color); }
+  .audience-prompt { text-align: center; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1rem; }
+  .audience-options { display: flex; justify-content: center; gap: 1.5rem; }
+  .audience-option { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1.5rem 2.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; text-decoration: none; color: var(--text-primary); transition: all 0.3s ease; cursor: pointer; text-align: center; }
+  .audience-option:hover { border-color: var(--color-accent); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .audience-option svg { color: var(--color-accent); }
+  .audience-label { font-weight: 600; font-size: 1rem; }
+  .audience-desc { font-size: 0.8rem; color: var(--text-secondary); }
+  @media (max-width: 480px) { .audience-options { flex-direction: column; align-items: center; } .audience-option { width: 100%; max-width: 280px; } }
 
   /* ===== STATS BAR ===== */
   .stats-bar {

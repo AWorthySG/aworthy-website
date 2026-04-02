@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+---
+
+<BaseLayout title="Best O-Level English Tuition in Singapore | A-Worthy" description="Top-rated O-Level English tuition. 95% pass rate, max 6 per class, NUS Law graduate tutor. Comprehension, composition, oral & editing. Book a free assessment." ogImage="/images/og-english.png">
+  <Header slot="header" />
+
+  <section class="lp-hero">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">O-Level English Tuition</span>
+      <h1 class="lp-title" data-animate="reveal-up">Your child deserves an <strong>A for English</strong></h1>
+      <p class="lp-subtitle" data-animate="reveal-up">The CASE Method uses legal-analytical techniques to transform how students approach comprehension, composition, and oral. Small groups of 6 via Zoom.</p>
+      <div class="lp-cta-row" data-animate="reveal-up">
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+        <a href="/o-level-english/" class="btn">View Full Programme</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lp-proof">
+    <div class="container">
+      <div class="lp-stats">
+        <div class="lp-stat"><span class="lp-stat-num" data-count="95" data-count-suffix="%">0</span><span class="lp-stat-label">pass rate</span></div>
+        <div class="lp-stat"><span class="lp-stat-num">6</span><span class="lp-stat-label">max per class</span></div>
+        <div class="lp-stat"><span class="lp-stat-num" data-count="4.9">0</span><span class="lp-stat-label">Google rating</span></div>
+      </div>
+
+      <div class="lp-testimonial" data-animate="reveal-up">
+        <blockquote>&ldquo;My son&rsquo;s English went from C5 to A2 in three months. The CASE Method gave him a systematic way to approach every question.&rdquo;</blockquote>
+        <cite>&mdash; Mrs. Linda Tan, mother of Sec 4 student</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lp-features">
+    <div class="container">
+      <h2 data-animate="reveal-up">Every component covered</h2>
+      <div class="lp-features-grid" data-animate="reveal-up">
+        <div class="lp-feature">
+          <h3>Comprehension</h3>
+          <p>Decode inference, vocabulary-in-context, and summary questions with systematic techniques from legal reading.</p>
+        </div>
+        <div class="lp-feature">
+          <h3>Composition</h3>
+          <p>Master narrative, expository, argumentative, and descriptive writing with structured planning frameworks.</p>
+        </div>
+        <div class="lp-feature">
+          <h3>Oral Communication</h3>
+          <p>Build confidence for spoken interaction and stimulus-based conversation with structured response techniques.</p>
+        </div>
+        <div class="lp-feature">
+          <h3>Editing &amp; Grammar</h3>
+          <p>Systematic error-spotting drills covering the 20 most common grammar mistakes in O-Level scripts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lp-final-cta">
+    <div class="container" style="text-align:center;">
+      <h2 data-animate="reveal-up">Start your child&rsquo;s transformation</h2>
+      <p data-animate="reveal-up" style="max-width:540px;margin:0 auto 2rem;color:var(--text-secondary);">Book a free 20-minute diagnostic assessment. We&rsquo;ll identify the specific gaps holding your child back and recommend the right programme.</p>
+      <a href="/contact/" class="btn btn-accent" data-animate="reveal-up">Book Free Assessment</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .lp-hero { padding: 6rem 0 4rem; text-align: center; }
+  .lp-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 200; line-height: 1.1; color: var(--text-primary); margin-bottom: 1.25rem; }
+  .lp-title strong { color: var(--color-accent); font-weight: 200; }
+  .lp-subtitle { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem; }
+  .lp-cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .lp-stats { display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; }
+  .lp-stat { text-align: center; }
+  .lp-stat-num { display: block; font-family: var(--font-heading); font-size: 2.5rem; font-weight: 200; color: var(--color-accent); }
+  .lp-stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font-mono); }
+  .lp-testimonial { max-width: 600px; margin: 0 auto; text-align: center; }
+  .lp-testimonial blockquote { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 300; font-style: italic; color: var(--text-primary); line-height: 1.6; margin-bottom: 0.75rem; }
+  .lp-testimonial cite { font-size: 0.85rem; color: var(--text-muted); font-style: normal; }
+  .lp-features h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 400; text-align: center; margin-bottom: 2rem; }
+  .lp-features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+  .lp-feature { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.75rem; }
+  .lp-feature h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .lp-feature p { font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary); }
+  .lp-final-cta h2 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 300; margin-bottom: 0.75rem; }
+  @media (max-width: 640px) { .lp-stats { gap: 2rem; } .lp-features-grid { grid-template-columns: 1fr; } }
+</style>

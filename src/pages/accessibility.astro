@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Accessibility | A-Worthy" description="A-Worthy's commitment to web accessibility. Learn about our efforts to make our website usable for everyone.">
+  <Header slot="header" />
+
+  <section class="section">
+    <div class="container a11y-content">
+      <span class="eyebrow">Accessibility</span>
+      <h1 class="a11y-title">Accessibility Statement</h1>
+
+      <p>A-Worthy is committed to ensuring our website is accessible to all users, including those with disabilities. We strive to meet <strong>WCAG 2.2 Level AA</strong> standards.</p>
+
+      <h2>What we do</h2>
+      <ul>
+        <li>Semantic HTML with proper heading hierarchy</li>
+        <li>ARIA labels on all interactive elements</li>
+        <li>Keyboard navigation support throughout the site</li>
+        <li>Sufficient colour contrast ratios in both light and dark modes</li>
+        <li>Reduced motion support for users who prefer less animation</li>
+        <li>High contrast mode compatibility</li>
+        <li>Screen reader compatible content structure</li>
+        <li>Skip-to-content link for keyboard users</li>
+      </ul>
+
+      <h2>Known limitations</h2>
+      <p>Some PDF resources may not be fully screen-reader compatible. We are working to improve this. Our video content (when available) will include captions.</p>
+
+      <h2>Feedback</h2>
+      <p>If you encounter any accessibility barriers on our website, please <a href="/contact/">contact us</a>. We take all feedback seriously and will work to address any issues promptly.</p>
+
+      <p class="a11y-updated">This statement was last updated in April 2026.</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .a11y-content {
+    max-width: 720px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+  }
+  .a11y-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 200;
+    margin-bottom: 1.5rem;
+  }
+  .a11y-content h2 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 2rem 0 1rem;
+  }
+  .a11y-content ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+  }
+  .a11y-content li {
+    margin-bottom: 0.5rem;
+  }
+  .a11y-content a {
+    color: var(--color-accent);
+  }
+  .a11y-updated {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+</style>

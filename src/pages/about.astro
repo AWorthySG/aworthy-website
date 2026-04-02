@@ -48,6 +48,13 @@ import '../styles/global.css';
             Our students range from Secondary 1 to JC 2, joining from schools across Singapore. We teach exclusively online in small groups of six, delivering focused weekly sessions through Zoom. This format ensures every student receives the individual attention they need &mdash; while keeping tuition fees accessible for families.
           </p>
         </div>
+        <div class="video-placeholder" data-animate="reveal-up">
+          <div class="video-thumb">
+            <svg class="video-play" width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" opacity="0.3"/><polygon points="26,20 26,44 46,32" fill="currentColor" opacity="0.6"/></svg>
+            <span class="video-label">Meet our founder &mdash; 2 min intro</span>
+          </div>
+          <p class="video-caption">Hear from our founder about the CASE Method, legal-analytical teaching, and what makes A-Worthy different.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -665,4 +672,11 @@ import '../styles/global.css';
       animation: none;
     }
   }
+
+  .video-placeholder { margin-top: 2rem; }
+  .video-thumb { aspect-ratio: 16/9; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; cursor: pointer; transition: all 0.3s ease; }
+  .video-thumb:hover { border-color: var(--color-accent); background: rgba(212,133,58,0.04); }
+  .video-play { color: var(--color-accent); }
+  .video-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+  .video-caption { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem; }
 </style>

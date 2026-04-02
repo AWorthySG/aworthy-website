@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+---
+
+<BaseLayout title="The Complete Guide to Economics Essay Diagrams | A-Worthy Blog" description="Master every H2 Economics diagram for the A-Level exam. Step-by-step guide to demand-supply, market failure, AD-AS, exchange rates, and more.">
+  <Header slot="header" />
+
+  <article class="blog-post">
+    <div class="container">
+      <div class="blog-post-header">
+        <a href="/blog/" class="blog-back">&larr; Back to Blog</a>
+        <span class="blog-tag">H2 Economics</span>
+        <h1>The Complete Guide to Economics Essay Diagrams</h1>
+        <div class="blog-post-meta">
+          <time datetime="2026-03-11">11 Mar 2026</time>
+          <span>&middot;</span>
+          <span>8 min read</span>
+        </div>
+      </div>
+      <div class="blog-post-body">
+        <p>Diagrams account for up to 30% of your H2 Economics essay marks. Yet most students treat them as an afterthought &mdash; hastily sketched, poorly labelled, and disconnected from their written analysis. This guide covers every essential diagram and the common mistakes that cost marks.</p>
+
+        <h2>Why diagrams matter so much</h2>
+        <p>Cambridge examiners use diagrams as a quick signal of economic understanding. A well-drawn diagram with correct labels tells the examiner you understand the underlying model &mdash; even before they read your explanation. Conversely, a missing or incorrect diagram can cap your marks regardless of how strong your prose is.</p>
+        <p>The key principle: <strong>every diagram must be referenced in your written answer</strong>. Draw it, label it, and then explain what it shows in your text. An orphaned diagram earns no marks.</p>
+
+        <h2>Demand and supply diagrams</h2>
+        <p>The foundation of microeconomics. You will use demand-supply diagrams for market equilibrium, price controls, taxation, subsidies, and trade analysis.</p>
+        <h3>Essential elements</h3>
+        <ul>
+          <li><strong>Axes:</strong> Always label Price (P) on the vertical axis and Quantity (Q) on the horizontal axis</li>
+          <li><strong>Curves:</strong> Demand (D) slopes downward, Supply (S) slopes upward. Label each curve at the end</li>
+          <li><strong>Equilibrium:</strong> Mark the intersection point and draw dotted lines to both axes, labelling P₀ and Q₀</li>
+          <li><strong>Shifts:</strong> When showing a shift, draw the new curve (D₁ or S₁), mark the new equilibrium (P₁, Q₁), and use arrows to show direction of change</li>
+        </ul>
+        <p><strong>Common mistake:</strong> Drawing curves that cross the axes. Demand curves should not touch the quantity axis, and supply curves should not start from the origin unless specifically modelling a perfectly competitive firm.</p>
+
+        <h2>Market failure diagrams</h2>
+        <p>Market failure questions appear in almost every A-Level paper. You need diagrams for externalities, public goods, and merit/demerit goods.</p>
+        <h3>Negative externalities</h3>
+        <ul>
+          <li>Draw MPC (Marginal Private Cost) and MSC (Marginal Social Cost) curves, with MSC above MPC</li>
+          <li>The vertical distance between MPC and MSC represents the external cost (MEC)</li>
+          <li>Show the market quantity (Qm) where MPC = MPB, and the socially optimal quantity (Qs) where MSC = MSB</li>
+          <li>Shade the deadweight loss triangle between Qm and Qs</li>
+        </ul>
+        <h3>Positive externalities</h3>
+        <ul>
+          <li>Draw MPB (Marginal Private Benefit) and MSB (Marginal Social Benefit) curves, with MSB above MPB</li>
+          <li>The market under-produces at Qm; the socially optimal output is at Qs where MSB = MSC</li>
+          <li>Shade the deadweight loss of under-consumption</li>
+        </ul>
+        <p><strong>Common mistake:</strong> Forgetting to label which curve is which. Without clear labels, the examiner cannot award marks for diagram accuracy.</p>
+
+        <h2>AD-AS diagrams</h2>
+        <p>Aggregate Demand &ndash; Aggregate Supply diagrams are essential for macroeconomic policy questions, inflation analysis, and economic growth.</p>
+        <h3>Key variations</h3>
+        <ul>
+          <li><strong>Keynesian AS:</strong> Three distinct regions &mdash; horizontal (spare capacity), upward-sloping (approaching full employment), vertical (full employment). Use this for demand-side policy analysis</li>
+          <li><strong>Classical AS:</strong> Vertical LRAS at full employment output (Yf). Use this for supply-side policy analysis</li>
+          <li><strong>Demand-pull inflation:</strong> Show AD shifting right along an upward-sloping AS, with the general price level rising from GPL₀ to GPL₁</li>
+          <li><strong>Cost-push inflation:</strong> Show AS shifting left, with GPL rising and real GDP falling (stagflation)</li>
+        </ul>
+        <p><strong>Pro tip:</strong> Always label your axes as General Price Level (GPL) and Real GDP &mdash; not just &ldquo;P&rdquo; and &ldquo;Y&rdquo;. Full labels signal precision to examiners.</p>
+
+        <h2>Exchange rate diagrams</h2>
+        <p>For international trade and exchange rate policy questions, you need the forex market diagram.</p>
+        <ul>
+          <li><strong>Axes:</strong> Exchange rate (price of domestic currency in foreign currency) on the vertical axis, Quantity of domestic currency on the horizontal axis</li>
+          <li><strong>Demand for SGD:</strong> Downward-sloping (foreigners buying Singapore exports need SGD)</li>
+          <li><strong>Supply of SGD:</strong> Upward-sloping (Singaporeans buying imports supply SGD to the forex market)</li>
+          <li><strong>Appreciation:</strong> Show demand shifting right or supply shifting left &mdash; equilibrium exchange rate rises</li>
+          <li><strong>Managed float:</strong> For Singapore&rsquo;s context, show MAS intervention as a band around the equilibrium</li>
+        </ul>
+
+        <h2>Balance of payments</h2>
+        <p>While not always requiring a diagram, the J-curve effect for Marshall-Lerner condition questions needs a specific illustration:</p>
+        <ul>
+          <li>Draw time on the horizontal axis and current account balance on the vertical</li>
+          <li>Show the initial worsening of the current account after depreciation (price effect dominates)</li>
+          <li>Then show the eventual improvement as volume effects kick in (the &ldquo;J&rdquo; shape)</li>
+        </ul>
+
+        <h2>Phillips Curve</h2>
+        <p>For questions linking unemployment and inflation:</p>
+        <ul>
+          <li><strong>Short-run Phillips Curve (SRPC):</strong> Downward-sloping, showing the trade-off between inflation and unemployment</li>
+          <li><strong>Long-run Phillips Curve (LRPC):</strong> Vertical at the natural rate of unemployment</li>
+          <li>Show how expansionary policy moves the economy along the SRPC, and how expectations adjustment shifts the SRPC upward over time</li>
+        </ul>
+
+        <h2>Five rules for exam-ready diagrams</h2>
+        <ol>
+          <li><strong>Title every diagram</strong> &mdash; e.g., &ldquo;Figure 1: Market for healthcare with positive externalities&rdquo;</li>
+          <li><strong>Label both axes fully</strong> &mdash; not just letters, but what they represent</li>
+          <li><strong>Use a ruler</strong> &mdash; straight lines signal care and precision</li>
+          <li><strong>Show the change</strong> &mdash; arrows, shading, and clear before/after labels</li>
+          <li><strong>Reference in text</strong> &mdash; write &ldquo;As shown in Figure 1&hellip;&rdquo; to connect diagram to analysis</li>
+        </ol>
+
+        <p>At A-Worthy, our CASE Method teaches students to <strong>C</strong>omprehend the question, <strong>A</strong>nalyse with diagrams and theory, <strong>S</strong>tructure their response logically, and <strong>E</strong>valuate with real-world context. Diagrams are central to the &ldquo;Analyse&rdquo; step &mdash; and with systematic practice, they become second nature.</p>
+      </div>
+      <div class="blog-post-cta">
+        <h3>Ready to improve your grades?</h3>
+        <p>Book a free diagnostic assessment and see how the CASE Method can help.</p>
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+      </div>
+    </div>
+  </article>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .blog-post { padding: var(--space-3xl) 0; }
+  .blog-post-header { max-width: 720px; margin: 0 auto 3rem; }
+  .blog-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
+  .blog-back:hover { color: var(--color-accent); }
+  .blog-tag { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); display: block; margin-bottom: 0.75rem; }
+  .blog-post-header h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); font-weight: 200; line-height: 1.1; color: var(--text-primary); margin-bottom: 1rem; }
+  .blog-post-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; display: flex; gap: 0.5rem; }
+  .blog-post-body { max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.8; color: var(--text-primary); }
+  .blog-post-body h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 400; margin: 2.5rem 0 1rem; color: var(--text-primary); }
+  .blog-post-body h3 { font-family: var(--font-body); font-size: 1.15rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--text-primary); }
+  .blog-post-body p { margin-bottom: 1.25rem; }
+  .blog-post-body ul, .blog-post-body ol { margin: 1rem 0 1.5rem 1.5rem; }
+  .blog-post-body li { margin-bottom: 0.5rem; }
+  .blog-post-body strong { color: var(--text-primary); font-weight: 600; }
+  .blog-post-cta { max-width: 720px; margin: 3rem auto 0; padding: 2.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; text-align: center; }
+  .blog-post-cta h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .blog-post-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+</style>

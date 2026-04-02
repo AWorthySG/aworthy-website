@@ -29,6 +29,7 @@ import '../styles/global.css';
       <a href="#one-to-one" class="prog-nav__link">One-to-One</a>
       <a href="#syllabus" class="prog-nav__link">Syllabus Coverage</a>
       <a href="#approach" class="prog-nav__link">Our Approach</a>
+      <a href="#schedule" class="prog-nav__link">Schedule</a>
     </div>
   </nav>
 
@@ -188,6 +189,49 @@ import '../styles/global.css';
       <div class="prog-cta__actions">
         <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book Assessment</a>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== CLASS SCHEDULE ===== -->
+  <section class="prog-section" id="schedule">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">Schedule</span>
+      <h2 class="prog-section__heading" data-animate="reveal-up">Class Schedule &amp; Availability</h2>
+      <p class="prog-section__sub">All classes are online via Zoom. Limited to 6 students per class for personalised attention.</p>
+
+      <div class="schedule-table-wrap" data-animate="reveal-up">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Programme</th>
+              <th>Day &amp; Time</th>
+              <th>Duration</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>JC 1 Foundation</td>
+              <td>Saturday, 2:00 PM &ndash; 4:00 PM</td>
+              <td>2 hours</td>
+              <td><span class="slot-badge slot-badge--limited">4 slots left</span></td>
+            </tr>
+            <tr>
+              <td>JC 2 Intensive</td>
+              <td>Sunday, 10:00 AM &ndash; 12:00 PM</td>
+              <td>2 hours</td>
+              <td><span class="slot-badge slot-badge--limited">2 slots left</span></td>
+            </tr>
+            <tr>
+              <td>One-to-One</td>
+              <td>Flexible &ndash; by arrangement</td>
+              <td>1.5 hours</td>
+              <td><span class="slot-badge slot-badge--open">Available</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="schedule-note">Next intake: <strong>Term 3, July 2026</strong>. <a href="/contact/">Book a free assessment</a> to secure your slot.</p>
     </div>
   </section>
 
@@ -652,6 +696,22 @@ import '../styles/global.css';
   }
   @media (max-width: 480px) {
     .related-links { grid-template-columns: 1fr; }
+  }
+
+  .schedule-table-wrap { overflow-x: auto; margin: 2rem 0; }
+  .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .schedule-table th, .schedule-table td { padding: 1rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+  .schedule-table th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; }
+  .schedule-table td { color: var(--text-primary); }
+  .schedule-table tbody tr:hover { background: var(--bg-secondary); }
+  .slot-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-mono); }
+  .slot-badge--limited { background: rgba(212,133,58,0.12); color: var(--color-accent); }
+  .slot-badge--open { background: rgba(39,174,96,0.12); color: #27ae60; }
+  .slot-badge--full { background: rgba(231,76,60,0.12); color: #e74c3c; }
+  .schedule-note { margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary); }
+  .schedule-note a { color: var(--color-accent); text-decoration: underline; }
+  @media (max-width: 640px) {
+    .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
   }
 </style>
 
