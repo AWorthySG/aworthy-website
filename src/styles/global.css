@@ -564,23 +564,6 @@ label {
   }
 }
 
-/* ===== Skip to content (a11y) ===== */
-.skip-link {
-  position: absolute;
-  top: -100%;
-  left: var(--space-md);
-  background: var(--color-primary);
-  color: #FFF;
-  padding: var(--space-sm) var(--space-md);
-  border-radius: 4px;
-  z-index: 10000;
-  font-weight: 600;
-}
-
-.skip-link:focus {
-  top: var(--space-md);
-}
-
 /* ===== Responsive ===== */
 
 /* Phone */

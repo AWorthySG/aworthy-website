@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aworthy-v1';
+const CACHE_NAME = 'aworthy-v2';
 const OFFLINE_URL = '/404.html';
 
 const PRECACHE_URLS = [
