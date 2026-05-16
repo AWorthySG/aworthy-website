@@ -96,7 +96,7 @@ import '../styles/global.css';
             <textarea id="message" name="message" rows="5" placeholder="Tell us more about your child's learning needs..."></textarea>
           </div>
 
-          <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Send Enquiry</span></button>
+          <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit plausible-event-name=Contact+Form+Submit"><span>Send Enquiry</span></button>
 
           <div id="form-success" class="form-success" hidden>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
@@ -128,7 +128,7 @@ import '../styles/global.css';
           <div>
             <h3>Reach Us</h3>
             <ul class="contact-details">
-              <li><strong>Phone:</strong> <a href="tel:+6561234567">+65 6123 4567</a></li>
+              <li><strong>Phone:</strong> <a href="tel:+6583384033">+65 8338 4033</a></li>
               <li><strong>WhatsApp:</strong> <a href="https://wa.me/6583384033">8338 4033</a></li>
               <li><strong>Email:</strong> <a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></li>
             </ul>
@@ -162,6 +162,7 @@ import '../styles/global.css';
         <span class="eyebrow">Free Trial</span>
         <h3>Book a free trial lesson</h3>
         <p class="trial-desc">Experience the CASE Method first-hand. Select your subject and preferred timeslot &mdash; we&rsquo;ll confirm within 24 hours.</p>
+        <p class="trial-urgency"><strong>June 2026 intake:</strong> Limited slots remaining for all programmes</p>
         <form class="trial-form" action="https://formspree.io/f/xgoppwye" method="POST">
           <input type="hidden" name="_subject" value="Trial Lesson Booking" />
           <div class="form-group">
@@ -212,7 +213,7 @@ import '../styles/global.css';
               <option value="Flexible">Flexible / Discuss with me</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-accent" style="width:100%;">Book Free Trial Lesson</button>
+          <button type="submit" class="btn btn-accent plausible-event-name=Trial+Booking+Submit" style="width:100%;">Book Free Trial Lesson</button>
         </form>
       </div>
 
@@ -1057,5 +1058,13 @@ import '../styles/global.css';
   .btn-submit:disabled {
     opacity: 0.7;
     cursor: wait;
+  }
+
+  .trial-urgency {
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
   }
 </style>
