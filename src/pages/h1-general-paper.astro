@@ -29,6 +29,7 @@ import '../styles/global.css';
       <a href="#one-to-one" class="prog-nav__link">One-to-One</a>
       <a href="#syllabus" class="prog-nav__link">Syllabus Coverage</a>
       <a href="#approach" class="prog-nav__link">Our Approach</a>
+      <a href="#faq" class="prog-nav__link">FAQ</a>
       <a href="#schedule" class="prog-nav__link">Schedule</a>
     </div>
   </nav>
@@ -180,6 +181,36 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== FAQ ===== -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="faq-item" data-animate="reveal-up">
+          <summary class="faq-question">How much does GP tuition cost in Singapore?</summary>
+          <div class="faq-answer"><p>From SGD 360/month for small group classes of up to 6 students. All essay outlines, comprehension practice sets, and model answers included.</p></div>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="1">
+          <summary class="faq-question">How to score A for General Paper?</summary>
+          <div class="faq-answer"><p>Consistent practice across both Paper 1 (essay) and Paper 2 (comprehension). Build a bank of real-world examples, practise writing under timed conditions, and develop a structured approach to AQ answers.</p></div>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="2">
+          <summary class="faq-question">Is GP tuition necessary for JC students?</summary>
+          <div class="faq-answer"><p>GP is compulsory for the A-Levels and carries significant weight. Many students underestimate it because there is no fixed syllabus. Structured tuition provides the frameworks and content knowledge that self-study often lacks.</p></div>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="3">
+          <summary class="faq-question">What topics come out for GP 2026?</summary>
+          <div class="faq-answer"><p>While we cannot predict exact questions, trending themes include AI and technology ethics, climate policy, social media regulation, and inequality. Our programme covers 12 core themes with current affairs updates.</p></div>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="4">
+          <summary class="faq-question">How can I improve my GP comprehension score?</summary>
+          <div class="faq-answer"><p>Practise identifying question types (literal, inferential, evaluative), learn paraphrasing techniques, and time yourself strictly. Our CASE Method provides a systematic approach to each question type.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FREE DIAGNOSTIC ASSESSMENT CTA ===== -->
   <section class="prog-cta">
     <div class="container prog-cta__inner">
@@ -247,6 +278,38 @@ import '../styles/global.css';
     "provider": {"@type": "EducationalOrganization", "name": "A-Worthy", "url": "https://a-worthy.com"},
     "offers": {"@type": "Offer", "price": "360", "priceCurrency": "SGD", "availability": "https://schema.org/InStock"},
     "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT6H/month"}
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does GP tuition cost in Singapore?",
+        "acceptedAnswer": { "@type": "Answer", "text": "From SGD 360/month for small group classes of up to 6 students. All essay outlines, comprehension practice sets, and model answers included." }
+      },
+      {
+        "@type": "Question",
+        "name": "How to score A for General Paper?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Consistent practice across both Paper 1 (essay) and Paper 2 (comprehension). Build a bank of real-world examples, practise writing under timed conditions, and develop a structured approach to AQ answers." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is GP tuition necessary for JC students?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GP is compulsory for the A-Levels and carries significant weight. Many students underestimate it because there is no fixed syllabus. Structured tuition provides the frameworks and content knowledge that self-study often lacks." }
+      },
+      {
+        "@type": "Question",
+        "name": "What topics come out for GP 2026?",
+        "acceptedAnswer": { "@type": "Answer", "text": "While we cannot predict exact questions, trending themes include AI and technology ethics, climate policy, social media regulation, and inequality. Our programme covers 12 core themes with current affairs updates." }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I improve my GP comprehension score?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Practise identifying question types (literal, inferential, evaluative), learn paraphrasing techniques, and time yourself strictly. Our CASE Method provides a systematic approach to each question type." }
+      }
+    ]
   })} />
 
   <section class="section related-section">
@@ -731,6 +794,49 @@ import '../styles/global.css';
   .schedule-note a { color: var(--color-accent); text-decoration: underline; }
   @media (max-width: 640px) {
     .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
+    scroll-margin-top: 60px;
+  }
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 0;
+  }
+  .faq-question {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-question::after {
+    content: '+';
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    transition: transform var(--transition-fast);
+  }
+  .faq-item[open] .faq-question::after {
+    content: '\2212';
+  }
+  .faq-answer {
+    padding-top: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .faq-answer p {
+    margin: 0;
   }
 </style>
 

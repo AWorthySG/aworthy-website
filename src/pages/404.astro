@@ -32,6 +32,28 @@ import '../styles/global.css';
           <span style="color: var(--text-muted);">&middot;</span>
           <a href="/results/" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">Results</a>
         </div>
+
+        <div class="suggestions" data-animate="reveal-up">
+          <h2>You might be looking for</h2>
+          <div class="suggestion-grid">
+            <a href="/programmes/" class="suggestion-card">
+              <h3>Programmes</h3>
+              <p>O-Level English, H1 GP & H2 Economics</p>
+            </a>
+            <a href="/pricing/" class="suggestion-card">
+              <h3>Pricing</h3>
+              <p>Transparent fees from SGD 280/month</p>
+            </a>
+            <a href="/resources/" class="suggestion-card">
+              <h3>Free Resources</h3>
+              <p>Study guides, checklists & worksheets</p>
+            </a>
+            <a href="/contact/" class="suggestion-card">
+              <h3>Contact Us</h3>
+              <p>Book a free diagnostic assessment</p>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </section>
@@ -142,6 +164,42 @@ import '../styles/global.css';
   .actions .btn-secondary:hover {
     color: var(--text-primary);
     border-color: rgba(26, 42, 58, 0.2);
+  }
+
+  .suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .suggestion-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .suggestion-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .suggestion-card h3 {
+    color: var(--color-primary);
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+  }
+  .suggestion-card p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .suggestions h2 {
+    text-align: center;
+    margin-top: 3rem;
   }
 
   /* ===== VISUAL PLACEHOLDER ===== */

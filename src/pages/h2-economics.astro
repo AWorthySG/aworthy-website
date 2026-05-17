@@ -286,6 +286,38 @@ import '../styles/global.css';
     "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT6H/month"}
   })} />
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does H2 Economics tuition cost in Singapore?",
+        "acceptedAnswer": { "@type": "Answer", "text": "From SGD 360/month for small group classes of up to 6 students. Includes all materials, worksheets, and exam practice papers. No registration or hidden fees." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is H2 Economics tuition worth it?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Students who join A-Worthy's programme see an average improvement of 2 grades within one term. Our structured CASE Method ensures consistent, measurable progress rather than ad-hoc revision." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between H1 and H2 Economics?",
+        "acceptedAnswer": { "@type": "Answer", "text": "H2 Economics covers microeconomics and macroeconomics in greater depth, with a compulsory case study paper. H1 covers similar topics but at a broader level with no case study component." }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I improve my H2 Economics essays?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Focus on application over theory. Use real-world examples, draw accurate diagrams, and structure essays with clear thesis statements. Our CASE Method teaches a repeatable framework for essay excellence." }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I start H2 Economics tuition?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ideally at the start of JC1 to build strong foundations. However, students joining in JC2 can still see significant improvement with our intensive programme that targets exam-specific skills." }
+      }
+    ]
+  })} />
+
   <section class="section related-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Explore More</span>
@@ -768,6 +800,49 @@ import '../styles/global.css';
   .schedule-note a { color: var(--color-accent); text-decoration: underline; }
   @media (max-width: 640px) {
     .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
+    scroll-margin-top: 60px;
+  }
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 0;
+  }
+  .faq-question {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-question::after {
+    content: '+';
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    transition: transform var(--transition-fast);
+  }
+  .faq-item[open] .faq-question::after {
+    content: '\2212';
+  }
+  .faq-answer {
+    padding-top: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .faq-answer p {
+    margin: 0;
   }
 </style>
 

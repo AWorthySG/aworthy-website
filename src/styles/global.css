@@ -1100,3 +1100,68 @@ html {
   }
 }
 
+@media print {
+  .header,
+  .mobile-nav,
+  .footer,
+  .sticky-cta-global,
+  .whatsapp-widget,
+  .chatbot-widget,
+  .email-popup-overlay,
+  .back-to-top,
+  .scroll-progress,
+  .privacy-notice,
+  .breadcrumb {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript"]::after,
+  a[href^="tel"]::after,
+  a[href^="wa.me"]::after {
+    content: "";
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .section {
+    padding: 1rem 0;
+    break-inside: avoid;
+  }
+
+  .card, .r-card, .t-card, .programme-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  h1, h2, h3 {
+    break-after: avoid;
+    color: #000;
+  }
+}
+
