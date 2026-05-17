@@ -96,6 +96,62 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== WHY A-WORTHY COMPARISON ===== -->
+  <section class="why-section" data-animate="reveal-up">
+    <div class="container">
+      <span class="eyebrow">Why Us</span>
+      <h2 class="section-title">How A-Worthy compares</h2>
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="highlight">A-Worthy</th>
+              <th>Typical Tuition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Class Size</td>
+              <td class="highlight">Max 6 students</td>
+              <td>15-30 students</td>
+            </tr>
+            <tr>
+              <td>Format</td>
+              <td class="highlight">Live online (Zoom)</td>
+              <td>Physical centre</td>
+            </tr>
+            <tr>
+              <td>Method</td>
+              <td class="highlight">Structured CASE Method</td>
+              <td>Ad-hoc worksheets</td>
+            </tr>
+            <tr>
+              <td>Materials</td>
+              <td class="highlight">All included</td>
+              <td>Extra charges</td>
+            </tr>
+            <tr>
+              <td>Progress Tracking</td>
+              <td class="highlight">Monthly reports</td>
+              <td>End-of-term only</td>
+            </tr>
+            <tr>
+              <td>Free Resources</td>
+              <td class="highlight">16+ downloadable guides</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>Trial</td>
+              <td class="highlight">Free diagnostic assessment</td>
+              <td>Paid trial lesson</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FREE DIAGNOSTIC ASSESSMENT CTA ===== -->
   <section class="prog-cta">
     <div class="container prog-cta__inner">
@@ -475,6 +531,54 @@ import '../styles/global.css';
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+  }
+
+  /* ===== COMPARISON TABLE ===== */
+  .why-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
+  }
+  .comparison-table-wrap {
+    overflow-x: auto;
+    margin-top: 2rem;
+  }
+  .comparison-table {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .comparison-table thead th {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1rem;
+  }
+  .comparison-table .highlight {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+  .comparison-table tbody td:first-child {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .comparison-table tbody td:last-child {
+    color: var(--text-muted);
+  }
+  @media (max-width: 600px) {
+    .comparison-table {
+      font-size: 0.85rem;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem;
+    }
   }
 
   /* ===== RESPONSIVE ===== */
