@@ -99,6 +99,26 @@ import { ClientRouter } from 'astro:transitions';
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
+  <!-- BreadcrumbList Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://a-worthy.com/"
+      },
+      ...(Astro.url.pathname !== "/" ? [{
+        "@type": "ListItem",
+        "position": 2,
+        "name": title,
+        "item": `https://a-worthy.com${Astro.url.pathname}`
+      }] : [])
+    ]
+  })} />
+
   <!-- Fonts — non-render-blocking async load -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
@@ -491,55 +511,85 @@ import { ClientRouter } from 'astro:transitions';
 
     /* Privacy / Cookie Notice */
     .privacy-notice {
+      display: none;
+    }
+    .privacy-notice[hidden] {
+      display: none;
+    }
+    .privacy-notice:not([hidden]) {
+      display: block;
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(26, 42, 58, 0.95);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
+      z-index: 999;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
       padding: 1rem 1.5rem;
-      padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-      z-index: 1000;
-      display: none;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
     }
     .privacy-notice-inner {
-      max-width: 1200px;
+      max-width: var(--container-max);
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
     }
-    .privacy-notice p {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.75);
+    .privacy-notice-text strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+    }
+    .privacy-notice-text p {
       margin: 0;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
       line-height: 1.5;
     }
-    .privacy-notice-btn {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      background: var(--color-accent);
-      color: #1A2A3A;
-      border: none;
+    .privacy-notice-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+    .privacy-btn {
       padding: 0.5rem 1.25rem;
+      border-radius: var(--border-radius);
+      font-size: 0.8rem;
+      font-weight: 600;
       cursor: pointer;
+      text-decoration: none;
       white-space: nowrap;
-      transition: background 0.2s ease;
+      border: none;
+      transition: background var(--transition-fast);
     }
-    .privacy-notice-btn:hover {
-      background: #e8a060;
+    .privacy-btn--accept {
+      background: var(--color-primary);
+      color: #fff;
     }
-    @media (max-width: 640px) {
+    .privacy-btn--accept:hover {
+      background: var(--color-accent);
+    }
+    .privacy-btn--learn {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+    }
+    .privacy-btn--learn:hover {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+    @media (max-width: 600px) {
       .privacy-notice-inner {
         flex-direction: column;
         text-align: center;
-        gap: 0.75rem;
+      }
+      .privacy-notice-actions {
+        width: 100%;
+        justify-content: center;
       }
     }
 
@@ -699,10 +749,16 @@ import { ClientRouter } from 'astro:transitions';
   </script>
 
   <!-- Privacy / Cookie Notice -->
-  <div class="privacy-notice" id="privacy-notice">
+  <div class="privacy-notice" id="privacy-notice" hidden>
     <div class="privacy-notice-inner">
-      <p>We use cookies and analytics to improve your experience. By continuing to use this site, you agree to our use of cookies.</p>
-      <button class="privacy-notice-btn" id="privacy-accept">Got it</button>
+      <div class="privacy-notice-text">
+        <strong>Your privacy matters</strong>
+        <p>We use analytics (Plausible) to understand how visitors use our site and improve your experience. We do not use tracking cookies or share data with third parties. By continuing, you agree to our use of privacy-respecting analytics.</p>
+      </div>
+      <div class="privacy-notice-actions">
+        <button class="privacy-btn privacy-btn--accept" id="privacy-accept">Accept</button>
+        <a href="/accessibility/" class="privacy-btn privacy-btn--learn">Learn More</a>
+      </div>
     </div>
   </div>
 
@@ -712,13 +768,12 @@ import { ClientRouter } from 'astro:transitions';
     var btn = document.getElementById('privacy-accept');
     if (!notice || !btn) return;
     if (localStorage.getItem('privacy-accepted')) {
-      notice.style.display = 'none';
       return;
     }
-    notice.style.display = 'block';
+    notice.hidden = false;
     btn.addEventListener('click', function() {
       localStorage.setItem('privacy-accepted', '1');
-      notice.style.display = 'none';
+      notice.hidden = true;
     });
   })();
   </script>
