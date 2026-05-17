@@ -17,7 +17,7 @@ import '../../styles/global.css';
         <div class="blog-post-meta">
           <time datetime="2026-03-18">18 Mar 2026</time>
           <span>&middot;</span>
-          <span>6 min read</span>
+          <span class="blog-reading-time">6 min read</span>
         </div>
       </div>
       <div class="blog-post-body">
@@ -86,6 +86,44 @@ import '../../styles/global.css';
       </div>
     </div>
   </article>
+
+  <section class="blog-related" data-animate="reveal-up">
+    <div class="container">
+      <h2>Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/gp-essay-examples/" class="blog-related-card">
+          <h3>GP Essay Examples: 5 Model Introductions That Score</h3>
+          <p>Study 5 model GP essay introductions across Technology, Environment, Media, Globalisation, and Arts topics.</p>
+        </a>
+        <a href="/blog/why-smart-students-fail/" class="blog-related-card">
+          <h3>Why Smart Students Still Fail — And How to Fix It</h3>
+          <p>Understand why intelligent students underperform in exams and the systematic approach to bridge the knowledge-performance gap.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Structure a GP Essay for Band 3 and Above",
+    "description": "Learn the GP essay structure that consistently produces Band 3 and above results. Covers thesis statements, PEEL paragraphs, counter-arguments, and conclusion techniques.",
+    "author": {
+      "@type": "Organization",
+      "name": "A-Worthy"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com"
+    },
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/gp-essay-structure/"
+    }
+  })} />
 
   <Footer slot="footer" />
 </BaseLayout>

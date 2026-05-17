@@ -17,7 +17,7 @@ import '../../styles/global.css';
         <div class="blog-post-meta">
           <time datetime="2026-02-18">18 Feb 2026</time>
           <span>&middot;</span>
-          <span>8 min read</span>
+          <span class="blog-reading-time">8 min read</span>
         </div>
       </div>
       <div class="blog-post-body">
@@ -123,6 +123,44 @@ import '../../styles/global.css';
     </div>
   </article>
 
+  <section class="blog-related" data-animate="reveal-up">
+    <div class="container">
+      <h2>Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/why-smart-students-fail/" class="blog-related-card">
+          <h3>Why Smart Students Still Fail — And How to Fix It</h3>
+          <p>Understand why intelligent students underperform in exams and the systematic approach to bridge the knowledge-performance gap.</p>
+        </a>
+        <a href="/blog/economics-essay-diagrams/" class="blog-related-card">
+          <h3>The Complete Guide to Economics Essay Diagrams</h3>
+          <p>Master every H2 Economics diagram for the A-Level exam with step-by-step instructions and common mistakes to avoid.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The 3-Month Exam Prep Timeline That Actually Works",
+    "description": "A week-by-week exam preparation plan for O-Level English and A-Level GP/Economics. Structured revision timeline from content review to exam simulation.",
+    "author": {
+      "@type": "Organization",
+      "name": "A-Worthy"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com"
+    },
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/exam-prep-timeline/"
+    }
+  })} />
+
   <Footer slot="footer" />
 </BaseLayout>
 
@@ -144,4 +182,12 @@ import '../../styles/global.css';
   .blog-post-cta { max-width: 720px; margin: 3rem auto 0; padding: 2.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; text-align: center; }
   .blog-post-cta h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.5rem; }
   .blog-post-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+  .blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+  .blog-related { padding: var(--space-2xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--space-2xl); }
+  .blog-related h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+  .blog-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .blog-related-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; text-decoration: none; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+  .blog-related-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .blog-related-card h3 { color: var(--color-primary); font-size: 1rem; margin: 0 0 0.5rem; }
+  .blog-related-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.5; }
 </style>

@@ -17,7 +17,7 @@ import '../../styles/global.css';
         <div class="blog-post-meta">
           <time datetime="2026-03-25">25 Mar 2026</time>
           <span>&middot;</span>
-          <span>6 min read</span>
+          <span class="blog-reading-time">6 min read</span>
         </div>
       </div>
       <div class="blog-post-body">
@@ -81,6 +81,44 @@ import '../../styles/global.css';
     </div>
   </article>
 
+  <section class="blog-related" data-animate="reveal-up">
+    <div class="container">
+      <h2>Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/situational-writing-guide/" class="blog-related-card">
+          <h3>Situational Writing: The Format Guide Every Student Needs</h3>
+          <p>Master every situational writing format for O-Level English — formal letters, emails, reports, and speeches.</p>
+        </a>
+        <a href="/blog/o-level-english-tips-2026/" class="blog-related-card">
+          <h3>10 O-Level English Tips to Score A1 in 2026</h3>
+          <p>Proven strategies covering Paper 1 editing, situational writing, continuous writing, and Paper 2 comprehension.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "10 Comprehension Techniques That Top Students Use",
+    "description": "Discover the 10 comprehension techniques that top O-Level English students use to score A1. Practical strategies for inference, vocabulary-in-context, and summary questions.",
+    "author": {
+      "@type": "Organization",
+      "name": "A-Worthy"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com"
+    },
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/comprehension-techniques/"
+    }
+  })} />
+
   <Footer slot="footer" />
 </BaseLayout>
 
@@ -102,4 +140,12 @@ import '../../styles/global.css';
   .blog-post-cta { max-width: 720px; margin: 3rem auto 0; padding: 2.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; text-align: center; }
   .blog-post-cta h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.5rem; }
   .blog-post-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+  .blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+  .blog-related { padding: var(--space-2xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--space-2xl); }
+  .blog-related h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+  .blog-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .blog-related-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; text-decoration: none; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+  .blog-related-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .blog-related-card h3 { color: var(--color-primary); font-size: 1rem; margin: 0 0 0.5rem; }
+  .blog-related-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.5; }
 </style>

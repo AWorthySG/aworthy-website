@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://a-worthy.com/sitemap-index.xml
+
+# Disallow crawling of sample PDFs (gated content)
+Disallow: /docs/samples/

@@ -976,6 +976,15 @@ label {
   }
 }
 
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 5rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
 @media (max-width: 640px) {
   .back-to-top {
     bottom: calc(5rem + var(--safe-area-bottom));
