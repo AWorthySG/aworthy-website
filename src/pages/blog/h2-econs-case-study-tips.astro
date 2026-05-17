@@ -17,7 +17,7 @@ import '../../styles/global.css';
         <div class="blog-post-meta">
           <time datetime="2026-05-08">8 May 2026</time>
           <span>&middot;</span>
-          <span>7 min read</span>
+          <span class="blog-reading-time">7 min read</span>
         </div>
       </div>
       <div class="blog-post-body">
@@ -111,6 +111,44 @@ import '../../styles/global.css';
     </div>
   </article>
 
+  <section class="blog-related" data-animate="reveal-up">
+    <div class="container">
+      <h2>Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/economics-essay-diagrams/" class="blog-related-card">
+          <h3>The Complete Guide to Economics Essay Diagrams</h3>
+          <p>Master every H2 Economics diagram for the A-Level exam with step-by-step instructions and common mistakes to avoid.</p>
+        </a>
+        <a href="/blog/exam-prep-timeline/" class="blog-related-card">
+          <h3>The 3-Month Exam Prep Timeline That Actually Works</h3>
+          <p>A week-by-week revision plan from content review to exam simulation that builds confidence systematically.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "H2 Economics Case Study: How to Score L3 Every Time",
+    "description": "Step-by-step approach to H2 Economics case study questions. Master extract analysis, data interpretation, diagram integration, and evaluation to consistently score L3.",
+    "author": {
+      "@type": "Organization",
+      "name": "A-Worthy"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com"
+    },
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/h2-econs-case-study-tips/"
+    }
+  })} />
+
   <Footer slot="footer" />
 </BaseLayout>
 
@@ -135,4 +173,12 @@ import '../../styles/global.css';
   .cta-secondary { font-size: 0.85rem; margin-top: -0.5rem; }
   .cta-secondary a { color: var(--color-accent); text-decoration: underline; }
   .cta-secondary a:hover { color: var(--color-accent-light); }
+  .blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+  .blog-related { padding: var(--space-2xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--space-2xl); }
+  .blog-related h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+  .blog-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .blog-related-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; text-decoration: none; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+  .blog-related-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .blog-related-card h3 { color: var(--color-primary); font-size: 1rem; margin: 0 0 0.5rem; }
+  .blog-related-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.5; }
 </style>

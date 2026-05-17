@@ -17,7 +17,7 @@ import '../../styles/global.css';
         <div class="blog-post-meta">
           <time datetime="2026-05-10">10 May 2026</time>
           <span>&middot;</span>
-          <span>6 min read</span>
+          <span class="blog-reading-time">6 min read</span>
         </div>
       </div>
       <div class="blog-post-body">
@@ -114,6 +114,44 @@ import '../../styles/global.css';
     </div>
   </article>
 
+  <section class="blog-related" data-animate="reveal-up">
+    <div class="container">
+      <h2>Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/gp-essay-structure/" class="blog-related-card">
+          <h3>How to Structure a GP Essay for Band 3 and Above</h3>
+          <p>The essay framework covering thesis statements, PEEL paragraphs, counter-arguments, and conclusion techniques.</p>
+        </a>
+        <a href="/blog/why-smart-students-fail/" class="blog-related-card">
+          <h3>Why Smart Students Still Fail — And How to Fix It</h3>
+          <p>Understand why intelligent students underperform in exams and the systematic approach to bridge the knowledge-performance gap.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "GP Essay Examples: 5 Model Introductions That Score",
+    "description": "Study 5 model GP essay introductions across Technology, Environment, Media, Globalisation, and Arts. Learn the techniques that earn Band 3 and above in H1 General Paper.",
+    "author": {
+      "@type": "Organization",
+      "name": "A-Worthy"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com"
+    },
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/gp-essay-examples/"
+    }
+  })} />
+
   <Footer slot="footer" />
 </BaseLayout>
 
@@ -141,4 +179,12 @@ import '../../styles/global.css';
   .cta-secondary { font-size: 0.85rem; margin-top: -0.5rem; }
   .cta-secondary a { color: var(--color-accent); text-decoration: underline; }
   .cta-secondary a:hover { color: var(--color-accent-light); }
+  .blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+  .blog-related { padding: var(--space-2xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--space-2xl); }
+  .blog-related h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+  .blog-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .blog-related-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; text-decoration: none; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+  .blog-related-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .blog-related-card h3 { color: var(--color-primary); font-size: 1rem; margin: 0 0 0.5rem; }
+  .blog-related-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.5; }
 </style>

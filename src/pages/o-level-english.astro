@@ -563,6 +563,72 @@ import '../styles/global.css';
   .faq-answer p {
     margin: 0;
   }
+
+  /* ===== RECOMMENDED READING ===== */
+  .recommended-reading {
+    padding: var(--space-2xl) 0;
+  }
+  .reading-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .reading-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+  .reading-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+  }
+  .reading-card h3 {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin: 0;
+    font-weight: 600;
+  }
+  .reading-card-arrow {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  /* ===== SUBJECT TESTIMONIALS ===== */
+  .subject-testimonials {
+    padding: var(--space-xl) 0;
+  }
+  .subject-testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .subject-quote {
+    background: var(--bg-card);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 0;
+  }
+  .subject-quote p {
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0 0 0.75rem;
+  }
+  .subject-quote cite {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-style: normal;
+  }
 </style>
 
 <script is:inline>

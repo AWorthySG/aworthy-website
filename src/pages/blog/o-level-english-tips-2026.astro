@@ -17,7 +17,7 @@ import '../../styles/global.css';
         <div class="blog-post-meta">
           <time datetime="2026-05-15">15 May 2026</time>
           <span>&middot;</span>
-          <span>7 min read</span>
+          <span class="blog-reading-time">7 min read</span>
         </div>
       </div>
       <div class="blog-post-body">
@@ -84,6 +84,44 @@ import '../../styles/global.css';
     </div>
   </article>
 
+  <section class="blog-related" data-animate="reveal-up">
+    <div class="container">
+      <h2>Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/comprehension-techniques/" class="blog-related-card">
+          <h3>10 Comprehension Techniques That Top Students Use</h3>
+          <p>Practical strategies for inference, vocabulary-in-context, and summary questions that top O-Level students use.</p>
+        </a>
+        <a href="/blog/situational-writing-guide/" class="blog-related-card">
+          <h3>Situational Writing: The Format Guide Every Student Needs</h3>
+          <p>Complete guide to formal letters, emails, reports, and speeches with format requirements and examples.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "10 O-Level English Tips to Score A1 in 2026",
+    "description": "Proven O-Level English tips for 2026 covering Paper 1 editing, situational writing, continuous writing, and Paper 2 comprehension and summary. Actionable strategies from the CASE Method.",
+    "author": {
+      "@type": "Organization",
+      "name": "A-Worthy"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com"
+    },
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/o-level-english-tips-2026/"
+    }
+  })} />
+
   <Footer slot="footer" />
 </BaseLayout>
 
@@ -108,4 +146,12 @@ import '../../styles/global.css';
   .cta-secondary { font-size: 0.85rem; margin-top: -0.5rem; }
   .cta-secondary a { color: var(--color-accent); text-decoration: underline; }
   .cta-secondary a:hover { color: var(--color-accent-light); }
+  .blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+  .blog-related { padding: var(--space-2xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--space-2xl); }
+  .blog-related h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+  .blog-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .blog-related-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; text-decoration: none; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+  .blog-related-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .blog-related-card h3 { color: var(--color-primary); font-size: 1rem; margin: 0 0 0.5rem; }
+  .blog-related-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.5; }
 </style>
