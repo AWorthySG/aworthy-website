@@ -180,6 +180,36 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== FAQ ===== -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="faq-item" data-animate="reveal-up">
+          <summary class="faq-question">How much does O-Level English tuition cost in Singapore?</summary>
+          <div class="faq-answer"><p>From SGD 280/month for small group classes of up to 6 students. Includes all worksheets, model compositions, and comprehension practice papers.</p></div>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="1">
+          <summary class="faq-question">How to score A1 for O-Level English?</summary>
+          <div class="faq-answer"><p>Master all four components &mdash; editing, situational writing, continuous writing, and comprehension. Focus on grammar accuracy, vocabulary range, and structured argumentation. Our CASE Method builds these skills systematically.</p></div>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="2">
+          <summary class="faq-question">Is English tuition necessary for O-Levels?</summary>
+          <div class="faq-answer"><p>English is the most heavily weighted O-Level subject and affects eligibility for JC and polytechnic courses. Even students scoring B3-B4 benefit from structured practice to push into the A1-A2 range.</p></div>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="3">
+          <summary class="faq-question">What is tested in O-Level English Paper 1?</summary>
+          <div class="faq-answer"><p>Paper 1 has three sections &mdash; editing (10 marks), situational writing (30 marks), and continuous writing (30 marks). Each requires different skills and strategies, which our programme covers systematically.</p></div>
+        </details>
+        <details class="faq-item" data-animate="reveal-up" data-animate-delay="4">
+          <summary class="faq-question">When should I start O-Level English tuition?</summary>
+          <div class="faq-answer"><p>Sec 3 is ideal to build a strong foundation before the exam year. Sec 4 students can still improve significantly with our intensive programme that focuses on exam technique and targeted practice.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FREE DIAGNOSTIC ASSESSMENT CTA ===== -->
   <section class="prog-cta">
     <div class="container prog-cta__inner">
@@ -253,6 +283,38 @@ import '../styles/global.css';
     "provider": {"@type": "EducationalOrganization", "name": "A-Worthy", "url": "https://a-worthy.com"},
     "offers": {"@type": "Offer", "price": "280", "priceCurrency": "SGD", "availability": "https://schema.org/InStock"},
     "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT6H/month"}
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does O-Level English tuition cost in Singapore?",
+        "acceptedAnswer": { "@type": "Answer", "text": "From SGD 280/month for small group classes of up to 6 students. Includes all worksheets, model compositions, and comprehension practice papers." }
+      },
+      {
+        "@type": "Question",
+        "name": "How to score A1 for O-Level English?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Master all four components — editing, situational writing, continuous writing, and comprehension. Focus on grammar accuracy, vocabulary range, and structured argumentation. Our CASE Method builds these skills systematically." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is English tuition necessary for O-Levels?",
+        "acceptedAnswer": { "@type": "Answer", "text": "English is the most heavily weighted O-Level subject and affects eligibility for JC and polytechnic courses. Even students scoring B3-B4 benefit from structured practice to push into the A1-A2 range." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is tested in O-Level English Paper 1?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Paper 1 has three sections — editing (10 marks), situational writing (30 marks), and continuous writing (30 marks). Each requires different skills and strategies, which our programme covers systematically." }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I start O-Level English tuition?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sec 3 is ideal to build a strong foundation before the exam year. Sec 4 students can still improve significantly with our intensive programme that focuses on exam technique and targeted practice." }
+      }
+    ]
   })} />
 
   <section class="section related-section">
@@ -419,6 +481,49 @@ import '../styles/global.css';
   .schedule-note a { color: var(--color-accent); text-decoration: underline; }
   @media (max-width: 640px) {
     .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
+  }
+
+  /* ===== FAQ ===== */
+  .faq-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
+    scroll-margin-top: 60px;
+  }
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 0;
+  }
+  .faq-question {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-question::after {
+    content: '+';
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    transition: transform var(--transition-fast);
+  }
+  .faq-item[open] .faq-question::after {
+    content: '\2212';
+  }
+  .faq-answer {
+    padding-top: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .faq-answer p {
+    margin: 0;
   }
 </style>
 
