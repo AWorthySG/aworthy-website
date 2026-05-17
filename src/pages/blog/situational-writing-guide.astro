@@ -17,7 +17,7 @@ import '../../styles/global.css';
         <div class="blog-post-meta">
           <time datetime="2026-02-25">25 Feb 2026</time>
           <span>&middot;</span>
-          <span>7 min read</span>
+          <span class="blog-reading-time">7 min read</span>
         </div>
       </div>
       <div class="blog-post-body">
@@ -112,6 +112,44 @@ import '../../styles/global.css';
       </div>
     </div>
   </article>
+
+  <section class="blog-related" data-animate="reveal-up">
+    <div class="container">
+      <h2>Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/comprehension-techniques/" class="blog-related-card">
+          <h3>10 Comprehension Techniques That Top Students Use</h3>
+          <p>Practical strategies for inference, vocabulary-in-context, and summary questions that top O-Level students use.</p>
+        </a>
+        <a href="/blog/o-level-english-tips-2026/" class="blog-related-card">
+          <h3>10 O-Level English Tips to Score A1 in 2026</h3>
+          <p>Proven strategies covering Paper 1 editing, situational writing, continuous writing, and Paper 2 comprehension.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Situational Writing: The Format Guide Every Student Needs",
+    "description": "Master every situational writing format for O-Level English. Complete guide to formal letters, emails, reports, and speeches with format requirements and examples.",
+    "author": {
+      "@type": "Organization",
+      "name": "A-Worthy"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com"
+    },
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/situational-writing-guide/"
+    }
+  })} />
 
   <Footer slot="footer" />
 </BaseLayout>
