@@ -271,6 +271,17 @@ import '../styles/global.css';
       <h2 class="prog-section__heading" data-animate="reveal-up">Class Schedule &amp; Availability</h2>
       <p class="prog-section__sub">All classes are online via Zoom. Limited to 6 students per class for personalised attention.</p>
 
+      <div class="slots-banner" data-animate="reveal-up">
+        <div class="slots-indicator">
+          <span class="slots-dot pulse"></span>
+          <span class="slots-text"><strong>Sec 1-2 English:</strong> 4 of 6 slots remaining</span>
+        </div>
+        <div class="slots-indicator">
+          <span class="slots-dot pulse"></span>
+          <span class="slots-text"><strong>Sec 3-4 O-Level English:</strong> 2 of 6 slots remaining</span>
+        </div>
+      </div>
+
       <div class="schedule-table-wrap" data-animate="reveal-up">
         <table class="schedule-table">
           <thead>
@@ -628,6 +639,44 @@ import '../styles/global.css';
     color: var(--text-muted);
     font-size: 0.85rem;
     font-style: normal;
+  }
+
+  /* ===== SLOTS BANNER ===== */
+  .slots-banner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: rgba(212, 133, 58, 0.08);
+    border: 1px solid rgba(212, 133, 58, 0.2);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .slots-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .slots-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e74c3c;
+    flex-shrink: 0;
+  }
+  .slots-dot.pulse {
+    animation: slot-pulse 2s ease-in-out infinite;
+  }
+  @keyframes slot-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(231, 76, 60, 0); }
+  }
+  .slots-text {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+  }
+  .slots-text strong {
+    color: var(--color-accent);
   }
 </style>
 

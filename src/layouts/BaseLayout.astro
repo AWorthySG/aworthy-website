@@ -167,11 +167,28 @@ import { ClientRouter } from 'astro:transitions';
     </ol>
   </nav>
 
+  <!-- Mobile Subject Selector -->
+  <div class="subject-selector" id="subject-selector">
+    <a href="/o-level-english/" class="subject-pill">English</a>
+    <a href="/h1-general-paper/" class="subject-pill">GP</a>
+    <a href="/h2-economics/" class="subject-pill">Econs</a>
+  </div>
+
   <main id="main-content">
     <slot />
   </main>
 
   <slot name="footer" />
+
+  <!-- Exam Countdown Bar -->
+  <div class="exam-countdown" id="exam-countdown" aria-label="Exam countdown">
+    <div class="exam-countdown-inner">
+      <span class="exam-countdown-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </span>
+      <span class="exam-countdown-text" id="exam-countdown-text"></span>
+    </div>
+  </div>
 
   <!-- Global Sticky CTA Bar (#13) -->
   <div class="sticky-cta-global" id="sticky-cta-global">
@@ -647,6 +664,81 @@ import { ClientRouter } from 'astro:transitions';
       .breadcrumb-list { padding: 0 1.5rem; }
     }
 
+    /* Exam Countdown Bar */
+    .exam-countdown {
+      background: var(--color-primary);
+      color: #fff;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.03em;
+    }
+    .exam-countdown-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .exam-countdown-icon {
+      display: flex;
+      opacity: 0.8;
+    }
+    .exam-countdown-text {
+      font-weight: 500;
+    }
+    @media (max-width: 480px) {
+      .exam-countdown {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.75rem;
+      }
+    }
+
+    /* Mobile Subject Selector */
+    .subject-selector {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .subject-selector {
+        display: flex;
+        position: fixed;
+        top: calc(var(--header-height) + 4px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 90;
+        gap: 0.5rem;
+        padding: 0.4rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 999px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .subject-selector.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    .subject-pill {
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-secondary);
+      background: transparent;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    .subject-pill:hover, .subject-pill:active {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
     ::view-transition-old(root) {
       animation: fade-out 0.2s ease-out;
     }
@@ -1086,6 +1178,57 @@ import { ClientRouter } from 'astro:transitions';
       }, 400);
       body.scrollTop = body.scrollHeight;
     });
+  })();
+  </script>
+
+  <!-- Exam Countdown -->
+  <script is:inline>
+  (function() {
+    // Hide on homepage
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+      var countdown = document.getElementById('exam-countdown');
+      if (countdown) countdown.style.display = 'none';
+      return;
+    }
+    var exams = [
+      { name: 'O-Level English', date: new Date('2026-10-19') },
+      { name: 'A-Level GP', date: new Date('2026-11-09') },
+      { name: 'A-Level H2 Economics', date: new Date('2026-11-18') }
+    ];
+    var now = new Date();
+    var next = exams
+      .map(function(e) { return { name: e.name, days: Math.ceil((e.date - now) / 86400000) }; })
+      .filter(function(e) { return e.days > 0; })
+      .sort(function(a, b) { return a.days - b.days; })[0];
+    var el = document.getElementById('exam-countdown-text');
+    if (next && el) {
+      el.textContent = next.days + ' days to ' + next.name + ' — every lesson counts';
+    } else if (el) {
+      el.parentElement.parentElement.style.display = 'none';
+    }
+  })();
+  </script>
+
+  <!-- Mobile Subject Selector -->
+  <script is:inline>
+  (function() {
+    var sel = document.getElementById('subject-selector');
+    if (!sel) return;
+    // Only show on homepage
+    if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+      sel.style.display = 'none';
+      return;
+    }
+    var shown = false;
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 600 && !shown) {
+        sel.classList.add('visible');
+        shown = true;
+      } else if (window.scrollY <= 600 && shown) {
+        sel.classList.remove('visible');
+        shown = false;
+      }
+    }, { passive: true });
   })();
   </script>
 
