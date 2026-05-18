@@ -15,7 +15,7 @@ export function GET() {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>A-Worthy Blog — O-Level English, GP &amp; Economics Tips</title>
-    <description>Free study tips, exam strategies, and model answers for O-Level English, H1 General Paper, and H2 Economics from A-Worthy Singapore.</description>
+    <description>Free study tips, exam strategies, and model answers for O-Level English, H1 General Paper, and H2 Economics from A-Worthy Singapore &mdash; powered by the SHARP Method (See, Hit, Apply, Refine, Practise).</description>
     <link>https://a-worthy.com/blog/</link>
     <atom:link href="https://a-worthy.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <language>en-sg</language>
