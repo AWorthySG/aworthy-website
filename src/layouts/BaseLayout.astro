@@ -5,7 +5,7 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description = "A-Worthy is Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes of 6, proven CASE Method, 95% pass rate. Book a free assessment.", ogImage } = Astro.props;
+const { title, description = "A-Worthy is Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes of 6, paper-matched frameworks, 95% pass rate. Book a free assessment.", ogImage } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
@@ -16,7 +16,7 @@ const schemaData = {
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
   "logo": new URL('/images/logo.svg', Astro.site).toString(),
-  "description": "Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes, proven CASE Method, 95% pass rate.",
+  "description": "Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes, paper-matched frameworks, 95% pass rate.",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "SG",
@@ -1008,7 +1008,7 @@ import { ClientRouter } from 'astro:transitions';
         <div class="chatbot-options" id="chatbot-options">
           <button class="chatbot-option" data-q="pricing">How much does it cost?</button>
           <button class="chatbot-option" data-q="schedule">What are the class schedules?</button>
-          <button class="chatbot-option" data-q="method">What is the CASE Method?</button>
+          <button class="chatbot-option" data-q="method">What is the A-Worthy Method?</button>
           <button class="chatbot-option" data-q="enrol">How do I enrol?</button>
           <button class="chatbot-option" data-q="trial">Can I try a free lesson?</button>
           <button class="chatbot-option" data-q="online">Are classes online or in-person?</button>
@@ -1144,7 +1144,7 @@ import { ClientRouter } from 'astro:transitions';
     var answers = {
       pricing: 'O-Level English: SGD 280\u2013320/month. H1 GP: SGD 360\u2013400/month. H2 Economics: SGD 360\u2013400/month. 1-to-1: SGD 120\u2013140/session. <a href="/pricing/">View full pricing \u2192</a>',
       schedule: 'Classes run Mon\u2013Fri 2pm\u20139:30pm and Sat\u2013Sun 9am\u20136pm. All sessions are conducted via Zoom. <a href="/contact/">Contact us for available slots \u2192</a>',
-      method: 'The CASE Method is our proprietary 4-step system: Contextualise, Analyse, Structure, Evaluate. Adapted from legal reasoning, it teaches students how to think systematically. <a href="/#method">Learn more \u2192</a>',
+      method: 'The A-Worthy Method is paper-matched frameworks \u2014 a different framework for each paper section. The Core Move for comprehension (Anchor + Explain + Link), CAPS for summary, P-E-E-L for essays, STAMP CARD for editing, and more. Your child learns to recognise the question type, then deploys the right framework. <a href="/#method">Learn more \u2192</a>',
       enrol: 'Step 1: Book a free diagnostic assessment. Step 2: Get a personalised learning plan. Step 3: Start learning! <a href="/contact/">Book assessment \u2192</a>',
       trial: 'Yes! We offer a free diagnostic assessment for all new students. This helps us understand your child\'s needs before recommending a programme. <a href="/contact/">Book free assessment \u2192</a>',
       online: 'All classes are 100% online via Zoom Pro. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>'
