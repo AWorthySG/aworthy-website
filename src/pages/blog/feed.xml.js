@@ -7,7 +7,7 @@ export function GET() {
     { title: "Why Smart Students Still Fail Exams", slug: "why-smart-students-fail", date: "2026-04-15", description: "The gap between knowledge and exam technique, and how to bridge it." },
     { title: "Situational Writing: The Complete Format Guide", slug: "situational-writing-guide", date: "2026-04-10", description: "Format conventions for formal letter, email, report, and speech with register tips." },
     { title: "Economics Essay Diagrams: When and How to Use Them", slug: "economics-essay-diagrams", date: "2026-03-25", description: "Guide to selecting and drawing the right diagrams in H2 Economics essays." },
-    { title: "GP Essay Structure: The Framework That Gets A", slug: "gp-essay-structure", date: "2026-03-15", description: "The CASE Method framework for structuring GP essays that consistently score well." },
+    { title: "GP Essay Structure: The Framework That Gets A", slug: "gp-essay-structure", date: "2026-03-15", description: "The P-E-E-L framework for structuring GP essays that consistently score well." },
     { title: "Comprehension Techniques That Actually Work", slug: "comprehension-techniques", date: "2026-03-01", description: "Practical techniques for literal, inferential, and evaluative comprehension questions." },
   ];
 
