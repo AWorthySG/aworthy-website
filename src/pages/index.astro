@@ -1058,7 +1058,7 @@ import '../styles/global.css';
             <path d="M95 75 L105 75 M95 90 L105 90 M95 105 L105 105" stroke="#D4853A" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
             <text x="70" y="95" text-anchor="middle" font-family="Arial" font-size="11" fill="#2B5A8C" font-weight="600">You</text>
             <text x="130" y="95" text-anchor="middle" font-family="Arial" font-size="11" fill="#D4853A" font-weight="600">Friend</text>
-            <text x="100" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="#1A2A3A" opacity="0.5">Both get 1 free session</text>
+            <text x="100" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="currentColor" opacity="0.6">Both get 1 free session</text>
             <circle cx="100" cy="170" r="3" fill="#D4853A" opacity="0.3"/>
           </svg>
         </div>
@@ -1638,7 +1638,7 @@ import '../styles/global.css';
     z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(245,241,235,0.4) 100%);
+      radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(245,241,235,0.3) 100%);
   }
   .hero-geometric-decor {
     position: absolute;
@@ -1660,6 +1660,9 @@ import '../styles/global.css';
   :global([data-theme="dark"]) .hero-geometric-decor {
     filter: invert(1) hue-rotate(180deg);
     opacity: 0.5;
+  }
+  :global([data-theme="dark"]) .hero-depth-layer {
+    background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(11,11,15,0.5) 100%);
   }
 
   /* ===== EYEBROW ===== */
@@ -1704,7 +1707,7 @@ import '../styles/global.css';
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #FAF7F2;
+    background: var(--bg-primary);
     padding: 0;
     overflow: hidden;
     position: relative;
@@ -1866,7 +1869,7 @@ import '../styles/global.css';
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-top: 0.15rem;
   }
 
@@ -1895,7 +1898,7 @@ import '../styles/global.css';
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--text-muted);
+    color: var(--text-secondary);
   }
 
   .hero-proof-sep {
@@ -1906,7 +1909,7 @@ import '../styles/global.css';
 
   .hero-intake {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-bottom: 2rem;
   }
 
@@ -2010,7 +2013,7 @@ import '../styles/global.css';
   .hero-scroll-line {
     width: 1px;
     height: 40px;
-    background: linear-gradient(to bottom, rgba(26,42,58,0.2), transparent);
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
     animation: scroll-pulse 2s ease-in-out infinite;
   }
 
@@ -2822,7 +2825,7 @@ import '../styles/global.css';
 
   .case-flow-step p {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin: 0;
   }
 
@@ -3296,7 +3299,7 @@ import '../styles/global.css';
   }
   .result-bar-track {
     height: 4px;
-    background: rgba(26,42,58,0.08);
+    background: var(--border-color);
     border-radius: 2px;
     overflow: hidden;
   }
@@ -4403,7 +4406,7 @@ import '../styles/global.css';
   }
   .trial-step p {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     line-height: 1.5;
   }
   .trial-step-arrow {

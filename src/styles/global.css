@@ -16,7 +16,7 @@
   --bg-card-hover: rgba(255, 255, 255, 0.9);
   --text-primary: #1A2A3A;
   --text-secondary: rgba(26, 42, 58, 0.7);
-  --text-muted: rgba(26, 42, 58, 0.45);
+  --text-muted: rgba(26, 42, 58, 0.6);
   --color-primary: #2B5A8C;
   --color-accent: #D4853A;
   --border-color: rgba(26, 42, 58, 0.1);
@@ -60,7 +60,7 @@
   --bg-card-hover: rgba(255, 255, 255, 0.06);
   --text-primary: #f0f0f2;
   --text-secondary: rgba(240, 240, 242, 0.65);
-  --text-muted: rgba(240, 240, 242, 0.4);
+  --text-muted: rgba(240, 240, 242, 0.6);
   --border-color: rgba(255, 255, 255, 0.08);
   --bg-footer: #0b0b0f;
   /* Dark mode accent tuned for dark backgrounds — softer, warmer */
@@ -167,14 +167,14 @@ a:not(.btn):not([class*="programme-card"]):not([class*="vault-card"]) {
 /* Only apply hover styles on devices that support hover */
 @media (hover: hover) {
   a:hover {
-    color: #e8a060;
+    color: var(--color-accent-light);
   }
 }
 
 /* Touch-friendly active state for links */
 @media (hover: none) {
   a:active {
-    color: #e8a060;
+    color: var(--color-accent-light);
   }
 }
 
