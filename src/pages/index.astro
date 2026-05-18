@@ -45,13 +45,26 @@ import '../styles/global.css';
       <div class="hero-reveal-line hero-anim" style="--d:0">
         <span class="hero-kicker">Top-Rated O-Level English, GP &amp; H2 Economics Tuition in Singapore</span>
       </div>
-      <h1 class="hero-display hero-anim" style="--d:1">
-        <span class="hero-display-line"><span class="hero-word">You</span> <span class="hero-word">are</span></span>
-        <span class="hero-display-line hero-display-accent"><span class="hero-word">A</span> <span class="hero-word">Worthy</span></span>
+      <h1 class="hero-display">
+        <span class="hero-prelude">
+          <span class="hero-prelude-word" style="--i:0">You</span>
+          <span class="hero-prelude-word" style="--i:1">are</span>
+        </span>
+        <span class="hero-tagline">
+          <span class="hero-letter" style="--i:0">A</span>
+          <span class="hero-letter hero-letter--space" style="--i:1">&nbsp;</span>
+          <span class="hero-letter" style="--i:2">W</span>
+          <span class="hero-letter" style="--i:3">o</span>
+          <span class="hero-letter" style="--i:4">r</span>
+          <span class="hero-letter" style="--i:5">t</span>
+          <span class="hero-letter" style="--i:6">h</span>
+          <span class="hero-letter" style="--i:7">y</span>
+        </span>
+        <span class="hero-underline" aria-hidden="true"></span>
       </h1>
-      <p class="hero-sub hero-anim" style="--d:2">Your child studies hard but their grades don&rsquo;t move. They know the content &mdash; they just can&rsquo;t show it under exam pressure. SHARP gives them a five-step system to see what the question wants, pick the right framework, and write answers that score &mdash; across O-Level English, H1 General Paper, and H2 Economics.</p>
+      <p class="hero-sub hero-anim" style="--d:10">Your child studies hard but their grades don&rsquo;t move. They know the content &mdash; they just can&rsquo;t show it under exam pressure. SHARP gives them a five-step system to see what the question wants, pick the right framework, and write answers that score &mdash; across O-Level English, H1 General Paper, and H2 Economics.</p>
 
-      <div class="hero-proof-row hero-anim" style="--d:3">
+      <div class="hero-proof-row hero-anim" style="--d:12">
         <div class="hero-proof-item">
           <span class="hero-proof-num">95%</span>
           <span class="hero-proof-lbl">pass rate</span>
@@ -68,9 +81,9 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <p class="hero-intake hero-anim" style="--d:4">Next intake: <strong>June 2026</strong> &mdash; Limited slots available</p>
+      <p class="hero-intake hero-anim" style="--d:14">Next intake: <strong>June 2026</strong> &mdash; Limited slots available</p>
 
-      <div class="hero-btns hero-anim" style="--d:5">
+      <div class="hero-btns hero-anim" style="--d:15">
         <a href="/#contact" class="btn btn-accent hero-cta-primary">Find Out Where Your Child Is Losing Marks</a>
         <a href="https://wa.me/6583384033" class="btn btn-outline hero-cta-secondary" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -78,7 +91,7 @@ import '../styles/global.css';
         </a>
       </div>
 
-      <div class="hero-badges-row hero-anim" style="--d:6">
+      <div class="hero-badges-row hero-anim" style="--d:17">
         <span class="hero-badge">MOE-Aligned</span>
         <span class="hero-badge">100% Online via Zoom</span>
         <span class="hero-badge">NUS Law Graduate Founder</span>
@@ -1728,37 +1741,92 @@ import '../styles/global.css';
   }
 
   .hero-display {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .hero-prelude {
+    display: block;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-prelude-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: prelude-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(0.8s + var(--i) * 0.12s);
+  }
+
+  @keyframes prelude-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tagline {
+    display: block;
     font-family: 'Fraunces', var(--font-heading), serif;
-    font-size: clamp(4rem, 12vw, 9rem);
+    font-size: clamp(4.5rem, 14vw, 10rem);
     font-weight: 100;
     font-style: italic;
+    font-variation-settings: 'opsz' 144;
     line-height: 0.95;
     letter-spacing: -0.03em;
-    color: var(--text-primary);
-    margin-bottom: 2rem;
   }
 
-  .hero-display-line {
-    display: block;
-  }
-
-  .hero-display-accent {
+  .hero-letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    filter: blur(4px);
     color: transparent;
-    background: linear-gradient(135deg, #B87333 0%, #D4853A 40%, #e8a060 60%, #B87333 100%);
+    background: linear-gradient(135deg, #B87333 0%, #D4853A 35%, #e8a060 55%, #D4853A 75%, #B87333 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: hero-gold-shift 6s ease-in-out infinite;
+    animation:
+      letter-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+      gold-shimmer 6s ease-in-out 2.5s infinite;
+    animation-delay: calc(1.2s + var(--i) * 0.08s), calc(2.5s + var(--i) * 0.1s);
   }
 
-  @keyframes hero-gold-shift {
+  .hero-letter--space {
+    width: 0.25em;
+    background: none;
+  }
+
+  @keyframes letter-reveal {
+    40% { filter: blur(1px); }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes gold-shimmer {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
 
-  .hero-word {
-    display: inline-block;
-    transition: transform 0.3s ease;
+  .hero-underline {
+    display: block;
+    width: 0;
+    height: 2px;
+    margin: 0.5rem auto 0;
+    background: linear-gradient(90deg, transparent, #D4853A, transparent);
+    border-radius: 2px;
+    animation: underline-draw 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+  }
+
+  @keyframes underline-draw {
+    to { width: min(60%, 400px); }
   }
 
   .hero-sub {
@@ -2149,8 +2217,12 @@ import '../styles/global.css';
     .hero-proof-sep {
       display: none;
     }
-    .hero-display {
-      font-size: clamp(3rem, 14vw, 5rem);
+    .hero-tagline {
+      font-size: clamp(3.5rem, 16vw, 5.5rem);
+    }
+    .hero-prelude {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
     }
     .hero-btns {
       flex-direction: column;
@@ -3632,6 +3704,9 @@ import '../styles/global.css';
     .connector-arrow { opacity: 1; }
     .result-bar-fill { transition: none; width: var(--bar-width); }
     .hero-anim { opacity: 1; transform: none; animation: none; }
+    .hero-prelude-word { opacity: 1; transform: none; animation: none; }
+    .hero-letter { opacity: 1; transform: none; filter: none; animation: none; }
+    .hero-underline { width: min(60%, 400px); animation: none; }
     .hero-canvas { display: none; }
   }
 
