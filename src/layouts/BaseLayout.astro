@@ -390,7 +390,8 @@ import { ClientRouter } from 'astro:transitions';
       font-family: var(--font-body);
     }
     .email-popup-form input:focus {
-      outline: none;
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
       border-color: var(--color-accent);
     }
     .email-popup-note {
@@ -866,7 +867,7 @@ import { ClientRouter } from 'astro:transitions';
       </div>
       <div class="privacy-notice-actions">
         <button class="privacy-btn privacy-btn--accept" id="privacy-accept">Accept</button>
-        <a href="/accessibility/" class="privacy-btn privacy-btn--learn">Learn More</a>
+        <a href="/accessibility/" class="privacy-btn privacy-btn--learn">Privacy Policy</a>
       </div>
     </div>
   </div>
