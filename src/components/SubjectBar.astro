@@ -1,0 +1,186 @@
+---
+const currentPath = Astro.url.pathname;
+const subjects = [
+  { href: '/o-level-english/', label: 'O-Level English', short: 'English', level: 'Sec 1–4' },
+  { href: '/h1-general-paper/', label: 'H1 General Paper', short: 'GP', level: 'JC 1–2' },
+  { href: '/h2-economics/', label: 'H2 Economics', short: 'Economics', level: 'JC 1–2' },
+];
+---
+
+<nav class="subject-bar" aria-label="Subject navigation">
+  <div class="subject-bar-inner">
+    <span class="subject-bar-label">Programmes</span>
+    <div class="subject-bar-options">
+      {subjects.map(s => (
+        <a
+          href={s.href}
+          class:list={['subject-bar-link', { 'is-active': currentPath.startsWith(s.href) }]}
+        >
+          <span class="subject-bar-name">{s.label}</span>
+          <span class="subject-bar-name--short">{s.short}</span>
+          <span class="subject-bar-level">{s.level}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<style>
+  .subject-bar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    z-index: 190;
+    background: rgba(253, 251, 247, 0.92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .subject-bar.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .subject-bar-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    height: 44px;
+  }
+
+  .subject-bar-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .subject-bar-options {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .subject-bar-options::-webkit-scrollbar {
+    display: none;
+  }
+
+  .subject-bar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .subject-bar-link:hover {
+    color: var(--text-primary);
+    border-color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.04);
+  }
+
+  :global([data-theme="dark"]) .subject-bar {
+    background: rgba(11, 11, 15, 0.92);
+  }
+
+  :global([data-theme="dark"]) .subject-bar-link:hover {
+    background: rgba(224, 152, 80, 0.06);
+  }
+
+  .subject-bar-link.is-active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.08);
+    font-weight: 600;
+  }
+
+  :global([data-theme="dark"]) .subject-bar-link.is-active {
+    background: rgba(224, 152, 80, 0.1);
+  }
+
+  .subject-bar-name--short {
+    display: none;
+  }
+
+  .subject-bar-level {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 640px) {
+    .subject-bar-label {
+      display: none;
+    }
+
+    .subject-bar-inner {
+      padding: 0 var(--space-md);
+    }
+
+    .subject-bar-name {
+      display: none;
+    }
+
+    .subject-bar-name--short {
+      display: inline;
+    }
+
+    .subject-bar-link {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.75rem;
+    }
+
+    .subject-bar-level {
+      font-size: 0.55rem;
+    }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var bar = document.querySelector('.subject-bar');
+  if (!bar) return;
+
+  var threshold = 120;
+  var visible = false;
+
+  function update() {
+    var shouldShow = window.scrollY > threshold;
+    if (shouldShow !== visible) {
+      visible = shouldShow;
+      bar.classList.toggle('is-visible', visible);
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>

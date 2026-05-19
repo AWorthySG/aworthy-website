@@ -35,29 +35,29 @@ import '../styles/global.css';
 
           <div class="form-row">
             <div class="form-group">
-              <label for="parent-name">Parent / Guardian Name <span class="required">*</span></label>
-              <input type="text" id="parent-name" name="parentName" required placeholder="Jane Doe" />
+              <label for="parent-name">What should we call you? <span class="required">*</span></label>
+              <input type="text" id="parent-name" name="parentName" required placeholder="e.g. Sarah" />
             </div>
             <div class="form-group">
-              <label for="student-name">Student Name <span class="required">*</span></label>
-              <input type="text" id="student-name" name="studentName" required placeholder="John Doe" />
+              <label for="student-name">Your child's name <span class="required">*</span></label>
+              <input type="text" id="student-name" name="studentName" required placeholder="e.g. Ethan" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="email">Email <span class="required">*</span></label>
-              <input type="email" id="email" name="email" required placeholder="jane@email.com" />
+              <label for="email">Best email to reach you <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="e.g. sarah@gmail.com" />
             </div>
             <div class="form-group">
-              <label for="phone">Phone Number <span class="required">*</span></label>
+              <label for="phone">WhatsApp or phone number <span class="required">*</span></label>
               <input type="tel" id="phone" name="phone" required placeholder="+65 8338 4033" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="student-level">Student Level <span class="required">*</span></label>
+              <label for="student-level">What level is your child in? <span class="required">*</span></label>
               <select id="student-level" name="studentLevel" required>
                 <option value="">-- Select Level --</option>
                 <option value="Sec 1">Sec 1</option>
@@ -69,7 +69,7 @@ import '../styles/global.css';
               </select>
             </div>
             <div class="form-group">
-              <label for="referral">How did you hear about us?</label>
+              <label for="referral">How did you find us?</label>
               <select id="referral" name="referral">
                 <option value="">-- Select --</option>
                 <option value="Google">Google</option>
@@ -93,14 +93,14 @@ import '../styles/global.css';
 
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us more about your child's learning needs..."></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="What would you like us to know about your child? Any specific challenges or goals..."></textarea>
           </div>
 
-          <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit plausible-event-name=Contact+Form+Submit"><span>Send Enquiry</span></button>
+          <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Find Out How We Can Help</span></button>
 
           <div id="form-success" class="form-success" hidden>
-            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-            Thank you for your enquiry! We will get back to you within 24 hours.
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Thanks! We've received your message and will get back to you within 24 hours — usually much sooner. Keep an eye on your inbox (and spam folder, just in case).
           </div>
           <div id="form-errors" class="form-errors" hidden></div>
         </form>
@@ -161,24 +161,23 @@ import '../styles/global.css';
       <div class="trial-booking" data-animate="reveal-up">
         <span class="eyebrow">Free Trial</span>
         <h3>Book a free trial lesson</h3>
-        <p class="trial-desc">Experience the SHARP Method firsthand &mdash; See the question type, Hit the right framework, Apply, Refine, Practise. Select your subject and preferred timeslot &mdash; we&rsquo;ll confirm within 24 hours.</p>
-        <p class="trial-urgency"><strong>June 2026 intake:</strong> Limited slots remaining for all programmes</p>
+        <p class="trial-desc">Experience the SHARP Method first-hand. Select your subject and preferred timeslot &mdash; we&rsquo;ll confirm within 24 hours.</p>
         <form class="trial-form" action="https://formspree.io/f/xgoppwye" method="POST">
           <input type="hidden" name="_subject" value="Trial Lesson Booking" />
           <div class="form-group">
-            <label for="trial-parent">Parent Name <span class="required">*</span></label>
-            <input type="text" id="trial-parent" name="parentName" required placeholder="Jane Doe" />
+            <label for="trial-parent">What should we call you? <span class="required">*</span></label>
+            <input type="text" id="trial-parent" name="parentName" required placeholder="e.g. Sarah" />
           </div>
           <div class="form-group">
-            <label for="trial-student">Student Name <span class="required">*</span></label>
-            <input type="text" id="trial-student" name="studentName" required placeholder="John Doe" />
+            <label for="trial-student">Your child's name <span class="required">*</span></label>
+            <input type="text" id="trial-student" name="studentName" required placeholder="e.g. Ethan" />
           </div>
           <div class="form-group">
-            <label for="trial-email">Email <span class="required">*</span></label>
-            <input type="email" id="trial-email" name="email" required placeholder="jane@email.com" />
+            <label for="trial-email">Best email <span class="required">*</span></label>
+            <input type="email" id="trial-email" name="email" required placeholder="e.g. sarah@gmail.com" />
           </div>
           <div class="form-group">
-            <label for="trial-phone">WhatsApp Number <span class="required">*</span></label>
+            <label for="trial-phone">WhatsApp number <span class="required">*</span></label>
             <input type="tel" id="trial-phone" name="phone" required placeholder="+65 8338 4033" />
           </div>
           <div class="form-group">
@@ -213,7 +212,7 @@ import '../styles/global.css';
               <option value="Flexible">Flexible / Discuss with me</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-accent plausible-event-name=Trial+Booking+Submit" style="width:100%;">Book Free Trial Lesson</button>
+          <button type="submit" class="btn btn-accent" style="width:100%;">Reserve My Child's Spot</button>
         </form>
       </div>
 
@@ -306,7 +305,7 @@ import '../styles/global.css';
             </span>
           </button>
           <div class="faq-answer" hidden>
-            <p>Our lessons are aligned to the MOE/Cambridge syllabuses &mdash; O-Level English (1128), H1 General Paper (8807), and H2 Economics (9570) &mdash; and use the SHARP Method (See, Hit, Apply, Refine, Practise) with its paper-matched frameworks.</p>
+            <p>Our lessons are aligned to the MOE/Cambridge syllabuses &mdash; O-Level English (1128), H1 General Paper (8807), and H2 Economics (9570) &mdash; and use our proprietary SHARP Method framework.</p>
           </div>
         </div>
 
@@ -417,7 +416,7 @@ import '../styles/global.css';
       errorsMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } finally {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span>Send Enquiry</span>';
+      submitBtn.innerHTML = '<span>Find Out How We Can Help</span>';
     }
   });
 
@@ -489,7 +488,7 @@ import '../styles/global.css';
 
   .contact-hero__subtitle {
     font-size: 1.15rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     max-width: 480px;
     margin: 0 auto;
   }

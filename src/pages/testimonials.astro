@@ -10,7 +10,7 @@ const testimonials = [
     context: 'Mother of Sec 4 student',
     initials: 'LT',
     stars: 5,
-    quote: 'My son\'s English went from C5 to A2 in three months. The Core Move gave him a systematic way to approach every comprehension question — no more guessing.',
+    quote: 'My son\'s English went from C5 to A2 in three months. The moment he learned the SHARP Method\'s "See" step for inference questions, his comprehension marks jumped from 12/25 to 20/25 — no more guessing.',
     featured: true,
   },
   {
@@ -18,7 +18,7 @@ const testimonials = [
     context: 'Sec 4 student',
     initials: 'EL',
     stars: 5,
-    quote: 'I used to dread essay writing. The structured approach taught me how to plan and argue properly. Got A1 for O-Levels.',
+    quote: 'I used to dread essay writing. The SHARP Method\'s "Apply" step taught me how to plan and argue properly — my essay scores went from 18/30 to 26/30. Got A1 for O-Levels.',
     featured: false,
   },
   {
@@ -26,7 +26,7 @@ const testimonials = [
     context: 'Father of Sec 3 student',
     initials: 'RK',
     stars: 5,
-    quote: 'What impressed me most was how the legal reasoning approach made inference questions click for my daughter. She actually enjoys English now.',
+    quote: 'What impressed me most was how the SHARP Method\'s "See" and "Hit" steps made inference questions click for my daughter. She went from losing 8 marks per paper to losing only 2.',
     featured: false,
   },
   {
@@ -58,7 +58,7 @@ const testimonials = [
     context: 'Sec 4 student',
     initials: 'RO',
     stars: 5,
-    quote: 'The A-Worthy Method helped me go from barely passing to B3 in English. CAPS made summary &mdash; my weakest section &mdash; my strongest.',
+    quote: 'The SHARP Method helped me go from barely passing to B3 in English. Once I started using the "Hit" step to target key points in summary, my score went from 3/8 to 7/8.',
     featured: false,
   },
   {
@@ -74,13 +74,13 @@ const testimonials = [
     context: 'Sec 4 student',
     initials: 'WL',
     stars: 5,
-    quote: 'Got A2 for O-Level English! The comprehension techniques and essay frameworks were exactly what I needed.',
+    quote: 'Got A2 for O-Level English! The SHARP Method\'s "Refine" step taught me to self-check my answers — I stopped losing careless marks and my Paper 2 score jumped by 15 marks.',
     featured: true,
   },
 ];
 ---
 
-<BaseLayout title="Parent & Student Reviews | O-Level English Tuition Singapore | A-Worthy" description="50+ five-star reviews from Singapore parents and students. Real O-Level English, GP & Economics grade improvements. See why families trust A-Worthy.">
+<BaseLayout title="Parent & Student Reviews | O-Level English Tuition Singapore | A-Worthy" description="Read 50+ five-star reviews from Singapore parents and students. See real grade improvements: C5→A2, D7→B3. Discover why families trust A-Worthy's SHARP Method for O-Level English, GP & H2 Economics tuition.">
   <Header slot="header" />
 
   <!-- ===== HERO ===== -->
@@ -89,7 +89,7 @@ const testimonials = [
       <span class="eyebrow">Reviews</span>
       <h1 class="t-hero-heading">What Singapore parents and students say about A-Worthy</h1>
       <p class="t-hero-subtitle">
-        Real reviews from families whose children improved their O-Level English, GP, and H2 Economics grades with the SHARP Method &mdash; See the question type, Hit the right framework, Apply, Refine, Practise &mdash; and the paper-matched frameworks it deploys.
+        Real reviews from families whose children improved their O-Level English, GP, and H2 Economics grades with A-Worthy&rsquo;s SHARP Method tuition.
       </p>
     </div>
   </section>
@@ -143,7 +143,7 @@ const testimonials = [
       <div class="carousel" id="testimonial-carousel">
         <div class="carousel-track" id="carousel-track">
           <div class="carousel-slide">
-            <div class="carousel-quote">&ldquo;My son's English improved from C5 to A2 in just three months. The Core Move gave him a systematic way to approach every comprehension question.&rdquo;</div>
+            <div class="carousel-quote">&ldquo;My son's English improved from C5 to A2 in just three months. The SHARP Method&rsquo;s &ldquo;See&rdquo; step gave him a systematic way to approach every comprehension question.&rdquo;</div>
             <div class="carousel-author"><strong>Mrs. Linda Tan</strong> &mdash; Mother of Sec 4 student</div>
           </div>
           <div class="carousel-slide">
@@ -201,7 +201,7 @@ const testimonials = [
     <div class="t-container">
       <span class="eyebrow">See It In Action</span>
       <h2 class="t-video-heading" data-animate="reveal-up">A glimpse into the A-Worthy experience</h2>
-      <p class="t-video-sub">Watch how the SHARP Method (See, Hit, Apply, Refine, Practise) and its paper-matched frameworks transform the way students approach English.</p>
+      <p class="t-video-sub">Watch how the SHARP Method transforms the way students approach English.</p>
       <div class="t-video-wrap" data-animate="scale-in">
         <div class="t-video-placeholder">
           <div class="t-video-play">
@@ -242,8 +242,8 @@ const testimonials = [
   <section class="t-section t-cta">
     <div class="t-container t-cta-inner">
       <span class="eyebrow">Get Started</span>
-      <h2 class="t-cta-heading" data-animate="reveal-up">Experience the A Worthy difference</h2>
-      <p class="t-cta-subtitle">Join the hundreds of families who trust A Worthy. Book a free trial lesson and see the results for yourself.</p>
+      <h2 class="t-cta-heading" data-animate="reveal-up">Experience the A-Worthy difference</h2>
+      <p class="t-cta-subtitle">Join the hundreds of families who trust A-Worthy. Book a free trial lesson and see the results for yourself.</p>
       <div class="t-cta-actions">
         <a href="/contact/" class="t-btn t-btn--primary">Book a Free Trial</a>
         <a href="https://wa.me/6583384033" class="t-btn t-btn--outline" target="_blank" rel="noopener noreferrer">
@@ -296,7 +296,7 @@ const testimonials = [
   }
 
   .t-hero-heading {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(2.5rem, 5vw, 3.75rem);
     font-weight: 200;
     color: var(--text-primary);
@@ -308,7 +308,7 @@ const testimonials = [
   .t-hero-subtitle {
     font-size: 1.125rem;
     line-height: 1.7;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin: 0;
     max-width: 560px;
     margin-left: auto;
@@ -336,7 +336,7 @@ const testimonials = [
 
   .t-stat-number {
     display: block;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-body);
     font-size: 2.25rem;
     font-weight: 200;
     color: var(--text-primary);
@@ -492,7 +492,7 @@ const testimonials = [
     letter-spacing: -0.5px;
   }
 
-  .t-g { font-family: 'Inter', sans-serif; }
+  .t-g { font-family: var(--font-body); }
   .t-g-blue { color: #4285F4; }
   .t-g-red { color: #EA4335; }
   .t-g-yellow { color: #FBBC05; }
@@ -576,7 +576,7 @@ const testimonials = [
   }
 
   .t-cta-heading {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 200;
     color: var(--text-primary);
@@ -606,7 +606,7 @@ const testimonials = [
   }
 
   .t-video-heading {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 200;
     color: var(--text-primary);

@@ -78,7 +78,7 @@ import '../styles/global.css';
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(16rem, 30vw, 28rem);
     font-weight: 800;
     color: var(--bg-secondary);
@@ -97,7 +97,7 @@ import '../styles/global.css';
 
   .eyebrow {
     display: inline-block;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -107,7 +107,7 @@ import '../styles/global.css';
   }
 
   .heading {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 200;
     color: var(--text-primary);
@@ -117,11 +117,11 @@ import '../styles/global.css';
   }
 
   .subtitle {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.05rem;
     font-weight: 400;
     line-height: 1.6;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin: 0 0 2.5rem 0;
   }
 
@@ -133,7 +133,7 @@ import '../styles/global.css';
   }
 
   .actions .btn {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.875rem;
     font-weight: 500;
     padding: 0.75rem 1.75rem;
