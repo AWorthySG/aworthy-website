@@ -39,11 +39,21 @@
   /* ── Layout ── */
   --container-max: 1200px;
   --page-padding: 4rem;
-  --border-radius: 4px;
-  --border-radius-lg: 8px;
+  /* Radius scale — 2 tokens only (claudedesign D.1) */
+  --radius-sm: 3px;     /* btn, input, chip, badge */
+  --radius-md: 6px;     /* card, modal, well */
+  /* Aliases — kept for backwards compat, both resolve to the new scale */
+  --border-radius: var(--radius-sm);
+  --border-radius-lg: var(--radius-md);
   --transition-base: 0.3s ease;
   --color-accent-light: #e8a060;
   --bg-footer: #1A2A3A;
+  /* Subject-specific accent (overridden per subject page) */
+  --color-accent-hue: var(--color-accent);
+
+  /* ── Decorative SVG stroke tokens (theme-aware) ── */
+  --decor-cool: rgba(43, 90, 140, 0.08);
+  --decor-warm: rgba(212, 133, 58, 0.08);
 
   /* ── Semantic colour tokens (status / brand-adjacent) ── */
   --color-success: #27ae60;
@@ -80,32 +90,41 @@
 }
 
 /* ===== Dark Mode ===== */
+/* Warm-shifted dark canvas (claudedesign G.1) — same value, warmer hue.
+   Dark mode now reads as the same brand as light mode: "after-hours library". */
 [data-theme="dark"] {
-  --bg-primary: #0b0b0f;
-  --bg-secondary: #111118;
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.06);
-  --text-primary: #f0f0f2;
-  --text-secondary: rgba(240, 240, 242, 0.65);
-  --text-muted: rgba(240, 240, 242, 0.6);
-  --border-color: rgba(255, 255, 255, 0.08);
-  --bg-footer: #0b0b0f;
-  /* Dark mode accent tuned for dark backgrounds — softer, warmer */
-  --color-accent: #E09850;
+  --bg-primary: #11100E;
+  --bg-secondary: #15140F;
+  --bg-card: rgba(245, 233, 210, 0.04);
+  --bg-card-hover: rgba(245, 233, 210, 0.07);
+  --text-primary: #F5EFE3;
+  --text-secondary: rgba(245, 239, 227, 0.66);
+  --text-muted: rgba(245, 239, 227, 0.50);
+  --border-color: rgba(245, 239, 227, 0.09);
+  --bg-footer: #0d0c0a;
+  /* Dark mode accent nudged slightly warmer */
+  --color-accent: #E59A55;
   --color-accent-light: #f0b878;
+  /* Decorative strokes — warm/cool versions for dark mode */
+  --decor-cool: rgba(155, 181, 214, 0.10);
+  --decor-warm: rgba(229, 154, 85, 0.10);
 }
 
-/* Dark mode ambient noise texture */
+/* Dark mode ambient noise texture — softened on retina (claudedesign G.3) */
 [data-theme="dark"] body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.025;
+  opacity: 0.012;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 256px 256px;
+  background-size: 340px 340px;
+}
+@media (prefers-reduced-transparency: reduce),
+       (min-resolution: 2dppx) and (max-resolution: 2.99dppx) {
+  [data-theme="dark"] body::before { opacity: 0.008; }
 }
 
 /* Dark mode ambient glow on cards */
@@ -327,6 +346,47 @@ li {
   padding: var(--space-3xl) 0;
 }
 
+/* ── Section background cadence (claudedesign C.1) ──
+   Use sparingly. One --ink band per page is the goal — it's where the gold
+   accent finally has somewhere to shine. */
+.section--cream { background: var(--bg-primary); }
+.section--sand  { background: var(--bg-secondary); }
+.section--ink {
+  background: #1A2A3A;
+  color: #F5F1EB;
+  /* Token overrides scoped to the dark band only */
+  --text-primary: #F5F1EB;
+  --text-secondary: rgba(245, 241, 235, 0.78);
+  --text-muted: rgba(245, 241, 235, 0.58);
+  --border-color: rgba(245, 241, 235, 0.12);
+  --bg-card: rgba(245, 241, 235, 0.04);
+  --bg-card-hover: rgba(245, 241, 235, 0.07);
+}
+.section--ink h1, .section--ink h2, .section--ink h3,
+.section--ink h4, .section--ink h5, .section--ink h6 {
+  color: var(--text-primary);
+}
+.section--ink p,
+.section--ink li {
+  color: var(--text-secondary);
+}
+.section--ink .card {
+  background: rgba(245, 241, 235, 0.03);
+  box-shadow:
+    0 1px 0 rgba(245, 241, 235, 0.04) inset,
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 14px 30px -22px rgba(0, 0, 0, 0.6);
+}
+/* Dark mode: ink band shifts to warm-black so it's still distinct from page bg */
+[data-theme="dark"] .section--ink {
+  background: #1f1c16;
+}
+
+/* ── Section padding variants (claudedesign C.2) ── */
+.section--lg { padding-block: clamp(6rem, 10vw, 10rem); }
+.section--sm { padding-block: clamp(2.5rem, 4vw, 4rem); }
+.section--xs { padding-block: clamp(1.5rem, 2.5vw, 2.25rem); }
+
 .section-title {
   text-align: center;
   margin-bottom: var(--space-sm);
@@ -367,12 +427,12 @@ li {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.875rem 2rem;
-  border-radius: 0;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
   background: transparent;
   color: var(--text-primary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: transform 0.12s ease, box-shadow 0.25s, filter 0.25s, background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
   text-decoration: none;
   line-height: 1.4;
   /* Minimum touch target for accessibility (WCAG 2.5.5) */
@@ -398,17 +458,46 @@ li {
   }
 }
 
-.btn-primary {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
+/* Primary / accent CTAs — physical pressed-state with bevel (claudedesign D.3) */
+.btn-primary,
+.btn-accent {
+  background: linear-gradient(180deg, #E09255 0%, #D4853A 70%, #C97A2D 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.12) inset,
+    0 6px 14px -6px rgba(184, 115, 51, 0.55),
+    0 1px 2px rgba(26, 42, 58, 0.18);
 }
 
 @media (hover: hover) {
-  .btn-primary:hover {
-    background: #e8a060;
-    border-color: #e8a060;
+  .btn-primary:hover,
+  .btn-accent:hover {
+    filter: brightness(1.04);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.30) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.14) inset,
+      0 10px 22px -8px rgba(184, 115, 51, 0.60),
+      0 0 0 3px rgba(212, 133, 58, 0.12);
   }
+}
+
+.btn-primary:active,
+.btn-accent:active {
+  transform: translateY(1px);
+  filter: brightness(0.96);
+}
+
+/* Dark mode tweak — soften the bevel inset highlights */
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-accent {
+  background: linear-gradient(180deg, #E89A5C 0%, #E59A55 70%, #C97A2D 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.18) inset,
+    0 6px 14px -6px rgba(184, 115, 51, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary {
@@ -424,57 +513,81 @@ li {
   }
 }
 
-.btn-accent {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #fff;
-}
-
-@media (hover: hover) {
-  .btn-accent:hover {
-    background: #e8a060;
-    border-color: #e8a060;
-    transform: none;
-  }
-}
-
 /* Outline variant for dark sections (footer, etc.) */
 .btn-outline-light {
   background: transparent;
   color: #ffffff;
   border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: none;
 }
 
 @media (hover: hover) {
   .btn-outline-light:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
+    filter: none;
+    box-shadow: none;
   }
 }
 
 /* ===== Cards ===== */
+/* Solid cream + ink-toned shadow (claudedesign D.2). Drops backdrop-filter,
+   which produced no visual benefit on the warm flat background and was
+   expensive on Safari. Hover reveals a soft gold hairline along the top. */
 .card {
-  background: var(--bg-card);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  position: relative;
+  background: #FFFDF6;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: var(--space-xl);
   transition: all var(--transition-fast);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 1px 2px rgba(26, 42, 58, 0.04),
+    0 14px 30px -22px rgba(26, 42, 58, 0.18);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: var(--space-xl);
+  right: var(--space-xl);
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0;
+  transition: opacity 0.35s;
+  pointer-events: none;
 }
 
 @media (hover: hover) {
   .card:hover {
-    background: var(--bg-card-hover);
     border-color: rgba(26, 42, 58, 0.15);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 0 40px rgba(212, 133, 58, 0.06);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.8) inset,
+      0 8px 24px rgba(26, 42, 58, 0.08),
+      0 14px 30px -22px rgba(26, 42, 58, 0.22);
     transform: translateY(-2px);
+  }
+  .card:hover::before {
+    opacity: 0.55;
   }
 }
 
+/* Dark mode card surface */
+[data-theme="dark"] .card {
+  background: var(--bg-card);
+  box-shadow:
+    0 1px 0 rgba(245, 239, 227, 0.04) inset,
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 14px 30px -22px rgba(0, 0, 0, 0.6);
+}
+
 [data-theme="dark"] .card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 0 40px rgba(224, 152, 80, 0.08);
+  box-shadow:
+    0 1px 0 rgba(245, 239, 227, 0.05) inset,
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(229, 154, 85, 0.06);
 }
 
 /* ===== Forms ===== */
@@ -485,10 +598,10 @@ input, textarea, select {
   font-size: max(1rem, 16px);
   padding: 0.875rem 1rem;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   background: var(--bg-primary);
   color: var(--text-primary);
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   width: 100%;
   /* Remove iOS input styling */
   -webkit-appearance: none;
@@ -496,11 +609,11 @@ input, textarea, select {
   appearance: none;
 }
 
+/* Single soft gold focus ring (claudedesign D.4) — replaces doubled outline + box-shadow. */
 input:focus, textarea:focus, select:focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(212, 133, 58, 0.12), 0 0 16px rgba(212, 133, 58, 0.06);
+  box-shadow: 0 0 0 4px rgba(212, 133, 58, 0.18);
 }
 
 textarea {
@@ -845,6 +958,115 @@ label {
   }
   .shimmer-glow-border {
     animation: none;
+  }
+}
+
+/* ─── Tabular numerals (claudedesign H.1) ───
+   Lined, tabular figures for anywhere stats sit in a column. */
+.stat,
+.stat-number,
+.price,
+.marquee-item,
+.hero-proof-num,
+.hero-proof-row,
+.r-count,
+.subject-receipts dt,
+.lesson-flow .step-num,
+.lesson-flow .step-time,
+.gb-rating,
+[data-count] {
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ─── Google Reviews Badge (claudedesign B.3) ─── */
+.google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  text-decoration: none;
+  background: #fff;
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+[data-theme="dark"] .google-badge {
+  background: rgba(245, 239, 227, 0.04);
+}
+@media (hover: hover) {
+  .google-badge:hover {
+    border-color: rgba(212, 133, 58, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px -6px rgba(26, 42, 58, 0.18);
+    color: var(--text-primary);
+    opacity: 1;
+  }
+}
+.gb-rating {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+.gb-stars {
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+}
+.gb-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ─── Subject Receipts Stats Rail (claudedesign E.3) ─── */
+.subject-receipts {
+  margin: var(--space-2xl) auto;
+  max-width: 960px;
+}
+.subject-receipts dl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  padding-block: 2.5rem;
+  border-block: 1px solid var(--border-color);
+  margin: 0;
+}
+.subject-receipts > dl > div {
+  text-align: left;
+}
+.subject-receipts dt {
+  font-family: var(--font-heading);
+  font-weight: 200;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  color: var(--color-accent);
+  margin: 0;
+}
+.subject-receipts dd {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0.7rem 0 0;
+  max-width: 24ch;
+  line-height: 1.5;
+}
+@media (max-width: 720px) {
+  .subject-receipts dl {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding-block: 1.5rem;
+  }
+  .subject-receipts dt {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
   }
 }
 

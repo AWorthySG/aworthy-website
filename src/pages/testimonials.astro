@@ -370,32 +370,48 @@ const testimonials = [
     column-gap: 24px;
   }
 
+  /* Pull-quote treatment (claudedesign B.4) — magazine-style, not card-style.
+     Oversized opening quote in gold, hairline top border, Fraunces italic body. */
   .t-card {
+    position: relative;
     break-inside: avoid;
     display: inline-block;
     width: 100%;
-    background: var(--card-tint, var(--bg-card));
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 32px;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    border-radius: 0;
+    padding: 2.5rem 0.5rem 2rem 3.5rem;
     margin-bottom: 24px;
-    transition: border-color 0.2s ease;
+    box-shadow: none;
+    transition: none;
+  }
+  .t-card::before {
+    content: "\201C";
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--color-accent);
+    opacity: 0.18;
+    pointer-events: none;
   }
 
-  .t-card--featured {
-    border-left: 3px solid var(--color-accent);
+  .t-card--featured::before {
+    opacity: 0.32;
   }
 
   .t-card--featured .t-card-quote {
-    font-size: 1.05rem;
+    font-size: 1.4rem;
   }
 
   .t-card-stars {
     display: flex;
     gap: 2px;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
 
   .t-star {
@@ -418,13 +434,16 @@ const testimonials = [
   }
 
   .t-card-quote {
-    font-size: 0.95rem;
-    font-style: normal;
-    line-height: 1.75;
-    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--text-primary);
     margin: 0 0 24px;
     padding: 0;
     border: none;
+    text-wrap: pretty;
   }
 
   .t-card-author {

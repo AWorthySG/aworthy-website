@@ -137,30 +137,11 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <!-- ===== TEAM ===== -->
+  <!-- ===== THE FOUNDER ===== -->
   <section class="section team">
     <div class="container">
-      <span class="eyebrow" data-animate="reveal-up">Our Team</span>
+      <span class="eyebrow" data-animate="reveal-up">The Founder</span>
       <h2 data-animate="reveal-up">Legal mind, teaching heart</h2>
-
-      <div class="team-grid">
-        <div class="team-card" data-animate="reveal-up">
-          <div class="team-photo-wrap">
-            <div class="team-photo-placeholder">
-              <span class="team-photo-initials">JL</span>
-            </div>
-          </div>
-          <h3>Jeremy Lim</h3>
-          <span class="team-role">Law Graduate &amp; Lead Tutor</span>
-          <div class="team-credentials">
-            <span class="credential">LLB (Hons)</span>
-            <span class="credential">SHARP Method Creator</span>
-          </div>
-          <p>
-            With a law degree and years of direct teaching experience, Jeremy asked a simple question: why do law students learn to think so precisely, but secondary and JC students are told to &ldquo;just practise more&rdquo;? The answer became the SHARP Method &mdash; a five-step system (See, Hit, Apply, Refine, Practise) that distils legal-analytical rigour into a repeatable framework any student can master, with paper-matched frameworks deployed at the Hit step to produce the kind of structured thinking that examiners reward with top grades.
-          </p>
-        </div>
-      </div>
 
       <div class="founder-profile" data-animate="reveal-up">
         <div class="founder-photo-wrap">
@@ -172,11 +153,12 @@ import '../styles/global.css';
               <text x="100" y="195" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(43,90,140,0.4)" letter-spacing="0.1em">PHOTO</text>
             </svg>
           </div>
+          <div class="founder-signature" aria-hidden="true">Jeremy Lim</div>
         </div>
         <div class="founder-info">
           <span class="eyebrow">Meet the Founder</span>
           <h3>Jeremy Lim &mdash; NUS Law Graduate &amp; Educator</h3>
-          <p>Jeremy combined legal-analytical training from NUS Law with a passion for education to create the SHARP Method &mdash; a five-step system (See, Hit, Apply, Refine, Practise) that teaches students how to think critically, structure arguments precisely, and write with confidence. Every A-Worthy lesson reflects this unique combination of legal rigour and teaching expertise.</p>
+          <p>With a law degree from NUS and years of direct teaching experience, Jeremy asked a simple question: why do law students learn to think so precisely, but secondary and JC students are told to &ldquo;just practise more&rdquo;? The answer became the SHARP Method &mdash; a five-step system (See, Hit, Apply, Refine, Practise) that distils legal-analytical rigour into a repeatable framework any student can master. Paper-matched frameworks are deployed at the Hit step, producing the kind of structured thinking that examiners reward with top grades.</p>
           <div class="founder-credentials">
             <span class="founder-credential"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> NUS Faculty of Law</span>
             <span class="founder-credential"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 500+ Students Taught</span>
@@ -354,112 +336,6 @@ import '../styles/global.css';
     max-width: 100%;
   }
 
-  /* ===== TEAM ===== */
-  .team-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .team-card {
-    background: var(--bg-card);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 2.5rem;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  @media (hover: hover) {
-    .team-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(26, 42, 58, 0.12);
-    }
-  }
-
-  @keyframes team-initials-shimmer {
-    0%, 100% { box-shadow: 0 0 0 transparent; }
-    50% { box-shadow: 0 0 18px rgba(212, 133, 58, 0.35), 0 0 40px rgba(201, 169, 110, 0.12); }
-  }
-
-  .team-photo-wrap {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    padding: 3px;
-    background: linear-gradient(135deg, var(--color-accent), #2B5A8C, var(--color-accent));
-    margin-bottom: 1.5rem;
-    animation: team-initials-shimmer 5s ease-in-out infinite;
-  }
-
-  .team-photo-placeholder {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(212, 133, 58, 0.15), rgba(43, 90, 140, 0.1));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .team-photo-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .team-photo-initials {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--color-accent);
-    letter-spacing: 0.05em;
-  }
-
-  .team-card h3 {
-    font-family: var(--about-font);
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: var(--text-primary);
-    margin: 0 0 0.35rem;
-    letter-spacing: -0.03em;
-  }
-
-  .team-role {
-    display: block;
-    font-family: var(--about-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--about-accent);
-    margin-bottom: 1rem;
-  }
-
-  .team-credentials {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.25rem;
-  }
-
-  .credential {
-    font-family: var(--about-font);
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--about-gray);
-    border: 1px solid var(--about-border);
-    border-radius: 3px;
-    padding: 0.2rem 0.6rem;
-  }
-
-  .team-card p {
-    font-size: 0.92rem;
-    line-height: 1.7;
-  }
-
   /* ===== VALUES ===== */
   .values-grid {
     display: grid;
@@ -595,12 +471,22 @@ import '../styles/global.css';
     align-items: center;
     margin-top: 3rem;
     padding: 2.5rem;
-    background: var(--bg-card);
+    background: #FFFDF6;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 1px 2px rgba(26, 42, 58, 0.04),
+      0 14px 30px -22px rgba(26, 42, 58, 0.18);
+  }
+  :global([data-theme="dark"]) .founder-profile {
+    background: var(--bg-card);
   }
   .founder-photo-wrap {
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .founder-photo-placeholder {
     width: 200px;
@@ -608,6 +494,16 @@ import '../styles/global.css';
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid var(--border-color);
+  }
+  /* Pinyon Script signature — used deliberately once (claudedesign H.2). */
+  .founder-signature {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--color-accent);
+    margin-top: 1rem;
+    opacity: 0.85;
+    text-align: center;
   }
   .founder-info h3 {
     font-family: var(--font-heading);
@@ -647,13 +543,11 @@ import '../styles/global.css';
       padding: 0 1.5rem;
     }
 
-    .team-grid,
     .values-grid,
     .centres-grid {
       grid-template-columns: 1fr;
     }
 
-    .team-card,
     .value-item,
     .centre-card {
       padding: 2rem;

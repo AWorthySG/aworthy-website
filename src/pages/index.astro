@@ -11,35 +11,7 @@ import '../styles/global.css';
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-depth-layer" aria-hidden="true"></div>
-    <div class="hero-geometric-decor" aria-hidden="true">
-      <svg class="hero-decor-svg" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <!-- Subtle geometric shapes -->
-        <circle cx="150" cy="120" r="80" stroke="#2B5A8C" stroke-width="0.5" opacity="0.08"/>
-        <circle cx="150" cy="120" r="120" stroke="#2B5A8C" stroke-width="0.3" opacity="0.05"/>
-        <circle cx="1050" cy="650" r="100" stroke="#D4853A" stroke-width="0.5" opacity="0.06"/>
-        <circle cx="1050" cy="650" r="150" stroke="#D4853A" stroke-width="0.3" opacity="0.04"/>
-        <!-- Diagonal accent lines -->
-        <line x1="0" y1="600" x2="300" y2="800" stroke="#2B5A8C" stroke-width="0.5" opacity="0.06"/>
-        <line x1="900" y1="0" x2="1200" y2="200" stroke="#D4853A" stroke-width="0.5" opacity="0.05"/>
-        <!-- Dot grid pattern in corners -->
-        <g opacity="0.04" fill="#2B5A8C">
-          <circle cx="50" cy="700" r="2"/><circle cx="70" cy="700" r="2"/><circle cx="90" cy="700" r="2"/>
-          <circle cx="50" cy="720" r="2"/><circle cx="70" cy="720" r="2"/><circle cx="90" cy="720" r="2"/>
-          <circle cx="50" cy="740" r="2"/><circle cx="70" cy="740" r="2"/><circle cx="90" cy="740" r="2"/>
-        </g>
-        <g opacity="0.04" fill="#D4853A">
-          <circle cx="1110" cy="60" r="2"/><circle cx="1130" cy="60" r="2"/><circle cx="1150" cy="60" r="2"/>
-          <circle cx="1110" cy="80" r="2"/><circle cx="1130" cy="80" r="2"/><circle cx="1150" cy="80" r="2"/>
-          <circle cx="1110" cy="100" r="2"/><circle cx="1130" cy="100" r="2"/><circle cx="1150" cy="100" r="2"/>
-        </g>
-        <!-- Floating diamond accents -->
-        <rect x="200" y="500" width="12" height="12" transform="rotate(45 206 506)" stroke="#D4853A" stroke-width="0.8" opacity="0.08"/>
-        <rect x="1000" y="200" width="8" height="8" transform="rotate(45 1004 204)" stroke="#2B5A8C" stroke-width="0.8" opacity="0.06"/>
-        <rect x="600" y="50" width="6" height="6" transform="rotate(45 603 53)" fill="#D4853A" opacity="0.08"/>
-      </svg>
-    </div>
 
     <div class="hero-centre">
       <div class="hero-reveal-line hero-anim" style="--d:0">
@@ -53,12 +25,12 @@ import '../styles/global.css';
         <span class="hero-tagline">
           <span class="hero-letter" style="--i:0">A</span>
           <span class="hero-letter hero-letter--space" style="--i:1">&nbsp;</span>
-          <span class="hero-letter" style="--i:2">W</span>
-          <span class="hero-letter" style="--i:3">o</span>
-          <span class="hero-letter" style="--i:4">r</span>
-          <span class="hero-letter" style="--i:5">t</span>
-          <span class="hero-letter" style="--i:6">h</span>
-          <span class="hero-letter" style="--i:7">y</span>
+          <span class="hero-letter hero-letter--italic" style="--i:2">W</span>
+          <span class="hero-letter hero-letter--italic" style="--i:3">o</span>
+          <span class="hero-letter hero-letter--italic" style="--i:4">r</span>
+          <span class="hero-letter hero-letter--italic" style="--i:5">t</span>
+          <span class="hero-letter hero-letter--italic" style="--i:6">h</span>
+          <span class="hero-letter hero-letter--italic" style="--i:7">y</span>
         </span>
         <span class="hero-underline" aria-hidden="true"></span>
       </h1>
@@ -69,16 +41,22 @@ import '../styles/global.css';
           <span class="hero-proof-num">81%</span>
           <span class="hero-proof-lbl">score A or B</span>
         </div>
-        <div class="hero-proof-sep"></div>
         <div class="hero-proof-item">
           <span class="hero-proof-num">127</span>
           <span class="hero-proof-lbl">5-star reviews</span>
         </div>
-        <div class="hero-proof-sep"></div>
         <div class="hero-proof-item">
           <span class="hero-proof-num">6</span>
           <span class="hero-proof-lbl">max class size</span>
         </div>
+      </div>
+
+      <div class="hero-google-wrap hero-anim" style="--d:13">
+        <a class="google-badge" href="https://g.page/r/a-worthy" target="_blank" rel="noopener" aria-label="Google rating 5.0 stars across 127 reviews">
+          <span class="gb-rating">5.0</span>
+          <span class="gb-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="gb-meta">Google &middot; 127 reviews</span>
+        </a>
       </div>
 
       <p class="hero-intake hero-anim" style="--d:14">Next intake: <strong>June 2026</strong> &mdash; Limited slots available</p>
@@ -116,7 +94,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== STATS BAR with Story Context (#14) ===== -->
-  <section class="stats-bar">
+  <section class="stats-bar section--sand">
     <div class="container stats-inner">
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="1">
         <span class="stat-number" data-count="81" data-count-suffix="%">81%</span>
@@ -364,7 +342,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== PROGRAMMES OVERVIEW ===== -->
-  <section id="programmes" class="section programmes-section">
+  <section id="programmes" class="section section--sand programmes-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Our Programmes</span>
       <h2 class="section-heading" data-animate="reveal-up">Tuition programmes for every level &mdash; Sec 1 to JC 2</h2>
@@ -483,7 +461,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== SHARP FLOW DIAGRAM ===== -->
-  <section class="section case-flow-section">
+  <section class="section section--ink section--lg case-flow-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">How It Works</span>
       <h2 class="section-heading" data-animate="reveal-up">The five-step system behind our students&rsquo; grade jumps</h2>
@@ -984,7 +962,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-  <section id="reviews" class="section testimonials-section">
+  <section id="reviews" class="section section--sand testimonials-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">What Families Say</span>
       <h2 class="section-heading" data-animate="reveal-up">What Singapore parents and students say about our tuition</h2>
@@ -1160,7 +1138,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section id="faq" class="section faq-section">
+  <section id="faq" class="section section--sand faq-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Common Questions</span>
       <h2 class="section-heading" data-animate="reveal-up">Frequently asked questions about our Singapore tuition programmes</h2>
@@ -1534,157 +1512,6 @@ import '../styles/global.css';
 })();
 </script>
 
-<!-- Immersive 3D particle canvas -->
-<script is:inline>
-(function(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var c = document.getElementById('hero-canvas');
-  if (!c) return;
-  var ctx = c.getContext('2d');
-  var dpr = window.devicePixelRatio || 1;
-  var W, H;
-  var mouseX = 0.5, mouseY = 0.5;
-  var particles = [];
-  var PARTICLE_COUNT = 120;
-
-  function resize() {
-    W = c.parentElement.clientWidth;
-    H = c.parentElement.clientHeight;
-    c.width = W * dpr;
-    c.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  // Create particles at different depth layers
-  for (var i = 0; i < PARTICLE_COUNT; i++) {
-    var depth = Math.random(); // 0 = far, 1 = near
-    particles.push({
-      x: Math.random() * 2 - 0.5,
-      y: Math.random() * 2 - 0.5,
-      z: depth,
-      baseX: Math.random() * 2 - 0.5,
-      baseY: Math.random() * 2 - 0.5,
-      size: 1 + depth * 2.5,
-      speed: 0.0002 + depth * 0.0005,
-      drift: Math.random() * Math.PI * 2,
-      alpha: 0.08 + depth * 0.25,
-      hue: Math.random() > 0.65 ? 30 : 210, // gold or blue
-    });
-  }
-
-  // Mouse / touch tracking
-  document.addEventListener('mousemove', function(e) {
-    mouseX = e.clientX / window.innerWidth;
-    mouseY = e.clientY / window.innerHeight;
-  });
-  document.addEventListener('touchmove', function(e) {
-    if (e.touches[0]) {
-      mouseX = e.touches[0].clientX / window.innerWidth;
-      mouseY = e.touches[0].clientY / window.innerHeight;
-    }
-  }, { passive: true });
-
-  var startTime = performance.now();
-
-  function draw(now) {
-    var elapsed = now - startTime;
-    ctx.clearRect(0, 0, W, H);
-
-    // Background atmosphere — subtle radial glow that follows mouse
-    var gx = W * (0.3 + mouseX * 0.4);
-    var gy = H * (0.3 + mouseY * 0.4);
-    var grad = ctx.createRadialGradient(gx, gy, 0, gx, gy, W * 0.7);
-    grad.addColorStop(0, 'rgba(43,90,140,0.08)');
-    grad.addColorStop(0.5, 'rgba(212,133,58,0.03)');
-    grad.addColorStop(1, 'transparent');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, W, H);
-
-    // Draw particles with parallax depth
-    var mx = (mouseX - 0.5) * 2;
-    var my = (mouseY - 0.5) * 2;
-
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      // Organic drift
-      p.drift += p.speed;
-      var driftX = Math.sin(p.drift) * 0.02 * (1 + p.z);
-      var driftY = Math.cos(p.drift * 0.7) * 0.015 * (1 + p.z);
-
-      // Parallax: deeper particles move less
-      var parallaxX = mx * p.z * 0.08;
-      var parallaxY = my * p.z * 0.08;
-
-      var px = (p.baseX + driftX + parallaxX + 0.5) * W;
-      var py = (p.baseY + driftY + parallaxY + 0.5) * H;
-
-      // Wrap around
-      if (px < -20) px += W + 40;
-      if (px > W + 20) px -= W + 40;
-      if (py < -20) py += H + 40;
-      if (py > H + 20) py -= H + 40;
-
-      // Depth-based glow
-      var s = p.size;
-      var a = p.alpha;
-
-      // Pulse subtly
-      a *= 0.7 + 0.3 * Math.sin(elapsed * 0.001 + p.drift);
-
-      if (p.hue === 30) {
-        ctx.fillStyle = 'rgba(212,158,80,' + a + ')';
-      } else {
-        ctx.fillStyle = 'rgba(100,150,200,' + a + ')';
-      }
-
-      ctx.beginPath();
-      ctx.arc(px, py, s, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Glow for near particles
-      if (p.z > 0.6) {
-        ctx.beginPath();
-        ctx.arc(px, py, s * 3, 0, Math.PI * 2);
-        if (p.hue === 30) {
-          ctx.fillStyle = 'rgba(212,133,58,' + (a * 0.15) + ')';
-        } else {
-          ctx.fillStyle = 'rgba(43,90,140,' + (a * 0.12) + ')';
-        }
-        ctx.fill();
-      }
-    }
-
-    // Draw faint connection lines between nearby particles
-    ctx.strokeStyle = 'rgba(43,90,140,0.04)';
-    ctx.lineWidth = 0.5;
-    for (var i = 0; i < particles.length; i++) {
-      var p1 = particles[i];
-      var p1x = (p1.baseX + Math.sin(p1.drift) * 0.02 + (mx * p1.z * 0.08) + 0.5) * W;
-      var p1y = (p1.baseY + Math.cos(p1.drift * 0.7) * 0.015 + (my * p1.z * 0.08) + 0.5) * H;
-      for (var j = i + 1; j < particles.length; j++) {
-        var p2 = particles[j];
-        var p2x = (p2.baseX + Math.sin(p2.drift) * 0.02 + (mx * p2.z * 0.08) + 0.5) * W;
-        var p2y = (p2.baseY + Math.cos(p2.drift * 0.7) * 0.015 + (my * p2.z * 0.08) + 0.5) * H;
-        var dx = p1x - p2x;
-        var dy = p1y - p2y;
-        var dist = dx * dx + dy * dy;
-        if (dist < 15000) {
-          ctx.beginPath();
-          ctx.moveTo(p1x, p1y);
-          ctx.lineTo(p2x, p2y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(draw);
-  }
-  requestAnimationFrame(draw);
-})();
-</script>
-
 <!-- Programme Quiz Logic (#8) -->
 <script is:inline>
 (function(){
@@ -1884,48 +1711,21 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     --on-dark-subtle: rgba(26,42,58,0.03);
   }
 
-  /* ===== FLOATING ORBS ===== */
-  /* ===== HERO CANVAS (3D particle field) ===== */
-  .hero-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
+  /* Hero depth — single warm vignette, no canvas, no geometric decor (claudedesign A.1).
+     A premium law-firm-adjacent brand reads more confident with less decoration. */
   .hero-depth-layer {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(245,241,235,0.3) 100%);
-  }
-  .hero-geometric-decor {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .hero-decor-svg {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    animation: hero-decor-float 20s ease-in-out infinite;
-  }
-  @keyframes hero-decor-float {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(-8px, 5px); }
-  }
-  :global([data-theme="dark"]) .hero-geometric-decor {
-    filter: invert(1) hue-rotate(180deg);
-    opacity: 0.5;
+      radial-gradient(120% 80% at 50% 0%, #FBF6EC 0%, transparent 55%),
+      radial-gradient(60% 50% at 50% 100%, rgba(43, 90, 140, 0.05), transparent 70%);
   }
   :global([data-theme="dark"]) .hero-depth-layer {
-    background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(11,11,15,0.5) 100%);
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgba(229, 154, 85, 0.04) 0%, transparent 55%),
+      radial-gradient(60% 50% at 50% 100%, rgba(43, 90, 140, 0.08), transparent 70%);
   }
 
   /* ===== EYEBROW ===== */
@@ -1957,6 +1757,27 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     padding: 6rem 0;
     background: var(--bg-primary);
     scroll-margin-top: var(--header-height);
+  }
+
+  /* Override default .section background when modifier is present (claudedesign C.1). */
+  .section.section--sand { background: var(--bg-secondary); }
+  .section.section--ink {
+    background: #1A2A3A;
+    color: #F5F1EB;
+    --text-primary: #F5F1EB;
+    --text-secondary: rgba(245, 241, 235, 0.78);
+    --text-muted: rgba(245, 241, 235, 0.58);
+    --border-color: rgba(245, 241, 235, 0.12);
+  }
+  .section.section--ink h1, .section.section--ink h2, .section.section--ink h3,
+  .section.section--ink h4, .section.section--ink h5, .section.section--ink h6 {
+    color: var(--text-primary);
+  }
+  .section.section--ink p, .section.section--ink li {
+    color: var(--text-secondary);
+  }
+  :global([data-theme="dark"]) .section.section--ink {
+    background: #1f1c16;
   }
 
   .cta-section {
@@ -2039,11 +1860,12 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: block;
     font-family: 'Fraunces', var(--font-heading), serif;
     font-size: clamp(4.5rem, 14vw, 10rem);
-    font-weight: 100;
-    font-style: italic;
+    font-weight: 200;
+    font-style: normal;
     font-variation-settings: 'opsz' 144;
     line-height: 0.95;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
+    color: var(--text-primary);
   }
 
   .hero-letter {
@@ -2051,6 +1873,16 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     opacity: 0;
     transform: translateY(50px) scale(0.9);
     filter: blur(4px);
+    animation: letter-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(1.2s + var(--i) * 0.08s);
+  }
+
+  /* "Worthy" — italic Fraunces 300 in gold (claudedesign A.3). The calligraphic
+     italic + upright Fraunces is the law-firm-monogram move Fraunces was designed for. */
+  .hero-letter--italic {
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'opsz' 144, 'SOFT' 50;
     color: transparent;
     background: linear-gradient(135deg, #B87333 0%, #D4853A 35%, #e8a060 55%, #D4853A 75%, #B87333 100%);
     background-size: 200% 200%;
@@ -2095,24 +1927,26 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     to { width: min(60%, 400px); }
   }
 
+  /* Hero subtitle — capped measure for readability (claudedesign A.2). */
   .hero-sub {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-primary);
-    opacity: 0.8;
-    max-width: 560px;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 58ch;
     margin: 0 auto 2.5rem;
+    letter-spacing: -0.005em;
+    text-wrap: pretty;
   }
 
+  /* Proof row — typographic mini-table, no separator divs (claudedesign A.4). */
   .hero-proof-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-bottom: 2rem;
-    padding: 1.25rem 0;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    max-width: 560px;
+    margin: 0 auto 1.25rem;
+    padding: 1rem 0;
+    border-block: 1px solid var(--border-color);
   }
 
   .hero-proof-item {
@@ -2123,10 +1957,13 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .hero-proof-num {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 200;
+    letter-spacing: -0.02em;
+    line-height: 1;
     color: var(--text-primary);
-    animation: shimmer-glow 5s ease-in-out 2s infinite;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-variant-numeric: tabular-nums lining-nums;
   }
 
   .proof-label {
@@ -2142,7 +1979,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     border: 1px solid var(--border-color);
     color: var(--text-primary);
     padding: 0.875rem 2rem;
-    border-radius: 0;
+    border-radius: var(--radius-sm);
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -2159,16 +1996,18 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .hero-proof-lbl {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-secondary);
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
   }
 
-  .hero-proof-sep {
-    width: 1px;
-    height: 2rem;
-    background: var(--border-color);
+  /* Google review badge wrapper (claudedesign B.3) */
+  .hero-google-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
   }
 
   .hero-intake {
@@ -2189,46 +2028,21 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-bottom: 2.5rem;
   }
 
+  /* CTAs inherit gradient bevel + radius from .btn-accent / .btn (global D.1, D.3). */
   .hero-cta-primary {
-    background: var(--color-accent);
-    color: #ffffff;
-    border: 1px solid var(--color-accent);
     padding: 0.875rem 2.5rem;
-    border-radius: 0;
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .hero-cta-primary:hover {
-    background: #c4752e;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(212,133,58,0.3);
   }
 
   .hero-cta-secondary {
     display: inline-flex;
     align-items: center;
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
     padding: 0.875rem 2rem;
-    border-radius: 0;
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .hero-cta-secondary:hover {
-    border-color: rgba(26,42,58,0.25);
-    color: var(--text-primary);
-    transform: translateY(-2px);
   }
 
   .hero-badges-row {
@@ -2246,7 +2060,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     text-transform: uppercase;
     padding: 0.35rem 0.8rem;
     border: 1px solid var(--border-color);
-    border-radius: 0;
+    border-radius: var(--radius-sm);
     color: var(--text-muted);
     background: transparent;
   }
@@ -2478,11 +2292,15 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
       justify-content: center;
     }
     .hero-proof-row {
-      flex-wrap: wrap;
       gap: 1rem;
+      padding: 0.75rem 0;
     }
-    .hero-proof-sep {
-      display: none;
+    .hero-proof-num {
+      font-size: 1.4rem;
+    }
+    .hero-proof-lbl {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
     }
     .hero-tagline {
       font-size: clamp(3.5rem, 16vw, 5.5rem);
@@ -2661,8 +2479,8 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   /* ===== PROGRAMMES ===== */
   .programmes-section {
     background:
-      radial-gradient(ellipse at 80% 20%, rgba(43,90,140,0.04) 0%, transparent 50%),
-      var(--section-bg);
+      radial-gradient(ellipse at 80% 20%, rgba(43, 90, 140, 0.04) 0%, transparent 50%),
+      var(--bg-secondary);
   }
 
   .programmes-grid {
@@ -2936,9 +2754,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   /* ===== SHARP FLOW DIAGRAM ===== */
-  .case-flow-section {
-    background: var(--bg-secondary);
-  }
+  /* Background handled by .section--ink (claudedesign C.1). */
 
   .case-flow {
     display: flex;
@@ -3068,6 +2884,28 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   @keyframes show-arrow {
     to { opacity: 1; }
+  }
+
+  /* Dark-band overrides — the case-flow lives on the ink section (claudedesign C.1).
+     Lift the icon bg + watermark so they're legible on dark. */
+  .section--ink .case-flow-icon {
+    background: rgba(245, 241, 235, 0.06);
+    border-color: rgba(245, 241, 235, 0.18);
+    color: #F5F1EB;
+  }
+  .section--ink .case-flow-watermark {
+    color: var(--color-accent);
+    opacity: 0.10;
+  }
+  .section--ink .case-flow-step h3 {
+    color: #F5F1EB;
+  }
+  .section--ink .case-flow-step p {
+    color: rgba(245, 241, 235, 0.7);
+  }
+  .section--ink .sharp-step--featured {
+    background: rgba(245, 241, 235, 0.04);
+    border: 1px solid rgba(245, 241, 235, 0.12);
   }
 
   .case-flow-step h3 {
@@ -3219,8 +3057,8 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   /* ═══ TESTIMONIALS ═══ */
   .testimonials-section {
     background:
-      radial-gradient(ellipse at 20% 80%, rgba(212,133,58,0.03) 0%, transparent 45%),
-      var(--section-bg);
+      radial-gradient(ellipse at 20% 80%, rgba(212, 133, 58, 0.03) 0%, transparent 45%),
+      var(--bg-secondary);
   }
 
   .testimonials-grid {
@@ -3251,40 +3089,34 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     border-color: var(--color-accent);
   }
 
+  /* Pull-quote treatment (claudedesign B.4) — magazine-style on the homepage too. */
   .testimonial-card {
-    background: var(--bg-card);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-top: 2px solid var(--color-accent);
-    border-radius: 4px;
-    padding: 2rem;
-    transition: all 0.4s ease;
     position: relative;
-    overflow: hidden;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    border-radius: 0;
+    padding: 2.5rem 0.5rem 2rem 3.5rem;
+    transition: none;
+    overflow: visible;
   }
   .testimonial-card::before {
     content: '\201C';
     position: absolute;
     top: 0.5rem;
-    right: 1.25rem;
+    left: 0;
+    right: auto;
     font-family: var(--font-heading);
-    font-size: 5rem;
+    font-weight: 300;
+    font-size: 6rem;
     line-height: 1;
     color: var(--color-accent);
-    opacity: 0.07;
+    opacity: 0.18;
     pointer-events: none;
     user-select: none;
   }
   :global([data-theme="dark"]) .testimonial-card::before {
-    opacity: 0.05;
-  }
-
-  @media (hover: hover) {
-    .testimonial-card:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(26, 42, 58, 0.15);
-    }
+    opacity: 0.22;
   }
 
   .testimonial-stars {
@@ -3296,11 +3128,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .testimonial-card blockquote {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
-    font-style: normal;
+    text-wrap: pretty;
   }
 
   .testimonial-author {
@@ -3966,7 +3801,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     .hero-prelude-word { opacity: 1; transform: none; animation: none; }
     .hero-letter { opacity: 1; transform: none; filter: none; animation: none; }
     .hero-underline { width: min(60%, 400px); animation: none; }
-    .hero-canvas { display: none; }
   }
 
   /* ===== STAT STORY CONTEXT (#14) ===== */
