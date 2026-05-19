@@ -210,14 +210,25 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Preview Sample
                   </button>
-                  <a class="r-card-download-btn plausible-event-name=Resource+Download" href={resource.samplePdf} download>
+                  <a
+                    class="r-card-download-btn plausible-event-name=Resource+Download"
+                    href={resource.samplePdf}
+                    data-resource-title={resource.title}
+                    data-resource-mode="download"
+                    download
+                  >
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Download
                   </a>
                 </div>
               </Fragment>
             ) : (
-              <a href="/contact/" class="r-card-link">
+              <a
+                href="#"
+                class="r-card-link"
+                data-resource-title={resource.title}
+                data-resource-mode="request"
+              >
                 Request Free Copy <span class="r-arrow">&rarr;</span>
               </a>
             )}
@@ -354,44 +365,192 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 
 <script is:inline>
 (function(){
-  // Gate resource downloads behind email
-  var cards = document.querySelectorAll('.r-card-download-btn');
-  cards.forEach(function(card) {
-    card.addEventListener('click', function(e) {
-      if (localStorage.getItem('resource-email')) return; // Already captured
-      e.preventDefault();
-      var url = card.getAttribute('href') || '#';
-      var overlay = document.createElement('div');
-      overlay.className = 'resource-gate-overlay';
-      overlay.innerHTML = '<div class="resource-gate">' +
-        '<button class="resource-gate-close" aria-label="Close">&times;</button>' +
-        '<h4>Enter your email to access free resources</h4>' +
-        '<p>Get instant access to all sample PDFs and future resource updates.</p>' +
-        '<form class="resource-gate-form">' +
-        '<input type="email" placeholder="Your email address" required />' +
-        '<button type="submit" class="btn btn-accent" style="width:100%">Access Resource</button>' +
-        '</form></div>';
-      document.body.appendChild(overlay);
-      document.body.style.overflow = 'hidden';
+  // TODO: replace with your dedicated Formspree form ID for resource downloads.
+  // Create one at https://formspree.io, then swap "YOUR_FORM_ID" below.
+  var FORMSPREE_ID = 'YOUR_FORM_ID';
+  var FORMSPREE_URL = 'https://formspree.io/f/' + FORMSPREE_ID;
 
-      overlay.querySelector('.resource-gate-close').addEventListener('click', function() {
-        overlay.remove();
-        document.body.style.overflow = '';
-      });
-      overlay.addEventListener('click', function(ev) {
-        if (ev.target === overlay) { overlay.remove(); document.body.style.overflow = ''; }
-      });
-      overlay.querySelector('form').addEventListener('submit', function(ev) {
-        ev.preventDefault();
-        var email = overlay.querySelector('input').value;
-        if (email) {
-          localStorage.setItem('resource-email', email);
-          overlay.remove();
-          document.body.style.overflow = '';
-          window.open(url, '_blank');
-        }
+  function getStoredLead() {
+    try {
+      var raw = localStorage.getItem('resource-lead');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function storeLead(email, phone, name) {
+    try {
+      localStorage.setItem('resource-lead', JSON.stringify({ email: email, phone: phone, name: name || '' }));
+    } catch (e) {}
+  }
+
+  function submitLead(payload) {
+    return fetch(FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  }
+
+  function showToast(message) {
+    var toast = document.createElement('div');
+    toast.className = 'resource-toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(function() { toast.classList.add('resource-toast--show'); }, 10);
+    setTimeout(function() {
+      toast.classList.remove('resource-toast--show');
+      setTimeout(function() { toast.remove(); }, 300);
+    }, 4500);
+  }
+
+  function deliverResource(mode, url, title) {
+    if (mode === 'download' && url) {
+      window.open(url, '_blank');
+      showToast('Sample opened in a new tab. The full version of "' + title + '" will be emailed shortly.');
+    } else {
+      showToast('Thanks! We’ll email the full version of "' + title + '" within 24 hours.');
+    }
+  }
+
+  function openGate(mode, url, title) {
+    var overlay = document.createElement('div');
+    overlay.className = 'resource-gate-overlay';
+    var ctaLabel = mode === 'download' ? 'Send me the resource' : 'Email me the full version';
+    var heading = mode === 'download'
+      ? 'Get instant access to your A-Worthy resource'
+      : 'Request the full version of this resource';
+    var subline = mode === 'download'
+      ? 'Enter your details to preview the sample now. We’ll also email the full version of "' + title + '" to you.'
+      : 'Enter your details and we’ll email "' + title + '" to you within 24 hours.';
+
+    overlay.innerHTML =
+      '<div class="resource-gate" role="dialog" aria-modal="true" aria-labelledby="resource-gate-title">' +
+        '<button class="resource-gate-close" aria-label="Close">&times;</button>' +
+        '<span class="resource-gate-eyebrow">Free Resource</span>' +
+        '<h4 id="resource-gate-title">' + heading + '</h4>' +
+        '<p>' + subline + '</p>' +
+        '<form class="resource-gate-form" novalidate>' +
+          '<label class="resource-gate-label">' +
+            '<span>Email <em>*</em></span>' +
+            '<input type="email" name="email" required autocomplete="email" placeholder="you@email.com" />' +
+          '</label>' +
+          '<label class="resource-gate-label">' +
+            '<span>Phone (Singapore) <em>*</em></span>' +
+            '<input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+65 9123 4567" />' +
+          '</label>' +
+          '<label class="resource-gate-label">' +
+            '<span>Name <em class="resource-gate-optional">(optional)</em></span>' +
+            '<input type="text" name="name" autocomplete="name" placeholder="Parent or student name" />' +
+          '</label>' +
+          '<button type="submit" class="resource-gate-submit">' + ctaLabel + '</button>' +
+          '<p class="resource-gate-error" hidden></p>' +
+          '<p class="resource-gate-note">We respect your privacy. No spam &mdash; unsubscribe anytime.</p>' +
+        '</form>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+
+    function close() {
+      overlay.remove();
+      document.body.style.overflow = '';
+    }
+
+    overlay.querySelector('.resource-gate-close').addEventListener('click', close);
+    overlay.addEventListener('click', function(ev) {
+      if (ev.target === overlay) close();
+    });
+    document.addEventListener('keydown', function escHandler(ev) {
+      if (ev.key === 'Escape') { close(); document.removeEventListener('keydown', escHandler); }
+    });
+
+    setTimeout(function() {
+      var firstInput = overlay.querySelector('input[name="email"]');
+      if (firstInput) firstInput.focus();
+    }, 50);
+
+    var form = overlay.querySelector('form');
+    var submitBtn = overlay.querySelector('.resource-gate-submit');
+    var errorEl = overlay.querySelector('.resource-gate-error');
+
+    form.addEventListener('submit', function(ev) {
+      ev.preventDefault();
+      var email = form.email.value.trim();
+      var phone = form.phone.value.trim();
+      var name = form.name.value.trim();
+
+      var phoneDigits = phone.replace(/\D/g, '');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.hidden = false;
+        return;
+      }
+      if (phoneDigits.length < 8) {
+        errorEl.textContent = 'Please enter a valid phone number.';
+        errorEl.hidden = false;
+        return;
+      }
+      errorEl.hidden = true;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      var payload = {
+        email: email,
+        phone: phone,
+        name: name,
+        resource: title,
+        mode: mode,
+        _subject: 'Resource Download Request: ' + title
+      };
+
+      submitLead(payload).then(function(res) {
+        if (!res.ok) throw new Error('submit-failed');
+        storeLead(email, phone, name);
+        close();
+        deliverResource(mode, url, title);
+      }).catch(function() {
+        // Still store locally and deliver so the user isn't blocked by a Formspree outage.
+        storeLead(email, phone, name);
+        close();
+        deliverResource(mode, url, title);
       });
     });
+  }
+
+  function handleClick(e) {
+    var el = e.currentTarget;
+    var mode = el.getAttribute('data-resource-mode');
+    var title = el.getAttribute('data-resource-title') || 'A-Worthy resource';
+    var url = el.getAttribute('href');
+    var stored = getStoredLead();
+
+    if (stored && stored.email && stored.phone) {
+      // Returning visitor: silently log the request and deliver.
+      submitLead({
+        email: stored.email,
+        phone: stored.phone,
+        name: stored.name || '',
+        resource: title,
+        mode: mode,
+        repeat: true,
+        _subject: 'Resource Re-download: ' + title
+      }).catch(function() {});
+
+      if (mode === 'request') {
+        e.preventDefault();
+        deliverResource(mode, url, title);
+      }
+      // For mode === 'download', let the native <a download> open the file.
+      return;
+    }
+
+    e.preventDefault();
+    openGate(mode, url, title);
+  }
+
+  document.querySelectorAll('[data-resource-mode]').forEach(function(el) {
+    el.addEventListener('click', handleClick);
   });
 })();
 </script>
@@ -400,23 +559,24 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   .resource-gate-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.55);
     z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
   .resource-gate {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 2rem;
-    max-width: 380px;
+    padding: 2rem 1.75rem 1.5rem;
+    max-width: 420px;
     width: 100%;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
   }
   .resource-gate-close {
     position: absolute;
@@ -425,25 +585,63 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     background: none;
     border: none;
     font-size: 1.5rem;
+    line-height: 1;
     color: var(--text-muted);
     cursor: pointer;
+    padding: 0.25rem 0.5rem;
+  }
+  .resource-gate-close:hover {
+    color: var(--text-primary);
+  }
+  .resource-gate-eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
   }
   .resource-gate h4 {
-    font-size: 1.1rem;
+    font-family: var(--font-body);
+    font-size: 1.15rem;
     font-weight: 500;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.35;
   }
   .resource-gate p {
     font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-bottom: 1rem;
-    line-height: 1.5;
+    margin: 0 0 1.25rem;
+    line-height: 1.55;
   }
   .resource-gate-form {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
+  }
+  .resource-gate-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .resource-gate-label > span {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
+  }
+  .resource-gate-label em {
+    font-style: normal;
+    color: var(--color-accent);
+    margin-left: 0.15rem;
+  }
+  .resource-gate-label em.resource-gate-optional {
+    color: var(--text-muted);
+    font-weight: 400;
   }
   .resource-gate-form input {
     padding: 0.7rem 0.85rem;
@@ -453,6 +651,75 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     background: var(--bg-secondary);
     color: var(--text-primary);
     font-family: var(--font-body);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .resource-gate-form input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(212, 133, 58, 0.18);
+  }
+  .resource-gate-submit {
+    margin-top: 0.25rem;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--color-accent);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .resource-gate-submit:hover:not(:disabled) {
+    background: var(--color-accent-light);
+  }
+  .resource-gate-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  .resource-gate-error {
+    color: #c0392b;
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  .resource-gate-note {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin: 0;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ===== TOAST ===== */
+  .resource-toast {
+    position: fixed;
+    bottom: max(1.5rem, env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translate(-50%, 1rem);
+    z-index: 2100;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 0.85rem 1.25rem;
+    border-radius: 6px;
+    max-width: min(420px, calc(100% - 2rem));
+    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+  .resource-toast--show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  @media (max-width: 480px) {
+    .resource-gate {
+      padding: 1.75rem 1.25rem 1.25rem;
+    }
   }
 </style>
 
