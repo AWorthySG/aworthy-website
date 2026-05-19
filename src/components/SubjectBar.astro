@@ -36,16 +36,6 @@ const subjects = [
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    pointer-events: none;
-  }
-
-  .subject-bar.is-visible {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
   }
 
   .subject-bar-inner {
@@ -164,23 +154,3 @@ const subjects = [
   }
 </style>
 
-<script is:inline>
-(function () {
-  var bar = document.querySelector('.subject-bar');
-  if (!bar) return;
-
-  var threshold = 120;
-  var visible = false;
-
-  function update() {
-    var shouldShow = window.scrollY > threshold;
-    if (shouldShow !== visible) {
-      visible = shouldShow;
-      bar.classList.toggle('is-visible', visible);
-    }
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-})();
-</script>
