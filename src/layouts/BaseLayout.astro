@@ -1,4 +1,6 @@
 ---
+import SubjectBar from '../components/SubjectBar.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -137,7 +139,7 @@ import { ClientRouter } from 'astro:transitions';
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <slot name="header" />
-
+  <SubjectBar />
 
   <nav class="breadcrumb" aria-label="Breadcrumb" id="breadcrumb">
     <ol class="breadcrumb-list">
