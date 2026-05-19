@@ -260,7 +260,7 @@ li {
 .eyebrow {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.7rem, 1.6vw, 0.75rem);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;

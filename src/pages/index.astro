@@ -2378,7 +2378,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .stat-number {
     display: block;
     font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 200;
     color: var(--text-primary);
     letter-spacing: -0.03em;
@@ -3747,6 +3747,11 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
       grid-template-columns: 1fr 1fr;
     }
     .testimonials-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .testimonials-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -4598,15 +4603,15 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     text-align: center;
   }
   .trial-step-num {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--color-accent);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     margin: 0 auto 0.75rem;
   }
@@ -4633,8 +4638,13 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-weight: 600;
     margin-bottom: 1rem;
   }
+  @media (max-width: 768px) {
+    .trial-steps { flex-wrap: wrap; justify-content: center; }
+    .trial-step { flex: 0 1 45%; }
+  }
   @media (max-width: 640px) {
     .trial-steps { flex-direction: column; align-items: center; }
+    .trial-step { flex: 0 1 auto; }
     .trial-step-arrow { transform: rotate(90deg); }
   }
 

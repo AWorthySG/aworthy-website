@@ -128,6 +128,7 @@ const navLinks = [
   .logo-img {
     height: 40px;
     width: auto;
+    max-width: 100%;
     filter: none;
   }
 
@@ -257,7 +258,7 @@ const navLinks = [
     position: fixed;
     top: 0;
     right: -320px;
-    width: 320px;
+    width: min(320px, 90vw);
     /* Use dvh for mobile browser chrome awareness, fallback to vh */
     height: 100vh;
     height: 100dvh;

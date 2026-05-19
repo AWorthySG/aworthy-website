@@ -259,7 +259,12 @@ import '../../styles/global.css';
     border-color: var(--color-accent);
     box-shadow: 0 0 0 3px rgba(212,133,58,0.12);
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    .blog-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 640px) {
     .blog-grid {
       grid-template-columns: 1fr;
     }

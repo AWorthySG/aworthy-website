@@ -343,7 +343,7 @@ import { ClientRouter } from 'astro:transitions';
     }
     @media (max-width: 480px) {
       .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
-      .whatsapp-preview { width: calc(100vw - 3rem); }
+      .whatsapp-preview { width: min(300px, calc(100vw - 3rem)); }
       .whatsapp-float-btn { width: 52px; height: 52px; }
     }
     .email-popup-overlay {
@@ -369,20 +369,25 @@ import { ClientRouter } from 'astro:transitions';
       border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 2.5rem;
-      max-width: 400px;
+      max-width: min(400px, calc(100vw - 2rem));
       width: 100%;
       position: relative;
       box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     }
     .email-popup-close {
       position: absolute;
-      top: 0.75rem;
-      right: 1rem;
+      top: 0.5rem;
+      right: 0.5rem;
       background: none;
       border: none;
       font-size: 1.5rem;
       color: var(--text-muted);
       cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .email-popup-title {
       font-family: var(--font-heading);
@@ -406,6 +411,7 @@ import { ClientRouter } from 'astro:transitions';
     }
     .email-popup-form input {
       padding: 0.75rem 1rem;
+      min-height: 44px;
       border: 1px solid var(--border-color);
       border-radius: 4px;
       font-size: 0.9rem;
@@ -423,6 +429,11 @@ import { ClientRouter } from 'astro:transitions';
       color: var(--text-muted);
       text-align: center;
       margin-top: 0.75rem;
+    }
+    @media (max-width: 480px) {
+      .email-popup {
+        padding: 1.5rem;
+      }
     }
 
     .sticky-cta-global {
@@ -482,13 +493,18 @@ import { ClientRouter } from 'astro:transitions';
     .sticky-cta-global-dismiss {
       position: absolute;
       top: 0.15rem;
-      right: 0.75rem;
+      right: 0.5rem;
       background: none;
       border: none;
       color: rgba(255, 255, 255, 0.4);
       font-size: 1.1rem;
       cursor: pointer;
-      padding: 0.25rem;
+      padding: 0.5rem;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       line-height: 1;
     }
 
@@ -686,7 +702,7 @@ import { ClientRouter } from 'astro:transitions';
       font-weight: 500;
     }
     @media (max-width: 768px) {
-      .breadcrumb-list { padding: 0 1.5rem; }
+      .breadcrumb-list { padding: 0 var(--space-lg); }
     }
 
     /* Exam Countdown Bar */
