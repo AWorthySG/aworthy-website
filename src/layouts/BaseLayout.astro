@@ -5,9 +5,10 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "Singapore's top-rated tuition for O-Level English, GP & H2 Economics. 81% A and B rate, max 6 per class. Book a free assessment.", ogImage } = Astro.props;
+const { title, description = "Singapore's top-rated tuition for O-Level English, GP & H2 Economics. 81% A and B rate, max 6 per class. Book a free assessment.", ogImage, noindex = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
@@ -74,11 +75,23 @@ import { ClientRouter } from 'astro:transitions';
   <meta name="theme-color" content="#2B5A8C" />
   <meta name="color-scheme" content="dark light" />
   <meta name="format-detection" content="telephone=no" />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <!-- Cross-browser compatibility -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- Local SEO — Singapore -->
+  <meta name="geo.region" content="SG" />
+  <meta name="geo.placename" content="Singapore" />
+  <meta name="geo.position" content="1.3521;103.8198" />
+  <meta name="ICBM" content="1.3521, 103.8198" />
+
+  <!-- hreflang — single-locale site, declare both English variants and x-default -->
+  <link rel="alternate" hreflang="en-sg" href={canonicalURL.toString()} />
+  <link rel="alternate" hreflang="en" href={canonicalURL.toString()} />
+  <link rel="alternate" hreflang="x-default" href={canonicalURL.toString()} />
 
   <!-- Canonical -->
   <link rel="canonical" href={canonicalURL.toString()} />
@@ -90,13 +103,18 @@ import { ClientRouter } from 'astro:transitions';
   <meta property="og:locale" content="en_SG" />
   <meta property="og:url" content={canonicalURL.toString()} />
   <meta property="og:image" content={ogImageURL.toString()} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={`${title} — A-Worthy`} />
   <meta property="og:site_name" content="A-Worthy" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@aworthy_sg" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageURL.toString()} />
+  <meta name="twitter:image:alt" content={`${title} — A-Worthy`} />
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
@@ -121,14 +139,16 @@ import { ClientRouter } from 'astro:transitions';
     ]
   })} />
 
-  <!-- Fonts — non-render-blocking async load -->
+  <!-- Fonts — non-render-blocking async load.
+       Weights restricted to those actually used: Fraunces 200/300/400/500 + italic 400,
+       Space Grotesk 300/400/500/600/700, Pinyon Script (single weight), JetBrains Mono 400/600. -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" /></noscript>
 
   <link rel="preconnect" href="https://plausible.io" />
 
@@ -158,6 +178,8 @@ import { ClientRouter } from 'astro:transitions';
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <slot name="header" />
@@ -183,7 +205,7 @@ import { ClientRouter } from 'astro:transitions';
   <slot name="footer" />
 
   <!-- Exam Countdown Bar -->
-  <div class="exam-countdown" id="exam-countdown" aria-label="Exam countdown">
+  <div class="exam-countdown" id="exam-countdown" aria-hidden="true" hidden>
     <div class="exam-countdown-inner">
       <span class="exam-countdown-icon">
         <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -252,7 +274,7 @@ import { ClientRouter } from 'astro:transitions';
       position: fixed;
       bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
       right: calc(2rem + env(safe-area-inset-right, 0px));
-      z-index: 900;
+      z-index: var(--z-fixed-widget);
     }
     .whatsapp-float-btn {
       width: 56px;
@@ -328,7 +350,7 @@ import { ClientRouter } from 'astro:transitions';
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.5);
-      z-index: 2000;
+      z-index: var(--z-modal);
       display: none;
       align-items: center;
       justify-content: center;
@@ -413,7 +435,7 @@ import { ClientRouter } from 'astro:transitions';
       backdrop-filter: blur(12px);
       padding: 0.65rem 1.5rem;
       padding-bottom: calc(0.65rem + env(safe-area-inset-bottom, 0px));
-      z-index: 95;
+      z-index: var(--z-sticky-bar);
       transform: translateY(100%);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -544,7 +566,7 @@ import { ClientRouter } from 'astro:transitions';
       bottom: 0;
       left: 0;
       right: 0;
-      z-index: 999;
+      z-index: var(--z-privacy);
       background: var(--bg-card);
       border-top: 1px solid var(--border-color);
       padding: 1rem 1.5rem;
@@ -621,9 +643,9 @@ import { ClientRouter } from 'astro:transitions';
       left: 0;
       height: 3px;
       width: 0%;
-      background: linear-gradient(90deg, var(--color-accent), #e8a060);
-      z-index: 9999;
-      transition: width 0.1s linear;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+      z-index: var(--z-scroll-progress);
+      transition: width var(--transition-instant);
       pointer-events: none;
     }
 
@@ -708,7 +730,7 @@ import { ClientRouter } from 'astro:transitions';
         top: calc(var(--header-height) + 4px);
         left: 50%;
         transform: translateX(-50%);
-        z-index: 90;
+        z-index: var(--z-subject-selector);
         gap: 0.5rem;
         padding: 0.4rem;
         background: var(--bg-card);
@@ -876,17 +898,19 @@ import { ClientRouter } from 'astro:transitions';
 
   <script is:inline>
   (function(){
-    var notice = document.getElementById('privacy-notice');
-    var btn = document.getElementById('privacy-accept');
-    if (!notice || !btn) return;
-    if (localStorage.getItem('privacy-accepted')) {
-      return;
+    function init() {
+      var notice = document.getElementById('privacy-notice');
+      var btn = document.getElementById('privacy-accept');
+      if (!notice || !btn) return;
+      if (localStorage.getItem('privacy-accepted')) return;
+      notice.hidden = false;
+      btn.addEventListener('click', function() {
+        localStorage.setItem('privacy-accepted', '1');
+        notice.hidden = true;
+      });
     }
-    notice.hidden = false;
-    btn.addEventListener('click', function() {
-      localStorage.setItem('privacy-accepted', '1');
-      notice.hidden = true;
-    });
+    if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 3000 });
+    else setTimeout(init, 1500);
   })();
   </script>
 
@@ -926,16 +950,20 @@ import { ClientRouter } from 'astro:transitions';
 
   <script is:inline>
   (function(){
-    var popup = document.getElementById('email-popup');
-    var closeBtn = document.getElementById('email-popup-close');
-    var form = document.getElementById('email-popup-form');
-    if (!popup) return;
+    // Defer setup until the browser is idle — this widget has a 45s timer
+    // before it actually fires, so there's no benefit to running its init
+    // during the critical render path.
+    function init() {
+      var popup = document.getElementById('email-popup');
+      var closeBtn = document.getElementById('email-popup-close');
+      var form = document.getElementById('email-popup-form');
+      if (!popup) return;
 
-    // Don't show if already dismissed or on contact page
-    if (localStorage.getItem('email-popup-dismissed')) return;
-    if (window.location.pathname.indexOf('/contact') > -1) return;
+      // Don't show if already dismissed or on contact page
+      if (localStorage.getItem('email-popup-dismissed')) return;
+      if (window.location.pathname.indexOf('/contact') > -1) return;
 
-    function showPopup() {
+      function showPopup() {
       popup.hidden = false;
       document.body.style.overflow = 'hidden';
     }
@@ -970,6 +998,9 @@ import { ClientRouter } from 'astro:transitions';
         setTimeout(hidePopup, 3000);
       }
     });
+    }
+    if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 5000 });
+    else setTimeout(init, 2000);
   })();
   </script>
 
@@ -1024,7 +1055,7 @@ import { ClientRouter } from 'astro:transitions';
       position: fixed;
       bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
       right: calc(2rem + env(safe-area-inset-right, 0px));
-      z-index: 950;
+      z-index: var(--z-chatbot);
     }
     .chatbot-toggle {
       width: 48px;
@@ -1136,6 +1167,7 @@ import { ClientRouter } from 'astro:transitions';
 
   <script is:inline>
   (function(){
+    function init() {
     var toggle = document.getElementById('chatbot-toggle');
     var panel = document.getElementById('chatbot-panel');
     var close = document.getElementById('chatbot-close');
@@ -1181,34 +1213,40 @@ import { ClientRouter } from 'astro:transitions';
       }, 400);
       body.scrollTop = body.scrollHeight;
     });
+    }
+    if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 5000 });
+    else setTimeout(init, 2000);
   })();
   </script>
 
   <!-- Exam Countdown -->
   <script is:inline>
   (function() {
-    // Hide on homepage
-    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+    // Skip entirely on the homepage — it already has its own urgency cues.
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') return;
+
+    function init() {
       var countdown = document.getElementById('exam-countdown');
-      if (countdown) countdown.style.display = 'none';
-      return;
+      var el = document.getElementById('exam-countdown-text');
+      if (!countdown || !el) return;
+      var exams = [
+        { name: 'O-Level English', date: new Date('2026-10-19') },
+        { name: 'A-Level GP', date: new Date('2026-11-09') },
+        { name: 'A-Level H2 Economics', date: new Date('2026-11-18') }
+      ];
+      var now = new Date();
+      var next = exams
+        .map(function(e) { return { name: e.name, days: Math.ceil((e.date - now) / 86400000) }; })
+        .filter(function(e) { return e.days > 0; })
+        .sort(function(a, b) { return a.days - b.days; })[0];
+      if (next) {
+        el.textContent = next.days + ' days to ' + next.name + ' — every lesson counts';
+        countdown.hidden = false;
+        countdown.setAttribute('aria-hidden', 'false');
+      }
     }
-    var exams = [
-      { name: 'O-Level English', date: new Date('2026-10-19') },
-      { name: 'A-Level GP', date: new Date('2026-11-09') },
-      { name: 'A-Level H2 Economics', date: new Date('2026-11-18') }
-    ];
-    var now = new Date();
-    var next = exams
-      .map(function(e) { return { name: e.name, days: Math.ceil((e.date - now) / 86400000) }; })
-      .filter(function(e) { return e.days > 0; })
-      .sort(function(a, b) { return a.days - b.days; })[0];
-    var el = document.getElementById('exam-countdown-text');
-    if (next && el) {
-      el.textContent = next.days + ' days to ' + next.name + ' — every lesson counts';
-    } else if (el) {
-      el.parentElement.parentElement.style.display = 'none';
-    }
+    if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 3000 });
+    else setTimeout(init, 1000);
   })();
   </script>
 
