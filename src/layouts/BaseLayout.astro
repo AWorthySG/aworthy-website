@@ -8,7 +8,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description = "Singapore's top-rated tuition for O-Level English, GP & H2 Economics. 81% A and B rate, max 6 per class. Book a free assessment.", ogImage, noindex = false } = Astro.props;
+const { title, description = "Singapore's top-rated tuition for O-Level English, GP & H2 Economics. 90% A1–B3 rate, max 6 per class. Book a free assessment.", ogImage, noindex = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
@@ -19,7 +19,7 @@ const schemaData = {
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
   "logo": new URL('/images/logo.svg', Astro.site).toString(),
-  "description": "Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes, proven SHARP Method, 81% A and B rate.",
+  "description": "Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes, proven SHARP Method, 90% A1–B3 rate.",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "SG",
