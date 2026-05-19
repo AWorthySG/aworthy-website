@@ -459,6 +459,7 @@ import '../styles/global.css';
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">See It In Action</span>
       <h2 class="section-heading" data-animate="reveal-up">How your child applies the SHARP Method to an actual exam question</h2>
+      <p class="section-subtitle" data-animate="reveal-up">The same five-step process works across O-Level English, GP, and H2 Economics &mdash; only the frameworks change.</p>
 
       <!-- Infographic Image -->
       <div class="case-infographic-wrap" data-animate="reveal-up">
@@ -616,6 +617,25 @@ import '../styles/global.css';
           </div>
         </div>
       </div>
+
+      <!-- Subject-specific SHARP examples -->
+      <div class="worked-example-subjects" data-animate="reveal-up">
+        <p class="worked-example-subjects-label">See the SHARP Method applied to other subjects:</p>
+        <div class="worked-example-subjects-links">
+          <a href="/blog/gp-essay-structure/" class="worked-example-subject-link">
+            <span class="worked-example-subject-name">GP Essay</span>
+            <span class="worked-example-subject-desc">P-E-E-L framework in action</span>
+          </a>
+          <a href="/blog/economics-essay-diagrams/" class="worked-example-subject-link">
+            <span class="worked-example-subject-name">H2 Economics</span>
+            <span class="worked-example-subject-desc">Diagram-first approach</span>
+          </a>
+          <a href="/blog/situational-writing-guide/" class="worked-example-subject-link">
+            <span class="worked-example-subject-name">Situational Writing</span>
+            <span class="worked-example-subject-desc">STAMP CARD framework</span>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -641,7 +661,7 @@ import '../styles/global.css';
             <span class="approach-time">5 min</span>
           </div>
           <h3>Hit</h3>
-          <p>Every question type has a matching framework. Your child learns to recognise the pattern and select the right analytical tool instantly &mdash; whether it&rsquo;s a metaphor question, an inference prompt, or an essay requiring a balanced argument. No more staring at the page wondering where to start.</p>
+          <p>Every question type has a matching framework. For English: Core Move, ACED, CAPS, and STAMP CARD. For GP: P-E-E-L and the Evaluation Matrix. For Economics: DEED and the Extract-Link-Apply method. Your child learns to recognise the pattern and select the right tool instantly. No more staring at the page wondering where to start.</p>
         </div>
         <div class="approach-card" data-animate="reveal-up" data-animate-delay="3">
           <div class="approach-card-header">
@@ -890,7 +910,7 @@ import '../styles/global.css';
         </div>
         <div class="result-stat-divider"></div>
         <div class="result-stat">
-          <span class="result-stat-number" data-count="100" data-count-suffix="+">100+</span>
+          <span class="result-stat-number" data-count="500" data-count-suffix="+">500+</span>
           <span class="result-stat-label">Students Taught</span>
         </div>
         <div class="result-stat-divider"></div>
@@ -4210,6 +4230,56 @@ import '../styles/global.css';
     background: linear-gradient(135deg, #34d399, #10b981);
     padding: 0.5rem 1.25rem;
     border-radius: 4px;
+  }
+
+  /* Subject-specific worked example links */
+  .worked-example-subjects {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--border-color);
+  }
+  .worked-example-subjects-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-md);
+    text-align: center;
+  }
+  .worked-example-subjects-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  .worked-example-subject-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+    min-width: 160px;
+  }
+  .worked-example-subject-link:hover {
+    border-color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.04);
+  }
+  :global([data-theme="dark"]) .worked-example-subject-link:hover {
+    background: rgba(224, 152, 80, 0.06);
+  }
+  .worked-example-subject-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+  }
+  .worked-example-subject-desc {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
   }
 
   /* Connectors between steps */
