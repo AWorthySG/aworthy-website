@@ -181,6 +181,50 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== INSIDE A LESSON ===== -->
+  <section class="prog-section lesson-flow" id="lesson-flow">
+    <div class="container">
+      <p class="eyebrow">Inside a Lesson</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">What 90 minutes at A-Worthy actually looks like</h2>
+      <p class="prog-section__intro" data-animate="reveal-up">Most JC students arrive at GP unsure of what it is they&rsquo;re supposed to <em>do</em>. Here&rsquo;s exactly how a typical A-Worthy GP lesson runs &mdash; from the news brief at the start to the argument bank we set before students log off.</p>
+
+      <ol class="lesson-timeline" data-animate="reveal-up" data-animate-delay="1">
+        <li class="lesson-step">
+          <span class="lesson-step__time">0 &ndash; 5 min</span>
+          <h3 class="lesson-step__title">This week in the news</h3>
+          <p class="lesson-step__desc">We open with three news stories from the past seven days &mdash; one Science &amp; Tech, one Society, one Geopolitics. Students name the GP theme each story maps to. By minute five, every student has three fresh examples they can deploy in this week&rsquo;s essay.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">5 &ndash; 20 min</span>
+          <h3 class="lesson-step__title">Question deconstruction</h3>
+          <p class="lesson-step__desc">A real Cambridge past-paper question goes on screen. We walk through the <em>See</em> step: what&rsquo;s the command word, what&rsquo;s the scope, what counter-claim is the examiner secretly hoping you address? Then the <em>Hit</em> step: which framework wins for this prompt &mdash; P-E-E-L, Evaluation Matrix, or AQ Response Template?</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">20 &ndash; 50 min</span>
+          <h3 class="lesson-step__title">Live PEEL paragraph drill</h3>
+          <p class="lesson-step__desc">Students write one full PEEL paragraph in real time. Jeremy moves between answers in the shared document, flagging weak topic sentences, missing evidence and lazy linking phrases as they happen. The point isn&rsquo;t to finish the essay &mdash; it&rsquo;s to get one perfect paragraph that the student can replicate under exam pressure.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">50 &ndash; 70 min</span>
+          <h3 class="lesson-step__title">Counter-argument workshop</h3>
+          <p class="lesson-step__desc">Students pair up and attack each other&rsquo;s argumentation. This is where Band 3 essays become Band 4 &mdash; learning to anticipate and rebut counter-claims is the single biggest mark differentiator in GP. By the end, every student has a stronger argument than the one they started with.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">70 &ndash; 85 min</span>
+          <h3 class="lesson-step__title">Examiner&rsquo;s eye</h3>
+          <p class="lesson-step__desc">We project two unseen sample essays &mdash; one Band 2, one Band 4 &mdash; and students identify what separates them. Learning to mark like an examiner is the fastest way to write like one.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">85 &ndash; 90 min</span>
+          <h3 class="lesson-step__title">Argument bank for the week</h3>
+          <p class="lesson-step__desc">We close by setting one essay plan and one AQ &mdash; both timed, both submitted by Friday for feedback before next session. The week&rsquo;s news examples get added to a running argument bank every student keeps for the year.</p>
+        </li>
+      </ol>
+
+      <p class="lesson-flow__note" data-animate="reveal-up">Sessions run weekly via Zoom Pro with cloud recording, so any student who misses a week can catch up before the next one.</p>
+    </div>
+  </section>
+
   <!-- ===== SUBJECT TESTIMONIALS ===== -->
   <section class="subject-testimonials" data-animate="reveal-up">
     <div class="container">
@@ -621,6 +665,26 @@ import '../styles/global.css';
     color: var(--color-accent);
     margin-top: 0.75rem;
     margin-bottom: 0;
+  }
+
+  /* ===== LESSON FLOW ===== */
+  .lesson-flow { background: var(--bg-secondary); }
+  .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 2.5rem; }
+  .prog-section__intro em { font-style: italic; color: var(--color-accent); font-weight: 600; }
+  .lesson-timeline { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0; max-width: 880px; position: relative; }
+  .lesson-timeline::before { content: ''; position: absolute; left: 0.65rem; top: 0.5rem; bottom: 0.5rem; width: 1px; background: linear-gradient(180deg, transparent 0%, var(--color-accent) 8%, var(--color-accent) 92%, transparent 100%); opacity: 0.35; }
+  .lesson-step { position: relative; padding: 1.5rem 0 1.5rem 2.75rem; border-bottom: 1px solid var(--prog-border); }
+  .lesson-step:last-child { border-bottom: none; }
+  .lesson-step::before { content: ''; position: absolute; left: 0.25rem; top: 1.85rem; width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--color-accent); border: 2px solid var(--bg-secondary); box-shadow: 0 0 0 2px rgba(212, 133, 58, 0.25); }
+  .lesson-step__time { display: inline-block; font-family: var(--prog-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.4rem; }
+  .lesson-step__title { font-family: var(--prog-font); font-size: 1.1rem; font-weight: 500; color: var(--text-primary); margin: 0 0 0.5rem; letter-spacing: -0.01em; }
+  .lesson-step__desc { font-family: var(--prog-font); font-size: 0.95rem; line-height: 1.7; color: var(--prog-text-secondary); margin: 0; }
+  .lesson-step__desc em { font-style: italic; color: var(--color-accent); font-weight: 600; }
+  .lesson-flow__note { margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
+  @media (max-width: 640px) {
+    .lesson-step { padding: 1.25rem 0 1.25rem 2.25rem; }
+    .lesson-step::before { top: 1.55rem; }
+    .lesson-step__desc { font-size: 0.9rem; }
   }
 
   /* ===== CTA ===== */

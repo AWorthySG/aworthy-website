@@ -190,6 +190,50 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== INSIDE A LESSON ===== -->
+  <section class="prog-section lesson-flow" id="lesson-flow">
+    <div class="container">
+      <p class="eyebrow">Inside a Lesson</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">What 90 minutes at A-Worthy actually looks like</h2>
+      <p class="prog-section__intro" data-animate="reveal-up">Most parents have never seen the inside of a tuition lesson. Here&rsquo;s exactly how a Tuesday-night O-Level English session unfolds &mdash; from the first warm-up question to the homework that gets set before students log off.</p>
+
+      <ol class="lesson-timeline" data-animate="reveal-up" data-animate-delay="1">
+        <li class="lesson-step">
+          <span class="lesson-step__time">0 &ndash; 5 min</span>
+          <h3 class="lesson-step__title">Retrieval warm-up</h3>
+          <p class="lesson-step__desc">Five questions on last week&rsquo;s techniques &mdash; vocabulary, grammar, or a quick inference. Students answer in the chat. Anyone who fumbles gets a one-line reminder before we move on. Retrieval is the most underrated study habit, so we build it into every session.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">5 &ndash; 15 min</span>
+          <h3 class="lesson-step__title">Question of the week</h3>
+          <p class="lesson-step__desc">We project a real past-paper question on screen and walk through the <em>See</em> step together. What command word is being used? What text type does the question expect? Which framework will we reach for? By minute fifteen, every student knows what success looks like before they write a single word.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">15 &ndash; 30 min</span>
+          <h3 class="lesson-step__title">Framework walkthrough</h3>
+          <p class="lesson-step__desc">Core Move, ACED, CAPS, STAMP CARD &mdash; whichever framework matches the day&rsquo;s focus. Jeremy demonstrates with a model answer, then deliberately writes a weak version so students can spot the gap. Naming the tool means students can reach for it again on exam day.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">30 &ndash; 60 min</span>
+          <h3 class="lesson-step__title">Live writing &amp; in-session feedback</h3>
+          <p class="lesson-step__desc">Students attempt the question on screen-shared documents. Jeremy moves between answers in real time, flagging issues as they happen &mdash; before bad habits are reinforced. This is where the small class size matters: every student gets at least three feedback touches in thirty minutes.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">60 &ndash; 80 min</span>
+          <h3 class="lesson-step__title">Peer marking against the rubric</h3>
+          <p class="lesson-step__desc">Students swap answers and mark each other&rsquo;s work against the official Cambridge band descriptors. Marking trains the examiner&rsquo;s eye &mdash; the moment a student sees what loses marks in someone else&rsquo;s essay, they stop making the same mistake in their own.</p>
+        </li>
+        <li class="lesson-step">
+          <span class="lesson-step__time">80 &ndash; 90 min</span>
+          <h3 class="lesson-step__title">Exit ticket &amp; week ahead</h3>
+          <p class="lesson-step__desc">A two-question exit ticket confirms what stuck. Jeremy sets one focused practice piece &mdash; usually fifteen minutes of work &mdash; with a model answer dropped on WhatsApp the next morning. No busywork. Every assignment maps to a specific weakness.</p>
+        </li>
+      </ol>
+
+      <p class="lesson-flow__note" data-animate="reveal-up">Sessions run weekly via Zoom Pro with cloud recording, so any student who misses a week can catch up before the next one.</p>
+    </div>
+  </section>
+
   <!-- ===== SUBJECT TESTIMONIALS ===== -->
   <section class="subject-testimonials" data-animate="reveal-up">
     <div class="container">
@@ -441,6 +485,25 @@ import '../styles/global.css';
   .prog-card__meta { display: flex; gap: 1.25rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--prog-border); flex-wrap: wrap; }
   .prog-card__meta span { font-family: var(--prog-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--prog-text-secondary); }
   .prog-card__fee { font-family: var(--prog-font); font-size: 1rem; font-weight: 600; color: var(--color-accent); margin-top: 0.75rem; margin-bottom: 0; }
+  /* ===== LESSON FLOW ===== */
+  .lesson-flow { background: var(--bg-secondary); }
+  .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 2.5rem; }
+  .lesson-timeline { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0; max-width: 880px; position: relative; }
+  .lesson-timeline::before { content: ''; position: absolute; left: 0.65rem; top: 0.5rem; bottom: 0.5rem; width: 1px; background: linear-gradient(180deg, transparent 0%, var(--color-accent) 8%, var(--color-accent) 92%, transparent 100%); opacity: 0.35; }
+  .lesson-step { position: relative; padding: 1.5rem 0 1.5rem 2.75rem; border-bottom: 1px solid var(--prog-border); }
+  .lesson-step:last-child { border-bottom: none; }
+  .lesson-step::before { content: ''; position: absolute; left: 0.25rem; top: 1.85rem; width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--color-accent); border: 2px solid var(--bg-secondary); box-shadow: 0 0 0 2px rgba(212, 133, 58, 0.25); }
+  .lesson-step__time { display: inline-block; font-family: var(--prog-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.4rem; }
+  .lesson-step__title { font-family: var(--prog-font); font-size: 1.1rem; font-weight: 500; color: var(--text-primary); margin: 0 0 0.5rem; letter-spacing: -0.01em; }
+  .lesson-step__desc { font-family: var(--prog-font); font-size: 0.95rem; line-height: 1.7; color: var(--prog-text-secondary); margin: 0; }
+  .lesson-step__desc em { font-style: italic; color: var(--color-accent); font-weight: 600; }
+  .lesson-flow__note { margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
+  @media (max-width: 640px) {
+    .lesson-step { padding: 1.25rem 0 1.25rem 2.25rem; }
+    .lesson-step::before { top: 1.55rem; }
+    .lesson-step__desc { font-size: 0.9rem; }
+  }
+
   .prog-cta { background: var(--prog-bg); border-top: 1px solid var(--prog-border); padding: 4rem 0; }
   .prog-cta__inner { text-align: center; max-width: 600px; margin: 0 auto; }
   .prog-cta__heading { font-family: var(--prog-font); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 200; color: var(--text-primary); margin-bottom: 1rem; letter-spacing: -0.03em; }

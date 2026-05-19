@@ -183,6 +183,81 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== COMPARISON ===== -->
+  <section class="section pricing-compare">
+    <div class="container">
+      <span class="eyebrow" data-animate="reveal-up">Why A-Worthy</span>
+      <h2 class="section-title" data-animate="reveal-up">How A-Worthy compares to typical tuition</h2>
+      <p class="section-subtitle" data-animate="reveal-up">We&rsquo;re priced like premium tuition but built like a small private cohort. Here&rsquo;s what you actually get for the fee &mdash; and what most centres quietly leave out.</p>
+
+      <div class="compare-table-wrap" data-animate="reveal-up" data-animate-delay="1">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th class="compare-table__label-col">What matters</th>
+              <th class="compare-col-typical">Typical Singapore tuition</th>
+              <th class="compare-col-us">A-Worthy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="compare-row-label">Class size</td>
+              <td>12&ndash;20 students per class</td>
+              <td><strong>Capped at 6</strong> &mdash; every student gets feedback every session</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Tutor qualifications</td>
+              <td>Undergraduate or recent A-Level grad</td>
+              <td><strong>NUS Law graduate</strong> &mdash; analytical training applied to exam technique</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Teaching method</td>
+              <td>Drill past papers, hope something sticks</td>
+              <td><strong>SHARP Method</strong> &mdash; See, Hit, Apply, Refine, Practise</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Feedback turnaround</td>
+              <td>Marked work returned 1&ndash;2 weeks later</td>
+              <td><strong>Live feedback in-session</strong> &mdash; corrections happen while you&rsquo;re still in the room</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Between-session support</td>
+              <td>None &mdash; ask the tutor next week</td>
+              <td><strong>WhatsApp Q&amp;A</strong> &mdash; included in every programme</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Materials</td>
+              <td>Photocopied past papers, charged extra</td>
+              <td><strong>Included</strong> &mdash; proprietary notes, model answers, practice papers</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Progress tracking</td>
+              <td>Term-end report card</td>
+              <td><strong>Monthly progress reports</strong> &mdash; against official marking criteria</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Lock-in</td>
+              <td>Term-by-term or year contracts</td>
+              <td><strong>Month-to-month</strong> &mdash; first-month money-back guarantee</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Format</td>
+              <td>Travel to a centre, fixed slot</td>
+              <td><strong>Online via Zoom</strong> &mdash; from anywhere in Singapore</td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">Monthly fee (English)</td>
+              <td>SGD 350&ndash;500/month</td>
+              <td><strong>SGD 280&ndash;320/month</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="compare-footnote" data-animate="reveal-up">Based on publicly listed rates from major Singapore tuition centres as of 2026. We don&rsquo;t name competitors out of professional courtesy &mdash; but we&rsquo;re happy to walk through the comparison with any parent who asks.</p>
+    </div>
+  </section>
+
   <!-- ===== CTA ===== -->
   <section class="section pricing-cta">
     <div class="container">
@@ -474,6 +549,94 @@ import '../styles/global.css';
     line-height: 1.6;
     color: var(--text-secondary);
     margin: 0;
+  }
+
+  /* ===== COMPARISON ===== */
+  .pricing-compare {
+    background: var(--bg-secondary);
+  }
+  .compare-table-wrap {
+    margin-top: var(--space-xl);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+  }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+  }
+  .compare-table thead th {
+    padding: 1.25rem 1.25rem;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border-color);
+    background: var(--bg-secondary);
+  }
+  .compare-table thead .compare-col-us {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+  .compare-table__label-col {
+    width: 28%;
+  }
+  .compare-table tbody td {
+    padding: 1rem 1.25rem;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+  }
+  .compare-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .compare-table tbody tr:hover {
+    background: rgba(212, 133, 58, 0.025);
+  }
+  .compare-row-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--text-primary) !important;
+    width: 28%;
+  }
+  .compare-table tbody td strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .compare-table tbody td:last-child {
+    background: rgba(212, 133, 58, 0.04);
+    border-left: 2px solid var(--color-accent);
+  }
+  :global([data-theme="dark"]) .compare-table tbody td:last-child {
+    background: rgba(224, 152, 80, 0.05);
+  }
+  .compare-footnote {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 1.5rem auto 0;
+    max-width: 680px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    .compare-table {
+      min-width: 560px;
+    }
+    .compare-table thead th,
+    .compare-table tbody td {
+      padding: 0.85rem 0.9rem;
+      font-size: 0.85rem;
+    }
   }
 
   /* ===== CTA ===== */

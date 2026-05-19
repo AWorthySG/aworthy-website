@@ -114,25 +114,6 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- ===== VIDEO TESTIMONIALS ===== -->
-  <section class="section video-testimonials-section">
-    <div class="t-container">
-      <span class="eyebrow" data-animate="reveal-up">Video Testimonials</span>
-      <h2 class="section-title" data-animate="reveal-up">Hear directly from our students and parents</h2>
-      <div class="video-grid" data-animate="reveal-up">
-        <div class="video-placeholder">
-          <div class="video-placeholder-inner">
-            <svg aria-hidden="true" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5">
-              <polygon points="5 3 19 12 5 21 5 3"/>
-            </svg>
-            <p>Video testimonials coming soon</p>
-            <span>In the meantime, read what our families have to say below</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== FEATURED CAROUSEL ===== -->
   <section class="t-section">
     <div class="t-container">
@@ -196,32 +177,19 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- ===== VIDEO TESTIMONIAL (#12) ===== -->
-  <section class="t-section t-video-section">
-    <div class="t-container">
-      <span class="eyebrow">See It In Action</span>
-      <h2 class="t-video-heading" data-animate="reveal-up">A glimpse into the A-Worthy experience</h2>
-      <p class="t-video-sub">Watch how the SHARP Method transforms the way students approach English.</p>
-      <div class="t-video-wrap" data-animate="scale-in">
-        <div class="t-video-placeholder">
-          <div class="t-video-play">
-            <svg aria-hidden="true" width="48" height="48" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <p class="t-video-caption">Coming soon — testimonial video from our students and parents</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== GOOGLE REVIEWS ===== -->
   <section class="t-section t-google-section">
     <div class="t-container t-google-inner">
+      <span class="eyebrow" data-animate="reveal-up">Verified on Google</span>
+      <h2 class="t-google-heading" data-animate="reveal-up">Don&rsquo;t take our word for it &mdash; read what families say on Google</h2>
+      <p class="t-google-sub" data-animate="reveal-up">Every review on our Google Business Profile is from a verified A-Worthy family. We don&rsquo;t curate them, we don&rsquo;t hide the difficult ones, and we don&rsquo;t pay for them.</p>
+
       <div class="t-google-badge" data-animate="scale-in">
         <div class="t-google-logo">
           <span class="t-g t-g-blue">G</span><span class="t-g t-g-red">o</span><span class="t-g t-g-yellow">o</span><span class="t-g t-g-blue">g</span><span class="t-g t-g-green">l</span><span class="t-g t-g-red">e</span>
         </div>
         <div class="t-google-rating">
-          <div class="t-google-stars">
+          <div class="t-google-stars" aria-label="4.9 out of 5 stars">
             <span class="t-star">&#9733;</span>
             <span class="t-star">&#9733;</span>
             <span class="t-star">&#9733;</span>
@@ -229,12 +197,18 @@ const testimonials = [
             <span class="t-star">&#9733;</span>
           </div>
           <span class="t-google-score">4.9 out of 5</span>
-          <span class="t-google-count">Based on 50+ reviews</span>
+          <span class="t-google-count">Based on 50+ verified reviews</span>
         </div>
       </div>
-      <a href="https://www.google.com/maps/place/A-Worthy" class="t-btn t-btn--outline" target="_blank" rel="noopener noreferrer">
-        Read Our Google Reviews &rarr;
-      </a>
+
+      <div class="t-google-actions" data-animate="reveal-up">
+        <a href="https://www.google.com/maps/place/A-Worthy" class="t-btn t-btn--primary" target="_blank" rel="noopener noreferrer">
+          Read all reviews on Google &rarr;
+        </a>
+        <a href="https://search.google.com/local/writereview?placeid=A-Worthy" class="t-btn t-btn--outline" target="_blank" rel="noopener noreferrer">
+          Leave us a review
+        </a>
+      </div>
     </div>
   </section>
 
@@ -475,14 +449,46 @@ const testimonials = [
 
   .t-google-inner {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 64px;
+    gap: 1.5rem;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .t-google-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    font-weight: 200;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    margin: 0;
+  }
+  .t-google-sub {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 1rem;
+    max-width: 560px;
+  }
+  .t-google-actions {
+    display: flex;
+    gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
   }
 
   .t-google-badge {
     text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.75rem 2.5rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
   }
 
   .t-google-logo {

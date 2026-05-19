@@ -59,13 +59,41 @@ import '../styles/global.css';
             Founder, A-Worthy
           </p>
         </div>
-        <div class="video-placeholder" data-animate="reveal-up">
-          <div class="video-thumb">
-            <svg class="video-play" width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" opacity="0.3"/><polygon points="26,20 26,44 46,32" fill="currentColor" opacity="0.6"/></svg>
-            <span class="video-label">Meet Jeremy &mdash; 2 min intro</span>
+        <aside class="founder-card" data-animate="reveal-up">
+          <div class="founder-card__photo" aria-label="Jeremy Lim, Founder of A-Worthy">
+            <svg aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="founder-gradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="rgba(212, 133, 58, 0.15)" />
+                  <stop offset="100%" stop-color="rgba(43, 90, 140, 0.12)" />
+                </linearGradient>
+              </defs>
+              <rect width="200" height="200" rx="100" fill="url(#founder-gradient)"/>
+              <circle cx="100" cy="80" r="32" fill="rgba(43, 90, 140, 0.2)"/>
+              <ellipse cx="100" cy="155" rx="50" ry="38" fill="rgba(43, 90, 140, 0.15)"/>
+            </svg>
+            <span class="founder-card__initials">JL</span>
           </div>
-          <p class="video-caption">Hear from Jeremy about the SHARP Method, legal-analytical teaching, and what makes A-Worthy different.</p>
-        </div>
+          <div class="founder-card__body">
+            <span class="founder-card__name">Jeremy Lim</span>
+            <span class="founder-card__role">Founder &amp; Lead Tutor</span>
+            <ul class="founder-card__creds">
+              <li>NUS Faculty of Law &mdash; LLB (Hons)</li>
+              <li>500+ students taught since 2020</li>
+              <li>Creator of the SHARP Method</li>
+            </ul>
+            <div class="founder-card__video" role="button" tabindex="0" aria-label="Watch a 2-minute intro from Jeremy (coming soon)">
+              <svg width="40" height="40" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <circle cx="32" cy="32" r="30" fill="rgba(212, 133, 58, 0.12)" stroke="var(--color-accent)" stroke-width="1.5"/>
+                <polygon points="26,20 26,44 46,32" fill="var(--color-accent)"/>
+              </svg>
+              <div class="founder-card__video-text">
+                <span class="founder-card__video-title">2-minute intro from Jeremy</span>
+                <span class="founder-card__video-status">Video coming soon</span>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -322,10 +350,6 @@ import '../styles/global.css';
   }
 
   /* ===== OUR STORY ===== */
-  .story-layout {
-    max-width: 720px;
-  }
-
   .story-text h2 {
     max-width: 100%;
   }
@@ -685,10 +709,154 @@ import '../styles/global.css';
   }
 
   .founder-sign-off { font-weight: 600; font-style: italic; }
-  .video-placeholder { margin-top: 2rem; }
-  .video-thumb { aspect-ratio: 16/9; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; cursor: pointer; transition: all 0.3s ease; }
-  .video-thumb:hover { border-color: var(--color-accent); background: rgba(212,133,58,0.04); }
-  .video-play { color: var(--color-accent); }
-  .video-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
-  .video-caption { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem; }
+
+  /* ===== STORY LAYOUT (two-column) ===== */
+  .story-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+    gap: 3rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+  @media (max-width: 900px) {
+    .story-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== FOUNDER CARD ===== */
+  .founder-card {
+    position: sticky;
+    top: calc(var(--header-height) + 44px + 1.5rem);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    text-align: center;
+  }
+  :global([data-theme="dark"]) .founder-card {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+  .founder-card__photo {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1.25rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--bg-card);
+    box-shadow: 0 0 0 1px var(--border-color), 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  .founder-card__photo svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .founder-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .founder-card__initials {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+  }
+  .founder-card__name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .founder-card__role {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+  .founder-card__creds {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: left;
+  }
+  .founder-card__creds li {
+    position: relative;
+    padding: 0.6rem 0 0.6rem 1.5rem;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .founder-card__creds li:last-child {
+    border-bottom: none;
+  }
+  .founder-card__creds li::before {
+    content: '';
+    position: absolute;
+    left: 0.25rem;
+    top: 1.05rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .founder-card__video {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s ease, transform 0.15s ease, background 0.2s ease;
+  }
+  .founder-card__video:hover,
+  .founder-card__video:focus-visible {
+    border-color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.04);
+    transform: translateY(-1px);
+    outline: none;
+  }
+  .founder-card__video-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .founder-card__video-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .founder-card__video-status {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  @media (max-width: 900px) {
+    .founder-card {
+      position: static;
+    }
+  }
 </style>
