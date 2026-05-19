@@ -235,6 +235,26 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jeremy Lim",
+    "jobTitle": "Founder & Lead Tutor",
+    "worksFor": {
+      "@type": "EducationalOrganization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "National University of Singapore, Faculty of Law"
+    },
+    "hasCredential": "LLB (Hons), NUS Faculty of Law",
+    "description": "Founder of A-Worthy and creator of the SHARP Method. NUS Law graduate teaching O-Level English, H1 General Paper, and H2 Economics in Singapore.",
+    "knowsAbout": ["O-Level English Tuition", "H1 General Paper Tuition", "H2 Economics Tuition", "SHARP Method", "Examination Technique"],
+    "url": "https://a-worthy.com/about/"
+  })} />
+
   <Footer />
 </BaseLayout>
 
