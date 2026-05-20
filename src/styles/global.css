@@ -592,6 +592,45 @@ li {
     0 0 40px rgba(229, 154, 85, 0.06);
 }
 
+/* ===== Card Variants ===== */
+.card--accent-left {
+  border-left: 3px solid var(--subject-accent, var(--color-accent));
+  border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+}
+
+.card--featured {
+  position: relative;
+  overflow: hidden;
+  border-top: none;
+}
+.card--featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--subject-accent, var(--color-accent)), var(--color-accent-light));
+}
+
+.card--elevated {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.card--elevated:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  transform: translateY(-2px);
+}
+[data-theme="dark"] .card--elevated {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+[data-theme="dark"] .card--elevated:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
 /* ===== Forms ===== */
 input, textarea, select {
   font-family: var(--font-body);

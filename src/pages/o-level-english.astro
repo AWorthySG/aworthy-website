@@ -16,6 +16,12 @@ import '../styles/global.css';
   <section class="prog-hero">
     <div class="container">
       <p class="eyebrow">O-Level English</p>
+      <svg class="prog-hero__icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M32 6L12 38" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 38L10 44L16 42" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M32 6L36 4L38 8L14 36" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 44C10 44 6 40 8 36" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
       <h1 class="prog-hero__heading">Best O-Level English Tuition<br />in Singapore</h1>
       <p class="prog-hero__sub">Our students achieve a 90% A1&ndash;B3 rate using the SHARP Method &mdash; a proven five-step system that builds the analytical skills examiners reward across every English component.</p>
     </div>
@@ -489,19 +495,40 @@ import '../styles/global.css';
   <Footer />
 </BaseLayout>
 
+<!-- Per-subject accent hue — warm literary blue (O-Level English identity).
+     Global override so card/button accents reflect the subject identity. -->
+<style is:global>
+  :root {
+    --color-accent: #3B7DD8;
+    --color-accent-light: #5A9BF0;
+  }
+  [data-theme="dark"] {
+    --color-accent: #5A9BF0;
+    --color-accent-light: #7AB4FF;
+  }
+</style>
+
 <style>
+  /* ===== SUBJECT ACCENT: O-Level English (Warm Literary Blue) ===== */
+  :root { --subject-accent: #3B7DD8; }
+  [data-theme="dark"] { --subject-accent: #5A9BF0; }
+
   :root {
     --prog-bg: var(--bg-primary);
     --prog-bg-card: var(--bg-card);
     --prog-border: var(--border-color);
     --prog-text: var(--text-primary);
     --prog-text-secondary: var(--text-secondary);
-    --prog-accent: var(--color-accent);
+    --prog-accent: var(--subject-accent);
     --prog-font: var(--font-body);
     --prog-mono: var(--font-mono);
   }
-  .eyebrow { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--prog-accent); margin-bottom: 1rem; }
-  .prog-hero { background: var(--prog-bg); padding: calc(var(--header-height) + 3rem) 0 3rem; text-align: center; }
+  .eyebrow { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--subject-accent); margin-bottom: 1rem; }
+  .prog-hero { background: var(--prog-bg); padding: calc(var(--header-height) + 3rem) 0 3rem; text-align: center; position: relative; overflow: hidden; }
+  .prog-hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(59, 125, 216, 0.10) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+  [data-theme="dark"] .prog-hero::before { background: radial-gradient(circle, rgba(90, 155, 240, 0.10) 0%, transparent 70%); }
+  .prog-hero .container { position: relative; z-index: 1; }
+  .prog-hero__icon { display: block; margin: 0 auto 1rem; }
   .prog-hero__heading { font-family: var(--prog-font); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 200; line-height: 1.15; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.03em; }
   .prog-hero__sub { font-family: var(--prog-font); font-size: 1.1rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 640px; margin: 0 auto; }
   .prog-nav { background: var(--prog-bg); border-bottom: 1px solid var(--prog-border); padding: 1.25rem 0; position: sticky; top: calc(var(--header-height) + 44px); z-index: 90; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
@@ -526,7 +553,7 @@ import '../styles/global.css';
   .prog-card__topics li:last-child { border-bottom: none; }
   .prog-card__meta { display: flex; gap: 1.25rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--prog-border); flex-wrap: wrap; }
   .prog-card__meta span { font-family: var(--prog-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--prog-text-secondary); }
-  .prog-card__fee { font-family: var(--prog-font); font-size: 1rem; font-weight: 600; color: var(--color-accent); margin-top: 0.75rem; margin-bottom: 0; }
+  .prog-card__fee { font-family: var(--prog-font); font-size: 1rem; font-weight: 600; color: var(--subject-accent); margin-top: 0.75rem; margin-bottom: 0; }
   /* ===== LESSON FLOW (editorial spread — claudedesign E.2) ===== */
   .lesson-flow { background: var(--bg-secondary); }
   .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 2.5rem; }
@@ -545,7 +572,7 @@ import '../styles/global.css';
     font-size: clamp(3rem, 6vw, 5.5rem);
     line-height: 0.85;
     letter-spacing: -0.04em;
-    color: var(--color-accent);
+    color: var(--subject-accent);
     font-feature-settings: "tnum" 1, "lnum" 1;
     font-variant-numeric: tabular-nums lining-nums;
   }
@@ -557,7 +584,7 @@ import '../styles/global.css';
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--subject-accent);
     margin-bottom: 0.6rem;
   }
   .lesson-step__title {
@@ -577,7 +604,7 @@ import '../styles/global.css';
     margin: 0;
     text-wrap: pretty;
   }
-  .lesson-step__desc em { font-style: italic; color: var(--color-accent); font-weight: 600; }
+  .lesson-step__desc em { font-style: italic; color: var(--subject-accent); font-weight: 600; }
   .lesson-flow__note { margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
   @media (max-width: 720px) {
     .lesson-step { grid-template-columns: 1fr; gap: 0.6rem; padding: 2rem 0; }
@@ -592,7 +619,7 @@ import '../styles/global.css';
   .prog-cta__actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
   .prog-cta__btn { font-family: var(--prog-mono); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.9rem 2rem; border-radius: 0; transition: all 0.2s ease; cursor: pointer; display: inline-block; }
   .prog-cta__btn--primary { background: var(--prog-accent); color: var(--text-primary); border: 1px solid var(--prog-accent); }
-  .prog-cta__btn--primary:hover { background: var(--color-accent-light); transform: translateY(-1px); }
+  .prog-cta__btn--primary:hover { background: var(--subject-accent); opacity: 0.85; transform: translateY(-1px); }
   .prog-cta__btn--whatsapp { display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #fff; border: none; text-decoration: none; transition: background var(--transition-fast); }
   .prog-cta__btn--whatsapp:hover { background: #1da851; color: #fff; }
   @media (max-width: 768px) { .prog-hero { padding: 6rem 0 3.5rem; } .prog-nav__inner { gap: 1rem; } .card-grid--2 { grid-template-columns: 1fr; } .prog-card { padding: 1.5rem; } }
@@ -627,10 +654,10 @@ import '../styles/global.css';
     display: block;
   }
   .sticky-toc-link:hover, .sticky-toc-link.is-active {
-    color: var(--color-accent);
+    color: var(--subject-accent);
   }
   .sticky-toc-item.is-active {
-    border-left: 2px solid var(--color-accent);
+    border-left: 2px solid var(--subject-accent);
     margin-left: -2px;
   }
   .related-section { background: var(--bg-secondary); }
@@ -649,7 +676,7 @@ import '../styles/global.css';
     transition: all 0.3s ease;
   }
   .related-link:hover {
-    border-color: var(--color-accent);
+    border-color: var(--subject-accent);
     transform: translateY(-2px);
   }
   .related-link strong {
@@ -677,11 +704,11 @@ import '../styles/global.css';
   .schedule-table td { color: var(--text-primary); }
   .schedule-table tbody tr:hover { background: var(--bg-secondary); }
   .slot-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-mono); }
-  .slot-badge--limited { background: rgba(212,133,58,0.12); color: var(--color-accent); }
+  .slot-badge--limited { background: rgba(212,133,58,0.12); color: var(--subject-accent); }
   .slot-badge--open { background: rgba(39,174,96,0.12); color: #27ae60; }
   .slot-badge--full { background: rgba(231,76,60,0.12); color: #e74c3c; }
   .schedule-note { margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary); }
-  .schedule-note a { color: var(--color-accent); text-decoration: underline; }
+  .schedule-note a { color: var(--subject-accent); text-decoration: underline; }
   @media (max-width: 640px) {
     .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
   }
@@ -714,7 +741,7 @@ import '../styles/global.css';
   .faq-question::after {
     content: '+';
     font-size: 1.3rem;
-    color: var(--color-accent);
+    color: var(--subject-accent);
     transition: transform var(--transition-fast);
   }
   .faq-item[open] .faq-question::after {
@@ -752,7 +779,7 @@ import '../styles/global.css';
   }
   .reading-card:hover {
     transform: translateY(-2px);
-    border-color: var(--color-accent);
+    border-color: var(--subject-accent);
   }
   .reading-card h3 {
     color: var(--text-primary);
@@ -761,7 +788,7 @@ import '../styles/global.css';
     font-weight: 600;
   }
   .reading-card-arrow {
-    color: var(--color-accent);
+    color: var(--subject-accent);
     font-size: 1.2rem;
     flex-shrink: 0;
     margin-left: 1rem;
@@ -778,7 +805,7 @@ import '../styles/global.css';
   }
   .subject-quote {
     background: var(--bg-card);
-    border-left: 3px solid var(--color-accent);
+    border-left: 3px solid var(--subject-accent);
     border-radius: var(--border-radius);
     padding: 1.5rem;
     margin: 0;
@@ -830,7 +857,7 @@ import '../styles/global.css';
     color: var(--text-primary);
   }
   .slots-text strong {
-    color: var(--color-accent);
+    color: var(--subject-accent);
   }
 </style>
 
