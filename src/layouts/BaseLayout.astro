@@ -349,9 +349,11 @@ import { ClientRouter } from 'astro:transitions';
       text-decoration: none;
       border-top: 1px solid var(--border-color);
     }
-    @media (max-width: 480px) {
-      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
+    @media (max-width: 768px) {
+      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
       .whatsapp-preview { width: min(300px, calc(100vw - 3rem)); }
+    }
+    @media (max-width: 480px) {
       .whatsapp-float-btn { width: 52px; height: 52px; }
     }
     .email-popup-overlay {
@@ -531,11 +533,12 @@ import { ClientRouter } from 'astro:transitions';
       color: rgba(255, 255, 255, 0.9);
       background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
-      width: 2rem;
-      height: 2rem;
+      width: 44px;
+      height: 44px;
       text-decoration: none;
       flex-shrink: 0;
       transition: background 0.2s ease;
+      touch-action: manipulation;
     }
 
     .sticky-cta-phone:hover {
@@ -625,6 +628,9 @@ import { ClientRouter } from 'astro:transitions';
     }
     .privacy-btn {
       padding: 0.5rem 1.25rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
       border-radius: var(--border-radius);
       font-size: 0.8rem;
       font-weight: 600;
@@ -633,6 +639,7 @@ import { ClientRouter } from 'astro:transitions';
       white-space: nowrap;
       border: none;
       transition: background var(--transition-fast);
+      touch-action: manipulation;
     }
     .privacy-btn--accept {
       background: var(--color-primary);
@@ -682,11 +689,12 @@ import { ClientRouter } from 'astro:transitions';
     .breadcrumb-list {
       list-style: none;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 0.5rem;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 4rem;
+      padding: 0 var(--page-padding);
       font-size: 0.75rem;
     }
     .breadcrumb-list li::after {
@@ -774,6 +782,9 @@ import { ClientRouter } from 'astro:transitions';
     }
     .subject-pill {
       padding: 0.35rem 0.85rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
       border-radius: 999px;
       font-size: 0.75rem;
       font-weight: 600;
@@ -782,6 +793,7 @@ import { ClientRouter } from 'astro:transitions';
       background: transparent;
       transition: all var(--transition-fast);
       white-space: nowrap;
+      touch-action: manipulation;
     }
     .subject-pill:hover, .subject-pill:active {
       background: var(--color-accent);
@@ -884,16 +896,19 @@ import { ClientRouter } from 'astro:transitions';
   (function(){
     var el = document.getElementById('sticky-cta-global');
     var dismiss = document.getElementById('sticky-cta-global-dismiss');
+    var privacyNotice = document.getElementById('privacy-notice');
     if (!el) return;
-    // Don't show on homepage (it has its own sticky CTA)
     if (window.location.pathname === '/' || window.location.pathname === '/index.html') return;
     var dismissed = false;
     var ticking = false;
+    function isPrivacyVisible() {
+      return privacyNotice && !privacyNotice.hidden;
+    }
     window.addEventListener('scroll', function(){
       if (dismissed) return;
       if (!ticking) {
         requestAnimationFrame(function(){
-          el.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.5);
+          el.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.5 && !isPrivacyVisible());
           ticking = false;
         });
         ticking = true;
@@ -1141,6 +1156,12 @@ import { ClientRouter } from 'astro:transitions';
       color: rgba(255,255,255,0.7);
       font-size: 1.2rem;
       cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
     }
     .chatbot-body {
       flex: 1;
@@ -1195,7 +1216,7 @@ import { ClientRouter } from 'astro:transitions';
     }
     @media (max-width: 480px) {
       .chatbot-panel { width: calc(100vw - 2rem); right: -1rem; }
-      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
     }
   </style>
 
