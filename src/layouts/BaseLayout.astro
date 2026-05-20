@@ -1069,6 +1069,16 @@ import { ClientRouter } from 'astro:transitions';
           <button class="chatbot-option" data-q="enrol">How do I enrol?</button>
           <button class="chatbot-option" data-q="trial">Can I try a free lesson?</button>
           <button class="chatbot-option" data-q="online">Are classes online or in-person?</button>
+          <button class="chatbot-option" data-q="classsize">What are the class sizes?</button>
+          <button class="chatbot-option" data-q="results">What results do your students get?</button>
+          <button class="chatbot-option" data-q="tutor">Who is the tutor?</button>
+          <button class="chatbot-option" data-q="subjects">What subjects do you teach?</button>
+          <button class="chatbot-option" data-q="location">Where are you located?</button>
+          <button class="chatbot-option" data-q="resources">Do you have any free resources?</button>
+          <button class="chatbot-option" data-q="refund">What's the refund policy?</button>
+          <button class="chatbot-option" data-q="contact">How do I contact you?</button>
+          <button class="chatbot-option" data-q="portal">Is there a parent portal?</button>
+          <button class="chatbot-option" data-q="schools">What schools do your students come from?</button>
         </div>
       </div>
     </div>
@@ -1101,7 +1111,7 @@ import { ClientRouter } from 'astro:transitions';
       bottom: 56px;
       right: 0;
       width: 320px;
-      max-height: 420px;
+      max-height: 520px;
       background: var(--bg-primary);
       border: 1px solid var(--border-color);
       border-radius: 12px;
@@ -1139,7 +1149,7 @@ import { ClientRouter } from 'astro:transitions';
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      max-height: 340px;
+      max-height: 460px;
     }
     .chatbot-msg {
       padding: 0.6rem 0.85rem;
@@ -1205,7 +1215,17 @@ import { ClientRouter } from 'astro:transitions';
       method: 'The SHARP Method is our proprietary 5-step system: See, Hit, Apply, Refine, Practise. Adapted from legal reasoning, it teaches students how to think systematically. <a href="/#method">Learn more \u2192</a>',
       enrol: 'Step 1: Book a free diagnostic assessment. Step 2: Get a personalised learning plan. Step 3: Start learning! <a href="/contact/">Book Free Assessment \u2192</a>',
       trial: 'Yes! We offer a free diagnostic assessment for all new students. This helps us understand your child\'s needs before recommending a programme. <a href="/contact/">Book free assessment \u2192</a>',
-      online: 'All classes are 100% online via Zoom Pro. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>'
+      online: 'All classes are 100% online via Zoom Pro. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>',
+      classsize: 'We cap every class at 6 students \u2014 no exceptions. This means your child gets personal feedback on their work every single session, and the tutor knows their specific strengths and weaknesses. <a href="/about/">Learn more about our approach \u2192</a>',
+      results: '90% of our students score A1\u2013B3 for O-Level English. Many students improve by 2\u20133 grades within their first term. <a href="/results/">See our full results \u2192</a>',
+      tutor: 'All classes are taught by Jeremy Lim, our founder. He\u2019s an NUS Law graduate (LLB Hons) who left corporate law to teach full-time. He created the SHARP Method based on the analytical skills used in legal practice. <a href="/about/">Read his story \u2192</a>',
+      subjects: 'We teach three subjects: O-Level English (Sec 1\u20134), H1 General Paper (JC 1\u20132), and H2 Economics (JC 1\u20132). All three use the same SHARP Method framework. <a href="/programmes/">View all programmes \u2192</a>',
+      location: 'We\u2019re 100% online \u2014 no physical centre. Students join from anywhere in Singapore via Zoom Pro with cloud recording. No commute, no wasted time. <a href="/programmes/">View programmes \u2192</a>',
+      resources: 'Yes! We have free downloadable resources covering grammar, essay writing, comprehension, vocabulary, and more. No payment required \u2014 just an email address. <a href="/resources/">Browse the resource vault \u2192</a>',
+      refund: 'We offer a free diagnostic assessment before you commit to anything. If you\u2019re not satisfied after your first paid month, contact us and we\u2019ll work something out. <a href="/contact/">Get in touch \u2192</a>',
+      contact: 'You can reach us via WhatsApp, email, or the contact form on our website. We typically reply within a few hours. <a href="/contact/">Go to contact page \u2192</a>',
+      portal: 'We\u2019re building a parent portal where you\u2019ll be able to track your child\u2019s progress, view lesson recordings, and access homework. It\u2019s coming soon! <a href="/parent-portal/">Preview the parent portal \u2192</a>',
+      schools: 'Our students come from schools across Singapore \u2014 Raffles Institution, Hwa Chong, ACS, CHIJ, Victoria School, and many neighbourhood schools. The SHARP Method works regardless of starting level. <a href="/success-stories/">Read student stories \u2192</a>'
     };
 
     toggle.addEventListener('click', function() {
