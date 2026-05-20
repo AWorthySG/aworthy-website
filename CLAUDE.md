@@ -37,7 +37,7 @@ src/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
 ├── pages/          # File-based routing (25 pages)
 │   ├── index.astro           # Homepage (~4000+ lines — largest page, audience selector)
-│   ├── about.astro           # About the centre, founder profile, video placeholder
+│   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
 │   ├── h2-economics.astro    # H2 Economics subject page (sticky TOC, schedule, related links)
 │   ├── h1-general-paper.astro # H1 GP subject page (sticky TOC, schedule, related links)
@@ -117,7 +117,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 All pages wrap content in `<BaseLayout>` which provides:
 - Meta tags (Open Graph with `ogImage` prop, Twitter Card, canonical URL)
-- Schema.org structured data (EducationalOrganization + LocalBusiness, Course, FAQPage)
+- Schema.org structured data (EducationalOrganization + LocalBusiness, Course, FAQPage, Person)
 - Google Fonts async loading
 - Theme initialization from localStorage (with `prefers-color-scheme` auto-detect)
 - ClientRouter for page transitions (`astro:transitions`)
@@ -272,6 +272,25 @@ The homepage is the largest file (~4000+ lines) and contains these sections in o
 20. Trial lesson booking section
 21. Contact form
 
+## Key Stats (keep consistent across all pages)
+
+- **O-Level English pass rate**: 90% A1–B3
+- **H2 Economics lesson duration**: 90 min / week
+- **CTA text on subject pages**: "Book Free Assessment" (not "Book Assessment")
+- **Students taught**: 500+
+- **Max class size**: 6 students
+
+When changing any stat, grep the entire `src/` directory to update every occurrence — stats appear on the homepage, subject pages, results page, landing pages, about page, and chatbot widget in BaseLayout.
+
+## Founder Details (for schema.org and about page)
+
+- **Name**: Jeremy Lim
+- **Credential**: LLB (Hons), NUS Faculty of Law
+- **Background**: Corporate law (IPO listings) → tuition
+- **Role**: Founder & Lead Tutor
+- **Method**: SHARP (See, Hit, Apply, Refine, Practise) — adapted from legal analytical reasoning
+- **Schema**: Person schema on about.astro, founder sub-schema in BaseLayout's EducationalOrganization
+
 ## Common Pitfalls
 
 - The site URL is `https://a-worthy.com` — update `astro.config.mjs` if this changes
@@ -286,3 +305,5 @@ The homepage is the largest file (~4000+ lines) and contains these sections in o
 - Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes
 - The prebuild step (`scripts/convert-og-images.mjs`) requires `sharp` — run `npm install` if missing
 - Email popup and resource gating both collect emails but are independent systems with separate localStorage keys
+- The chatbot widget in BaseLayout has its own CTA links — update these when changing CTA copy elsewhere
+- Homepage nav anchor `/#method` points to the SHARP flow section — ensure `id="method"` exists on that section
