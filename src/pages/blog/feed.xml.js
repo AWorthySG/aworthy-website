@@ -1,14 +1,14 @@
 export function GET() {
   const posts = [
     { title: "10 O-Level English Tips to Score A1 in 2026", slug: "o-level-english-tips-2026", date: "2026-05-15", description: "Actionable tips for Paper 1 and Paper 2 to help you score A1 in the 2026 O-Level English exam." },
-    { title: "GP Essay Examples: 5 Model Introductions That Score", slug: "gp-essay-examples", date: "2026-05-12", description: "Five model GP essay introductions across Technology, Environment, Media, Globalisation, and Arts with technique breakdowns." },
-    { title: "H2 Economics Case Study: How to Score L3 Every Time", slug: "h2-econs-case-study-tips", date: "2026-05-10", description: "Step-by-step approach to A-Level Economics case study questions with a worked example." },
-    { title: "The 12-Week Exam Prep Timeline", slug: "exam-prep-timeline", date: "2026-04-20", description: "A structured 12-week revision plan for O-Level and A-Level students." },
-    { title: "Why Smart Students Still Fail Exams", slug: "why-smart-students-fail", date: "2026-04-15", description: "The gap between knowledge and exam technique, and how to bridge it." },
-    { title: "Situational Writing: The Complete Format Guide", slug: "situational-writing-guide", date: "2026-04-10", description: "Format conventions for formal letter, email, report, and speech with register tips." },
-    { title: "Economics Essay Diagrams: When and How to Use Them", slug: "economics-essay-diagrams", date: "2026-03-25", description: "Guide to selecting and drawing the right diagrams in H2 Economics essays." },
-    { title: "GP Essay Structure: The Framework That Gets A", slug: "gp-essay-structure", date: "2026-03-15", description: "The P-E-E-L framework for structuring GP essays that consistently score well." },
-    { title: "Comprehension Techniques That Actually Work", slug: "comprehension-techniques", date: "2026-03-01", description: "Practical techniques for literal, inferential, and evaluative comprehension questions." },
+    { title: "GP Essay Examples: 5 Model Introductions That Score", slug: "gp-essay-examples", date: "2026-05-10", description: "Five model GP essay introductions across Technology, Environment, Media, Globalisation, and Arts with technique breakdowns." },
+    { title: "H2 Economics Case Study: How to Score L3 Every Time", slug: "h2-econs-case-study-tips", date: "2026-05-08", description: "Step-by-step approach to A-Level Economics case study questions with a worked example." },
+    { title: "Comprehension Techniques That Actually Work", slug: "comprehension-techniques", date: "2026-03-25", description: "Practical techniques for literal, inferential, and evaluative comprehension questions." },
+    { title: "GP Essay Structure: The Framework That Gets A", slug: "gp-essay-structure", date: "2026-03-18", description: "The P-E-E-L framework for structuring GP essays that consistently score well." },
+    { title: "Economics Essay Diagrams: When and How to Use Them", slug: "economics-essay-diagrams", date: "2026-03-11", description: "Guide to selecting and drawing the right diagrams in H2 Economics essays." },
+    { title: "Why Smart Students Still Fail Exams", slug: "why-smart-students-fail", date: "2026-03-04", description: "The gap between knowledge and exam technique, and how to bridge it." },
+    { title: "Situational Writing: The Complete Format Guide", slug: "situational-writing-guide", date: "2026-02-25", description: "Format conventions for formal letter, email, report, and speech with register tips." },
+    { title: "The 12-Week Exam Prep Timeline", slug: "exam-prep-timeline", date: "2026-02-18", description: "A structured 12-week revision plan for O-Level and A-Level students." },
   ];
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>

@@ -52,7 +52,7 @@ import '../styles/global.css';
       </div>
 
       <div class="hero-google-wrap hero-anim" style="--d:13">
-        <a class="google-badge" href="https://g.page/r/a-worthy" target="_blank" rel="noopener" aria-label="Google rating 4.9 stars across 127 reviews">
+        <a class="google-badge" href="https://g.page/r/aworthy-sg/review" target="_blank" rel="noopener" aria-label="Google rating 4.9 stars across 127 reviews">
           <span class="gb-rating">4.9</span>
           <span class="gb-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span class="gb-meta">Google &middot; 127 reviews</span>
@@ -103,7 +103,7 @@ import '../styles/global.css';
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="2">
-        <span class="stat-number">6:1</span>
+        <span class="stat-number">6</span>
         <span class="stat-label">Maximum class size</span>
         <span class="stat-story">Small group tuition with personalised feedback every session</span>
       </div>
@@ -473,12 +473,6 @@ import '../styles/global.css';
           <h3>See</h3>
           <p>See the question type and what the examiner wants</p>
         </div>
-        <div class="sharp-step sharp-step--featured">
-          <div class="sharp-letter">H</div>
-          <h3>Hit</h3>
-          <p class="sharp-meaning">Pick the right framework</p>
-          <p class="sharp-detail">Each paper section has its own framework. Step H is where SHARP deploys the precision tool that wins marks on that specific question type. See the framework library below.</p>
-        </div>
         <div class="sharp-flow-step">
           <span class="sharp-flow-watermark" aria-hidden="true">H</span>
           <span class="sharp-flow-step-num" aria-hidden="true">02</span>
@@ -486,18 +480,26 @@ import '../styles/global.css';
           <h3>Hit</h3>
           <p>Hit the right framework for that question</p>
         </div>
-        <div class="sharp-step">
-          <div class="sharp-letter">R</div>
-          <h3>Refine</h3>
-          <p class="sharp-meaning">Improve through feedback</p>
-          <p class="sharp-detail">In small classes of six, the tutor screen-shares student work in real time. Errors are corrected at the point of error &mdash; not on a returned script three weeks later.</p>
-        </div>
         <div class="sharp-flow-step">
           <span class="sharp-flow-watermark" aria-hidden="true">A</span>
           <span class="sharp-flow-step-num" aria-hidden="true">03</span>
           <div class="sharp-flow-icon"><span>A</span><div class="icon-ring"></div></div>
           <h3>Apply</h3>
           <p>Apply the framework to build a scoring answer</p>
+        </div>
+        <div class="sharp-flow-step">
+          <span class="sharp-flow-watermark" aria-hidden="true">R</span>
+          <span class="sharp-flow-step-num" aria-hidden="true">04</span>
+          <div class="sharp-flow-icon"><span>R</span><div class="icon-ring"></div></div>
+          <h3>Refine</h3>
+          <p>Refine through targeted tutor feedback</p>
+        </div>
+        <div class="sharp-flow-step">
+          <span class="sharp-flow-watermark" aria-hidden="true">P</span>
+          <span class="sharp-flow-step-num" aria-hidden="true">05</span>
+          <div class="sharp-flow-icon"><span>P</span><div class="icon-ring"></div></div>
+          <h3>Practise</h3>
+          <p>Practise via retrieval until it&rsquo;s automatic</p>
         </div>
       </div>
 
@@ -527,26 +529,6 @@ import '../styles/global.css';
               <span class="framework-use">Continuous writing body paragraphs with genre-matched templates</span>
             </div>
           </div>
-        </div>
-        <div class="sharp-flow-step">
-          <span class="sharp-flow-watermark" aria-hidden="true">R</span>
-          <span class="sharp-flow-step-num" aria-hidden="true">04</span>
-          <div class="sharp-flow-icon"><span>R</span><div class="icon-ring"></div></div>
-          <h3>Refine</h3>
-          <p>Refine through targeted tutor feedback</p>
-        </div>
-        <div class="sharp-flow-connector" aria-hidden="true">
-          <svg width="60" height="24" viewBox="0 0 60 24">
-            <path class="connector-line" d="M0 12h48" stroke="url(#arrow-grad)" stroke-width="2" fill="none" stroke-dasharray="48" stroke-dashoffset="48"/>
-            <path class="connector-arrow" d="M44 6l8 6-8 6" stroke="var(--color-accent)" stroke-width="2" fill="none" opacity="0"/>
-          </svg>
-        </div>
-        <div class="sharp-flow-step">
-          <span class="sharp-flow-watermark" aria-hidden="true">P</span>
-          <span class="sharp-flow-step-num" aria-hidden="true">05</span>
-          <div class="sharp-flow-icon"><span>P</span><div class="icon-ring"></div></div>
-          <h3>Practise</h3>
-          <p>Practise via retrieval until it&rsquo;s automatic</p>
         </div>
       </div>
     </div>
@@ -818,7 +800,7 @@ import '../styles/global.css';
         </div>
         <div class="result-stat-divider"></div>
         <div class="result-stat">
-          <span class="result-stat-number">6:1</span>
+          <span class="result-stat-number">6</span>
           <span class="result-stat-label">Max Class Size</span>
         </div>
         <div class="result-stat-divider"></div>
@@ -828,7 +810,7 @@ import '../styles/global.css';
         </div>
         <div class="result-stat-divider"></div>
         <div class="result-stat">
-          <span class="result-stat-number">3 mo</span>
+          <span class="result-stat-number">3 months</span>
           <span class="result-stat-label">Avg. Improvement</span>
         </div>
       </div>
@@ -1187,7 +1169,7 @@ import '../styles/global.css';
     <button class="sticky-cta-dismiss" id="sticky-cta-dismiss" aria-label="Dismiss booking prompt">&times;</button>
   </div>
 
-  <Footer />
+  <Footer slot="footer" />
 </BaseLayout>
 
 <script is:inline>
