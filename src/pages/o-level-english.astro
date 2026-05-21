@@ -713,7 +713,8 @@ const playbookRows = [
   .prog-nav__inner { display: flex; justify-content: center; gap: 2rem; flex-wrap: nowrap; min-width: max-content; }
   .prog-nav__link { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--prog-text-secondary); text-decoration: none; padding: 0.4rem 0; min-height: 44px; display: inline-flex; align-items: center; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; touch-action: manipulation; }
   .prog-nav__link:hover { color: var(--prog-text); border-bottom-color: var(--prog-accent); }
-  .prog-section { background: var(--prog-bg); padding: 1.5rem 0; scroll-margin-top: 60px; }
+  .prog-nav__link.is-active { color: var(--subject-accent); border-bottom-color: var(--subject-accent); font-weight: 600; }
+  .prog-section { background: var(--prog-bg); padding: 1.5rem 0; scroll-margin-top: calc(var(--nav-offset) + 48px); }
   .prog-section + .prog-section { border-top: 1px solid var(--prog-border); }
   .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.03em; }
   .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 1rem; }
@@ -806,7 +807,7 @@ const playbookRows = [
   /* ===== STICKY TOC ===== */
   .sticky-toc {
     position: fixed;
-    top: calc(var(--header-height) + 1rem);
+    top: calc(var(--nav-offset) + 1rem);
     right: 1.5rem;
     z-index: 50;
     max-width: 180px;
@@ -895,7 +896,7 @@ const playbookRows = [
   .faq-section {
     padding: var(--space-3xl) 0;
     background: var(--bg-secondary);
-    scroll-margin-top: 60px;
+    scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
     max-width: 800px;
@@ -1072,5 +1073,32 @@ const playbookRows = [
     });
   }, { threshold: 0.2, rootMargin: '-20% 0px -60% 0px' });
   sections.forEach(function(s) { observer.observe(s); });
+})();
+</script>
+
+<script is:inline>
+(function(){
+  var navLinks = document.querySelectorAll('.prog-nav__link');
+  if (!navLinks.length) return;
+  var sections = [];
+  navLinks.forEach(function(link) {
+    var id = link.getAttribute('href');
+    if (id && id.charAt(0) === '#') {
+      var el = document.querySelector(id);
+      if (el) sections.push({ el: el, link: link });
+    }
+  });
+  if (!sections.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function(l) { l.classList.remove('is-active'); });
+        sections.forEach(function(s) {
+          if (s.el === entry.target) s.link.classList.add('is-active');
+        });
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '-20% 0px -60% 0px' });
+  sections.forEach(function(s) { obs.observe(s.el); });
 })();
 </script>

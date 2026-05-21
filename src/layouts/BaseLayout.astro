@@ -390,7 +390,7 @@ import { ClientRouter } from 'astro:transitions';
       border-top: 1px solid var(--border-color);
     }
     @media (max-width: 768px) {
-      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
+      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); }
       .whatsapp-preview { width: min(300px, calc(100vw - 3rem)); }
     }
     @media (max-width: 480px) {
@@ -1147,7 +1147,7 @@ import { ClientRouter } from 'astro:transitions';
   <style>
     .chatbot-widget {
       position: fixed;
-      bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+      bottom: calc(2rem + 68px + env(safe-area-inset-bottom, 0px));
       right: calc(2rem + env(safe-area-inset-right, 0px));
       z-index: var(--z-chatbot);
     }
@@ -1259,9 +1259,12 @@ import { ClientRouter } from 'astro:transitions';
       border-color: var(--color-accent);
       background: rgba(212,133,58,0.05);
     }
+    @media (max-width: 768px) {
+      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + 68px + env(safe-area-inset-bottom, 0px)); }
+    }
     @media (max-width: 480px) {
       .chatbot-panel { width: calc(100vw - 2rem); right: -1rem; }
-      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
+      .chatbot-widget { bottom: calc(1.25rem + 64px + env(safe-area-inset-bottom, 0px)); }
     }
   </style>
 

@@ -798,11 +798,17 @@ const playbookRows = [
     border-bottom-color: var(--prog-accent);
   }
 
+  .prog-nav__link.is-active {
+    color: var(--subject-accent);
+    border-bottom-color: var(--subject-accent);
+    font-weight: 600;
+  }
+
   /* ===== SECTIONS ===== */
   .prog-section {
     background: var(--prog-bg);
     padding: 1.5rem 0;
-    scroll-margin-top: 60px;
+    scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
 
   .prog-section + .prog-section {
@@ -1166,7 +1172,7 @@ const playbookRows = [
   /* ===== STICKY TOC ===== */
   .sticky-toc {
     position: fixed;
-    top: calc(var(--header-height) + 1rem);
+    top: calc(var(--nav-offset) + 1rem);
     right: 1.5rem;
     z-index: 50;
     max-width: 180px;
@@ -1255,7 +1261,7 @@ const playbookRows = [
   .faq-section {
     padding: var(--space-3xl) 0;
     background: var(--bg-secondary);
-    scroll-margin-top: 60px;
+    scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
     max-width: 800px;
@@ -1432,5 +1438,32 @@ const playbookRows = [
     });
   }, { threshold: 0.2, rootMargin: '-20% 0px -60% 0px' });
   sections.forEach(function(s) { observer.observe(s); });
+})();
+</script>
+
+<script is:inline>
+(function(){
+  var navLinks = document.querySelectorAll('.prog-nav__link');
+  if (!navLinks.length) return;
+  var sections = [];
+  navLinks.forEach(function(link) {
+    var id = link.getAttribute('href');
+    if (id && id.charAt(0) === '#') {
+      var el = document.querySelector(id);
+      if (el) sections.push({ el: el, link: link });
+    }
+  });
+  if (!sections.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function(l) { l.classList.remove('is-active'); });
+        sections.forEach(function(s) {
+          if (s.el === entry.target) s.link.classList.add('is-active');
+        });
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '-20% 0px -60% 0px' });
+  sections.forEach(function(s) { obs.observe(s.el); });
 })();
 </script>
