@@ -3,6 +3,7 @@
   "short_name": "A-Worthy",
   "description": "Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#FDFBF7",
   "theme_color": "#2B5A8C",
@@ -15,7 +16,18 @@
     {
       "src": "/apple-touch-icon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }

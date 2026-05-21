@@ -282,12 +282,14 @@ li {
   font-weight: 500;
   color: var(--text-primary);
   padding: 1.25rem 0;
+  min-height: 44px;
   cursor: pointer;
   list-style: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  touch-action: manipulation;
 }
 .faq-question::-webkit-details-marker {
   display: none;
@@ -590,6 +592,45 @@ li {
     0 0 40px rgba(229, 154, 85, 0.06);
 }
 
+/* ===== Card Variants ===== */
+.card--accent-left {
+  border-left: 3px solid var(--subject-accent, var(--color-accent));
+  border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+}
+
+.card--featured {
+  position: relative;
+  overflow: hidden;
+  border-top: none;
+}
+.card--featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--subject-accent, var(--color-accent)), var(--color-accent-light));
+}
+
+.card--elevated {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.card--elevated:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  transform: translateY(-2px);
+}
+[data-theme="dark"] .card--elevated {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+[data-theme="dark"] .card--elevated:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
 /* ===== Forms ===== */
 input, textarea, select {
   font-family: var(--font-body);
@@ -777,20 +818,20 @@ label {
 
 /* ===== Responsive ===== */
 
-/* Phone */
-@media (max-width: 480px) {
-  html { font-size: 93.75%; }
-  :root { --page-padding: 1.25rem; }
-  .container { padding: 0 var(--page-padding); }
-  .section { padding: var(--space-2xl) 0; }
-  .btn { padding: 0.75rem 1.5rem; font-size: 0.8rem; width: 100%; }
-}
-
 /* Phone landscape / small tablet */
 @media (max-width: 768px) {
   :root { --page-padding: 1.5rem; }
   .section { padding: var(--space-3xl) 0; }
   .container { padding: 0 var(--page-padding); }
+}
+
+/* Phone */
+@media (max-width: 480px) {
+  :root { --page-padding: 1.25rem; }
+  .container { padding: 0 var(--page-padding); }
+  .section { padding: var(--space-2xl) 0; }
+  .btn { padding: 0.75rem 1.5rem; font-size: 0.85rem; width: 100%; }
+  .eyebrow { font-size: clamp(0.75rem, 1.6vw, 0.8rem); }
 }
 
 /* Tablet portrait */
@@ -835,6 +876,20 @@ label {
     --header-height: 96px;
   }
   .container { max-width: 2200px; }
+}
+
+/* ─── PWA standalone mode ─── */
+/* When installed to home screen, there is no browser chrome (URL bar),
+   so we use a more compact header. The header component already handles
+   safe-area-inset-top via its own padding, so body needs no extra
+   padding-top. Bottom safe-area is handled per fixed widget. */
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  :root {
+    --header-height: 56px;
+  }
+  .sticky-cta-global {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
 }
 
 /* ─── Clip-path Scroll Reveals ─── */
@@ -882,7 +937,7 @@ label {
 /* Film grain and custom cursor removed — caused lag */
 
 /* ─── Shimmer Animation System ─── */
-/* Golden light sweep — used across hero heading, CASE letters, stats, eyebrows */
+/* Golden light sweep — used across hero heading, SHARP letters, stats, eyebrows */
 
 @keyframes shimmer-sweep {
   0%   { background-position: 200% center; }
@@ -985,11 +1040,13 @@ label {
   align-items: center;
   gap: 0.6rem;
   padding: 0.45rem 0.9rem;
+  min-height: 44px;
   border: 1px solid var(--border-color);
   border-radius: 999px;
   text-decoration: none;
   background: #fff;
   color: var(--text-primary);
+  touch-action: manipulation;
   transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 [data-theme="dark"] .google-badge {
@@ -1018,7 +1075,7 @@ label {
 }
 .gb-meta {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1298,17 +1355,9 @@ label {
 
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: 5rem;
-    right: 1rem;
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 640px) {
-  .back-to-top {
     bottom: calc(5rem + var(--safe-area-bottom));
-    right: calc(1rem + var(--safe-area-right));
+    left: calc(1rem + var(--safe-area-left));
+    right: auto;
     width: 44px;
     height: 44px;
   }
