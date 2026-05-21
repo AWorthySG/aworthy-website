@@ -33,8 +33,8 @@
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 5rem;
+  --space-2xl: 2rem;
+  --space-3xl: 3rem;
 
   /* ── Layout ── */
   --container-max: 1200px;
@@ -385,9 +385,9 @@ li {
 }
 
 /* ── Section padding variants (claudedesign C.2) ── */
-.section--lg { padding-block: clamp(6rem, 10vw, 10rem); }
-.section--sm { padding-block: clamp(2.5rem, 4vw, 4rem); }
-.section--xs { padding-block: clamp(1.5rem, 2.5vw, 2.25rem); }
+.section--lg { padding-block: clamp(3.5rem, 6vw, 5rem); }
+.section--sm { padding-block: clamp(2rem, 3vw, 3rem); }
+.section--xs { padding-block: clamp(1.25rem, 2vw, 1.75rem); }
 
 .section-title {
   text-align: center;
@@ -400,7 +400,7 @@ li {
   text-align: center;
   color: var(--text-muted);
   font-size: 1.1rem;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-xl);
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
@@ -829,7 +829,7 @@ label {
 @media (max-width: 480px) {
   :root { --page-padding: 1.25rem; }
   .container { padding: 0 var(--page-padding); }
-  .section { padding: var(--space-2xl) 0; }
+  .section { padding: var(--space-xl) 0; }
   .btn { padding: 0.75rem 1.5rem; font-size: 0.85rem; width: 100%; }
   .eyebrow { font-size: clamp(0.75rem, 1.6vw, 0.8rem); }
 }
@@ -860,7 +860,7 @@ label {
 @media (min-width: 1921px) {
   html { font-size: 125%; }
   :root {
-    --space-3xl: 7rem;
+    --space-3xl: 4rem;
     --header-height: 88px;
   }
   .container { max-width: 1800px; padding: 0 var(--space-2xl); }
@@ -872,7 +872,7 @@ label {
 @media (min-width: 2560px) {
   html { font-size: 150%; }
   :root {
-    --space-3xl: 9rem;
+    --space-3xl: 5rem;
     --header-height: 96px;
   }
   .container { max-width: 2200px; }
@@ -1390,7 +1390,7 @@ html {
 /* ─── Tablet portrait optimizations ─── */
 @media (min-width: 481px) and (max-width: 1024px) and (orientation: portrait) {
   .section {
-    padding: 4rem 0;
+    padding: 2.5rem 0;
   }
 }
 

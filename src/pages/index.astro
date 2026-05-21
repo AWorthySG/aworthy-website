@@ -1514,7 +1514,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     text-transform: uppercase;
     letter-spacing: 0.25em;
     color: var(--color-accent);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   /* ===== SECTION HEADING ===== */
@@ -1524,14 +1524,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-weight: 200;
     color: var(--text-primary);
     line-height: 1.08;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
     max-width: 700px;
     letter-spacing: -0.03em;
   }
 
   /* ===== SECTION SPACING ===== */
   .section {
-    padding: 6rem 0;
+    padding: 3.5rem 0;
     background: var(--bg-primary);
     scroll-margin-top: var(--header-height);
   }
@@ -1710,7 +1710,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     line-height: 1.5;
     color: var(--text-secondary);
     max-width: 58ch;
-    margin: 0 auto 2.5rem;
+    margin: 0 auto 1.5rem;
     letter-spacing: -0.005em;
     text-wrap: pretty;
   }
@@ -1802,7 +1802,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 
   /* CTAs inherit gradient bevel + radius from .btn-accent / .btn (global D.1, D.3). */
@@ -2070,10 +2070,18 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     }
   }
 
+  @media (max-width: 768px) {
+    .section {
+      padding: 2.5rem 0;
+    }
+  }
   @media (max-width: 640px) {
     .hero {
       min-height: auto;
-      padding: 6rem 0 3rem;
+      padding: 4rem 0 2rem;
+    }
+    .section {
+      padding: 2rem 0;
     }
     .hero-badges-row {
       display: none;
@@ -2133,7 +2141,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(212, 133, 58, 0.04) 50%, var(--bg-secondary) 100%);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
-    padding: 4rem 0;
+    padding: 2.5rem 0;
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     position: relative;
@@ -2744,8 +2752,8 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-size: 1.1rem;
     color: var(--text-secondary);
     max-width: 600px;
-    margin-bottom: 2.5rem;
-    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    margin-top: -0.5rem;
     line-height: 1.7;
   }
   .vault-grid {
@@ -2955,7 +2963,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   /* ===== CTA ===== */
   .cta-section {
-    padding: 8rem 0;
+    padding: 4rem 0;
     background: var(--bg-secondary);
     text-align: center;
     position: relative;
@@ -3112,7 +3120,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     justify-content: center;
     gap: 0;
     padding: 2rem 0;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background: var(--bg-card);
@@ -3466,11 +3474,11 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   @media (max-width: 768px) {
     .section {
-      padding: 3rem 0;
+      padding: 2.5rem 0;
     }
 
     .cta-section {
-      padding: 3rem 0;
+      padding: 2.5rem 0;
     }
 
     .stats-inner {
@@ -3523,7 +3531,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
     .section-heading {
       font-size: 1.75rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.25rem;
     }
 
   }
@@ -3553,10 +3561,10 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
       max-width: 600px;
     }
     .section {
-      padding: 8rem 0;
+      padding: 4rem 0;
     }
     .cta-section {
-      padding: 10rem 0;
+      padding: 5rem 0;
     }
     .programmes-grid {
       gap: 2rem;
