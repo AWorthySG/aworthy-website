@@ -106,16 +106,7 @@ import '../styles/global.css';
               <li>500+ students taught since 2020</li>
               <li>Creator of the SHARP Method</li>
             </ul>
-            <button type="button" class="founder-card__video" aria-label="Watch a 2-minute intro from Jeremy (coming soon)" disabled>
-              <svg width="40" height="40" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-                <circle cx="32" cy="32" r="30" fill="rgba(212, 133, 58, 0.12)" stroke="var(--color-accent)" stroke-width="1.5"/>
-                <polygon points="26,20 26,44 46,32" fill="var(--color-accent)"/>
-              </svg>
-              <div class="founder-card__video-text">
-                <span class="founder-card__video-title">2-minute intro from Jeremy</span>
-                <span class="founder-card__video-status">Video coming soon</span>
-              </div>
-            </button>
+            <a href="/contact/" class="founder-card__cta btn btn-accent">Book a Free Assessment</a>
           </div>
         </aside>
       </div>
@@ -768,42 +759,9 @@ import '../styles/global.css';
     border-radius: 50%;
     background: var(--color-accent);
   }
-  .founder-card__video {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding: 0.85rem 1rem;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: left;
-    transition: border-color 0.2s ease, transform 0.15s ease, background 0.2s ease;
-  }
-  .founder-card__video:hover,
-  .founder-card__video:focus-visible {
-    border-color: var(--color-accent);
-    background: rgba(212, 133, 58, 0.04);
-    transform: translateY(-1px);
-    outline: none;
-  }
-  .founder-card__video-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-  .founder-card__video-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-  .founder-card__video-status {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+  .founder-card__cta {
+    margin-top: 0.5rem;
+    align-self: flex-start;
   }
   @media (max-width: 900px) {
     .founder-card {

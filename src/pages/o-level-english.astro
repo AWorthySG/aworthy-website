@@ -199,7 +199,7 @@ const playbookRows = [
       </div>
 
       <div class="prog-inline-cta" data-animate="reveal-up">
-        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+        <a href="/contact/" class="btn btn-accent plausible-event-name=Subject+CTA+Click">Book Free Assessment</a>
       </div>
     </div>
   </section>
@@ -534,10 +534,10 @@ const playbookRows = [
         <table class="schedule-table">
           <thead>
             <tr>
-              <th>Programme</th>
-              <th>Day &amp; Time</th>
-              <th>Duration</th>
-              <th>Status</th>
+              <th scope="col">Programme</th>
+              <th scope="col">Day &amp; Time</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -798,7 +798,7 @@ const playbookRows = [
   .prog-cta__actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
   .prog-cta__btn { font-family: var(--prog-mono); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.9rem 2rem; min-height: 44px; border-radius: 0; transition: all 0.2s ease; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; touch-action: manipulation; }
   .prog-cta__btn--primary { background: var(--prog-accent); color: var(--text-primary); border: 1px solid var(--prog-accent); }
-  .prog-cta__btn--primary:hover { background: var(--subject-accent); opacity: 0.85; transform: translateY(-1px); }
+  .prog-cta__btn--primary:hover { background: var(--color-accent-light); transform: translateY(-1px); }
   .prog-cta__btn--whatsapp { display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #fff; border: none; text-decoration: none; transition: background var(--transition-fast); }
   .prog-cta__btn--whatsapp:hover { background: #1da851; color: #fff; }
   @media (max-width: 768px) { .prog-hero { padding: 1rem 0 0.75rem; } .prog-section { padding: 1.25rem 0; } .prog-section__sub { margin-bottom: 0.75rem; } .prog-nav__inner { gap: 1rem; } .card-grid--2 { grid-template-columns: 1fr; } .prog-card { padding: 1.5rem; } .prog-cta { padding: 1.25rem 0; } }
@@ -885,7 +885,9 @@ const playbookRows = [
   .slot-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-mono); }
   .slot-badge--limited { background: rgba(59,125,216,0.12); color: var(--subject-accent); }
   .slot-badge--open { background: rgba(39,174,96,0.12); color: #27ae60; }
+  :global([data-theme="dark"]) .slot-badge--open { background: rgba(39,174,96,0.18); color: #2ecc71; }
   .slot-badge--full { background: rgba(231,76,60,0.12); color: #e74c3c; }
+  :global([data-theme="dark"]) .slot-badge--full { background: rgba(231,76,60,0.18); color: #f07060; }
   .schedule-note { margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary); }
   .schedule-note a { color: var(--subject-accent); text-decoration: underline; }
   @media (max-width: 640px) {

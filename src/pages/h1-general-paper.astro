@@ -205,7 +205,7 @@ const playbookRows = [
   </section>
 
   <div class="prog-inline-cta" data-animate="reveal-up">
-    <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+    <a href="/contact/" class="btn btn-accent plausible-event-name=Subject+CTA+Click">Book Free Assessment</a>
   </div>
 
   <!-- ===== SYLLABUS COVERAGE ===== -->
@@ -528,10 +528,10 @@ const playbookRows = [
         <table class="schedule-table">
           <thead>
             <tr>
-              <th>Programme</th>
-              <th>Day &amp; Time</th>
-              <th>Duration</th>
-              <th>Status</th>
+              <th scope="col">Programme</th>
+              <th scope="col">Day &amp; Time</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -1250,7 +1250,9 @@ const playbookRows = [
   .slot-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-mono); }
   .slot-badge--limited { background: rgba(74,140,111,0.12); color: var(--subject-accent); }
   .slot-badge--open { background: rgba(39,174,96,0.12); color: #27ae60; }
+  :global([data-theme="dark"]) .slot-badge--open { background: rgba(39,174,96,0.18); color: #2ecc71; }
   .slot-badge--full { background: rgba(231,76,60,0.12); color: #e74c3c; }
+  :global([data-theme="dark"]) .slot-badge--full { background: rgba(231,76,60,0.18); color: #f07060; }
   .schedule-note { margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary); }
   .schedule-note a { color: var(--subject-accent); text-decoration: underline; }
   @media (max-width: 640px) {
