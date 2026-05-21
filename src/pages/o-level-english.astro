@@ -3,6 +3,83 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+
+const sharpSteps = [
+  { letter: 'S', name: 'See' },
+  { letter: 'H', name: 'Hit' },
+  { letter: 'A', name: 'Apply' },
+  { letter: 'R', name: 'Refine' },
+  { letter: 'P', name: 'Practise' },
+];
+
+const playbookRows = [
+  {
+    paper: 'Paper 1A',
+    section: 'Editing',
+    steps: [
+      { title: 'Spot the error type', note: 'Grammar, vocabulary or spelling?' },
+      { title: 'STAMP CARD', note: '9-category mnemonic sweep' },
+      { title: 'Walk each error', note: 'Tick categories in order' },
+      { title: 'Re-read for tense', note: 'Catch silent verb shifts' },
+      { title: '10-error drills', note: 'Daily editing reps' },
+    ],
+  },
+  {
+    paper: 'Paper 1B',
+    section: 'Situational Writing',
+    steps: [
+      { title: 'Decode P-A-R', note: 'Purpose, audience, register' },
+      { title: 'RAWCP plan', note: 'Format-matched skeleton' },
+      { title: 'Match register', note: 'Word choice + tone alignment' },
+      { title: 'Tone audit', note: 'Re-read in the recipient’s voice' },
+      { title: 'Format library', note: 'Letters, reports, emails, proposals' },
+    ],
+  },
+  {
+    paper: 'Paper 1C',
+    section: 'Continuous Writing',
+    steps: [
+      { title: 'Read the command', note: 'Narrative, expository or argumentative?' },
+      { title: 'CAPS planner', note: 'Characters, Arc, Plot, Setting' },
+      { title: 'Build the arc', note: 'Tension, climax, resolution' },
+      { title: 'Cut weak verbs', note: 'Verb upgrade pass before submit' },
+      { title: 'Timed essays', note: 'Weekly 60-minute writes' },
+    ],
+  },
+  {
+    paper: 'Paper 2',
+    section: 'Comprehension (Texts 1–3)',
+    steps: [
+      { title: 'Identify Q-type', note: 'Literal, inferential or evaluative' },
+      { title: 'Core Move + ACED', note: 'ACED for visual, Core Move for inference' },
+      { title: 'P-E-E-L answer', note: 'Point, evidence, explanation, link' },
+      { title: 'Mark-allocation check', note: '1 point per mark, no more' },
+      { title: 'Past-paper drills', note: 'Cambridge papers, 2019–2024' },
+    ],
+  },
+  {
+    paper: 'Paper 2',
+    section: 'Summary (80 words)',
+    steps: [
+      { title: 'List content points', note: 'Number every mark-worthy idea' },
+      { title: '80-word target', note: 'Compression rule: 1 word per point' },
+      { title: 'Paraphrase chain', note: 'Re-word without dropping marks' },
+      { title: 'Cut redundancy', note: 'Strip qualifiers, examples, hedging' },
+      { title: 'Daily 80-word drills', note: 'One summary every morning' },
+    ],
+  },
+  {
+    paper: 'Paper 4',
+    section: 'Oral Communication',
+    steps: [
+      { title: 'Read the visual cue', note: 'What’s the conversation hook?' },
+      { title: '1-2-1 structure', note: 'Opinion, two reasons, restated stance' },
+      { title: 'Personalise', note: 'Specific examples, not generalities' },
+      { title: 'Tone audit', note: 'Pace, fillers, eye-contact check' },
+      { title: 'Mock orals', note: 'Recorded sessions with playback' },
+    ],
+  },
+];
 ---
 
 <BaseLayout title="O-Level English Tuition Singapore | A-Worthy" description="Best O-Level English tuition in Singapore. SHARP Method delivers 90% A1–B3 rate. Small groups of 6, online via Zoom. Book a free assessment." ogImage="/images/og-english.png">
@@ -35,6 +112,7 @@ import '../styles/global.css';
       <a href="#one-to-one" class="prog-nav__link">One-to-One</a>
       <a href="#syllabus" class="prog-nav__link">Syllabus Coverage</a>
       <a href="#approach" class="prog-nav__link">Our Approach</a>
+      <a href="#playbook" class="prog-nav__link">SHARP Playbook</a>
       <a href="#faq" class="prog-nav__link">FAQ</a>
       <a href="#schedule" class="prog-nav__link">Schedule</a>
     </div>
@@ -197,6 +275,43 @@ import '../styles/global.css';
           <h3 class="prog-card__title">ACED &mdash; Paper 2 Visual Text</h3>
           <p class="prog-card__desc">Audience, Content, Effect, Design. ACED breaks down every visual-text question into the four dimensions examiners credit &mdash; who the text targets, what it claims, how the design persuades, and what it achieves. No more guessing at flyer or poster questions.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHARP PLAYBOOK ===== -->
+  <section class="prog-section playbook-section" id="playbook">
+    <div class="container">
+      <p class="eyebrow" data-animate="reveal-up">The SHARP Playbook</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">SHARP, mapped to every section of the O-Level paper</h2>
+      <p class="prog-section__sub" data-animate="reveal-up">Each row is a paper section. Each column is one SHARP step. Read across to see exactly what your child does at every stage &mdash; from decoding the question to retrieval practice.</p>
+
+      <div class="playbook-matrix" role="table" aria-label="SHARP method mapped to each O-Level English paper section" data-animate="reveal-up">
+        <div class="playbook-matrix__head" role="row">
+          <div class="playbook-matrix__col-label" role="columnheader">Paper section</div>
+          {sharpSteps.map((step) => (
+            <div class="playbook-matrix__step" role="columnheader">
+              <span class="playbook-letter" aria-hidden="true">{step.letter}</span>
+              <span class="playbook-step-name">{step.name}</span>
+            </div>
+          ))}
+        </div>
+        {playbookRows.map((row, i) => (
+          <div class="playbook-matrix__row" role="row" data-animate="reveal-up" data-animate-delay={String((i % 3) + 1)}>
+            <div class="playbook-matrix__row-label" role="rowheader">
+              <span class="playbook-paper">{row.paper}</span>
+              <span class="playbook-section-name">{row.section}</span>
+            </div>
+            {row.steps.map((cell, j) => (
+              <div class="playbook-matrix__cell" role="cell" data-step={sharpSteps[j].letter} data-step-name={sharpSteps[j].name}>
+                <div class="playbook-matrix__cell-body">
+                  <strong>{cell.title}</strong>
+                  <span>{cell.note}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -666,6 +781,151 @@ import '../styles/global.css';
     .lesson-step { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.25rem 0; }
     .lesson-step__num { font-size: clamp(2.6rem, 14vw, 3.6rem); }
     .lesson-step__desc { font-size: 0.92rem; }
+  }
+
+  /* ===== SHARP PLAYBOOK MATRIX ===== */
+  .playbook-section { background: var(--bg-secondary); }
+  .playbook-matrix {
+    display: grid;
+    grid-template-columns: minmax(180px, 1.4fr) repeat(5, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--prog-border);
+    border: 1px solid var(--prog-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+  }
+  .playbook-matrix__head,
+  .playbook-matrix__row { display: contents; }
+  .playbook-matrix__col-label,
+  .playbook-matrix__step,
+  .playbook-matrix__row-label,
+  .playbook-matrix__cell {
+    background: var(--prog-bg-card);
+    padding: 1rem 0.9rem;
+  }
+  .playbook-matrix__col-label,
+  .playbook-matrix__step {
+    background: var(--subject-accent);
+    color: white;
+    font-family: var(--prog-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    text-align: center;
+  }
+  .playbook-matrix__col-label { text-align: left; align-items: flex-start; justify-content: flex-end; }
+  .playbook-letter {
+    font-family: var(--prog-font);
+    font-size: 1.5rem;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  .playbook-step-name { font-size: 0.7rem; opacity: 0.92; }
+  .playbook-matrix__row-label {
+    background: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    justify-content: center;
+  }
+  .playbook-paper {
+    font-family: var(--prog-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--subject-accent);
+    font-weight: 600;
+  }
+  .playbook-section-name {
+    font-family: var(--prog-font);
+    font-weight: 400;
+    color: var(--prog-text);
+    font-size: 1rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .playbook-matrix__cell { display: flex; flex-direction: column; gap: 0.3rem; }
+  .playbook-matrix__cell-body { display: contents; }
+  .playbook-matrix__cell strong {
+    font-family: var(--prog-font);
+    font-weight: 600;
+    color: var(--prog-text);
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  .playbook-matrix__cell span {
+    font-family: var(--prog-font);
+    font-size: 0.75rem;
+    color: var(--prog-text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .playbook-matrix {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+    }
+    .playbook-matrix__head { display: none; }
+    .playbook-matrix__row {
+      display: flex;
+      flex-direction: column;
+      background: var(--prog-bg-card);
+      border: 1px solid var(--prog-border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      gap: 0;
+    }
+    .playbook-matrix__row-label {
+      background: transparent;
+      padding: 0 0 0.75rem;
+      border-bottom: 1px solid var(--prog-border);
+      margin-bottom: 0.25rem;
+    }
+    .playbook-matrix__cell {
+      background: transparent;
+      padding: 0.65rem 0;
+      display: flex;
+      flex-direction: row;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .playbook-matrix__cell:not(:last-child) { border-bottom: 1px solid var(--prog-border); }
+    .playbook-matrix__cell::before {
+      content: attr(data-step);
+      font-family: var(--prog-font);
+      font-weight: 600;
+      color: white;
+      background: var(--subject-accent);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .playbook-matrix__cell-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      flex: 1;
+      min-width: 0;
+    }
   }
 
   .prog-inline-cta { text-align: center; padding: 1.5rem 0 0; }
