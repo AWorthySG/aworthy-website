@@ -923,7 +923,7 @@ label {
 /* Film grain and custom cursor removed — caused lag */
 
 /* ─── Shimmer Animation System ─── */
-/* Golden light sweep — used across hero heading, CASE letters, stats, eyebrows */
+/* Golden light sweep — used across hero heading, SHARP letters, stats, eyebrows */
 
 @keyframes shimmer-sweep {
   0%   { background-position: 200% center; }

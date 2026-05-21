@@ -461,15 +461,15 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== SHARP FLOW DIAGRAM ===== -->
-  <section id="method" class="section section--ink section--lg case-flow-section">
+  <section id="method" class="section section--ink section--lg sharp-flow-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">How It Works</span>
       <h2 class="section-heading" data-animate="reveal-up">The five-step system behind our students&rsquo; grade jumps</h2>
-      <div class="case-flow" data-animate="reveal-up">
-        <div class="case-flow-step">
-          <span class="case-flow-watermark" aria-hidden="true">S</span>
-          <span class="case-flow-step-num" aria-hidden="true">01</span>
-          <div class="case-flow-icon"><span>S</span><div class="icon-ring"></div></div>
+      <div class="sharp-flow" data-animate="reveal-up">
+        <div class="sharp-flow-step">
+          <span class="sharp-flow-watermark" aria-hidden="true">S</span>
+          <span class="sharp-flow-step-num" aria-hidden="true">01</span>
+          <div class="sharp-flow-icon"><span>S</span><div class="icon-ring"></div></div>
           <h3>See</h3>
           <p>See the question type and what the examiner wants</p>
         </div>
@@ -479,10 +479,10 @@ import '../styles/global.css';
           <p class="sharp-meaning">Pick the right framework</p>
           <p class="sharp-detail">Each paper section has its own framework. Step H is where SHARP deploys the precision tool that wins marks on that specific question type. See the framework library below.</p>
         </div>
-        <div class="case-flow-step">
-          <span class="case-flow-watermark" aria-hidden="true">H</span>
-          <span class="case-flow-step-num" aria-hidden="true">02</span>
-          <div class="case-flow-icon"><span>H</span><div class="icon-ring"></div></div>
+        <div class="sharp-flow-step">
+          <span class="sharp-flow-watermark" aria-hidden="true">H</span>
+          <span class="sharp-flow-step-num" aria-hidden="true">02</span>
+          <div class="sharp-flow-icon"><span>H</span><div class="icon-ring"></div></div>
           <h3>Hit</h3>
           <p>Hit the right framework for that question</p>
         </div>
@@ -492,10 +492,10 @@ import '../styles/global.css';
           <p class="sharp-meaning">Improve through feedback</p>
           <p class="sharp-detail">In small classes of six, the tutor screen-shares student work in real time. Errors are corrected at the point of error &mdash; not on a returned script three weeks later.</p>
         </div>
-        <div class="case-flow-step">
-          <span class="case-flow-watermark" aria-hidden="true">A</span>
-          <span class="case-flow-step-num" aria-hidden="true">03</span>
-          <div class="case-flow-icon"><span>A</span><div class="icon-ring"></div></div>
+        <div class="sharp-flow-step">
+          <span class="sharp-flow-watermark" aria-hidden="true">A</span>
+          <span class="sharp-flow-step-num" aria-hidden="true">03</span>
+          <div class="sharp-flow-icon"><span>A</span><div class="icon-ring"></div></div>
           <h3>Apply</h3>
           <p>Apply the framework to build a scoring answer</p>
         </div>
@@ -528,23 +528,23 @@ import '../styles/global.css';
             </div>
           </div>
         </div>
-        <div class="case-flow-step">
-          <span class="case-flow-watermark" aria-hidden="true">R</span>
-          <span class="case-flow-step-num" aria-hidden="true">04</span>
-          <div class="case-flow-icon"><span>R</span><div class="icon-ring"></div></div>
+        <div class="sharp-flow-step">
+          <span class="sharp-flow-watermark" aria-hidden="true">R</span>
+          <span class="sharp-flow-step-num" aria-hidden="true">04</span>
+          <div class="sharp-flow-icon"><span>R</span><div class="icon-ring"></div></div>
           <h3>Refine</h3>
           <p>Refine through targeted tutor feedback</p>
         </div>
-        <div class="case-flow-connector" aria-hidden="true">
+        <div class="sharp-flow-connector" aria-hidden="true">
           <svg width="60" height="24" viewBox="0 0 60 24">
             <path class="connector-line" d="M0 12h48" stroke="url(#arrow-grad)" stroke-width="2" fill="none" stroke-dasharray="48" stroke-dashoffset="48"/>
             <path class="connector-arrow" d="M44 6l8 6-8 6" stroke="var(--color-accent)" stroke-width="2" fill="none" opacity="0"/>
           </svg>
         </div>
-        <div class="case-flow-step">
-          <span class="case-flow-watermark" aria-hidden="true">P</span>
-          <span class="case-flow-step-num" aria-hidden="true">05</span>
-          <div class="case-flow-icon"><span>P</span><div class="icon-ring"></div></div>
+        <div class="sharp-flow-step">
+          <span class="sharp-flow-watermark" aria-hidden="true">P</span>
+          <span class="sharp-flow-step-num" aria-hidden="true">05</span>
+          <div class="sharp-flow-icon"><span>P</span><div class="icon-ring"></div></div>
           <h3>Practise</h3>
           <p>Practise via retrieval until it&rsquo;s automatic</p>
         </div>
@@ -2543,7 +2543,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   /* ===== SHARP FLOW DIAGRAM ===== */
   /* Background handled by .section--ink (claudedesign C.1). */
 
-  .case-flow {
+  .sharp-flow {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -2551,7 +2551,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-top: 2rem;
   }
 
-  .case-flow-step {
+  .sharp-flow-step {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2562,16 +2562,16 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     cursor: default;
     transition: transform 0.3s ease;
   }
-  .case-flow-step:hover {
+  .sharp-flow-step:hover {
     transform: translateY(-2px);
   }
-  .case-flow-step:hover .case-flow-icon {
+  .sharp-flow-step:hover .sharp-flow-icon {
     transform: scale(1.1) translateY(-4px);
     box-shadow: 0 8px 25px rgba(212,133,58,0.25);
     border-color: var(--color-accent);
   }
 
-  .case-flow-watermark {
+  .sharp-flow-watermark {
     position: absolute;
     top: -18px;
     left: 50%;
@@ -2586,11 +2586,11 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     user-select: none;
     z-index: 0;
   }
-  :global([data-theme="dark"]) .case-flow-watermark {
+  :global([data-theme="dark"]) .sharp-flow-watermark {
     opacity: 0.04;
   }
 
-  .case-flow-step-num {
+  .sharp-flow-step-num {
     font-family: var(--font-mono);
     font-size: 0.6rem;
     font-weight: 600;
@@ -2601,7 +2601,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     z-index: 1;
   }
 
-  .case-flow-icon {
+  .sharp-flow-icon {
     width: 72px;
     height: 72px;
     border-radius: 50%;
@@ -2616,17 +2616,17 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     justify-content: center;
     margin-bottom: 1rem;
     box-shadow: none;
-    animation: case-icon-shimmer 5s ease-in-out infinite;
+    animation: sharp-icon-shimmer 5s ease-in-out infinite;
     animation-delay: calc(var(--step-index, 0) * 0.6s);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
 
-  .case-flow-step:nth-child(1) .case-flow-icon { --step-index: 0; }
-  .case-flow-step:nth-child(3) .case-flow-icon { --step-index: 1; }
-  .case-flow-step:nth-child(5) .case-flow-icon { --step-index: 2; }
-  .case-flow-step:nth-child(7) .case-flow-icon { --step-index: 3; }
+  .sharp-flow-step:nth-child(1) .sharp-flow-icon { --step-index: 0; }
+  .sharp-flow-step:nth-child(3) .sharp-flow-icon { --step-index: 1; }
+  .sharp-flow-step:nth-child(5) .sharp-flow-icon { --step-index: 2; }
+  .sharp-flow-step:nth-child(7) .sharp-flow-icon { --step-index: 3; }
 
-  @keyframes case-icon-shimmer {
+  @keyframes sharp-icon-shimmer {
     0%, 100% {
       box-shadow: 0 0 0 transparent;
       border-color: rgba(43, 90, 140, 0.2);
@@ -2637,7 +2637,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     }
   }
 
-  .case-flow-icon {
+  .sharp-flow-icon {
     position: relative;
   }
   .icon-ring {
@@ -2654,18 +2654,18 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   /* Animated connector lines */
-  .case-flow.is-visible .connector-line {
+  .sharp-flow.is-visible .connector-line {
     animation: draw-line 0.6s ease-out forwards;
   }
-  .case-flow.is-visible .case-flow-connector:nth-child(2) .connector-line { animation-delay: 0.3s; }
-  .case-flow.is-visible .case-flow-connector:nth-child(4) .connector-line { animation-delay: 0.6s; }
-  .case-flow.is-visible .case-flow-connector:nth-child(6) .connector-line { animation-delay: 0.9s; }
-  .case-flow.is-visible .connector-arrow {
+  .sharp-flow.is-visible .sharp-flow-connector:nth-child(2) .connector-line { animation-delay: 0.3s; }
+  .sharp-flow.is-visible .sharp-flow-connector:nth-child(4) .connector-line { animation-delay: 0.6s; }
+  .sharp-flow.is-visible .sharp-flow-connector:nth-child(6) .connector-line { animation-delay: 0.9s; }
+  .sharp-flow.is-visible .connector-arrow {
     animation: show-arrow 0.3s ease-out forwards;
   }
-  .case-flow.is-visible .case-flow-connector:nth-child(2) .connector-arrow { animation-delay: 0.8s; }
-  .case-flow.is-visible .case-flow-connector:nth-child(4) .connector-arrow { animation-delay: 1.1s; }
-  .case-flow.is-visible .case-flow-connector:nth-child(6) .connector-arrow { animation-delay: 1.4s; }
+  .sharp-flow.is-visible .sharp-flow-connector:nth-child(2) .connector-arrow { animation-delay: 0.8s; }
+  .sharp-flow.is-visible .sharp-flow-connector:nth-child(4) .connector-arrow { animation-delay: 1.1s; }
+  .sharp-flow.is-visible .sharp-flow-connector:nth-child(6) .connector-arrow { animation-delay: 1.4s; }
   @keyframes draw-line {
     to { stroke-dashoffset: 0; }
   }
@@ -2673,21 +2673,21 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     to { opacity: 1; }
   }
 
-  /* Dark-band overrides — the case-flow lives on the ink section (claudedesign C.1).
+  /* Dark-band overrides — the sharp-flow lives on the ink section (claudedesign C.1).
      Lift the icon bg + watermark so they're legible on dark. */
-  .section--ink .case-flow-icon {
+  .section--ink .sharp-flow-icon {
     background: rgba(245, 241, 235, 0.06);
     border-color: rgba(245, 241, 235, 0.18);
     color: #F5F1EB;
   }
-  .section--ink .case-flow-watermark {
+  .section--ink .sharp-flow-watermark {
     color: var(--color-accent);
     opacity: 0.10;
   }
-  .section--ink .case-flow-step h3 {
+  .section--ink .sharp-flow-step h3 {
     color: #F5F1EB;
   }
-  .section--ink .case-flow-step p {
+  .section--ink .sharp-flow-step p {
     color: rgba(245, 241, 235, 0.7);
   }
   .section--ink .sharp-step--featured {
@@ -2695,7 +2695,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     border: 1px solid rgba(245, 241, 235, 0.12);
   }
 
-  .case-flow-step h3 {
+  .sharp-flow-step h3 {
     font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 600;
@@ -2703,13 +2703,13 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-bottom: 0.25rem;
   }
 
-  .case-flow-step p {
+  .sharp-flow-step p {
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin: 0;
   }
 
-  .case-flow-connector {
+  .sharp-flow-connector {
     display: flex;
     align-items: center;
     padding-top: 1.25rem;
@@ -2718,16 +2718,16 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   @media (max-width: 640px) {
-    .case-flow {
+    .sharp-flow {
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
     }
-    .case-flow-connector {
+    .sharp-flow-connector {
       transform: rotate(90deg);
       padding-top: 0;
     }
-    .case-flow-step {
+    .sharp-flow-step {
       max-width: 200px;
     }
   }
@@ -3579,7 +3579,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     .testimonial-stars,
     .programme-popular-badge,
     .approach-letter,
-    .case-flow-icon,
+    .sharp-flow-icon,
     .orb,
     .icon-ring,
     .result-stat-number,

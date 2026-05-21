@@ -76,7 +76,6 @@ public/
 │   ├── og-econs.svg/png      # H2 Economics OG image
 │   ├── illustration-*.svg    # Programme card illustrations (english, gp, econs, coaching)
 │   ├── icon-*.svg            # Resource vault icons (scoring, essay, comprehension, vocabulary, situational, grammar)
-│   ├── case-method-infographic.svg # CASE Method cyclical diagram
 │   └── section-divider.svg   # Decorative section divider
 ├── docs/samples/             # Sample PDF resources (grammar, essays, vocabulary, etc.)
 ├── sw.js                     # Service worker (cache-first for assets, network-first for navigation)
@@ -256,21 +255,19 @@ The homepage is the largest file (~4000+ lines) and contains these sections in o
 4. Trust strip / media mentions strip
 5. Problem → Solution narrative
 6. Programmes grid (with SVG illustrations)
-7. CASE Method quiz
-8. CASE flow diagram
-9. CASE Method infographic
-10. Interactive worked example
-11. Approach cards
-12. Comparison table
-13. Resource vault preview
-14. Testimonials
-15. Google Reviews CTA
-16. Results statistics
-17. FAQ (with JSON-LD FAQPage schema)
-18. Referral programme banner
-19. Parent portal teaser
-20. Trial lesson booking section
-21. Contact form
+7. SHARP Method quiz
+8. SHARP flow diagram
+9. Approach cards
+10. Comparison table
+11. Resource vault preview
+12. Testimonials
+13. Google Reviews CTA
+14. Results statistics
+15. FAQ (with JSON-LD FAQPage schema)
+16. Referral programme banner
+17. Parent portal teaser
+18. Trial lesson booking section
+19. Contact form
 
 ## Key Stats (keep consistent across all pages)
 
