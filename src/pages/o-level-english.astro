@@ -580,22 +580,22 @@ import '../styles/global.css';
     --prog-mono: var(--font-mono);
   }
   .eyebrow { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--subject-accent); margin-bottom: 1rem; }
-  .prog-hero { background: var(--prog-bg); padding: calc(var(--header-height) + 3rem) 0 3rem; text-align: center; position: relative; overflow: hidden; }
+  .prog-hero { background: var(--prog-bg); padding: calc(var(--header-height) + 2rem) 0 2rem; text-align: center; position: relative; overflow: hidden; }
   .prog-hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(59, 125, 216, 0.10) 0%, transparent 70%); pointer-events: none; z-index: 0; }
   [data-theme="dark"] .prog-hero::before { background: radial-gradient(circle, rgba(90, 155, 240, 0.10) 0%, transparent 70%); }
   .prog-hero .container { position: relative; z-index: 1; }
   .prog-hero__icon { display: block; margin: 0 auto 1rem; }
   .prog-hero__heading { font-family: var(--prog-font); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 200; line-height: 1.15; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.03em; }
   .prog-hero__sub { font-family: var(--prog-font); font-size: 1.1rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 640px; margin: 0 auto; }
-  .prog-nav { background: var(--prog-bg); border-bottom: 1px solid var(--prog-border); padding: 1.25rem 0; position: sticky; top: calc(var(--header-height) + 44px); z-index: 90; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+  .prog-nav { background: var(--prog-bg); border-bottom: 1px solid var(--prog-border); padding: 0.75rem 0; position: sticky; top: calc(var(--header-height) + 44px); z-index: 90; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
   .prog-nav::-webkit-scrollbar { display: none; }
   .prog-nav__inner { display: flex; justify-content: center; gap: 2rem; flex-wrap: nowrap; min-width: max-content; }
   .prog-nav__link { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--prog-text-secondary); text-decoration: none; padding: 0.4rem 0; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; }
   .prog-nav__link:hover { color: var(--prog-text); border-bottom-color: var(--prog-accent); }
-  .prog-section { background: var(--prog-bg); padding: 4rem 0; scroll-margin-top: 60px; }
+  .prog-section { background: var(--prog-bg); padding: 2.5rem 0; scroll-margin-top: 60px; }
   .prog-section + .prog-section { border-top: 1px solid var(--prog-border); }
-  .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.75rem; letter-spacing: -0.03em; }
-  .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 3.5rem; }
+  .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.03em; }
+  .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 2rem; }
   .card-grid { display: grid; gap: 1.5rem; }
   .card-grid--1 { grid-template-columns: 1fr; max-width: 640px; }
   .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
@@ -669,7 +669,7 @@ import '../styles/global.css';
   }
 
   .prog-inline-cta { text-align: center; padding: 1.5rem 0 0; }
-  .prog-cta { background: var(--prog-bg); border-top: 1px solid var(--prog-border); padding: 4rem 0; }
+  .prog-cta { background: var(--prog-bg); border-top: 1px solid var(--prog-border); padding: 2.5rem 0; }
   .prog-cta__inner { text-align: center; max-width: 600px; margin: 0 auto; }
   .prog-cta__heading { font-family: var(--prog-font); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 200; color: var(--text-primary); margin-bottom: 1rem; letter-spacing: -0.03em; }
   .prog-cta__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); margin-bottom: 2.5rem; }
