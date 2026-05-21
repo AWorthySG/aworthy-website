@@ -21,6 +21,7 @@
   --color-accent: #D4853A;
   --border-color: rgba(26, 42, 58, 0.1);
   --header-height: 72px;
+  --nav-offset: calc(var(--header-height) + 44px);
   --font-heading: 'Fraunces', Georgia, serif;
   --font-body: 'Space Grotesk', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
