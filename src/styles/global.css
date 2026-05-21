@@ -819,6 +819,11 @@ label {
 
 /* ===== Responsive ===== */
 
+/* SubjectBar hidden at this breakpoint — drop 44px from nav-offset */
+@media (max-width: 640px) {
+  :root { --nav-offset: var(--header-height); }
+}
+
 /* Phone landscape / small tablet */
 @media (max-width: 768px) {
   :root { --page-padding: 1.5rem; --space-3xl: 2rem; }
