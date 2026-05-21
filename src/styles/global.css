@@ -878,6 +878,20 @@ label {
   .container { max-width: 2200px; }
 }
 
+/* ─── PWA standalone mode ─── */
+/* When installed to home screen, there is no browser chrome (URL bar),
+   so we use a more compact header. The header component already handles
+   safe-area-inset-top via its own padding, so body needs no extra
+   padding-top. Bottom safe-area is handled per fixed widget. */
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  :root {
+    --header-height: 56px;
+  }
+  .sticky-cta-global {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
 /* ─── Clip-path Scroll Reveals ─── */
 /* Cross-browser: -webkit-clip-path for older Safari */
 [data-animate="reveal-up"] {

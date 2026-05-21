@@ -671,8 +671,12 @@ import '../styles/global.css';
     color: var(--prog-text-secondary);
     text-decoration: none;
     padding: 0.4rem 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
     border-bottom: 1px solid transparent;
     transition: color 0.2s ease, border-color 0.2s ease;
+    touch-action: manipulation;
   }
 
   .prog-nav__link:hover {
@@ -928,10 +932,14 @@ import '../styles/global.css';
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.9rem 2rem;
+    min-height: 44px;
     border-radius: 0;
     transition: all 0.2s ease;
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
   }
 
   .prog-cta__btn--primary {
@@ -1164,6 +1172,8 @@ import '../styles/global.css';
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 44px;
+    touch-action: manipulation;
   }
   .faq-question::after {
     content: '+';
