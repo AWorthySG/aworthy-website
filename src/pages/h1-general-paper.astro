@@ -3,6 +3,83 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+
+const sharpSteps = [
+  { letter: 'S', name: 'See' },
+  { letter: 'H', name: 'Hit' },
+  { letter: 'A', name: 'Apply' },
+  { letter: 'R', name: 'Refine' },
+  { letter: 'P', name: 'Practise' },
+];
+
+const playbookRows = [
+  {
+    paper: 'Paper 1',
+    section: 'Argumentative Essay',
+    steps: [
+      { title: 'Decode command word', note: "'Assess', 'discuss', 'to what extent'" },
+      { title: 'PEEL + clear thesis', note: 'Single-perspective signposting' },
+      { title: 'Build a 4-para arc', note: 'Weighted reasoning per paragraph' },
+      { title: 'Counter-argue test', note: 'Pre-empt rebuttals, defend stance' },
+      { title: 'Timed essays', note: '60-minute writes weekly' },
+    ],
+  },
+  {
+    paper: 'Paper 1',
+    section: 'Discursive Essay',
+    steps: [
+      { title: 'Spot the tension', note: 'Two-sided issue or false dichotomy?' },
+      { title: 'Balanced PEEL', note: 'Two perspectives, evidence-weighted' },
+      { title: 'Two-side weighing', note: 'Concede before counter-claim' },
+      { title: 'Synthesis check', note: 'Genuine conclusion, not fence-sitting' },
+      { title: 'Theme rotation', note: '12 themes, all covered termly' },
+    ],
+  },
+  {
+    paper: 'Paper 1',
+    section: 'Evaluative Essay',
+    steps: [
+      { title: 'Find the criterion', note: 'Evaluate against what standard?' },
+      { title: 'Criteria-led PEEL', note: 'Frame paragraphs around the yardstick' },
+      { title: 'Apply with evidence', note: 'Singapore + global examples' },
+      { title: 'Genuine verdict', note: "Stake a position, don't hedge" },
+      { title: 'Current affairs drills', note: 'Weekly news synthesis' },
+    ],
+  },
+  {
+    paper: 'Paper 2',
+    section: 'SAQ Comprehension',
+    steps: [
+      { title: 'Q-type detector', note: 'Literal, inference, vocab, irony' },
+      { title: 'Quote + explain', note: 'Anchor with text evidence' },
+      { title: 'Inferential layer', note: "Author's stance, not surface meaning" },
+      { title: 'Mark allocation', note: '2 marks = 2 distinct ideas' },
+      { title: 'Past-paper drills', note: 'Cambridge papers, 2018–2024' },
+    ],
+  },
+  {
+    paper: 'Paper 2',
+    section: 'Summary',
+    steps: [
+      { title: 'Content point list', note: 'Number every claim in the passage' },
+      { title: 'Paraphrase rule', note: 'No lifting, no synonym-swap shortcuts' },
+      { title: 'Compress to limit', note: 'Stay within the word limit every time' },
+      { title: 'Cut padding', note: 'Strip filler, examples, hedges' },
+      { title: 'Weekly summary drills', note: 'Three per week, timed' },
+    ],
+  },
+  {
+    paper: 'Paper 2',
+    section: 'Application Question (AQ)',
+    steps: [
+      { title: 'Author claim map', note: "Identify both authors' positions" },
+      { title: 'Singapore lens', note: 'Apply via SG context, not generic' },
+      { title: 'Evaluate + apply', note: 'Agree/disagree with evidence' },
+      { title: 'Genuine synthesis', note: 'Personal voice + author engagement' },
+      { title: 'Recent affairs file', note: 'Live folder of SG/global news' },
+    ],
+  },
+];
 ---
 
 <BaseLayout title="Best GP Tuition Singapore | H1 General Paper | A-Worthy" description="Top GP tuition in Singapore for JC 1–2. SHARP Method builds essay argumentation, comprehension & AQ mastery. Max 6 per class, online via Zoom." ogImage="/images/og-gp.png">
@@ -38,6 +115,7 @@ import '../styles/global.css';
       <a href="#one-to-one" class="prog-nav__link">One-to-One</a>
       <a href="#syllabus" class="prog-nav__link">Syllabus Coverage</a>
       <a href="#approach" class="prog-nav__link">Our Approach</a>
+      <a href="#playbook" class="prog-nav__link">SHARP Playbook</a>
       <a href="#faq" class="prog-nav__link">FAQ</a>
       <a href="#schedule" class="prog-nav__link">Schedule</a>
     </div>
@@ -191,6 +269,43 @@ import '../styles/global.css';
           <h3 class="prog-card__title">Refine &amp; Practise (15 min)</h3>
           <p class="prog-card__desc">The steps that separate a C from a B and a B from an A. Your child self-checks against the GP evaluation checklist &mdash; are counter-arguments addressed? Is every example precisely applied, not just name-dropped? Then timed retrieval practice locks the process in under exam conditions.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHARP PLAYBOOK ===== -->
+  <section class="prog-section playbook-section" id="playbook">
+    <div class="container">
+      <p class="eyebrow" data-animate="reveal-up">The SHARP Playbook</p>
+      <h2 class="prog-section__heading" data-animate="reveal-up">SHARP, mapped to every section of the A-Level GP paper</h2>
+      <p class="prog-section__sub" data-animate="reveal-up">Each row is a paper section. Each column is one SHARP step. Read across to see exactly what your child does at every stage &mdash; from decoding the question to retrieval practice.</p>
+
+      <div class="playbook-matrix" role="table" aria-label="SHARP method mapped to each H1 GP paper section" data-animate="reveal-up">
+        <div class="playbook-matrix__head" role="row">
+          <div class="playbook-matrix__col-label" role="columnheader">Paper section</div>
+          {sharpSteps.map((step) => (
+            <div class="playbook-matrix__step" role="columnheader">
+              <span class="playbook-letter" aria-hidden="true">{step.letter}</span>
+              <span class="playbook-step-name">{step.name}</span>
+            </div>
+          ))}
+        </div>
+        {playbookRows.map((row, i) => (
+          <div class="playbook-matrix__row" role="row" data-animate="reveal-up" data-animate-delay={String((i % 3) + 1)}>
+            <div class="playbook-matrix__row-label" role="rowheader">
+              <span class="playbook-paper">{row.paper}</span>
+              <span class="playbook-section-name">{row.section}</span>
+            </div>
+            {row.steps.map((cell, j) => (
+              <div class="playbook-matrix__cell" role="cell" data-step={sharpSteps[j].letter} data-step-name={sharpSteps[j].name}>
+                <div class="playbook-matrix__cell-body">
+                  <strong>{cell.title}</strong>
+                  <span>{cell.note}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -875,6 +990,151 @@ import '../styles/global.css';
     .lesson-step { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.25rem 0; }
     .lesson-step__num { font-size: clamp(2.6rem, 14vw, 3.6rem); }
     .lesson-step__desc { font-size: 0.92rem; }
+  }
+
+  /* ===== SHARP PLAYBOOK MATRIX ===== */
+  .playbook-section { background: var(--bg-secondary); }
+  .playbook-matrix {
+    display: grid;
+    grid-template-columns: minmax(180px, 1.4fr) repeat(5, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--prog-border);
+    border: 1px solid var(--prog-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+  }
+  .playbook-matrix__head,
+  .playbook-matrix__row { display: contents; }
+  .playbook-matrix__col-label,
+  .playbook-matrix__step,
+  .playbook-matrix__row-label,
+  .playbook-matrix__cell {
+    background: var(--prog-bg-card);
+    padding: 1rem 0.9rem;
+  }
+  .playbook-matrix__col-label,
+  .playbook-matrix__step {
+    background: var(--subject-accent);
+    color: white;
+    font-family: var(--prog-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    text-align: center;
+  }
+  .playbook-matrix__col-label { text-align: left; align-items: flex-start; justify-content: flex-end; }
+  .playbook-letter {
+    font-family: var(--prog-font);
+    font-size: 1.5rem;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  .playbook-step-name { font-size: 0.7rem; opacity: 0.92; }
+  .playbook-matrix__row-label {
+    background: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    justify-content: center;
+  }
+  .playbook-paper {
+    font-family: var(--prog-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--subject-accent);
+    font-weight: 600;
+  }
+  .playbook-section-name {
+    font-family: var(--prog-font);
+    font-weight: 400;
+    color: var(--prog-text);
+    font-size: 1rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .playbook-matrix__cell { display: flex; flex-direction: column; gap: 0.3rem; }
+  .playbook-matrix__cell-body { display: contents; }
+  .playbook-matrix__cell strong {
+    font-family: var(--prog-font);
+    font-weight: 600;
+    color: var(--prog-text);
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  .playbook-matrix__cell span {
+    font-family: var(--prog-font);
+    font-size: 0.75rem;
+    color: var(--prog-text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .playbook-matrix {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+    }
+    .playbook-matrix__head { display: none; }
+    .playbook-matrix__row {
+      display: flex;
+      flex-direction: column;
+      background: var(--prog-bg-card);
+      border: 1px solid var(--prog-border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      gap: 0;
+    }
+    .playbook-matrix__row-label {
+      background: transparent;
+      padding: 0 0 0.75rem;
+      border-bottom: 1px solid var(--prog-border);
+      margin-bottom: 0.25rem;
+    }
+    .playbook-matrix__cell {
+      background: transparent;
+      padding: 0.65rem 0;
+      display: flex;
+      flex-direction: row;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .playbook-matrix__cell:not(:last-child) { border-bottom: 1px solid var(--prog-border); }
+    .playbook-matrix__cell::before {
+      content: attr(data-step);
+      font-family: var(--prog-font);
+      font-weight: 600;
+      color: white;
+      background: var(--subject-accent);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .playbook-matrix__cell-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      flex: 1;
+      min-width: 0;
+    }
   }
 
   /* ===== INLINE CTA ===== */
