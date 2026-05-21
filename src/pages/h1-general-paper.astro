@@ -583,7 +583,7 @@ import '../styles/global.css';
   /* ===== HERO ===== */
   .prog-hero {
     background: var(--prog-bg);
-    padding: calc(var(--header-height) + 2rem) 0 2rem;
+    padding: calc(var(--header-height) + 1rem) 0 1rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -616,7 +616,7 @@ import '../styles/global.css';
     font-weight: 200;
     line-height: 1.15;
     color: var(--text-primary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.03em;
   }
 
@@ -680,7 +680,7 @@ import '../styles/global.css';
   /* ===== SECTIONS ===== */
   .prog-section {
     background: var(--prog-bg);
-    padding: 2.5rem 0;
+    padding: 1.5rem 0;
     scroll-margin-top: 60px;
   }
 
@@ -703,7 +703,7 @@ import '../styles/global.css';
     line-height: 1.7;
     color: var(--prog-text-secondary);
     max-width: 600px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   /* ===== CARD GRID ===== */
@@ -820,14 +820,14 @@ import '../styles/global.css';
 
   /* ===== LESSON FLOW (editorial spread — claudedesign E.2) ===== */
   .lesson-flow { background: var(--bg-secondary); }
-  .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 2.5rem; }
+  .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 1.5rem; }
   .prog-section__intro em { font-style: italic; color: var(--subject-accent); font-weight: 600; }
   .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 1040px; }
   .lesson-step {
     display: grid;
     grid-template-columns: minmax(0, 140px) 1fr;
-    gap: 2rem;
-    padding: 2.5rem 0;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
     border-top: 1px solid var(--prog-border);
   }
   .lesson-step:last-child { border-bottom: 1px solid var(--prog-border); }
@@ -870,9 +870,9 @@ import '../styles/global.css';
     text-wrap: pretty;
   }
   .lesson-step__desc em { font-style: italic; color: var(--subject-accent); font-weight: 600; }
-  .lesson-flow__note { margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
+  .lesson-flow__note { margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
   @media (max-width: 720px) {
-    .lesson-step { grid-template-columns: 1fr; gap: 0.6rem; padding: 2rem 0; }
+    .lesson-step { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.25rem 0; }
     .lesson-step__num { font-size: clamp(2.6rem, 14vw, 3.6rem); }
     .lesson-step__desc { font-size: 0.92rem; }
   }
@@ -884,7 +884,7 @@ import '../styles/global.css';
   .prog-cta {
     background: var(--prog-bg);
     border-top: 1px solid var(--prog-border);
-    padding: 2.5rem 0;
+    padding: 1.5rem 0;
   }
 
   .prog-cta__inner {
@@ -907,7 +907,7 @@ import '../styles/global.css';
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--prog-text-secondary);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .prog-cta__actions {
@@ -970,15 +970,15 @@ import '../styles/global.css';
 
   @media (max-width: 768px) {
     .prog-hero {
-      padding: 5rem 0 2rem;
+      padding: 4rem 0 1rem;
     }
 
     .prog-section {
-      padding: 2.5rem 0;
+      padding: 1.25rem 0;
     }
 
     .prog-section__sub {
-      margin-bottom: 2rem;
+      margin-bottom: 0.75rem;
     }
 
     .prog-nav__inner {
@@ -994,25 +994,26 @@ import '../styles/global.css';
     }
 
     .prog-cta {
-      padding: 2.5rem 0;
+      padding: 1.25rem 0;
     }
   }
 
   @media (max-width: 480px) {
     .prog-hero {
-      padding: 4.5rem 0 1.5rem;
+      padding: 3.5rem 0 0.75rem;
     }
 
     .prog-hero__heading {
       font-size: 1.8rem;
+      margin-bottom: 0.5rem;
     }
 
     .prog-section {
-      padding: 2rem 0;
+      padding: 1rem 0;
     }
 
     .prog-section__sub {
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
     }
 
     .prog-nav__inner {
