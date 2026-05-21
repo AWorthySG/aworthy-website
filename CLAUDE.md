@@ -244,7 +244,7 @@ Scroll-triggered animations via IntersectionObserver (defined in BaseLayout):
 9. **Safe area insets** — all fixed/sticky elements account for notched device insets
 10. **OG images** — source SVGs in `public/images/og-*.svg`, converted to PNG by `scripts/convert-og-images.mjs` at prebuild
 11. **Service worker** — `public/sw.js` provides offline caching; registered in BaseLayout
-12. **localStorage keys** — `theme` (dark/light), `email-popup-dismissed`, `privacy-accepted`, `whatsapp-bubble-shown`, `resource-email`
+12. **Storage keys** — localStorage: `theme` (dark/light), `email-popup-dismissed`, `privacy-accepted`, `resource-lead`. sessionStorage: `wa-shown` (WhatsApp bubble shown indicator).
 
 ## Homepage Sections (index.astro)
 

@@ -24,7 +24,7 @@ import '../styles/global.css';
     <div class="r-container">
       <div class="r-stats-row">
         <div class="r-stat" data-animate="reveal-up" data-animate-delay="1">
-          <span class="r-stat-num" data-count="90" data-suffix="%">90%</span>
+          <span class="r-stat-num" data-count="90" data-count-suffix="%">90%</span>
           <span class="r-stat-label">A1-B3 Rate</span>
         </div>
         <div class="r-stat" data-animate="reveal-up" data-animate-delay="2">
@@ -32,7 +32,7 @@ import '../styles/global.css';
           <span class="r-stat-label">Max Class Size</span>
         </div>
         <div class="r-stat" data-animate="reveal-up" data-animate-delay="3">
-          <span class="r-stat-num" data-count="500" data-suffix="+">500+</span>
+          <span class="r-stat-num" data-count="500" data-count-suffix="+">500+</span>
           <span class="r-stat-label">Students Taught</span>
         </div>
         <div class="r-stat" data-animate="reveal-up" data-animate-delay="4">
@@ -158,11 +158,11 @@ import '../styles/global.css';
               <span class="journey-duration">3 months</span>
             </div>
             <div class="journey-progress">
-              <div class="journey-grade journey-grade-before">D7</div>
+              <div class="journey-grade journey-grade-before">C5</div>
               <div class="journey-line">
                 <div class="journey-line-fill" style="--journey-progress: 75%"></div>
                 <div class="journey-milestone" style="--pos: 33%">
-                  <span class="journey-milestone-label">Month 1: C5</span>
+                  <span class="journey-milestone-label">Month 1: B4</span>
                 </div>
                 <div class="journey-milestone" style="--pos: 66%">
                   <span class="journey-milestone-label">Month 2: B3</span>
@@ -225,17 +225,20 @@ import '../styles/global.css';
           <div class="journey-card" data-animate="reveal-up" data-animate-delay="5">
             <div class="journey-header">
               <strong class="journey-name">Aisha M.</strong>
-              <span class="journey-duration">3 months</span>
+              <span class="journey-duration">6 months</span>
             </div>
             <div class="journey-progress">
-              <div class="journey-grade journey-grade-before">C5</div>
+              <div class="journey-grade journey-grade-before">U</div>
               <div class="journey-line">
-                <div class="journey-line-fill" style="--journey-progress: 65%"></div>
-                <div class="journey-milestone" style="--pos: 50%">
-                  <span class="journey-milestone-label">Month 2: B4</span>
+                <div class="journey-line-fill" style="--journey-progress: 80%"></div>
+                <div class="journey-milestone" style="--pos: 33%">
+                  <span class="journey-milestone-label">Month 2: D</span>
+                </div>
+                <div class="journey-milestone" style="--pos: 66%">
+                  <span class="journey-milestone-label">Month 4: C</span>
                 </div>
               </div>
-              <div class="journey-grade journey-grade-after">B3</div>
+              <div class="journey-grade journey-grade-after">B</div>
             </div>
           </div>
         </div>
@@ -324,7 +327,7 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <Footer />
+  <Footer slot="footer" />
 </BaseLayout>
 
 <style>

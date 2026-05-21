@@ -13,6 +13,34 @@ const { title, description = "Singapore's top-rated tuition for O-Level English,
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
 
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbLabels: Record<string, string> = {
+  'about': 'About',
+  'programmes': 'Programmes',
+  'o-level-english': 'O-Level English',
+  'h1-general-paper': 'H1 General Paper',
+  'h2-economics': 'H2 Economics',
+  'results': 'Results',
+  'resources': 'Resources',
+  'testimonials': 'Testimonials',
+  'contact': 'Contact',
+  'pricing': 'Pricing',
+  'blog': 'Blog',
+  'lp': 'Landing Page',
+  'success-stories': 'Success Stories',
+  'parent-portal': 'Parent Portal',
+  'accessibility': 'Accessibility',
+  'gp-tuition': 'GP Tuition',
+  'english-tuition': 'English Tuition',
+  'econs-tuition': 'Economics Tuition',
+  'comprehension-techniques': 'Comprehension Techniques',
+  'gp-essay-structure': 'GP Essay Structure',
+  'economics-essay-diagrams': 'Economics Essay Diagrams',
+  'why-smart-students-fail': 'Why Smart Students Fail',
+  'situational-writing-guide': 'Situational Writing Guide',
+  'exam-prep-timeline': 'Exam Prep Timeline',
+};
+
 const schemaData = {
   "@context": "https://schema.org",
   "@type": ["EducationalOrganization", "LocalBusiness"],
@@ -193,11 +221,23 @@ import { ClientRouter } from 'astro:transitions';
   <slot name="header" />
   <SubjectBar />
 
-  <nav class="breadcrumb" aria-label="Breadcrumb" id="breadcrumb">
-    <ol class="breadcrumb-list">
-      <li><a href="/">Home</a></li>
-    </ol>
-  </nav>
+  {pathSegments.length > 0 && (
+    <nav class="breadcrumb" aria-label="Breadcrumb" id="breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        {pathSegments.map((segment, index) => {
+          const href = '/' + pathSegments.slice(0, index + 1).join('/') + '/';
+          const label = breadcrumbLabels[segment] || segment.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          const isLast = index === pathSegments.length - 1;
+          return (
+            <li>
+              {isLast ? <span aria-current="page">{label}</span> : <a href={href}>{label}</a>}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  )}
 
   <!-- Mobile Subject Selector -->
   <div class="subject-selector" id="subject-selector">
@@ -684,7 +724,6 @@ import { ClientRouter } from 'astro:transitions';
       background: var(--bg-secondary);
       padding: 0.5rem 0;
       border-bottom: 1px solid var(--border-color);
-      display: none;
     }
     .breadcrumb-list {
       list-style: none;
@@ -713,9 +752,11 @@ import { ClientRouter } from 'astro:transitions';
     .breadcrumb-list a:hover {
       color: var(--color-accent);
     }
-    .breadcrumb-list li:last-child a {
+    .breadcrumb-list li:last-child a,
+    .breadcrumb-list li [aria-current="page"] {
       color: var(--text-secondary);
       font-weight: 500;
+      text-transform: capitalize;
     }
     @media (max-width: 768px) {
       .breadcrumb-list { padding: 0 var(--space-lg); }
