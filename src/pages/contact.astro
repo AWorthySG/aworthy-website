@@ -36,29 +36,29 @@ import '../styles/global.css';
           <div class="form-row">
             <div class="form-group">
               <label for="parent-name">What should we call you? <span class="required">*</span></label>
-              <input type="text" id="parent-name" name="parentName" required placeholder="e.g. Sarah" />
+              <input type="text" id="parent-name" name="parentName" required aria-describedby="form-errors" placeholder="e.g. Sarah" />
             </div>
             <div class="form-group">
               <label for="student-name">Your child's name <span class="required">*</span></label>
-              <input type="text" id="student-name" name="studentName" required placeholder="e.g. Ethan" />
+              <input type="text" id="student-name" name="studentName" required aria-describedby="form-errors" placeholder="e.g. Ethan" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="email">Best email to reach you <span class="required">*</span></label>
-              <input type="email" id="email" name="email" required placeholder="e.g. sarah@gmail.com" />
+              <input type="email" id="email" name="email" required aria-describedby="form-errors" placeholder="e.g. sarah@gmail.com" />
             </div>
             <div class="form-group">
               <label for="phone">WhatsApp or phone number <span class="required">*</span></label>
-              <input type="tel" id="phone" name="phone" required placeholder="+65 8338 4033" />
+              <input type="tel" id="phone" name="phone" required aria-describedby="form-errors" placeholder="+65 8338 4033" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="student-level">What level is your child in? <span class="required">*</span></label>
-              <select id="student-level" name="studentLevel" required>
+              <select id="student-level" name="studentLevel" required aria-describedby="form-errors">
                 <option value="">-- Select Level --</option>
                 <option value="Sec 1">Sec 1</option>
                 <option value="Sec 2">Sec 2</option>
@@ -373,6 +373,14 @@ import '../styles/global.css';
     }
     if (!studentLevel) errors.push('Please select a Student Level.');
 
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(f => f.removeAttribute('aria-invalid'));
+    if (!parentName) (form.querySelector('#parent-name') as HTMLInputElement).setAttribute('aria-invalid', 'true');
+    if (!studentName) (form.querySelector('#student-name') as HTMLInputElement).setAttribute('aria-invalid', 'true');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) (form.querySelector('#email') as HTMLInputElement).setAttribute('aria-invalid', 'true');
+    if (!phone || !/^\+?[\d][\d\s\-()]{6,14}$/.test(phone)) (form.querySelector('#phone') as HTMLInputElement).setAttribute('aria-invalid', 'true');
+    if (!studentLevel) (form.querySelector('#student-level') as HTMLSelectElement).setAttribute('aria-invalid', 'true');
+
     if (errors.length > 0) {
       errorsMsg.hidden = false;
       errorsMsg.textContent = '';
@@ -403,6 +411,7 @@ import '../styles/global.css';
         errorsMsg.hidden = true;
         successMsg.hidden = false;
         form.reset();
+        requiredFields.forEach(f => f.removeAttribute('aria-invalid'));
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
         throw new Error('Submission failed');

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import '../styles/playbook.css';
 
 const sharpSteps = [
   { letter: 'S', name: 'See' },
@@ -316,6 +317,11 @@ const playbookRows = [
       </div>
     </div>
   </section>
+
+  <div class="playbook-cta" data-animate="reveal-up">
+    <p>Ready to see the SHARP Method in action for Economics?</p>
+    <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book Free Assessment</a>
+  </div>
 
   <!-- ===== INSIDE A LESSON ===== -->
   <section class="prog-section lesson-flow" id="lesson-flow">
@@ -997,151 +1003,6 @@ const playbookRows = [
     .lesson-step { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.25rem 0; }
     .lesson-step__num { font-size: clamp(2.6rem, 14vw, 3.6rem); }
     .lesson-step__desc { font-size: 0.92rem; }
-  }
-
-  /* ===== SHARP PLAYBOOK MATRIX ===== */
-  .playbook-section { background: var(--bg-secondary); }
-  .playbook-matrix {
-    display: grid;
-    grid-template-columns: minmax(180px, 1.4fr) repeat(5, minmax(140px, 1fr));
-    gap: 1px;
-    background: var(--prog-border);
-    border: 1px solid var(--prog-border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 1.5rem;
-  }
-  .playbook-matrix__head,
-  .playbook-matrix__row { display: contents; }
-  .playbook-matrix__col-label,
-  .playbook-matrix__step,
-  .playbook-matrix__row-label,
-  .playbook-matrix__cell {
-    background: var(--prog-bg-card);
-    padding: 1rem 0.9rem;
-  }
-  .playbook-matrix__col-label,
-  .playbook-matrix__step {
-    background: var(--subject-accent);
-    color: white;
-    font-family: var(--prog-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25rem;
-    text-align: center;
-  }
-  .playbook-matrix__col-label { text-align: left; align-items: flex-start; justify-content: flex-end; }
-  .playbook-letter {
-    font-family: var(--prog-font);
-    font-size: 1.5rem;
-    font-weight: 200;
-    line-height: 1;
-    letter-spacing: 0;
-  }
-  .playbook-step-name { font-size: 0.7rem; opacity: 0.92; }
-  .playbook-matrix__row-label {
-    background: var(--bg-secondary);
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    justify-content: center;
-  }
-  .playbook-paper {
-    font-family: var(--prog-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--subject-accent);
-    font-weight: 600;
-  }
-  .playbook-section-name {
-    font-family: var(--prog-font);
-    font-weight: 400;
-    color: var(--prog-text);
-    font-size: 1rem;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-  }
-  .playbook-matrix__cell { display: flex; flex-direction: column; gap: 0.3rem; }
-  .playbook-matrix__cell-body { display: contents; }
-  .playbook-matrix__cell strong {
-    font-family: var(--prog-font);
-    font-weight: 600;
-    color: var(--prog-text);
-    font-size: 0.85rem;
-    line-height: 1.3;
-  }
-  .playbook-matrix__cell span {
-    font-family: var(--prog-font);
-    font-size: 0.75rem;
-    color: var(--prog-text-secondary);
-    line-height: 1.5;
-  }
-
-  @media (max-width: 900px) {
-    .playbook-matrix {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      overflow: visible;
-    }
-    .playbook-matrix__head { display: none; }
-    .playbook-matrix__row {
-      display: flex;
-      flex-direction: column;
-      background: var(--prog-bg-card);
-      border: 1px solid var(--prog-border);
-      border-radius: 8px;
-      padding: 1.25rem;
-      gap: 0;
-    }
-    .playbook-matrix__row-label {
-      background: transparent;
-      padding: 0 0 0.75rem;
-      border-bottom: 1px solid var(--prog-border);
-      margin-bottom: 0.25rem;
-    }
-    .playbook-matrix__cell {
-      background: transparent;
-      padding: 0.65rem 0;
-      display: flex;
-      flex-direction: row;
-      gap: 0.75rem;
-      align-items: flex-start;
-    }
-    .playbook-matrix__cell:not(:last-child) { border-bottom: 1px solid var(--prog-border); }
-    .playbook-matrix__cell::before {
-      content: attr(data-step);
-      font-family: var(--prog-font);
-      font-weight: 600;
-      color: white;
-      background: var(--subject-accent);
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      line-height: 1;
-    }
-    .playbook-matrix__cell-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      flex: 1;
-      min-width: 0;
-    }
   }
 
   /* ===== INLINE CTA ===== */

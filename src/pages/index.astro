@@ -583,6 +583,15 @@ import '../styles/global.css';
           <p>Retrieval practice locks the system in. Through spaced repetition and timed drills, the five-step process becomes automatic. Over a year, that&rsquo;s the difference between a B3 and an A2 &mdash; your child stops thinking about the method and starts performing it under pressure.</p>
         </div>
       </div>
+
+      <div class="sharp-playbook-links" data-animate="reveal-up">
+        <p class="sharp-playbook-links__label">See how SHARP works for each subject:</p>
+        <div class="sharp-playbook-links__row">
+          <a href="/o-level-english/#playbook" class="sharp-playbook-link sharp-playbook-link--eng">O-Level English Playbook</a>
+          <a href="/h1-general-paper/#playbook" class="sharp-playbook-link sharp-playbook-link--gp">H1 GP Playbook</a>
+          <a href="/h2-economics/#playbook" class="sharp-playbook-link sharp-playbook-link--econs">H2 Economics Playbook</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2526,6 +2535,36 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     .approach-grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  .sharp-playbook-links { text-align: center; margin-top: var(--space-xl); }
+  .sharp-playbook-links__label {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+  .sharp-playbook-links__row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .sharp-playbook-link {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+  }
+  .sharp-playbook-link:hover { transform: translateY(-1px); }
+  .sharp-playbook-link--eng:hover { border-color: #3B7DD8; color: #3B7DD8; }
+  .sharp-playbook-link--gp:hover { border-color: #4A8C6F; color: #4A8C6F; }
+  .sharp-playbook-link--econs:hover { border-color: #2B8A8A; color: #2B8A8A; }
+  @media (max-width: 480px) {
+    .sharp-playbook-links__row { flex-direction: column; align-items: center; }
+    .sharp-playbook-link { width: 100%; text-align: center; }
   }
 
   /* ===== SHARP FLOW DIAGRAM ===== */
