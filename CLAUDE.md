@@ -36,7 +36,7 @@ src/
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
 ├── pages/          # File-based routing (25 pages)
-│   ├── index.astro           # Homepage (~4000+ lines — largest page, audience selector)
+│   ├── index.astro           # Homepage (~2700 lines — largest page, audience selector)
 │   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
 │   ├── h2-economics.astro    # H2 Economics subject page (sticky TOC, schedule, related links)
@@ -169,10 +169,10 @@ Heading weights: h1 = 200 (light), h2 = 400, h3 = 700 (uses body font).
 | `--space-md` | 1rem |
 | `--space-lg` | 1.5rem |
 | `--space-xl` | 2rem |
-| `--space-2xl` | 3rem |
-| `--space-3xl` | 5rem (responsive: 7rem at tablet, 9rem at desktop) |
+| `--space-2xl` | 2rem |
+| `--space-3xl` | 1.75rem (responsive: 1.5rem at ≤768px, 1rem at ≤480px; scales up to 2.25rem at ≥1025px, 2.5rem at ≥1441px) |
 
-Always use these tokens instead of hardcoded values.
+Subject pages use hardcoded tight spacing (1.25rem desktop, 1rem tablet, 0.75rem phone) instead of tokens — do not revert to `var(--space-*)` references on these pages.
 
 ### Layout Tokens
 
@@ -194,7 +194,7 @@ Always use these tokens instead of hardcoded values.
 ### Key CSS Classes
 
 - `.container` — max-width: var(--container-max), centered with page-padding
-- `.section` — standard vertical padding (var(--space-3xl))
+- `.section` — standard vertical padding (var(--space-3xl) = 1.75rem desktop)
 - `.section-title` — centered section heading
 - `.section-subtitle` — centered muted subtitle (max-width: 640px)
 - `.eyebrow` — uppercase mono label in accent color
@@ -248,26 +248,15 @@ Scroll-triggered animations via IntersectionObserver (defined in BaseLayout):
 
 ## Homepage Sections (index.astro)
 
-The homepage is the largest file (~4000+ lines) and contains these sections in order:
-1. Hero with geometric SVG decoration and pen animation
+The homepage (~2700 lines) was slimmed from ~4500 lines to 6 core sections. Removed sections (social proof ticker, trust strip, problem/solution, SHARP flow, approach cards, comparison table, resource vault, Google Reviews CTA, referral banner, portal teaser, trial booking) now live on their respective dedicated pages.
+
+Current sections in order:
+1. Hero with geometric SVG decoration and pen animation (audience selector: parent/student)
 2. Stats bar (animated counters)
-3. Social proof ticker (scrolling messages including student count)
-4. Trust strip / media mentions strip
-5. Problem → Solution narrative
-6. Programmes grid (with SVG illustrations)
-7. SHARP Method quiz
-8. SHARP flow diagram
-9. Approach cards
-10. Comparison table
-11. Resource vault preview
-12. Testimonials
-13. Google Reviews CTA
-14. Results statistics
-15. FAQ (with JSON-LD FAQPage schema)
-16. Referral programme banner
-17. Parent portal teaser
-18. Trial lesson booking section
-19. Contact form
+3. Programmes grid (with SVG illustrations and embedded SHARP Method quiz)
+4. Testimonials (3 quotes)
+5. Results statistics
+6. Contact form (with FAQ JSON-LD schema in head)
 
 ## Key Stats (keep consistent across all pages)
 
@@ -292,7 +281,7 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 
 - The site URL is `https://a-worthy.com` — update `astro.config.mjs` if this changes
 - CSS custom properties have separate light/dark values — always check both themes when modifying colors
-- Pages are very large (index.astro is ~4000+ lines) since content is inline — use offset/limit when reading
+- Pages can be large (index.astro is ~2700 lines) since content is inline — use offset/limit when reading
 - The Header component handles both desktop and mobile nav with distinct markup sections
 - The homepage has its own sticky CTA; the global sticky CTA bar in BaseLayout is hidden on `/`
 - Dark mode accent is a different shade (#E09850 vs #D4853A) — update both if changing accent color
@@ -303,4 +292,6 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - The prebuild step (`scripts/convert-og-images.mjs`) requires `sharp` — run `npm install` if missing
 - Email popup and resource gating both collect emails but are independent systems with separate localStorage keys
 - The chatbot widget in BaseLayout has its own CTA links — update these when changing CTA copy elsewhere
-- Homepage nav anchor `/#method` points to the SHARP flow section — ensure `id="method"` exists on that section
+- Nav links go to dedicated pages (`/programmes/`, `/resources/`, `/results/`, `/testimonials/`) — no in-page `/#anchors` from the header
+- SVG wave section dividers are disabled (`display: none` in global.css) — do not re-enable
+- Subject pages, landing pages, programmes, and success-stories use hardcoded tight spacing — do not revert to `var(--space-*)` tokens

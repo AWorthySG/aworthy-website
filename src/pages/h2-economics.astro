@@ -843,7 +843,7 @@ const playbookRows = [
   /* ===== CARD GRID ===== */
   .card-grid {
     display: grid;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .card-grid--1 {
@@ -862,7 +862,7 @@ const playbookRows = [
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    padding: 2rem;
+    padding: 1.25rem;
     transition: transform 0.2s ease, border-color 0.2s ease;
     display: flex;
     flex-direction: column;
@@ -889,7 +889,7 @@ const playbookRows = [
     font-size: 0.9rem;
     line-height: 1.65;
     color: var(--text-secondary);
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
   }
 
   .prog-card__topics {
@@ -929,8 +929,8 @@ const playbookRows = [
   .prog-card__meta {
     display: flex;
     gap: 1.25rem;
-    margin-top: 1.5rem;
-    padding-top: 1rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
     border-top: 1px solid var(--prog-border);
     flex-wrap: wrap;
   }
@@ -954,14 +954,14 @@ const playbookRows = [
 
   /* ===== LESSON FLOW (editorial spread — claudedesign E.2) ===== */
   .lesson-flow { background: var(--bg-secondary); }
-  .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 1.5rem; }
+  .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 1rem; }
   .prog-section__intro em { font-style: italic; color: var(--subject-accent); font-weight: 600; }
   .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 1040px; }
   .lesson-step {
     display: grid;
     grid-template-columns: minmax(0, 140px) 1fr;
     gap: 1.25rem;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     border-top: 1px solid var(--prog-border);
   }
   .lesson-step:last-child { border-bottom: 1px solid var(--prog-border); }
@@ -1004,7 +1004,7 @@ const playbookRows = [
     text-wrap: pretty;
   }
   .lesson-step__desc em { font-style: italic; color: var(--subject-accent); font-weight: 600; }
-  .lesson-flow__note { margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
+  .lesson-flow__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
   @media (max-width: 720px) {
     .lesson-step { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.25rem 0; }
     .lesson-step__num { font-size: clamp(2.6rem, 14vw, 3.6rem); }
@@ -1012,7 +1012,7 @@ const playbookRows = [
   }
 
   /* ===== INLINE CTA ===== */
-  .prog-inline-cta { text-align: center; padding: 1.5rem 0 0; }
+  .prog-inline-cta { text-align: center; padding: 1rem 0 0; }
 
   /* ===== CTA ===== */
   .prog-cta {
@@ -1032,7 +1032,7 @@ const playbookRows = [
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 200;
     color: var(--text-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.03em;
   }
 
@@ -1041,7 +1041,7 @@ const playbookRows = [
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--prog-text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .prog-cta__actions {
@@ -1128,12 +1128,14 @@ const playbookRows = [
     }
 
     .prog-card {
-      padding: 1.5rem;
+      padding: 1.25rem;
     }
 
     .prog-cta {
       padding: 1.25rem 0;
     }
+
+    .faq-section, .recommended-reading, .subject-testimonials, .related-section { padding: 1rem 0; }
   }
 
   @media (max-width: 480px) {
@@ -1186,6 +1188,9 @@ const playbookRows = [
 
     .prog-card__meta span { font-size: 0.75rem; }
     .lesson-step__time { font-size: 0.75rem; }
+
+    .prog-card { padding: 1rem; }
+    .faq-section, .recommended-reading, .subject-testimonials, .related-section { padding: 0.75rem 0; }
   }
 
   /* ===== STICKY TOC ===== */
@@ -1223,7 +1228,7 @@ const playbookRows = [
     border-left: 2px solid var(--subject-accent);
     margin-left: -2px;
   }
-  .related-section { background: var(--bg-secondary); }
+  .related-section { background: var(--bg-secondary); padding: 1.25rem 0; }
   .related-links {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1260,9 +1265,9 @@ const playbookRows = [
     .related-links { grid-template-columns: 1fr; }
   }
 
-  .schedule-table-wrap { overflow-x: auto; margin: 2rem 0; }
+  .schedule-table-wrap { overflow-x: auto; margin: 1rem 0; }
   .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-  .schedule-table th, .schedule-table td { padding: 1rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+  .schedule-table th, .schedule-table td { padding: 0.75rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); }
   .schedule-table th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; }
   .schedule-table td { color: var(--text-primary); }
   .schedule-table tbody tr:hover { background: var(--bg-secondary); }
@@ -1272,7 +1277,7 @@ const playbookRows = [
   :global([data-theme="dark"]) .slot-badge--open { background: rgba(39,174,96,0.18); color: #2ecc71; }
   .slot-badge--full { background: rgba(231,76,60,0.12); color: #e74c3c; }
   :global([data-theme="dark"]) .slot-badge--full { background: rgba(231,76,60,0.18); color: #f07060; }
-  .schedule-note { margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary); }
+  .schedule-note { margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); }
   .schedule-note a { color: var(--subject-accent); text-decoration: underline; }
   @media (max-width: 640px) {
     .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
@@ -1280,7 +1285,7 @@ const playbookRows = [
 
   /* ===== FAQ ===== */
   .faq-section {
-    padding: var(--space-3xl) 0;
+    padding: 1.25rem 0;
     background: var(--bg-secondary);
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
@@ -1290,7 +1295,7 @@ const playbookRows = [
   }
   .faq-item {
     border-bottom: 1px solid var(--border-color);
-    padding: 1.25rem 0;
+    padding: 1rem 0;
   }
   .faq-question {
     font-family: 'Space Grotesk', sans-serif;
@@ -1325,13 +1330,13 @@ const playbookRows = [
 
   /* ===== RECOMMENDED READING ===== */
   .recommended-reading {
-    padding: var(--space-2xl) 0;
+    padding: 1.25rem 0;
   }
   .reading-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
   .reading-card {
     display: flex;
@@ -1363,18 +1368,18 @@ const playbookRows = [
 
   /* ===== SUBJECT TESTIMONIALS ===== */
   .subject-testimonials {
-    padding: var(--space-xl) 0;
+    padding: 1.25rem 0;
   }
   .subject-testimonial-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .subject-quote {
     background: var(--bg-card);
     border-left: 3px solid var(--subject-accent);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 1.25rem;
     margin: 0;
   }
   .subject-quote p {
@@ -1398,7 +1403,7 @@ const playbookRows = [
     border: 1px solid rgba(43, 138, 138, 0.2);
     border-radius: var(--border-radius-lg);
     padding: 1.25rem 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
   }
   .slots-indicator {
     display: flex;
