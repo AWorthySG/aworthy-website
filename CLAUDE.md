@@ -35,7 +35,7 @@ src/
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
-├── pages/          # File-based routing (25 pages)
+├── pages/          # File-based routing (28 pages)
 │   ├── index.astro           # Homepage (~2700 lines — largest page, audience selector)
 │   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
@@ -48,13 +48,17 @@ src/
 │   ├── contact.astro         # Contact form, trial booking form, online badge
 │   ├── pricing.astro         # Pricing comparison table with FAQ
 │   ├── blog/
-│   │   ├── index.astro       # Blog article previews (links to 6 posts)
+│   │   ├── index.astro       # Blog article previews
+│   │   ├── feed.xml.js       # RSS feed generator
 │   │   ├── comprehension-techniques.astro
-│   │   ├── gp-essay-structure.astro
 │   │   ├── economics-essay-diagrams.astro
-│   │   ├── why-smart-students-fail.astro
+│   │   ├── exam-prep-timeline.astro
+│   │   ├── gp-essay-examples.astro
+│   │   ├── gp-essay-structure.astro
+│   │   ├── h2-econs-case-study-tips.astro
+│   │   ├── o-level-english-tips-2026.astro
 │   │   ├── situational-writing-guide.astro
-│   │   └── exam-prep-timeline.astro
+│   │   └── why-smart-students-fail.astro
 │   ├── lp/                   # Landing pages for paid traffic
 │   │   ├── gp-tuition.astro
 │   │   ├── english-tuition.astro
@@ -122,8 +126,8 @@ All pages wrap content in `<BaseLayout>` which provides:
 - ClientRouter for page transitions (`astro:transitions`)
 - Scroll progress bar (fixed top)
 - Breadcrumb navigation
-- Scroll-reveal animation observer
-- Animated number counters (with bfcache `pageshow` fix)
+- Scroll-reveal animation observer (re-initializes on `astro:page-load` for view transitions)
+- Animated number counters (re-initializes on `astro:page-load`; bfcache `pageshow` fix)
 - Back-to-top button
 - Global sticky CTA bar (hidden on homepage)
 - WhatsApp chat widget (with preview bubble)
@@ -213,7 +217,7 @@ Theme is toggled by the Header component's theme button and persisted in `localS
 
 ## Animation System
 
-Scroll-triggered animations via IntersectionObserver (defined in BaseLayout):
+Scroll-triggered animations via IntersectionObserver (defined in BaseLayout). Both the scroll-reveal observer and animated counters are wrapped in named functions (`initScrollReveal`, `initCounters`) that run on initial load AND on `astro:page-load` to survive ClientRouter view transitions.
 
 ```html
 <div data-animate="reveal-up">Fades in upward</div>
@@ -221,6 +225,10 @@ Scroll-triggered animations via IntersectionObserver (defined in BaseLayout):
 <span data-count="95">0</span>                     <!-- Animated counter -->
 <span data-count="95" data-count-suffix="%">0</span> <!-- Counter with suffix -->
 ```
+
+**Important**: `data-animate="reveal-up"` uses `clip-path: inset(100% 0 0 0)` which completely hides elements while preserving layout space. If the IntersectionObserver fails to fire (e.g., due to view transitions), content becomes invisible with large white gaps. For this reason, `data-animate` has been **removed from all subject pages, landing pages, programmes, and success-stories**. It remains on: homepage, about, results, testimonials, contact, pricing, resources, blog, and parent-portal.
+
+Do NOT add `data-animate` back to subject pages, landing pages, programmes, or success-stories.
 
 ## Routing
 
@@ -288,10 +296,12 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - Font families changed from the original design: Fraunces replaced Playfair Display, Space Grotesk replaced Inter
 - BaseLayout is ~900+ lines — use offset/limit when reading; many widgets are appended before `</body>`
 - Astro 6.x uses `ClientRouter` from `astro:transitions`, NOT the old `ViewTransitions` export
-- Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes
+- Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes. TOC labels are sourced from `.eyebrow` text in each section (not truncated h2 text)
 - The prebuild step (`scripts/convert-og-images.mjs`) requires `sharp` — run `npm install` if missing
 - Email popup and resource gating both collect emails but are independent systems with separate localStorage keys
 - The chatbot widget in BaseLayout has its own CTA links — update these when changing CTA copy elsewhere
 - Nav links go to dedicated pages (`/programmes/`, `/resources/`, `/results/`, `/testimonials/`) — no in-page `/#anchors` from the header
 - SVG wave section dividers are disabled (`display: none` in global.css) — do not re-enable
 - Subject pages, landing pages, programmes, and success-stories use hardcoded tight spacing — do not revert to `var(--space-*)` tokens
+- Do NOT add `data-animate="reveal-up"` to subject pages, landing pages, programmes, or success-stories — `clip-path: inset(100% 0 0 0)` causes invisible content if the observer doesn't fire after view transitions
+- BaseLayout observers (`initScrollReveal`, `initCounters`) must listen to `astro:page-load` — wrapping in an IIFE breaks them after ClientRouter navigation
