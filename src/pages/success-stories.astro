@@ -138,7 +138,7 @@ const stories = [
   <section class="section stories-section">
     <div class="container">
       {stories.map((story, i) => (
-        <article class="story-card" data-animate="reveal-up" data-animate-delay={String(i % 2)}>
+        <article class="story-card">
           <div class="story-header">
             <div class="story-grade-change">
               <span class="grade grade-before">{story.before}</span>
@@ -185,7 +185,7 @@ const stories = [
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="section cta-section" data-animate="reveal-up">
+  <section class="section cta-section">
     <div class="container" style="text-align: center; max-width: 640px;">
       <span class="eyebrow">Your Turn</span>
       <h2 class="section-heading">Your child could be next</h2>
