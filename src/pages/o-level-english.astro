@@ -701,7 +701,7 @@ const playbookRows = [
     --prog-mono: var(--font-mono);
   }
   .eyebrow { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--subject-accent); margin-bottom: 1rem; }
-  .prog-hero { background: var(--prog-bg); padding: 1.5rem 0 1rem; text-align: center; position: relative; overflow: hidden; }
+  .prog-hero { background: var(--prog-bg); padding: 1.25rem 0 0.75rem; text-align: center; position: relative; overflow: hidden; }
   .prog-hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(59, 125, 216, 0.10) 0%, transparent 70%); pointer-events: none; z-index: 0; }
   [data-theme="dark"] .prog-hero::before { background: radial-gradient(circle, rgba(90, 155, 240, 0.10) 0%, transparent 70%); }
   .prog-hero .container { position: relative; z-index: 1; }
@@ -714,7 +714,7 @@ const playbookRows = [
   .prog-nav__link { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--prog-text-secondary); text-decoration: none; padding: 0.4rem 0; min-height: 44px; display: inline-flex; align-items: center; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; touch-action: manipulation; }
   .prog-nav__link:hover { color: var(--prog-text); border-bottom-color: var(--prog-accent); }
   .prog-nav__link.is-active { color: var(--subject-accent); border-bottom-color: var(--subject-accent); font-weight: 600; }
-  .prog-section { background: var(--prog-bg); padding: 1.5rem 0; scroll-margin-top: calc(var(--nav-offset) + 48px); }
+  .prog-section { background: var(--prog-bg); padding: 1.25rem 0; scroll-margin-top: calc(var(--nav-offset) + 48px); }
   .prog-section + .prog-section { border-top: 1px solid var(--prog-border); }
   .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.03em; }
   .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 1rem; }
@@ -801,8 +801,8 @@ const playbookRows = [
   .prog-cta__btn--primary:hover { background: var(--color-accent-light); transform: translateY(-1px); }
   .prog-cta__btn--whatsapp { display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #fff; border: none; text-decoration: none; transition: background var(--transition-fast); }
   .prog-cta__btn--whatsapp:hover { background: #1da851; color: #fff; }
-  @media (max-width: 768px) { .prog-hero { padding: 1rem 0 0.75rem; } .prog-section { padding: 1.25rem 0; } .prog-section__sub { margin-bottom: 0.75rem; } .prog-nav__inner { gap: 1rem; } .card-grid--2 { grid-template-columns: 1fr; } .prog-card { padding: 1.5rem; } .prog-cta { padding: 1.25rem 0; } }
-  @media (max-width: 480px) { .prog-hero { padding: 0.75rem 0 0.5rem; } .prog-hero__heading { font-size: 1.8rem; margin-bottom: 0.5rem; } .prog-section { padding: 1rem 0; } .prog-section__sub { margin-bottom: 0.5rem; } .prog-nav__inner { gap: 0.6rem; } .prog-nav__link { font-size: 0.7rem; padding: 0.5rem 0; min-height: 44px; display: inline-flex; align-items: center; } .prog-cta__actions { flex-direction: column; align-items: center; } .prog-cta__btn { width: 100%; text-align: center; } .prog-card__meta span { font-size: 0.75rem; } .lesson-step__time { font-size: 0.75rem; } }
+  @media (max-width: 768px) { .prog-hero { padding: 1rem 0 0.75rem; } .prog-section { padding: 1rem 0; } .prog-section__sub { margin-bottom: 0.75rem; } .prog-nav__inner { gap: 1rem; } .card-grid--2 { grid-template-columns: 1fr; } .prog-card { padding: 1.5rem; } .prog-cta { padding: 1.25rem 0; } }
+  @media (max-width: 480px) { .prog-hero { padding: 0.75rem 0 0.5rem; } .prog-hero__heading { font-size: 1.8rem; margin-bottom: 0.5rem; } .prog-section { padding: 0.75rem 0; } .prog-section__sub { margin-bottom: 0.5rem; } .prog-nav__inner { gap: 0.6rem; } .prog-nav__link { font-size: 0.7rem; padding: 0.5rem 0; min-height: 44px; display: inline-flex; align-items: center; } .prog-cta__actions { flex-direction: column; align-items: center; } .prog-cta__btn { width: 100%; text-align: center; } .prog-card__meta span { font-size: 0.75rem; } .lesson-step__time { font-size: 0.75rem; } }
 
   /* ===== STICKY TOC ===== */
   .sticky-toc {
