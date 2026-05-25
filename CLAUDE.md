@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Marketing website for **A-Worthy**, a Singapore-based tuition centre offering O-Level English, H1 General Paper, and H2 Economics. Static site built with Astro, deployed to https://a-worthy.com.
+Marketing website for **A-Worthy**, a Singapore-based tuition centre offering O-Level English, O-Level Mathematics, H1 General Paper, and H2 Economics. Static site built with Astro, deployed to https://a-worthy.com.
 
 ## Tech Stack
 
@@ -10,7 +10,6 @@ Marketing website for **A-Worthy**, a Singapore-based tuition centre offering O-
 - **Language**: TypeScript (strict mode via `astro/tsconfigs/strict`)
 - **Styling**: Plain CSS with CSS custom properties — no Tailwind, no preprocessors
 - **JavaScript**: Vanilla JS only — no React, Vue, jQuery, or other UI frameworks
-- **Search**: Fuse.js for client-side fuzzy search
 - **Images**: sharp for SVG→PNG OG image conversion at build time
 - **Node**: >=22.12.0
 
@@ -35,15 +34,16 @@ src/
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
-├── pages/          # File-based routing (28 pages)
+├── pages/          # File-based routing (30 pages)
 │   ├── index.astro           # Homepage (~2700 lines — largest page, audience selector)
 │   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
 │   ├── h2-economics.astro    # H2 Economics subject page (sticky TOC, schedule, related links)
 │   ├── h1-general-paper.astro # H1 GP subject page (sticky TOC, schedule, related links)
 │   ├── o-level-english.astro # O-Level English subject page (sticky TOC, schedule, related links)
+│   ├── o-level-mathematics.astro # O-Level Mathematics subject page (sticky TOC, schedule, related links)
 │   ├── results.astro         # Student results and statistics
-│   ├── resources.astro       # Resource vault with email gating (16 resources, 6 categories)
+│   ├── resources.astro       # Resource vault with email gating (17 resources, 6 categories)
 │   ├── testimonials.astro    # Testimonials with carousel and video section
 │   ├── contact.astro         # Contact form, trial booking form, online badge
 │   ├── pricing.astro         # Pricing comparison table with FAQ
@@ -66,6 +66,7 @@ src/
 │   ├── success-stories.astro # Student transformation case studies (4 stories)
 │   ├── parent-portal.astro   # Parent portal preview with feature cards (coming soon)
 │   ├── accessibility.astro   # WCAG 2.2 AA accessibility statement
+│   ├── privacy-policy.astro  # PDPA-compliant privacy policy (linked from cookie consent banner and footer)
 │   └── 404.astro             # Not found page with navigation links
 └── styles/
     └── global.css            # Design system with CSS custom properties
@@ -78,7 +79,8 @@ public/
 │   ├── og-english.svg/png    # O-Level English OG image
 │   ├── og-gp.svg/png         # H1 GP OG image
 │   ├── og-econs.svg/png      # H2 Economics OG image
-│   ├── illustration-*.svg    # Programme card illustrations (english, gp, econs, coaching)
+│   ├── og-maths.svg/png      # O-Level Mathematics OG image
+│   ├── illustration-*.svg    # Programme card illustrations (english, gp, econs, maths, coaching)
 │   ├── icon-*.svg            # Resource vault icons (scoring, essay, comprehension, vocabulary, situational, grammar)
 │   └── section-divider.svg   # Decorative section divider
 ├── docs/samples/             # Sample PDF resources (grammar, essays, vocabulary, etc.)
@@ -241,7 +243,7 @@ Do NOT add `data-animate` back to subject pages, landing pages, programmes, or s
 
 ## Key Conventions
 
-1. **Minimal dependencies** — Astro, @astrojs/sitemap, sharp (build), fuse.js (search); no UI frameworks or CSS libraries
+1. **Minimal dependencies** — Astro, @astrojs/sitemap, sharp (build); no UI frameworks or CSS libraries. fuse.js was removed as unused.
 2. **CSS variables over hardcoded values** — always use design tokens from global.css
 3. **Semantic HTML** — proper heading hierarchy, ARIA labels, landmark elements, skip-link
 4. **Content is inline** — no CMS; all copy lives directly in `.astro` page files
@@ -269,10 +271,14 @@ Current sections in order:
 ## Key Stats (keep consistent across all pages)
 
 - **O-Level English pass rate**: 90% A1–B3
+- **O-Level Mathematics lesson duration**: 90 min / week
 - **H2 Economics lesson duration**: 90 min / week
 - **CTA text on subject pages**: "Book Free Assessment" (not "Book Assessment")
 - **Students taught**: 500+
-- **Max class size**: 6 students
+- **Max class size**: 6 students (display as "6", never "6:1")
+- **Google rating**: 4.9
+- **O-Level Mathematics accent color**: #7B5EA7 (light), #9B7EC7 (dark)
+- **SHARP step headings**: See, Hit, Apply, Refine, Practise — no time durations (e.g. not "See (5 min)")
 
 When changing any stat, grep the entire `src/` directory to update every occurrence — stats appear on the homepage, subject pages, results page, landing pages, about page, and chatbot widget in BaseLayout.
 
@@ -284,6 +290,15 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - **Role**: Founder & Lead Tutor
 - **Method**: SHARP (See, Hit, Apply, Refine, Practise) — adapted from legal analytical reasoning
 - **Schema**: Person schema on about.astro, founder sub-schema in BaseLayout's EducationalOrganization
+
+## Schema.org Notes
+
+- **H1 GP courseCode**: `"8807"` (Cambridge syllabus code). Do not use 8881.
+- **O-Level Mathematics courseCode**: `"4048"`
+- **H2 Economics courseCode**: `"9570"`
+- **O-Level English courseCode**: `"1128"`
+- **OG images**: `og-english.png`, `og-gp.png`, `og-econs.png`, `og-maths.png` — all four subject pages have dedicated OG images. Source SVGs are in `public/images/og-*.svg`; PNGs are generated at build time by `scripts/convert-og-images.mjs`.
+- **Breadcrumbs**: Rendered entirely server-side by Astro in BaseLayout (lines ~226–242). There is no client-side JS breadcrumb script — do not add one, as it would duplicate items. The `breadcrumbLabels` map must include every page slug to avoid bad auto-capitalisation.
 
 ## Common Pitfalls
 
@@ -305,3 +320,6 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - Subject pages, landing pages, programmes, and success-stories use hardcoded tight spacing — do not revert to `var(--space-*)` tokens
 - Do NOT add `data-animate="reveal-up"` to subject pages, landing pages, programmes, or success-stories — `clip-path: inset(100% 0 0 0)` causes invisible content if the observer doesn't fire after view transitions
 - BaseLayout observers (`initScrollReveal`, `initCounters`) must listen to `astro:page-load` — wrapping in an IIFE breaks them after ClientRouter navigation
+- When adding a new subject or programme, update: subject page, SubjectBar.astro, Footer.astro, BaseLayout.astro (breadcrumbLabels, knowsAbout, hasOfferCatalog, chatbot answers, exam countdown), programmes.astro, pricing.astro, index.astro (programme card, quiz), contact.astro, 404.astro, about.astro, all other subject pages' related links sections
+- `parent-portal.astro` is a coming-soon stub — it has `noindex={true}` and should remain that way until the portal launches
+- SHARP step card headings must not include time durations — use "See", "Hit", "Apply", "Refine & Practise" (not "See (5 min)" etc.)
