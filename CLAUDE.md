@@ -34,7 +34,7 @@ src/
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
-├── pages/          # File-based routing (29 pages)
+├── pages/          # File-based routing (30 pages)
 │   ├── index.astro           # Homepage (~2700 lines — largest page, audience selector)
 │   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
@@ -66,6 +66,7 @@ src/
 │   ├── success-stories.astro # Student transformation case studies (4 stories)
 │   ├── parent-portal.astro   # Parent portal preview with feature cards (coming soon)
 │   ├── accessibility.astro   # WCAG 2.2 AA accessibility statement
+│   ├── privacy-policy.astro  # PDPA-compliant privacy policy (linked from cookie consent banner and footer)
 │   └── 404.astro             # Not found page with navigation links
 └── styles/
     └── global.css            # Design system with CSS custom properties
@@ -78,6 +79,7 @@ public/
 │   ├── og-english.svg/png    # O-Level English OG image
 │   ├── og-gp.svg/png         # H1 GP OG image
 │   ├── og-econs.svg/png      # H2 Economics OG image
+│   ├── og-maths.svg/png      # O-Level Mathematics OG image
 │   ├── illustration-*.svg    # Programme card illustrations (english, gp, econs, maths, coaching)
 │   ├── icon-*.svg            # Resource vault icons (scoring, essay, comprehension, vocabulary, situational, grammar)
 │   └── section-divider.svg   # Decorative section divider
@@ -295,7 +297,7 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - **O-Level Mathematics courseCode**: `"4048"`
 - **H2 Economics courseCode**: `"9570"`
 - **O-Level English courseCode**: `"1128"`
-- **OG images**: `og-english.png`, `og-gp.png`, `og-econs.png` exist as dedicated images. The Maths page currently uses `og-default.png` — a dedicated `og-maths.svg/png` has not been created yet.
+- **OG images**: `og-english.png`, `og-gp.png`, `og-econs.png`, `og-maths.png` — all four subject pages have dedicated OG images. Source SVGs are in `public/images/og-*.svg`; PNGs are generated at build time by `scripts/convert-og-images.mjs`.
 - **Breadcrumbs**: Rendered entirely server-side by Astro in BaseLayout (lines ~226–242). There is no client-side JS breadcrumb script — do not add one, as it would duplicate items. The `breadcrumbLabels` map must include every page slug to avoid bad auto-capitalisation.
 
 ## Common Pitfalls
