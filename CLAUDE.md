@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Marketing website for **A-Worthy**, a Singapore-based tuition centre offering O-Level English, H1 General Paper, and H2 Economics. Static site built with Astro, deployed to https://a-worthy.com.
+Marketing website for **A-Worthy**, a Singapore-based tuition centre offering O-Level English, O-Level Mathematics, H1 General Paper, and H2 Economics. Static site built with Astro, deployed to https://a-worthy.com.
 
 ## Tech Stack
 
@@ -35,13 +35,14 @@ src/
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
-├── pages/          # File-based routing (28 pages)
+├── pages/          # File-based routing (29 pages)
 │   ├── index.astro           # Homepage (~2700 lines — largest page, audience selector)
 │   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
 │   ├── h2-economics.astro    # H2 Economics subject page (sticky TOC, schedule, related links)
 │   ├── h1-general-paper.astro # H1 GP subject page (sticky TOC, schedule, related links)
 │   ├── o-level-english.astro # O-Level English subject page (sticky TOC, schedule, related links)
+│   ├── o-level-mathematics.astro # O-Level Mathematics subject page (sticky TOC, schedule, related links)
 │   ├── results.astro         # Student results and statistics
 │   ├── resources.astro       # Resource vault with email gating (16 resources, 6 categories)
 │   ├── testimonials.astro    # Testimonials with carousel and video section
@@ -269,10 +270,12 @@ Current sections in order:
 ## Key Stats (keep consistent across all pages)
 
 - **O-Level English pass rate**: 90% A1–B3
+- **O-Level Mathematics lesson duration**: 90 min / week
 - **H2 Economics lesson duration**: 90 min / week
 - **CTA text on subject pages**: "Book Free Assessment" (not "Book Assessment")
 - **Students taught**: 500+
 - **Max class size**: 6 students
+- **O-Level Mathematics accent color**: #7B5EA7 (light), #9B7EC7 (dark)
 
 When changing any stat, grep the entire `src/` directory to update every occurrence — stats appear on the homepage, subject pages, results page, landing pages, about page, and chatbot widget in BaseLayout.
 
