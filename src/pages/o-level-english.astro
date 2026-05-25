@@ -791,6 +791,7 @@ const playbookRows = [
   /* ===== LESSON FLOW (editorial spread — claudedesign E.2) ===== */
   .lesson-flow { background: var(--bg-secondary); }
   .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 1rem; }
+  .prog-section__intro em { font-style: italic; color: var(--subject-accent); font-weight: 600; }
   .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 1040px; }
   .lesson-step {
     display: grid;
@@ -858,7 +859,7 @@ const playbookRows = [
   .prog-cta__btn--whatsapp { display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #fff; border: none; text-decoration: none; transition: background var(--transition-fast); }
   .prog-cta__btn--whatsapp:hover { background: #1da851; color: #fff; }
   @media (max-width: 768px) { .prog-hero { padding: 1rem 0 0.75rem; } .prog-section { padding: 1rem 0; } .prog-section__sub { margin-bottom: 0.75rem; } .prog-nav__inner { gap: 1rem; } .card-grid--2 { grid-template-columns: 1fr; } .prog-card { padding: 1.25rem; } .prog-cta { padding: 1.25rem 0; } .faq-section, .recommended-reading, .subject-testimonials, .related-section { padding: 1rem 0; } }
-  @media (max-width: 480px) { .prog-hero { padding: 0.75rem 0 0.5rem; } .prog-hero__heading { font-size: 1.8rem; margin-bottom: 0.5rem; } .prog-section { padding: 0.75rem 0; } .prog-section__sub { margin-bottom: 0.5rem; } .prog-nav__inner { gap: 0.6rem; } .prog-nav__link { font-size: 0.7rem; padding: 0.5rem 0; min-height: 44px; display: inline-flex; align-items: center; } .prog-cta__actions { flex-direction: column; align-items: center; } .prog-cta__btn { width: 100%; text-align: center; } .prog-card__meta span { font-size: 0.75rem; } .lesson-step__time { font-size: 0.75rem; } .prog-card { padding: 1rem; } .faq-section, .recommended-reading, .subject-testimonials, .related-section { padding: 0.75rem 0; } }
+  @media (max-width: 480px) { .prog-hero { padding: 0.75rem 0 0.5rem; } .prog-hero__heading { font-size: 1.8rem; margin-bottom: 0.5rem; } .prog-hero__sub { font-size: 0.95rem; } .prog-section { padding: 0.75rem 0; } .prog-section__heading { margin-bottom: 0.5rem; } .prog-section__sub { margin-bottom: 0.5rem; } .prog-nav__inner { gap: 0.6rem; } .prog-nav__link { font-size: 0.7rem; padding: 0.5rem 0; min-height: 44px; display: inline-flex; align-items: center; } .prog-cta__actions { flex-direction: column; align-items: center; } .prog-cta__btn { width: 100%; text-align: center; } .prog-card__meta span { font-size: 0.75rem; } .lesson-step__time { font-size: 0.75rem; } .prog-card { padding: 1rem; } .faq-section, .recommended-reading, .subject-testimonials, .related-section { padding: 0.75rem 0; } }
 
   /* ===== STICKY TOC ===== */
   .sticky-toc {
@@ -905,6 +906,7 @@ const playbookRows = [
     display: block;
     text-decoration: none;
     padding: 1.25rem;
+    min-height: 44px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -932,7 +934,8 @@ const playbookRows = [
     .related-links { grid-template-columns: 1fr; }
   }
 
-  .schedule-table-wrap { overflow-x: auto; margin: 1rem 0; }
+  .schedule-table-wrap { overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+  .schedule-table-wrap::-webkit-scrollbar { display: none; }
   .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
   .schedule-table th, .schedule-table td { padding: 0.75rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); }
   .schedule-table th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; }
@@ -1009,6 +1012,7 @@ const playbookRows = [
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 44px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-lg);

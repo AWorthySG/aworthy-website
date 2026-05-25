@@ -1135,12 +1135,6 @@ const playbookRows = [
   }
 
   /* ===== RESPONSIVE ===== */
-  @media (max-width: 1024px) {
-    .card-grid--2 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
   @media (max-width: 768px) {
     .prog-hero {
       padding: 1rem 0 0.75rem;
@@ -1183,8 +1177,16 @@ const playbookRows = [
       margin-bottom: 0.5rem;
     }
 
+    .prog-hero__sub {
+      font-size: 0.95rem;
+    }
+
     .prog-section {
       padding: 0.75rem 0;
+    }
+
+    .prog-section__heading {
+      margin-bottom: 0.5rem;
     }
 
     .prog-section__sub {
@@ -1265,6 +1267,7 @@ const playbookRows = [
     display: block;
     text-decoration: none;
     padding: 1.25rem;
+    min-height: 44px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -1292,7 +1295,8 @@ const playbookRows = [
     .related-links { grid-template-columns: 1fr; }
   }
 
-  .schedule-table-wrap { overflow-x: auto; margin: 1rem 0; }
+  .schedule-table-wrap { overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+  .schedule-table-wrap::-webkit-scrollbar { display: none; }
   .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
   .schedule-table th, .schedule-table td { padding: 0.75rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); }
   .schedule-table th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; }
@@ -1369,6 +1373,7 @@ const playbookRows = [
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 44px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-lg);
