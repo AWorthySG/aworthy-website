@@ -287,8 +287,8 @@ import { ClientRouter } from 'astro:transitions';
         <p>Hi! 👋 How can we help you today? Ask us about our programmes or book a free assessment.</p>
         <span class="whatsapp-preview-time">Just now</span>
       </div>
-      <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" class="whatsapp-preview-cta">
-        <input type="text" placeholder="Type a message..." readonly style="flex:1;border:none;background:transparent;color:var(--text-muted);font-size:0.8rem;cursor:pointer;" />
+      <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" class="whatsapp-preview-cta" aria-label="Chat on WhatsApp">
+        <span style="flex:1;color:var(--text-muted);font-size:0.8rem;" aria-hidden="true">Type a message...</span>
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent)"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </a>
     </div>
@@ -1100,9 +1100,9 @@ import { ClientRouter } from 'astro:transitions';
     <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open FAQ chat">
       <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
     </button>
-    <div class="chatbot-panel" id="chatbot-panel" hidden>
+    <div class="chatbot-panel" id="chatbot-panel" role="dialog" aria-modal="true" aria-labelledby="chatbot-title" hidden>
       <div class="chatbot-header">
-        <strong>A-Worthy Help</strong>
+        <strong id="chatbot-title">A-Worthy Help</strong>
         <button class="chatbot-close" id="chatbot-close" aria-label="Close">&times;</button>
       </div>
       <div class="chatbot-body" id="chatbot-body">
