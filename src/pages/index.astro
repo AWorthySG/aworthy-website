@@ -75,14 +75,14 @@ import '../styles/global.css';
         <span class="hero-badge">NUS Law Graduate Founder</span>
       </div>
 
-      <div class="audience-toggle hero-anim" style="--d:7">
-        <button class="audience-btn active" data-audience="parent">I'm a Parent</button>
-        <button class="audience-btn" data-audience="student">I'm a Student</button>
+      <div class="audience-toggle hero-anim" style="--d:7" role="tablist" aria-label="View content for">
+        <button class="audience-btn active" data-audience="parent" role="tab" aria-selected="true" aria-controls="msg-parent" id="tab-parent">I'm a Parent</button>
+        <button class="audience-btn" data-audience="student" role="tab" aria-selected="false" aria-controls="msg-student" id="tab-student">I'm a Student</button>
       </div>
-      <div class="audience-msg audience-msg--parent" id="msg-parent">
+      <div class="audience-msg audience-msg--parent" id="msg-parent" role="tabpanel" aria-labelledby="tab-parent">
         <p><strong>For parents:</strong> See your child's grades improve with SHARP &mdash; our five-step method that deploys paper-matched frameworks. Monthly progress reports, small classes of 6, and a free diagnostic assessment to start.</p>
       </div>
-      <div class="audience-msg audience-msg--student" id="msg-student" hidden>
+      <div class="audience-msg audience-msg--student" id="msg-student" role="tabpanel" aria-labelledby="tab-student" hidden>
         <p><strong>For students:</strong> Stop memorising, start recognising. SHARP gives you a five-step process &mdash; See, Hit, Apply, Refine, Practise. At step H you pick the right framework (Core Move, CAPS, P-E-E-L) for that specific question type.</p>
       </div>
     </div>
@@ -790,8 +790,12 @@ import '../styles/global.css';
 <script is:inline>
 document.querySelectorAll('.audience-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
-    document.querySelectorAll('.audience-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.audience-btn').forEach(function(b) {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     var audience = btn.dataset.audience;
     document.getElementById('msg-parent').hidden = audience !== 'parent';
     document.getElementById('msg-student').hidden = audience !== 'student';
