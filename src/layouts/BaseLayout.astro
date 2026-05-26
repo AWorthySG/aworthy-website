@@ -8,7 +8,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description = "Singapore's top-rated tuition for O-Level English, GP & H2 Economics. 90% A1–B3 rate, max 6 per class. Book a free assessment.", ogImage, noindex = false } = Astro.props;
+const { title, description = "Singapore's top-rated tuition for O-Level English & Maths, GP & H2 Economics. 90% A1–B3 rate, max 6 per class. Book a free assessment.", ogImage, noindex = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
@@ -20,6 +20,7 @@ const breadcrumbLabels: Record<string, string> = {
   'o-level-english': 'O-Level English',
   'h1-general-paper': 'H1 General Paper',
   'h2-economics': 'H2 Economics',
+  'o-level-mathematics': 'O-Level Mathematics',
   'results': 'Results',
   'resources': 'Resources',
   'testimonials': 'Testimonials',
@@ -30,15 +31,20 @@ const breadcrumbLabels: Record<string, string> = {
   'success-stories': 'Success Stories',
   'parent-portal': 'Parent Portal',
   'accessibility': 'Accessibility',
+  'privacy-policy': 'Privacy Policy',
+  '404': 'Page Not Found',
   'gp-tuition': 'GP Tuition',
   'english-tuition': 'English Tuition',
   'econs-tuition': 'Economics Tuition',
   'comprehension-techniques': 'Comprehension Techniques',
   'gp-essay-structure': 'GP Essay Structure',
+  'gp-essay-examples': 'GP Essay Examples',
   'economics-essay-diagrams': 'Economics Essay Diagrams',
+  'h2-econs-case-study-tips': 'H2 Econs Case Study Tips',
   'why-smart-students-fail': 'Why Smart Students Fail',
   'situational-writing-guide': 'Situational Writing Guide',
   'exam-prep-timeline': 'Exam Prep Timeline',
+  'o-level-english-tips-2026': 'O-Level English Tips 2026',
 };
 
 const schemaData = {
@@ -47,7 +53,7 @@ const schemaData = {
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
   "logo": new URL('/images/logo.svg', Astro.site).toString(),
-  "description": "Singapore's top-rated tuition centre for O-Level English, H1 General Paper & H2 Economics. Small classes, proven SHARP Method, 90% A1–B3 rate.",
+  "description": "Singapore's top-rated tuition centre for O-Level English & Maths, H1 General Paper & H2 Economics. Small classes, proven SHARP Method, 90% A1–B3 rate.",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "SG",
@@ -88,14 +94,15 @@ const schemaData = {
     "alumniOf": "National University of Singapore, Faculty of Law",
     "url": "https://a-worthy.com/about/"
   },
-  "knowsAbout": ["O-Level English Tuition", "H1 General Paper Tuition", "H2 Economics Tuition", "Online Tuition Singapore", "Small Group Tuition", "SHARP Method"],
+  "knowsAbout": ["O-Level English Tuition", "O-Level Mathematics Tuition", "H1 General Paper Tuition", "H2 Economics Tuition", "Online Tuition Singapore", "Small Group Tuition", "SHARP Method"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Tuition Programmes",
     "itemListElement": [
       {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level English Tuition Singapore", "courseCode": "1128", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level English tuition with the SHARP Method. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H1 General Paper Tuition Singapore", "courseCode": "8881", "inLanguage": "en-SG", "description": "JC 1–2 H1 GP tuition with the SHARP Method. Essay argumentation, comprehension and AQ mastery."}, "price": "360", "priceCurrency": "SGD"},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H2 Economics Tuition Singapore", "courseCode": "9570", "inLanguage": "en-SG", "description": "JC 1–2 H2 Economics tuition with the SHARP Method. Diagram precision, essay technique, and case study mastery."}, "price": "360", "priceCurrency": "SGD"}
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H1 General Paper Tuition Singapore", "courseCode": "8807", "inLanguage": "en-SG", "description": "JC 1–2 H1 GP tuition with the SHARP Method. Essay argumentation, comprehension and AQ mastery."}, "price": "360", "priceCurrency": "SGD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H2 Economics Tuition Singapore", "courseCode": "9570", "inLanguage": "en-SG", "description": "JC 1–2 H2 Economics tuition with the SHARP Method. Diagram precision, essay technique, and case study mastery."}, "price": "360", "priceCurrency": "SGD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level Mathematics Tuition Singapore", "courseCode": "4048", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level Mathematics tuition with the SHARP Method. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"}
     ]
   }
 };
@@ -112,6 +119,7 @@ import { ClientRouter } from 'astro:transitions';
   <meta name="color-scheme" content="dark light" />
   <meta name="format-detection" content="telephone=no" />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
+  <!-- Google Search Console verification — paste the centre's code here once available: <meta name="google-site-verification" content="..." /> -->
   <!-- Cross-browser compatibility -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -176,15 +184,14 @@ import { ClientRouter } from 'astro:transitions';
   })} />
 
   <!-- Fonts — non-render-blocking async load.
-       Weights restricted to those actually used: Fraunces 200/300/400/500 + italic 400,
-       Space Grotesk 300/400/500/600/700, Pinyon Script (single weight), JetBrains Mono 400/600. -->
+       Nunito 200–900 + italic 400, Pinyon Script (pen animation), JetBrains Mono 400/600. -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..500;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" /></noscript>
 
   <link rel="preconnect" href="https://plausible.io" />
 
@@ -244,6 +251,7 @@ import { ClientRouter } from 'astro:transitions';
     <a href="/o-level-english/" class="subject-pill">English</a>
     <a href="/h1-general-paper/" class="subject-pill">GP</a>
     <a href="/h2-economics/" class="subject-pill">Econs</a>
+    <a href="/o-level-mathematics/" class="subject-pill">Maths</a>
   </div>
 
   <main id="main-content">
@@ -265,7 +273,7 @@ import { ClientRouter } from 'astro:transitions';
   <!-- Global Sticky CTA Bar (#13) -->
   <div class="sticky-cta-global" id="sticky-cta-global">
     <div class="sticky-cta-global-inner">
-      <span class="sticky-cta-global-text"><span class="sticky-cta-global-text-full">Book a free diagnostic assessment for O-Level English, GP, or H2 Economics</span><span class="sticky-cta-global-text-mobile">Limited June slots</span></span>
+      <span class="sticky-cta-global-text"><span class="sticky-cta-global-text-full">Book a free diagnostic assessment for O-Level English, Maths, GP, or H2 Economics</span><span class="sticky-cta-global-text-mobile">Limited June slots</span></span>
       <a href="/contact/" class="sticky-cta-global-btn">Book Free Assessment</a>
       <a href="tel:+6583384033" class="sticky-cta-phone" aria-label="Call us">
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -284,8 +292,8 @@ import { ClientRouter } from 'astro:transitions';
         <p>Hi! 👋 How can we help you today? Ask us about our programmes or book a free assessment.</p>
         <span class="whatsapp-preview-time">Just now</span>
       </div>
-      <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" class="whatsapp-preview-cta">
-        <input type="text" placeholder="Type a message..." readonly style="flex:1;border:none;background:transparent;color:var(--text-muted);font-size:0.8rem;cursor:pointer;" />
+      <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" class="whatsapp-preview-cta" aria-label="Chat on WhatsApp">
+        <span style="flex:1;color:var(--text-muted);font-size:0.8rem;" aria-hidden="true">Type a message...</span>
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent)"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </a>
     </div>
@@ -978,7 +986,7 @@ import { ClientRouter } from 'astro:transitions';
       </div>
       <div class="privacy-notice-actions">
         <button class="privacy-btn privacy-btn--accept" id="privacy-accept">Accept</button>
-        <a href="/accessibility/" class="privacy-btn privacy-btn--learn">Privacy Policy</a>
+        <a href="/privacy-policy/" class="privacy-btn privacy-btn--learn">Privacy Policy</a>
       </div>
     </div>
   </div>
@@ -1091,36 +1099,15 @@ import { ClientRouter } from 'astro:transitions';
   })();
   </script>
 
-  <script is:inline>
-  (function(){
-    var bc = document.getElementById('breadcrumb');
-    if (!bc) return;
-    var path = window.location.pathname.replace(/\/$/, '');
-    if (!path || path === '') return; // Don't show on homepage
-    bc.style.display = 'block';
-    var parts = path.split('/').filter(Boolean);
-    var ol = bc.querySelector('ol');
-    var href = '';
-    parts.forEach(function(part, i) {
-      href += '/' + part;
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = href + '/';
-      a.textContent = part.replace(/-/g, ' ');
-      li.appendChild(a);
-      ol.appendChild(li);
-    });
-  })();
-  </script>
 
   <!-- FAQ Chatbot -->
   <div class="chatbot-widget" id="chatbot-widget">
     <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open FAQ chat">
       <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
     </button>
-    <div class="chatbot-panel" id="chatbot-panel" hidden>
+    <div class="chatbot-panel" id="chatbot-panel" role="dialog" aria-modal="true" aria-labelledby="chatbot-title" hidden>
       <div class="chatbot-header">
-        <strong>A-Worthy Help</strong>
+        <strong id="chatbot-title">A-Worthy Help</strong>
         <button class="chatbot-close" id="chatbot-close" aria-label="Close">&times;</button>
       </div>
       <div class="chatbot-body" id="chatbot-body">
@@ -1282,7 +1269,7 @@ import { ClientRouter } from 'astro:transitions';
     if (!toggle || !panel) return;
 
     var answers = {
-      pricing: 'O-Level English: SGD 280\u2013320/month. H1 GP: SGD 360\u2013400/month. H2 Economics: SGD 360\u2013400/month. 1-to-1: SGD 120\u2013140/session. <a href="/pricing/">View full pricing \u2192</a>',
+      pricing: 'O-Level English: SGD 280\u2013320/month. O-Level Maths: SGD 280\u2013320/month. H1 GP: SGD 360\u2013400/month. H2 Economics: SGD 360\u2013400/month. 1-to-1: SGD 120\u2013140/session. <a href="/pricing/">View full pricing \u2192</a>',
       schedule: 'Classes run Mon\u2013Fri 2pm\u20139:30pm and Sat\u2013Sun 9am\u20136pm. All sessions are conducted via Zoom. <a href="/contact/">Contact us for available slots \u2192</a>',
       method: 'The SHARP Method is our proprietary 5-step system: See, Hit, Apply, Refine, Practise. Adapted from legal reasoning, it teaches students how to think systematically. <a href="/programmes/">Learn more \u2192</a>',
       enrol: 'Step 1: Book a free diagnostic assessment. Step 2: Get a personalised learning plan. Step 3: Start learning! <a href="/contact/">Book Free Assessment \u2192</a>',
@@ -1291,7 +1278,7 @@ import { ClientRouter } from 'astro:transitions';
       classsize: 'We cap every class at 6 students \u2014 no exceptions. This means your child gets personal feedback on their work every single session, and the tutor knows their specific strengths and weaknesses. <a href="/about/">Learn more about our approach \u2192</a>',
       results: '90% of our students score A1\u2013B3 for O-Level English. Many students improve by 2\u20133 grades within their first term. <a href="/results/">See our full results \u2192</a>',
       tutor: 'All classes are taught by Jeremy Lim, our founder. He\u2019s an NUS Law graduate (LLB Hons) who left corporate law to teach full-time. He created the SHARP Method based on the analytical skills used in legal practice. <a href="/about/">Read his story \u2192</a>',
-      subjects: 'We teach three subjects: O-Level English (Sec 1\u20134), H1 General Paper (JC 1\u20132), and H2 Economics (JC 1\u20132). All three use the same SHARP Method framework. <a href="/programmes/">View all programmes \u2192</a>',
+      subjects: 'We teach four subjects: O-Level English (Sec 1\u20134), O-Level Mathematics (Sec 1\u20134), H1 General Paper (JC 1\u20132), and H2 Economics (JC 1\u20132). All four use the same SHARP Method framework. <a href="/programmes/">View all programmes \u2192</a>',
       location: 'We\u2019re 100% online \u2014 no physical centre. Students join from anywhere in Singapore via Zoom Pro with cloud recording. No commute, no wasted time. <a href="/programmes/">View programmes \u2192</a>',
       resources: 'Yes! We have free downloadable resources covering grammar, essay writing, comprehension, vocabulary, and more. No payment required \u2014 just an email address. <a href="/resources/">Browse the resource vault \u2192</a>',
       refund: 'We offer a free diagnostic assessment before you commit to anything. If you\u2019re not satisfied after your first paid month, contact us and we\u2019ll work something out. <a href="/contact/">Get in touch \u2192</a>',
@@ -1347,6 +1334,7 @@ import { ClientRouter } from 'astro:transitions';
       if (!countdown || !el) return;
       var exams = [
         { name: 'O-Level English', date: new Date('2026-10-19') },
+        { name: 'O-Level Mathematics', date: new Date('2026-10-20') },
         { name: 'A-Level GP', date: new Date('2026-11-09') },
         { name: 'A-Level H2 Economics', date: new Date('2026-11-18') }
       ];

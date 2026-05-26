@@ -5,14 +5,14 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Tuition Programmes | English, GP & Econs | A-Worthy" description="A-Worthy's programmes: O-Level English (Sec 1–4), H1 GP & H2 Economics (JC 1–2). Small groups of 6, proven SHARP Method. From SGD 280/month.">
+<BaseLayout title="Tuition Programmes | English, Maths, GP & Econs | A-Worthy" description="A-Worthy's programmes: O-Level English & Maths (Sec 1–4), H1 GP & H2 Economics (JC 1–2). Small groups of 6, proven SHARP Method. From SGD 280/month.">
   <Header slot="header" />
 
   <!-- ===== PAGE HERO ===== -->
   <section class="prog-hero">
     <div class="container">
       <p class="eyebrow">Programmes</p>
-      <h1 class="prog-hero__heading">Singapore tuition programmes for O-Level English, GP &amp; H2 Economics</h1>
+      <h1 class="prog-hero__heading">Singapore tuition programmes for O-Level English, Maths, GP &amp; H2 Economics</h1>
       <p class="prog-hero__sub">Every A-Worthy programme is built on the proven SHARP Method &mdash; See, Hit, Apply, Refine, Practise. Small groups of 6, online via Zoom, with personalised feedback every session. Choose the programme that fits your child.</p>
     </div>
   </section>
@@ -20,7 +20,7 @@ import '../styles/global.css';
   <!-- ===== PROGRAMME CARDS ===== -->
   <section class="prog-section">
     <div class="container">
-      <div class="card-grid card-grid--3">
+      <div class="card-grid card-grid--4">
         <a href="/o-level-english/" class="prog-card prog-card--link">
           <p class="prog-card__eyebrow">Sec 1 &ndash; 4</p>
           <h3 class="prog-card__title">O-Level English</h3>
@@ -49,8 +49,22 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/h2-economics/" class="prog-card prog-card--link prog-card--accent">
+        <a href="/o-level-mathematics/" class="prog-card prog-card--link prog-card--accent">
           <p class="prog-card__eyebrow prog-card__eyebrow--new">New</p>
+          <h3 class="prog-card__title">O-Level Mathematics</h3>
+          <p class="prog-card__desc">Foundation and intensive Mathematics programmes for Secondary 1&ndash;4. Master algebra, geometry, trigonometry, and statistics with the SHARP Method.</p>
+          <ul class="prog-card__topics">
+            <li>Sec 1-2 Foundation &mdash; SGD 280/month</li>
+            <li>Sec 3-4 Intensive &mdash; SGD 320/month</li>
+            <li>One-to-One &mdash; SGD 120/session</li>
+          </ul>
+          <div class="prog-card__meta">
+            <span class="prog-card__link-text">View O-Level Mathematics tuition &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/h2-economics/" class="prog-card prog-card--link">
+          <p class="prog-card__eyebrow">JC 1 &ndash; 2</p>
           <h3 class="prog-card__title">H2 Economics</h3>
           <p class="prog-card__desc">Rigorous A-Level Economics preparation covering the full 9570 syllabus, taught with the SHARP Method. Diagram precision, essay technique, and case study mastery.</p>
           <ul class="prog-card__topics">
@@ -74,27 +88,27 @@ import '../styles/global.css';
 
       <div class="card-grid card-grid--2">
         <div class="prog-card">
-          <h3 class="prog-card__title">See (5 min)</h3>
+          <h3 class="prog-card__title">See</h3>
           <p class="prog-card__desc">Your child learns to read questions the way a lawyer reads a brief &mdash; identifying exactly what is being asked, what type of response is required, and where the marks lie. No more losing marks to misread questions.</p>
         </div>
 
         <div class="prog-card">
-          <h3 class="prog-card__title">Hit (15 min)</h3>
+          <h3 class="prog-card__title">Hit</h3>
           <p class="prog-card__desc">The tutor models expert-level analysis on a live example, then your child selects the right framework &mdash; Core Move or ACED for English, P-E-E-L for GP, DEED for Economics &mdash; and targets the highest-value marks first.</p>
         </div>
 
         <div class="prog-card">
-          <h3 class="prog-card__title">Apply (15 min)</h3>
+          <h3 class="prog-card__title">Apply</h3>
           <p class="prog-card__desc">Your child writes a full response using the claim-evidence-reasoning framework &mdash; with the tutor providing immediate, targeted feedback. No waiting until next week to find out what went wrong.</p>
         </div>
 
         <div class="prog-card">
-          <h3 class="prog-card__title">Refine (10 min)</h3>
+          <h3 class="prog-card__title">Refine</h3>
           <p class="prog-card__desc">Your child self-assesses against the SHARP checklist, then receives process-level feedback &mdash; not just what was wrong, but exactly why and how to fix it. Every answer is polished to exam standard.</p>
         </div>
 
         <div class="prog-card">
-          <h3 class="prog-card__title">Practise (15 min)</h3>
+          <h3 class="prog-card__title">Practise</h3>
           <p class="prog-card__desc">Your child tackles a fresh question independently, applying everything from the lesson. Every session ends with one concrete improvement goal for the week.</p>
         </div>
       </div>

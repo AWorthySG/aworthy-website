@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Tuition Pricing Singapore | English, GP & Econs | A-Worthy" description="O-Level English from S$280/mo, H1 GP & H2 Econs from S$360/mo. No hidden fees, materials included. Compare plans.">
+<BaseLayout title="Tuition Fees Singapore | English, Maths, GP & Econs | A-Worthy" description="O-Level English & Maths from S$280/mo, H1 GP & H2 Econs from S$360/mo. No hidden fees, all materials included. Compare tuition plans and book a free assessment.">
   <Header slot="header" />
 
   <!-- ===== HERO ===== -->
@@ -13,7 +13,7 @@ import '../styles/global.css';
     <div class="container">
       <p class="eyebrow">Pricing</p>
       <h1 class="pricing-hero__heading">Tuition pricing in Singapore &mdash; transparent and all-inclusive</h1>
-      <p class="pricing-hero__sub">No hidden fees, no lock-in contracts. Every A-Worthy programme &mdash; O-Level English, H1 General Paper, and H2 Economics &mdash; includes materials, assessments, and WhatsApp support, so you know exactly what you&rsquo;re paying for.</p>
+      <p class="pricing-hero__sub">No hidden fees, no lock-in contracts. Every A-Worthy programme &mdash; O-Level English, O-Level Mathematics, H1 General Paper, and H2 Economics &mdash; includes materials, assessments, and WhatsApp support, so you know exactly what you&rsquo;re paying for.</p>
     </div>
   </section>
 
@@ -27,6 +27,10 @@ import '../styles/global.css';
               <th class="pricing-table__label-col"></th>
               <th>
                 <span class="pricing-table__programme-name">O-Level English</span>
+                <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
+              </th>
+              <th>
+                <span class="pricing-table__programme-name">O-Level Maths</span>
                 <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
               </th>
               <th>
@@ -47,12 +51,14 @@ import '../styles/global.css';
             <tr>
               <td class="pricing-table__row-label">Monthly Fee</td>
               <td><strong>SGD 280&ndash;320</strong></td>
+              <td><strong>SGD 280&ndash;320</strong></td>
               <td><strong>SGD 360&ndash;400</strong></td>
               <td><strong>SGD 360&ndash;400</strong></td>
               <td><strong>SGD 120&ndash;140</strong><span class="pricing-table__note">/session</span></td>
             </tr>
             <tr>
               <td class="pricing-table__row-label">Session Duration</td>
+              <td>90 min</td>
               <td>90 min</td>
               <td>90 min</td>
               <td>90 min</td>
@@ -63,10 +69,12 @@ import '../styles/global.css';
               <td>4&times;</td>
               <td>4&times;</td>
               <td>4&times;</td>
+              <td>4&times;</td>
               <td>Flexible</td>
             </tr>
             <tr>
               <td class="pricing-table__row-label">Class Size</td>
+              <td>Max 6</td>
               <td>Max 6</td>
               <td>Max 6</td>
               <td>Max 6</td>
@@ -78,9 +86,11 @@ import '../styles/global.css';
               <td>Included</td>
               <td>Included</td>
               <td>Included</td>
+              <td>Included</td>
             </tr>
             <tr>
               <td class="pricing-table__row-label">Assessment</td>
+              <td>Free</td>
               <td>Free</td>
               <td>Free</td>
               <td>Free</td>
@@ -94,6 +104,19 @@ import '../styles/global.css';
       <div class="pricing-cards" data-animate="reveal-up">
         <div class="pricing-card card--elevated">
           <h3 class="pricing-card__name">O-Level English</h3>
+          <p class="pricing-card__level">Sec 1 &ndash; 4</p>
+          <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
+          <ul class="pricing-card__details">
+            <li>90 min sessions</li>
+            <li>4&times; per month</li>
+            <li>Max 6 students</li>
+            <li>Materials included</li>
+            <li>Free assessment</li>
+          </ul>
+          <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
+        </div>
+        <div class="pricing-card card--elevated">
+          <h3 class="pricing-card__name">O-Level Mathematics</h3>
           <p class="pricing-card__level">Sec 1 &ndash; 4</p>
           <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
           <ul class="pricing-card__details">
@@ -170,9 +193,9 @@ import '../styles/global.css';
           <p>Ask questions between sessions &mdash; your child gets help when they need it most.</p>
         </div>
         <div class="includes-item">
-          <svg class="includes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          <svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
           <h3>SHARP Method Resources</h3>
-          <p>Proprietary notes, practice papers, and model answers &mdash; all included in the fee. See how SHARP works for <a href="/o-level-english/#playbook">English</a>, <a href="/h1-general-paper/#playbook">GP</a>, and <a href="/h2-economics/#playbook">Economics</a>.</p>
+          <p>Proprietary notes, practice papers, and model answers &mdash; all included in the fee. See how SHARP works for <a href="/o-level-english/#playbook">English</a>, <a href="/o-level-mathematics/#playbook">Maths</a>, <a href="/h1-general-paper/#playbook">GP</a>, and <a href="/h2-economics/#playbook">Economics</a>.</p>
         </div>
         <div class="includes-item">
           <svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
