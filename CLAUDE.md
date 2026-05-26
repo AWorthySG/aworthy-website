@@ -159,12 +159,12 @@ All pages wrap content in `<BaseLayout>` which provides:
 
 ### Typography
 
-- **Headings**: `'Fraunces'` (variable serif, optical size 9–144)
-- **Body**: `'Space Grotesk'` (sans-serif)
+- **Headings**: `'Nunito'` (sans-serif, weights 200–900)
+- **Body**: `'Nunito'` (sans-serif)
 - **Mono**: `'JetBrains Mono'`
 - **Script** (pen animation): `'Pinyon Script'`
 
-Heading weights: h1 = 200 (light), h2 = 400, h3 = 700 (uses body font).
+Heading weights: h1 = 200 (light), h2 = 400, h3 = 700.
 
 ### Spacing Scale
 
@@ -308,7 +308,7 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - The Header component handles both desktop and mobile nav with distinct markup sections
 - The homepage has its own sticky CTA; the global sticky CTA bar in BaseLayout is hidden on `/`
 - Dark mode accent is a different shade (#E09850 vs #D4853A) — update both if changing accent color
-- Font families changed from the original design: Fraunces replaced Playfair Display, Space Grotesk replaced Inter
+- Font families changed: Nunito replaced Fraunces (headings) and Space Grotesk (body). Pinyon Script and JetBrains Mono are unchanged.
 - BaseLayout is ~900+ lines — use offset/limit when reading; many widgets are appended before `</body>`
 - Astro 6.x uses `ClientRouter` from `astro:transitions`, NOT the old `ViewTransitions` export
 - Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes. TOC labels are sourced from `.eyebrow` text in each section (not truncated h2 text)
