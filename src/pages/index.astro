@@ -964,11 +964,10 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .hero-tagline {
     display: block;
-    font-family: 'Fraunces', var(--font-heading), serif;
+    font-family: var(--font-heading);
     font-size: clamp(4.5rem, 14vw, 10rem);
     font-weight: 200;
     font-style: normal;
-    font-variation-settings: 'opsz' 144;
     line-height: 0.95;
     letter-spacing: -0.035em;
     color: var(--text-primary);
@@ -983,12 +982,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     animation-delay: calc(1.2s + var(--i) * 0.08s);
   }
 
-  /* "Worthy" — italic Fraunces 300 in gold (claudedesign A.3). The calligraphic
-     italic + upright Fraunces is the law-firm-monogram move Fraunces was designed for. */
   .hero-letter--italic {
     font-style: italic;
     font-weight: 300;
-    font-variation-settings: 'opsz' 144, 'SOFT' 50;
     color: transparent;
     background: linear-gradient(135deg, #B87333 0%, #D4853A 35%, #e8a060 55%, #D4853A 75%, #B87333 100%);
     background-size: 200% 200%;
