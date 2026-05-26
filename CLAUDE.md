@@ -34,7 +34,7 @@ src/
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
-├── pages/          # File-based routing (30 pages)
+├── pages/          # File-based routing (31 pages)
 │   ├── index.astro           # Homepage (~2700 lines — largest page, audience selector)
 │   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
@@ -56,6 +56,7 @@ src/
 │   │   ├── gp-essay-examples.astro
 │   │   ├── gp-essay-structure.astro
 │   │   ├── h2-econs-case-study-tips.astro
+│   │   ├── o-level-cut-off-points-2026.astro
 │   │   ├── o-level-english-tips-2026.astro
 │   │   ├── situational-writing-guide.astro
 │   │   └── why-smart-students-fail.astro
@@ -80,6 +81,7 @@ public/
 │   ├── og-gp.svg/png         # H1 GP OG image
 │   ├── og-econs.svg/png      # H2 Economics OG image
 │   ├── og-maths.svg/png      # O-Level Mathematics OG image
+│   ├── og-blog.svg/png       # Blog OG image (general blog posts)
 │   ├── illustration-*.svg    # Programme card illustrations (english, gp, econs, maths, coaching)
 │   ├── icon-*.svg            # Resource vault icons (scoring, essay, comprehension, vocabulary, situational, grammar)
 │   └── section-divider.svg   # Decorative section divider
