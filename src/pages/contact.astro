@@ -215,7 +215,7 @@ import '../styles/global.css';
               <option value="Flexible">Flexible / Discuss with me</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-accent" style="width:100%;">Reserve My Child's Spot</button>
+          <button type="submit" class="btn btn-accent plausible-event-name=Lead+Trial+Booking" style="width:100%;">Reserve My Child's Spot</button>
         </form>
       </div>
 
@@ -412,6 +412,7 @@ import '../styles/global.css';
       if (response.ok) {
         errorsMsg.hidden = true;
         successMsg.hidden = false;
+        if ((window as any).plausible) (window as any).plausible('Lead: Contact Form');
         form.reset();
         requiredFields.forEach(f => f.removeAttribute('aria-invalid'));
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });

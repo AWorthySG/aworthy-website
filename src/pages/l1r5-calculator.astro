@@ -1,0 +1,293 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const gradeOptions = [
+  { v: '', label: '— Not taken —' },
+  { v: 1, label: 'A1' }, { v: 2, label: 'A2' }, { v: 3, label: 'B3' },
+  { v: 4, label: 'B4' }, { v: 5, label: 'C5' }, { v: 6, label: 'C6' },
+  { v: 7, label: 'D7' }, { v: 8, label: 'E8' }, { v: 9, label: 'F9' },
+];
+
+const mathSci = ['Elementary Mathematics', 'Additional Mathematics', 'Physics', 'Chemistry', 'Biology', 'Combined Science'];
+const humanities = ['Combined Humanities', 'Geography', 'History', 'Literature in English'];
+const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subject'];
+---
+
+<BaseLayout
+  title="Free L1R5 Calculator for JC Admission (2026) | A-Worthy"
+  description="Free L1R5 calculator for Singapore O-Level students. Enter your grades to work out your net L1R5 aggregate, apply CCA & HMT bonus points, and see which JCs you'd qualify for."
+  ogImage="/images/og-blog.png">
+  <Header slot="header" />
+
+  <section class="calc-hero">
+    <div class="container">
+      <span class="eyebrow">Free Tool</span>
+      <h1 class="calc-title">L1R5 Calculator</h1>
+      <p class="calc-sub">Work out your net L1R5 aggregate in seconds, apply your CCA and Higher Mother Tongue bonus points, and see which junior colleges you&rsquo;d qualify for under the 2026 cut-off points. Built by A-Worthy&rsquo;s Singapore tutors.</p>
+    </div>
+  </section>
+
+  <section class="section calc-section">
+    <div class="container calc-grid">
+      <form class="calc-card" id="l1r5-form" novalidate>
+        <div class="calc-l1">
+          <label class="calc-row calc-row--l1">
+            <span class="calc-subject">English Language <em>(L1)</em></span>
+            <select class="calc-select" data-cat="english" aria-label="English Language grade">
+              {gradeOptions.map(o => <option value={o.v}>{o.label}</option>)}
+            </select>
+          </label>
+        </div>
+
+        <fieldset class="calc-group">
+          <legend>Mathematics &amp; Science <span>(best counts as R2)</span></legend>
+          {mathSci.map(name => (
+            <label class="calc-row">
+              <span class="calc-subject">{name}</span>
+              <select class="calc-select" data-cat="mathsci" data-name={name} aria-label={`${name} grade`}>
+                {gradeOptions.map(o => <option value={o.v}>{o.label}</option>)}
+              </select>
+            </label>
+          ))}
+        </fieldset>
+
+        <fieldset class="calc-group">
+          <legend>Humanities <span>(best counts as R1)</span></legend>
+          {humanities.map(name => (
+            <label class="calc-row">
+              <span class="calc-subject">{name}</span>
+              <select class="calc-select" data-cat="humanities" data-name={name} aria-label={`${name} grade`}>
+                {gradeOptions.map(o => <option value={o.v}>{o.label}</option>)}
+              </select>
+            </label>
+          ))}
+        </fieldset>
+
+        <fieldset class="calc-group">
+          <legend>Other subjects <span>(count towards R3&ndash;R5)</span></legend>
+          {others.map(name => (
+            <label class="calc-row">
+              <span class="calc-subject">{name}</span>
+              <select class="calc-select" data-cat="other" data-name={name} aria-label={`${name} grade`}>
+                {gradeOptions.map(o => <option value={o.v}>{o.label}</option>)}
+              </select>
+            </label>
+          ))}
+        </fieldset>
+
+        <fieldset class="calc-group calc-bonus">
+          <legend>Bonus points <span>(deducted from your gross score)</span></legend>
+          <label class="calc-check"><input type="checkbox" id="bonus-cca" /> <span>CCA &ldquo;A&rdquo; grade (&minus;2)</span></label>
+          <label class="calc-check"><input type="checkbox" id="bonus-hmt" /> <span>Higher Mother Tongue D7 or better (&minus;2)</span></label>
+        </fieldset>
+
+        <div class="calc-actions">
+          <button type="submit" class="btn btn-accent calc-btn">Calculate my L1R5</button>
+          <button type="button" class="calc-reset" id="calc-reset">Reset</button>
+        </div>
+        <p class="calc-error" id="calc-error" hidden></p>
+      </form>
+
+      <div class="calc-result" id="calc-result" aria-live="polite" hidden>
+        <div class="calc-score">
+          <div class="calc-score-block">
+            <span class="calc-score-num" id="calc-gross">&ndash;</span>
+            <span class="calc-score-label">Gross L1R5</span>
+          </div>
+          <div class="calc-score-arrow">&rarr;</div>
+          <div class="calc-score-block calc-score-block--net">
+            <span class="calc-score-num" id="calc-net">&ndash;</span>
+            <span class="calc-score-label">Net L1R5</span>
+          </div>
+        </div>
+        <div class="calc-breakdown" id="calc-breakdown"></div>
+        <h3 class="calc-jc-heading">JCs you&rsquo;d qualify for <span>(2026 JAE, indicative)</span></h3>
+        <div class="calc-jc" id="calc-jc"></div>
+        <p class="calc-disclaimer">Cut-off points change every year and depend on stream and choice order. This is an indicative guide only &mdash; always verify the latest figures on <a href="https://www.moe.gov.sg/schoolfinder" target="_blank" rel="noopener noreferrer">MOE SchoolFinder</a>.</p>
+        <div class="calc-cta">
+          <p><strong>English and Maths affect every L1R5.</strong> They&rsquo;re the two subjects every student takes &mdash; so every grade you raise there shifts your whole aggregate.</p>
+          <div class="calc-cta-links">
+            <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book a Free Assessment</a>
+            <a href="/o-level-english/" class="calc-cta-link">O-Level English &rarr;</a>
+            <a href="/o-level-mathematics/" class="calc-cta-link">O-Level Maths &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand calc-explainer">
+    <div class="container">
+      <h2 class="section-title">How L1R5 works</h2>
+      <p class="section-subtitle">L1R5 = 1 Language + 5 Relevant subjects &mdash; the aggregate of your six best grades, selected by MOE&rsquo;s rules. Each grade is worth points (A1&nbsp;=&nbsp;1 up to F9&nbsp;=&nbsp;9), so a <em>lower</em> score is better, and bonus points for CCA and Higher Mother Tongue are subtracted to give your net aggregate.</p>
+      <p style="text-align:center;">For the full breakdown, bonus-point rules, and the complete 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points-2026/">complete L1R5 &amp; cut-off points guide</a>.</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .calc-hero { padding: 1.5rem 0 0.75rem; text-align: center; }
+  .calc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .calc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  .calc-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; }
+  .calc-group { border: none; padding: 0; margin: 0 0 1.25rem; }
+  .calc-group legend { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; padding: 0; margin-bottom: 0.5rem; }
+  .calc-group legend span { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; }
+  .calc-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.35rem 0; }
+  .calc-row--l1 { padding: 0.6rem 0.75rem; background: rgba(212,133,58,0.08); border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-bottom: 1.25rem; }
+  .calc-subject { font-size: 0.9rem; color: var(--text-secondary); }
+  .calc-subject em { color: var(--color-accent); font-style: normal; font-weight: 600; }
+  .calc-select { min-width: 130px; padding: 0.4rem 0.6rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem; }
+  .calc-select:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+  .calc-bonus .calc-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); padding: 0.25rem 0; }
+  .calc-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.5rem; }
+  .calc-btn { cursor: pointer; }
+  .calc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; }
+  .calc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
+  [data-theme="dark"] .calc-error { color: #ff8a7a; }
+
+  .calc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; position: sticky; top: calc(var(--header-height) + 1rem); }
+  .calc-score { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 1.25rem; }
+  .calc-score-block { text-align: center; }
+  .calc-score-num { display: block; font-family: var(--font-heading); font-size: 2.75rem; font-weight: 200; color: var(--text-muted); line-height: 1; }
+  .calc-score-block--net .calc-score-num { color: var(--color-accent); font-weight: 400; }
+  .calc-score-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-family: var(--font-mono); }
+  .calc-score-arrow { color: var(--text-muted); font-size: 1.5rem; }
+  .calc-breakdown { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 0.9rem 0; margin-bottom: 1rem; }
+  .calc-breakdown span { display: inline-block; }
+  .calc-jc-heading { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .calc-jc-heading span { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; }
+  .calc-jc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  .calc-jc-chip { font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 999px; background: rgba(43,90,140,0.1); color: var(--color-primary); border: 1px solid var(--border-color); }
+  [data-theme="dark"] .calc-jc-chip { color: var(--text-primary); }
+  .calc-jc-none { font-size: 0.9rem; color: var(--text-secondary); }
+  .calc-disclaimer { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+  .calc-disclaimer a { color: var(--color-accent); }
+  .calc-cta { border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
+  .calc-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6; }
+  .calc-cta-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .calc-cta-link { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+  .calc-cta-link:hover { text-decoration: underline; }
+  .calc-explainer { text-align: center; }
+  .calc-explainer a { color: var(--color-accent); }
+
+  @media (max-width: 900px) {
+    .calc-grid { grid-template-columns: 1fr; }
+    .calc-result { position: static; }
+  }
+  @media (max-width: 480px) {
+    .calc-row { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    .calc-select { width: 100%; min-width: 0; }
+  }
+</style>
+
+<script>
+  function initL1R5() {
+    var form = document.getElementById('l1r5-form');
+    if (!form) return;
+    var resultEl = document.getElementById('calc-result');
+    var errorEl = document.getElementById('calc-error');
+    var grossEl = document.getElementById('calc-gross');
+    var netEl = document.getElementById('calc-net');
+    var breakdownEl = document.getElementById('calc-breakdown');
+    var jcEl = document.getElementById('calc-jc');
+    var resetBtn = document.getElementById('calc-reset');
+
+    var GRADE_LABEL = { 1: 'A1', 2: 'A2', 3: 'B3', 4: 'B4', 5: 'C5', 6: 'C6', 7: 'D7', 8: 'E8', 9: 'F9' };
+    var JCS = [
+      { name: 'RI', sci: 3, arts: 5 }, { name: 'HCI', sci: 3, arts: 5 },
+      { name: 'EJC', sci: 5, arts: 6 }, { name: 'NYJC', sci: 5, arts: 7 },
+      { name: 'NJC', sci: 6, arts: 6 }, { name: 'DHS', sci: 6, arts: 7 },
+      { name: 'VJC', sci: 6, arts: 8 }, { name: 'TJC', sci: 7, arts: 7 },
+      { name: 'ACJC', sci: 7, arts: 9 }, { name: 'SAJC', sci: 8, arts: 11 },
+      { name: 'ASRJC', sci: 9, arts: 12 }, { name: 'CJC', sci: 11, arts: 12 },
+      { name: 'TMJC', sci: 12, arts: 12 }, { name: 'JPJC', sci: 13, arts: 14 },
+      { name: 'YIJC', sci: 15, arts: 20 }
+    ];
+
+    function collect(cat) {
+      var out = [];
+      form.querySelectorAll('select[data-cat="' + cat + '"]').forEach(function (s) {
+        if (s.value !== '') out.push({ name: s.getAttribute('data-name') || 'English Language', pts: parseInt(s.value, 10) });
+      });
+      return out;
+    }
+
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.hidden = false;
+      resultEl.hidden = true;
+    }
+
+    function calculate() {
+      var english = collect('english');
+      if (!english.length) { showError('Please enter your English Language grade — it is your L1.'); return; }
+
+      var mathsci = collect('mathsci').sort(function (a, b) { return a.pts - b.pts; });
+      var hums = collect('humanities').sort(function (a, b) { return a.pts - b.pts; });
+      if (!mathsci.length) { showError('Add at least one Mathematics or Science subject — it is required for R2.'); return; }
+      if (!hums.length) { showError('Add at least one Humanities subject — it is required for R1.'); return; }
+
+      var L1 = english[0];
+      var R2 = mathsci[0];
+      var R1 = hums[0];
+
+      // Everything not yet used goes into the pool for R3–R5.
+      var pool = [];
+      mathsci.slice(1).forEach(function (s) { pool.push(s); });
+      hums.slice(1).forEach(function (s) { pool.push(s); });
+      collect('other').forEach(function (s) { pool.push(s); });
+      pool.sort(function (a, b) { return a.pts - b.pts; });
+
+      if (pool.length < 3) { showError('Enter at least six subjects in total (English + R1 + R2 + three more) to compute a full L1R5.'); return; }
+
+      var r3to5 = pool.slice(0, 3);
+      var chosen = [L1, R1, R2].concat(r3to5);
+      var gross = chosen.reduce(function (sum, s) { return sum + s.pts; }, 0);
+
+      var bonus = 0;
+      if (document.getElementById('bonus-cca').checked) bonus += 2;
+      if (document.getElementById('bonus-hmt').checked) bonus += 2;
+      var net = Math.max(gross - bonus, 0);
+
+      errorEl.hidden = true;
+      grossEl.textContent = gross;
+      netEl.textContent = net;
+
+      breakdownEl.innerHTML =
+        '<span><strong>L1:</strong> English ' + GRADE_LABEL[L1.pts] + '</span> &nbsp;·&nbsp; ' +
+        '<span><strong>R1:</strong> ' + R1.name + ' ' + GRADE_LABEL[R1.pts] + '</span> &nbsp;·&nbsp; ' +
+        '<span><strong>R2:</strong> ' + R2.name + ' ' + GRADE_LABEL[R2.pts] + '</span> &nbsp;·&nbsp; ' +
+        '<span><strong>R3&ndash;R5:</strong> ' + r3to5.map(function (s) { return s.name + ' ' + GRADE_LABEL[s.pts]; }).join(', ') + '</span>' +
+        (bonus ? ' &nbsp;·&nbsp; <span><strong>Bonus:</strong> &minus;' + bonus + '</span>' : '');
+
+      var sci = JCS.filter(function (j) { return net <= j.sci; }).map(function (j) { return j.name; });
+      var arts = JCS.filter(function (j) { return net <= j.arts; }).map(function (j) { return j.name; });
+      var html = '';
+      if (sci.length) html += '<div><strong style="font-size:0.8rem;color:var(--text-secondary);">Science stream:</strong><div class="calc-jc" style="margin-top:0.4rem;">' + sci.map(function (n) { return '<span class="calc-jc-chip">' + n + '</span>'; }).join('') + '</div></div>';
+      if (arts.length) html += '<div style="margin-top:0.6rem;"><strong style="font-size:0.8rem;color:var(--text-secondary);">Arts stream:</strong><div class="calc-jc" style="margin-top:0.4rem;">' + arts.map(function (n) { return '<span class="calc-jc-chip">' + n + '</span>'; }).join('') + '</div></div>';
+      if (!sci.length && !arts.length) html = '<p class="calc-jc-none">With a net L1R5 of ' + net + ', none of the JCs in our 2026 table are within range &mdash; but Millennia Institute (a 3-year programme) and polytechnic routes remain open. Raising English and Maths is the fastest way to bring this down.</p>';
+      jcEl.innerHTML = html;
+
+      resultEl.hidden = false;
+      resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (window.plausible) window.plausible('L1R5 Calculated');
+    }
+
+    form.onsubmit = function (e) { e.preventDefault(); calculate(); };
+    if (resetBtn) resetBtn.onclick = function () {
+      form.querySelectorAll('select').forEach(function (s) { s.value = ''; });
+      form.querySelectorAll('input[type=checkbox]').forEach(function (c) { c.checked = false; });
+      resultEl.hidden = true; errorEl.hidden = true;
+    };
+  }
+
+  initL1R5();
+  document.addEventListener('astro:page-load', initL1R5);
+</script>

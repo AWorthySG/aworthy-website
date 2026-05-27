@@ -51,6 +51,7 @@ const breadcrumbLabels: Record<string, string> = {
   'o-level-maths-common-mistakes': 'O-Level Maths Mistakes',
   'e-maths-vs-a-maths': 'E-Maths vs A-Maths',
   'a-maths-calculus-guide': 'A-Maths Calculus Guide',
+  'l1r5-calculator': 'L1R5 Calculator',
 };
 
 const schemaData = {
@@ -1111,6 +1112,7 @@ import { ClientRouter } from 'astro:transitions';
       function deliver() {
         // Honour the promise: open the framework now, with a reliable fallback link.
         try { window.open(PDF_URL, '_blank', 'noopener'); } catch (err) {}
+        if (window.plausible) window.plausible('Lead: Email Popup');
         form.innerHTML = '<p style="text-align:center;color:var(--color-accent);font-weight:500;">' +
           'Your SHARP essay framework is opening in a new tab. If it doesn’t, ' +
           '<a href="' + PDF_URL + '" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;">download it here</a>. ' +

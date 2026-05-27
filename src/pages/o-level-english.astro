@@ -374,6 +374,46 @@ const playbookRows = [
     <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book Free Assessment</a>
   </div>
 
+  <!-- ===== BEFORE / AFTER ===== -->
+  <section class="prog-section ba-section" id="before-after">
+    <div class="container">
+      <p class="eyebrow">Before &amp; After</p>
+      <h2 class="prog-section__heading">The same answer, before and after the SHARP Method</h2>
+      <p class="prog-section__sub">What changes when a student stops <em>describing</em> and starts answering what the examiner actually rewards. (Illustrative example &mdash; a typical comprehension inference question, not a real student script.)</p>
+
+      <div class="ba-question">
+        <span class="ba-q-label">Comprehension &middot; Inference &middot; 2 marks</span>
+        <p>&ldquo;Explain what the writer suggests about the town through the phrase <em>&lsquo;the streets were scrubbed clean of life&rsquo;</em> (line 12).&rdquo;</p>
+      </div>
+
+      <div class="ba-grid">
+        <div class="ba-card ba-card--before">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <p class="ba-answer">&ldquo;The town was very quiet and there was no one around.&rdquo;</p>
+          <ul class="ba-notes">
+            <li>Describes the scene but never interprets it</li>
+            <li>Quotes no evidence from the text</li>
+            <li>Misses the sinister edge of &ldquo;scrubbed clean&rdquo;</li>
+          </ul>
+          <span class="ba-mark ba-mark--before">Typically 0&ndash;1 / 2</span>
+        </div>
+
+        <div class="ba-card ba-card--after">
+          <span class="ba-tag ba-tag--after">After SHARP</span>
+          <p class="ba-answer">&ldquo;The phrase <em>&lsquo;scrubbed clean of life&rsquo;</em> suggests the town has been deliberately emptied, implying an unsettling, almost sinister absence of people rather than an ordinary quiet.&rdquo;</p>
+          <ul class="ba-notes">
+            <li><strong>Evidence</strong> &mdash; quotes the exact phrase</li>
+            <li><strong>Interpretation</strong> &mdash; explains what it implies</li>
+            <li>Uses &ldquo;suggests / implying&rdquo;: the evaluative language examiners reward</li>
+          </ul>
+          <span class="ba-mark ba-mark--after">2 / 2</span>
+        </div>
+      </div>
+
+      <p class="ba-footnote">Illustrative teaching example, not a real student script. The technique &mdash; Evidence&nbsp;+&nbsp;Interpretation, the &ldquo;Core Move&rdquo; &mdash; is what we drill at the <strong>Hit</strong> step of the SHARP Method.</p>
+    </div>
+  </section>
+
   <!-- ===== INSIDE A LESSON ===== -->
   <section class="prog-section lesson-flow" id="lesson-flow">
     <div class="container">
@@ -774,6 +814,31 @@ const playbookRows = [
   .prog-section + .prog-section { border-top: 1px solid var(--prog-border); }
   .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.03em; }
   .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 1rem; }
+  .ba-question { background: var(--bg-secondary); border: 1px solid var(--border-color); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius); padding: 0.9rem 1.1rem; margin-bottom: 1.25rem; }
+  .ba-q-label { display: block; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.35rem; }
+  .ba-question p { color: var(--text-primary); font-size: 0.98rem; margin: 0; line-height: 1.55; }
+  .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .ba-card { border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.25rem; background: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; }
+  .ba-card--before { border-top: 3px solid rgba(192, 57, 43, 0.5); }
+  .ba-card--after { border-top: 3px solid rgba(39, 140, 90, 0.6); }
+  .ba-tag { align-self: flex-start; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .ba-tag--before { background: rgba(192, 57, 43, 0.12); color: #b03a2e; }
+  .ba-tag--after { background: rgba(39, 140, 90, 0.14); color: #1e7a52; }
+  [data-theme="dark"] .ba-tag--before { color: #ff9a8c; }
+  [data-theme="dark"] .ba-tag--after { color: #5fd0a0; }
+  .ba-answer { font-size: 1rem; line-height: 1.6; color: var(--text-primary); margin: 0; }
+  .ba-card--before .ba-answer { color: var(--text-secondary); }
+  .ba-notes { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .ba-notes li { font-size: 0.85rem; color: var(--text-secondary); padding-left: 1.3rem; position: relative; line-height: 1.5; }
+  .ba-card--before .ba-notes li::before { content: '\2717'; position: absolute; left: 0; color: #c0392b; font-weight: 700; }
+  .ba-card--after .ba-notes li::before { content: '\2713'; position: absolute; left: 0; color: #1e7a52; font-weight: 700; }
+  [data-theme="dark"] .ba-card--before .ba-notes li::before { color: #ff9a8c; }
+  [data-theme="dark"] .ba-card--after .ba-notes li::before { color: #5fd0a0; }
+  .ba-mark { align-self: flex-start; margin-top: auto; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; }
+  .ba-mark--before { color: var(--text-muted); }
+  .ba-mark--after { color: var(--color-accent); }
+  .ba-footnote { font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; font-style: italic; }
+  @media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
   .card-grid { display: grid; gap: 1rem; }
   .card-grid--1 { grid-template-columns: 1fr; max-width: 800px; }
   .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
