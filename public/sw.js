@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aworthy-v5';
+const CACHE_NAME = 'aworthy-v6';
 const OFFLINE_URL = '/404.html';
 
 const PRECACHE_URLS = [
@@ -9,6 +9,8 @@ const PRECACHE_URLS = [
   '/about/',
   '/results/',
   '/resources/',
+  '/testimonials/',
+  '/success-stories/',
   '/blog/',
   '/o-level-english/',
   '/h1-general-paper/',
