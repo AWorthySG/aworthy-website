@@ -1,5 +1,6 @@
 export function GET() {
   const posts = [
+    { title: "O-Level E-Maths vs A-Maths: What's the Difference — and Should Your Child Take A-Maths?", slug: "e-maths-vs-a-maths", date: "2026-05-27", description: "E-Maths (4048) vs A-Maths (4049) explained — what each covers, how they're assessed, why A-Maths is taken in addition to E-Maths, and how to decide if your child should take it." },
     { title: "7 Careless Mistakes That Cost O-Level Maths Marks — And the SHARP Fix", slug: "o-level-maths-common-mistakes", date: "2026-05-27", description: "The seven method and careless mistakes that quietly cost O-Level Maths (4048) marks — and the SHARP framework fix for each, from method selection to 'show that' proofs." },
     { title: "IB or JC? How to Choose the Right Path After O-Levels", slug: "ib-vs-jc", date: "2026-05-27", description: "Honest comparison of the IB Diploma and JC A-Level pathways in Singapore. Curriculum, assessment, workload, university recognition, and which suits your child." },
     { title: "2026 O-Level Cut-Off Points for JC: The Complete L1R5 Guide", slug: "o-level-cut-off-points-2026", date: "2026-05-26", description: "Complete 2026 JAE cut-off points for all Singapore JCs ranked by L1R5. How L1R5 is calculated, bonus points, and strategies to lower your aggregate." },
