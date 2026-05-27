@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+import '../../styles/blog.css';
+---
+
+<BaseLayout title="Does My Child Actually Need Tuition? An Honest Guide | A-Worthy" description="Not every child needs tuition. An honest guide for Singapore parents on the signs that tuition will genuinely help — and the problems it won't fix — so you can decide without guessing." ogImage="/images/og-blog.png">
+  <Header slot="header" />
+
+  <article class="blog-post">
+    <div class="container">
+      <div class="blog-post-header">
+        <a href="/blog/" class="blog-back">&larr; Back to Blog</a>
+        <span class="blog-tag">For Parents</span>
+        <h1>Does My Child Actually Need Tuition? An Honest Guide</h1>
+        <div class="blog-post-meta">
+          <a class="blog-author" href="/about/" rel="author">By Jeremy Lim, Founder</a>
+          <span>&middot;</span>
+          <time datetime="2026-05-27">27 May 2026</time>
+          <span>&middot;</span>
+          <span class="blog-reading-time">6 min read</span>
+        </div>
+      </div>
+      <div class="blog-post-body">
+        <p>In Singapore, tuition can feel like the default &mdash; if everyone else&rsquo;s child has it, surely yours should too. But that&rsquo;s the wrong question. Tuition is a tool, not a rite of passage, and it helps enormously with some problems and not at all with others. As a tutor, I&rsquo;d rather you spend your money where it actually moves the needle. So here&rsquo;s an honest look at when tuition genuinely helps &mdash; and when something else will serve your child better.</p>
+
+        <h2>Signs tuition will genuinely help</h2>
+        <ul>
+          <li><strong>Your child understands the content but underperforms in exams.</strong> They can explain a concept at home, then lose marks on paper. That&rsquo;s a <em>technique</em> gap &mdash; exactly what good tuition fixes fastest.</li>
+          <li><strong>Grades are slipping despite real effort.</strong> When a hard-working child plateaus, more hours of the same study won&rsquo;t help &mdash; a different method will.</li>
+          <li><strong>There&rsquo;s a specific, recurring weakness.</strong> Always losing marks on inference, or on the same type of Maths question, points to a fixable pattern rather than a lack of ability.</li>
+          <li><strong>Confidence is dropping.</strong> A capable student who has started to believe they&rsquo;re &ldquo;just bad at&rdquo; a subject often turns around quickly once someone shows them a system that works.</li>
+          <li><strong>School class sizes are too big for individual feedback.</strong> If your child&rsquo;s written work rarely gets detailed correction, a small-group setting fills a real gap.</li>
+        </ul>
+
+        <h2>Signs to look elsewhere first</h2>
+        <p>Tuition isn&rsquo;t the right first move for every situation. Be honest with yourself if:</p>
+        <ul>
+          <li><strong>The real issue is motivation or effort.</strong> Tuition adds structure and technique, but it can&rsquo;t manufacture willingness. If your child isn&rsquo;t doing the work that&rsquo;s set, more lessons won&rsquo;t change that &mdash; a conversation about <em>why</em> comes first.</li>
+          <li><strong>Your child is exhausted and over-scheduled.</strong> Sometimes the highest-leverage change is more sleep and less on the calendar, not another commitment.</li>
+          <li><strong>It&rsquo;s a one-off dip.</strong> A single bad result after a disruption isn&rsquo;t a trend. Watch for a pattern before acting.</li>
+        </ul>
+        <p>None of this means tuition is wrong in those cases &mdash; only that it works far better once the foundation underneath it is sound.</p>
+
+        <h2>What good tuition actually does</h2>
+        <p>The best tuition doesn&rsquo;t simply add hours; it changes <em>how</em> a student works. It replaces guesswork with a method &mdash; a repeatable way to read a question, choose the right approach, and show the working that earns marks. It gives feedback specific enough to fix the exact gap, and it does it in a small enough group that your child is actually seen. Done well, the goal is to make your child <em>less</em> dependent over time, not more.</p>
+
+        <h2>How to decide without guessing</h2>
+        <p>You don&rsquo;t have to commit to find out. A good diagnostic assessment will look at your child&rsquo;s recent work and tell you plainly: is this a technique gap tuition can close quickly, or is the issue something else? That answer &mdash; not peer pressure &mdash; is what should decide it.</p>
+        <p>At A-Worthy we offer that assessment free, with no obligation. If your child doesn&rsquo;t need us, we&rsquo;ll tell you. And if they do, you&rsquo;ll leave knowing exactly what we&rsquo;d work on and why.</p>
+      </div>
+      <div class="blog-post-cta">
+        <h3>Find out where your child actually stands</h3>
+        <p>Book a free 20-minute diagnostic assessment. We&rsquo;ll review a recent paper and give you an honest read on whether tuition will help &mdash; no obligation, no sales pitch.</p>
+        <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>
+        <p class="cta-secondary">Curious how we teach? See the <a href="/about/">SHARP Method and our story</a>.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="blog-related">
+    <div class="container">
+      <h2 class="related-heading">Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/how-to-choose-a-tuition-centre-singapore/" class="blog-related-card">
+          <span class="related-card-tag">For Parents</span>
+          <h3>How to Choose a Tuition Centre in Singapore</h3>
+          <p>The seven things that actually matter &mdash; and the red flags to avoid &mdash; when comparing centres.</p>
+        </a>
+        <a href="/blog/why-smart-students-fail/" class="blog-related-card">
+          <span class="related-card-tag">Study Tips</span>
+          <h3>Why Smart Students Still Fail Exams</h3>
+          <p>The gap between knowing the content and scoring under exam pressure &mdash; and how to close it.</p>
+        </a>
+        <a href="/about/" class="blog-related-card blog-related-card--programme">
+          <span class="related-card-tag">About</span>
+          <h3>The SHARP Method &amp; Our Story</h3>
+          <p>How a lawyer&rsquo;s analytical training became a five-step method any student can follow.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Does My Child Actually Need Tuition? An Honest Guide",
+    "description": "Not every child needs tuition. An honest guide for Singapore parents on the signs that tuition will genuinely help, the problems it won't fix, and how to decide without guessing.",
+    "image": "https://a-worthy.com/images/og-blog.png",
+    "inLanguage": "en-SG",
+    "articleSection": "For Parents",
+    "wordCount": 900,
+    "author": {
+      "@type": "Person",
+      "name": "Jeremy Lim",
+      "jobTitle": "Founder & Lead Tutor",
+      "url": "https://a-worthy.com/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com",
+      "logo": {"@type": "ImageObject", "url": "https://a-worthy.com/images/logo.svg"}
+    },
+    "datePublished": "2026-05-27",
+    "dateModified": "2026-05-27",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/does-my-child-need-tuition/"
+    }
+  })} />
+
+  <Footer slot="footer" />
+</BaseLayout>

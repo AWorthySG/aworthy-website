@@ -10,6 +10,7 @@ export default defineConfig({
     filter: (page) =>
       !page.includes('/parent-portal/') &&
       !page.includes('/lp/') &&
+      !page.includes('/review/') &&
       !page.includes('/404'),
   })],
   build: {
