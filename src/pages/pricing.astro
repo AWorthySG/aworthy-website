@@ -414,8 +414,8 @@ import '../styles/global.css';
     border-bottom: none;
   }
 
-  .pricing-table__row-label {
-    text-align: left !important;
+  .pricing-table tbody td.pricing-table__row-label {
+    text-align: left;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.06em;
@@ -625,10 +625,10 @@ import '../styles/global.css';
   .compare-table tbody tr:hover {
     background: rgba(212, 133, 58, 0.025);
   }
-  .compare-row-label {
+  .compare-table tbody td.compare-row-label {
     font-family: var(--font-body);
     font-weight: 600;
-    color: var(--text-primary) !important;
+    color: var(--text-primary);
     width: 28%;
   }
   .compare-table tbody td strong {
