@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout
+  title="JC Subject Combination Advisor (H1/H2) | A-Worthy"
+  description="Free JC subject combination advisor for Singapore students. Pick your intended direction and strengths to see common, broadly-applicable H2/H1 A-Level combinations — with the contrasting-subject rule explained."
+  ogImage="/images/og-blog.png">
+  <Header slot="header" />
+
+  <section class="jc-hero">
+    <div class="container">
+      <span class="eyebrow">Free Tool</span>
+      <h1 class="jc-title">JC Subject Combination Advisor</h1>
+      <p class="jc-sub">Choosing your A-Level subjects? Pick your likely direction and where your strengths lie, and we&rsquo;ll suggest common, broadly-applicable H2/H1 combinations to discuss with your school.</p>
+    </div>
+  </section>
+
+  <section class="section jc-section">
+    <div class="container jc-grid">
+      <form class="jc-card" id="jc-form" novalidate>
+        <label class="jc-field">
+          <span class="jc-label">What might you want to study?</span>
+          <select id="jc-direction" class="jc-select">
+            <option value="">Choose a direction&hellip;</option>
+            <option value="medicine">Medicine, Dentistry &amp; Health Sciences</option>
+            <option value="engineering">Engineering, Computing &amp; Physical Sciences</option>
+            <option value="business">Business, Economics &amp; Accountancy</option>
+            <option value="law">Law, Humanities &amp; Social Sciences</option>
+            <option value="undecided">Not sure yet &mdash; keep my options open</option>
+          </select>
+        </label>
+
+        <label class="jc-field">
+          <span class="jc-label">Which do you find easier?</span>
+          <select id="jc-strength" class="jc-select">
+            <option value="">Choose&hellip;</option>
+            <option value="science">Sciences &amp; Maths</option>
+            <option value="humanities">Humanities &amp; essay subjects</option>
+            <option value="mix">A mix of both</option>
+          </select>
+        </label>
+
+        <div class="jc-actions">
+          <button type="submit" class="btn btn-accent">Show recommended combinations</button>
+          <button type="button" class="jc-reset" id="jc-reset">Reset</button>
+        </div>
+        <p class="jc-error" id="jc-error" hidden></p>
+      </form>
+
+      <div class="jc-result" id="jc-result" aria-live="polite" hidden>
+        <span class="jc-rec-eyebrow">Suggested for</span>
+        <h2 class="jc-rec-title" id="jc-rec-title"></h2>
+        <div class="jc-combos" id="jc-combos"></div>
+        <p class="jc-why" id="jc-why"></p>
+        <p class="jc-note" id="jc-note"></p>
+        <p class="jc-disclaimer">Subject offerings and combination rules vary by junior college, and MOE requires at least one <strong>contrasting subject</strong> (science students take an arts H1, and arts students take a maths/science H1). This is general guidance &mdash; always confirm what your chosen JC actually offers.</p>
+        <div class="jc-cta">
+          <p><strong>Already in JC?</strong> We coach the two subjects most students find hardest to lift on their own.</p>
+          <div class="jc-cta-links">
+            <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book a Free Assessment</a>
+            <a href="/h1-general-paper/" class="jc-cta-link">H1 General Paper &rarr;</a>
+            <a href="/h2-economics/" class="jc-cta-link">H2 Economics &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand jc-explainer">
+    <div class="container">
+      <h2 class="section-title">How JC subject combinations work</h2>
+      <p class="section-subtitle">Most Singapore JC students offer <strong>3 H2 + 1 H1</strong> content subjects, plus compulsory <strong>H1 General Paper</strong>, <strong>Project Work</strong> and <strong>Mother Tongue</strong>. At least one subject must <em>contrast</em> with the others &mdash; so science students take an arts H1 (often Economics), and arts students take H1 Mathematics.</p>
+      <p style="text-align:center;">Still weighing JC against other paths? Read our <a href="/blog/ib-vs-jc/">IB vs JC comparison</a>, or work out your eligibility with the <a href="/l1r5-calculator/">L1R5 calculator</a>.</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .jc-hero { padding: 1.5rem 0 0.75rem; text-align: center; }
+  .jc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .jc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
+  .jc-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; align-items: start; }
+  .jc-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; }
+  .jc-field { display: block; margin-bottom: 1.1rem; }
+  .jc-label { display: block; font-weight: 700; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 0.45rem; }
+  .jc-select { width: 100%; padding: 0.55rem 0.7rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; }
+  .jc-select:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+  .jc-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.25rem; }
+  .jc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; }
+  .jc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
+  [data-theme="dark"] .jc-error { color: #ff8a7a; }
+
+  .jc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; }
+  .jc-rec-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+  .jc-rec-title { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 0.2rem 0 1rem; }
+  .jc-combos { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.1rem; }
+  .jc-combo { background: var(--bg-secondary); border: 1px solid var(--border-color); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius); padding: 0.7rem 0.9rem; font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
+  .jc-combo span { display: block; font-weight: 400; font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.25rem; }
+  .jc-why { font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 0.8rem; }
+  .jc-note { font-size: 0.88rem; line-height: 1.6; color: var(--text-primary); background: rgba(212,133,58,0.08); border-radius: var(--border-radius); padding: 0.6rem 0.8rem; margin-bottom: 1rem; }
+  .jc-disclaimer { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+  .jc-cta { border-top: 1px solid var(--border-color); padding-top: 1.1rem; }
+  .jc-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.9rem; line-height: 1.6; }
+  .jc-cta-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .jc-cta-link { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+  .jc-cta-link:hover { text-decoration: underline; }
+  .jc-explainer { text-align: center; }
+  .jc-explainer a { color: var(--color-accent); }
+
+  @media (max-width: 860px) {
+    .jc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  function initJC() {
+    var form = document.getElementById('jc-form');
+    if (!form) return;
+    var result = document.getElementById('jc-result');
+    var errorEl = document.getElementById('jc-error');
+    var titleEl = document.getElementById('jc-rec-title');
+    var combosEl = document.getElementById('jc-combos');
+    var whyEl = document.getElementById('jc-why');
+    var noteEl = document.getElementById('jc-note');
+    var resetBtn = document.getElementById('jc-reset');
+
+    function combo(main, sub) { return { main: main, sub: sub }; }
+
+    function recommend(dir, str) {
+      var contrast = 'The H1 subject is the contrasting one — required by MOE.';
+      if (dir === 'medicine') {
+        return {
+          title: 'Medicine, Dentistry & Health Sciences',
+          combos: [combo('H2 Chemistry · H2 Biology · H2 Mathematics + H1 Economics', contrast)],
+          why: 'Chemistry is a prerequisite for almost every medicine, dentistry and pharmacy course, and Biology underpins the life sciences. H2 Mathematics keeps quantitative degrees open, and an H1 humanity (commonly Economics) satisfies the contrasting-subject requirement.',
+          note: str === 'humanities'
+            ? 'Heads-up: this is a science-heavy combination. If your real strengths are in essays, sit down with your school to be sure Chemistry and Biology are sustainable for you.'
+            : 'Chemistry is non-negotiable for medicine — always check each university’s exact prerequisites.'
+        };
+      }
+      if (dir === 'engineering') {
+        return {
+          title: 'Engineering, Computing & Physical Sciences',
+          combos: [combo('H2 Physics · H2 Chemistry · H2 Mathematics + H1 Economics', 'The classic “PCME”. ' + contrast)],
+          why: 'Mathematics and Physics are the backbone of every engineering and computing degree; Chemistry broadens your options. H1 Economics is a popular contrasting subject and useful across many courses.',
+          note: str === 'humanities'
+            ? 'Heads-up: this path leans hard on Maths and Physics. Make sure both are genuine strengths before committing.'
+            : 'If your JC offers H2 Further Mathematics or Computing, strong maths students sometimes swap one subject in.'
+        };
+      }
+      if (dir === 'law') {
+        return {
+          title: 'Law, Humanities & Social Sciences',
+          combos: [combo('H2 Literature · H2 History · H2 Economics + H1 Mathematics', 'An arts combination with Maths as the contrasting subject.')],
+          why: 'Essay-based subjects build the argumentation, critical reading and writing that law and humanities degrees reward. H1 Mathematics keeps quantitative options open and satisfies the contrasting requirement.',
+          note: str === 'science'
+            ? 'If you’re actually stronger in the sciences, you don’t have to drop them — consider H2 Economics + H2 Mathematics with one humanity, which keeps law and social science open too.'
+            : 'There is no single “law combo” — universities care most about strong grades in rigorous, essay-heavy subjects.'
+        };
+      }
+      if (dir === 'business') {
+        if (str === 'humanities') {
+          return {
+            title: 'Business, Economics & Accountancy',
+            combos: [combo('H2 Economics · H2 Mathematics · H2 History (or Geography) + H1 (a science)', contrast)],
+            why: 'Economics with Mathematics is the strongest base for business, economics and accountancy. A humanities third subject plays to your strengths, while an H1 science provides the contrast.',
+            note: 'H2 Mathematics is highly valued by university business and economics faculties — keep it if you possibly can.'
+          };
+        }
+        return {
+          title: 'Business, Economics & Accountancy',
+          combos: [combo('H2 Economics · H2 Mathematics · H2 (Physics, Chemistry or a humanity) + H1 (contrasting)', 'Choose the third H2 from your stronger area. ' + contrast)],
+          why: 'Economics with Mathematics is the strongest base for business, economics and accountancy. The third H2 follows your strengths, and the H1 provides the contrast.',
+          note: 'H2 Mathematics is highly valued by university business and economics faculties — keep it if you possibly can.'
+        };
+      }
+      // undecided
+      if (str === 'humanities') {
+        return {
+          title: 'Keeping your options open',
+          combos: [combo('H2 Economics · H2 Mathematics · H2 (a humanity) + H1 (a science)', 'Retains Maths while playing to essay strengths. ' + contrast)],
+          why: 'Keeping Mathematics in your combination preserves the widest range of university courses. Pairing it with Economics and a humanity leaves business, social-science, law and arts routes all open.',
+          note: 'Whatever you pick, holding on to H2 Mathematics keeps the most doors open later.'
+        };
+      }
+      return {
+        title: 'Keeping your options open',
+        combos: [combo('H2 Physics · H2 Chemistry · H2 Mathematics + H1 Economics', 'The classic “PCME”, which keeps the most courses available. ' + contrast)],
+        why: 'A science combination built on Mathematics keeps almost every university pathway open — you can still pivot to business, economics or the social sciences later. If essays are your real strength, an Economics + Maths + humanity mix is the arts-side equivalent.',
+        note: 'Whatever you pick, holding on to H2 Mathematics keeps the most doors open later.'
+      };
+    }
+
+    function render() {
+      var dir = document.getElementById('jc-direction').value;
+      var str = document.getElementById('jc-strength').value;
+      if (!dir || !str) { errorEl.textContent = 'Please choose a direction and where your strengths lie.'; errorEl.hidden = false; result.hidden = true; return; }
+      errorEl.hidden = true;
+      var r = recommend(dir, str);
+      titleEl.textContent = r.title;
+      combosEl.innerHTML = r.combos.map(function (c) {
+        return '<div class="jc-combo">' + c.main + '<span>' + c.sub + '</span></div>';
+      }).join('');
+      whyEl.textContent = r.why;
+      noteEl.textContent = r.note;
+      result.hidden = false;
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (window.plausible) window.plausible('JC Combo Suggested');
+    }
+
+    form.onsubmit = function (e) { e.preventDefault(); render(); };
+    if (resetBtn) resetBtn.onclick = function () {
+      document.getElementById('jc-direction').value = '';
+      document.getElementById('jc-strength').value = '';
+      result.hidden = true; errorEl.hidden = true;
+    };
+  }
+
+  initJC();
+  document.addEventListener('astro:page-load', initJC);
+</script>
