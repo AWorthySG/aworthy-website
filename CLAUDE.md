@@ -191,6 +191,20 @@ Subject pages use hardcoded tight spacing (1.25rem desktop, 1rem tablet, 0.75rem
 - `--border-radius`: 4px / `--border-radius-lg`: 8px
 - `--transition-fast`: 0.2s / `--transition-slow`: 0.65s (both cubic-bezier)
 
+### Z-Index Tokens
+
+| Token | Value | Purpose |
+|-------|-------|---------|
+| `--z-base` | 1 | Base layer |
+| `--z-sticky-cta` | 90 | Global sticky CTA bar |
+| `--z-subject-bar` | 100 | Subject navigation bar |
+| `--z-header` | 110 | Site header |
+| `--z-dropdown` | 120 | Nav dropdowns |
+| `--z-modal` | 130 | PDF preview modal, chatbot |
+| `--z-scroll-progress` | 140 | Scroll progress bar |
+
+Always use z-index tokens instead of hardcoded values for layered components.
+
 ### Breakpoints
 
 - Phone: ≤480px
@@ -242,7 +256,7 @@ Do NOT add `data-animate` back to subject pages, landing pages, programmes, or s
 - Trailing slashes enforced (`trailingSlash: 'always'` in astro.config.mjs)
 - Build format: `directory` (creates `/page/index.html` not `/page.html`)
 - Active nav link detection uses `Astro.url.pathname`
-- Sitemap auto-generated via `@astrojs/sitemap` integration
+- Sitemap auto-generated via `@astrojs/sitemap` integration (filters out `/parent-portal/`, `/lp/*`, `/404`)
 
 ## Key Conventions
 
@@ -252,7 +266,7 @@ Do NOT add `data-animate` back to subject pages, landing pages, programmes, or s
 4. **Content is inline** — no CMS; all copy lives directly in `.astro` page files
 5. **Images go in `public/images/`**, PDFs in `public/docs/samples/`, SVG illustrations are programmatic (not Canva)
 6. **Mobile-first responsive** — design for small screens first, scale up with media queries
-7. **Scoped styles** — component-specific CSS goes in `<style>` tags, global styles in `global.css`
+7. **Scoped styles** — component-specific CSS goes in `<style>` tags, global styles in `global.css`, shared blog styles in `blog.css`
 8. **No build-time data fetching** — purely static, no API calls at build time
 9. **Safe area insets** — all fixed/sticky elements account for notched device insets
 10. **OG images** — source SVGs in `public/images/og-*.svg`, converted to PNG by `scripts/convert-og-images.mjs` at prebuild
@@ -326,3 +340,6 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - When adding a new subject or programme, update: subject page, SubjectBar.astro, Footer.astro, BaseLayout.astro (breadcrumbLabels, knowsAbout, hasOfferCatalog, chatbot answers, exam countdown), programmes.astro, pricing.astro, index.astro (programme card, quiz), contact.astro, 404.astro, about.astro, all other subject pages' related links sections
 - `parent-portal.astro` is a coming-soon stub — it has `noindex={true}` and should remain that way until the portal launches
 - SHARP step card headings must not include time durations — use "See", "Hit", "Apply", "Refine & Practise" (not "See (5 min)" etc.)
+- Blog posts import shared styles from `src/styles/blog.css` — only page-specific styles (e.g., `.cop-table-*`, `.compare-table-*`) go in inline `<style>` blocks
+- PdfPreviewModal uses CSS custom properties (`--pdf-bg`, `--pdf-text`, etc.) for its intentionally dark media-viewer theme — do not tie these to the site's light/dark mode tokens
+- `404.astro` has `noindex={true}` — keep it excluded from search indexing
