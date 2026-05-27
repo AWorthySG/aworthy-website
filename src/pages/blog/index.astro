@@ -191,16 +191,61 @@ import '../../styles/global.css';
       <div class="blog-subscribe" data-animate="reveal-up">
         <h3>Get notified when new articles are published</h3>
         <p>Join our mailing list for free study tips and exam strategies delivered to your inbox.</p>
-        <div class="subscribe-form">
-          <input type="email" placeholder="Your email address" aria-label="Email address" />
-          <button class="btn btn-accent">Subscribe</button>
-        </div>
+        <form class="subscribe-form" id="blog-subscribe-form" novalidate>
+          <input type="email" id="blog-subscribe-email" placeholder="Your email address" aria-label="Email address" required autocomplete="email" />
+          <button type="submit" class="btn btn-accent">Subscribe</button>
+        </form>
+        <p class="subscribe-msg" id="blog-subscribe-msg" role="status" hidden></p>
       </div>
     </div>
   </section>
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<script is:inline>
+  (function () {
+    function initBlogSub() {
+      var form = document.getElementById('blog-subscribe-form');
+      if (!form) return;
+      var input = document.getElementById('blog-subscribe-email');
+      var msg = document.getElementById('blog-subscribe-msg');
+      var btn = form.querySelector('button[type="submit"]');
+      form.onsubmit = function (e) {
+        e.preventDefault();
+        var email = ((input && input.value) || '').trim();
+        msg.classList.remove('subscribe-msg--error');
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          msg.textContent = 'Please enter a valid email address.';
+          msg.classList.add('subscribe-msg--error');
+          msg.hidden = false;
+          if (input) input.focus();
+          return;
+        }
+        if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+        fetch('https://formspree.io/f/xreoozkk', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, _subject: 'Blog newsletter subscription' })
+        }).then(function (res) {
+          if (!res.ok) throw new Error('failed');
+          form.reset();
+          form.hidden = true;
+          msg.textContent = 'Thanks! You’re subscribed — look out for new study tips in your inbox.';
+          msg.hidden = false;
+          if (window.plausible) window.plausible('Newsletter Signup');
+        }).catch(function () {
+          msg.textContent = 'Something went wrong. Please try again, or message us on WhatsApp.';
+          msg.classList.add('subscribe-msg--error');
+          msg.hidden = false;
+          if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+        });
+      };
+    }
+    initBlogSub();
+    document.addEventListener('astro:page-load', initBlogSub);
+  })();
+</script>
 
 <style>
   .page-title {
@@ -331,6 +376,18 @@ import '../../styles/global.css';
     outline-offset: 2px;
     border-color: var(--color-accent);
     box-shadow: 0 0 0 3px rgba(212,133,58,0.12);
+  }
+  .subscribe-msg {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .subscribe-msg--error {
+    color: #c0392b;
+  }
+  [data-theme="dark"] .subscribe-msg--error {
+    color: #ff8a7a;
   }
   @media (max-width: 1024px) {
     .blog-grid {
