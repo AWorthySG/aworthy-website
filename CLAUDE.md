@@ -28,7 +28,7 @@ There are no tests, linting, or formatting commands configured.
 ```
 src/
 ├── components/     # Reusable Astro components
-│   ├── Header.astro          # Desktop + mobile nav, theme toggle, search trigger
+│   ├── Header.astro          # Desktop + mobile nav, theme toggle
 │   ├── Footer.astro          # Site footer with links and contact info
 │   ├── PdfPreviewModal.astro # Full-screen PDF preview overlay for resource samples
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
@@ -138,7 +138,6 @@ All pages wrap content in `<BaseLayout>` which provides:
 - WhatsApp chat widget (with preview bubble)
 - FAQ chatbot widget (pre-defined Q&A)
 - Email capture popup (exit-intent + 45s timer, localStorage dismissal)
-- Site search overlay (Ctrl+K / Cmd+K)
 - Service worker registration
 - Privacy consent notice
 
