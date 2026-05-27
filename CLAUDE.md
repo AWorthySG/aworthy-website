@@ -138,7 +138,7 @@ All pages wrap content in `<BaseLayout>` which provides:
 - Global sticky CTA bar (hidden on homepage)
 - WhatsApp chat widget (with preview bubble)
 - FAQ chatbot widget (pre-defined Q&A)
-- Email capture popup (exit-intent + 45s timer, localStorage dismissal)
+- Email capture popup (exit-intent + 45s timer, localStorage dismissal) — submits to Formspree (`xreoozkk`) and delivers `/docs/samples/essay-framework-sample.pdf` with a fallback download link
 - Service worker registration
 - Privacy consent notice
 
@@ -275,22 +275,23 @@ Do NOT add `data-animate` back to subject pages, landing pages, programmes, or s
 
 ## Homepage Sections (index.astro)
 
-The homepage (~2700 lines) was slimmed from ~4500 lines to 6 core sections. Removed sections (social proof ticker, trust strip, problem/solution, SHARP flow, approach cards, comparison table, resource vault, Google Reviews CTA, referral banner, portal teaser, trial booking) now live on their respective dedicated pages.
+The homepage (~2900 lines) was slimmed from ~4500 lines to a lean set of core sections, later augmented with a founder-credibility band and a grade-transformation strip for conversion. Removed sections (social proof ticker, trust strip, problem/solution, SHARP flow, approach cards, comparison table, resource vault, Google Reviews CTA, referral banner, portal teaser, trial booking) now live on their respective dedicated pages.
 
 Current sections in order:
-1. Hero with geometric SVG decoration and pen animation (audience selector: parent/student)
+1. Hero with geometric SVG decoration and pen animation (audience selector: parent/student; pricing-transparency line + `/pricing/` link; exam-cycle urgency in the intake line)
 2. Stats bar (animated counters)
-3. Programmes grid (with SVG illustrations and embedded SHARP Method quiz)
-4. Testimonials (3 quotes)
-5. Results statistics
-6. Contact form (with FAQ JSON-LD schema in head)
+3. Programmes grid (with SVG illustrations, embedded SHARP Method quiz, and a "Compare all plans & fees" link to `/pricing/`)
+4. "Meet Your Tutor" founder-credibility band (Jeremy Lim → SHARP Method; links to `/about/`)
+5. Testimonials (3 quotes) + grade-transformation strip (3 anonymised grade jumps linking to `/success-stories/`)
+6. Results statistics
+7. Contact form (risk-reversal subtitle — "no obligation, no sales pitch"; FAQ JSON-LD schema in head)
 
 ## Key Stats (keep consistent across all pages)
 
 - **O-Level English pass rate**: 90% A1–B3
 - **O-Level Mathematics lesson duration**: 90 min / week
 - **H2 Economics lesson duration**: 90 min / week
-- **CTA text on subject pages**: "Book Free Assessment" (not "Book Assessment")
+- **Primary CTA (sitewide)**: "Book Free Assessment" (not "Book Assessment") — used on the homepage hero, both contact-form submit buttons (and their JS resets), and all subject pages
 - **Students taught**: 500+
 - **Max class size**: 6 students (display as "6", never "6:1")
 - **Google rating**: 4.9
@@ -316,6 +317,7 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - **O-Level English courseCode**: `"1128"`
 - **OG images**: `og-english.png`, `og-gp.png`, `og-econs.png`, `og-maths.png` — all four subject pages have dedicated OG images. Source SVGs are in `public/images/og-*.svg`; PNGs are generated at build time by `scripts/convert-og-images.mjs`.
 - **Breadcrumbs**: Rendered entirely server-side by Astro in BaseLayout (lines ~226–242). There is no client-side JS breadcrumb script — do not add one, as it would duplicate items. The `breadcrumbLabels` map must include every page slug to avoid bad auto-capitalisation.
+- **LocalBusiness `geo`**: the EducationalOrganization/LocalBusiness JSON-LD includes a `GeoCoordinates` block. Keep its lat/long in sync with the `geo.position`/`ICBM` meta tags in `<head>`. No `streetAddress` — the centre is online-only via Zoom, so do not add a fabricated physical address.
 
 ## Common Pitfalls
 
@@ -330,7 +332,7 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - Astro 6.x uses `ClientRouter` from `astro:transitions`, NOT the old `ViewTransitions` export
 - Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes. TOC labels are sourced from `.eyebrow` text in each section (not truncated h2 text)
 - The prebuild step (`scripts/convert-og-images.mjs`) requires `sharp` — run `npm install` if missing
-- Email popup and resource gating both collect emails but are independent systems with separate localStorage keys
+- Email popup and resource gating both collect emails but are independent systems with separate localStorage keys. Formspree endpoints: contact form + trial booking post to `xgoppwye`; resource gating, newsletter, and the email popup post to `xreoozkk`
 - The chatbot widget in BaseLayout has its own CTA links — update these when changing CTA copy elsewhere
 - Nav links go to dedicated pages (`/programmes/`, `/resources/`, `/results/`, `/testimonials/`) — no in-page `/#anchors` from the header
 - SVG wave section dividers are disabled (`display: none` in global.css) — do not re-enable

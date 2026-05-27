@@ -61,6 +61,11 @@ const schemaData = {
     "addressCountry": "SG",
     "addressLocality": "Singapore"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "1.3521",
+    "longitude": "103.8198"
+  },
   "telephone": "+6583384033",
   "email": "hello@aworthy.sg",
   "sameAs": ["https://wa.me/6583384033", "https://instagram.com/aworthy.sg", "https://tiktok.com/@aworthy.sg", "https://youtube.com/@aworthysg"],
@@ -1088,12 +1093,39 @@ import { ClientRouter } from 'astro:transitions';
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      var email = form.querySelector('input').value;
-      if (email) {
-        form.innerHTML = '<p style="text-align:center;color:var(--color-accent);font-weight:500;">Thanks! Check your inbox for the download link.</p>';
-        localStorage.setItem('email-popup-dismissed', '1');
-        setTimeout(hidePopup, 3000);
+      var input = form.querySelector('input');
+      var email = ((input && input.value) || '').trim();
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var PDF_URL = '/docs/samples/essay-framework-sample.pdf';
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (input) { input.setAttribute('aria-invalid', 'true'); input.focus(); }
+        return;
       }
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+      function deliver() {
+        // Honour the promise: open the framework now, with a reliable fallback link.
+        try { window.open(PDF_URL, '_blank', 'noopener'); } catch (err) {}
+        form.innerHTML = '<p style="text-align:center;color:var(--color-accent);font-weight:500;">' +
+          'Your SHARP essay framework is opening in a new tab. If it doesn’t, ' +
+          '<a href="' + PDF_URL + '" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;">download it here</a>. ' +
+          'We’ll also email you the full version shortly.</p>';
+        localStorage.setItem('email-popup-dismissed', '1');
+        setTimeout(hidePopup, 6000);
+      }
+
+      fetch('https://formspree.io/f/xreoozkk', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, resource: 'SHARP Essay Writing Framework', _subject: 'Email popup lead — SHARP essay framework' })
+      }).then(function(res) {
+        if (!res.ok) throw new Error('submit-failed');
+        deliver();
+      }).catch(function() {
+        // Don't block the visitor on a Formspree outage — still deliver the framework.
+        deliver();
+      });
     });
     }
     if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 5000 });
