@@ -24,24 +24,24 @@ import '../styles/global.css';
         <table class="pricing-table">
           <thead>
             <tr>
-              <th class="pricing-table__label-col"></th>
-              <th>
+              <th scope="col" class="pricing-table__label-col"></th>
+              <th scope="col">
                 <span class="pricing-table__programme-name">O-Level English</span>
                 <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
               </th>
-              <th>
+              <th scope="col">
                 <span class="pricing-table__programme-name">O-Level Maths</span>
                 <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
               </th>
-              <th>
+              <th scope="col">
                 <span class="pricing-table__programme-name">H1 General Paper</span>
                 <span class="pricing-table__programme-level">JC 1 &ndash; 2</span>
               </th>
-              <th>
+              <th scope="col">
                 <span class="pricing-table__programme-name">H2 Economics</span>
                 <span class="pricing-table__programme-level">JC 1 &ndash; 2</span>
               </th>
-              <th>
+              <th scope="col">
                 <span class="pricing-table__programme-name">1-to-1 Coaching</span>
                 <span class="pricing-table__programme-level">All Subjects</span>
               </th>
@@ -49,7 +49,7 @@ import '../styles/global.css';
           </thead>
           <tbody>
             <tr>
-              <td class="pricing-table__row-label">Monthly Fee</td>
+              <td scope="row" class="pricing-table__row-label">Monthly Fee</td>
               <td><strong>SGD 280&ndash;320</strong></td>
               <td><strong>SGD 280&ndash;320</strong></td>
               <td><strong>SGD 360&ndash;400</strong></td>
@@ -57,7 +57,7 @@ import '../styles/global.css';
               <td><strong>SGD 120&ndash;140</strong><span class="pricing-table__note">/session</span></td>
             </tr>
             <tr>
-              <td class="pricing-table__row-label">Session Duration</td>
+              <td scope="row" class="pricing-table__row-label">Session Duration</td>
               <td>90 min</td>
               <td>90 min</td>
               <td>90 min</td>
@@ -65,7 +65,7 @@ import '../styles/global.css';
               <td>60&ndash;90 min</td>
             </tr>
             <tr>
-              <td class="pricing-table__row-label">Sessions / Month</td>
+              <td scope="row" class="pricing-table__row-label">Sessions / Month</td>
               <td>4&times;</td>
               <td>4&times;</td>
               <td>4&times;</td>
@@ -73,7 +73,7 @@ import '../styles/global.css';
               <td>Flexible</td>
             </tr>
             <tr>
-              <td class="pricing-table__row-label">Class Size</td>
+              <td scope="row" class="pricing-table__row-label">Class Size</td>
               <td>Max 6</td>
               <td>Max 6</td>
               <td>Max 6</td>
@@ -81,7 +81,7 @@ import '../styles/global.css';
               <td>1</td>
             </tr>
             <tr>
-              <td class="pricing-table__row-label">Materials</td>
+              <td scope="row" class="pricing-table__row-label">Materials</td>
               <td>Included</td>
               <td>Included</td>
               <td>Included</td>
@@ -89,7 +89,7 @@ import '../styles/global.css';
               <td>Included</td>
             </tr>
             <tr>
-              <td class="pricing-table__row-label">Assessment</td>
+              <td scope="row" class="pricing-table__row-label">Assessment</td>
               <td>Free</td>
               <td>Free</td>
               <td>Free</td>
@@ -101,6 +101,7 @@ import '../styles/global.css';
       </div>
 
       <!-- Mobile pricing cards (visible on small screens) -->
+      <h2 class="sr-only">Programme pricing</h2>
       <div class="pricing-cards" data-animate="reveal-up">
         <div class="pricing-card card--elevated">
           <h3 class="pricing-card__name">O-Level English</h3>

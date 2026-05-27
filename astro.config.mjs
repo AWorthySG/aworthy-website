@@ -6,7 +6,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://a-worthy.com',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    filter: (page) =>
+      !page.includes('/parent-portal/') &&
+      !page.includes('/lp/') &&
+      !page.includes('/404'),
+  })],
   build: {
     format: 'directory',
   },
