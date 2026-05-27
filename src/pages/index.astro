@@ -15,7 +15,7 @@ import '../styles/global.css';
 
     <div class="hero-centre">
       <div class="hero-reveal-line hero-anim" style="--d:0">
-        <span class="hero-kicker">Top-Rated O-Level English, GP &amp; H2 Economics Tuition in Singapore</span>
+        <span class="hero-kicker">Top-Rated O-Level English &amp; Maths, GP &amp; H2 Economics Tuition in Singapore</span>
       </div>
       <h1 class="hero-display">
         <span class="hero-prelude">
@@ -34,7 +34,7 @@ import '../styles/global.css';
         </span>
         <span class="hero-underline" aria-hidden="true"></span>
       </h1>
-      <p class="hero-sub hero-anim" style="--d:10">Your child studies hard but their grades don&rsquo;t move. They know the content &mdash; they just can&rsquo;t show it under exam pressure. SHARP gives them a five-step system to see what the question wants, pick the right framework, and write answers that score &mdash; across O-Level English, H1 General Paper, and H2 Economics.</p>
+      <p class="hero-sub hero-anim" style="--d:10">Your child studies hard but their grades don&rsquo;t move. They know the content &mdash; they just can&rsquo;t show it under exam pressure. SHARP gives them a five-step system to see what the question wants, pick the right framework, and write answers that score &mdash; across O-Level English &amp; Maths, H1 General Paper, and H2 Economics.</p>
 
       <div class="hero-proof-row hero-anim" style="--d:12">
         <div class="hero-proof-item">
@@ -60,9 +60,10 @@ import '../styles/global.css';
       </div>
 
       <p class="hero-intake hero-anim" style="--d:14">Next intake: <strong>Term 3, July 2026</strong> &mdash; Limited slots available</p>
+      <p class="hero-pricing-note hero-anim" style="--d:14">Transparent fees from <strong>S$280/mo</strong> &mdash; no registration fee, all materials included. <a href="/pricing/">See full pricing &rarr;</a></p>
 
       <div class="hero-btns hero-anim" style="--d:15">
-        <a href="/#contact" class="btn btn-accent hero-cta-primary">Find Out Where Your Child Is Losing Marks</a>
+        <a href="/#contact" class="btn btn-accent hero-cta-primary">Book Free Assessment</a>
         <a href="https://wa.me/6583384033" class="btn btn-outline hero-cta-secondary" target="_blank" rel="noopener noreferrer">
           <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp Us
@@ -205,6 +206,8 @@ import '../styles/global.css';
           </div>
         </a>
       </div>
+
+      <p class="programmes-pricing-link" data-animate="reveal-up"><a href="/pricing/">Compare all plans &amp; fees &mdash; transparent, all-inclusive &rarr;</a></p>
 
       <!-- Programme Selector Quiz (#8) -->
       <div class="quiz-section" data-animate="reveal-up">
@@ -538,7 +541,7 @@ import '../styles/global.css';
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="4" placeholder="What would you like us to know about your child? Any specific challenges or goals..."></textarea>
             </div>
-            <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Find Out How We Can Help</span></button>
+            <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Book Free Assessment</span></button>
             <div id="form-success" class="form-success" hidden>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
               Thanks! We've received your message and will get back to you within 24 hours — usually much sooner. Keep an eye on your inbox (and spam folder, just in case).
@@ -668,13 +671,13 @@ import '../styles/global.css';
         errorsEl.textContent = 'Something went wrong. Please try again or WhatsApp us.';
         errorsEl.hidden = false;
         btn.disabled = false;
-        btn.innerHTML = '<span>Find Out How We Can Help</span>';
+        btn.innerHTML = '<span>Book Free Assessment</span>';
       }
     }).catch(function() {
       errorsEl.textContent = 'Network error. Please try again or WhatsApp us.';
       errorsEl.hidden = false;
       btn.disabled = false;
-      btn.innerHTML = '<span>Find Out How We Can Help</span>';
+      btn.innerHTML = '<span>Book Free Assessment</span>';
     });
   });
 })();
@@ -1115,11 +1118,32 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .hero-intake {
     font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
   }
 
   .hero-intake strong {
     color: var(--text-primary);
+  }
+
+  .hero-pricing-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .hero-pricing-note strong {
+    color: var(--text-primary);
+  }
+
+  .hero-pricing-note a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .hero-pricing-note a:hover {
+    text-decoration: underline;
   }
 
   .hero-btns {
@@ -1407,6 +1431,22 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
+  }
+
+  .programmes-pricing-link {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .programmes-pricing-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .programmes-pricing-link a:hover {
+    text-decoration: underline;
   }
 
   .programme-card {
