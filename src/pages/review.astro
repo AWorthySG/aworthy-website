@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const googleReview = 'https://g.page/r/aworthy-sg/review';
+const whatsappFeedback = 'https://wa.me/6583384033?text=' + encodeURIComponent('Hi A-Worthy, I have some feedback I’d like to share:');
+---
+
+<BaseLayout title="Leave a Review | A-Worthy" description="Share your experience with A-Worthy. Leave us a Google review, or send us private feedback — we read every message." noindex={true}>
+  <Header slot="header" />
+
+  <section class="review-hero">
+    <div class="container">
+      <span class="eyebrow">Thank You</span>
+      <h1 class="review-title">How did we do?</h1>
+      <p class="review-sub">Your experience helps us improve &mdash; and helps other Singapore families decide. It takes less than a minute.</p>
+
+      <div class="review-card">
+        <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <h2 class="review-card__title">Loved learning with A-Worthy?</h2>
+        <p class="review-card__text">A quick Google review is the kindest thing you can do for us &mdash; it helps the next parent find a tutor they can trust.</p>
+        <a href={googleReview} class="btn btn-accent review-card__cta plausible-event-name=Review+Click" target="_blank" rel="noopener noreferrer">Leave a Google review</a>
+      </div>
+
+      <div class="review-alt">
+        <p>Got feedback for us instead? We read every message and use it to get better.</p>
+        <a href={whatsappFeedback} target="_blank" rel="noopener noreferrer" class="review-alt__link">Share private feedback on WhatsApp &rarr;</a>
+        <span class="review-alt__or">or <a href="/contact/">contact us here</a></span>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .review-hero { padding: 2rem 0 3rem; text-align: center; }
+  .review-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .review-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 540px; margin: 0 auto 2rem; }
+  .review-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 2.25rem 1.75rem; max-width: 480px; margin: 0 auto 1.5rem; }
+  .review-stars { color: var(--color-accent); font-size: 1.6rem; letter-spacing: 0.15em; margin-bottom: 1rem; }
+  .review-card__title { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; }
+  .review-card__text { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem; }
+  .review-card__cta { display: inline-block; }
+  .review-alt { max-width: 480px; margin: 0 auto; }
+  .review-alt p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+  .review-alt__link { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .review-alt__link:hover { text-decoration: underline; }
+  .review-alt__or { display: block; margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-muted); }
+  .review-alt__or a { color: var(--text-secondary); }
+</style>

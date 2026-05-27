@@ -25,7 +25,8 @@ import '../styles/global.css';
           <thead>
             <tr>
               <th scope="col" class="pricing-table__label-col"></th>
-              <th scope="col">
+              <th scope="col" class="pricing-table__th--popular">
+                <span class="pricing-table__popular-badge">Most popular</span>
                 <span class="pricing-table__programme-name">O-Level English</span>
                 <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
               </th>
@@ -103,7 +104,8 @@ import '../styles/global.css';
       <!-- Mobile pricing cards (visible on small screens) -->
       <h2 class="sr-only">Programme pricing</h2>
       <div class="pricing-cards" data-animate="reveal-up">
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card card--elevated pricing-card--popular">
+          <span class="pricing-card__popular-badge">Most popular</span>
           <h3 class="pricing-card__name">O-Level English</h3>
           <p class="pricing-card__level">Sec 1 &ndash; 4</p>
           <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
@@ -289,6 +291,7 @@ import '../styles/global.css';
         <h2>Ready to get started?</h2>
         <p>Book a free 20-minute diagnostic assessment &mdash; we&rsquo;ll identify your child&rsquo;s gaps and recommend the right programme.</p>
         <a href="/contact/" class="btn btn-accent pricing-cta__btn">Book Free Assessment</a>
+        <p class="pricing-cta__reassure">Month-to-month &middot; no lock-in &middot; 7-day money-back guarantee</p>
       </div>
     </div>
   </section>
@@ -493,6 +496,42 @@ import '../styles/global.css';
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     text-align: center;
+  }
+
+  .pricing-card--popular {
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 28px rgba(212, 133, 58, 0.14);
+  }
+  .pricing-card__popular-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+  .pricing-table__th--popular { background: rgba(212, 133, 58, 0.06); }
+  .pricing-table__popular-badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    margin-bottom: 0.35rem;
+  }
+  .pricing-cta__reassure {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: inherit;
+    opacity: 0.8;
   }
 
   .pricing-card__name {
