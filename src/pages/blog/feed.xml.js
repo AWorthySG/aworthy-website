@@ -1,5 +1,6 @@
 export function GET() {
   const posts = [
+    { title: "IB or JC? How to Choose the Right Path After O-Levels", slug: "ib-vs-jc", date: "2026-05-27", description: "Honest comparison of the IB Diploma and JC A-Level pathways in Singapore. Curriculum, assessment, workload, university recognition, and which suits your child." },
     { title: "2026 O-Level Cut-Off Points for JC: The Complete L1R5 Guide", slug: "o-level-cut-off-points-2026", date: "2026-05-26", description: "Complete 2026 JAE cut-off points for all Singapore JCs ranked by L1R5. How L1R5 is calculated, bonus points, and strategies to lower your aggregate." },
     { title: "10 O-Level English Tips to Score A1 in 2026", slug: "o-level-english-tips-2026", date: "2026-05-15", description: "Actionable tips for Paper 1 and Paper 2 to help you score A1 in the 2026 O-Level English exam." },
     { title: "GP Essay Examples: 5 Model Introductions That Score", slug: "gp-essay-examples", date: "2026-05-10", description: "Five model GP essay introductions across Technology, Environment, Media, Globalisation, and Arts with technique breakdowns." },

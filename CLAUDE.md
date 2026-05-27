@@ -34,7 +34,7 @@ src/
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
-├── pages/          # File-based routing (31 pages)
+├── pages/          # File-based routing (32 pages)
 │   ├── index.astro           # Homepage (~2700 lines — largest page, audience selector)
 │   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
@@ -56,6 +56,7 @@ src/
 │   │   ├── gp-essay-examples.astro
 │   │   ├── gp-essay-structure.astro
 │   │   ├── h2-econs-case-study-tips.astro
+│   │   ├── ib-vs-jc.astro
 │   │   ├── o-level-cut-off-points-2026.astro
 │   │   ├── o-level-english-tips-2026.astro
 │   │   ├── situational-writing-guide.astro

@@ -86,20 +86,22 @@ import '../../styles/global.css';
     </div>
   </article>
 
-  <section class="blog-related" data-animate="reveal-up">
+  <section class="blog-related">
     <div class="container">
-      <h2>Related Articles</h2>
+      <h2 class="related-heading">Related Articles</h2>
       <div class="blog-related-grid">
         <a href="/blog/comprehension-techniques/" class="blog-related-card">
+          <span class="related-card-tag">O-Level English</span>
           <h3>10 Comprehension Techniques That Top Students Use</h3>
           <p>Practical strategies for inference, vocabulary-in-context, and summary questions that top O-Level students use.</p>
         </a>
         <a href="/blog/situational-writing-guide/" class="blog-related-card">
+          <span class="related-card-tag">O-Level English</span>
           <h3>Situational Writing: The Format Guide Every Student Needs</h3>
           <p>Complete guide to formal letters, emails, reports, and speeches with format requirements and examples.</p>
         </a>
         <a href="/o-level-english/" class="blog-related-card blog-related-card--programme">
-          <span class="blog-related-tag">Programme</span>
+          <span class="related-card-tag">Programme</span>
           <h3>O-Level English Tuition</h3>
           <p>See the full O-Level English programme — comprehension, composition, oral, and editing mastered through the SHARP Method.</p>
         </a>
@@ -149,8 +151,6 @@ import '../../styles/global.css';
   .blog-post-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
   .blog-author { color: var(--color-accent); text-decoration: none; font-weight: 600; transition: opacity var(--transition-fast); }
   .blog-author:hover { opacity: 0.8; text-decoration: underline; }
-  .blog-related-card--programme { border-color: rgba(212, 133, 58, 0.25); background: rgba(212, 133, 58, 0.04); }
-  .blog-related-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.5rem; }
   .blog-post-body { max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.8; color: var(--text-primary); }
   .blog-post-body h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 400; margin: 2.5rem 0 1rem; color: var(--text-primary); }
   .blog-post-body h3 { font-family: var(--font-body); font-size: 1.15rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--text-primary); }
@@ -165,11 +165,59 @@ import '../../styles/global.css';
   .cta-secondary a { color: var(--color-accent); text-decoration: underline; }
   .cta-secondary a:hover { color: var(--color-accent-light); }
   .blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
-  .blog-related { padding: var(--space-2xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--space-2xl); }
-  .blog-related h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
-  .blog-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .blog-related-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; text-decoration: none; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
-  .blog-related-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-  .blog-related-card h3 { color: var(--color-primary); font-size: 1rem; margin: 0 0 0.5rem; }
-  .blog-related-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.5; }
+  .blog-related {
+    padding: 3rem 0 4rem;
+    margin-top: 3rem;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+  }
+  .related-heading {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .blog-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .blog-related-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+  }
+  .blog-related-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-color: rgba(43, 90, 140, 0.2);
+  }
+  .related-card-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.625rem;
+  }
+  .blog-related-card h3 { color: var(--color-primary); font-size: 1rem; font-weight: 600; margin: 0 0 0.5rem; line-height: 1.35; }
+  .blog-related-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.55; flex: 1; }
+  .blog-related-card--programme { border-color: rgba(212, 133, 58, 0.2); }
+  .blog-related-card--programme:hover { border-color: rgba(212, 133, 58, 0.4); }
+  .blog-related-card--programme .related-card-tag { color: var(--color-accent); }
+  .blog-related-card--programme h3 { color: var(--color-accent); }
+  [data-theme="dark"] .blog-related-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+  @media (max-width: 860px) {
+    .blog-related-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .blog-related-grid { grid-template-columns: 1fr; }
+    .blog-related { padding: 2rem 0 3rem; }
+  }
 </style>
