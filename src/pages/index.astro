@@ -707,6 +707,7 @@ import '../styles/global.css';
     }).then(function(r) {
       if (r.ok) {
         successEl.hidden = false;
+        if (window.plausible) window.plausible('Lead: Contact Form');
         form.reset();
         btn.disabled = false;
         btn.innerHTML = '<span>Sent!</span>';
