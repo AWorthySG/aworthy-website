@@ -50,11 +50,23 @@
 </div>
 
 <style>
+  /* ── Modal tokens ── */
+  :root {
+    --pdf-bg: #111118;
+    --pdf-bg-alt: #1a1a24;
+    --pdf-text: #f0f0f2;
+    --pdf-text-muted: rgba(240, 240, 242, 0.6);
+    --pdf-border: rgba(255, 255, 255, 0.1);
+    --pdf-border-subtle: rgba(255, 255, 255, 0.08);
+    --pdf-hover: rgba(255, 255, 255, 0.06);
+    --pdf-hover-active: rgba(255, 255, 255, 0.12);
+  }
+
   /* ── Modal overlay ── */
   .pdf-modal-overlay {
     position: fixed;
     inset: 0;
-    z-index: 9999;
+    z-index: var(--z-modal);
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -83,8 +95,8 @@
     max-width: 900px;
     height: 90vh;
     max-height: 90vh;
-    background: #111118;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--pdf-bg);
+    border: 1px solid var(--pdf-border);
     border-radius: 6px;
     overflow: hidden;
     transform: translateY(20px) scale(0.97);
@@ -102,8 +114,8 @@
     justify-content: space-between;
     gap: 1rem;
     padding: 0.875rem 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--pdf-border-subtle);
+    background: var(--pdf-hover);
     flex-shrink: 0;
   }
 
@@ -132,7 +144,7 @@
     font-family: var(--font-body, 'Nunito', sans-serif);
     font-size: 0.95rem;
     font-weight: 400;
-    color: #f0f0f2;
+    color: var(--pdf-text);
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -165,24 +177,24 @@
   }
 
   .pdf-modal-btn--download {
-    color: #f0f0f2;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--pdf-text);
+    background: var(--pdf-hover);
+    border: 1px solid var(--pdf-border);
   }
 
   .pdf-modal-btn--download:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #f0f0f2;
+    background: var(--pdf-hover-active);
+    color: var(--pdf-text);
   }
 
   .pdf-modal-btn--full {
-    color: #f0f0f2;
+    color: var(--pdf-text);
     background: var(--color-accent, #D4853A);
   }
 
   .pdf-modal-btn--full:hover {
     background: #e8a060;
-    color: #f0f0f2;
+    color: var(--pdf-text);
   }
 
   .pdf-modal-close {
@@ -193,7 +205,7 @@
     height: 44px;
     background: none;
     border: none;
-    color: rgba(240, 240, 242, 0.6);
+    color: var(--pdf-text-muted);
     cursor: pointer;
     border-radius: 4px;
     transition: color 0.2s ease, background 0.2s ease;
@@ -201,8 +213,8 @@
   }
 
   .pdf-modal-close:hover {
-    color: #f0f0f2;
-    background: rgba(255, 255, 255, 0.06);
+    color: var(--pdf-text);
+    background: var(--pdf-hover);
   }
 
   /* ── PDF iframe ── */
@@ -210,7 +222,7 @@
     flex: 1;
     position: relative;
     min-height: 0;
-    background: #1a1a24;
+    background: var(--pdf-bg-alt);
   }
 
   .pdf-modal-iframe {
@@ -227,7 +239,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    background: #111118;
+    background: var(--pdf-bg);
   }
   .pdf-modal-fallback[hidden] { display: none; }
   .pdf-modal-fallback:not([hidden]) { display: flex; }
@@ -241,13 +253,13 @@
     font-family: var(--font-body, 'Nunito', sans-serif);
     font-size: 1.1rem;
     font-weight: 400;
-    color: #f0f0f2;
+    color: var(--pdf-text);
     margin: 0 0 0.5rem;
   }
 
   .pdf-fallback-sub {
     font-size: 0.9rem;
-    color: rgba(240, 240, 242, 0.6);
+    color: var(--pdf-text-muted);
     margin: 0 0 1.5rem;
   }
 
@@ -260,15 +272,15 @@
   /* ── Footer ── */
   .pdf-modal-footer {
     padding: 0.6rem 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--pdf-border-subtle);
+    background: var(--pdf-hover);
     flex-shrink: 0;
   }
 
   .pdf-modal-footer p {
     font-family: var(--font-body, 'Nunito', sans-serif);
     font-size: 0.7rem;
-    color: rgba(240, 240, 242, 0.6);
+    color: var(--pdf-text-muted);
     margin: 0;
     text-align: center;
     letter-spacing: 0.02em;
@@ -329,65 +341,62 @@
   }
 </style>
 
-<script>
-  const modal = document.getElementById('pdf-modal') as HTMLElement;
-  const modalTitle = document.getElementById('pdf-modal-title') as HTMLElement;
-  const modalIframe = document.getElementById('pdf-modal-iframe') as HTMLIFrameElement;
-  const modalDownload = document.getElementById('pdf-modal-download') as HTMLAnchorElement;
-  const modalFallbackDownload = document.getElementById('pdf-modal-fallback-download') as HTMLAnchorElement;
-  const modalFallback = document.getElementById('pdf-modal-fallback') as HTMLElement;
-  const modalClose = document.getElementById('pdf-modal-close') as HTMLElement;
+<script is:inline>
+  function initPdfModal() {
+    const modal = document.getElementById('pdf-modal');
+    if (!modal) return;
+    const modalTitle = document.getElementById('pdf-modal-title');
+    const modalIframe = document.getElementById('pdf-modal-iframe');
+    const modalDownload = document.getElementById('pdf-modal-download');
+    const modalFallbackDownload = document.getElementById('pdf-modal-fallback-download');
+    const modalFallback = document.getElementById('pdf-modal-fallback');
+    const modalClose = document.getElementById('pdf-modal-close');
 
-  function openPdfPreview(title: string, pdfUrl: string) {
-    modalTitle.textContent = title;
-    modalDownload.href = pdfUrl;
-    modalFallbackDownload.href = pdfUrl;
-
-    // Detect mobile or known non-PDF-rendering browsers
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    if (isMobile) {
-      modalIframe.style.display = 'none';
-      modalFallback.hidden = false;
-    } else {
-      modalIframe.style.display = '';
-      modalFallback.hidden = true;
-      modalIframe.src = pdfUrl;
+    function openPdfPreview(title, pdfUrl) {
+      modalTitle.textContent = title;
+      modalDownload.href = pdfUrl;
+      modalFallbackDownload.href = pdfUrl;
+      var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) {
+        modalIframe.style.display = 'none';
+        modalFallback.hidden = false;
+      } else {
+        modalIframe.style.display = '';
+        modalFallback.hidden = true;
+        modalIframe.src = pdfUrl;
+      }
+      modal.hidden = false;
+      void modal.offsetHeight;
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
     }
 
-    modal.hidden = false;
-    // Force reflow before adding class for transition
-    void modal.offsetHeight;
-    modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closePdfPreview() {
-    modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-    setTimeout(() => {
-      modal.hidden = true;
-      modalIframe.src = '';
-    }, 300);
-  }
-
-  // Close handlers
-  modalClose.addEventListener('click', closePdfPreview);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closePdfPreview();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.hidden) closePdfPreview();
-  });
-
-  // Listen for preview-pdf custom events from resource cards
-  document.addEventListener('click', (e) => {
-    const trigger = (e.target as HTMLElement).closest('[data-preview-pdf]') as HTMLElement | null;
-    if (trigger) {
-      e.preventDefault();
-      const pdfUrl = trigger.getAttribute('data-preview-pdf') || '';
-      const title = trigger.getAttribute('data-preview-title') || 'Document';
-      openPdfPreview(title, pdfUrl);
+    function closePdfPreview() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(function() {
+        modal.hidden = true;
+        modalIframe.src = '';
+      }, 300);
     }
-  });
+
+    modalClose.addEventListener('click', closePdfPreview);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closePdfPreview();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.hidden) closePdfPreview();
+    });
+    document.addEventListener('click', function(e) {
+      var trigger = e.target.closest('[data-preview-pdf]');
+      if (trigger) {
+        e.preventDefault();
+        var pdfUrl = trigger.getAttribute('data-preview-pdf') || '';
+        var title = trigger.getAttribute('data-preview-title') || 'Document';
+        openPdfPreview(title, pdfUrl);
+      }
+    });
+  }
+  initPdfModal();
+  document.addEventListener('astro:page-load', initPdfModal);
 </script>
