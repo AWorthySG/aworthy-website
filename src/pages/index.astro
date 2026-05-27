@@ -59,7 +59,7 @@ import '../styles/global.css';
         </a>
       </div>
 
-      <p class="hero-intake hero-anim" style="--d:14">Next intake: <strong>Term 3, July 2026</strong> &mdash; Limited slots available</p>
+      <p class="hero-intake hero-anim" style="--d:14">Next intake: <strong>Term 3, July 2026</strong> &mdash; secure a seat before the O/A-Level run-in. Limited slots.</p>
       <p class="hero-pricing-note hero-anim" style="--d:14">Transparent fees from <strong>S$280/mo</strong> &mdash; no registration fee, all materials included. <a href="/pricing/">See full pricing &rarr;</a></p>
 
       <div class="hero-btns hero-anim" style="--d:15">
@@ -265,6 +265,26 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== MEET YOUR TUTOR ===== -->
+  <section class="section founder-band">
+    <div class="container">
+      <div class="founder-band__inner" data-animate="reveal-up">
+        <div class="founder-band__avatar" aria-hidden="true"><span>JL</span></div>
+        <div class="founder-band__body">
+          <span class="eyebrow">Meet Your Tutor</span>
+          <h2 class="founder-band__title">A lawyer&rsquo;s rigour, turned into a method your child can follow</h2>
+          <p class="founder-band__lead">A-Worthy was founded by <strong>Jeremy Lim</strong> after a career in corporate law. He built the SHARP Method (See, Hit, Apply, Refine, Practise) to distil the analytical discipline of legal training into a five-step system &mdash; so students stop guessing and start answering exactly what each question is asking for.</p>
+          <ul class="founder-band__creds">
+            <li>LLB (Hons), NUS Faculty of Law</li>
+            <li>500+ students taught</li>
+            <li>Creator of the SHARP Method</li>
+          </ul>
+          <a href="/about/" class="founder-band__link">Read Jeremy&rsquo;s story &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="reviews" class="section section--sand testimonials-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">What Families Say</span>
@@ -326,6 +346,28 @@ import '../styles/global.css';
           Read all 127 reviews on Google
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
+      </div>
+
+      <div class="transformations" data-animate="reveal-up">
+        <h3 class="transformations__title">Recent grade transformations</h3>
+        <div class="transformations__grid">
+          <a class="transformation-card" href="/success-stories/">
+            <span class="transformation-card__jump"><span class="transformation-card__before">D7</span><span class="transformation-card__arrow">&rarr;</span><span class="transformation-card__after">B3</span></span>
+            <span class="transformation-card__meta">O-Level English &middot; 4 months</span>
+            <span class="transformation-card__quote">&ldquo;I went from failing English to actually looking forward to the exam.&rdquo;</span>
+          </a>
+          <a class="transformation-card" href="/success-stories/">
+            <span class="transformation-card__jump"><span class="transformation-card__before">U</span><span class="transformation-card__arrow">&rarr;</span><span class="transformation-card__after">B</span></span>
+            <span class="transformation-card__meta">H1 General Paper &middot; 6 months</span>
+            <span class="transformation-card__quote">&ldquo;GP felt like a guessing game until the frameworks made every question answerable.&rdquo;</span>
+          </a>
+          <a class="transformation-card" href="/success-stories/">
+            <span class="transformation-card__jump"><span class="transformation-card__before">U</span><span class="transformation-card__arrow">&rarr;</span><span class="transformation-card__after">A</span></span>
+            <span class="transformation-card__meta">H2 Economics &middot; 8 months</span>
+            <span class="transformation-card__quote">&ldquo;I went from blank-staring at case studies to actually enjoying them.&rdquo;</span>
+          </a>
+        </div>
+        <a href="/success-stories/" class="transformations__link">See all student transformations &rarr;</a>
       </div>
     </div>
   </section>
@@ -482,6 +524,7 @@ import '../styles/global.css';
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Get Started</span>
       <h2 class="section-heading" data-animate="reveal-up">Book your child&rsquo;s free diagnostic assessment today</h2>
+      <p class="section-subtitle" data-animate="reveal-up">A free 20-minute diagnostic &mdash; we&rsquo;ll review your child&rsquo;s recent paper and pinpoint exactly where the marks are slipping. No obligation, no sales pitch.</p>
 
       <div class="contact-grid">
         <!-- Enquiry Form -->
@@ -1447,6 +1490,185 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .programmes-pricing-link a:hover {
     text-decoration: underline;
+  }
+
+  /* Meet your tutor band */
+  .founder-band__inner {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .founder-band__avatar {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, rgba(212, 133, 58, 0.18), rgba(43, 90, 140, 0.14));
+    border: 1px solid var(--border-color);
+  }
+
+  .founder-band__avatar span {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .founder-band__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0.4rem 0 0.75rem;
+    line-height: 1.25;
+  }
+
+  .founder-band__lead {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.65;
+  }
+
+  .founder-band__lead strong {
+    color: var(--text-primary);
+  }
+
+  .founder-band__creds {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .founder-band__creds li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .founder-band__creds li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .founder-band__link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .founder-band__link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .founder-band__inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    .founder-band__creds {
+      justify-content: center;
+    }
+  }
+
+  /* Grade-transformation strip */
+  .transformations {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .transformations__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .transformations__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .transformation-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.75rem 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    text-decoration: none;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .transformation-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+
+  .transformation-card__jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+  }
+
+  .transformation-card__before {
+    color: var(--text-muted);
+  }
+
+  .transformation-card__arrow {
+    color: var(--color-accent);
+    font-size: 1.4rem;
+  }
+
+  .transformation-card__after {
+    color: var(--color-primary);
+  }
+
+  .transformation-card__meta {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .transformation-card__quote {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .transformations__link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .transformations__link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .transformations__grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .programme-card {
