@@ -1046,10 +1046,10 @@ import { ClientRouter } from 'astro:transitions';
 
   <!-- Email Capture Popup -->
   <div class="email-popup-overlay" id="email-popup" hidden>
-    <div class="email-popup">
+    <div class="email-popup" role="dialog" aria-modal="true" aria-labelledby="email-popup-title">
       <button class="email-popup-close" id="email-popup-close" aria-label="Close">&times;</button>
       <span class="eyebrow" style="text-align:center;display:block;">Free Download</span>
-      <h3 class="email-popup-title">Get our top-scoring essay framework</h3>
+      <h3 class="email-popup-title" id="email-popup-title">Get our top-scoring essay framework</h3>
       <p class="email-popup-desc">Download the same SHARP Method essay template our A1 students use &mdash; free for your email.</p>
       <form class="email-popup-form" id="email-popup-form">
         <input type="email" placeholder="Enter your email" required aria-label="Email address" />
@@ -1077,6 +1077,7 @@ import { ClientRouter } from 'astro:transitions';
       function showPopup() {
       popup.hidden = false;
       document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
     }
 
     function hidePopup() {
