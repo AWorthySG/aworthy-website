@@ -71,7 +71,8 @@ src/
 │   ├── privacy-policy.astro  # PDPA-compliant privacy policy (linked from cookie consent banner and footer)
 │   └── 404.astro             # Not found page with navigation links
 └── styles/
-    └── global.css            # Design system with CSS custom properties
+    ├── global.css            # Design system with CSS custom properties
+    └── blog.css              # Shared blog post styles (typography, layout, related articles)
 scripts/
 └── convert-og-images.mjs     # Prebuild script: converts SVG OG images to PNG via sharp
 public/

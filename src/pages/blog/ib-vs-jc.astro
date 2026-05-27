@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
+import '../../styles/blog.css';
 ---
 
 <BaseLayout title="IB or JC? How to Choose the Right Path After O-Levels | A-Worthy" description="Honest comparison of the IB Diploma and JC A-Level pathways in Singapore. Covers curriculum, assessment, workload, university recognition, and which suits your child." ogImage="/images/og-blog.png">
@@ -217,89 +218,6 @@ import '../../styles/global.css';
 </BaseLayout>
 
 <style>
-  .blog-post { padding: var(--space-3xl) 0; }
-  .blog-post-header { max-width: 720px; margin: 0 auto 3rem; }
-  .blog-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
-  .blog-back:hover { color: var(--color-accent); }
-  .blog-tag { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); display: block; margin-bottom: 0.75rem; }
-  .blog-post-header h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); font-weight: 200; line-height: 1.1; color: var(--text-primary); margin-bottom: 1rem; }
-  .blog-post-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
-  .blog-author { color: var(--color-accent); text-decoration: none; font-weight: 600; transition: opacity var(--transition-fast); }
-  .blog-author:hover { opacity: 0.8; text-decoration: underline; }
-  .blog-post-body { max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.8; color: var(--text-primary); }
-  .blog-post-body h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 400; margin: 2.5rem 0 1rem; color: var(--text-primary); }
-  .blog-post-body h3 { font-family: var(--font-body); font-size: 1.15rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--text-primary); }
-  .blog-post-body p { margin-bottom: 1.25rem; }
-  .blog-post-body ul, .blog-post-body ol { margin: 1rem 0 1.5rem 1.5rem; }
-  .blog-post-body li { margin-bottom: 0.5rem; }
-  .blog-post-body strong { color: var(--text-primary); font-weight: 600; }
-  .blog-post-cta { max-width: 720px; margin: 3rem auto 0; padding: 2.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; text-align: center; }
-  .blog-post-cta h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.5rem; }
-  .blog-post-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
-  .cta-secondary { font-size: 0.85rem; margin-top: -0.5rem; }
-  .cta-secondary a { color: var(--color-accent); text-decoration: underline; }
-  .cta-secondary a:hover { color: var(--color-accent-light); }
-  .blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
-
-  /* Related articles — cleaned-up UI */
-  .blog-related {
-    padding: 3rem 0 4rem;
-    margin-top: 3rem;
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--border-color);
-  }
-  .related-heading {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-  }
-  .blog-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .blog-related-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    text-decoration: none;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
-    display: flex;
-    flex-direction: column;
-  }
-  .blog-related-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    border-color: rgba(43, 90, 140, 0.2);
-  }
-  .related-card-tag {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.625rem;
-  }
-  .blog-related-card h3 { color: var(--color-primary); font-size: 1rem; font-weight: 600; margin: 0 0 0.5rem; line-height: 1.35; }
-  .blog-related-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.55; flex: 1; }
-  .blog-related-card--programme { border-color: rgba(212, 133, 58, 0.2); }
-  .blog-related-card--programme:hover { border-color: rgba(212, 133, 58, 0.4); }
-  .blog-related-card--programme .related-card-tag { color: var(--color-accent); }
-  .blog-related-card--programme h3 { color: var(--color-accent); }
-
-  [data-theme="dark"] .blog-related-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
-
-  @media (max-width: 860px) {
-    .blog-related-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 560px) {
-    .blog-related-grid { grid-template-columns: 1fr; }
-    .blog-related { padding: 2rem 0 3rem; }
-  }
-
   /* Comparison table */
   .compare-table-wrap {
     overflow-x: auto;
