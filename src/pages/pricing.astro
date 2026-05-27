@@ -299,6 +299,10 @@ import '../styles/global.css';
       <h2 class="section-title" data-animate="reveal-up">Frequently Asked Questions</h2>
       <div class="faq-list" data-animate="reveal-up" data-animate-delay="1">
         <details class="faq-item">
+          <summary class="faq-question">How much does tuition cost at A-Worthy?</summary>
+          <p class="faq-answer">O-Level English and Mathematics are SGD 280&ndash;320/month, and H1 General Paper and H2 Economics are SGD 360&ndash;400/month, for small classes of up to 6 students. One-to-one coaching is SGD 120&ndash;140/session. Every fee includes materials, assessments, and WhatsApp support, with no registration fee.</p>
+        </details>
+        <details class="faq-item">
           <summary class="faq-question">Are there any registration or material fees?</summary>
           <p class="faq-answer">No. The monthly fee covers everything &mdash; lesson materials, practice papers, model answers, and access to the resource vault. There are no hidden fees.</p>
         </details>
@@ -325,6 +329,48 @@ import '../styles/global.css';
       </div>
     </div>
   </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does tuition cost at A-Worthy?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O-Level English and Mathematics are SGD 280–320/month, and H1 General Paper and H2 Economics are SGD 360–400/month, for small classes of up to 6 students. One-to-one coaching is SGD 120–140/session. Every fee includes materials, assessments, and WhatsApp support, with no registration fee." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there any registration or material fees?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The monthly fee covers everything — lesson materials, practice papers, model answers, and access to the resource vault. There are no hidden fees." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a lock-in contract?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. All programmes are month-to-month. You can stop at any time with no penalty — we believe in earning your trust every month." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the fee a range (e.g. SGD 280–320) instead of a fixed price?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The lower end is for Sec 1–2 or JC 1 foundation programmes, and the higher end is for Sec 3–4 or JC 2 intensive programmes, which include more exam-focused content and additional practice materials." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the money-back guarantee work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If you're not satisfied after the first month of lessons, contact us within 7 days of the last session and we'll issue a full refund — no questions asked." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I switch between group and 1-to-1 coaching?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many students start with group sessions and add occasional 1-to-1 coaching closer to exams. You can mix and match as needed." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there sibling or multi-subject discounts?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer a 10% sibling discount and a 5% discount for students enrolled in two or more subjects. Contact us for details." }
+      }
+    ]
+  })} />
 
   <Footer slot="footer" />
 </BaseLayout>

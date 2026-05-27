@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+---
+
+<BaseLayout title="Best O-Level Maths Tuition in Singapore | A-Worthy" description="O-Level Mathematics tuition with the SHARP Method — a named framework for every question type. Max 6 per class, NUS Law graduate tutor, free assessment." ogImage="/images/og-maths.png" noindex={true}>
+  <Header slot="header" />
+
+  <section class="lp-hero">
+    <div class="container">
+      <span class="eyebrow">O-Level Mathematics Tuition</span>
+      <h1 class="lp-title">Your child deserves an <strong>A for Maths</strong></h1>
+      <p class="lp-subtitle">The SHARP Method gives your child a named, examiner-aligned framework for every question type — so they always know which method to reach for. Small groups of 6 via Zoom. <a href="/o-level-mathematics/#playbook" style="color: var(--color-accent); text-decoration: underline;">See the full SHARP Playbook &rarr;</a></p>
+      <div class="lp-cta-row">
+        <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
+        <a href="/o-level-mathematics/" class="btn">View Full Programme</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lp-proof">
+    <div class="container">
+      <div class="lp-stats">
+        <div class="lp-stat"><span class="lp-stat-num">6</span><span class="lp-stat-label">max per class</span></div>
+        <div class="lp-stat"><span class="lp-stat-num" data-count="4.9">0</span><span class="lp-stat-label">Google rating</span></div>
+        <div class="lp-stat"><span class="lp-stat-num">S$280</span><span class="lp-stat-label">from / month</span></div>
+      </div>
+
+      <div class="lp-testimonial">
+        <blockquote>&ldquo;Built on the same SHARP Method behind multi-grade jumps in English, GP and Economics &mdash; now engineered for the O-Level Mathematics 4048 syllabus, with a named framework for every question type.&rdquo;</blockquote>
+        <cite>&mdash; The A-Worthy method, taught by Jeremy Lim, LLB (Hons) NUS Law</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lp-features">
+    <div class="container">
+      <h2>A framework for every question type</h2>
+      <div class="lp-features-grid">
+        <div class="lp-feature">
+          <h3>Algebra &amp; Word Problems</h3>
+          <p>READ (Read, Extract, Assign, Derive) turns wordy questions into precise equations, with line-by-line working that earns every method mark.</p>
+        </div>
+        <div class="lp-feature">
+          <h3>Geometry &amp; Trigonometry</h3>
+          <p>LABEL for geometry and RULE for trigonometry — a right-angle check decides SOH-CAH-TOA, sine rule, or cosine rule, so your child never picks the wrong method.</p>
+        </div>
+        <div class="lp-feature">
+          <h3>Functions &amp; Graphs</h3>
+          <p>PLOT (Parameters, Locate, Obtain, Trace) for accurate sketching of linear, quadratic, cubic, and exponential functions — intercepts, turning points, and symmetry every time.</p>
+        </div>
+        <div class="lp-feature">
+          <h3>Statistics, Probability &amp; Proofs</h3>
+          <p>DATA (Define, Arrange, Tabulate, Answer) maximises method marks in statistics; SHOW (State, Hunt, Order, Write) turns intimidating &ldquo;show that&rdquo; questions into a structured chain of reasoning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lp-final-cta">
+    <div class="container" style="text-align:center;">
+      <h2>Start your child&rsquo;s transformation</h2>
+      <p style="max-width:540px;margin:0 auto 2rem;color:var(--text-secondary);">Book a free 20-minute diagnostic assessment. We&rsquo;ll review your child&rsquo;s recent Maths paper, identify their specific gaps, and recommend the right programme &mdash; no obligation, no sales pitch.</p>
+      <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .lp-hero { padding: 1.25rem 0 1.5rem; text-align: center; }
+  .lp-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 200; line-height: 1.1; color: var(--text-primary); margin-bottom: 1.25rem; }
+  .lp-title strong { color: var(--color-accent); font-weight: 200; }
+  .lp-subtitle { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.25rem; }
+  .lp-cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .lp-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem; }
+  .lp-stat { text-align: center; }
+  .lp-stat-num { display: block; font-family: var(--font-heading); font-size: 2.5rem; font-weight: 200; color: var(--color-accent); }
+  .lp-stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font-mono); }
+  .lp-testimonial { max-width: 600px; margin: 0 auto; text-align: center; }
+  .lp-testimonial-intro { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; }
+  .lp-testimonial blockquote { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 300; font-style: italic; color: var(--text-primary); line-height: 1.6; margin-bottom: 0.75rem; }
+  .lp-testimonial cite { font-size: 0.85rem; color: var(--text-muted); font-style: normal; }
+  .lp-features h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 400; text-align: center; margin-bottom: 1.25rem; }
+  .lp-features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto; }
+  .lp-feature { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; }
+  .lp-feature h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .lp-feature p { font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary); }
+  .lp-final-cta h2 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 300; margin-bottom: 0.75rem; }
+  @media (max-width: 640px) { .lp-stats { gap: 2rem; } .lp-features-grid { grid-template-columns: 1fr; } }
+</style>
