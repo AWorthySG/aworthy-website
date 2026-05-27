@@ -1,5 +1,6 @@
 export function GET() {
   const posts = [
+    { title: "7 Careless Mistakes That Cost O-Level Maths Marks — And the SHARP Fix", slug: "o-level-maths-common-mistakes", date: "2026-05-27", description: "The seven method and careless mistakes that quietly cost O-Level Maths (4048) marks — and the SHARP framework fix for each, from method selection to 'show that' proofs." },
     { title: "IB or JC? How to Choose the Right Path After O-Levels", slug: "ib-vs-jc", date: "2026-05-27", description: "Honest comparison of the IB Diploma and JC A-Level pathways in Singapore. Curriculum, assessment, workload, university recognition, and which suits your child." },
     { title: "2026 O-Level Cut-Off Points for JC: The Complete L1R5 Guide", slug: "o-level-cut-off-points-2026", date: "2026-05-26", description: "Complete 2026 JAE cut-off points for all Singapore JCs ranked by L1R5. How L1R5 is calculated, bonus points, and strategies to lower your aggregate." },
     { title: "10 O-Level English Tips to Score A1 in 2026", slug: "o-level-english-tips-2026", date: "2026-05-15", description: "Actionable tips for Paper 1 and Paper 2 to help you score A1 in the 2026 O-Level English exam." },
@@ -16,8 +17,8 @@ export function GET() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>A-Worthy Blog — O-Level English, GP &amp; Economics Tips</title>
-    <description>Free study tips, exam strategies, and model answers for O-Level English, H1 General Paper, and H2 Economics from A-Worthy Singapore &mdash; powered by the SHARP Method (See, Hit, Apply, Refine, Practise).</description>
+    <title>A-Worthy Blog — O-Level English &amp; Maths, GP &amp; Economics Tips</title>
+    <description>Free study tips, exam strategies, and model answers for O-Level English &amp; Maths, H1 General Paper, and H2 Economics from A-Worthy Singapore &mdash; powered by the SHARP Method (See, Hit, Apply, Refine, Practise).</description>
     <link>https://a-worthy.com/blog/</link>
     <atom:link href="https://a-worthy.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <language>en-sg</language>
