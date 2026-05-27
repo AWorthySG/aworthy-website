@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+import '../../styles/blog.css';
+---
+
+<BaseLayout title="A-Maths Calculus Made Simple: Differentiation & Integration (4049) | A-Worthy" description="A plain-English guide to O-Level A-Maths (4049) calculus: what differentiation and integration actually do, where they earn marks, the careless traps to avoid, and the SHARP way to approach them." ogImage="/images/og-maths.png">
+  <Header slot="header" />
+
+  <article class="blog-post">
+    <div class="container">
+      <div class="blog-post-header">
+        <a href="/blog/" class="blog-back">&larr; Back to Blog</a>
+        <span class="blog-tag">O-Level Mathematics</span>
+        <h1>A-Maths Calculus Made Simple: Differentiation &amp; Integration for O-Level</h1>
+        <div class="blog-post-meta">
+          <a class="blog-author" href="/about/" rel="author">By Jeremy Lim, Founder</a>
+          <span>&middot;</span>
+          <time datetime="2026-05-27">27 May 2026</time>
+          <span>&middot;</span>
+          <span class="blog-reading-time">8 min read</span>
+        </div>
+      </div>
+      <div class="blog-post-body">
+        <p>For most students, calculus is the part of Additional Mathematics (4049) that sounds the most intimidating. It&rsquo;s the one major topic with no equivalent in E-Maths &mdash; the 4049 syllabus is built on three strands (Algebra, Geometry &amp; Trigonometry, and Calculus), and Calculus is the strand that&rsquo;s genuinely new at this level. But here is the reassuring truth: calculus is also one of the most <em>systematic</em>, rule-driven topics in the whole syllabus. Once you know which rule a question is asking for, most of the work follows a predictable pattern. Here&rsquo;s what differentiation and integration actually do, where they earn marks, and the traps that quietly cost them.</p>
+
+        <h2>Differentiation: the mathematics of change</h2>
+        <p>Differentiation finds the <strong>gradient of a curve at any point</strong> &mdash; how steeply <em>y</em> changes as <em>x</em> changes, written d<em>y</em>/d<em>x</em>. Where a straight line has one fixed gradient, a curve&rsquo;s gradient changes from point to point, and differentiation gives you a formula for it.</p>
+        <p>The workhorse is the <strong>power rule</strong>: multiply by the power, then reduce the power by one. On top of that, you memorise a small set of standard results &mdash; the derivative of sin&nbsp;<em>x</em> is cos&nbsp;<em>x</em>, of cos&nbsp;<em>x</em> is &minus;sin&nbsp;<em>x</em>, of e<sup><em>x</em></sup> is e<sup><em>x</em></sup>, and of ln&nbsp;<em>x</em> is 1/<em>x</em>. For more complex expressions you reach for the <strong>chain rule</strong> (a function inside a function, like (3<em>x</em>&nbsp;+&nbsp;2)<sup>5</sup>), the <strong>product rule</strong> (two functions multiplied), and the <strong>quotient rule</strong> (one function divided by another). Knowing <em>which</em> rule applies is most of the battle.</p>
+
+        <h2>Where differentiation earns marks</h2>
+        <ul>
+          <li><strong>Tangents and normals:</strong> the gradient of the tangent at a point is d<em>y</em>/d<em>x</em> evaluated there; the normal is the perpendicular, so its gradient is the negative reciprocal.</li>
+          <li><strong>Stationary points (maximum/minimum):</strong> set d<em>y</em>/d<em>x</em>&nbsp;=&nbsp;0 to find them, then classify each using the second derivative or a sign test. This is one of the highest-frequency calculus questions on the paper.</li>
+          <li><strong>Increasing and decreasing functions:</strong> where d<em>y</em>/d<em>x</em>&nbsp;&gt;&nbsp;0 the curve is increasing; where it&rsquo;s &lt;&nbsp;0 it&rsquo;s decreasing.</li>
+          <li><strong>Rates of change and kinematics:</strong> velocity is the rate of change of displacement (d<em>s</em>/d<em>t</em>), and acceleration is the rate of change of velocity (d<em>v</em>/d<em>t</em>). Differentiate to move from position to velocity to acceleration.</li>
+        </ul>
+
+        <h2>Integration: differentiation in reverse</h2>
+        <p>Integration undoes differentiation. Where the power rule for differentiation says &ldquo;multiply by the power, drop it by one,&rdquo; integration reverses that: add one to the power and divide by the new power. Because differentiating a constant gives zero, an <strong>indefinite integral always carries a &ldquo;+&nbsp;<em>C</em>&rdquo;</strong> &mdash; the constant of integration &mdash; which you find using a known point on the curve. A <strong>definite integral</strong> has limits and evaluates to a number: you substitute the upper limit, substitute the lower limit, and subtract.</p>
+
+        <h2>Where integration earns marks</h2>
+        <ul>
+          <li><strong>Area under a curve:</strong> the definite integral of <em>y</em> with respect to <em>x</em> between two limits gives the area between the curve and the <em>x</em>-axis.</li>
+          <li><strong>Area between a curve and a line, or between two curves:</strong> integrate the difference between the two functions over the relevant interval.</li>
+          <li><strong>Kinematics in reverse:</strong> displacement is the integral of velocity, and velocity is the integral of acceleration &mdash; the mirror image of the differentiation chain above.</li>
+          <li><strong>Recovering a function from its gradient:</strong> given d<em>y</em>/d<em>x</em> and a point the curve passes through, integrate and use the point to pin down <em>C</em>.</li>
+        </ul>
+
+        <h2>The careless traps that cost calculus marks</h2>
+        <p>Calculus marks are rarely lost to deep misunderstanding &mdash; they&rsquo;re lost to the same handful of slips, over and over:</p>
+        <ul>
+          <li><strong>Forgetting the &ldquo;+&nbsp;<em>C</em>&rdquo;</strong> on an indefinite integral.</li>
+          <li><strong>Chain-rule slips</strong> on composite functions &mdash; differentiating (3<em>x</em>&nbsp;+&nbsp;2)<sup>5</sup> or sin&nbsp;2<em>x</em> without multiplying by the derivative of the inside.</li>
+          <li><strong>Sign errors</strong> &mdash; especially that the derivative of cos&nbsp;<em>x</em> is <em>negative</em> sin&nbsp;<em>x</em>.</li>
+          <li><strong>Limit errors</strong> in definite integrals &mdash; substituting only one limit, or subtracting the wrong way round.</li>
+          <li><strong>Confusing gradients</strong> &mdash; using the tangent&rsquo;s gradient when the normal was asked for (or vice versa).</li>
+        </ul>
+        <p>If these look familiar, our companion guide on <a href="/blog/o-level-maths-common-mistakes/">the careless mistakes that cost O-Level Maths marks</a> covers the method habits that stop them.</p>
+
+        <h2>The SHARP way to approach calculus</h2>
+        <p>With the SHARP Method, calculus stops being a wall of symbols and becomes a decision procedure. <strong>See</strong> what the question is really after &mdash; a gradient or rate (differentiate) or an area or total (integrate). <strong>Hit</strong> the right rule: power, chain, product, or quotient, or their reverses. <strong>Apply</strong> it with full, line-by-line working so method marks are banked. <strong>Refine</strong> by checking &mdash; does the gradient&rsquo;s sign match the shape of the graph? Did the &ldquo;+&nbsp;<em>C</em>&rdquo; survive? <strong>Practise</strong> each standard question type until the choice of rule is automatic under exam pressure.</p>
+        <p>Calculus rewards students who are systematic, not just clever. Get the decision procedure right and it becomes one of the most reliable mark-earners in the entire A-Maths paper &mdash; and the foundation your child will build on again in A-Level H2 Mathematics.</p>
+      </div>
+      <div class="blog-post-cta">
+        <h3>Make calculus your child&rsquo;s strongest topic</h3>
+        <p>Book a free diagnostic assessment. We&rsquo;ll see exactly where your child stands on differentiation and integration, and show how the SHARP Method turns calculus into a reliable mark-earner &mdash; no obligation, no sales pitch.</p>
+        <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>
+        <p class="cta-secondary">Or see the full <a href="/o-level-mathematics/">O-Level Mathematics programme</a>.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="blog-related">
+    <div class="container">
+      <h2 class="related-heading">Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/e-maths-vs-a-maths/" class="blog-related-card">
+          <span class="related-card-tag">O-Level Mathematics</span>
+          <h3>E-Maths vs A-Maths: Should Your Child Take A-Maths?</h3>
+          <p>What each subject covers, how they&rsquo;re assessed, and how to decide whether to add Additional Mathematics.</p>
+        </a>
+        <a href="/blog/o-level-maths-common-mistakes/" class="blog-related-card">
+          <span class="related-card-tag">O-Level Mathematics</span>
+          <h3>7 Careless Mistakes That Cost O-Level Maths Marks</h3>
+          <p>The method and careless mistakes that quietly cost marks &mdash; and the SHARP framework fix for each.</p>
+        </a>
+        <a href="/o-level-mathematics/" class="blog-related-card blog-related-card--programme">
+          <span class="related-card-tag">Programme</span>
+          <h3>O-Level Mathematics Tuition</h3>
+          <p>See the full O-Level Maths programme &mdash; algebra, geometry, trigonometry, functions, statistics, and calculus through the SHARP Method.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "A-Maths Calculus Made Simple: Differentiation & Integration for O-Level",
+    "description": "A plain-English guide to O-Level A-Maths (4049) calculus: what differentiation and integration do, where they earn marks, the careless traps to avoid, and the SHARP way to approach them.",
+    "image": "https://a-worthy.com/images/og-maths.png",
+    "inLanguage": "en-SG",
+    "articleSection": "O-Level Mathematics",
+    "wordCount": 1160,
+    "author": {
+      "@type": "Person",
+      "name": "Jeremy Lim",
+      "jobTitle": "Founder & Lead Tutor",
+      "url": "https://a-worthy.com/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com",
+      "logo": {"@type": "ImageObject", "url": "https://a-worthy.com/images/logo.svg"}
+    },
+    "datePublished": "2026-05-27",
+    "dateModified": "2026-05-27",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/a-maths-calculus-guide/"
+    }
+  })} />
+
+  <Footer slot="footer" />
+</BaseLayout>
