@@ -814,31 +814,6 @@ const playbookRows = [
   .prog-section + .prog-section { border-top: 1px solid var(--prog-border); }
   .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.03em; }
   .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 1rem; }
-  .ba-question { background: var(--bg-secondary); border: 1px solid var(--border-color); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius); padding: 0.9rem 1.1rem; margin-bottom: 1.25rem; }
-  .ba-q-label { display: block; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.35rem; }
-  .ba-question p { color: var(--text-primary); font-size: 0.98rem; margin: 0; line-height: 1.55; }
-  .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  .ba-card { border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.25rem; background: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; }
-  .ba-card--before { border-top: 3px solid rgba(192, 57, 43, 0.5); }
-  .ba-card--after { border-top: 3px solid rgba(39, 140, 90, 0.6); }
-  .ba-tag { align-self: flex-start; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.2rem 0.55rem; border-radius: 999px; }
-  .ba-tag--before { background: rgba(192, 57, 43, 0.12); color: #b03a2e; }
-  .ba-tag--after { background: rgba(39, 140, 90, 0.14); color: #1e7a52; }
-  [data-theme="dark"] .ba-tag--before { color: #ff9a8c; }
-  [data-theme="dark"] .ba-tag--after { color: #5fd0a0; }
-  .ba-answer { font-size: 1rem; line-height: 1.6; color: var(--text-primary); margin: 0; }
-  .ba-card--before .ba-answer { color: var(--text-secondary); }
-  .ba-notes { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
-  .ba-notes li { font-size: 0.85rem; color: var(--text-secondary); padding-left: 1.3rem; position: relative; line-height: 1.5; }
-  .ba-card--before .ba-notes li::before { content: '\2717'; position: absolute; left: 0; color: #c0392b; font-weight: 700; }
-  .ba-card--after .ba-notes li::before { content: '\2713'; position: absolute; left: 0; color: #1e7a52; font-weight: 700; }
-  [data-theme="dark"] .ba-card--before .ba-notes li::before { color: #ff9a8c; }
-  [data-theme="dark"] .ba-card--after .ba-notes li::before { color: #5fd0a0; }
-  .ba-mark { align-self: flex-start; margin-top: auto; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; }
-  .ba-mark--before { color: var(--text-muted); }
-  .ba-mark--after { color: var(--color-accent); }
-  .ba-footnote { font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; font-style: italic; }
-  @media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
   .card-grid { display: grid; gap: 1rem; }
   .card-grid--1 { grid-template-columns: 1fr; max-width: 800px; }
   .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
