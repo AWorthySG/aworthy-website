@@ -1,0 +1,210 @@
+---
+// Interactive walkthrough of the SHARP Method — uses the WAI-ARIA
+// tabs pattern (role="tablist" / role="tab" / role="tabpanel" with
+// arrow-key navigation). No external deps.
+
+const steps = [
+  {
+    letter: 'S',
+    name: 'See',
+    summary: 'Identify the question type — and what the examiner is actually rewarding — before writing a single word.',
+    example: 'A comprehension question contains the word "suggest" → it\'s an inference question, not a literal lookup. Different question type, different tool.'
+  },
+  {
+    letter: 'H',
+    name: 'Hit',
+    summary: 'Pick the named, paper-matched framework built for that question type.',
+    example: 'Inference → Core Move (Evidence + Interpretation). GP body paragraph → P-E-E-L. Trigonometry → RULE. The right tool for the job, every time.'
+  },
+  {
+    letter: 'A',
+    name: 'Apply',
+    summary: 'Execute the framework with full, line-by-line working — banking method marks even when the final answer slips.',
+    example: 'Quote the evidence, then interpret it. Or write each algebraic step on its own line. The marker can\'t award what they can\'t see.'
+  },
+  {
+    letter: 'R',
+    name: 'Refine',
+    summary: 'Targeted feedback closes the specific gap that\'s costing marks — the bit a textbook can\'t do.',
+    example: 'A student keeps quoting evidence but never interpreting it. Two lessons of focused feedback fixes the habit permanently.'
+  },
+  {
+    letter: 'P',
+    name: 'Practise',
+    summary: 'Spaced retrieval over weeks turns the framework into instinct — so it survives the pressure of exam day.',
+    example: 'Five timed comprehension questions a week, marked against the rubric. By the prelims, the framework is automatic.'
+  }
+];
+---
+
+<section class="sharp-walk" aria-labelledby="sharp-walk-heading">
+  <div class="container">
+    <span class="eyebrow" data-animate="reveal-up">The Method, Interactive</span>
+    <h2 id="sharp-walk-heading" data-animate="reveal-up">Walk through SHARP, one step at a time</h2>
+    <p class="sharp-walk__sub" data-animate="reveal-up">Click each letter to see what your child does at that step &mdash; with a concrete example. Use the arrow keys to step through.</p>
+
+    <div class="sharp-walk__tabs" role="tablist" aria-label="SHARP method steps">
+      {steps.map((step, i) => (
+        <button
+          role="tab"
+          id={`sharp-tab-${i}`}
+          aria-controls={`sharp-panel-${i}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          class:list={['sharp-walk__tab', i === 0 && 'is-active']}
+          data-index={i}
+          type="button"
+        >
+          <span class="sharp-walk__tab-letter">{step.letter}</span>
+          <span class="sharp-walk__tab-name">{step.name}</span>
+        </button>
+      ))}
+    </div>
+
+    <div class="sharp-walk__panels">
+      {steps.map((step, i) => (
+        <div
+          role="tabpanel"
+          id={`sharp-panel-${i}`}
+          aria-labelledby={`sharp-tab-${i}`}
+          class:list={['sharp-walk__panel', i === 0 && 'is-active']}
+          tabindex="0"
+          hidden={i !== 0}
+        >
+          <h3 class="sharp-walk__panel-heading">{step.letter} &mdash; {step.name}</h3>
+          <p class="sharp-walk__panel-summary">{step.summary}</p>
+          <div class="sharp-walk__panel-example">
+            <span class="sharp-walk__panel-example-label">Example</span>
+            <p>{step.example}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sharp-walk { padding: 2rem 0; background: var(--bg-secondary); }
+  .sharp-walk__sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 640px; }
+  .sharp-walk__tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .sharp-walk__tab {
+    flex: 1 1 110px;
+    min-width: 90px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.9rem 0.6rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+  }
+  .sharp-walk__tab:hover { border-color: var(--color-accent); }
+  .sharp-walk__tab.is-active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .sharp-walk__tab.is-active .sharp-walk__tab-letter,
+  .sharp-walk__tab.is-active .sharp-walk__tab-name { color: #fff; }
+  .sharp-walk__tab-letter {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  .sharp-walk__tab-name {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .sharp-walk__panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+  }
+  .sharp-walk__panel-heading {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+  .sharp-walk__panel-summary {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+  .sharp-walk__panel-example {
+    border-left: 3px solid var(--color-accent);
+    padding: 0.75rem 0.9rem;
+    background: var(--bg-secondary);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+  .sharp-walk__panel-example-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .sharp-walk__panel-example p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  @media (max-width: 540px) {
+    .sharp-walk__tab { padding: 0.7rem 0.4rem; }
+    .sharp-walk__tab-letter { font-size: 1.3rem; }
+    .sharp-walk__tab-name { font-size: 0.78rem; }
+  }
+</style>
+
+<script>
+  function initSharpWalk() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.sharp-walk__tab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.sharp-walk__panel'));
+    if (!tabs.length || !panels.length) return;
+
+    function activate(idx) {
+      tabs.forEach(function (t, i) {
+        var active = i === idx;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+        t.setAttribute('tabindex', active ? '0' : '-1');
+      });
+      panels.forEach(function (p, i) {
+        var active = i === idx;
+        p.classList.toggle('is-active', active);
+        p.hidden = !active;
+      });
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.onclick = function () { activate(i); };
+      tab.onkeydown = function (e) {
+        var next = null;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        if (next !== null) {
+          e.preventDefault();
+          activate(next);
+          tabs[next].focus();
+        }
+      };
+    });
+  }
+
+  initSharpWalk();
+  document.addEventListener('astro:page-load', initSharpWalk);
+</script>

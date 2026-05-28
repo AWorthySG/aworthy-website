@@ -320,6 +320,17 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - **LocalBusiness `geo`**: the EducationalOrganization/LocalBusiness JSON-LD includes a `GeoCoordinates` block. Keep its lat/long in sync with the `geo.position`/`ICBM` meta tags in `<head>`. No `streetAddress` — the centre is online-only via Zoom, so do not add a fabricated physical address.
 - **FAQPage schema**: the four subject pages and `pricing.astro` carry `FAQPage` JSON-LD backed by their visible FAQ sections; the homepage has a `FAQPage` block in its `<head>`. Per Google's guidelines, only add `FAQPage` entries that mirror FAQ content actually visible on the same page, and keep the schema answer text in sync with the visible copy (and with pricing/stats).
 
+## Annual content freshness
+
+When the academic year rolls over, update these in order — most date-sensitive content depends on them:
+
+1. **`src/data/site-config.ts`** — the single source for `academicYear`, `nextIntakeLabel`, and the `exams` array (used by the BaseLayout exam-countdown via `define:vars`).
+2. **Cut-off-points blog** (`src/pages/blog/o-level-cut-off-points-2026.astro`) — refresh the COP table, the year in the title/slug, and any references to "2025/2026" trends.
+3. **L1R5 calculator** (`src/pages/l1r5-calculator.astro`) — the embedded `JCS` array of cut-off points must match the blog table.
+4. **Subject pages** — schedule notes (`Next intake: Term 3, July 2026`), syllabus year references.
+5. **Blog post titles/slugs** ending in `-2026` — decide whether to refresh in place or publish a new yearly post (and redirect/archive the old one).
+6. **Sitewide grep** — `grep -rn "2026" src/` to catch any straggling year mentions.
+
 ## Common Pitfalls
 
 - The site URL is `https://a-worthy.com` — update `astro.config.mjs` if this changes
