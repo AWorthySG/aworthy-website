@@ -1,5 +1,6 @@
 ---
 import SubjectBar from '../components/SubjectBar.astro';
+import { exams } from '../data/site-config';
 
 interface Props {
   title: string;
@@ -107,7 +108,12 @@ const schemaData = {
     "@type": "Person",
     "name": "Jeremy Lim",
     "jobTitle": "Founder & Lead Tutor",
-    "alumniOf": "National University of Singapore, Faculty of Law",
+    "description": "Singapore tutor and founder of A-Worthy. NUS Law graduate (LLB Hons) and creator of the SHARP Method — a five-step analytical framework adapted from legal training and applied to O-Level English & Maths, H1 General Paper, and H2 Economics. 500+ students taught.",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "National University of Singapore, Faculty of Law"
+    },
+    "knowsAbout": ["O-Level English", "O-Level Mathematics", "H1 General Paper", "H2 Economics", "SHARP Method"],
     "url": "https://a-worthy.com/about/"
   },
   "knowsAbout": ["O-Level English Tuition", "O-Level Mathematics Tuition", "H1 General Paper Tuition", "H2 Economics Tuition", "Online Tuition Singapore", "Small Group Tuition", "SHARP Method"],
@@ -201,11 +207,9 @@ import { ClientRouter } from 'astro:transitions';
 
   <!-- Fonts — non-render-blocking async load.
        Nunito 200–900 + italic 400, Pinyon Script (pen animation), JetBrains Mono 400/600. -->
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" /></noscript>
 
@@ -1368,7 +1372,7 @@ import { ClientRouter } from 'astro:transitions';
   </script>
 
   <!-- Exam Countdown -->
-  <script is:inline>
+  <script is:inline define:vars={{ exams }}>
   (function() {
     // Skip entirely on the homepage — it already has its own urgency cues.
     if (window.location.pathname === '/' || window.location.pathname === '/index.html') return;
@@ -1377,15 +1381,10 @@ import { ClientRouter } from 'astro:transitions';
       var countdown = document.getElementById('exam-countdown');
       var el = document.getElementById('exam-countdown-text');
       if (!countdown || !el) return;
-      var exams = [
-        { name: 'O-Level English', date: new Date('2026-10-19') },
-        { name: 'O-Level Mathematics', date: new Date('2026-10-20') },
-        { name: 'A-Level GP', date: new Date('2026-11-09') },
-        { name: 'A-Level H2 Economics', date: new Date('2026-11-18') }
-      ];
+      // `exams` is injected from src/data/site-config.ts via Astro define:vars.
       var now = new Date();
       var next = exams
-        .map(function(e) { return { name: e.name, days: Math.ceil((e.date - now) / 86400000) }; })
+        .map(function(e) { return { name: e.name, days: Math.ceil((new Date(e.date) - now) / 86400000) }; })
         .filter(function(e) { return e.days > 0; })
         .sort(function(a, b) { return a.days - b.days; })[0];
       if (next) {

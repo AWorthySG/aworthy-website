@@ -1,0 +1,78 @@
+---
+// Reusable author byline / E-E-A-T block for blog posts.
+// Update the founder facts here in one place when they change.
+---
+
+<aside class="author-bio" aria-label="About the author">
+  <div class="author-bio__avatar" aria-hidden="true"><span>JL</span></div>
+  <div class="author-bio__body">
+    <span class="author-bio__label">Written by</span>
+    <h3 class="author-bio__name">Jeremy Lim</h3>
+    <p class="author-bio__role">Founder &amp; Lead Tutor, A-Worthy &middot; LLB (Hons), NUS Faculty of Law</p>
+    <p class="author-bio__desc">Jeremy founded A-Worthy to bring something Singapore&rsquo;s tuition market was missing: a deliberate, repeatable method instead of more worksheets. An NUS Law graduate and former corporate lawyer who advised on IPO listings, he built the SHARP Method on the analytical patterns of legal reasoning &mdash; and has used it with over 500 students.</p>
+    <a class="author-bio__link" href="/about/">Read Jeremy&rsquo;s story &rarr;</a>
+  </div>
+</aside>
+
+<style>
+  .author-bio {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    margin: 2.5rem 0 1.5rem;
+  }
+  .author-bio__avatar {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, rgba(212, 133, 58, 0.18), rgba(43, 90, 140, 0.14));
+    border: 1px solid var(--border-color);
+  }
+  .author-bio__avatar span {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.15rem;
+  }
+  .author-bio__body { flex: 1; min-width: 0; }
+  .author-bio__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+  }
+  .author-bio__name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.2rem;
+  }
+  .author-bio__role {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.6rem;
+  }
+  .author-bio__desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem;
+  }
+  .author-bio__link {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .author-bio__link:hover { text-decoration: underline; }
+  @media (max-width: 540px) { .author-bio { flex-direction: column; } }
+</style>
