@@ -2,6 +2,15 @@
 import SubjectBar from '../components/SubjectBar.astro';
 import { exams } from '../data/site-config';
 
+// Microsoft Clarity (heatmaps + session recordings) — only renders when
+// PUBLIC_CLARITY_PROJECT_ID is set in the environment, so previews/local
+// builds without the var stay clean. The project ID is passed to a
+// static /clarity.js loader via a meta tag. Using process.env here
+// because import.meta.env access inside this large layout's frontmatter
+// surfaced a parser error during the Vite transform.
+const clarityId = process.env.PUBLIC_CLARITY_PROJECT_ID || '';
+
+
 interface Props {
   title: string;
   description?: string;
@@ -217,6 +226,10 @@ import { ClientRouter } from 'astro:transitions';
 
   <!-- Analytics -->
   <script defer data-domain="a-worthy.com" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+  {clarityId && <meta name="clarity-id" content={clarityId} />}
+  {clarityId && <script async src="/clarity.js"></script>}
+
 
   <!-- Manifest & icons -->
   <link rel="manifest" href="/manifest.json" />

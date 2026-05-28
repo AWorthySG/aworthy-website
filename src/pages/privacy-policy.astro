@@ -3,6 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+
+// Mention Microsoft Clarity in the policy only when the BaseLayout
+// is actually loading it (gated by the same env var).
+const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 ---
 
 <BaseLayout title="Privacy Policy | A-Worthy Singapore Tuition" description="A-Worthy's privacy policy. How we collect, use, and protect your personal data in accordance with Singapore's Personal Data Protection Act (PDPA).">
@@ -34,6 +38,9 @@ import '../styles/global.css';
         <li><strong>Essential cookies</strong> &mdash; required for the site to function correctly (e.g. your theme preference stored in <code>localStorage</code>).</li>
         <li><strong>Service worker cache</strong> &mdash; a service worker caches static assets for faster load times and offline access. No personal data is stored in this cache.</li>
         <li><strong>Plausible Analytics</strong> &mdash; we use Plausible, a privacy-friendly, GDPR-compliant analytics tool that does not use cookies and does not collect personally identifiable information. Aggregate traffic data (page views, referrers, country) is recorded anonymously.</li>
+        {clarityEnabled && (
+          <li><strong>Microsoft Clarity</strong> &mdash; we use Clarity for anonymised heatmaps and session recordings to understand how visitors use the site and improve it. Clarity sets first-party cookies and, by default, masks sensitive content (text input is recorded as asterisks). Microsoft processes the data on our behalf and does not use it for advertising. See <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft&rsquo;s Privacy Statement</a>.</li>
+        )}
       </ul>
       <p>We do not use Google Analytics, Facebook Pixel, or other third-party advertising trackers.</p>
 
@@ -70,6 +77,9 @@ import '../styles/global.css';
         <li><strong>Formspree</strong> &mdash; contact form processing (<a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a>)</li>
         <li><strong>WhatsApp (Meta)</strong> &mdash; messaging (<a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">whatsapp.com/legal/privacy-policy</a>)</li>
         <li><strong>Plausible Analytics</strong> &mdash; cookieless analytics (<a href="https://plausible.io/privacy" target="_blank" rel="noopener noreferrer">plausible.io/privacy</a>)</li>
+        {clarityEnabled && (
+          <li><strong>Microsoft Clarity</strong> &mdash; heatmaps and session-recording analytics (<a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener noreferrer">privacy.microsoft.com</a>)</li>
+        )}
         <li><strong>Google Fonts</strong> &mdash; typography served from Google&rsquo;s CDN (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>)</li>
         <li><strong>Zoom</strong> &mdash; online tuition sessions are conducted via Zoom (<a href="https://explore.zoom.us/en/privacy/" target="_blank" rel="noopener noreferrer">explore.zoom.us/en/privacy/</a>)</li>
       </ul>

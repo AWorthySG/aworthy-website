@@ -345,6 +345,7 @@ When the academic year rolls over, update these in order — most date-sensitive
 - Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes. TOC labels are sourced from `.eyebrow` text in each section (not truncated h2 text)
 - The prebuild step (`scripts/convert-og-images.mjs`) requires `sharp` — run `npm install` if missing
 - Email popup and resource gating both collect emails but are independent systems with separate localStorage keys. Formspree endpoints: contact form + trial booking post to `xgoppwye`; resource gating, newsletter, and the email popup post to `xreoozkk`
+- **Analytics stack**: Plausible (`script.tagged-events.js`) is loaded unconditionally and tagged via `plausible-event-name=...` classes and `window.plausible('Event Name')` calls. Microsoft Clarity (heatmaps + session recordings) is gated on the `PUBLIC_CLARITY_PROJECT_ID` env var — the script only renders when the var is set, and the privacy-policy page's Clarity entries are conditional on the same var. To enable, set `PUBLIC_CLARITY_PROJECT_ID` in Vercel (and Cloudflare Pages) and redeploy. CSP in `public/_headers` already allows `*.clarity.ms` and `c.bing.com`.
 - The chatbot widget in BaseLayout has its own CTA links — update these when changing CTA copy elsewhere
 - Nav links go to dedicated pages (`/programmes/`, `/resources/`, `/results/`, `/testimonials/`) — no in-page `/#anchors` from the header
 - SVG wave section dividers are disabled (`display: none` in global.css) — do not re-enable
