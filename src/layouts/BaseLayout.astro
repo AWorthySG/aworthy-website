@@ -31,6 +31,7 @@ const breadcrumbLabels: Record<string, string> = {
   'h1-general-paper': 'H1 General Paper',
   'h2-economics': 'H2 Economics',
   'o-level-mathematics': 'O-Level Mathematics',
+  'pre-ib-mathematics': 'Pre-IB Mathematics',
   'results': 'Results',
   'resources': 'Resources',
   'testimonials': 'Testimonials',
@@ -125,7 +126,7 @@ const schemaData = {
     "knowsAbout": ["O-Level English", "O-Level Mathematics", "H1 General Paper", "H2 Economics", "SHARP Method"],
     "url": "https://a-worthy.com/about/"
   },
-  "knowsAbout": ["O-Level English Tuition", "O-Level Mathematics Tuition", "H1 General Paper Tuition", "H2 Economics Tuition", "Online Tuition Singapore", "Small Group Tuition", "SHARP Method"],
+  "knowsAbout": ["O-Level English Tuition", "O-Level Mathematics Tuition", "Pre-IB Mathematics Tuition", "H1 General Paper Tuition", "H2 Economics Tuition", "Online Tuition Singapore", "Small Group Tuition", "SHARP Method"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Tuition Programmes",
@@ -133,7 +134,8 @@ const schemaData = {
       {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level English Tuition Singapore", "courseCode": "1128", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level English tuition with the SHARP Method. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"},
       {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H1 General Paper Tuition Singapore", "courseCode": "8807", "inLanguage": "en-SG", "description": "JC 1–2 H1 GP tuition with the SHARP Method. Essay argumentation, comprehension and AQ mastery."}, "price": "360", "priceCurrency": "SGD"},
       {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H2 Economics Tuition Singapore", "courseCode": "9570", "inLanguage": "en-SG", "description": "JC 1–2 H2 Economics tuition with the SHARP Method. Diagram precision, essay technique, and case study mastery."}, "price": "360", "priceCurrency": "SGD"},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level Mathematics Tuition Singapore", "courseCode": "4048", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level Mathematics tuition with the SHARP Method. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"}
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level Mathematics Tuition Singapore", "courseCode": "4048", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level Mathematics tuition with the SHARP Method. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Pre-IB Mathematics Tuition (Year 3 & Year 4)", "inLanguage": "en-SG", "description": "Year 3–4 Pre-IB Mathematics tuition with the SHARP Method. Indices to introductory calculus, with annotated line-by-line working. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"}
     ]
   }
 };
@@ -285,6 +287,7 @@ import { ClientRouter } from 'astro:transitions';
     <a href="/h1-general-paper/" class="subject-pill">GP</a>
     <a href="/h2-economics/" class="subject-pill">Econs</a>
     <a href="/o-level-mathematics/" class="subject-pill">Maths</a>
+    <a href="/pre-ib-mathematics/" class="subject-pill">Pre-IB Maths</a>
   </div>
 
   <main id="main-content">

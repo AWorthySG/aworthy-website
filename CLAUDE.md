@@ -42,6 +42,10 @@ src/
 │   ├── h1-general-paper.astro # H1 GP subject page (sticky TOC, schedule, related links)
 │   ├── o-level-english.astro # O-Level English subject page (sticky TOC, schedule, related links)
 │   ├── o-level-mathematics.astro # O-Level Mathematics subject page (sticky TOC, schedule, related links)
+│   ├── pre-ib-mathematics.astro # Pre-IB Mathematics (Year 3 & 4) subject page — garnet accent (#B0436A); calculus/first-principles SHARP content
+│   ├── l1r5-calculator.astro # Interactive L1R5 aggregate calculator (free tool)
+│   ├── jc-subject-combinations.astro # Interactive JC subject-combination advisor (free tool)
+│   ├── review.astro          # Review-generation page (Google review + private feedback; noindex)
 │   ├── results.astro         # Student results and statistics
 │   ├── resources.astro       # Resource vault with email gating (17 resources, 6 categories)
 │   ├── testimonials.astro    # Testimonials with carousel and video section
