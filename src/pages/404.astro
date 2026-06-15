@@ -185,11 +185,16 @@ import '../styles/global.css';
     border-radius: var(--border-radius-lg);
     padding: 1.5rem;
     text-decoration: none;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
   }
   .suggestion-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    border-color: rgba(212, 133, 58, 0.3);
+    box-shadow: 0 12px 32px -16px rgba(212, 133, 58, 0.3);
+  }
+  :global([data-theme="dark"]) .suggestion-card:hover {
+    border-color: rgba(224, 152, 80, 0.32);
+    box-shadow: 0 12px 32px -16px rgba(224, 152, 80, 0.35);
   }
   .suggestion-card h3 {
     color: var(--color-primary);
