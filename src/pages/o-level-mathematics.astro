@@ -993,6 +993,14 @@ const playbookRows = [
   .faq-item {
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
+    transition: border-color var(--transition-fast);
+  }
+  .faq-item[open] {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--subject-accent) 5%, transparent), transparent 80%);
+    border-bottom-color: var(--subject-accent);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: var(--border-radius);
   }
   .faq-question {
     font-family: 'Nunito', sans-serif;
@@ -1006,6 +1014,10 @@ const playbookRows = [
     align-items: center;
     min-height: 44px;
     touch-action: manipulation;
+    transition: color var(--transition-fast);
+  }
+  .faq-question:hover {
+    color: var(--subject-accent);
   }
   .faq-question::after {
     content: '+';
