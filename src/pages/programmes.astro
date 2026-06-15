@@ -100,28 +100,28 @@ import '../styles/global.css';
       <p class="eyebrow">Every Lesson</p>
       <h2 class="prog-section__heading">Inside a SHARP lesson &mdash; the 90 minutes that change how your child thinks</h2>
 
-      <div class="card-grid card-grid--2">
-        <div class="prog-card">
+      <div class="card-grid card-grid--2 card-grid--steps">
+        <div class="prog-card prog-card--step">
           <h3 class="prog-card__title">See</h3>
           <p class="prog-card__desc">Your child learns to read questions the way a lawyer reads a brief &mdash; identifying exactly what is being asked, what type of response is required, and where the marks lie. No more losing marks to misread questions.</p>
         </div>
 
-        <div class="prog-card">
+        <div class="prog-card prog-card--step">
           <h3 class="prog-card__title">Hit</h3>
           <p class="prog-card__desc">The tutor models expert-level analysis on a live example, then your child selects the right framework &mdash; Core Move or ACED for English, P-E-E-L for GP, DEED for Economics &mdash; and targets the highest-value marks first.</p>
         </div>
 
-        <div class="prog-card">
+        <div class="prog-card prog-card--step">
           <h3 class="prog-card__title">Apply</h3>
           <p class="prog-card__desc">Your child writes a full response using the claim-evidence-reasoning framework &mdash; with the tutor providing immediate, targeted feedback. No waiting until next week to find out what went wrong.</p>
         </div>
 
-        <div class="prog-card">
+        <div class="prog-card prog-card--step">
           <h3 class="prog-card__title">Refine</h3>
           <p class="prog-card__desc">Your child self-assesses against the SHARP checklist, then receives process-level feedback &mdash; not just what was wrong, but exactly why and how to fix it. Every answer is polished to exam standard.</p>
         </div>
 
-        <div class="prog-card">
+        <div class="prog-card prog-card--step">
           <h3 class="prog-card__title">Practise</h3>
           <p class="prog-card__desc">Your child tackles a fresh question independently, applying everything from the lesson. Every session ends with one concrete improvement goal for the week.</p>
         </div>
@@ -479,6 +479,43 @@ import '../styles/global.css';
     font-weight: 500;
   }
 
+  /* ===== SHARP STEP CARDS (numbered sequence) ===== */
+  .card-grid--steps {
+    counter-reset: sharp-step;
+  }
+
+  .prog-card--step {
+    position: relative;
+    counter-increment: sharp-step;
+  }
+
+  .prog-card--step::before {
+    content: counter(sharp-step);
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    width: 1.9rem;
+    height: 1.9rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-family: var(--prog-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.1);
+    border: 1px solid rgba(212, 133, 58, 0.25);
+  }
+
+  .prog-card--step .prog-card__title {
+    padding-right: 2.4rem;
+  }
+
+  :global([data-theme="dark"]) .prog-card--step::before {
+    background: rgba(224, 152, 80, 0.12);
+    border-color: rgba(224, 152, 80, 0.32);
+  }
+
   /* ===== CTA ===== */
   .prog-cta {
     background: var(--prog-bg);
@@ -596,6 +633,22 @@ import '../styles/global.css';
   .comparison-table .highlight {
     color: var(--color-primary);
     font-weight: 600;
+  }
+  /* Warm tint on the winning "A-Worthy" column */
+  .comparison-table th.highlight,
+  .comparison-table td.highlight {
+    background: rgba(212, 133, 58, 0.06);
+  }
+  .comparison-table thead th.highlight {
+    color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.1);
+  }
+  :global([data-theme="dark"]) .comparison-table th.highlight,
+  :global([data-theme="dark"]) .comparison-table td.highlight {
+    background: rgba(224, 152, 80, 0.07);
+  }
+  :global([data-theme="dark"]) .comparison-table thead th.highlight {
+    background: rgba(224, 152, 80, 0.12);
   }
   .comparison-table tbody td:first-child {
     color: var(--text-secondary);

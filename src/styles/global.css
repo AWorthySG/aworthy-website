@@ -1588,11 +1588,13 @@ html {
 
 /* ═══ Tool / utility page heroes — soft accent glow, matching the
    subject pages' hero treatment so the whole site feels of-a-piece. ═══ */
-.calc-hero, .jc-hero, .dec-hero, .review-hero {
+.calc-hero, .jc-hero, .dec-hero, .review-hero,
+.prog-hero, .r-hero {
   position: relative;
   overflow: hidden;
 }
-.calc-hero::before, .jc-hero::before, .dec-hero::before, .review-hero::before {
+.calc-hero::before, .jc-hero::before, .dec-hero::before, .review-hero::before,
+.prog-hero::before, .r-hero::before {
   content: '';
   position: absolute;
   top: -32%;
@@ -1607,11 +1609,14 @@ html {
 [data-theme="dark"] .calc-hero::before,
 [data-theme="dark"] .jc-hero::before,
 [data-theme="dark"] .dec-hero::before,
-[data-theme="dark"] .review-hero::before {
+[data-theme="dark"] .review-hero::before,
+[data-theme="dark"] .prog-hero::before,
+[data-theme="dark"] .r-hero::before {
   background: radial-gradient(circle, rgba(224, 152, 80, 0.10) 0%, transparent 70%);
 }
 .calc-hero > .container, .jc-hero > .container,
-.dec-hero > .container, .review-hero > .container {
+.dec-hero > .container, .review-hero > .container,
+.prog-hero > .container, .r-hero > .r-container {
   position: relative;
   z-index: 1;
 }
