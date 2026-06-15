@@ -87,6 +87,7 @@ const playbookRows = [
   <Header slot="header" />
 
   <nav class="sticky-toc" id="sticky-toc" aria-label="Table of contents">
+    <span class="sticky-toc-eyebrow">On this page</span>
     <ul class="sticky-toc-list" id="sticky-toc-list"></ul>
   </nav>
 
@@ -1289,10 +1290,22 @@ const playbookRows = [
   @media (min-width: 1280px) {
     .sticky-toc { display: block; }
   }
+  .sticky-toc-eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--subject-accent);
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+  }
   .sticky-toc-list {
     list-style: none;
     padding: 0;
-    border-left: 2px solid var(--border-color);
+    margin: 0;
+    border-left: 2px solid color-mix(in srgb, var(--subject-accent) 25%, transparent);
   }
   .sticky-toc-item {
     padding: 0.35rem 0 0.35rem 1rem;
