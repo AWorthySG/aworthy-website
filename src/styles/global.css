@@ -24,7 +24,7 @@
   --nav-offset: calc(var(--header-height) + 44px);
   --font-heading: 'Nunito', -apple-system, sans-serif;
   --font-body: 'Nunito', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'Nunito', -apple-system, sans-serif;
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 

@@ -168,8 +168,8 @@ All pages wrap content in `<BaseLayout>` which provides:
 
 - **Headings**: `'Nunito'` (sans-serif, weights 200–900)
 - **Body**: `'Nunito'` (sans-serif)
-- **Mono**: `'JetBrains Mono'`
-- **Script** (pen animation): `'Pinyon Script'`
+- **`--font-mono`**: `'Nunito'` — the whole site is Nunito. The token is still named `--font-mono` and used for uppercase letter-spaced labels/eyebrows/HUD, but it now resolves to Nunito (no monospace face is loaded).
+- **Single typeface**: the entire site is Nunito — there are **no other font families**. The hero pen animation (`PenAnimation.astro`) and the founder sign-off on `/about/` both render in Nunito (the pen animation uses weights 600/700; the founder sign-off uses Nunito italic 600).
 
 Heading weights: h1 = 200 (light), h2 = 400, h3 = 700.
 
@@ -343,7 +343,7 @@ When the academic year rolls over, update these in order — most date-sensitive
 - The Header component handles both desktop and mobile nav with distinct markup sections
 - The homepage has its own sticky CTA; the global sticky CTA bar in BaseLayout is hidden on `/`
 - Dark mode accent is a different shade (#E09850 vs #D4853A) — update both if changing accent color
-- Font families changed: Nunito replaced Fraunces (headings) and Space Grotesk (body). Pinyon Script and JetBrains Mono are unchanged.
+- Font families: the entire site uses **Nunito only** — JetBrains Mono and Pinyon Script were both removed. The hero `PenAnimation.astro` and the `/about/` founder sign-off now render in Nunito too. Don't reintroduce a monospace or script font; keep mono-styled labels as uppercase + letter-spacing, and the pen animation / sign-off as Nunito.
 - BaseLayout is ~900+ lines — use offset/limit when reading; many widgets are appended before `</body>`
 - Astro 6.x uses `ClientRouter` from `astro:transitions`, NOT the old `ViewTransitions` export
 - Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes. TOC labels are sourced from `.eyebrow` text in each section (not truncated h2 text)

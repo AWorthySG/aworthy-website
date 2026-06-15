@@ -7,7 +7,7 @@
 .blog-post-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
 .blog-author { color: var(--color-accent); text-decoration: none; font-weight: 600; transition: opacity var(--transition-fast); }
 .blog-author:hover { opacity: 0.8; text-decoration: underline; }
-.blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+.blog-reading-time { color: var(--text-muted); font-size: 0.85rem; font-family: var(--font-mono); }
 
 .blog-post-body { max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.8; color: var(--text-primary); }
 .blog-post-body h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 400; margin: 2.5rem 0 1rem; color: var(--text-primary); }

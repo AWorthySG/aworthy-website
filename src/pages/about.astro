@@ -178,7 +178,7 @@ import '../styles/global.css';
               <rect width="200" height="200" rx="100" fill="rgba(43,90,140,0.08)"/>
               <circle cx="100" cy="75" r="35" fill="rgba(43,90,140,0.15)"/>
               <ellipse cx="100" cy="155" rx="55" ry="40" fill="rgba(43,90,140,0.12)"/>
-              <text x="100" y="195" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(43,90,140,0.4)" letter-spacing="0.1em">PHOTO</text>
+              <text x="100" y="195" text-anchor="middle" font-family="Nunito, sans-serif" font-size="10" fill="rgba(43,90,140,0.4)" letter-spacing="0.1em">PHOTO</text>
             </svg>
           </div>
           <div class="founder-signature" aria-hidden="true">Jeremy Lim</div>
@@ -551,10 +551,12 @@ import '../styles/global.css';
     overflow: hidden;
     border: 2px solid var(--border-color);
   }
-  /* Pinyon Script signature — used deliberately once (claudedesign H.2). */
+  /* Founder sign-off — Nunito italic (sitewide single-typeface). */
   .founder-signature {
-    font-family: 'Pinyon Script', cursive;
-    font-size: 2.4rem;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.6rem;
     line-height: 1;
     color: var(--color-accent);
     margin-top: 1rem;
