@@ -773,7 +773,7 @@ const playbookRows = [
 <style>
   /* ===== SUBJECT ACCENT: H2 Economics (Teal) ===== */
   :root { --subject-accent: #2B8A8A; }
-  [data-theme="dark"] { --subject-accent: #3AADAD; }
+  :global([data-theme="dark"]) { --subject-accent: #3AADAD; }
 
   /* ===== DESIGN TOKENS ===== */
   :root {
@@ -820,7 +820,7 @@ const playbookRows = [
     z-index: 0;
   }
 
-  [data-theme="dark"] .prog-hero::before {
+  :global([data-theme="dark"]) .prog-hero::before {
     background: radial-gradient(circle, rgba(58, 173, 173, 0.10) 0%, transparent 70%);
   }
 

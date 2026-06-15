@@ -250,6 +250,6 @@ import AuthorBio from '../../components/AuthorBio.astro';
   }
   .table-note a { color: var(--color-accent); }
 
-  [data-theme="dark"] .cop-table thead { background: rgba(43, 90, 140, 0.6); }
-  [data-theme="dark"] .cop-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+  :global([data-theme="dark"]) .cop-table thead { background: rgba(43, 90, 140, 0.6); }
+  :global([data-theme="dark"]) .cop-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
 </style>

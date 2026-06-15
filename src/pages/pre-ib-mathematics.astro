@@ -767,7 +767,7 @@ const playbookRows = [
 <style>
   /* ===== SUBJECT ACCENT: Pre-IB Mathematics (Garnet) ===== */
   :root { --subject-accent: #B0436A; }
-  [data-theme="dark"] { --subject-accent: #CE6E92; }
+  :global([data-theme="dark"]) { --subject-accent: #CE6E92; }
 
   :root {
     --prog-bg: var(--bg-primary);
@@ -782,7 +782,7 @@ const playbookRows = [
   .eyebrow { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--subject-accent); margin-bottom: 1rem; }
   .prog-hero { background: var(--prog-bg); padding: 1.25rem 0 0.75rem; text-align: center; position: relative; overflow: hidden; }
   .prog-hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(176, 67, 106, 0.10) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-  [data-theme="dark"] .prog-hero::before { background: radial-gradient(circle, rgba(206, 110, 146, 0.10) 0%, transparent 70%); }
+  :global([data-theme="dark"]) .prog-hero::before { background: radial-gradient(circle, rgba(206, 110, 146, 0.10) 0%, transparent 70%); }
   .prog-hero .container { position: relative; z-index: 1; }
   .prog-hero__icon { display: block; margin: 0 auto 1rem; }
   .prog-hero__heading { font-family: var(--prog-font); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 200; line-height: 1.15; color: var(--text-primary); margin-bottom: 0.75rem; letter-spacing: -0.03em; }

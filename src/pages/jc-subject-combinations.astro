@@ -94,7 +94,7 @@ import '../styles/global.css';
   .jc-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.25rem; }
   .jc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; }
   .jc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
-  [data-theme="dark"] .jc-error { color: #ff8a7a; }
+  :global([data-theme="dark"]) .jc-error { color: #ff8a7a; }
 
   .jc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; }
   .jc-rec-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }

@@ -171,8 +171,8 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   .dec-opt.correct .dec-opt__key { background: #1e7a52; color: #fff; }
   .dec-opt.wrong { border-color: #c0392b; background: rgba(192,57,43,0.1); }
   .dec-opt.wrong .dec-opt__key { background: #c0392b; color: #fff; }
-  [data-theme="dark"] .dec-opt.correct { background: rgba(95,208,160,0.14); }
-  [data-theme="dark"] .dec-opt.wrong { background: rgba(255,138,122,0.14); }
+  :global([data-theme="dark"]) .dec-opt.correct { background: rgba(95,208,160,0.14); }
+  :global([data-theme="dark"]) .dec-opt.wrong { background: rgba(255,138,122,0.14); }
 
   .dec-feedback { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: var(--border-radius); font-size: 0.92rem; line-height: 1.55; background: var(--bg-secondary); color: var(--text-primary); }
   .dec-feedback strong { color: var(--color-accent); }
