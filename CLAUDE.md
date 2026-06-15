@@ -168,8 +168,8 @@ All pages wrap content in `<BaseLayout>` which provides:
 
 - **Headings**: `'Nunito'` (sans-serif, weights 200–900)
 - **Body**: `'Nunito'` (sans-serif)
-- **Mono**: `'JetBrains Mono'`
-- **Script** (pen animation): `'Pinyon Script'`
+- **`--font-mono`**: `'Nunito'` — the whole site is Nunito. The token is still named `--font-mono` and used for uppercase letter-spaced labels/eyebrows/HUD, but it now resolves to Nunito (no monospace face is loaded).
+- **Script** (calligraphy flourishes only): `'Pinyon Script'` — the sole non-Nunito face, used purely for the hero calligraphy reveal in `PenAnimation.astro` and the founder signature on `/about/`.
 
 Heading weights: h1 = 200 (light), h2 = 400, h3 = 700.
 
@@ -343,7 +343,7 @@ When the academic year rolls over, update these in order — most date-sensitive
 - The Header component handles both desktop and mobile nav with distinct markup sections
 - The homepage has its own sticky CTA; the global sticky CTA bar in BaseLayout is hidden on `/`
 - Dark mode accent is a different shade (#E09850 vs #D4853A) — update both if changing accent color
-- Font families changed: Nunito replaced Fraunces (headings) and Space Grotesk (body). Pinyon Script and JetBrains Mono are unchanged.
+- Font families: the entire site uses **Nunito** — including `--font-mono` (JetBrains Mono was removed). The only non-Nunito face is **Pinyon Script**, used solely by the hero `PenAnimation.astro` calligraphy and the founder signature on `/about/`. Don't reintroduce a monospace font for `--font-mono`; keep mono-styled labels as uppercase + letter-spacing.
 - BaseLayout is ~900+ lines — use offset/limit when reading; many widgets are appended before `</body>`
 - Astro 6.x uses `ClientRouter` from `astro:transitions`, NOT the old `ViewTransitions` export
 - Subject pages have sticky TOC (visible at 1280px+) using IntersectionObserver — ensure sections have `id` attributes. TOC labels are sourced from `.eyebrow` text in each section (not truncated h2 text)
