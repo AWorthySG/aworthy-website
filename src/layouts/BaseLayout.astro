@@ -64,6 +64,7 @@ const breadcrumbLabels: Record<string, string> = {
   'a-maths-calculus-guide': 'A-Maths Calculus Guide',
   'l1r5-calculator': 'L1R5 Calculator',
   'jc-subject-combinations': 'JC Subject Combinations',
+  'sharp-decoder': 'SHARP Decoder',
   'how-to-choose-a-tuition-centre-singapore': 'Choosing a Tuition Centre',
   'does-my-child-need-tuition': 'Does My Child Need Tuition?',
   'review': 'Leave a Review',
@@ -231,6 +232,9 @@ import { ClientRouter } from 'astro:transitions';
 
   {clarityId && <meta name="clarity-id" content={clarityId} />}
   {clarityId && <script async src="/clarity.js"></script>}
+
+  <!-- Celebration microinteraction (confetti on success moments) — defines window.aworthyCelebrate -->
+  <script defer src="/celebrate.js"></script>
 
 
   <!-- Manifest & icons -->
@@ -1138,6 +1142,7 @@ import { ClientRouter } from 'astro:transitions';
         // Honour the promise: open the framework now, with a reliable fallback link.
         try { window.open(PDF_URL, '_blank', 'noopener'); } catch (err) {}
         if (window.plausible) window.plausible('Lead: Email Popup');
+        if (window.aworthyCelebrate) window.aworthyCelebrate();
         form.innerHTML = '<p style="text-align:center;color:var(--color-accent);font-weight:500;">' +
           'Your SHARP essay framework is opening in a new tab. If it doesn’t, ' +
           '<a href="' + PDF_URL + '" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;">download it here</a>. ' +

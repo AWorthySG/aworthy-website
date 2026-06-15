@@ -1,0 +1,368 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+// Question bank — each item: subject, prompt, four framework options,
+// the correct index, and a one-line teaching explanation. Grounded in
+// the named frameworks documented across the subject pages.
+const QUESTIONS = [
+  // English
+  { s: 'English', q: "Explain what the writer suggests by the phrase “the streets were scrubbed clean of life.”", o: ["Core Move — Evidence + Interpretation", "STAMP CARD — editing sweep", "CAPS — composition planning", "DATA — statistics"], a: 0, why: "Inference questions need a quote (evidence) plus what it implies (interpretation) — the Core Move." },
+  { s: 'English', q: "Find and correct the ten grammatical errors in this editing passage.", o: ["RAWCP — situational writing", "STAMP CARD — editing sweep", "Core Move — inference", "PLOT — graphs"], a: 1, why: "Editing rewards a systematic sweep for each error type — STAMP CARD." },
+  { s: 'English', q: "Write an email to your principal proposing a recycling programme.", o: ["RAWCP — situational writing", "CAPS — composition planning", "SHOW — proofs", "DEED — economics essay"], a: 0, why: "Situational writing turns on register, audience and content points — RAWCP." },
+  { s: 'English', q: "Plan a narrative composition titled “A moment of courage.”", o: ["CAPS — composition planning", "Core Move — inference", "DEED — economics essay", "LABEL — geometry"], a: 0, why: "Compositions are planned with CAPS before a word is written." },
+  // O-Level Maths
+  { s: 'Maths', q: "A car travels 180 km in 2.5 hours. Find its average speed.", o: ["READ — word problems", "LABEL — geometry", "DATA — statistics", "SHOW — proofs"], a: 0, why: "Translate the words into an equation with READ (Read, Extract, Assign, Derive)." },
+  { s: 'Maths', q: "AB is parallel to CD. Find angle x, giving a reason for each step.", o: ["LABEL — geometry", "PLOT — graphs & functions", "RULE — trigonometry", "READ — word problems"], a: 0, why: "Geometry needs the figure labelled and a reason stated each step — LABEL." },
+  { s: 'Maths', q: "Sketch y = x² − 4x + 3, showing intercepts and the turning point.", o: ["PLOT — graphs & functions", "DATA — statistics", "CAPS — composition", "RULE — trigonometry"], a: 0, why: "Graph questions: identify the function, locate key features, then trace — PLOT." },
+  { s: 'Maths', q: "A frequency table shows 60 students’ scores. Estimate the mean.", o: ["DATA — statistics", "READ — word problems", "LABEL — geometry", "SHOW — proofs"], a: 0, why: "Statistics rewards a tabulated method (Σfx) — DATA." },
+  { s: 'Maths', q: "In triangle ABC, AB = 8, AC = 6 and angle A = 50°. Find BC.", o: ["RULE — trigonometry", "LABEL — geometry", "PLOT — graphs", "READ — word problems"], a: 0, why: "Two sides + the included angle, no right angle → cosine rule, chosen via RULE." },
+  { s: 'Maths', q: "Show that the angle in a semicircle is 90°.", o: ["SHOW — proofs", "LABEL — geometry", "DATA — statistics", "RULE — trigonometry"], a: 0, why: "“Show that” questions need a planned chain of reasons — SHOW." },
+  // Pre-IB Maths
+  { s: 'Pre-IB', q: "Differentiate f(x) = x² from first principles.", o: ["First Principles — cancel h, then take the limit", "Power Rule — differentiate term by term", "Integration — keep the + C", "Surds — the conjugate"], a: 0, why: "“From first principles” means the limit definition — cancel the h before letting h → 0." },
+  { s: 'Pre-IB', q: "Find dy/dx for y = 3x⁴ − 5x.", o: ["Power Rule — differentiate term by term", "First Principles — limit definition", "Log Laws", "DATA — statistics"], a: 0, why: "Standard differentiation: bring the power down, reduce by one, term by term — the Power Rule." },
+  { s: 'Pre-IB', q: "Find ∫ (6x² + 2) dx.", o: ["Integration — reverse the power rule, keep the + C", "Power Rule — differentiate", "Surds — the conjugate", "RULE — trigonometry"], a: 0, why: "Reverse the power rule and never drop the + C on an indefinite integral." },
+  { s: 'Pre-IB', q: "Simplify 1 / (√5 − 2).", o: ["Surds — multiply by the conjugate", "Log Laws", "Power Rule", "PLOT — graphs"], a: 0, why: "Rationalise the denominator by multiplying top and bottom by the conjugate." },
+  { s: 'Pre-IB', q: "Solve log₂x + log₂(x − 2) = 3.", o: ["Log Laws — combine, convert, then check the domain", "First Principles", "Integration — + C", "LABEL — geometry"], a: 0, why: "Combine with the product law, convert to exponential form, then check the argument is positive." },
+  // GP
+  { s: 'GP', q: "Structure a body paragraph arguing technology weakens human connection.", o: ["P-E-E-L — point, evidence, explain, link", "DEED — economics essay", "Core Move — inference", "CAPS — composition"], a: 0, why: "GP paragraphs are built with P-E-E-L." },
+  { s: 'GP', q: "Your essay makes a strong point but argues only one side. What’s missing?", o: ["Evaluation — weigh the counter-argument", "P-E-E-L — add another point", "Core Move — inference", "Surds"], a: 0, why: "Band 3 GP needs evaluation — engage the counter-argument and qualify your stance." },
+  { s: 'GP', q: "An AQ asks how far the author’s views apply to your own society.", o: ["AQ Response — extract, evaluate, apply to Singapore", "DEED — economics", "CAPS — composition", "RULE — trigonometry"], a: 0, why: "The Application Question evaluates the author’s view against your own society." },
+  // Econs
+  { s: 'Econs', q: "“Discuss whether raising interest rates is the best way to reduce inflation.”", o: ["DEED — define, explain, evaluate, diagram", "P-E-E-L — GP paragraph", "READ — word problems", "STAMP CARD — editing"], a: 0, why: "H2 Economics essays use DEED, with an AD–AS diagram and a judgement." },
+  { s: 'Econs', q: "“Using Extract C, explain the rise in the demand for electric cars.”", o: ["Extract-Link-Apply — use the case data", "DEED — essay structure", "DATA — statistics", "SHOW — proofs"], a: 0, why: "Case studies must engage the extract: Extract-Link-Apply." },
+  { s: 'Econs', q: "A 6-mark question says “explain” a price rise. How much evaluation?", o: ["None — “explain” signals analysis, not evaluation", "Full DEED with a judgement", "Extract-Link-Apply", "P-E-E-L"], a: 0, why: "Read the command word: “explain” (and the low marks) calls for analysis, not evaluation." },
+];
+
+const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
+---
+
+<BaseLayout
+  title="SHARP Decoder — Free Exam Strategy Game | A-Worthy"
+  description="A free, fast-paced game for Singapore students: read each exam question and pick the right SHARP Method framework before the clock runs out. English, Maths, Pre-IB, GP & Economics."
+  ogImage="/images/og-blog.png">
+  <Header slot="header" />
+
+  <section class="dec-hero">
+    <div class="container">
+      <span class="eyebrow">Free Game</span>
+      <h1 class="dec-title">SHARP Decoder</h1>
+      <p class="dec-sub">Top students don&rsquo;t just know the content &mdash; they instantly know <em>which method</em> each question needs. Read the question, pick the right framework before the timer runs out, and see how sharp your exam instincts really are.</p>
+    </div>
+  </section>
+
+  <section class="section dec-section">
+    <div class="container">
+      <div class="dec-stage" id="dec-stage">
+
+        <!-- START -->
+        <div class="dec-screen dec-start" id="dec-start">
+          <div class="dec-card">
+            <p class="dec-card__kicker">10 questions &middot; beat the clock</p>
+            <h2 class="dec-card__title">Choose your challenge</h2>
+            <div class="dec-chips" role="group" aria-label="Choose a subject">
+              {subjects.map((s, i) => (
+                <button type="button" class:list={['dec-chip', i === 0 && 'is-active']} data-subject={s}>{s}</button>
+              ))}
+            </div>
+            <label class="dec-practice">
+              <input type="checkbox" id="dec-practice-toggle" />
+              <span>Practice mode (no timer)</span>
+            </label>
+            <button type="button" class="btn btn-accent dec-start-btn" id="dec-start-btn">Start &rarr;</button>
+            <p class="dec-hint">Tip: use keys <kbd>1</kbd>&ndash;<kbd>4</kbd> to answer.</p>
+          </div>
+        </div>
+
+        <!-- PLAY -->
+        <div class="dec-screen dec-play" id="dec-play" hidden>
+          <div class="dec-hud">
+            <div class="dec-hud__item"><span class="dec-hud__label">Score</span><span class="dec-hud__val" id="dec-score">0</span></div>
+            <div class="dec-hud__item"><span class="dec-hud__label">Streak</span><span class="dec-hud__val" id="dec-streak">0</span></div>
+            <div class="dec-hud__item"><span class="dec-hud__label">Question</span><span class="dec-hud__val"><span id="dec-qnum">1</span>/<span id="dec-qtotal">10</span></span></div>
+          </div>
+          <div class="dec-timer" id="dec-timer-wrap"><span class="dec-timer__bar" id="dec-timer-bar"></span></div>
+          <div class="dec-q">
+            <span class="dec-q__tag" id="dec-q-tag">English</span>
+            <p class="dec-q__text" id="dec-q-text"></p>
+          </div>
+          <div class="dec-options" id="dec-options" role="group" aria-label="Pick the framework"></div>
+          <p class="dec-feedback" id="dec-feedback" role="status" aria-live="polite" hidden></p>
+          <button type="button" class="btn btn-accent dec-next-btn" id="dec-next-btn" hidden>Next &rarr;</button>
+        </div>
+
+        <!-- END -->
+        <div class="dec-screen dec-end" id="dec-end" hidden>
+          <div class="dec-card">
+            <p class="dec-card__kicker" id="dec-rating">Sharp Shooter</p>
+            <h2 class="dec-card__title"><span id="dec-final">0</span> points</h2>
+            <p class="dec-end__line"><span id="dec-correct">0</span> of 10 correct &middot; best streak <span id="dec-beststreak">0</span></p>
+            <p class="dec-end__pitch">Knowing the right framework on sight is exactly what the SHARP Method drills. That instinct is what turns understanding into marks under exam pressure.</p>
+            <div class="dec-end__actions">
+              <button type="button" class="btn btn-accent" id="dec-replay">Play again</button>
+              <a href="/contact/" class="dec-end__cta plausible-event-name=Tool+CTA+Click">Book a Free Assessment &rarr;</a>
+            </div>
+            <p class="dec-end__tools">Try our other free tools: <a href="/l1r5-calculator/">L1R5 calculator</a> &middot; <a href="/jc-subject-combinations/">JC subject advisor</a></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand dec-explainer">
+    <div class="container">
+      <h2 class="section-title">What the SHARP Method is</h2>
+      <p class="section-subtitle">SHARP &mdash; See, Hit, Apply, Refine, Practise &mdash; trains students to <strong>see</strong> a question&rsquo;s type and <strong>hit</strong> the right named framework for it, every time. This game is just the &ldquo;See &amp; Hit&rdquo; reflex, sped up. See how we teach it for <a href="/o-level-english/">English</a>, <a href="/o-level-mathematics/">Maths</a>, <a href="/pre-ib-mathematics/">Pre-IB Maths</a>, <a href="/h1-general-paper/">GP</a>, and <a href="/h2-economics/">Economics</a>.</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script type="application/json" id="dec-data" set:html={JSON.stringify(QUESTIONS)}></script>
+
+<style>
+  .dec-hero { padding: 1.5rem 0 0.5rem; text-align: center; }
+  .dec-title { font-family: var(--font-heading); font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 200; color: var(--text-primary); margin-bottom: 0.6rem; letter-spacing: -0.03em; }
+  .dec-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 620px; margin: 0 auto; }
+  .dec-sub em { color: var(--color-accent); font-style: normal; font-weight: 600; }
+  .dec-section { padding-top: 1rem; }
+  .dec-stage { max-width: 640px; margin: 0 auto; }
+  .dec-screen { animation: dec-fade 0.3s ease; }
+  @keyframes dec-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .dec-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 2rem 1.75rem; text-align: center; }
+  .dec-card__kicker { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: 0.4rem; }
+  .dec-card__title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 300; color: var(--text-primary); margin-bottom: 1.25rem; }
+
+  .dec-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.25rem; }
+  .dec-chip { font-family: var(--font-mono); font-size: 0.8rem; padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-secondary); cursor: pointer; transition: all var(--transition-fast); }
+  .dec-chip:hover { border-color: var(--color-accent); }
+  .dec-chip.is-active { background: var(--color-accent); border-color: var(--color-accent); color: #fff; font-weight: 600; }
+  .dec-practice { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; cursor: pointer; }
+  .dec-start-btn { display: block; width: 100%; cursor: pointer; }
+  .dec-hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.9rem; }
+  .dec-hint kbd { font-family: var(--font-mono); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 3px; padding: 0 0.3rem; font-size: 0.75rem; }
+
+  /* HUD */
+  .dec-hud { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.85rem; }
+  .dec-hud__item { display: flex; flex-direction: column; align-items: center; flex: 1; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 0.5rem; }
+  .dec-hud__label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+  .dec-hud__val { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400; color: var(--text-primary); line-height: 1.1; }
+  #dec-score { color: var(--color-accent); }
+
+  .dec-timer { height: 8px; background: var(--bg-secondary); border-radius: 999px; overflow: hidden; margin-bottom: 1.1rem; }
+  .dec-timer__bar { display: block; height: 100%; width: 100%; background: var(--color-accent); border-radius: 999px; transform-origin: left; }
+  .dec-timer__bar.run { transition: transform linear; transform: scaleX(0); }
+  .dec-timer__bar.warn { background: #e74c3c; }
+
+  .dec-q { background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+  .dec-q__tag { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .dec-q__text { font-size: 1.1rem; line-height: 1.5; color: var(--text-primary); margin: 0; }
+
+  .dec-options { display: grid; gap: 0.6rem; }
+  .dec-opt { display: flex; align-items: center; gap: 0.75rem; text-align: left; padding: 0.85rem 1rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--bg-card); color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; cursor: pointer; transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast); }
+  .dec-opt:hover:not(:disabled) { border-color: var(--color-accent); transform: translateY(-1px); }
+  .dec-opt__key { font-family: var(--font-mono); font-size: 0.75rem; width: 1.4rem; height: 1.4rem; flex-shrink: 0; display: grid; place-items: center; border-radius: 4px; background: var(--bg-secondary); color: var(--text-muted); }
+  .dec-opt.correct { border-color: #1e7a52; background: rgba(39,140,90,0.12); }
+  .dec-opt.correct .dec-opt__key { background: #1e7a52; color: #fff; }
+  .dec-opt.wrong { border-color: #c0392b; background: rgba(192,57,43,0.1); }
+  .dec-opt.wrong .dec-opt__key { background: #c0392b; color: #fff; }
+  [data-theme="dark"] .dec-opt.correct { background: rgba(95,208,160,0.14); }
+  [data-theme="dark"] .dec-opt.wrong { background: rgba(255,138,122,0.14); }
+
+  .dec-feedback { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: var(--border-radius); font-size: 0.92rem; line-height: 1.55; background: var(--bg-secondary); color: var(--text-primary); }
+  .dec-feedback strong { color: var(--color-accent); }
+  .dec-next-btn { margin-top: 1rem; width: 100%; cursor: pointer; }
+
+  .dec-end__line { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; }
+  .dec-end__pitch { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem; }
+  .dec-end__actions { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .dec-end__actions .btn { cursor: pointer; }
+  .dec-end__cta { color: var(--color-accent); font-weight: 600; text-decoration: none; }
+  .dec-end__cta:hover { text-decoration: underline; }
+  .dec-end__tools { font-size: 0.85rem; color: var(--text-muted); }
+  .dec-end__tools a { color: var(--color-accent); }
+  .dec-explainer { text-align: center; }
+  .dec-explainer a { color: var(--color-accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dec-screen { animation: none; }
+    .dec-opt:hover:not(:disabled) { transform: none; }
+  }
+  @media (max-width: 480px) {
+    .dec-hud__val { font-size: 1.2rem; }
+    .dec-q__text { font-size: 1rem; }
+  }
+</style>
+
+<script>
+  function initDecoder() {
+    var dataEl = document.getElementById('dec-data');
+    var stage = document.getElementById('dec-stage');
+    if (!dataEl || !stage) return;
+    if (stage.getAttribute('data-init')) return; // avoid double-binding on initial astro:page-load
+    stage.setAttribute('data-init', '1');
+    var ALL = JSON.parse(dataEl.textContent || '[]');
+
+    var screens = {
+      start: document.getElementById('dec-start'),
+      play: document.getElementById('dec-play'),
+      end: document.getElementById('dec-end'),
+    };
+    var elScore = document.getElementById('dec-score');
+    var elStreak = document.getElementById('dec-streak');
+    var elQnum = document.getElementById('dec-qnum');
+    var elQtotal = document.getElementById('dec-qtotal');
+    var elTag = document.getElementById('dec-q-tag');
+    var elQ = document.getElementById('dec-q-text');
+    var elOpts = document.getElementById('dec-options');
+    var elFb = document.getElementById('dec-feedback');
+    var elNext = document.getElementById('dec-next-btn');
+    var elBar = document.getElementById('dec-timer-bar');
+    var elTimerWrap = document.getElementById('dec-timer-wrap');
+    var startBtn = document.getElementById('dec-start-btn');
+    var practiceToggle = document.getElementById('dec-practice-toggle');
+
+    var ROUND = 10, PER_Q = 12; // seconds
+    var subject = 'All', practice = false;
+    var deck = [], idx = 0, score = 0, streak = 0, bestStreak = 0, correctCount = 0;
+    var timer = null, locked = false;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(name) {
+      Object.keys(screens).forEach(function (k) { screens[k].hidden = (k !== name); });
+    }
+    function shuffle(arr) {
+      var a = arr.slice();
+      for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+      return a;
+    }
+
+    // chip selection
+    stage.querySelectorAll('.dec-chip').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        stage.querySelectorAll('.dec-chip').forEach(function (c) { c.classList.remove('is-active'); });
+        chip.classList.add('is-active');
+        subject = chip.getAttribute('data-subject');
+      });
+    });
+
+    function startGame() {
+      practice = practiceToggle.checked;
+      elTimerWrap.style.display = practice ? 'none' : '';
+      var pool = subject === 'All' ? ALL : ALL.filter(function (q) { return q.s === subject; });
+      deck = shuffle(pool).slice(0, Math.min(ROUND, pool.length));
+      idx = 0; score = 0; streak = 0; bestStreak = 0; correctCount = 0;
+      elScore.textContent = '0'; elStreak.textContent = '0';
+      if (elQtotal) elQtotal.textContent = String(deck.length);
+      show('play');
+      renderQ();
+    }
+
+    function renderQ() {
+      locked = false;
+      var item = deck[idx];
+      elQnum.textContent = String(idx + 1);
+      elTag.textContent = item.s;
+      elQ.textContent = item.q;
+      elFb.hidden = true; elFb.innerHTML = '';
+      elNext.hidden = true;
+      elOpts.innerHTML = '';
+      item.o.forEach(function (opt, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'dec-opt';
+        b.innerHTML = '<span class="dec-opt__key">' + (i + 1) + '</span><span>' + opt + '</span>';
+        b.addEventListener('click', function () { answer(i); });
+        elOpts.appendChild(b);
+      });
+      if (!practice) startTimer();
+    }
+
+    function startTimer() {
+      elBar.classList.remove('run', 'warn');
+      elBar.style.transition = 'none';
+      elBar.style.transform = 'scaleX(1)';
+      // force reflow then animate
+      void elBar.offsetWidth;
+      elBar.style.transition = 'transform ' + PER_Q + 's linear';
+      elBar.style.transform = 'scaleX(0)';
+      var warnAt = setTimeout(function () { elBar.classList.add('warn'); }, (PER_Q - 4) * 1000);
+      timer = { to: setTimeout(function () { clearTimeout(warnAt); answer(-1); }, PER_Q * 1000), warnAt: warnAt, start: Date.now() };
+    }
+    function stopTimer() {
+      if (timer) { clearTimeout(timer.to); clearTimeout(timer.warnAt); }
+      elBar.style.transition = 'none';
+    }
+
+    function answer(choice) {
+      if (locked) return;
+      locked = true;
+      var item = deck[idx];
+      var remaining = 0;
+      if (!practice && timer) { remaining = Math.max(0, PER_Q - (Date.now() - timer.start) / 1000); stopTimer(); }
+      var btns = elOpts.querySelectorAll('.dec-opt');
+      btns.forEach(function (b) { b.disabled = true; });
+      var isCorrect = choice === item.a;
+      if (choice >= 0) btns[choice].classList.add(isCorrect ? 'correct' : 'wrong');
+      if (!isCorrect) btns[item.a].classList.add('correct');
+
+      if (isCorrect) {
+        streak++; bestStreak = Math.max(bestStreak, streak); correctCount++;
+        var gained = 100 + (practice ? 0 : Math.round(remaining * 10)) + (streak - 1) * 20;
+        score += gained;
+        elScore.textContent = String(score);
+        elStreak.textContent = String(streak);
+        elFb.innerHTML = '<strong>+' + gained + '</strong> &mdash; ' + item.why;
+      } else {
+        streak = 0; elStreak.textContent = '0';
+        var label = choice === -1 ? 'Time’s up!' : 'Not quite.';
+        elFb.innerHTML = '<strong>' + label + '</strong> ' + item.why;
+      }
+      elFb.hidden = false;
+      elNext.hidden = false;
+      elNext.textContent = (idx + 1 >= deck.length) ? 'See results →' : 'Next →';
+      elNext.focus();
+    }
+
+    function next() {
+      idx++;
+      if (idx >= deck.length) { endGame(); return; }
+      renderQ();
+    }
+
+    function endGame() {
+      show('end');
+      var pct = deck.length ? correctCount / deck.length : 0;
+      var rating = pct >= 0.9 ? 'SHARP Method Master' : pct >= 0.7 ? 'Sharp Shooter' : pct >= 0.5 ? 'Getting Sharp' : 'Keep Practising';
+      document.getElementById('dec-rating').textContent = rating;
+      document.getElementById('dec-final').textContent = String(score);
+      document.getElementById('dec-correct').textContent = String(correctCount);
+      document.getElementById('dec-beststreak').textContent = String(bestStreak);
+      if (window.plausible) window.plausible('SHARP Decoder Completed');
+      if (pct >= 0.7 && window.aworthyCelebrate) window.aworthyCelebrate();
+    }
+
+    startBtn.addEventListener('click', startGame);
+    elNext.addEventListener('click', next);
+    document.getElementById('dec-replay').addEventListener('click', function () { show('start'); });
+
+    // keyboard: 1-4 to answer, Enter to advance
+    document.addEventListener('keydown', function (e) {
+      if (screens.play.hidden) return;
+      if (!elNext.hidden && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); next(); return; }
+      if (!locked && e.key >= '1' && e.key <= '4') {
+        var i = parseInt(e.key, 10) - 1;
+        var btns = elOpts.querySelectorAll('.dec-opt');
+        if (btns[i]) answer(i);
+      }
+    });
+  }
+
+  initDecoder();
+  document.addEventListener('astro:page-load', initDecoder);
+</script>
