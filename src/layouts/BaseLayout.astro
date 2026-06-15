@@ -397,12 +397,12 @@ import { ClientRouter } from 'astro:transitions';
     }
     @media (prefers-reduced-motion: no-preference) {
       .whatsapp-float-btn::before {
-        animation: wa-attention 3s ease-out infinite;
+        animation: wa-attention 5s ease-out infinite;
       }
     }
     @keyframes wa-attention {
-      0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-      50%  { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+      0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.35); }
+      60%  { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     .whatsapp-float-btn:hover {
