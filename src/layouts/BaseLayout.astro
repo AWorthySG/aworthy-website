@@ -217,13 +217,13 @@ import { ClientRouter } from 'astro:transitions';
     ]
   })} />
 
-  <!-- Fonts — non-render-blocking async load. Nunito is the sitewide typeface
-       (200–900 + italic 400); Pinyon Script is used only by the hero pen-animation calligraphy. -->
+  <!-- Fonts — non-render-blocking async load. Nunito is the sole sitewide
+       typeface (weights 200–900 + italic). No other font families. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400..900&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400..900&display=swap" rel="stylesheet" /></noscript>
 
   <link rel="preconnect" href="https://plausible.io" />
 

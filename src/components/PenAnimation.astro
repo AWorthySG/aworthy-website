@@ -129,22 +129,22 @@
     <!-- ═══ CALLIGRAPHY TEXT — filled, revealed by masks ═══ -->
     <g class="tg tg1" mask="url(#m1)" filter="url(#pa-bleed)">
       <text x="60" y="92"
-        font-family="'Pinyon Script','Great Vibes','Dancing Script',cursive"
+        font-family="'Nunito', sans-serif"
         font-size="54" fill="#1B2A4A">You are</text>
     </g>
     <g class="tg tg2" mask="url(#m2)" filter="url(#pa-bleed)">
       <text x="85" y="185"
-        font-family="'Pinyon Script','Great Vibes','Dancing Script',cursive"
+        font-family="'Nunito', sans-serif"
         font-size="76" fill="#1B2A4A">worth the A</text>
     </g>
 
     <!-- Trace strokes — thin outlines that draw + fade -->
     <text class="ts ts1" x="60" y="92"
-      font-family="'Pinyon Script','Great Vibes','Dancing Script',cursive"
+      font-family="'Nunito', sans-serif"
       font-size="54" fill="none" stroke="#2a3f6b" stroke-width="0.4"
       stroke-linecap="round" opacity="0.35">You are</text>
     <text class="ts ts2" x="85" y="185"
-      font-family="'Pinyon Script','Great Vibes','Dancing Script',cursive"
+      font-family="'Nunito', sans-serif"
       font-size="76" fill="none" stroke="#2a3f6b" stroke-width="0.5"
       stroke-linecap="round" opacity="0.35">worth the A</text>
 
@@ -153,10 +153,10 @@
 
     <!-- Ink settle shadow — grows under text as ink "pools" into paper -->
     <text class="ink-shadow ink-sh1" x="60" y="92"
-      font-family="'Pinyon Script','Great Vibes','Dancing Script',cursive"
+      font-family="'Nunito', sans-serif"
       font-size="54" fill="rgba(26,42,58,0.06)" filter="url(#pa-bleed)">You are</text>
     <text class="ink-shadow ink-sh2" x="85" y="187"
-      font-family="'Pinyon Script','Great Vibes','Dancing Script',cursive"
+      font-family="'Nunito', sans-serif"
       font-size="76" fill="rgba(26,42,58,0.06)" filter="url(#pa-bleed)">worth the A</text>
 
     <!-- Primary flourish -->
@@ -246,6 +246,10 @@
     0%   { transform: rotateX(4deg) scale(0.97); }
     100% { transform: rotateX(0deg) scale(1); }
   }
+
+  /* ═══ NUNITO WEIGHTS — keep fill, trace & shadow glyphs aligned ═══ */
+  .tg1 text, .ts1, .ink-sh1 { font-weight: 600; letter-spacing: -0.01em; }
+  .tg2 text, .ts2, .ink-sh2 { font-weight: 700; letter-spacing: -0.01em; }
 
   /* ═══ MASK REVEAL — paused until .is-active ═══ */
   .mp {
