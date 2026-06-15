@@ -1542,3 +1542,35 @@ html {
 .ba-footnote { font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; font-style: italic; }
 @media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
 
+/* ═══════════════════════════════════════════════════════════════
+   "JUICE" MOTION LAYER — playful spring physics on interactive
+   elements. Tasteful, sitewide; the full Overcooked-style world
+   lives on /kitchen/. All gated behind prefers-reduced-motion.
+   ═══════════════════════════════════════════════════════════════ */
+:root { --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Springy lift on hover + satisfying squash on press for buttons */
+  .btn, .btn-accent, .pricing-card__cta, .prog-cta__btn {
+    transition: transform 0.28s var(--ease-bounce), background-color var(--transition-fast),
+                border-color var(--transition-fast), color var(--transition-fast), box-shadow 0.25s;
+  }
+  .btn:hover, .btn-accent:hover { transform: translateY(-2px); }
+  .btn:active, .btn-accent:active,
+  .pricing-card__cta:active, .prog-cta__btn:active {
+    transform: scale(0.95);
+    transition-duration: 0.08s;
+  }
+
+  /* Tactile press on the card families that already lift on hover */
+  .card, .programme-card, .t-card, .r-card, .approach-card, .pricing-card,
+  .blog-card, .reading-card, .related-link, .transformation-card, .value-item {
+    transition: transform 0.3s var(--ease-bounce), border-color var(--transition-fast), box-shadow 0.3s;
+  }
+  .programme-card:active, .pricing-card:active, .blog-card:active,
+  .reading-card:active, .related-link:active, .transformation-card:active {
+    transform: scale(0.985);
+    transition-duration: 0.1s;
+  }
+}
+

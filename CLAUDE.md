@@ -45,6 +45,8 @@ src/
 │   ├── pre-ib-mathematics.astro # Pre-IB Mathematics (Year 3 & 4) subject page — garnet accent (#B0436A); calculus/first-principles SHARP content
 │   ├── l1r5-calculator.astro # Interactive L1R5 aggregate calculator (free tool)
 │   ├── jc-subject-combinations.astro # Interactive JC subject-combination advisor (free tool)
+│   ├── sharp-decoder.astro   # Beat-the-clock "pick the framework" game (free tool); fires confetti via window.aworthyCelebrate
+│   ├── kitchen.astro         # "The A-Worthy Kitchen" — Overcooked-style interactive subject world (cook stations → plate A's); links to subject pages
 │   ├── review.astro          # Review-generation page (Google review + private feedback; noindex)
 │   ├── results.astro         # Student results and statistics
 │   ├── resources.astro       # Resource vault with email gating (17 resources, 6 categories)
@@ -239,6 +241,8 @@ Dark mode uses `[data-theme="dark"]` on `<html>`. All color tokens are overridde
 Theme is toggled by the Header component's theme button and persisted in `localStorage`.
 
 ## Animation System
+
+**"Juice" motion layer** (bottom of `global.css`): a sitewide spring-physics layer — `--ease-bounce` easing, a gentle hover lift + press-squash on buttons and the card families. Entirely gated behind `@media (prefers-reduced-motion: no-preference)`. The full Overcooked-style world (chunky pots, steam, plating loop, confetti) lives only on `/kitchen/`; the celebration confetti helper is `window.aworthyCelebrate(opts)` from `public/celebrate.js`. Keep the trust pages (pricing, about, contact, subject pages) calm — heavy game styling belongs on `/kitchen/` and `/sharp-decoder/`, not sitewide.
 
 Scroll-triggered animations via IntersectionObserver (defined in BaseLayout). Both the scroll-reveal observer and animated counters are wrapped in named functions (`initScrollReveal`, `initCounters`) that run on initial load AND on `astro:page-load` to survive ClientRouter view transitions.
 
