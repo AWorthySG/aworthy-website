@@ -1099,6 +1099,24 @@ const playbookRows = [
     border-radius: var(--border-radius);
     padding: 1.25rem;
     margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .subject-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -1rem;
+    right: 0.75rem;
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--subject-accent);
+    opacity: 0.16;
+    pointer-events: none;
+  }
+  .subject-quote > * {
+    position: relative;
+    z-index: 1;
   }
   .subject-quote p {
     color: var(--text-primary);
