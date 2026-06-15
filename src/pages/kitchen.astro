@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+// Each "station" = a subject. Cook it to plate up the dish (the result),
+// then a link to the real subject page appears. Colours echo each
+// subject's identity accent.
+const stations = [
+  { key: 'eng', subject: 'O-Level English', short: 'English', href: '/o-level-english/', color: '#3B7DD8', ingredients: ['Comprehension', 'Composition', 'Oral'], dish: 'A1 Essay' },
+  { key: 'math', subject: 'O-Level Maths', short: 'Maths', href: '/o-level-mathematics/', color: '#7B5EA7', ingredients: ['Algebra', 'Trigonometry', 'Statistics'], dish: 'A1 Paper' },
+  { key: 'preib', subject: 'Pre-IB Maths', short: 'Pre-IB', href: '/pre-ib-mathematics/', color: '#B0436A', ingredients: ['Surds', 'Logarithms', 'Calculus'], dish: 'Top Set' },
+  { key: 'gp', subject: 'H1 General Paper', short: 'GP', href: '/h1-general-paper/', color: '#4A8C6F', ingredients: ['Argument', 'Evidence', 'Evaluation'], dish: 'Band 1' },
+  { key: 'econs', subject: 'H2 Economics', short: 'Econs', href: '/h2-economics/', color: '#2B8A8A', ingredients: ['Diagrams', 'Essays', 'Case Studies'], dish: 'Distinction' },
+];
+const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
+---
+
+<BaseLayout
+  title="The A-Worthy Kitchen — Cook Up an A | A-Worthy"
+  description="A playful way to explore A-Worthy's programmes: step into the study kitchen, cook each subject with the SHARP recipe, and plate up an A. English, Maths, Pre-IB, GP & Economics."
+  ogImage="/images/og-blog.png">
+  <Header slot="header" />
+
+  <section class="k-hero">
+    <div class="container">
+      <span class="eyebrow">The A-Worthy Kitchen</span>
+      <h1 class="k-title">Cooking up A&rsquo;s,<br />one method at a time</h1>
+      <p class="k-sub">Every great grade is a recipe: the right ingredients, the right method, plated under pressure. Tap a station to cook a subject with the <strong>SHARP</strong> recipe and plate up your A.</p>
+    </div>
+  </section>
+
+  <section class="k-stage-wrap">
+    <div class="container">
+      <!-- order ticket / HUD -->
+      <div class="k-ticket" role="status" aria-live="polite">
+        <span class="k-ticket__label">Orders up</span>
+        <span class="k-ticket__count"><span id="k-plated">0</span> / {stations.length} dishes plated</span>
+        <span class="k-ticket__hint" id="k-hint">Tap a pot to start cooking &rarr;</span>
+      </div>
+
+      <!-- kitchen floor + stations -->
+      <div class="k-floor">
+        <div class="k-stations">
+          {stations.map((s) => (
+            <div class="k-station" style={`--st: ${s.color};`} data-key={s.key}>
+              <button type="button" class="k-pot" aria-pressed="false" aria-label={`Cook the ${s.subject} station`}>
+                <span class="k-steam" aria-hidden="true"><i></i><i></i><i></i></span>
+                <svg class="k-pot__svg" viewBox="0 0 120 96" aria-hidden="true">
+                  <ellipse class="k-pot__shadow" cx="60" cy="90" rx="42" ry="6"/>
+                  <rect x="14" y="34" width="92" height="50" rx="14" fill="var(--st)"/>
+                  <rect x="14" y="34" width="92" height="50" rx="14" fill="rgba(255,255,255,0.12)"/>
+                  <rect x="6" y="44" width="14" height="9" rx="4.5" fill="var(--st)"/>
+                  <rect x="100" y="44" width="14" height="9" rx="4.5" fill="var(--st)"/>
+                  <ellipse class="k-pot__brew" cx="60" cy="40" rx="42" ry="9" fill="rgba(0,0,0,0.18)"/>
+                  <g class="k-pot__lid">
+                    <rect x="10" y="24" width="100" height="13" rx="6.5" fill="#2A2A38"/>
+                    <circle cx="60" cy="20" r="6" fill="#C9A84C"/>
+                  </g>
+                </svg>
+                <span class="k-pot__name">{s.short}</span>
+              </button>
+
+              <div class="k-card" hidden>
+                <span class="k-card__dish" aria-hidden="true">🍽️</span>
+                <strong class="k-card__title">{s.dish} &mdash; plated!</strong>
+                <span class="k-card__ing">{s.ingredients.join(' &middot; ')}</span>
+                <a class="k-card__cta" href={s.href}>Cook this for real &mdash; {s.subject} &rarr;</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- the recipe -->
+      <div class="k-recipe">
+        <span class="k-recipe__label">The house recipe</span>
+        <ol class="k-recipe__steps">
+          {sharp.map((step, i) => (
+            <li class="k-recipe__step"><span class="k-recipe__num">{i + 1}</span>{step}</li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- win banner -->
+      <div class="k-win" id="k-win" hidden>
+        <h2 class="k-win__title">Full A-grade menu plated! 🎉</h2>
+        <p class="k-win__sub">That&rsquo;s the SHARP Method in a nutshell &mdash; the right framework for every order. Ready to cook the real thing?</p>
+        <div class="k-win__actions">
+          <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book a Free Assessment</a>
+          <a href="/sharp-decoder/" class="k-win__link">Or play the Kitchen Rush &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand k-explainer">
+    <div class="container">
+      <h2 class="section-title">Behind the fun, a serious method</h2>
+      <p class="section-subtitle">The kitchen is a game &mdash; but the recipe is real. The <strong>SHARP Method</strong> (See, Hit, Apply, Refine, Practise) gives your child a named framework for every question type, in every subject. Explore the programmes: <a href="/o-level-english/">English</a>, <a href="/o-level-mathematics/">Maths</a>, <a href="/pre-ib-mathematics/">Pre-IB Maths</a>, <a href="/h1-general-paper/">GP</a>, <a href="/h2-economics/">Economics</a> &mdash; or test your instincts in the <a href="/sharp-decoder/">SHARP Decoder game</a>.</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .k-hero { padding: 1.75rem 0 0.5rem; text-align: center; }
+  .k-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; line-height: 1.05; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .k-sub { font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+  .k-sub strong { color: var(--color-accent); }
+
+  .k-stage-wrap { padding: 1.5rem 0 2.5rem; }
+
+  /* Order ticket / HUD */
+  .k-ticket { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; justify-content: center; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 999px; padding: 0.6rem 1.4rem; max-width: 560px; margin: 0 auto 1.75rem; box-shadow: 0 6px 0 var(--border-color); }
+  .k-ticket__label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
+  .k-ticket__count { font-weight: 800; color: var(--text-primary); }
+  #k-plated { color: var(--color-accent); }
+  .k-ticket__hint { font-size: 0.85rem; color: var(--text-secondary); }
+
+  /* Kitchen floor — warm tiled surface */
+  .k-floor {
+    border-radius: var(--border-radius-lg);
+    padding: 2rem 1rem;
+    background:
+      repeating-linear-gradient(45deg, rgba(212,133,58,0.05) 0 14px, transparent 14px 28px),
+      repeating-linear-gradient(-45deg, rgba(43,90,140,0.04) 0 14px, transparent 14px 28px),
+      var(--bg-secondary);
+    border: 1px solid var(--border-color);
+  }
+  .k-stations { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1040px; margin: 0 auto; }
+  @media (max-width: 880px) { .k-stations { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 520px) { .k-stations { grid-template-columns: repeat(2, 1fr); } }
+
+  .k-station { display: flex; flex-direction: column; align-items: center; }
+
+  /* The pot = a chunky 3D press-button */
+  .k-pot {
+    position: relative;
+    width: 100%;
+    background: var(--bg-card);
+    border: 2px solid var(--st); /* fallback */
+    border: 2px solid color-mix(in srgb, var(--st) 35%, var(--border-color));
+    border-radius: 18px;
+    padding: 1.4rem 0.6rem 0.9rem;
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
+    box-shadow: 0 8px 0 var(--st); /* fallback */
+    box-shadow: 0 8px 0 color-mix(in srgb, var(--st) 30%, var(--bg-secondary));
+    transition: transform 0.25s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)), box-shadow 0.25s;
+  }
+  .k-pot:hover { transform: translateY(-4px); box-shadow: 0 12px 0 color-mix(in srgb, var(--st) 30%, var(--bg-secondary)); }
+  .k-pot:active { transform: translateY(2px); box-shadow: 0 4px 0 color-mix(in srgb, var(--st) 30%, var(--bg-secondary)); }
+  .k-pot:focus-visible { outline: 3px solid var(--st); outline-offset: 3px; }
+  .k-pot__svg { width: 84px; height: auto; overflow: visible; }
+  .k-pot__shadow { fill: rgba(0,0,0,0.08); }
+  .k-pot__name { font-weight: 800; font-size: 0.9rem; color: var(--text-primary); }
+
+  /* lid lifts a touch on hover; bounces on cook */
+  .k-pot__lid { transform-origin: 60px 30px; transition: transform 0.3s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
+  .k-pot:hover .k-pot__lid { transform: translateY(-4px) rotate(-3deg); }
+  .k-station.is-cooked .k-pot__lid { transform: translateY(-10px) rotate(-8deg); }
+  .k-station.is-cooked .k-pot { border-color: var(--st); box-shadow: 0 8px 0 var(--st); }
+
+  /* steam */
+  .k-steam { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); display: flex; gap: 9px; opacity: 0; }
+  .k-steam i { width: 7px; height: 7px; border-radius: 50%; background: var(--st); background: color-mix(in srgb, var(--st) 45%, #fff); }
+  .k-pot:hover .k-steam, .k-station.is-cooked .k-steam { opacity: 1; }
+
+  /* plated card */
+  .k-card { margin-top: 0.75rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; animation: k-pop 0.4s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
+  .k-card__dish { font-size: 1.6rem; }
+  .k-card__title { font-size: 0.9rem; color: var(--st); }
+  .k-card__ing { font-size: 0.72rem; color: var(--text-muted); }
+  .k-card__cta { font-size: 0.78rem; font-weight: 700; color: var(--st); text-decoration: none; margin-top: 0.25rem; }
+  .k-card__cta:hover { text-decoration: underline; }
+  @keyframes k-pop { from { opacity: 0; transform: scale(0.7) translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* recipe strip */
+  .k-recipe { max-width: 1040px; margin: 1.75rem auto 0; text-align: center; }
+  .k-recipe__label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
+  .k-recipe__steps { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; padding: 0.6rem 0 0; margin: 0; }
+  .k-recipe__step { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; font-weight: 700; font-size: 0.85rem; color: var(--text-primary); }
+  .k-recipe__num { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--color-accent); color: #fff; font-size: 0.72rem; }
+
+  /* win banner */
+  .k-win { max-width: 600px; margin: 1.75rem auto 0; text-align: center; background: var(--bg-card); border: 2px solid var(--color-accent); border-radius: var(--border-radius-lg); padding: 1.5rem; box-shadow: 0 10px 0 color-mix(in srgb, var(--color-accent) 30%, var(--bg-secondary)); animation: k-pop 0.5s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
+  .k-win__title { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
+  .k-win__sub { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
+  .k-win__actions { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .k-win__link { color: var(--color-accent); font-weight: 700; text-decoration: none; }
+  .k-win__link:hover { text-decoration: underline; }
+
+  .k-explainer { text-align: center; }
+  .k-explainer a { color: var(--color-accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .k-pot, .k-pot__lid, .k-card, .k-win { transition: none; animation: none; }
+    .k-pot:hover { transform: none; }
+  }
+</style>
+
+<script>
+  function initKitchen() {
+    var floor = document.querySelector('.k-floor');
+    if (!floor || floor.getAttribute('data-init')) return;
+    floor.setAttribute('data-init', '1');
+
+    var stations = Array.prototype.slice.call(document.querySelectorAll('.k-station'));
+    var platedEl = document.getElementById('k-plated');
+    var hintEl = document.getElementById('k-hint');
+    var win = document.getElementById('k-win');
+    var total = stations.length;
+    var plated = 0;
+    var done = {};
+
+    stations.forEach(function (st) {
+      var btn = st.querySelector('.k-pot');
+      var card = st.querySelector('.k-card');
+      var key = st.getAttribute('data-key');
+      btn.addEventListener('click', function () {
+        if (done[key]) return;
+        done[key] = true;
+        st.classList.add('is-cooked');
+        btn.setAttribute('aria-pressed', 'true');
+        card.hidden = false;
+        plated++;
+        if (platedEl) platedEl.textContent = String(plated);
+        // little confetti per dish (reduced-motion aware inside celebrate)
+        if (window.aworthyCelebrate) {
+          var r = btn.getBoundingClientRect();
+          window.aworthyCelebrate({ x: r.left + r.width / 2, y: r.top + r.height / 2, count: 36 });
+        }
+        if (plated === total) {
+          if (hintEl) hintEl.textContent = 'Menu complete!';
+          if (win) { win.hidden = false; win.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+          if (window.aworthyCelebrate) window.aworthyCelebrate({ count: 140 });
+          if (window.plausible) window.plausible('Kitchen Completed');
+        } else if (hintEl) {
+          hintEl.textContent = (total - plated) + ' more to plate!';
+        }
+      });
+    });
+  }
+
+  initKitchen();
+  document.addEventListener('astro:page-load', initKitchen);
+</script>
