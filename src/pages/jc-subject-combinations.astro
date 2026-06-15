@@ -61,7 +61,7 @@ import '../styles/global.css';
         <div class="jc-cta">
           <p><strong>Already in JC?</strong> We coach the two subjects most students find hardest to lift on their own.</p>
           <div class="jc-cta-links">
-            <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book a Free Assessment</a>
+            <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
             <a href="/h1-general-paper/" class="jc-cta-link">H1 General Paper &rarr;</a>
             <a href="/h2-economics/" class="jc-cta-link">H2 Economics &rarr;</a>
           </div>
@@ -94,7 +94,7 @@ import '../styles/global.css';
   .jc-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.25rem; }
   .jc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; }
   .jc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
-  [data-theme="dark"] .jc-error { color: #ff8a7a; }
+  :global([data-theme="dark"]) .jc-error { color: #ff8a7a; }
 
   .jc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; }
   .jc-rec-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }

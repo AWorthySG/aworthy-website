@@ -297,15 +297,28 @@ import '../../styles/global.css';
     display: grid;
     grid-template-columns: 1fr;
     max-width: 100%;
+    background: linear-gradient(135deg, rgba(212, 133, 58, 0.07), var(--bg-card) 55%);
+    border-color: rgba(212, 133, 58, 0.25);
+  }
+  :global([data-theme="dark"]) .blog-card--featured {
+    background: linear-gradient(135deg, rgba(224, 152, 80, 0.09), var(--bg-card) 55%);
+    border-color: rgba(224, 152, 80, 0.28);
   }
   .blog-tag {
+    align-self: flex-start;
     font-family: var(--font-mono);
     font-size: 0.65rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--color-accent);
-    margin-bottom: 0.75rem;
+    background: rgba(212, 133, 58, 0.1);
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    margin-bottom: 0.85rem;
+  }
+  :global([data-theme="dark"]) .blog-tag {
+    background: rgba(224, 152, 80, 0.13);
   }
   .blog-card h2 {
     font-family: var(--font-body);
@@ -387,7 +400,7 @@ import '../../styles/global.css';
   .subscribe-msg--error {
     color: #c0392b;
   }
-  [data-theme="dark"] .subscribe-msg--error {
+  :global([data-theme="dark"]) .subscribe-msg--error {
     color: #ff8a7a;
   }
   @media (max-width: 1024px) {

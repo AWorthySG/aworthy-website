@@ -397,9 +397,21 @@ li {
   letter-spacing: -0.025em;
 }
 
+/* Branded accent rule under centred section titles — adds rhythm sitewide */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin: 0.8rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+  opacity: 0.9;
+}
+
 .section-subtitle {
   text-align: center;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 1.05rem;
   margin-bottom: var(--space-lg);
   max-width: 640px;
@@ -1572,5 +1584,40 @@ html {
     transform: scale(0.985);
     transition-duration: 0.1s;
   }
+}
+
+/* ═══ Tool / utility page heroes — soft accent glow, matching the
+   subject pages' hero treatment so the whole site feels of-a-piece. ═══ */
+.calc-hero, .jc-hero, .dec-hero, .review-hero,
+.prog-hero, .r-hero {
+  position: relative;
+  overflow: hidden;
+}
+.calc-hero::before, .jc-hero::before, .dec-hero::before, .review-hero::before,
+.prog-hero::before, .r-hero::before {
+  content: '';
+  position: absolute;
+  top: -32%;
+  right: -10%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 133, 58, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+[data-theme="dark"] .calc-hero::before,
+[data-theme="dark"] .jc-hero::before,
+[data-theme="dark"] .dec-hero::before,
+[data-theme="dark"] .review-hero::before,
+[data-theme="dark"] .prog-hero::before,
+[data-theme="dark"] .r-hero::before {
+  background: radial-gradient(circle, rgba(224, 152, 80, 0.10) 0%, transparent 70%);
+}
+.calc-hero > .container, .jc-hero > .container,
+.dec-hero > .container, .review-hero > .container,
+.prog-hero > .container, .r-hero > .r-container {
+  position: relative;
+  z-index: 1;
 }
 

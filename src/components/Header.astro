@@ -202,8 +202,8 @@ const navLinks = [
     color: var(--text-primary);
   }
 
-  [data-theme="dark"] .theme-icon-dark,
-  [data-theme="light"] .theme-icon-light { display: none; }
+  :global([data-theme="dark"]) .theme-icon-dark,
+  :global([data-theme="light"]) .theme-icon-light { display: none; }
 
   /* Hamburger — minimal 2-line */
   .hamburger {

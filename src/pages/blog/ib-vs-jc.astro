@@ -257,6 +257,6 @@ import AuthorBio from '../../components/AuthorBio.astro';
     font-size: 0.85rem;
   }
   .compare-table tbody tr:hover { background: rgba(43, 90, 140, 0.04); }
-  [data-theme="dark"] .compare-table thead { background: rgba(43, 90, 140, 0.6); }
-  [data-theme="dark"] .compare-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+  :global([data-theme="dark"]) .compare-table thead { background: rgba(43, 90, 140, 0.6); }
+  :global([data-theme="dark"]) .compare-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
 </style>

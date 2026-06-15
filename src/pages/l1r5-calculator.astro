@@ -110,7 +110,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
         <div class="calc-cta">
           <p><strong>English and Maths affect every L1R5.</strong> They&rsquo;re the two subjects every student takes &mdash; so every grade you raise there shifts your whole aggregate.</p>
           <div class="calc-cta-links">
-            <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book a Free Assessment</a>
+            <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
             <a href="/o-level-english/" class="calc-cta-link">O-Level English &rarr;</a>
             <a href="/o-level-mathematics/" class="calc-cta-link">O-Level Maths &rarr;</a>
           </div>
@@ -150,7 +150,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-btn { cursor: pointer; }
   .calc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; }
   .calc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
-  [data-theme="dark"] .calc-error { color: #ff8a7a; }
+  :global([data-theme="dark"]) .calc-error { color: #ff8a7a; }
 
   .calc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; position: sticky; top: calc(var(--header-height) + 1rem); }
   .calc-score { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 1.25rem; }
@@ -165,7 +165,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-jc-heading span { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; }
   .calc-jc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
   .calc-jc-chip { font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 999px; background: rgba(43,90,140,0.1); color: var(--color-primary); border: 1px solid var(--border-color); }
-  [data-theme="dark"] .calc-jc-chip { color: var(--text-primary); }
+  :global([data-theme="dark"]) .calc-jc-chip { color: var(--text-primary); }
   .calc-jc-none { font-size: 0.9rem; color: var(--text-secondary); }
   .calc-disclaimer { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
   .calc-disclaimer a { color: var(--color-accent); }

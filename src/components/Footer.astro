@@ -134,11 +134,13 @@ const currentYear = new Date().getFullYear();
 
   .footer-socials a {
     color: rgba(255, 255, 255, 0.5);
-    transition: color var(--transition-fast);
+    display: inline-flex;
+    transition: color var(--transition-fast), transform var(--transition-fast);
   }
 
   .footer-socials a:hover {
     color: var(--color-accent);
+    transform: translateY(-2px);
   }
 
   .footer-links h4,
@@ -150,6 +152,18 @@ const currentYear = new Date().getFullYear();
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 500;
+  }
+
+  /* Accent rule under footer column headings */
+  .footer-links h4::after,
+  .footer-contact h4::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin-top: 0.55rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-accent), transparent);
   }
 
   .footer-links ul,
@@ -169,12 +183,14 @@ const currentYear = new Date().getFullYear();
   .footer-links a,
   .footer-contact a {
     color: rgba(255, 255, 255, 0.6);
-    transition: color 0.3s ease;
+    display: inline-block;
+    transition: color var(--transition-fast), transform var(--transition-fast);
   }
 
   .footer-links a:hover,
   .footer-contact a:hover {
-    color: #ffffff;
+    color: var(--color-accent-light);
+    transform: translateX(3px);
   }
 
   .footer-bottom {
