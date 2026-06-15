@@ -152,7 +152,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
   :global([data-theme="dark"]) .calc-error { color: #ff8a7a; }
 
-  .calc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; position: sticky; top: calc(var(--header-height) + 1rem); }
+  .calc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--color-accent); border-radius: var(--border-radius-lg); padding: 1.5rem; position: sticky; top: calc(var(--header-height) + 1rem); }
   .calc-score { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 1.25rem; }
   .calc-score-block { text-align: center; }
   .calc-score-num { display: block; font-family: var(--font-heading); font-size: 2.75rem; font-weight: 200; color: var(--text-muted); line-height: 1; }
@@ -164,8 +164,8 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-jc-heading { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
   .calc-jc-heading span { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; }
   .calc-jc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-  .calc-jc-chip { font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 999px; background: rgba(43,90,140,0.1); color: var(--color-primary); border: 1px solid var(--border-color); }
-  :global([data-theme="dark"]) .calc-jc-chip { color: var(--text-primary); }
+  .calc-jc-chip { font-size: 0.8rem; padding: 0.3rem 0.7rem; border-radius: 999px; background: rgba(212, 133, 58, 0.1); color: var(--color-accent); border: 1px solid rgba(212, 133, 58, 0.28); font-weight: 600; }
+  :global([data-theme="dark"]) .calc-jc-chip { background: rgba(224, 152, 80, 0.12); color: var(--color-accent-light); border-color: rgba(224, 152, 80, 0.32); }
   .calc-jc-none { font-size: 0.9rem; color: var(--text-secondary); }
   .calc-disclaimer { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
   .calc-disclaimer a { color: var(--color-accent); }
