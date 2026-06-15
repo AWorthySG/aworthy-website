@@ -1330,7 +1330,8 @@ const playbookRows = [
   }
   .related-link:hover {
     border-color: var(--subject-accent);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px -18px color-mix(in srgb, var(--subject-accent) 40%, transparent);
   }
   .related-link strong {
     display: block;
@@ -1382,6 +1383,14 @@ const playbookRows = [
   .faq-item {
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
+    transition: border-color var(--transition-fast);
+  }
+  .faq-item[open] {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--subject-accent) 5%, transparent), transparent 80%);
+    border-bottom-color: var(--subject-accent);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: var(--border-radius);
   }
   .faq-question {
     font-family: 'Nunito', sans-serif;
@@ -1395,6 +1404,10 @@ const playbookRows = [
     align-items: center;
     min-height: 44px;
     touch-action: manipulation;
+    transition: color var(--transition-fast);
+  }
+  .faq-question:hover {
+    color: var(--subject-accent);
   }
   .faq-question::after {
     content: '+';
@@ -1437,8 +1450,15 @@ const playbookRows = [
     transition: transform var(--transition-fast), border-color var(--transition-fast);
   }
   .reading-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     border-color: var(--subject-accent);
+    box-shadow: 0 14px 32px -18px color-mix(in srgb, var(--subject-accent) 45%, transparent);
+  }
+  .reading-card:hover .reading-card-arrow {
+    transform: translateX(4px);
+  }
+  .reading-card-arrow {
+    transition: transform var(--transition-fast);
   }
   .reading-card h3 {
     color: var(--text-primary);
@@ -1468,6 +1488,24 @@ const playbookRows = [
     border-radius: var(--border-radius);
     padding: 1.25rem;
     margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .subject-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -1rem;
+    right: 0.75rem;
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--subject-accent);
+    opacity: 0.16;
+    pointer-events: none;
+  }
+  .subject-quote > * {
+    position: relative;
+    z-index: 1;
   }
   .subject-quote p {
     color: var(--text-primary);
