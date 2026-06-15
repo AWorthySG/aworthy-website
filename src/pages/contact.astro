@@ -1089,4 +1089,57 @@ import '../styles/global.css';
     margin-top: -0.5rem;
     margin-bottom: 1rem;
   }
+
+  /* ===== TRIAL BOOKING CARD ===== */
+  .trial-booking {
+    grid-column: 1 / -1;
+    margin-top: var(--space-3xl);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-top: 3px solid var(--color-accent);
+    border-radius: var(--border-radius-lg);
+    padding: 2.25rem 2rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .trial-booking::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(180deg, rgba(212, 133, 58, 0.05), transparent);
+    pointer-events: none;
+    z-index: -1;
+  }
+  :global([data-theme="dark"]) .trial-booking::before {
+    background: linear-gradient(180deg, rgba(224, 152, 80, 0.07), transparent);
+  }
+  .trial-booking h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0.5rem 0 0.75rem;
+  }
+  .trial-desc {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 1.75rem;
+    max-width: 540px;
+  }
+
+  @media (max-width: 768px) {
+    .trial-booking {
+      padding: 1.75rem 1.25rem;
+      margin-top: var(--space-2xl);
+    }
+  }
 </style>
