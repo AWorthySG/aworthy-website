@@ -990,8 +990,15 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   @media (hover: hover) {
     .r-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(26, 42, 58, 0.12);
+      border-color: rgba(212, 133, 58, 0.3);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.7) inset,
+        0 1px 2px rgba(26, 42, 58, 0.04),
+        0 18px 36px -20px rgba(212, 133, 58, 0.25);
     }
+  }
+  :global([data-theme="dark"]) .r-card:hover {
+    border-color: rgba(224, 152, 80, 0.32);
   }
 
   .r-card-top {

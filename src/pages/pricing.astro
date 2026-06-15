@@ -523,7 +523,22 @@ import '../styles/global.css';
 
   .pricing-card--popular {
     border-color: var(--color-accent);
-    box-shadow: 0 8px 28px rgba(212, 133, 58, 0.14);
+    box-shadow: 0 12px 36px rgba(212, 133, 58, 0.18), 0 0 0 1px var(--color-accent);
+    position: relative;
+    transform: translateY(-4px);
+  }
+  .pricing-card--popular::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: var(--border-radius-lg);
+    background: linear-gradient(180deg, rgba(212, 133, 58, 0.08), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .pricing-card--popular > * {
+    position: relative;
+    z-index: 1;
   }
   .pricing-card__popular-badge {
     display: inline-block;
@@ -537,7 +552,20 @@ import '../styles/global.css';
     border-radius: 999px;
     margin-bottom: 0.75rem;
   }
-  .pricing-table__th--popular { background: rgba(212, 133, 58, 0.06); }
+  .pricing-table__th--popular {
+    background: rgba(212, 133, 58, 0.08);
+    border-top: 3px solid var(--color-accent);
+  }
+  .pricing-table tbody td:nth-child(2) {
+    background: rgba(212, 133, 58, 0.04);
+  }
+  :global([data-theme="dark"]) .pricing-table__th--popular {
+    background: rgba(224, 152, 80, 0.12);
+    border-top-color: var(--color-accent);
+  }
+  :global([data-theme="dark"]) .pricing-table tbody td:nth-child(2) {
+    background: rgba(224, 152, 80, 0.06);
+  }
   .pricing-table__popular-badge {
     display: inline-block;
     background: var(--color-accent);

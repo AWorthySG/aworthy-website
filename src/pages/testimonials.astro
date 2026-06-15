@@ -840,20 +840,38 @@ const testimonials = [
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-top: 2px solid var(--color-accent);
+    position: relative;
+  }
+  .carousel::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.4rem;
+    left: 1rem;
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--color-accent);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
   }
   .carousel-track {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 1;
   }
   .carousel-slide {
     min-width: 100%;
-    padding: 1.5rem;
+    padding: 1.75rem 1.5rem 1.5rem;
     text-align: center;
   }
   .carousel-quote {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-primary);
     font-style: italic;
     margin-bottom: 1.25rem;
   }
