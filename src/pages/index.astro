@@ -724,6 +724,7 @@ import '../styles/global.css';
       if (r.ok) {
         successEl.hidden = false;
         if (window.plausible) window.plausible('Lead: Contact Form');
+        if (window.aworthyCelebrate) window.aworthyCelebrate();
         form.reset();
         btn.disabled = false;
         btn.innerHTML = '<span>Sent!</span>';

@@ -234,6 +234,7 @@ import '../../styles/global.css';
           msg.textContent = 'Thanks! You’re subscribed — look out for new study tips in your inbox.';
           msg.hidden = false;
           if (window.plausible) window.plausible('Newsletter Signup');
+          if (window.aworthyCelebrate) window.aworthyCelebrate();
         }).catch(function () {
           msg.textContent = 'Something went wrong. Please try again, or message us on WhatsApp.';
           msg.classList.add('subscribe-msg--error');
