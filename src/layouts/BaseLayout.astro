@@ -817,13 +817,15 @@ import { ClientRouter } from 'astro:transitions';
 
     /* Exam Countdown Bar */
     .exam-countdown {
-      background: var(--color-primary);
+      background: linear-gradient(180deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 90%, black) 100%);
       color: #fff;
       text-align: center;
       padding: 0.5rem 1rem;
       font-size: 0.8rem;
       font-family: var(--font-mono);
       letter-spacing: 0.03em;
+      border-bottom: 1px solid rgba(212, 133, 58, 0.4);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
     }
     .exam-countdown-inner {
       display: flex;
