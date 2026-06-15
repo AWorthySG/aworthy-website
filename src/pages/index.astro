@@ -2745,11 +2745,29 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
+    border-top: 3px solid var(--color-accent);
     border-radius: 8px;
     padding: 2.5rem;
     text-align: center;
     max-width: 640px;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .quiz-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(180deg, rgba(212, 133, 58, 0.05), transparent);
+    pointer-events: none;
+    z-index: -1;
+  }
+  :global([data-theme="dark"]) .quiz-card::before {
+    background: linear-gradient(180deg, rgba(224, 152, 80, 0.07), transparent);
   }
 
   .quiz-heading {
