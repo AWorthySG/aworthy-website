@@ -1,18 +1,28 @@
 ---
-const navLinks = [
-  { href: '/about/', label: 'About Us' },
+type NavLeaf = { href: string; label: string };
+type NavGroup = { label: string; children: NavLeaf[] };
+type NavItem = NavLeaf | NavGroup;
+
+const navLinks: NavItem[] = [
+  { href: '/about/', label: 'About' },
   { href: '/programmes/', label: 'Programmes' },
   { href: '/pricing/', label: 'Pricing' },
   { href: '/results/', label: 'Results' },
-  { href: '/resources/', label: 'Free Resources' },
+  {
+    label: 'Library',
+    children: [
+      { href: '/resources/', label: 'Resources' },
+      { href: '/blog/', label: 'Blog' },
+    ],
+  },
   { href: '/testimonials/', label: 'Reviews' },
-  { href: '/success-stories/', label: 'Stories' },
-  { href: '/blog/', label: 'Blog' },
   { href: '/contact/', label: 'Contact' },
 ];
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath === href || currentPath.startsWith(href);
+const isGroup = (item: NavItem): item is NavGroup => 'children' in item;
+const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.href));
 ---
 
 <header class="site-header" id="site-header">
@@ -25,7 +35,28 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     <!-- Desktop Nav -->
     <nav class="desktop-nav" aria-label="Primary navigation">
       <ul>
-        {navLinks.map(link => (
+        {navLinks.map(link => isGroup(link) ? (
+          <li class="has-dropdown">
+            <button
+              type="button"
+              class:list={['nav-trigger', { active: isGroupActive(link) }]}
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {link.label}
+              <svg class="nav-trigger__caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <ul class="nav-dropdown" role="menu">
+              {link.children.map(child => (
+                <li role="none">
+                  <a role="menuitem" href={child.href} class:list={[{ active: isActive(child.href) }]} aria-current={isActive(child.href) ? 'page' : undefined}>
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ) : (
           <li>
             <a href={link.href} class:list={[{ active: isActive(link.href) }]} aria-current={isActive(link.href) ? 'page' : undefined}>
               {link.label}
@@ -69,7 +100,20 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <ul>
-      {navLinks.map(link => (
+      {navLinks.map(link => isGroup(link) ? (
+        <Fragment>
+          <li class="mobile-nav-group-label">
+            <span>{link.label}</span>
+          </li>
+          {link.children.map(child => (
+            <li class="mobile-nav-child">
+              <a href={child.href}>
+                {child.label}
+              </a>
+            </li>
+          ))}
+        </Fragment>
+      ) : (
         <li>
           <a href={link.href}>
             {link.label}
@@ -169,6 +213,112 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     height: 2px;
     background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
     border-radius: 999px;
+  }
+
+  /* Desktop dropdown trigger + panel */
+  .desktop-nav .has-dropdown {
+    position: relative;
+  }
+  .desktop-nav .nav-trigger {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+    min-height: 44px;
+    font-family: inherit;
+  }
+  .desktop-nav .nav-trigger:hover,
+  .desktop-nav .nav-trigger.active {
+    color: var(--text-primary);
+  }
+  .desktop-nav .nav-trigger.active::after {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    right: calc(1rem + 0.6rem);
+    bottom: 0.1rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+    border-radius: 999px;
+  }
+  .desktop-nav .nav-trigger__caret {
+    transition: transform 0.2s ease;
+    opacity: 0.7;
+  }
+  .desktop-nav .has-dropdown:hover .nav-trigger__caret,
+  .desktop-nav .has-dropdown:focus-within .nav-trigger__caret {
+    transform: rotate(180deg);
+  }
+  .desktop-nav .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0.5rem);
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    margin: 0;
+    padding: 0.4rem;
+    list-style: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 12px 30px -8px rgba(26, 42, 58, 0.18), 0 1px 2px rgba(26, 42, 58, 0.05);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    z-index: var(--z-dropdown);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+  .desktop-nav .has-dropdown:hover > .nav-dropdown,
+  .desktop-nav .has-dropdown:focus-within > .nav-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  .desktop-nav .nav-dropdown li {
+    list-style: none;
+  }
+  .desktop-nav .nav-dropdown a {
+    display: block;
+    padding: 0.55rem 0.85rem;
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+  .desktop-nav .nav-dropdown a:hover,
+  .desktop-nav .nav-dropdown a:focus-visible,
+  .desktop-nav .nav-dropdown a.active {
+    color: var(--color-accent);
+    background: rgba(212, 133, 58, 0.08);
+  }
+  .desktop-nav .nav-dropdown a.active::after {
+    content: none;
+  }
+  :global([data-theme="dark"]) .desktop-nav .nav-dropdown a:hover,
+  :global([data-theme="dark"]) .desktop-nav .nav-dropdown a:focus-visible,
+  :global([data-theme="dark"]) .desktop-nav .nav-dropdown a.active {
+    background: rgba(224, 152, 80, 0.1);
   }
 
   /* Header Actions */
@@ -319,6 +469,22 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     color: var(--color-accent);
   }
 
+  .mobile-nav .mobile-nav-group-label {
+    padding: var(--space-md) 0 var(--space-xs);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .mobile-nav .mobile-nav-child a {
+    padding-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
   .mobile-cta {
     margin-top: var(--space-xl);
     width: 100%;
@@ -419,6 +585,21 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   });
 
   overlay?.addEventListener('click', closeMobileNav);
+
+  // Desktop nav dropdown — sync aria-expanded with hover/focus so screen
+  // readers know when the menu is open (CSS handles visibility on its own).
+  document.querySelectorAll('.desktop-nav .has-dropdown').forEach(function(group) {
+    const trigger = group.querySelector('.nav-trigger');
+    if (!trigger) return;
+    const setExpanded = (state: boolean) => trigger.setAttribute('aria-expanded', String(state));
+    group.addEventListener('mouseenter', () => setExpanded(true));
+    group.addEventListener('mouseleave', () => setExpanded(false));
+    group.addEventListener('focusin', () => setExpanded(true));
+    group.addEventListener('focusout', (e) => {
+      // Only collapse when focus leaves the entire group
+      if (!group.contains((e as FocusEvent).relatedTarget as Node)) setExpanded(false);
+    });
+  });
 
   // Close mobile nav on Escape key
   document.addEventListener('keydown', function(e) {
