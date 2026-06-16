@@ -51,8 +51,7 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <p class="hero-intake hero-anim" style="--d:14">Next intake: <strong>Term 3, July 2026</strong> &mdash; secure a seat before the O/A-Level run-in. Limited slots.</p>
-      <p class="hero-pricing-note hero-anim" style="--d:14">Transparent fees from <strong>S$280/mo</strong> &mdash; no registration fee, all materials included. <a href="/pricing/">See full pricing &rarr;</a></p>
+      <p class="hero-meta hero-anim" style="--d:14">Next intake: <strong>Term 3, July 2026</strong> &middot; from <strong>S$280/mo</strong>, no registration fee &middot; <a href="/pricing/">See pricing &rarr;</a></p>
 
       <div class="hero-btns hero-anim" style="--d:15">
         <a href="/#contact" class="btn btn-accent hero-cta-primary">Book Free Assessment</a>
@@ -1163,34 +1162,25 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-top: 0.4rem;
   }
 
-  .hero-intake {
+  .hero-meta {
     font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.55;
   }
 
-  .hero-intake strong {
+  .hero-meta strong {
     color: var(--text-primary);
   }
 
-  .hero-pricing-note {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-  }
-
-  .hero-pricing-note strong {
-    color: var(--text-primary);
-  }
-
-  .hero-pricing-note a {
+  .hero-meta a {
     color: var(--color-accent);
     text-decoration: none;
     font-weight: 600;
     white-space: nowrap;
   }
 
-  .hero-pricing-note a:hover {
+  .hero-meta a:hover {
     text-decoration: underline;
   }
 
