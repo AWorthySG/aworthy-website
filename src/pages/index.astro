@@ -289,6 +289,51 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- ===== A-WORTHY WHITEBOARD ===== -->
+  <section class="section whiteboard-band">
+    <div class="container">
+      <div class="wb-head" data-animate="reveal-up">
+        <span class="eyebrow">Learning Platform</span>
+        <h2 class="section-heading">Lessons happen on the <span class="wb-name">A-Worthy Whiteboard</span></h2>
+        <p class="wb-sub">Built for the SHARP Method &mdash; live face-to-face teaching, a shared writing canvas, and every session recorded. All in one browser tab, no downloads.</p>
+      </div>
+
+      <div class="wb-grid">
+        <div class="wb-feature" data-animate="reveal-up" data-animate-delay="1">
+          <div class="wb-feature__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M22 8l-6 4 6 4z"/></svg>
+          </div>
+          <h3 class="wb-feature__title">Live face-to-face</h3>
+          <p class="wb-feature__desc">Tutor and student see each other in real time. Small groups of 6, undivided focus.</p>
+        </div>
+
+        <div class="wb-feature" data-animate="reveal-up" data-animate-delay="2">
+          <div class="wb-feature__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+          </div>
+          <h3 class="wb-feature__title">Shared writing canvas</h3>
+          <p class="wb-feature__desc">Working appears as the tutor writes it &mdash; line by line. Your child writes back on the same page.</p>
+        </div>
+
+        <div class="wb-feature" data-animate="reveal-up" data-animate-delay="3">
+          <div class="wb-feature__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>
+          </div>
+          <h3 class="wb-feature__title">Past papers, marked live</h3>
+          <p class="wb-feature__desc">Examiner-grade annotations on the actual question paper &mdash; every paragraph, every diagram.</p>
+        </div>
+
+        <div class="wb-feature" data-animate="reveal-up" data-animate-delay="4">
+          <div class="wb-feature__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <h3 class="wb-feature__title">Every lesson recorded</h3>
+          <p class="wb-feature__desc">Re-watch any moment, any time. Find the exact technique your child needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="reviews" class="section section--sand testimonials-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">What Families Say</span>
@@ -1559,6 +1604,98 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .founder-band__link:hover {
     text-decoration: underline;
+  }
+
+  /* ===== A-WORTHY WHITEBOARD BAND ===== */
+  .whiteboard-band {
+    text-align: center;
+  }
+
+  .wb-head {
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .wb-name {
+    color: var(--color-accent);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .wb-sub {
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .wb-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .wb-feature {
+    text-align: left;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem 1.5rem 1.75rem;
+    transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .wb-feature:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212, 133, 58, 0.3);
+    box-shadow: 0 14px 30px -18px rgba(212, 133, 58, 0.32);
+  }
+  :global([data-theme="dark"]) .wb-feature:hover {
+    border-color: rgba(224, 152, 80, 0.32);
+    box-shadow: 0 14px 30px -18px rgba(224, 152, 80, 0.35);
+  }
+
+  .wb-feature__icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(212, 133, 58, 0.1);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  :global([data-theme="dark"]) .wb-feature__icon {
+    background: rgba(224, 152, 80, 0.12);
+    color: var(--color-accent-light);
+  }
+
+  .wb-feature__title {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.4rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .wb-feature__desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .wb-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .wb-head {
+      margin-bottom: 1.75rem;
+    }
   }
 
   @media (max-width: 640px) {
