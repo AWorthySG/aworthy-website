@@ -326,6 +326,21 @@ import '../styles/global.css';
   }
 
   .about-hero { position: relative; overflow: hidden; }
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    top: -32%;
+    right: -10%;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 133, 58, 0.10) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  :global([data-theme="dark"]) .about-hero::before {
+    background: radial-gradient(circle, rgba(224, 152, 80, 0.10) 0%, transparent 70%);
+  }
   .about-hero::after {
     content: '';
     position: absolute;
@@ -336,6 +351,10 @@ import '../styles/global.css';
     border-radius: 50%;
     background: radial-gradient(circle, rgba(212, 133, 58, 0.08) 0%, transparent 70%);
     pointer-events: none;
+  }
+  .about-hero > * {
+    position: relative;
+    z-index: 1;
   }
 
   .hero-content {
