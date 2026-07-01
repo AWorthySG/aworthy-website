@@ -1,0 +1,518 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+// ── STAMP CARD — the 9-category editing sweep (Paper 1, Editing) ──
+const stampCategories = [
+  { letter: 'S', name: 'Subject-Verb Agreement', check: 'Does the verb agree with the subject in number?', error: 'The average age of caregivers <strong>are</strong> about 62.', fix: 'The average age of caregivers <strong>is</strong> about 62.', why: 'Cover “of caregivers” — the true subject “the average age” is singular.' },
+  { letter: 'T', name: 'Tense', check: 'Is the verb in the correct tense? Check the time markers.', error: 'I <strong>have seen</strong> that film last night.', fix: 'I <strong>saw</strong> that film last night.', why: 'A specific past-time marker (“last night”) locks the event in the past — Past Simple, not Present Perfect.' },
+  { letter: 'A', sup: '1', name: 'Articles', check: 'Is a / an / the correct — by sound, not spelling?', error: 'He is <strong>a</strong> honest student.', fix: 'He is <strong>an</strong> honest student.', why: '“Honest” opens with a silent H — a vowel sound — so it takes “an”.' },
+  { letter: 'M', name: 'Match Pronouns', check: 'Does the pronoun match its antecedent in number, gender and form?', error: 'The teacher gave the book to John and <strong>I</strong>.', fix: 'The teacher gave the book to John and <strong>me</strong>.', why: 'After the preposition “to”, use the object form “me”.' },
+  { letter: 'P', name: 'Prepositions', check: 'Is the right preposition used? Watch the fixed phrases.', error: 'She is interested <strong>on</strong> the new project.', fix: 'She is interested <strong>in</strong> the new project.', why: 'Fixed collocation: interested <strong>in</strong>.' },
+  { letter: 'C', name: 'Connectors', check: 'Is the linking word logically correct?', error: '<strong>Although</strong> he was tired, <strong>but</strong> he kept working.', fix: '<strong>Although</strong> he was tired, he kept working.', why: '“Although” and “but” both signal contrast — they cannot co-exist. Delete one.' },
+  { letter: 'A', sup: '2', name: 'Adjective / Adverb', check: 'Describing a noun (adjective) or a verb (adverb, usually -ly)?', error: 'She speaks <strong>fluent</strong> during the presentation.', fix: 'She speaks <strong>fluently</strong> during the presentation.', why: 'It modifies the verb “speaks” — an adverb is required.' },
+  { letter: 'R', name: 'Right Number', check: 'Is the noun singular or plural? Does the quantifier match?', error: '<strong>Less</strong> students passed the exam this year.', fix: '<strong>Fewer</strong> students passed the exam this year.', why: '“Students” is a countable plural — use “fewer”, not “less”.' },
+  { letter: 'D', name: 'Degree of Comparison', check: 'Comparative or superlative correct — and never doubled?', error: 'She is <strong>more smarter</strong> than her brother.', fix: 'She is <strong>smarter</strong> than her brother.', why: 'Double comparative. “Smart” takes “-er” only.' },
+];
+
+// ── SWIFT — the five-second category test (Paper 2, Comprehension) ──
+const swiftWords = [
+  { l: 'S', w: 'Suggest', eg: '“what does this suggest…”' },
+  { l: 'W', w: 'Why', eg: '“why do you think…”' },
+  { l: 'I', w: 'Impression', eg: '“what impression…”, “what sort of person…”' },
+  { l: 'F', w: 'Feeling', eg: '“state of mind”, “reaction”, “how did X feel”' },
+  { l: 'T', w: 'Tone', eg: '“tone”, “attitude”' },
+];
+
+// Live classifier examples — each routes to Category A (FLIP) or B (EIL)
+const swiftExamples = [
+  { q: 'Give one detail that shows the writer was nervous.', cat: 'A', reason: 'No SWIFT word, and you could underline the answer in the passage.' },
+  { q: 'What does “she pressed her lips together” suggest about her mood?', cat: 'B', reason: 'Contains “suggest” — you must work the meaning out.' },
+  { q: 'In your own words, explain why the town changed.', cat: 'A', reason: 'The point is stated in the text; you are only rewording it.' },
+  { q: 'What is the writer’s attitude towards the city?', cat: 'B', reason: 'Contains “attitude” (Tone) — an inference about voice.' },
+  { q: 'Identify the phrase that tells us the storm was severe.', cat: 'A', reason: 'A clean lift — the phrase is already there.' },
+  { q: 'How do you think the boy felt when he read the letter?', cat: 'B', reason: 'Contains “feel / think” — an inference about a state of mind.' },
+];
+
+const catA = [
+  { code: 'A1', name: 'Direct Detail Retrieval', marks: '1–2' },
+  { code: 'A2', name: 'Targeted Quotation Extraction', marks: '1' },
+  { code: 'A3', name: 'Own-Words Paraphrase', marks: '1–2' },
+  { code: 'A4', name: 'Multi-Evidence Justification', marks: '2–3' },
+  { code: 'A5', name: 'Cartoon-Head Position Support', marks: '1–3' },
+  { code: 'A6', name: 'Contrast Identification', marks: '1–2' },
+  { code: 'A7', name: 'Flow-Chart Role Mapping', marks: '4' },
+  { code: 'A8', name: 'Reason / Justification', marks: '1–2' },
+];
+const catB = [
+  { code: 'B1', name: 'Basic Inference', marks: '1–2' },
+  { code: 'B2', name: 'Character Trait / Impression', marks: '1–2' },
+  { code: 'B3', name: 'Tone / Attitude', marks: '1' },
+  { code: 'B4', name: 'State-of-Mind / Reaction', marks: '1' },
+  { code: 'B5', name: 'Literary Device Effect', marks: '1–2' },
+  { code: 'B6', name: 'Language-Use / Stylistic Effect', marks: '2–3' },
+  { code: 'B7', name: 'Word-Choice / Vocabulary', marks: '1–2' },
+  { code: 'B8', name: 'Inverted-Comma / Punctuation', marks: '1' },
+];
+
+// ── CAPS — the summary-writing method (Paper 2, Summary) ──
+const capsTechniques = [
+  { l: 'C', name: 'Combine & Condense', desc: 'Fuse related sentences, or replace a list of specifics with a single category term.', before: 'Renewable energy reduces carbon emissions. It also lowers electricity costs.', after: 'Renewable energy reduces carbon emissions and lowers electricity costs.' },
+  { l: 'A', name: 'Alter Word Class', desc: 'Change a word’s grammatical class (noun → verb, adjective → noun) and rebuild the sentence.', before: 'The destruction of the forest was rapid.', after: 'The forest was destroyed rapidly.' },
+  { l: 'P', name: 'rePurpose Structure', desc: 'Reorder clauses, vary the opener, or flip active and passive voice. No words swapped.', before: 'The cat chased the mouse.', after: 'The mouse was chased by the cat.' },
+  { l: 'S', name: 'Swap Words', desc: 'Replace key words with register-appropriate synonyms. Never swap technical terms or proper nouns.', before: 'The policy will help reduce pollution.', after: 'The policy will assist in curbing pollution.' },
+];
+
+const transitions = [
+  { contrast: 'Causes vs. consequences', t: 'As a result, / Consequently,' },
+  { contrast: 'Benefits vs. drawbacks', t: 'However, / Despite these advantages,' },
+  { contrast: 'Past vs. present', t: 'Today, however, / Since then,' },
+  { contrast: 'Problems vs. solutions', t: 'To address these issues, / In response,' },
+];
+
+const frameworkIndex = [
+  { tag: 'Paper 1 · Editing', name: 'STAMP CARD', blurb: 'A nine-category sweep that catches every grammar error the passage can hide.', href: '#stamp-card' },
+  { tag: 'Paper 2 · Comprehension', name: 'SWIFT → FLIP / EIL', blurb: 'A five-second test that sorts every question, then one fixed method for each type.', href: '#comprehension' },
+  { tag: 'Paper 2 · Summary', name: 'CAPS', blurb: 'Four paraphrasing moves that secure the language mark without dropping content.', href: '#caps' },
+];
+---
+
+<BaseLayout
+  title="O-Level English Frameworks | STAMP CARD, SWIFT & CAPS | A-Worthy"
+  description="The named A-Worthy frameworks for every O-Level English (1184) question: STAMP CARD for editing, SWIFT–FLIP–EIL for comprehension, and CAPS for summary. See exactly which tool to reach for, and how to use it."
+  ogImage="/images/og-english.png"
+>
+  <Header slot="header" />
+
+  <!-- ===== HERO ===== -->
+  <section class="fw-hero">
+    <div class="container">
+      <p class="eyebrow">The A-Worthy Method</p>
+      <h1 class="fw-hero__title">A named framework for every mark on the O-Level English paper</h1>
+      <p class="fw-hero__lead">Most tuition teaches students to “write better.” We teach your child exactly which tool to reach for — and exactly how to use it — for every question on the GCE O-Level English Language (1184) paper. No guessing. No blank-page panic. A method, every time.</p>
+      <div class="fw-index">
+        {frameworkIndex.map((f) => (
+          <a class="fw-index__card" href={f.href}>
+            <span class="fw-index__tag">{f.tag}</span>
+            <span class="fw-index__name">{f.name}</span>
+            <span class="fw-index__blurb">{f.blurb}</span>
+            <span class="fw-index__go" aria-hidden="true">See the framework →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STAMP CARD ===== -->
+  <section class="fw-section" id="stamp-card">
+    <div class="container">
+      <p class="eyebrow">Paper 1 · Editing</p>
+      <h2 class="fw-section__title">STAMP CARD — collect all the errors</h2>
+      <p class="fw-section__sub">The editing question hides eight grammar errors across the passage, with two lines left deliberately clean. STAMP CARD gives your child nine categories to check on every numbered line — like stamping off a bubble-tea card until every error is caught. Tap a letter to see the category, the quick-check question, and a worked fix.</p>
+
+      <div class="stamp">
+        <div class="stamp__tabs" role="tablist" aria-label="STAMP CARD categories">
+          {stampCategories.map((c, i) => (
+            <button
+              role="tab"
+              id={`stamp-tab-${i}`}
+              aria-controls={`stamp-panel-${i}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+              tabindex={i === 0 ? 0 : -1}
+              class:list={['stamp__chip', i === 0 && 'is-active']}
+              data-index={i}
+              type="button"
+            >
+              <span class="stamp__chip-letter">{c.letter}{c.sup && <sup>{c.sup}</sup>}</span>
+            </button>
+          ))}
+        </div>
+
+        <div class="stamp__panels">
+          {stampCategories.map((c, i) => (
+            <div
+              role="tabpanel"
+              id={`stamp-panel-${i}`}
+              aria-labelledby={`stamp-tab-${i}`}
+              class:list={['stamp__panel', i === 0 && 'is-active']}
+              tabindex="0"
+              hidden={i !== 0}
+            >
+              <div class="stamp__panel-head">
+                <span class="stamp__panel-badge">{c.letter}{c.sup && <sup>{c.sup}</sup>}</span>
+                <div>
+                  <h3 class="stamp__panel-name">{c.name}</h3>
+                  <p class="stamp__panel-check">{c.check}</p>
+                </div>
+              </div>
+              <div class="stamp__fix">
+                <p class="stamp__row stamp__row--error"><span class="stamp__label">Error</span><span set:html={c.error} /></p>
+                <p class="stamp__row stamp__row--fix"><span class="stamp__label">Fix</span><span set:html={c.fix} /></p>
+                <p class="stamp__why" set:html={c.why} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p class="fw-tip"><strong>First-pass filter:</strong> T, S and A<sup>2</sup> appear in almost every passage. Sweep those three first, then work the rest of the letters in order — stopping the moment you find the one error on each line.</p>
+    </div>
+  </section>
+
+  <!-- ===== COMPREHENSION ===== -->
+  <section class="fw-section fw-section--alt" id="comprehension">
+    <div class="container">
+      <p class="eyebrow">Paper 2 · Comprehension (Sections B &amp; C)</p>
+      <h2 class="fw-section__title">SWIFT sorts it. FLIP or EIL answers it.</h2>
+      <p class="fw-section__sub">Comprehension marks are lost before a single word is written — by answering the wrong <em>kind</em> of question. SWIFT is a five-second test that decides whether the answer is already in the passage (Category A) or has to be inferred (Category B). Once the category is set, the method is fixed.</p>
+
+      <!-- SWIFT signal words -->
+      <div class="swift-words">
+        {swiftWords.map((s) => (
+          <div class="swift-word">
+            <span class="swift-word__l">{s.l}</span>
+            <span class="swift-word__w">{s.w}</span>
+            <span class="swift-word__eg">{s.eg}</span>
+          </div>
+        ))}
+      </div>
+      <p class="swift-rule">Any of these words in the question → <strong class="cat-b">Category B</strong> (infer, use EIL). None → <strong class="cat-a">Category A</strong> (locate, use FLIP).</p>
+
+      <!-- Interactive classifier -->
+      <div class="classifier" id="classifier">
+        <p class="classifier__prompt">Try it — pick a question and see how SWIFT routes it:</p>
+        <div class="classifier__qs">
+          {swiftExamples.map((e, i) => (
+            <button type="button" class="classifier__q" data-cat={e.cat} data-reason={e.reason} data-index={i}>{e.q}</button>
+          ))}
+        </div>
+        <div class="classifier__result" id="classifier-result" hidden>
+          <div class="classifier__verdict">
+            <span class="classifier__badge" id="classifier-badge"></span>
+            <span class="classifier__method" id="classifier-method"></span>
+          </div>
+          <p class="classifier__reason" id="classifier-reason"></p>
+        </div>
+      </div>
+
+      <!-- FLIP + EIL method cards -->
+      <div class="method-cards">
+        <div class="method-card method-card--a">
+          <span class="method-card__cat">Category A · the answer is in the text</span>
+          <h3 class="method-card__name">FLIP</h3>
+          <ol class="method-card__steps">
+            <li><strong>F</strong>ind the relevant lines in the named paragraph.</li>
+            <li><strong>L</strong>ift the exact words you need.</li>
+            <li><strong>I</strong>nterpret what they mean in plain English.</li>
+            <li><strong>P</strong>araphrase — only if the question says “in your own words”.</li>
+          </ol>
+        </div>
+        <div class="method-card method-card--b">
+          <span class="method-card__cat">Category B · the answer must be inferred</span>
+          <h3 class="method-card__name">EIL</h3>
+          <ol class="method-card__steps">
+            <li><strong>E</strong>vidence — name the exact word, phrase or action.</li>
+            <li><strong>I</strong>mplication — state what it suggests, in your own words.</li>
+            <li><strong>L</strong>ink — tie it back to exactly what the question asked.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- A/B question-type map -->
+      <p class="fw-tip fw-tip--plain">Sixteen question types sit under those two methods. The type only changes <em>what</em> you look for — the method stays FLIP or EIL.</p>
+      <div class="qtype-grid">
+        <div class="qtype-col">
+          <h4 class="qtype-col__head"><span class="cat-a">Category A</span> · Locate &amp; paraphrase</h4>
+          <ul class="qtype-list">
+            {catA.map((q) => (
+              <li class="qtype"><span class="qtype__code qtype__code--a">{q.code}</span><span class="qtype__name">{q.name}</span><span class="qtype__marks">{q.marks} m</span></li>
+            ))}
+          </ul>
+        </div>
+        <div class="qtype-col">
+          <h4 class="qtype-col__head"><span class="cat-b">Category B</span> · Inference</h4>
+          <ul class="qtype-list">
+            {catB.map((q) => (
+              <li class="qtype"><span class="qtype__code qtype__code--b">{q.code}</span><span class="qtype__name">{q.name}</span><span class="qtype__marks">{q.marks} m</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CAPS ===== -->
+  <section class="fw-section" id="caps">
+    <div class="container">
+      <p class="eyebrow">Paper 2 · Summary</p>
+      <h2 class="fw-section__title">CAPS — secure the language mark</h2>
+      <p class="fw-section__sub">The summary question rewards students who genuinely re-express the passage — not those who lift the writer’s words. After identifying and sorting the content points, CAPS is four paraphrasing moves that transform them. Each card shows a real before → after.</p>
+
+      <div class="caps-grid">
+        {capsTechniques.map((t) => (
+          <div class="caps-card">
+            <div class="caps-card__head">
+              <span class="caps-card__letter">{t.l}</span>
+              <h3 class="caps-card__name">{t.name}</h3>
+            </div>
+            <p class="caps-card__desc">{t.desc}</p>
+            <div class="caps-card__demo">
+              <p class="caps-card__before"><span class="caps-card__tag">Before</span>{t.before}</p>
+              <p class="caps-card__after"><span class="caps-card__tag caps-card__tag--after">After</span>{t.after}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="caps-extra">
+        <div class="caps-structure">
+          <h3 class="caps-extra__title">One paragraph, or two?</h3>
+          <p class="caps-extra__lead">Both types use the same four techniques. A single-part summary covers one theme in about 80 words. A two-part summary covers two sides — split roughly 40 words each — with one transition sentence marking the shift.</p>
+          <div class="caps-parts">
+            <div class="caps-part">
+              <span class="caps-part__label">Single-part</span>
+              <span class="caps-part__bar caps-part__bar--one">One theme · ~80 words</span>
+            </div>
+            <div class="caps-part">
+              <span class="caps-part__label">Two-part</span>
+              <span class="caps-part__split">
+                <span class="caps-part__bar">Part A · ~40</span>
+                <span class="caps-part__transition">transition</span>
+                <span class="caps-part__bar">Part B · ~40</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="caps-transitions">
+          <h3 class="caps-extra__title">Transition selector</h3>
+          <table class="caps-tt">
+            <thead><tr><th>When the two sides are…</th><th>Use</th></tr></thead>
+            <tbody>
+              {transitions.map((tr) => (
+                <tr><td>{tr.contrast}</td><td>{tr.t}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="fw-cta">
+    <div class="container">
+      <h2 class="fw-cta__title">See these frameworks taught live</h2>
+      <p class="fw-cta__sub">Every framework here is drilled line-by-line on the A-Worthy Whiteboard, on real past papers, in small groups of six. Book a free assessment and we’ll show your child exactly where the method wins back marks.</p>
+      <div class="fw-cta__actions">
+        <a href="/contact/" class="btn btn-accent plausible-event-name=Frameworks+CTA"><span>Book Free Assessment</span></a>
+        <a href="/o-level-english/" class="btn btn-outline"><span>Explore O-Level English →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  :root { --fw-accent: #3B7DD8; --fw-accent-soft: rgba(59, 125, 216, 0.1); }
+  :global([data-theme="dark"]) { --fw-accent: #5A9BF0; --fw-accent-soft: rgba(90, 155, 240, 0.14); }
+
+  /* ── Hero ── */
+  .fw-hero { padding: 3rem 0 2rem; background: var(--bg-secondary); }
+  .fw-hero__title { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 200; line-height: 1.12; margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em; }
+  .fw-hero__lead { max-width: 720px; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); margin: 0 0 2rem; }
+
+  .fw-index { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .fw-index__card { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.25rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); text-decoration: none; transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast); }
+  .fw-index__card:hover { transform: translateY(-3px); border-color: var(--fw-accent); box-shadow: 0 14px 30px -18px var(--fw-accent); }
+  .fw-index__tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fw-accent); font-weight: 700; }
+  .fw-index__name { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; }
+  .fw-index__blurb { font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary); flex: 1; }
+  .fw-index__go { font-size: 0.82rem; font-weight: 600; color: var(--fw-accent); margin-top: 0.25rem; }
+
+  /* ── Section shells ── */
+  .fw-section { padding: 3rem 0; }
+  .fw-section--alt { background: var(--bg-secondary); }
+  .fw-section__title { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 400; margin: 0.4rem 0 0.75rem; letter-spacing: -0.01em; }
+  .fw-section__sub { max-width: 760px; font-size: 1.02rem; line-height: 1.65; color: var(--text-secondary); margin: 0 0 2rem; }
+
+  .fw-tip { max-width: 760px; margin: 1.75rem 0 0; padding: 0.9rem 1.1rem; background: var(--fw-accent-soft); border-left: 3px solid var(--fw-accent); border-radius: 0 var(--border-radius) var(--border-radius) 0; font-size: 0.95rem; line-height: 1.6; color: var(--text-primary); }
+  .fw-tip--plain { background: transparent; border-left: none; padding: 0; color: var(--text-secondary); }
+  .fw-tip sup { font-size: 0.7em; }
+
+  /* ── STAMP CARD ── */
+  .stamp__tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .stamp__chip { width: 52px; height: 52px; display: grid; place-items: center; border: 1.5px solid var(--border-color); background: var(--bg-card); border-radius: 10px; cursor: pointer; transition: all var(--transition-fast); color: var(--text-secondary); }
+  .stamp__chip-letter { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.02em; }
+  .stamp__chip-letter sup { font-size: 0.6em; font-weight: 700; }
+  .stamp__chip:hover { border-color: var(--fw-accent); color: var(--fw-accent); }
+  .stamp__chip.is-active { background: var(--fw-accent); border-color: var(--fw-accent); color: #fff; box-shadow: 0 8px 18px -10px var(--fw-accent); }
+
+  .stamp__panel { display: none; }
+  .stamp__panel.is-active { display: block; }
+  .stamp__panel-head { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+  .stamp__panel-badge { flex-shrink: 0; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 10px; background: var(--fw-accent); color: #fff; font-size: 1.15rem; font-weight: 800; }
+  .stamp__panel-badge sup { font-size: 0.6em; }
+  .stamp__panel-name { font-size: 1.2rem; font-weight: 700; margin: 0.1rem 0 0.2rem; }
+  .stamp__panel-check { font-size: 0.95rem; color: var(--text-secondary); margin: 0; }
+  .stamp__fix { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.1rem 1.25rem; }
+  .stamp__row { display: flex; gap: 0.75rem; align-items: baseline; margin: 0 0 0.5rem; font-size: 1rem; line-height: 1.55; }
+  .stamp__label { flex-shrink: 0; width: 44px; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding-top: 0.15rem; }
+  .stamp__row--error .stamp__label { color: #c0392b; }
+  .stamp__row--error :global(strong) { color: #c0392b; text-decoration: line-through; text-decoration-color: rgba(192, 57, 43, 0.5); }
+  .stamp__row--fix .stamp__label { color: #1e874b; }
+  .stamp__row--fix :global(strong) { color: #1e874b; }
+  :global([data-theme="dark"]) .stamp__row--error .stamp__label,
+  :global([data-theme="dark"]) .stamp__row--error :global(strong) { color: #ff8b7d; }
+  :global([data-theme="dark"]) .stamp__row--fix .stamp__label,
+  :global([data-theme="dark"]) .stamp__row--fix :global(strong) { color: #5fd39a; }
+  .stamp__why { margin: 0.75rem 0 0; padding-top: 0.75rem; border-top: 1px dashed var(--border-color); font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); }
+
+  /* ── SWIFT ── */
+  .swift-words { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; margin-bottom: 1rem; }
+  .swift-word { display: flex; flex-direction: column; gap: 0.3rem; padding: 1rem 0.9rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); text-align: center; }
+  .swift-word__l { font-size: 1.6rem; font-weight: 800; color: var(--fw-accent); line-height: 1; }
+  .swift-word__w { font-size: 0.98rem; font-weight: 700; }
+  .swift-word__eg { font-size: 0.74rem; color: var(--text-muted); line-height: 1.4; }
+  .swift-rule { font-size: 1rem; text-align: center; color: var(--text-secondary); margin: 0 0 2rem; }
+  .cat-a { color: #5d6e8c; } .cat-b { color: #8a5a94; }
+  :global([data-theme="dark"]) .cat-a { color: #9db3d6; }
+  :global([data-theme="dark"]) .cat-b { color: #c79bd1; }
+
+  .classifier { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 2rem; }
+  .classifier__prompt { font-weight: 600; margin: 0 0 0.9rem; }
+  .classifier__qs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+  .classifier__q { text-align: left; padding: 0.7rem 0.9rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--border-radius); cursor: pointer; font-size: 0.9rem; line-height: 1.4; color: var(--text-primary); transition: border-color var(--transition-fast), transform var(--transition-fast); }
+  .classifier__q:hover { border-color: var(--fw-accent); transform: translateY(-1px); }
+  .classifier__q.is-active { border-color: var(--fw-accent); box-shadow: inset 0 0 0 1px var(--fw-accent); }
+  .classifier__result { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-color); }
+  .classifier__verdict { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .classifier__badge { font-weight: 800; font-size: 0.95rem; padding: 0.3rem 0.7rem; border-radius: 999px; color: #fff; }
+  .classifier__badge.is-a { background: #5d6e8c; } .classifier__badge.is-b { background: #8a5a94; }
+  .classifier__method { font-weight: 700; }
+  .classifier__reason { margin: 0.6rem 0 0; font-size: 0.92rem; color: var(--text-secondary); }
+
+  .method-cards { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .method-card { padding: 1.25rem 1.4rem; border-radius: var(--border-radius-lg); border: 1px solid var(--border-color); background: var(--bg-card); }
+  .method-card--a { border-top: 3px solid #5d6e8c; } .method-card--b { border-top: 3px solid #8a5a94; }
+  .method-card__cat { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+  .method-card__name { font-size: 1.5rem; font-weight: 800; letter-spacing: 0.04em; margin: 0.2rem 0 0.6rem; }
+  .method-card--a .method-card__name { color: #5d6e8c; } .method-card--b .method-card__name { color: #8a5a94; }
+  :global([data-theme="dark"]) .method-card--a .method-card__name { color: #9db3d6; }
+  :global([data-theme="dark"]) .method-card--b .method-card__name { color: #c79bd1; }
+  .method-card__steps { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; line-height: 1.5; color: var(--text-secondary); }
+  .method-card__steps :global(strong) { color: var(--text-primary); }
+
+  .qtype-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem; }
+  .qtype-col__head { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.75rem; }
+  .qtype-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .qtype { display: flex; align-items: center; gap: 0.7rem; padding: 0.5rem 0.7rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); font-size: 0.88rem; }
+  .qtype__code { flex-shrink: 0; font-weight: 800; font-size: 0.78rem; padding: 0.15rem 0.45rem; border-radius: 5px; color: #fff; }
+  .qtype__code--a { background: #5d6e8c; } .qtype__code--b { background: #8a5a94; }
+  .qtype__name { flex: 1; color: var(--text-primary); }
+  .qtype__marks { flex-shrink: 0; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+  /* ── CAPS ── */
+  .caps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .caps-card { padding: 1.25rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); }
+  .caps-card__head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; }
+  .caps-card__letter { width: 38px; height: 38px; flex-shrink: 0; display: grid; place-items: center; border-radius: 9px; background: var(--color-accent); color: #fff; font-size: 1.1rem; font-weight: 800; }
+  .caps-card__name { font-size: 1.1rem; font-weight: 700; margin: 0; }
+  .caps-card__desc { font-size: 0.9rem; line-height: 1.55; color: var(--text-secondary); margin: 0 0 0.9rem; }
+  .caps-card__demo { display: flex; flex-direction: column; gap: 0.4rem; }
+  .caps-card__before, .caps-card__after { margin: 0; font-size: 0.9rem; line-height: 1.5; padding: 0.55rem 0.7rem; border-radius: var(--border-radius); }
+  .caps-card__before { background: var(--bg-secondary); color: var(--text-secondary); }
+  .caps-card__after { background: var(--fw-accent-soft); color: var(--text-primary); }
+  .caps-card__tag { display: inline-block; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.07em; text-transform: uppercase; font-weight: 700; margin-right: 0.5rem; color: var(--text-muted); }
+  .caps-card__tag--after { color: var(--fw-accent); }
+
+  .caps-extra { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .caps-extra__title { font-size: 1.05rem; font-weight: 700; margin: 0 0 0.6rem; }
+  .caps-extra__lead { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem; }
+  .caps-parts { display: flex; flex-direction: column; gap: 0.75rem; }
+  .caps-part { display: flex; flex-direction: column; gap: 0.3rem; }
+  .caps-part__label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+  .caps-part__bar { display: inline-block; padding: 0.5rem 0.75rem; background: var(--fw-accent-soft); border: 1px solid var(--fw-accent); border-radius: var(--border-radius); font-size: 0.82rem; font-weight: 600; text-align: center; color: var(--text-primary); }
+  .caps-part__bar--one { background: var(--fw-accent); color: #fff; border-color: var(--fw-accent); }
+  .caps-part__split { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+  .caps-part__transition { font-size: 0.72rem; font-style: italic; color: var(--text-muted); padding: 0 0.2rem; }
+  .caps-tt { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  .caps-tt th { text-align: left; font-weight: 700; padding: 0.5rem 0.6rem; border-bottom: 2px solid var(--border-color); font-size: 0.8rem; }
+  .caps-tt td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: top; }
+  .caps-tt td:last-child { color: var(--text-primary); font-weight: 600; }
+
+  /* ── CTA ── */
+  .fw-cta { padding: 3rem 0; background: var(--bg-footer); text-align: center; }
+  .fw-cta__title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; color: #fff; margin: 0 0 0.6rem; }
+  .fw-cta__sub { max-width: 620px; margin: 0 auto 1.75rem; color: rgba(255, 255, 255, 0.75); font-size: 1rem; line-height: 1.6; }
+  .fw-cta__actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+  .fw-cta .btn-outline { color: #fff; border-color: rgba(255, 255, 255, 0.3); }
+  .fw-cta .btn-outline:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .fw-index, .swift-words { grid-template-columns: 1fr 1fr; }
+    .method-cards, .caps-extra { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .fw-index, .swift-words, .caps-grid, .classifier__qs, .qtype-grid { grid-template-columns: 1fr; }
+    .swift-word { flex-direction: row; align-items: center; gap: 0.6rem; text-align: left; }
+    .swift-word__eg { margin-left: auto; text-align: right; }
+    .stamp__chip { width: 46px; height: 46px; }
+  }
+</style>
+
+<script>
+  function initFrameworks() {
+    // ── STAMP CARD tabs (WAI-ARIA) ──
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.stamp__chip'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.stamp__panel'));
+    function selectStamp(idx: number, focus = true) {
+      tabs.forEach((t, i) => {
+        const on = i === idx;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        t.classList.toggle('is-active', on);
+      });
+      panels.forEach((p, i) => {
+        const on = i === idx;
+        p.classList.toggle('is-active', on);
+        p.hidden = !on;
+      });
+      if (focus) tabs[idx]?.focus();
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => selectStamp(i, false));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); selectStamp((i + 1) % tabs.length); }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); selectStamp((i - 1 + tabs.length) % tabs.length); }
+        else if (e.key === 'Home') { e.preventDefault(); selectStamp(0); }
+        else if (e.key === 'End') { e.preventDefault(); selectStamp(tabs.length - 1); }
+      });
+    });
+
+    // ── SWIFT classifier ──
+    const qButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.classifier__q'));
+    const result = document.getElementById('classifier-result');
+    const badge = document.getElementById('classifier-badge');
+    const method = document.getElementById('classifier-method');
+    const reason = document.getElementById('classifier-reason');
+    qButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        qButtons.forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const cat = btn.dataset.cat;
+        const isB = cat === 'B';
+        if (badge) { badge.textContent = isB ? 'Category B' : 'Category A'; badge.className = 'classifier__badge ' + (isB ? 'is-b' : 'is-a'); }
+        if (method) method.textContent = isB ? 'Infer it — use EIL (Evidence → Implication → Link)' : 'Locate it — use FLIP (Find → Lift → Interpret → Paraphrase)';
+        if (reason) reason.textContent = btn.dataset.reason || '';
+        if (result) result.hidden = false;
+      });
+    });
+  }
+
+  initFrameworks();
+  document.addEventListener('astro:page-load', initFrameworks);
+</script>
