@@ -182,6 +182,9 @@ h1, h2, h3, h4, h5, h6 {
   /* Prevent long words from overflowing on mobile */
   overflow-wrap: break-word;
   word-break: break-word;
+  /* Even out multi-line heading rags ("…and all- / inclusive").
+     Progressive enhancement; ignored by older browsers. */
+  text-wrap: balance;
 }
 
 /* Weight contrasts: light h1 vs bold h3 — bumped for readability */
