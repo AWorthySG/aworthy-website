@@ -34,7 +34,7 @@ src/
 │   └── PenAnimation.astro    # SVG fountain pen calligraphy animation ("You are worth the A")
 ├── layouts/
 │   └── BaseLayout.astro      # Master HTML template (see "BaseLayout Features" below)
-├── pages/          # File-based routing (32 pages)
+├── pages/          # File-based routing (33 pages)
 │   ├── index.astro           # Homepage (~2700 lines — largest page, audience selector)
 │   ├── about.astro           # About the centre, founder's personal story, video placeholder
 │   ├── programmes.astro      # Programme overview
@@ -50,6 +50,7 @@ src/
 │   ├── review.astro          # Review-generation page (Google review + private feedback; noindex)
 │   ├── results.astro         # Student results and statistics
 │   ├── resources.astro       # Resource vault with email gating (17 resources, 6 categories)
+│   ├── frameworks.astro      # O-Level English framework showcase (interactive): STAMP CARD editing sweep, SWIFT→FLIP/EIL comprehension, CAPS summary. Linked from Header (Library), Footer, and o-level-english.astro cards
 │   ├── testimonials.astro    # Testimonials with carousel and video section
 │   ├── contact.astro         # Contact form, trial booking form, online badge
 │   ├── pricing.astro         # Pricing comparison table with FAQ
@@ -322,7 +323,7 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 - **H1 GP courseCode**: `"8807"` (Cambridge syllabus code). Do not use 8881.
 - **O-Level Mathematics courseCode**: `"4048"`
 - **H2 Economics courseCode**: `"9570"`
-- **O-Level English courseCode**: `"1128"`
+- **O-Level English courseCode**: `"1184"` (the current SEAB syllabus code; the site was migrated from the older `1128`)
 - **OG images**: `og-english.png`, `og-gp.png`, `og-econs.png`, `og-maths.png` — the four national-stream subject pages have dedicated OG images. Source SVGs are in `public/images/og-*.svg`; PNGs are generated at build time by `scripts/convert-og-images.mjs`. `pre-ib-mathematics.astro` currently reuses `og-maths.png` (no dedicated OG yet).
 - **Breadcrumbs**: Rendered entirely server-side by Astro in BaseLayout (lines ~226–242). There is no client-side JS breadcrumb script — do not add one, as it would duplicate items. The `breadcrumbLabels` map must include every page slug to avoid bad auto-capitalisation.
 - **LocalBusiness `geo`**: the EducationalOrganization/LocalBusiness JSON-LD includes a `GeoCoordinates` block. Keep its lat/long in sync with the `geo.position`/`ICBM` meta tags in `<head>`. No `streetAddress` — the centre is online-only via Zoom, so do not add a fabricated physical address.
