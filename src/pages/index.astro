@@ -57,7 +57,7 @@ import '../styles/global.css';
 
       <div class="hero-badges-row hero-anim" style="--d:17">
         <span class="hero-badge">MOE-Aligned</span>
-        <span class="hero-badge">100% Online via Zoom</span>
+        <span class="hero-badge">100% Online</span>
         <span class="hero-badge">NUS Law Graduate Founder</span>
       </div>
 
@@ -541,7 +541,7 @@ import '../styles/global.css';
         "name": "Why are classes online only?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Online delivery via Zoom lets us keep class sizes small (max 6) while keeping fees accessible. Every student gets screen-shared feedback on their work in real time."
+          "text": "Online delivery on the A-Worthy Whiteboard lets us keep class sizes small (max 6) while keeping fees accessible. Every student gets screen-shared feedback on their work in real time."
         }
       },
       {
@@ -557,7 +557,7 @@ import '../styles/global.css';
         "name": "How much does it cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O-Level English tuition: SGD 280–320/month. O-Level Mathematics tuition: SGD 280–320/month. H1 GP tuition: SGD 360–400/month. H2 Economics tuition: SGD 360–400/month. One-to-One coaching: SGD 120–140/session. All classes are online via Zoom with a maximum of 6 students."
+          "text": "O-Level English tuition: SGD 280–320/month. O-Level Mathematics tuition: SGD 280–320/month. H1 GP tuition: SGD 360–400/month. H2 Economics tuition: SGD 360–400/month. One-to-One coaching: SGD 120–140/session. All classes are online on the A-Worthy Whiteboard with a maximum of 6 students."
         }
       }
     ]
@@ -644,8 +644,8 @@ import '../styles/global.css';
               <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
             <div>
-              <strong>Online via Zoom</strong>
-              <p>All lessons conducted via Zoom Pro from anywhere in Singapore</p>
+              <strong>Online Lessons</strong>
+              <p>All lessons live on the A-Worthy Whiteboard, from anywhere in Singapore</p>
             </div>
           </div>
           <div class="info-card">
@@ -932,7 +932,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.25em;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     margin-bottom: 1rem;
   }
 
@@ -1518,7 +1518,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .programmes-pricing-link a {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
@@ -1597,7 +1597,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .founder-band__link {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     text-decoration: none;
     font-weight: 600;
   }
@@ -1617,7 +1617,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .wb-name {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     font-style: italic;
     white-space: nowrap;
   }
@@ -1775,6 +1775,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .transformation-card__after {
     color: var(--color-primary);
   }
+  :global([data-theme="dark"]) .transformation-card__after { color: #8FBCEF; }
 
   .transformation-card__meta {
     font-size: 0.78rem;
@@ -1792,7 +1793,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .transformations__link {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     text-decoration: none;
     font-weight: 600;
   }
@@ -1863,7 +1864,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     margin-bottom: 0.5rem;
   }
 
@@ -1900,7 +1901,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .programme-link {
     font-size: 0.85rem;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     font-weight: 500;
     letter-spacing: 0.02em;
   }
@@ -2104,7 +2105,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     gap: 0.5rem;
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     border: 1px solid rgba(212, 133, 58, 0.2);
@@ -2373,7 +2374,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .result-bar-pct {
     font-weight: 600;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     font-family: var(--font-mono);
     font-size: 0.8rem;
   }
@@ -2427,7 +2428,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .grade-before {
     font-weight: 600;
-    color: #f87171;
+    color: var(--grade-before-ink, #C0392B);
     font-size: 1.1rem;
   }
   .grade-arrow {
@@ -2436,9 +2437,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .grade-after {
     font-weight: 600;
-    color: #6ee7b7;
+    color: var(--grade-after-ink, #187A42);
     font-size: 1.1rem;
   }
+
+  /* Dark mode: soft grade tints pass on the dark canvas; the light-mode inks
+     above are the AA-compliant equivalents on cream cards. */
+  :global([data-theme="dark"]) .grade-before { color: #f87171; }
+  :global([data-theme="dark"]) .grade-after { color: #6ee7b7; }
   .transform-duration {
     font-size: 0.7rem;
     color: var(--text-muted);
@@ -3044,9 +3050,10 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     transition: all var(--transition-fast);
   }
   .audience-btn.active {
-    background: var(--color-accent);
+    background: var(--color-accent-text);
     color: #fff;
   }
+  :global([data-theme="dark"]) .audience-btn.active { color: #11100E; }
   .audience-msg {
     text-align: center;
     max-width: 520px;
@@ -3083,16 +3090,18 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-family: var(--font-heading);
     font-size: 2rem;
     font-weight: 200;
-    color: #e74c3c;
-    opacity: 0.7;
+    color: var(--grade-before-ink, #C0392B);
+    opacity: 0.85;
   }
   .grade-after-animated {
     font-family: var(--font-heading);
     font-size: 2.5rem;
     font-weight: 200;
-    color: #27ae60;
+    color: var(--grade-after-ink, #187A42);
     animation: grade-glow 2s ease-in-out infinite;
   }
+  :global([data-theme="dark"]) .grade-before-animated { color: #ed8175; }
+  :global([data-theme="dark"]) .grade-after-animated { color: #6ee7b7; }
   @keyframes grade-glow {
     0%, 100% { text-shadow: 0 0 0 transparent; }
     50% { text-shadow: 0 0 20px rgba(39, 174, 96, 0.3); }

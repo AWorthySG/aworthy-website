@@ -292,7 +292,7 @@ import '../styles/global.css';
             <tr>
               <td class="compare-row-label">Format</td>
               <td>Travel to a centre, fixed slot</td>
-              <td><strong>Online via Zoom</strong> &mdash; from anywhere in Singapore</td>
+              <td><strong>Online on the A-Worthy Whiteboard</strong> &mdash; from anywhere in Singapore</td>
             </tr>
             <tr>
               <td class="compare-row-label">Monthly fee (English)</td>
@@ -471,7 +471,7 @@ import '../styles/global.css';
     font-size: 0.7rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
 
   .pricing-table tbody td {
@@ -504,7 +504,7 @@ import '../styles/global.css';
   }
 
   .pricing-table tbody td strong {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     font-weight: 600;
   }
 
@@ -542,7 +542,7 @@ import '../styles/global.css';
   }
   .pricing-card__popular-badge {
     display: inline-block;
-    background: var(--color-accent);
+    background: var(--color-accent-text);
     color: #fff;
     font-size: 0.68rem;
     font-weight: 700;
@@ -568,7 +568,7 @@ import '../styles/global.css';
   }
   .pricing-table__popular-badge {
     display: inline-block;
-    background: var(--color-accent);
+    background: var(--color-accent-text);
     color: #fff;
     font-size: 0.6rem;
     font-weight: 700;
@@ -578,11 +578,12 @@ import '../styles/global.css';
     border-radius: 999px;
     margin-bottom: 0.35rem;
   }
+  :global([data-theme="dark"]) .pricing-card__popular-badge,
+  :global([data-theme="dark"]) .pricing-table__popular-badge { color: #11100E; }
   .pricing-cta__reassure {
     margin-top: 0.9rem;
     font-size: 0.85rem;
-    color: inherit;
-    opacity: 0.8;
+    color: var(--text-secondary);
   }
 
   .pricing-card__name {
@@ -741,7 +742,7 @@ import '../styles/global.css';
     background: var(--bg-secondary);
   }
   .compare-table thead .compare-col-us {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     border-bottom-color: var(--color-accent);
   }
   .compare-table__label-col {
