@@ -801,6 +801,13 @@ import { ClientRouter } from 'astro:transitions';
       background: var(--bg-secondary);
       padding: 0.5rem 0;
       border-bottom: 1px solid var(--border-color);
+      /* The breadcrumb renders before <main>, which is what carries the
+         fixed-header offset — without its own offset it sat invisible
+         underneath the header on every page. */
+      margin-top: var(--nav-offset);
+    }
+    body:has(.breadcrumb) #main-content {
+      padding-top: 0;
     }
     .breadcrumb-list {
       list-style: none;

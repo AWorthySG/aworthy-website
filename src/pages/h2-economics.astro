@@ -95,16 +95,7 @@ const playbookRows = [
   <section class="prog-hero">
     <div class="container">
       <p class="eyebrow">H2 Economics</p>
-      <svg class="prog-hero__icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M6 40H42" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M6 40V8" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M12 32L20 22L28 26L38 12" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M34 12H38V16" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 32V36" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M20 26V36" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M28 28V36" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M36 16V36" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-      </svg>
+      <img class="prog-hero__illus" src="/images/illus-hero-econs.webp" alt="" width="460" height="259" loading="eager" decoding="async" />
       <h1 class="prog-hero__heading">Best H2 Economics Tuition<br />in Singapore for JC Students</h1>
       <p class="prog-hero__sub">Master the A-Level H2 Economics 9570 syllabus with the SHARP Method &mdash; a five-step analytical system that gives your child precision frameworks for diagram accuracy, DEED essay structure, Extract-Link-Apply case study technique, and the higher-order evaluation that separates L2 from L3 in the Cambridge mark scheme.</p>
     </div>
@@ -830,6 +821,8 @@ const playbookRows = [
   .prog-hero .container { position: relative; z-index: 1; }
 
   .prog-hero__icon { display: block; margin: 0 auto 1rem; }
+  .prog-hero__illus { display: block; margin: 0 auto 1rem; width: min(460px, 86%); height: auto; border-radius: 10px; border: 1px solid var(--prog-border); box-shadow: 0 18px 40px -26px rgba(26, 42, 58, 0.4); }
+  :global([data-theme="dark"]) .prog-hero__illus { border-color: rgba(245, 239, 227, 0.16); box-shadow: 0 18px 44px -22px rgba(0, 0, 0, 0.6); }
 
   .prog-hero__heading {
     font-family: var(--prog-font);

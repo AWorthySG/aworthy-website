@@ -95,15 +95,7 @@ const playbookRows = [
   <section class="prog-hero">
     <div class="container">
       <p class="eyebrow">H1 General Paper</p>
-      <svg class="prog-hero__icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M8 40V12C8 10 10 8 12 8H22L24 12L26 8H36C38 8 40 10 40 12V40" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M24 12V40" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M8 40C8 40 12 38 16 38C20 38 24 40 24 40C24 40 28 38 32 38C36 38 40 40 40 40" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M13 16H20" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M13 22H20" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M28 16H35" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M28 22H35" stroke="var(--subject-accent)" stroke-width="2" stroke-linecap="round"/>
-      </svg>
+      <img class="prog-hero__illus" src="/images/illus-hero-gp.webp" alt="" width="460" height="259" loading="eager" decoding="async" />
       <h1 class="prog-hero__heading">Top-Rated GP Tuition<br />in Singapore for JC Students</h1>
       <p class="prog-hero__sub">Master A-Level General Paper with the SHARP Method &mdash; a five-step analytical system adapted from legal reasoning that gives your child a named framework for every GP question type: thesis-driven essays, balanced discursive arguments, criteria-led evaluations, SAQ comprehension, summary, and the Application Question that most students leave marks on.</p>
     </div>
@@ -823,6 +815,8 @@ const playbookRows = [
   .prog-hero .container { position: relative; z-index: 1; }
 
   .prog-hero__icon { display: block; margin: 0 auto 1rem; }
+  .prog-hero__illus { display: block; margin: 0 auto 1rem; width: min(460px, 86%); height: auto; border-radius: 10px; border: 1px solid var(--prog-border); box-shadow: 0 18px 40px -26px rgba(26, 42, 58, 0.4); }
+  :global([data-theme="dark"]) .prog-hero__illus { border-color: rgba(245, 239, 227, 0.16); box-shadow: 0 18px 44px -22px rgba(0, 0, 0, 0.6); }
 
   .prog-hero__heading {
     font-family: var(--prog-font);
