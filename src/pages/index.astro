@@ -22,16 +22,10 @@ import '../styles/global.css';
           <span class="hero-prelude-word" style="--i:0">You</span>
           <span class="hero-prelude-word" style="--i:1">are</span>
         </span>
-        <span class="hero-tagline">
-          <span class="hero-letter" style="--i:0">A</span>
-          <span class="hero-letter hero-letter--space" style="--i:1">&nbsp;</span>
-          <span class="hero-letter hero-letter--italic" style="--i:2">W</span>
-          <span class="hero-letter hero-letter--italic" style="--i:3">o</span>
-          <span class="hero-letter hero-letter--italic" style="--i:4">r</span>
-          <span class="hero-letter hero-letter--italic" style="--i:5">t</span>
-          <span class="hero-letter hero-letter--italic" style="--i:6">h</span>
-          <span class="hero-letter hero-letter--italic" style="--i:7">y</span>
-        </span>
+        <!-- Letter spans are deliberately contiguous: whitespace text nodes between
+             inline-block spans render as visible gaps (~0.25em each at display size)
+             that stretched "Worthy" and wrapped it mid-word. -->
+        <span class="hero-tagline"><span class="hero-letter" style="--i:0">A</span><span class="hero-letter hero-letter--space" style="--i:1">&nbsp;</span><span class="hero-letter hero-letter--italic" style="--i:2">W</span><span class="hero-letter hero-letter--italic" style="--i:3">o</span><span class="hero-letter hero-letter--italic" style="--i:4">r</span><span class="hero-letter hero-letter--italic" style="--i:5">t</span><span class="hero-letter hero-letter--italic" style="--i:6">h</span><span class="hero-letter hero-letter--italic" style="--i:7">y</span></span>
         <span class="hero-underline" aria-hidden="true"></span>
       </h1>
       <p class="hero-sub hero-anim" style="--d:10">Your child studies hard but their grades don&rsquo;t move. They know the content &mdash; they just can&rsquo;t show it under exam pressure. SHARP gives them a five-step system to see what the question wants, pick the right framework, and write answers that score &mdash; across O-Level English &amp; Maths, H1 General Paper, and H2 Economics.</p>
@@ -994,7 +988,10 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     align-items: center;
     justify-content: center;
     background: var(--bg-primary);
-    padding: 0;
+    /* Top padding must clear the fixed header + subject bar: the negative
+       margin pulls the hero under them, and on shorter viewports (~900px)
+       flex-centering pushed the kicker/prelude up into the nav. */
+    padding: calc(var(--nav-offset) + 1.5rem) 0 2rem;
     overflow: hidden;
     position: relative;
     margin-top: calc(-1 * var(--nav-offset));
@@ -1068,6 +1065,8 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     line-height: 0.95;
     letter-spacing: -0.035em;
     color: var(--text-primary);
+    /* The per-letter spans must never wrap mid-word ("A Worth / y") */
+    white-space: nowrap;
   }
 
   .hero-letter {
@@ -1380,7 +1379,8 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   @media (max-width: 640px) {
     .hero {
       min-height: auto;
-      padding: 3rem 0 1.5rem;
+      /* keep clearing the fixed header (negative margin pulls the hero under it) */
+      padding: calc(var(--nav-offset) + 1.25rem) 0 1.5rem;
     }
     .section {
       padding: 1rem 0;

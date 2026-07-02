@@ -349,6 +349,20 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     border-color: var(--color-accent);
   }
 
+  /* Dark mode: [data-theme="dark"] .btn-accent (global.css) ties this
+     component's scoped .header-cta on specificity and re-applies the orange
+     gradient behind the accent-coloured label — orange-on-orange, invisible
+     text. Re-assert the ghost treatment with a stronger selector. */
+  :global([data-theme="dark"]) .header-cta {
+    background: transparent;
+    color: var(--color-accent);
+    box-shadow: none;
+  }
+  :global([data-theme="dark"]) .header-cta:hover {
+    background: rgba(224, 152, 80, 0.12);
+    border-color: var(--color-accent);
+  }
+
   /* Theme Toggle */
   .theme-toggle {
     width: 44px;
