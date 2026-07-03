@@ -80,8 +80,8 @@ const frameworkIndex = [
 ---
 
 <BaseLayout
-  title="O-Level English Frameworks | STAMP CARD, SWIFT & CAPS | A-Worthy"
-  description="The named A-Worthy frameworks for every O-Level English (1184) question: STAMP CARD for editing, SWIFT–FLIP–EIL for comprehension, and CAPS for summary. See exactly which tool to reach for, and how to use it."
+  title="STAMP CARD, SWIFT & CAPS | O-Level English | A-Worthy"
+  description="A-Worthy’s named frameworks for every O-Level English (1184) question: STAMP CARD for editing, SWIFT–FLIP–EIL for comprehension, CAPS for summary."
   ogImage="/images/og-english.png"
 >
   <Header slot="header" />
@@ -316,8 +316,8 @@ const frameworkIndex = [
 </BaseLayout>
 
 <style>
-  :root { --fw-accent: #3B7DD8; --fw-accent-soft: rgba(59, 125, 216, 0.1); }
-  :global([data-theme="dark"]) { --fw-accent: #5A9BF0; --fw-accent-soft: rgba(90, 155, 240, 0.14); }
+  :root { --fw-accent: #3B7DD8; --fw-accent-text: #2C60A6; --fw-accent-soft: rgba(59, 125, 216, 0.1); }
+  :global([data-theme="dark"]) { --fw-accent: #5A9BF0; --fw-accent-text: #5A9BF0; --fw-accent-soft: rgba(90, 155, 240, 0.14); }
 
   /* ── Hero ── */
   .fw-hero { padding: 3rem 0 2rem; background: var(--bg-secondary); }
@@ -327,10 +327,10 @@ const frameworkIndex = [
   .fw-index { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .fw-index__card { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.25rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); text-decoration: none; transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast); }
   .fw-index__card:hover { transform: translateY(-3px); border-color: var(--fw-accent); box-shadow: 0 14px 30px -18px var(--fw-accent); }
-  .fw-index__tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fw-accent); font-weight: 700; }
+  .fw-index__tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fw-accent-text); font-weight: 700; }
   .fw-index__name { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; }
   .fw-index__blurb { font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary); flex: 1; }
-  .fw-index__go { font-size: 0.82rem; font-weight: 600; color: var(--fw-accent); margin-top: 0.25rem; }
+  .fw-index__go { font-size: 0.82rem; font-weight: 600; color: var(--fw-accent-text); margin-top: 0.25rem; }
 
   /* ── Section shells ── */
   .fw-section { padding: 3rem 0; }
@@ -426,7 +426,7 @@ const frameworkIndex = [
   .caps-card__before { background: var(--bg-secondary); color: var(--text-secondary); }
   .caps-card__after { background: var(--fw-accent-soft); color: var(--text-primary); }
   .caps-card__tag { display: inline-block; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.07em; text-transform: uppercase; font-weight: 700; margin-right: 0.5rem; color: var(--text-muted); }
-  .caps-card__tag--after { color: var(--fw-accent); }
+  .caps-card__tag--after { color: var(--fw-accent-text); }
 
   .caps-extra { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .caps-extra__title { font-size: 1.05rem; font-weight: 700; margin: 0 0 0.6rem; }
@@ -435,7 +435,8 @@ const frameworkIndex = [
   .caps-part { display: flex; flex-direction: column; gap: 0.3rem; }
   .caps-part__label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
   .caps-part__bar { display: inline-block; padding: 0.5rem 0.75rem; background: var(--fw-accent-soft); border: 1px solid var(--fw-accent); border-radius: var(--border-radius); font-size: 0.82rem; font-weight: 600; text-align: center; color: var(--text-primary); }
-  .caps-part__bar--one { background: var(--fw-accent); color: #fff; border-color: var(--fw-accent); }
+  .caps-part__bar--one { background: var(--fw-accent-text); color: #fff; border-color: var(--fw-accent-text); }
+  :global([data-theme="dark"]) .caps-part__bar--one { color: #11100E; }
   .caps-part__split { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
   .caps-part__transition { font-size: 0.72rem; font-style: italic; color: var(--text-muted); padding: 0 0.2rem; }
   .caps-tt { width: 100%; border-collapse: collapse; font-size: 0.86rem; }

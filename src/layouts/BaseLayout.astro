@@ -134,11 +134,11 @@ const schemaData = {
     "@type": "OfferCatalog",
     "name": "Tuition Programmes",
     "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level English Tuition Singapore", "courseCode": "1184", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level English tuition with the SHARP Method. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level English Tuition Singapore", "courseCode": "1184", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level English tuition with the SHARP Method. Small groups of 6, online on the A-Worthy Whiteboard."}, "price": "280", "priceCurrency": "SGD"},
       {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H1 General Paper Tuition Singapore", "courseCode": "8807", "inLanguage": "en-SG", "description": "JC 1–2 H1 GP tuition with the SHARP Method. Essay argumentation, comprehension and AQ mastery."}, "price": "360", "priceCurrency": "SGD"},
       {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "H2 Economics Tuition Singapore", "courseCode": "9570", "inLanguage": "en-SG", "description": "JC 1–2 H2 Economics tuition with the SHARP Method. Diagram precision, essay technique, and case study mastery."}, "price": "360", "priceCurrency": "SGD"},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level Mathematics Tuition Singapore", "courseCode": "4048", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level Mathematics tuition with the SHARP Method. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"},
-      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Pre-IB Mathematics Tuition (Year 3 & Year 4)", "inLanguage": "en-SG", "description": "Year 3–4 Pre-IB Mathematics tuition with the SHARP Method. Indices to introductory calculus, with annotated line-by-line working. Small groups of 6, online via Zoom."}, "price": "280", "priceCurrency": "SGD"}
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "O-Level Mathematics Tuition Singapore", "courseCode": "4048", "inLanguage": "en-SG", "description": "Secondary 1–4 O-Level Mathematics tuition with the SHARP Method. Small groups of 6, online on the A-Worthy Whiteboard."}, "price": "280", "priceCurrency": "SGD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "Pre-IB Mathematics Tuition (Year 3 & Year 4)", "inLanguage": "en-SG", "description": "Year 3–4 Pre-IB Mathematics tuition with the SHARP Method. Indices to introductory calculus, with annotated line-by-line working. Small groups of 6, online on the A-Worthy Whiteboard."}, "price": "280", "priceCurrency": "SGD"}
     ]
   }
 };
@@ -281,9 +281,11 @@ import { ClientRouter } from 'astro:transitions';
           const href = '/' + pathSegments.slice(0, index + 1).join('/') + '/';
           const label = breadcrumbLabels[segment] || segment.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
           const isLast = index === pathSegments.length - 1;
+          // 'lp' is a folder, not a page — linking it would 404
+          const noPage = segment === 'lp';
           return (
             <li>
-              {isLast ? <span aria-current="page">{label}</span> : <a href={href}>{label}</a>}
+              {isLast ? <span aria-current="page">{label}</span> : noPage ? <span>{label}</span> : <a href={href}>{label}</a>}
             </li>
           );
         })}
@@ -340,11 +342,15 @@ import { ClientRouter } from 'astro:transitions';
       </div>
       <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" class="whatsapp-preview-cta" aria-label="Chat on WhatsApp">
         <span style="flex:1;color:var(--text-muted);font-size:0.8rem;" aria-hidden="true">Type a message...</span>
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent)"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent-text)"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </a>
     </div>
     <a class="whatsapp-float-btn plausible-event-name=WhatsApp+Click" id="whatsapp-float-btn" href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-      <svg aria-hidden="true" viewBox="0 0 24 24" width="28" height="28" fill="white">
+      <!-- #11100E: fixed dark ink for both themes (not currentColor) — the button's
+           own green background doesn't change between themes, so the icon shouldn't
+           either. White-on-green here was 1.98:1, failing WCAG 1.4.11 (needs 3:1
+           for icons that identify a UI control); dark ink clears 9.6:1. -->
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="28" height="28" fill="#11100E">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
     </a>
@@ -799,6 +805,13 @@ import { ClientRouter } from 'astro:transitions';
       background: var(--bg-secondary);
       padding: 0.5rem 0;
       border-bottom: 1px solid var(--border-color);
+      /* The breadcrumb renders before <main>, which is what carries the
+         fixed-header offset — without its own offset it sat invisible
+         underneath the header on every page. */
+      margin-top: var(--nav-offset);
+    }
+    body:has(.breadcrumb) #main-content {
+      padding-top: 0;
     }
     .breadcrumb-list {
       list-style: none;
@@ -1368,16 +1381,16 @@ import { ClientRouter } from 'astro:transitions';
 
     var answers = {
       pricing: 'O-Level English: SGD 280\u2013320/month. O-Level Maths: SGD 280\u2013320/month. H1 GP: SGD 360\u2013400/month. H2 Economics: SGD 360\u2013400/month. 1-to-1: SGD 120\u2013140/session. <a href="/pricing/">View full pricing \u2192</a>',
-      schedule: 'Classes run Mon\u2013Fri 2pm\u20139:30pm and Sat\u2013Sun 9am\u20136pm. All sessions are conducted via Zoom. <a href="/contact/">Contact us for available slots \u2192</a>',
+      schedule: 'Classes run Mon\u2013Fri 2pm\u20139:30pm and Sat\u2013Sun 9am\u20136pm. All sessions run live on the A-Worthy Whiteboard. <a href="/contact/">Contact us for available slots \u2192</a>',
       method: 'The SHARP Method is our proprietary 5-step system: See, Hit, Apply, Refine, Practise. Adapted from legal reasoning, it teaches students how to think systematically. <a href="/programmes/">Learn more \u2192</a>',
       enrol: 'Step 1: Book a free diagnostic assessment. Step 2: Get a personalised learning plan. Step 3: Start learning! <a href="/contact/">Book Free Assessment \u2192</a>',
       trial: 'Yes! We offer a free diagnostic assessment for all new students. This helps us understand your child\'s needs before recommending a programme. <a href="/contact/">Book free assessment \u2192</a>',
-      online: 'All classes are 100% online via Zoom Pro. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>',
+      online: 'All classes are 100% online, on the A-Worthy Whiteboard. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>',
       classsize: 'We cap every class at 6 students \u2014 no exceptions. This means your child gets personal feedback on their work every single session, and the tutor knows their specific strengths and weaknesses. <a href="/about/">Learn more about our approach \u2192</a>',
       results: '90% of our students score A1\u2013B3 for O-Level English. Many students improve by 2\u20133 grades within their first term. <a href="/results/">See our full results \u2192</a>',
       tutor: 'All classes are taught by Jeremy Lim, our founder. He\u2019s an NUS Law graduate (LLB Hons) who left corporate law to teach full-time. He created the SHARP Method based on the analytical skills used in legal practice. <a href="/about/">Read his story \u2192</a>',
       subjects: 'We teach five programmes: O-Level English (Sec 1\u20134), O-Level Mathematics (Sec 1\u20134), Pre-IB Mathematics (Year 3\u20134), H1 General Paper (JC 1\u20132), and H2 Economics (JC 1\u20132). All use the same SHARP Method framework. <a href="/programmes/">View all programmes \u2192</a>',
-      location: 'We\u2019re 100% online \u2014 no physical centre. Students join from anywhere in Singapore via Zoom Pro with cloud recording. No commute, no wasted time. <a href="/programmes/">View programmes \u2192</a>',
+      location: 'We\u2019re 100% online \u2014 no physical centre. Students join from anywhere in Singapore on the A-Worthy Whiteboard, with every lesson recorded. No commute, no wasted time. <a href="/programmes/">View programmes \u2192</a>',
       resources: 'Yes! We have free downloadable resources covering grammar, essay writing, comprehension, vocabulary, and more. No payment required \u2014 just an email address. <a href="/resources/">Browse the resource vault \u2192</a>',
       refund: 'We offer a free diagnostic assessment before you commit to anything. If you\u2019re not satisfied after your first paid month, contact us and we\u2019ll work something out. <a href="/contact/">Get in touch \u2192</a>',
       contact: 'You can reach us via WhatsApp, email, or the contact form on our website. We typically reply within a few hours. <a href="/contact/">Go to contact page \u2192</a>',

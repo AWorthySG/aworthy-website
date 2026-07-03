@@ -20,7 +20,7 @@
 }
 .playbook-matrix__col-label,
 .playbook-matrix__step {
-  background: var(--subject-accent);
+  background: var(--subject-accent-text);
   color: white;
   font-family: var(--prog-mono);
   font-size: 0.68rem;
@@ -55,7 +55,7 @@
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--subject-accent);
+  color: var(--subject-accent-text);
   font-weight: 600;
 }
 .playbook-section-name {
@@ -122,7 +122,7 @@
     font-family: var(--prog-font);
     font-weight: 600;
     color: white;
-    background: var(--subject-accent);
+    background: var(--subject-accent-text);
     border-radius: 50%;
     width: 24px;
     height: 24px;
@@ -156,4 +156,15 @@
   font-size: 1.05rem;
   color: var(--prog-text-secondary);
   margin-bottom: 1rem;
+}
+
+/* Dark mode: the light subject accents fail 4.5:1 with white text, so the
+   matrix chrome flips to dark ink on the light accent. */
+[data-theme="dark"] .playbook-matrix__col-label,
+[data-theme="dark"] .playbook-matrix__step {
+  background: var(--subject-accent);
+  color: #11100E;
+}
+@media (max-width: 900px) {
+  [data-theme="dark"] .playbook-matrix__cell::before { background: var(--subject-accent); color: #11100E; }
 }

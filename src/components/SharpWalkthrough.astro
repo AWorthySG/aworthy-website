@@ -104,11 +104,13 @@ const steps = [
   }
   .sharp-walk__tab:hover { border-color: var(--color-accent); }
   .sharp-walk__tab.is-active {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
+    background: var(--color-accent-text);
+    border-color: var(--color-accent-text);
   }
   .sharp-walk__tab.is-active .sharp-walk__tab-letter,
   .sharp-walk__tab.is-active .sharp-walk__tab-name { color: #fff; }
+  :global([data-theme="dark"]) .sharp-walk__tab.is-active .sharp-walk__tab-letter,
+  :global([data-theme="dark"]) .sharp-walk__tab.is-active .sharp-walk__tab-name { color: #11100E; }
   .sharp-walk__tab-letter {
     font-family: var(--font-heading);
     font-size: 1.6rem;

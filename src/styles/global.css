@@ -16,9 +16,14 @@
   --bg-card-hover: rgba(255, 255, 255, 0.9);
   --text-primary: #1A2A3A;
   --text-secondary: rgba(26, 42, 58, 0.7);
-  --text-muted: rgba(26, 42, 58, 0.45);
+  /* 0.66 = 4.5:1+ on every light surface (0.45 was 2.65:1 — WCAG AA fail) */
+  --text-muted: rgba(26, 42, 58, 0.66);
   --color-primary: #2B5A8C;
   --color-accent: #D4853A;
+  /* Accent for TEXT on light surfaces: #D4853A is only ~2.8:1 against the
+     creams, fine for borders/fills but an AA failure for copy. This darker
+     ink clears 4.5:1 on bg-primary, bg-secondary and cards. */
+  --color-accent-text: #A35D18;
   --border-color: rgba(26, 42, 58, 0.1);
   --header-height: 72px;
   --nav-offset: calc(var(--header-height) + 44px);
@@ -106,6 +111,8 @@
   /* Dark mode accent nudged slightly warmer */
   --color-accent: #E59A55;
   --color-accent-light: #f0b878;
+  /* Light accent already clears 4.5:1 on the dark surfaces */
+  --color-accent-text: #E59A55;
   /* Decorative strokes — warm/cool versions for dark mode */
   --decor-cool: rgba(155, 181, 214, 0.10);
   --decor-warm: rgba(229, 154, 85, 0.10);
@@ -199,9 +206,16 @@ p {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   text-decoration: none;
   transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* WCAG 1.4.1: links inside running text must not rely on colour alone */
+main :is(p, li, dd, td) a:not([class]) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
 }
 
 /* :not(.skip-link) matters: this selector would otherwise beat .skip-link's
@@ -222,14 +236,14 @@ a:not(.btn):not([class*="programme-card"]):not([class*="vault-card"]):not(.skip-
 /* Only apply hover styles on devices that support hover */
 @media (hover: hover) {
   a:hover {
-    color: var(--color-accent-light);
+    color: var(--color-accent);
   }
 }
 
 /* Touch-friendly active state for links */
 @media (hover: none) {
   a:active {
-    color: var(--color-accent-light);
+    color: var(--color-accent);
   }
 }
 
@@ -273,7 +287,7 @@ li {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-bottom: var(--space-md);
 }
 
@@ -1564,7 +1578,7 @@ html {
 .ba-card--after { border-top: 3px solid rgba(39, 140, 90, 0.6); }
 .ba-tag { align-self: flex-start; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.2rem 0.55rem; border-radius: 999px; }
 .ba-tag--before { background: rgba(192, 57, 43, 0.12); color: #b03a2e; }
-.ba-tag--after { background: rgba(39, 140, 90, 0.14); color: #1e7a52; }
+.ba-tag--after { background: rgba(39, 140, 90, 0.14); color: #14683B; }
 [data-theme="dark"] .ba-tag--before { color: #ff9a8c; }
 [data-theme="dark"] .ba-tag--after { color: #5fd0a0; }
 .ba-answer { font-size: 1rem; line-height: 1.6; color: var(--text-primary); margin: 0; }
@@ -1577,7 +1591,7 @@ html {
 [data-theme="dark"] .ba-card--after .ba-notes li::before { color: #5fd0a0; }
 .ba-mark { align-self: flex-start; margin-top: auto; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; }
 .ba-mark--before { color: var(--text-muted); }
-.ba-mark--after { color: var(--color-accent); }
+.ba-mark--after { color: var(--color-accent-text); }
 .ba-footnote { font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; font-style: italic; }
 @media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
 
