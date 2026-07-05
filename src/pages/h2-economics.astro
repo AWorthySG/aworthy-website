@@ -435,6 +435,32 @@ const playbookRows = [
     </div>
   </section>
 
+  <!-- ===== REAL STUDY NOTES SHOWCASE ===== -->
+  <section class="prog-section notes-section" id="real-notes">
+    <div class="container">
+      <p class="eyebrow">See The Notes</p>
+      <h2 class="prog-section__heading">Real pages from A-Worthy&rsquo;s H2 Economics notes</h2>
+      <p class="prog-section__sub">Every topic comes with notes built the same way &mdash; a real diagram, paired with the numbered framework that turns it into a Level 3 answer. Three pages from our actual Market Failure notes, unedited. Click to enlarge.</p>
+
+      <div class="notes-gallery">
+        <button type="button" class="notes-shot" data-full="/images/h2-econs-notes-cover.webp" aria-label="Enlarge: Market Failure topic notes cover page">
+          <img src="/images/h2-econs-notes-cover.webp" alt="A-Worthy H2 Economics topic notes cover page: Market Failure — Merit, Demerit &amp; Public Goods, with the Merit Goods section and a worked education example" loading="lazy" width="1100" height="1496" />
+          <span class="notes-shot__cap">Topic overview &mdash; Merit &amp; Demerit Goods</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/h2-econs-notes-merit-framework.webp" aria-label="Enlarge: Merit Goods diagram and seven-step framework page">
+          <img src="/images/h2-econs-notes-merit-framework.webp" alt="A-Worthy notes page showing a supply-and-demand diagram for a merit good under imperfect information, followed by a numbered 7-step framework that explains the diagram" loading="lazy" width="1100" height="1496" />
+          <span class="notes-shot__cap">The graph, then the framework that explains it</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/h2-econs-notes-public-goods-framework.webp" aria-label="Enlarge: Public Goods worked example and framework page">
+          <img src="/images/h2-econs-notes-public-goods-framework.webp" alt="A-Worthy notes page with a lighthouse and street-lamp illustration of public goods, followed by a numbered framework for explaining non-rivalry" loading="lazy" width="1100" height="1496" />
+          <span class="notes-shot__cap">Public Goods &mdash; illustrated, then framed</span>
+        </button>
+      </div>
+
+      <p class="notes-footnote">The same numbered-step method repeats across every topic in the syllabus &mdash; Market Failure, Information Failure, Macroeconomics, and beyond. Learn the method once, and every new diagram is a formality, not a fresh challenge.</p>
+    </div>
+  </section>
+
   <!-- ===== SHARP PLAYBOOK ===== -->
   <section class="prog-section playbook-section" id="playbook">
     <div class="container">
@@ -867,6 +893,11 @@ const playbookRows = [
   </section>
 
   <Footer slot="footer" />
+
+  <div class="notes-lightbox" id="notes-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged notes page">
+    <button type="button" class="notes-lightbox__close" id="notes-lightbox-close" aria-label="Close enlarged view">&times;</button>
+    <img class="notes-lightbox__img" id="notes-lightbox-img" src="" alt="" />
+  </div>
 </BaseLayout>
 
 <!-- Per-subject accent hue — teal (H2 Economics identity).
@@ -1726,6 +1757,35 @@ const playbookRows = [
     .if-worked__body { grid-template-columns: 1fr; }
     .if-diagram-wrap { max-width: 280px; margin: 0 auto; }
   }
+
+  /* ===== REAL STUDY NOTES SHOWCASE ===== */
+  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.25rem; }
+  .notes-shot {
+    display: flex; flex-direction: column; padding: 0; border: 1px solid var(--prog-border); border-radius: var(--border-radius-lg);
+    background: var(--prog-bg-card); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .notes-shot:hover, .notes-shot:focus-visible { transform: translateY(-3px); border-color: var(--subject-accent); box-shadow: 0 14px 30px -18px var(--subject-accent); }
+  .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--prog-border); }
+  .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.4; color: var(--prog-text-secondary); }
+  .notes-footnote { font-size: 0.92rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 680px; margin: 0; }
+
+  .notes-lightbox {
+    position: fixed; inset: 0; z-index: var(--z-modal); display: none; align-items: center; justify-content: center;
+    padding: 2rem; background: rgba(11, 11, 15, 0.86); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .notes-lightbox.is-open { display: flex; }
+  .notes-lightbox__img { max-width: min(92vw, 720px); max-height: 88vh; width: auto; height: auto; border-radius: var(--border-radius); box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6); }
+  .notes-lightbox__close {
+    position: absolute; top: 1.25rem; right: 1.25rem; width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.08); color: #fff;
+    font-size: 1.4rem; line-height: 1; cursor: pointer; display: grid; place-items: center;
+  }
+  .notes-lightbox__close:hover { background: rgba(255, 255, 255, 0.16); }
+
+  @media (max-width: 900px) {
+    .notes-gallery { grid-template-columns: 1fr; }
+  }
 </style>
 
 <script is:inline>
@@ -1789,4 +1849,38 @@ const playbookRows = [
   }, { threshold: 0.15, rootMargin: '-20% 0px -60% 0px' });
   sections.forEach(function(s) { obs.observe(s.el); });
 })();
+</script>
+
+<script is:inline>
+function initNotesLightbox() {
+  var box = document.getElementById('notes-lightbox');
+  var img = document.getElementById('notes-lightbox-img');
+  var closeBtn = document.getElementById('notes-lightbox-close');
+  var shots = document.querySelectorAll('.notes-shot');
+  if (!box || !img || !shots.length) return;
+
+  function open(src, alt) {
+    img.src = src;
+    img.alt = alt;
+    box.classList.add('is-open');
+    closeBtn.focus();
+  }
+  function close() {
+    box.classList.remove('is-open');
+    img.src = '';
+  }
+
+  shots.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var full = btn.getAttribute('data-full');
+      var altText = btn.querySelector('img') ? btn.querySelector('img').alt : '';
+      open(full, altText);
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
+}
+initNotesLightbox();
+document.addEventListener('astro:page-load', initNotesLightbox);
 </script>
