@@ -116,12 +116,38 @@ const oralParts = [
   { part: 'Part 2', name: 'Spoken Interaction', marks: '15 marks', desc: 'A live discussion with the examiner. One tight PEEL unit per question, with the Link written to keep the conversation open so the discussion can be sustained.' },
 ];
 
-const oralExchange = [
-  { stage: 'P', label: 'Point', text: '“The video leaves me feeling that modern life is faster than it needs to be, and that we rarely pause.”' },
-  { stage: 'E', label: 'Evidence', text: '“The most intense stretch of the film is genuinely uncomfortable to watch — the images pile up so quickly that the eye cannot rest on any single one.”' },
-  { stage: 'E', label: 'Explanation', text: '“I think that discomfort is intentional; it makes me reflect on how my own days can blur together when I move from school to tuition to homework without a break. The film suggests that speed itself is not the problem — the problem is never slowing down.”' },
-  { stage: 'L', label: 'Link', text: '“So rather than making me anxious, it actually makes me want to build small pauses into my day on purpose.”' },
+// The Part 1 planned speech, mapped — stance, two PEEL reasons, counter-view,
+// conclusion (each reason's E/E/L rows omitted for length; all quotes verbatim)
+const oralPlanned = [
+  { stage: 'Stance', text: '“Balance and rhythm are essential for young people because a steady daily structure protects both academic performance and mental health.”' },
+  { stage: 'Reason 1 · Point', text: '“My first reason is that a regular rhythm gives the day a dependable structure, and that structure is what allows sustained effort over time.”' },
+  { stage: 'Reason 2 · Point', text: '“My second and stronger reason is that balance protects mental well-being, which for young people today is under real pressure.”' },
+  { stage: 'The other view', text: '“It is true that too rigid a rhythm can feel mechanical, and life should leave room for spontaneity. But a healthy rhythm is a flexible framework, not a cage.”' },
+  { stage: 'Conclusion', text: '“On balance, I believe rhythm and balance are important for young people. They sustain our work, protect our health, and still allow the flexibility that makes life enjoyable.”' },
 ];
+
+const oralExchanges = [
+  {
+    q: '“How does the video make you feel about the pace of modern life?”',
+    rows: [
+      { stage: 'P', label: 'Point', text: '“The video leaves me feeling that modern life is faster than it needs to be, and that we rarely pause.”' },
+      { stage: 'E', label: 'Evidence', text: '“The most intense stretch of the film is genuinely uncomfortable to watch — the images pile up so quickly that the eye cannot rest on any single one.”' },
+      { stage: 'E', label: 'Explanation', text: '“I think that discomfort is intentional; it makes me reflect on how my own days can blur together when I move from school to tuition to homework without a break. The film suggests that speed itself is not the problem — the problem is never slowing down.”' },
+      { stage: 'L', label: 'Link', text: '“So rather than making me anxious, it actually makes me want to build small pauses into my day on purpose.”' },
+    ],
+  },
+  {
+    q: '“What different ‘rhythms’ or moods did you notice in the video?”',
+    rows: [
+      { stage: 'P', label: 'Point', text: '“I noticed a clear three-part movement in the film’s mood — calm, then intensity, then a return to calm.”' },
+      { stage: 'E', label: 'Evidence', text: '“The piece opens gently with soft light and slow, unhurried images, builds into fast cutting and crowded, energetic scenes in the middle, and finally settles back into quiet stillness at the end.”' },
+      { stage: 'E', label: 'Explanation', text: '“To me that structure mirrors an ordinary day: a peaceful start, a demanding and busy core, and a wind-down in the evening. The filmmaker seems to be showing that intensity is natural, but so is the return to rest.”' },
+      { stage: 'L', label: 'Link', text: '“That contrast is really what made the video memorable for me — it turns something as everyday as a daily routine into something that feels meaningful.”' },
+    ],
+  },
+];
+
+const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The Passage of Time', 'Daily Routines and the Passing of Time'];
 ---
 
 <BaseLayout title="O-Level English Tuition Singapore | Sec 1–4 | A-Worthy" description="Best O-Level English tuition in Singapore. SHARP Method delivers 90% A1–B3 rate. Small groups of 6, online on the A-Worthy Whiteboard. Book a free assessment." ogImage="/images/og-english.png">
@@ -539,25 +565,59 @@ const oralExchange = [
         <div class="oral-band">
           <span class="oral-band__tag">What moves an answer up the bands</span>
           <p>The jump from Band 3 to Band 5 is the difference between an answer with <em>some development</em> and one that is <em>well-developed</em> &mdash; and, in Part 2, between engaging only when prompted and sustaining a discussion. In practice that is the Explanation and the Link. <strong>Answers that stop after Point and Evidence are the most common cause of a Band 3 ceiling.</strong></p>
+          <p class="oral-band__quote"><span class="oral-band__quote-tag">Band 5 &middot; 9&ndash;10 marks &middot; SEAB 1184, verbatim</span>&ldquo;A well-considered response which is well-developed and organised; uses a wide range of well-chosen vocabulary and structures.&rdquo; Every model in the scheme is written to satisfy this descriptor.</p>
         </div>
       </div>
 
-      <!-- A real Part 2 exchange, one PEEL unit -->
+      <!-- The Part 1 speech, mapped (Practice Set 1) -->
+      <div class="oral-planned">
+        <div class="oral-planned__head">
+          <span class="oral-planned__label">The two-minute speech, mapped</span>
+          <p class="oral-planned__prompt">&ldquo;Do you think it is important for people, especially young people, to find balance and rhythm in their daily lives?&rdquo; <span class="oral-planned__meta">Part 1 &middot; Planned Response model &middot; Practice Set 1</span></p>
+        </div>
+        <div class="oral-planned__flow">
+          {oralPlanned.map((row) => (
+            <div class="oral-planned__step">
+              <span class="oral-planned__stage">{row.stage}</span>
+              <p class="oral-planned__text">{row.text}</p>
+            </div>
+          ))}
+        </div>
+        <p class="oral-planned__note">Each reason then develops in full P&ndash;E&ndash;E&ndash;L &mdash; the model&rsquo;s Evidence rows even read the film itself (&ldquo;the film deliberately moves from calm into a section of overwhelming intensity, and only returns to peace once that intensity is released&rdquo;) &mdash; omitted here for length.</p>
+      </div>
+
+      <!-- Real Part 2 exchanges, one PEEL unit each -->
       <div class="oral-exchange">
         <div class="oral-exchange__head">
-          <span class="oral-exchange__label">A real Part 2 exchange &mdash; one question, one PEEL unit</span>
-          <p class="oral-exchange__prompt">&ldquo;How does the video make you feel about the pace of modern life?&rdquo; <span class="oral-exchange__meta">Practice Set 1 &middot; The Rhythm of Daily Life &middot; two-minute film, no dialogue</span></p>
+          <span class="oral-exchange__label">Real Part 2 exchanges &mdash; one question, one PEEL unit</span>
+          <p class="oral-exchange__prompt">Two of the six spoken-interaction models from the same set <span class="oral-exchange__meta">Practice Set 1 &middot; The Rhythm of Daily Life &middot; two-minute film, no dialogue</span></p>
         </div>
-        {oralExchange.map((row) => (
-          <div class="oral-exchange__row">
-            <span class="oral-exchange__badge">{row.stage}</span>
-            <div>
-              <span class="oral-exchange__stage">{row.label}</span>
-              <p class="oral-exchange__text">{row.text}</p>
+        <div class="oral-exchange__grid">
+          {oralExchanges.map((ex) => (
+            <div class="oral-exchange__col">
+              <p class="oral-exchange__q">{ex.q}</p>
+              {ex.rows.map((row) => (
+                <div class="oral-exchange__row">
+                  <span class="oral-exchange__badge">{row.stage}</span>
+                  <div>
+                    <span class="oral-exchange__stage">{row.label}</span>
+                    <p class="oral-exchange__text">{row.text}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
-        <p class="oral-exchange__note">The Link is deliberately forward-looking &mdash; it leaves the examiner something to respond to, which is how a discussion is sustained rather than restarted question by question.</p>
+          ))}
+        </div>
+        <p class="oral-exchange__note">Each Link is deliberately forward-looking &mdash; it leaves the examiner something to respond to, which is how a discussion is sustained rather than restarted question by question.</p>
+      </div>
+
+      <div class="oral-sets">
+        <span class="oral-sets__label">The four practice sets</span>
+        <div class="oral-sets__chips">
+          {oralSets.map((s, i) => (
+            <span class="oral-sets__chip"><strong>Set {i + 1}</strong> {s}</span>
+          ))}
+        </div>
       </div>
 
       <p class="oral-source">From the A-Worthy <strong>PEEL Model Answer Scheme</strong> (Syllabus 1184): 4 practice sets &middot; 4 planned-response models &middot; 24 spoken-interaction models &middot; SEAB band descriptors reproduced verbatim. Accompanies the Video-Based Oral Practice Pack used in lessons.</p>
@@ -1461,6 +1521,29 @@ const oralExchange = [
   .oral-exchange__text { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
   .oral-exchange__note { margin: 0.75rem 0 0; padding-top: 0.75rem; border-top: 1px dashed var(--border-color); font-size: 0.85rem; line-height: 1.55; color: var(--text-muted); }
 
+  .oral-band__quote { margin-top: 0.75rem !important; padding: 0.7rem 0.9rem; background: var(--bg-secondary); border-radius: var(--border-radius); font-size: 0.88rem; font-style: italic; }
+  .oral-band__quote-tag { display: block; font-family: var(--prog-mono); font-style: normal; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+
+  /* Part 1 planned speech, mapped */
+  .oral-planned { margin: 0 0 1.25rem; border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.25rem 1.4rem; background: var(--bg-card); }
+  .oral-planned__label { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
+  .oral-planned__prompt { font-size: 1.02rem; font-weight: 600; color: var(--text-primary); margin: 0.35rem 0 1rem; }
+  .oral-planned__meta { display: block; font-size: 0.76rem; font-weight: 400; color: var(--text-muted); margin-top: 0.2rem; }
+  .oral-planned__flow { display: grid; gap: 0.55rem; }
+  .oral-planned__step { display: grid; grid-template-columns: 150px 1fr; gap: 0.8rem; align-items: start; padding: 0.55rem 0; border-top: 1px dashed var(--border-color); }
+  .oral-planned__stage { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--subject-accent-text); padding-top: 0.2rem; }
+  .oral-planned__text { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+  .oral-planned__note { margin: 0.75rem 0 0; padding-top: 0.75rem; border-top: 1px dashed var(--border-color); font-size: 0.85rem; line-height: 1.55; color: var(--text-muted); }
+
+  .oral-exchange__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+  .oral-exchange__q { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.4rem; }
+
+  .oral-sets { margin: 0 0 0.9rem; }
+  .oral-sets__label { display: block; font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); margin-bottom: 0.45rem; }
+  .oral-sets__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .oral-sets__chip { font-size: 0.82rem; color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 999px; padding: 0.3rem 0.8rem; }
+  .oral-sets__chip strong { color: var(--subject-accent-text); margin-right: 0.25rem; }
+
   .oral-source { font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); margin: 0 0 1.25rem; }
   .oral-source strong { color: var(--text-secondary); }
 
@@ -1471,6 +1554,8 @@ const oralExchange = [
     .oral-spheres__chain { grid-template-columns: 1fr 1fr; }
     .oral-sphere::after { content: none; }
     .oral-exam__parts { grid-template-columns: 1fr; }
+    .oral-exchange__grid { grid-template-columns: 1fr; }
+    .oral-planned__step { grid-template-columns: 1fr; gap: 0.25rem; }
   }
   @media (max-width: 480px) {
     .oral-spheres__chain { grid-template-columns: 1fr; }
