@@ -398,6 +398,34 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     </div>
   </section>
 
+  <!-- ===== REAL MATERIALS SHOWCASE ===== -->
+  <section class="prog-section materials-section" id="materials">
+    <div class="container">
+      <p class="eyebrow">Inside The Materials</p>
+      <h2 class="prog-section__heading">Real pages from A-Worthy&rsquo;s English materials</h2>
+      <p class="prog-section__sub">The frameworks above aren&rsquo;t slideware &mdash; each one lives in a full teaching document your child works from. Four excerpts, unedited. Click to enlarge.</p>
+
+      <div class="notes-gallery notes-gallery--two">
+        <button type="button" class="notes-shot" data-full="/images/english-mat-stampcard.webp" aria-label="Enlarge: STAMP CARD nine-category quick reference from the editing notes">
+          <img src="/images/english-mat-stampcard.webp" alt="The STAMP CARD quick-reference table from A-Worthy's editing notes: nine error types from Subject-Verb Agreement to Degree of Comparison, each with its quick check question" loading="lazy" width="1100" height="758" />
+          <span class="notes-shot__cap">Editing notes &mdash; the STAMP CARD nine-category quick reference</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/english-mat-swift.webp" aria-label="Enlarge: SWIFT five-second category test from the comprehension toolkit">
+          <img src="/images/english-mat-swift.webp" alt="The SWIFT card from A-Worthy's Paper 2 comprehension toolkit: the five signal words Suggest, Why, Impression, Feeling, Tone, and the rule routing questions to Category A (FLIP) or Category B (EIL)" loading="lazy" width="1100" height="593" />
+          <span class="notes-shot__cap">Comprehension toolkit &mdash; SWIFT, the five-second category test</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/english-mat-caps-cheatsheet.webp" aria-label="Enlarge: single-part vs two-part summary page from the CAPS cheatsheet">
+          <img src="/images/english-mat-caps-cheatsheet.webp" alt="A page from A-Worthy's CAPS summary cheatsheet showing the single-part versus two-part summary structures, with the transition sentence marking the shift in a two-part answer" loading="lazy" width="1100" height="1555" />
+          <span class="notes-shot__cap">CAPS cheatsheet &mdash; single-part vs two-part, mapped</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/english-mat-caps-drills.webp" aria-label="Enlarge: cover of the CAPS drill set teacher's copy">
+          <img src="/images/english-mat-caps-drills.webp" alt="Cover of A-Worthy's Summary Writing CAPS Drill Set for GCE O-Level English 1184, teacher's copy: 260 source sentences with model answers and explanations, 60 items per technique in three tiers" loading="lazy" width="1100" height="1484" />
+          <span class="notes-shot__cap">The CAPS Drill Set &mdash; 260 drills with the reasoning under every answer</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SHARP PLAYBOOK ===== -->
   <section class="prog-section playbook-section" id="playbook">
     <div class="container">
@@ -569,6 +597,28 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
         </div>
       </div>
 
+      <!-- Real pages from the scheme, rendered as images -->
+      <div class="oral-pages">
+        <div class="oral-pages__head">
+          <span class="oral-pages__label">Pages from the scheme, unedited</span>
+          <p class="oral-pages__sub">Three actual pages from the PEEL Model Answer Scheme &mdash; every move colour-coded so the structure is visible at a glance. Click to enlarge.</p>
+        </div>
+        <div class="notes-gallery">
+          <button type="button" class="notes-shot" data-full="/images/oral-scheme-cover.webp" aria-label="Enlarge: PEEL Model Answer Scheme cover page">
+            <img src="/images/oral-scheme-cover.webp" alt="Cover page of the A-Worthy Paper 4 Oral PEEL Model Answer Scheme: Planned Response and Spoken Interaction, Syllabus 1184 — 4 practice sets, 4 planned responses, 24 spoken interaction models, SEAB bands verified" loading="lazy" width="1100" height="1555" />
+            <span class="notes-shot__cap">The scheme &mdash; 4 sets, 28 model answers, verified SEAB bands</span>
+          </button>
+          <button type="button" class="notes-shot" data-full="/images/oral-scheme-part1-peel.webp" aria-label="Enlarge: Part 1 Planned Response model with colour-coded PEEL rows">
+            <img src="/images/oral-scheme-part1-peel.webp" alt="A page from Practice Set 1, The Rhythm of Daily Life: the Part 1 Planned Response model with the stance banner and two developed reasons, each broken into colour-coded Point, Evidence, Explanation and Link rows" loading="lazy" width="1100" height="1555" />
+            <span class="notes-shot__cap">Part 1 &mdash; the two-minute speech, colour-coded move by move</span>
+          </button>
+          <button type="button" class="notes-shot" data-full="/images/oral-scheme-part2-interaction.webp" aria-label="Enlarge: Part 2 Spoken Interaction model answers with colour-coded PEEL rows">
+            <img src="/images/oral-scheme-part2-interaction.webp" alt="A page showing Part 2 Spoken Interaction model answers: examiner questions in banners, each answered as one complete PEEL unit with colour-coded Point, Evidence, Explanation and Link rows" loading="lazy" width="1100" height="1555" />
+            <span class="notes-shot__cap">Part 2 &mdash; each question answered as one PEEL unit</span>
+          </button>
+        </div>
+      </div>
+
       <!-- The Part 1 speech, mapped (Practice Set 1) -->
       <div class="oral-planned">
         <div class="oral-planned__head">
@@ -628,6 +678,11 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
       </div>
     </div>
   </section>
+
+  <div class="notes-lightbox" id="notes-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged scheme page">
+    <button type="button" class="notes-lightbox__close" id="notes-lightbox-close" aria-label="Close enlarged view">&times;</button>
+    <img class="notes-lightbox__img" id="notes-lightbox-img" src="" alt="" />
+  </div>
 
   <!-- ===== INSIDE A LESSON ===== -->
   <section class="prog-section lesson-flow" id="lesson-flow">
@@ -1547,6 +1602,34 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .oral-source { font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); margin: 0 0 1.25rem; }
   .oral-source strong { color: var(--text-secondary); }
 
+  /* Scheme page gallery (mirrors the H2 Economics notes gallery) */
+  .oral-pages { margin: 0 0 1.25rem; }
+  .oral-pages__label { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
+  .oral-pages__sub { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0.35rem 0 1rem; max-width: 680px; }
+  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .notes-gallery--two { grid-template-columns: repeat(2, 1fr); }
+  .notes-shot {
+    display: flex; flex-direction: column; padding: 0; border: 1px solid var(--prog-border); border-radius: var(--border-radius-lg);
+    background: var(--prog-bg-card); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .notes-shot:hover, .notes-shot:focus-visible { transform: translateY(-3px); border-color: var(--subject-accent); box-shadow: 0 14px 30px -18px var(--subject-accent); }
+  .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--prog-border); }
+  .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.4; color: var(--prog-text-secondary); }
+
+  .notes-lightbox {
+    position: fixed; inset: 0; z-index: var(--z-modal); display: none; align-items: center; justify-content: center;
+    padding: 2rem; background: rgba(11, 11, 15, 0.86); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .notes-lightbox.is-open { display: flex; }
+  .notes-lightbox__img { max-width: min(92vw, 720px); max-height: 88vh; width: auto; height: auto; border-radius: var(--border-radius); box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6); }
+  .notes-lightbox__close {
+    position: absolute; top: 1.25rem; right: 1.25rem; width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.08); color: #fff;
+    font-size: 1.4rem; line-height: 1; cursor: pointer; display: grid; place-items: center;
+  }
+  .notes-lightbox__close:hover { background: rgba(255, 255, 255, 0.16); }
+
   @media (max-width: 900px) {
     .oral-quickref { grid-template-columns: 1fr; }
     .oral-types { grid-template-columns: 1fr; }
@@ -1556,6 +1639,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     .oral-exam__parts { grid-template-columns: 1fr; }
     .oral-exchange__grid { grid-template-columns: 1fr; }
     .oral-planned__step { grid-template-columns: 1fr; gap: 0.25rem; }
+    .notes-gallery, .notes-gallery--two { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .oral-spheres__chain { grid-template-columns: 1fr; }
@@ -1623,4 +1707,38 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   }, { threshold: 0.15, rootMargin: '-20% 0px -60% 0px' });
   sections.forEach(function(s) { obs.observe(s.el); });
 })();
+</script>
+
+<script is:inline>
+function initNotesLightbox() {
+  var box = document.getElementById('notes-lightbox');
+  var img = document.getElementById('notes-lightbox-img');
+  var closeBtn = document.getElementById('notes-lightbox-close');
+  var shots = document.querySelectorAll('.notes-shot');
+  if (!box || !img || !shots.length) return;
+
+  function open(src, alt) {
+    img.src = src;
+    img.alt = alt;
+    box.classList.add('is-open');
+    closeBtn.focus();
+  }
+  function close() {
+    box.classList.remove('is-open');
+    img.src = '';
+  }
+
+  shots.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var full = btn.getAttribute('data-full');
+      var altText = btn.querySelector('img') ? btn.querySelector('img').alt : '';
+      open(full, altText);
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
+}
+initNotesLightbox();
+document.addEventListener('astro:page-load', initNotesLightbox);
 </script>
