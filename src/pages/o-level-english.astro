@@ -398,6 +398,34 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     </div>
   </section>
 
+  <!-- ===== REAL MATERIALS SHOWCASE ===== -->
+  <section class="prog-section materials-section" id="materials">
+    <div class="container">
+      <p class="eyebrow">Inside The Materials</p>
+      <h2 class="prog-section__heading">Real pages from A-Worthy&rsquo;s English materials</h2>
+      <p class="prog-section__sub">The frameworks above aren&rsquo;t slideware &mdash; each one lives in a full teaching document your child works from. Four excerpts, unedited. Click to enlarge.</p>
+
+      <div class="notes-gallery notes-gallery--two">
+        <button type="button" class="notes-shot" data-full="/images/english-mat-stampcard.webp" aria-label="Enlarge: STAMP CARD nine-category quick reference from the editing notes">
+          <img src="/images/english-mat-stampcard.webp" alt="The STAMP CARD quick-reference table from A-Worthy's editing notes: nine error types from Subject-Verb Agreement to Degree of Comparison, each with its quick check question" loading="lazy" width="1100" height="758" />
+          <span class="notes-shot__cap">Editing notes &mdash; the STAMP CARD nine-category quick reference</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/english-mat-swift.webp" aria-label="Enlarge: SWIFT five-second category test from the comprehension toolkit">
+          <img src="/images/english-mat-swift.webp" alt="The SWIFT card from A-Worthy's Paper 2 comprehension toolkit: the five signal words Suggest, Why, Impression, Feeling, Tone, and the rule routing questions to Category A (FLIP) or Category B (EIL)" loading="lazy" width="1100" height="593" />
+          <span class="notes-shot__cap">Comprehension toolkit &mdash; SWIFT, the five-second category test</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/english-mat-caps-cheatsheet.webp" aria-label="Enlarge: single-part vs two-part summary page from the CAPS cheatsheet">
+          <img src="/images/english-mat-caps-cheatsheet.webp" alt="A page from A-Worthy's CAPS summary cheatsheet showing the single-part versus two-part summary structures, with the transition sentence marking the shift in a two-part answer" loading="lazy" width="1100" height="1555" />
+          <span class="notes-shot__cap">CAPS cheatsheet &mdash; single-part vs two-part, mapped</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/english-mat-caps-drills.webp" aria-label="Enlarge: cover of the CAPS drill set teacher's copy">
+          <img src="/images/english-mat-caps-drills.webp" alt="Cover of A-Worthy's Summary Writing CAPS Drill Set for GCE O-Level English 1184, teacher's copy: 260 source sentences with model answers and explanations, 60 items per technique in three tiers" loading="lazy" width="1100" height="1484" />
+          <span class="notes-shot__cap">The CAPS Drill Set &mdash; 260 drills with the reasoning under every answer</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SHARP PLAYBOOK ===== -->
   <section class="prog-section playbook-section" id="playbook">
     <div class="container">
@@ -1579,6 +1607,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .oral-pages__label { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
   .oral-pages__sub { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0.35rem 0 1rem; max-width: 680px; }
   .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .notes-gallery--two { grid-template-columns: repeat(2, 1fr); }
   .notes-shot {
     display: flex; flex-direction: column; padding: 0; border: 1px solid var(--prog-border); border-radius: var(--border-radius-lg);
     background: var(--prog-bg-card); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
@@ -1610,7 +1639,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     .oral-exam__parts { grid-template-columns: 1fr; }
     .oral-exchange__grid { grid-template-columns: 1fr; }
     .oral-planned__step { grid-template-columns: 1fr; gap: 0.25rem; }
-    .notes-gallery { grid-template-columns: 1fr; }
+    .notes-gallery, .notes-gallery--two { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .oral-spheres__chain { grid-template-columns: 1fr; }

@@ -309,6 +309,35 @@ const playbookRows = [
     </div>
   </section>
 
+  <!-- ===== REAL MATERIALS SHOWCASE ===== -->
+  <section class="prog-section materials-section" id="materials">
+    <div class="container">
+      <p class="eyebrow">Inside The Materials</p>
+      <h2 class="prog-section__heading">Real pages from A-Worthy&rsquo;s GP paraphrasing drills</h2>
+      <p class="prog-section__sub">Three pages from the CAPS Paraphrasing Drills used for Paper 2 summary &mdash; the teacher&rsquo;s copy, so every model answer carries its reasoning, line by line. 60 drills per technique, graded Easy &rarr; Moderate &rarr; Hard. Click to enlarge.</p>
+
+      <div class="notes-gallery">
+        <button type="button" class="notes-shot" data-full="/images/gp-mat-drills-cover.webp" aria-label="Enlarge: CAPS Paraphrasing Drills title page with the four techniques and first drills">
+          <img src="/images/gp-mat-drills-cover.webp" alt="Title page of A-Worthy's CAPS Paraphrasing Drills for GCE A-Level General Paper (Syllabus 8881): the four techniques at a glance and the first Combine &amp; Condense drills with model answers and reasoning" loading="lazy" width="1100" height="1484" />
+          <span class="notes-shot__cap">The drill set &mdash; four techniques, 60 graded drills each</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/gp-mat-drills-moderate.webp" aria-label="Enlarge: a drills page with model answers and line-by-line reasoning">
+          <img src="/images/gp-mat-drills-moderate.webp" alt="A page of CAPS drills showing original sentences, bolded model answers, and numbered line-by-line reasoning under each answer" loading="lazy" width="1100" height="1484" />
+          <span class="notes-shot__cap">Every item: original &rarr; model answer &rarr; the reasoning, line by line</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/gp-mat-drills-alter.webp" aria-label="Enlarge: the Alter Word Class technique opener with annotated worked answers">
+          <img src="/images/gp-mat-drills-alter.webp" alt="The Drill 2 Alter Word Class opener page: change a word's grammatical class and rebuild the sentence, with four annotated worked items" loading="lazy" width="1100" height="1484" />
+          <span class="notes-shot__cap">Technique 2, Alter Word Class &mdash; annotated worked answers</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="notes-lightbox" id="notes-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged drills page">
+    <button type="button" class="notes-lightbox__close" id="notes-lightbox-close" aria-label="Close enlarged view">&times;</button>
+    <img class="notes-lightbox__img" id="notes-lightbox-img" src="" alt="" />
+  </div>
+
   <!-- ===== SHARP PLAYBOOK ===== -->
   <section class="prog-section playbook-section" id="playbook">
     <div class="container">
@@ -1554,6 +1583,34 @@ const playbookRows = [
   .slots-text strong {
     color: var(--subject-accent-text);
   }
+
+  /* Real materials gallery (mirrors the H2 Economics notes gallery) */
+  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .notes-shot {
+    display: flex; flex-direction: column; padding: 0; border: 1px solid var(--prog-border); border-radius: var(--border-radius-lg);
+    background: var(--prog-bg-card); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .notes-shot:hover, .notes-shot:focus-visible { transform: translateY(-3px); border-color: var(--subject-accent); box-shadow: 0 14px 30px -18px var(--subject-accent); }
+  .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--prog-border); }
+  .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.4; color: var(--prog-text-secondary); }
+
+  .notes-lightbox {
+    position: fixed; inset: 0; z-index: var(--z-modal); display: none; align-items: center; justify-content: center;
+    padding: 2rem; background: rgba(11, 11, 15, 0.86); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .notes-lightbox.is-open { display: flex; }
+  .notes-lightbox__img { max-width: min(92vw, 720px); max-height: 88vh; width: auto; height: auto; border-radius: var(--border-radius); box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6); }
+  .notes-lightbox__close {
+    position: absolute; top: 1.25rem; right: 1.25rem; width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.08); color: #fff;
+    font-size: 1.4rem; line-height: 1; cursor: pointer; display: grid; place-items: center;
+  }
+  .notes-lightbox__close:hover { background: rgba(255, 255, 255, 0.16); }
+
+  @media (max-width: 900px) {
+    .notes-gallery { grid-template-columns: 1fr; }
+  }
 </style>
 
 <script is:inline>
@@ -1618,3 +1675,38 @@ const playbookRows = [
   sections.forEach(function(s) { obs.observe(s.el); });
 })();
 </script>
+
+<script is:inline>
+function initNotesLightbox() {
+  var box = document.getElementById('notes-lightbox');
+  var img = document.getElementById('notes-lightbox-img');
+  var closeBtn = document.getElementById('notes-lightbox-close');
+  var shots = document.querySelectorAll('.notes-shot');
+  if (!box || !img || !shots.length) return;
+
+  function open(src, alt) {
+    img.src = src;
+    img.alt = alt;
+    box.classList.add('is-open');
+    closeBtn.focus();
+  }
+  function close() {
+    box.classList.remove('is-open');
+    img.src = '';
+  }
+
+  shots.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var full = btn.getAttribute('data-full');
+      var altText = btn.querySelector('img') ? btn.querySelector('img').alt : '';
+      open(full, altText);
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
+}
+initNotesLightbox();
+document.addEventListener('astro:page-load', initNotesLightbox);
+</script>
+
