@@ -301,6 +301,29 @@ const frameworkIndex = [
   </section>
 
   <!-- ===== CTA ===== -->
+  <!-- ===== REAL PAGES FROM THE MATERIALS ===== -->
+  <section class="fw-section" id="materials">
+    <div class="container">
+      <p class="eyebrow">Straight From The Materials</p>
+      <h2 class="fw-section__title">The frameworks, on the actual pages</h2>
+      <p class="fw-section__sub">Each framework above lives in a full teaching document. Three pages, unedited &mdash; click to enlarge.</p>
+      <div class="notes-gallery">
+        <button type="button" class="notes-shot" data-full="/images/english-mat-stampcard.webp" aria-label="Enlarge: STAMP CARD nine-category quick reference from the editing notes">
+          <img src="/images/english-mat-stampcard.webp" alt="The STAMP CARD quick-reference table from A-Worthy's editing notes: nine error types from Subject-Verb Agreement to Degree of Comparison, each with its quick check question" loading="lazy" width="1100" height="758" />
+          <span class="notes-shot__cap">STAMP CARD &mdash; the nine-category table, from the editing notes</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/english-mat-swift.webp" aria-label="Enlarge: SWIFT five-second category test from the comprehension toolkit">
+          <img src="/images/english-mat-swift.webp" alt="The SWIFT card from A-Worthy's Paper 2 comprehension toolkit: the five signal words and the rule routing questions to Category A (FLIP) or Category B (EIL)" loading="lazy" width="1100" height="593" />
+          <span class="notes-shot__cap">SWIFT &mdash; the five-second test, from the comprehension toolkit</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/english-mat-caps-cheatsheet.webp" aria-label="Enlarge: single-part vs two-part summary page from the CAPS cheatsheet">
+          <img src="/images/english-mat-caps-cheatsheet.webp" alt="A page from A-Worthy's CAPS summary cheatsheet showing the single-part versus two-part summary structures, with the transition sentence marking the shift" loading="lazy" width="1100" height="1555" />
+          <span class="notes-shot__cap">CAPS &mdash; single-part vs two-part, from the summary cheatsheet</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <section class="fw-cta">
     <div class="container">
       <h2 class="fw-cta__title">See these frameworks taught live</h2>
@@ -311,6 +334,12 @@ const frameworkIndex = [
       </div>
     </div>
   </section>
+
+
+  <div class="notes-lightbox" id="notes-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged materials page">
+    <button type="button" class="notes-lightbox__close" id="notes-lightbox-close" aria-label="Close enlarged view">&times;</button>
+    <img class="notes-lightbox__img" id="notes-lightbox-img" src="" alt="" />
+  </div>
 
   <Footer slot="footer" />
 </BaseLayout>
@@ -463,6 +492,31 @@ const frameworkIndex = [
     .swift-word__eg { margin-left: auto; text-align: right; }
     .stamp__chip { width: 46px; height: 46px; }
   }
+  /* Real-pages gallery + lightbox (shared pattern) */
+  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .notes-shot {
+    display: flex; flex-direction: column; padding: 0; border: 1px solid var(--border-color); border-radius: var(--border-radius-lg);
+    background: var(--bg-card); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .notes-shot:hover, .notes-shot:focus-visible { transform: translateY(-3px); border-color: var(--fw-accent); box-shadow: 0 14px 30px -18px var(--fw-accent); }
+  .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border-color); }
+  .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.4; color: var(--text-secondary); }
+  .notes-lightbox {
+    position: fixed; inset: 0; z-index: var(--z-modal); display: none; align-items: center; justify-content: center;
+    padding: 2rem; background: rgba(11, 11, 15, 0.86); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .notes-lightbox.is-open { display: flex; }
+  .notes-lightbox__img { max-width: min(92vw, 720px); max-height: 88vh; width: auto; height: auto; border-radius: var(--border-radius); box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6); }
+  .notes-lightbox__close {
+    position: absolute; top: 1.25rem; right: 1.25rem; width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.08); color: #fff;
+    font-size: 1.4rem; line-height: 1; cursor: pointer; display: grid; place-items: center;
+  }
+  .notes-lightbox__close:hover { background: rgba(255, 255, 255, 0.16); }
+  @media (max-width: 640px) {
+    .notes-gallery { grid-template-columns: 1fr; }
+  }
 </style>
 
 <script>
@@ -512,6 +566,25 @@ const frameworkIndex = [
         if (result) result.hidden = false;
       });
     });
+
+    // Real-pages lightbox
+    var box = document.getElementById('notes-lightbox');
+    var lbImg = document.getElementById('notes-lightbox-img');
+    var lbClose = document.getElementById('notes-lightbox-close');
+    var shots = document.querySelectorAll('.notes-shot');
+    if (box && lbImg && shots.length) {
+      shots.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          lbImg.src = btn.getAttribute('data-full');
+          lbImg.alt = btn.querySelector('img') ? btn.querySelector('img').alt : '';
+          box.classList.add('is-open');
+          lbClose.focus();
+        });
+      });
+      lbClose.addEventListener('click', function () { box.classList.remove('is-open'); lbImg.src = ''; });
+      box.addEventListener('click', function (e) { if (e.target === box) { box.classList.remove('is-open'); lbImg.src = ''; } });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('is-open')) { box.classList.remove('is-open'); lbImg.src = ''; } });
+    }
   }
 
   initFrameworks();
