@@ -312,6 +312,39 @@ const playbookRows = [
     </div>
   </section>
 
+  <!-- ===== MARKER'S REPORT SHOWCASE ===== -->
+  <section class="prog-section materials-section" id="feedback">
+    <div class="container">
+      <p class="eyebrow">Inside The Feedback</p>
+      <h2 class="prog-section__heading">The marker&rsquo;s report your child brings home</h2>
+      <p class="prog-section__sub">Every marked practice paper comes back with a full A-Worthy marker&rsquo;s report &mdash; not a score scribbled on the front page. Four pages from a real report on an A-Maths (4049) Paper 1 practice script, anonymised and otherwise unedited. Click to enlarge.</p>
+
+      <div class="notes-gallery notes-gallery--two">
+        <button type="button" class="notes-shot" data-full="/images/maths-report-cover.webp" aria-label="Enlarge: the marker's report cover with the overall score band">
+          <img src="/images/maths-report-cover.webp" alt="Cover of an A-Worthy marker's report for Additional Mathematics 4049 Paper 1: the overall score band (56 out of 90, 62%) and an explanation that the report records marks per part, shows where marks were lost and how to gain them, and groups next steps by skill" loading="lazy" width="1100" height="1555" />
+          <span class="notes-shot__cap">The report at a glance &mdash; score band and what the report covers</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/maths-report-mastery.webp" aria-label="Enlarge: the topic mastery chart grouped by 4049 syllabus topic">
+          <img src="/images/maths-report-mastery.webp" alt="The Topic Mastery page: a bar chart of marks grouped by 4049 syllabus topic, with Secure, Developing and Priority bands, and a Where To Focus summary naming the priority topics" loading="lazy" width="1100" height="1555" />
+          <span class="notes-shot__cap">Topic mastery &mdash; Secure, Developing and Priority, by syllabus topic</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/maths-report-marks-lost.webp" aria-label="Enlarge: the where-marks-were-lost table with per-question feedback">
+          <img src="/images/maths-report-marks-lost.webp" alt="The Where Marks Were Lost page: one row per question part below full marks, each with the marks gained, what was needed mathematically, and a How To Improve note written in the marker's voice" loading="lazy" width="1100" height="1555" />
+          <span class="notes-shot__cap">Where marks were lost &mdash; what was needed, and how to improve, per question</span>
+        </button>
+        <button type="button" class="notes-shot" data-full="/images/maths-report-record.webp" aria-label="Enlarge: the full mark record with every part's marks and section totals">
+          <img src="/images/maths-report-record.webp" alt="The Full Mark Record page: every question part with marks gained out of available, colour-coded, with section totals and the paper total of 56 out of 90" loading="lazy" width="1100" height="1555" />
+          <span class="notes-shot__cap">The full mark record &mdash; every part, every mark, nothing hidden</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="notes-lightbox" id="notes-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged report page">
+    <button type="button" class="notes-lightbox__close" id="notes-lightbox-close" aria-label="Close enlarged view">&times;</button>
+    <img class="notes-lightbox__img" id="notes-lightbox-img" src="" alt="" />
+  </div>
+
   <!-- ===== MID-PAGE CTA (cuts scroll inertia; the full CTA remains at the end) ===== -->
   <section class="prog-section prog-midcta" aria-label="Book a free assessment">
     <div class="container">
@@ -1207,6 +1240,34 @@ const playbookRows = [
     .prog-midcta__inner { flex-direction: column; align-items: stretch; text-align: center; }
     .prog-midcta__actions { justify-content: center; }
   }
+  /* Real materials gallery (mirrors the H2 Economics notes gallery) */
+  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .notes-gallery--two { grid-template-columns: repeat(2, 1fr); }
+  .notes-shot {
+    display: flex; flex-direction: column; padding: 0; border: 1px solid var(--prog-border); border-radius: var(--border-radius-lg);
+    background: var(--prog-bg-card); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .notes-shot:hover, .notes-shot:focus-visible { transform: translateY(-3px); border-color: var(--subject-accent); box-shadow: 0 14px 30px -18px var(--subject-accent); }
+  .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--prog-border); }
+  .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.4; color: var(--prog-text-secondary); }
+
+  .notes-lightbox {
+    position: fixed; inset: 0; z-index: var(--z-modal); display: none; align-items: center; justify-content: center;
+    padding: 2rem; background: rgba(11, 11, 15, 0.86); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .notes-lightbox.is-open { display: flex; }
+  .notes-lightbox__img { max-width: min(92vw, 720px); max-height: 88vh; width: auto; height: auto; border-radius: var(--border-radius); box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6); }
+  .notes-lightbox__close {
+    position: absolute; top: 1.25rem; right: 1.25rem; width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.08); color: #fff;
+    font-size: 1.4rem; line-height: 1; cursor: pointer; display: grid; place-items: center;
+  }
+  .notes-lightbox__close:hover { background: rgba(255, 255, 255, 0.16); }
+
+  @media (max-width: 900px) {
+    .notes-gallery, .notes-gallery--two { grid-template-columns: 1fr; }
+  }
 </style>
 
 <script is:inline>
@@ -1271,3 +1332,38 @@ const playbookRows = [
   sections.forEach(function(s) { obs.observe(s.el); });
 })();
 </script>
+
+<script is:inline>
+function initNotesLightbox() {
+  var box = document.getElementById('notes-lightbox');
+  var img = document.getElementById('notes-lightbox-img');
+  var closeBtn = document.getElementById('notes-lightbox-close');
+  var shots = document.querySelectorAll('.notes-shot');
+  if (!box || !img || !shots.length) return;
+
+  function open(src, alt) {
+    img.src = src;
+    img.alt = alt;
+    box.classList.add('is-open');
+    closeBtn.focus();
+  }
+  function close() {
+    box.classList.remove('is-open');
+    img.src = '';
+  }
+
+  shots.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var full = btn.getAttribute('data-full');
+      var altText = btn.querySelector('img') ? btn.querySelector('img').alt : '';
+      open(full, altText);
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
+}
+initNotesLightbox();
+document.addEventListener('astro:page-load', initNotesLightbox);
+</script>
+
