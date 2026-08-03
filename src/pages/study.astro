@@ -186,6 +186,7 @@ const count = materials.length;
         </button>
       </div>
     </div>
+    <p class="sh-viewer__loading" id="sh-loading" role="status">Loading&hellip;</p>
     <iframe class="sh-viewer__frame" id="sh-frame" src="about:blank" title="Study material"></iframe>
   </div>
 
@@ -301,6 +302,12 @@ const count = materials.length;
   .sh-viewer__btn:hover { color: var(--text-primary); border-color: var(--color-primary); }
   .sh-viewer__btn--close:hover { border-color: var(--color-accent); color: var(--color-accent); }
   .sh-viewer__frame { flex: 1 1 auto; width: 100%; border: 0; background: #fff; }
+  .sh-viewer__loading {
+    margin: 0; padding: 2rem 1rem; text-align: center; color: var(--text-muted);
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .sh-viewer:not(.is-loading) .sh-viewer__loading { display: none; }
+  .sh-viewer.is-loading .sh-viewer__frame { display: none; }
 
   /* ── Responsive ── */
   @media (max-width: 1024px) { .sh-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -332,7 +339,48 @@ const count = materials.length;
     var newTab = document.getElementById('sh-newtab');
     var closeBtn = document.getElementById('sh-close');
     var filters = document.getElementById('sh-filters');
+    var loading = document.getElementById('sh-loading');
     var lastFocused = null;
+    var loadToken = 0;
+
+    /*
+     * Materials are injected via `srcdoc` rather than `src`.
+     *
+     * The site sends `X-Frame-Options: DENY` and `frame-ancestors 'none'`
+     * sitewide. A path-scoped override does NOT work: Cloudflare Pages MERGES
+     * `_headers` rules rather than replacing them, so the response carries both
+     * DENY and SAMEORIGIN, and browsers intersect the two policies and block
+     * the frame. `srcdoc` has no HTTP response of its own, so neither header
+     * applies. The document still inherits this page's CSP, which permits the
+     * inline CSS/JS that self-contained materials rely on.
+     */
+    function withBase(html) {
+      var baseTag = '<base href="/study/">';
+      if (/<head[^>]*>/i.test(html)) return html.replace(/<head([^>]*)>/i, '<head$1>' + baseTag);
+      return baseTag + html;
+    }
+
+    function loadIntoFrame(src) {
+      var token = ++loadToken;
+      frame.removeAttribute('srcdoc');
+      frame.setAttribute('src', 'about:blank');
+      viewer.classList.add('is-loading');
+      fetch(src, { credentials: 'same-origin' })
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function (html) {
+          if (token !== loadToken) return; // a newer material was opened
+          frame.srcdoc = withBase(html);
+          viewer.classList.remove('is-loading');
+        })
+        .catch(function () {
+          if (token !== loadToken) return;
+          // Fall back to the material's own standalone page.
+          window.location.href = src;
+        });
+    }
 
     function cardFor(slug) {
       if (!grid || !slug) return null;
@@ -352,7 +400,7 @@ const count = materials.length;
       chipEl.style.setProperty('--chip', getComputedStyle(card).getPropertyValue('--sub'));
       newTab.setAttribute('href', src);
       frame.setAttribute('title', card.dataset.title);
-      frame.setAttribute('src', src);
+      loadIntoFrame(src);
       viewer.hidden = false;
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
@@ -367,7 +415,10 @@ const count = materials.length;
     function closeViewer(updateHash) {
       if (viewer.hidden) return;
       viewer.hidden = true;
+      loadToken++; // cancel any in-flight load
+      frame.removeAttribute('srcdoc');
       frame.setAttribute('src', 'about:blank');
+      viewer.classList.remove('is-loading');
       document.body.style.overflow = '';
       if (updateHash && window.location.hash) {
         try { history.pushState(null, '', window.location.pathname); } catch (e) {}
