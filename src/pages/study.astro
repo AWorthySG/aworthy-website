@@ -354,10 +354,31 @@ const count = materials.length;
      * applies. The document still inherits this page's CSP, which permits the
      * inline CSS/JS that self-contained materials rely on.
      */
-    function withBase(html) {
+    /*
+     * In a srcdoc document, in-page anchors (href="#section") resolve against
+     * the inherited base URL, so clicking one NAVIGATES the frame to /study/#section
+     * instead of scrolling. Any material with a table of contents would break.
+     * This shim intercepts same-document fragment links and scrolls instead.
+     * It is injected by the viewer so materials need no modification.
+     */
+    var ANCHOR_SHIM =
+      '<script>(function(){document.addEventListener("click",function(e){' +
+      'var a=e.target&&e.target.closest?e.target.closest(\'a[href^="#"]\'):null;' +
+      'if(!a||a.target)return;var h=a.getAttribute("href");if(!h)return;' +
+      'var id=h.slice(1);e.preventDefault();' +
+      'if(!id){window.scrollTo({top:0,behavior:"smooth"});return;}' +
+      'var t=document.getElementById(id)||document.getElementsByName(id)[0];' +
+      'if(t)t.scrollIntoView({behavior:"smooth",block:"start"});' +
+      '});})();<\/script>';
+
+    function prepareDoc(html) {
       var baseTag = '<base href="/study/">';
-      if (/<head[^>]*>/i.test(html)) return html.replace(/<head([^>]*)>/i, '<head$1>' + baseTag);
-      return baseTag + html;
+      var out = /<head[^>]*>/i.test(html)
+        ? html.replace(/<head([^>]*)>/i, '<head$1>' + baseTag)
+        : baseTag + html;
+      return /<\/body>/i.test(out)
+        ? out.replace(/<\/body>/i, ANCHOR_SHIM + '</body>')
+        : out + ANCHOR_SHIM;
     }
 
     function loadIntoFrame(src) {
@@ -372,7 +393,7 @@ const count = materials.length;
         })
         .then(function (html) {
           if (token !== loadToken) return; // a newer material was opened
-          frame.srcdoc = withBase(html);
+          frame.srcdoc = prepareDoc(html);
           viewer.classList.remove('is-loading');
         })
         .catch(function () {

@@ -310,6 +310,8 @@ Students open study materials live in the browser — no downloads. Public (no g
 
 This is deliberate and must not be "simplified" back to `iframe.src`. The site sends `X-Frame-Options: DENY` and `frame-ancestors 'none'` sitewide, which blocks any iframe — including same-origin ones. A path-scoped override does **not** fix it: **Cloudflare Pages merges `_headers` rules rather than replacing them**, so a `/study/*` block sends *both* `DENY` and `SAMEORIGIN` (and both `frame-ancestors` values), and browsers intersect the policies and block the frame anyway. This was verified against the real Cloudflare preview. `srcdoc` has no HTTP response of its own, so neither header applies. If the viewer ever renders as a browser "blocked" error page, this is why.
 
+The viewer also injects a small **anchor shim** into every material. In a `srcdoc` document, in-page links (`href="#section"`) resolve against the inherited base URL, so clicking one would *navigate the frame to `/study/#section`* instead of scrolling — silently breaking the table of contents in any long material. The shim intercepts same-document fragment clicks and scrolls instead, so materials need no modification.
+
 The injected document inherits *this page's* CSP (`default-src 'self'` with `'unsafe-inline'` for scripts and styles), so materials must be **self-contained** — inline CSS/JS is fine, external CDN scripts and remote fonts are blocked. It is not sandboxed, so materials keep full same-origin access (localStorage etc.) and behave exactly as they do standalone.
 
 Cards are real `<a href>` links, so every material is also its own standalone page — it works with JS disabled, and the viewer falls back to navigating there if the fetch fails.
