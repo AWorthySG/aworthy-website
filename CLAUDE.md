@@ -50,6 +50,7 @@ src/
 │   ├── review.astro          # Review-generation page (Google review + private feedback; noindex)
 │   ├── results.astro         # Student results and statistics
 │   ├── resources.astro       # Resource vault with email gating (17 resources, 6 categories)
+│   ├── study.astro           # Study Hub — live in-browser viewer for HTML study materials (see "Study Hub" below)
 │   ├── frameworks.astro      # O-Level English framework showcase (interactive): STAMP CARD editing sweep, SWIFT→FLIP/EIL comprehension, CAPS summary. Linked from Header (Library), Footer, and o-level-english.astro cards
 │   ├── testimonials.astro    # Testimonials with carousel and video section
 │   ├── contact.astro         # Contact form, trial booking form, online badge
@@ -95,6 +96,7 @@ public/
 │   ├── icon-*.svg            # Resource vault icons (scoring, essay, comprehension, vocabulary, situational, grammar)
 │   └── section-divider.svg   # Decorative section divider
 ├── docs/samples/             # Sample PDF resources (grammar, essays, vocabulary, etc.)
+├── study/                    # Study Hub materials — self-contained .html files, auto-listed on /study/
 ├── sw.js                     # Service worker (cache-first for assets, network-first for navigation)
 ├── manifest.json             # PWA manifest
 ├── robots.txt                # Search engine directives
@@ -295,6 +297,23 @@ Current sections in order:
 6. Results statistics
 7. Contact form (risk-reversal subtitle — "no obligation, no sales pitch"; FAQ JSON-LD schema in head)
 
+## Study Hub (`/study/`)
+
+Students open study materials live in the browser — no downloads. Public (no gating), indexed, linked from the Header **Library** dropdown and the Footer.
+
+**Adding a material** — two steps, the second optional:
+
+1. Drop a self-contained `.html` file into `public/study/`. It is auto-discovered at build time (`fs.readdirSync` in `study.astro`'s frontmatter) and appears on the page immediately. Title falls back to the file's own `<title>`, blurb to its `<meta name="description">`.
+2. Optionally add an entry to `src/data/study-materials.ts`, keyed by the filename without `.html`, to set `subject`, `title`, `description`, `level` and `order`. Subject determines the card's accent colour and the filter chip it appears under.
+
+**How it renders**: each material is served verbatim from `public/study/` and displayed in a same-origin `<iframe>` inside a full-screen viewer, so the file keeps its own CSS/JS entirely — nothing on the site can clash with it, and vice versa. Cards are real `<a href>` links, so the material also works as a standalone page (and with JS off).
+
+**Deep links**: `/study/#<slug>` opens that material directly; Back closes the viewer. Handy for sending a student straight to one note.
+
+**Critical — framing headers**: the site sets `X-Frame-Options: DENY` and `frame-ancestors 'none'` sitewide, which would block the viewer. Both `public/_headers` (Cloudflare) and `vercel.json` (Vercel) carry a `/study/*` override relaxing these to `SAMEORIGIN` / `frame-ancestors 'self'`. **Keep the two in sync** — if the sitewide CSP changes, update the `/study/*` block in both files too, or the viewer silently breaks on one host.
+
+Materials should be self-contained (inline CSS/JS): the CSP for `/study/*` is `default-src 'self'`, so external CDN scripts and remote fonts are blocked.
+
 ## Key Stats (keep consistent across all pages)
 
 - **O-Level English pass rate**: 90% A1–B3
@@ -367,3 +386,4 @@ When the academic year rolls over, update these in order — most date-sensitive
 - Blog posts import shared styles from `src/styles/blog.css` — only page-specific styles (e.g., `.cop-table-*`, `.compare-table-*`) go in inline `<style>` blocks
 - PdfPreviewModal uses CSS custom properties (`--pdf-bg`, `--pdf-text`, etc.) for its intentionally dark media-viewer theme — do not tie these to the site's light/dark mode tokens
 - `404.astro` has `noindex={true}` — keep it excluded from search indexing
+- Study Hub materials live in `public/study/*.html` and are auto-discovered — but the sitewide `X-Frame-Options: DENY` / `frame-ancestors 'none'` would block the viewer's iframe, so a `/study/*` override exists in **both** `public/_headers` and `vercel.json`. Changing the sitewide CSP means changing both overrides too
