@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Editing — O-Level English 1184</title>
+<meta name="description" content="The complete STAMP CARD editing guide: a 50-sentence diagnostic that finds your weak categories, all nine error types explained with worked examples, a full annotated exam passage, and a confusables cheat strip." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#1A2A3A; --soft:rgba(26,42,58,.74); --mute:rgba(26,42,58,.5);
+    --paper:#FDFBF7; --panel:#fff; --panel2:#F5F1EB; --line:rgba(26,42,58,.13);
+    --navy:#2B5A8C; --gold:#D4853A; --green:#3E7D5A; --red:#B3453F;
+    --navy-ink:#2B5A8C;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ink:#f0f0f2; --soft:rgba(240,240,242,.7); --mute:rgba(240,240,242,.45);
+      --paper:#14141b; --panel:#1b1b24; --panel2:#20202a; --line:rgba(255,255,255,.1);
+      --navy:#7FA8D4; --gold:#E09850; --green:#6FB58C; --red:#E0817B;
+      --navy-ink:#9FC0E4;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);line-height:1.62;
+    font-family:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 1.25rem 5rem}
+
+  /* ── Masthead ── */
+  .mast{background:var(--panel2);border-bottom:1px solid var(--line);padding:2.75rem 1.25rem 2.25rem;margin-bottom:2rem}
+  .mast__in{max-width:900px;margin:0 auto}
+  .eyebrow{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:800;margin:0 0 .55rem}
+  .mast h1{font-size:clamp(2rem,6vw,3rem);font-weight:300;margin:0 0 .3rem;letter-spacing:-.02em;line-height:1.05}
+  .mast__sub{margin:0;color:var(--soft);font-size:1.02rem}
+  .mast__by{margin:.9rem 0 0;color:var(--mute);font-size:.82rem}
+
+  /* ── Contents ── */
+  .toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.25rem;margin:0 0 2.5rem}
+  .toc__head{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .toc__title{margin:0;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+  .toc__toggle{
+    background:transparent;border:1px solid var(--line);border-radius:6px;cursor:pointer;color:var(--soft);
+    font:inherit;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:.35rem .7rem
+  }
+  .toc__toggle:hover{color:var(--ink);border-color:var(--navy)}
+  .toc ol{margin:1rem 0 0;padding-left:1.2rem;columns:2;column-gap:2rem}
+  @media (max-width:640px){.toc ol{columns:1}}
+  .toc li{margin-bottom:.3rem;break-inside:avoid}
+  .toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+  .toc a:hover{border-bottom-color:var(--gold);color:var(--navy-ink)}
+  .toc ol ol{columns:1;margin:.3rem 0 .6rem;padding-left:1.1rem}
+  .toc ol ol a{color:var(--soft);font-size:.9rem}
+  .toc[data-open="0"] ol{display:none}
+
+  /* ── Sections ── */
+  section{scroll-margin-top:1rem}
+  h2{font-size:clamp(1.4rem,3.4vw,1.9rem);font-weight:700;margin:3rem 0 .35rem;letter-spacing:-.01em;line-height:1.2}
+  h2:first-of-type{margin-top:0}
+  h3{font-size:1.14rem;font-weight:700;margin:2.1rem 0 .5rem;color:var(--navy-ink)}
+  h4{font-size:1rem;font-weight:700;margin:1.5rem 0 .4rem}
+  p{margin:0 0 .9rem}
+  .lede{color:var(--soft)}
+  .back{display:inline-block;margin:.15rem 0 1.4rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--mute);text-decoration:none}
+  .back:hover{color:var(--gold)}
+  .rule{height:2px;width:56px;background:var(--gold);border:0;margin:.6rem 0 1.4rem;border-radius:2px}
+
+  /* ── Tables ── */
+  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 1.4rem;border:1px solid var(--line);border-radius:8px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem}
+  th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--panel2);font-weight:800;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:nth-child(even){background:rgba(127,127,127,.045)}
+  td code,th code{font-weight:700}
+  .tag{display:inline-block;min-width:1.7rem;text-align:center;padding:.1rem .35rem;border-radius:4px;background:var(--navy);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.03em}
+  .num{white-space:nowrap;color:var(--mute);font-weight:700;width:2.5rem}
+
+  /* ── Callouts ── */
+  .box{border:1px solid var(--line);border-left:3px solid var(--navy);background:var(--panel);border-radius:8px;padding:1.05rem 1.2rem;margin:0 0 1.4rem}
+  .box__label{font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--navy-ink);margin:0 0 .45rem}
+  .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
+  .box--think{border-left-color:var(--gold);background:var(--panel2)}
+  .box--think .box__label{color:var(--gold)}
+  .box--tip{border-left-color:var(--green)}
+  .box--tip .box__label{color:var(--green)}
+  .worked{border:1px solid var(--line);border-radius:8px;padding:1.05rem 1.2rem;margin:0 0 1.2rem;background:var(--panel)}
+  .worked__label{font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--gold);margin:0 0 .5rem}
+  .err{color:var(--red);font-weight:700}
+  .fix{color:var(--green);font-weight:700}
+  .arrow{color:var(--mute);padding:0 .35rem}
+  ul,ol{margin:0 0 1rem;padding-left:1.3rem}
+  li{margin-bottom:.35rem}
+  .steps{list-style:none;padding-left:0;counter-reset:st}
+  .steps li{counter-increment:st;position:relative;padding-left:2.1rem;margin-bottom:.55rem}
+  .steps li::before{
+    content:counter(st);position:absolute;left:0;top:.05rem;width:1.45rem;height:1.45rem;border-radius:50%;
+    background:var(--gold);color:#fff;font-size:.78rem;font-weight:800;display:grid;place-items:center
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.4rem;padding:0;list-style:none}
+  .chips li{margin:0;padding:.35rem .7rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem;background:var(--panel)}
+  .chips li.star{border-color:var(--gold);font-weight:700}
+
+  /* ── Interactive ── */
+  .reveal{
+    display:inline-flex;align-items:center;gap:.4rem;background:var(--navy);color:#fff;border:0;border-radius:6px;
+    cursor:pointer;font:inherit;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:800;padding:.55rem 1rem;margin:0 0 1.1rem
+  }
+  .reveal:hover{filter:brightness(1.1)}
+  .hidden{display:none}
+  input.ans{
+    width:100%;min-width:130px;font:inherit;font-size:.88rem;padding:.35rem .5rem;border:1px solid var(--line);
+    border-radius:5px;background:var(--paper);color:var(--ink)
+  }
+  input.ans:focus{outline:2px solid var(--gold);outline-offset:1px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:0 0 1.1rem}
+  .btn-ghost{
+    background:transparent;border:1px solid var(--line);border-radius:6px;cursor:pointer;color:var(--soft);font:inherit;
+    font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;padding:.55rem 1rem
+  }
+  .btn-ghost:hover{color:var(--ink);border-color:var(--navy)}
+  .saved{font-size:.75rem;color:var(--mute)}
+
+  footer{border-top:1px solid var(--line);margin-top:3.5rem;padding-top:1.4rem;color:var(--mute);font-size:.83rem}
+
+  @media print{
+    body{background:#fff;color:#000}
+    .toc,.reveal,.toolbar,.back,.toc__toggle{display:none!important}
+    .hidden{display:block!important}
+    .box,.worked,.tw,table{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="mast">
+  <div class="mast__in">
+    <p class="eyebrow">O-Level Notes</p>
+    <h1>Editing</h1>
+    <p class="mast__sub">O-Level English 1184 &middot; The STAMP CARD framework</p>
+    <p class="mast__by">A-Worthy Education</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<nav class="toc" id="toc" data-open="1" aria-label="Contents">
+  <div class="toc__head">
+    <p class="toc__title">Contents</p>
+    <button type="button" class="toc__toggle" id="toc-toggle" aria-expanded="true">Hide</button>
+  </div>
+  <ol>
+    <li><a href="#s1">Diagnostic — How to Use This Book</a>
+      <ol>
+        <li><a href="#s1-1">1.1 How to Use the Diagnostic</a></li>
+        <li><a href="#s1-2">1.2 The 50 Diagnostic Sentences</a></li>
+        <li><a href="#s1-3">1.3 Diagnostic Answer Key</a></li>
+        <li><a href="#s1-4">1.4 Score Yourself by Category</a></li>
+      </ol>
+    </li>
+    <li><a href="#s2">The STAMP CARD Framework</a>
+      <ol>
+        <li><a href="#s2-1">2.1 The Nine Categories</a></li>
+        <li><a href="#s2-2">2.2 Error Frequency by Category</a></li>
+      </ol>
+    </li>
+    <li><a href="#s3">Error Types in Detail</a>
+      <ol>
+        <li><a href="#s3-1">3.1 Tense [T]</a></li>
+        <li><a href="#s3-2">3.2 Subject-Verb Agreement [S]</a></li>
+        <li><a href="#s3-3">3.3 Articles [A1]</a></li>
+        <li><a href="#s3-4">3.4 Pronouns [M]</a></li>
+        <li><a href="#s3-5">3.5 Prepositions [P]</a></li>
+        <li><a href="#s3-6">3.6 Connectors [C]</a></li>
+        <li><a href="#s3-7">3.7 Adjective / Adverb [A2]</a></li>
+        <li><a href="#s3-8">3.8 Singular / Plural [R]</a></li>
+        <li><a href="#s3-9">3.9 Degree of Comparison [D]</a></li>
+      </ol>
+    </li>
+    <li><a href="#s4">Worked Passage</a>
+      <ol>
+        <li><a href="#s4-1">4.1 Clean Passage</a></li>
+        <li><a href="#s4-2">4.2 Revealed Passage</a></li>
+        <li><a href="#s4-3">4.3 Annotated Answer Key</a></li>
+      </ol>
+    </li>
+    <li><a href="#s5">Confusables Cheat Strip</a></li>
+    <li><a href="#s6">Exam Tips</a></li>
+    <li><a href="#s7">Practice Question Answer Keys</a></li>
+    <li><a href="#sa">Appendix A — Full Twelve-Tense Reference</a></li>
+  </ol>
+</nav>
+
+<div class="box box--tip">
+  <p class="box__label">Start here</p>
+  <p>Take the diagnostic first. Your score tells you which sections to prioritise &mdash; each is linked in the scoring table. Your answers below save automatically in this browser, so you can close the page and come back.</p>
+</div>
+
+<!-- ══ 1 ══ -->
+<section id="s1">
+  <h2>1. Diagnostic — How to Use This Book</h2>
+  <hr class="rule" />
+  <p class="lede">This 50-sentence diagnostic identifies which STAMP CARD categories need your attention most. Most students are not uniformly weak across all nine categories &mdash; you have a specific profile. Spending 35 minutes here saves hours of unfocused revision later.</p>
+
+  <h3 id="s1-1">1.1 How to Use the Diagnostic</h3>
+  <ol class="steps">
+    <li><strong>Attempt all 50 sentences.</strong> Write the correction on the answer line. Do not skip. Three sentences contain no error at all.</li>
+    <li><strong>Do not check answers</strong> until you have finished all 50.</li>
+    <li><strong>Mark your answers</strong> against the key in 1.3. Each sentence is tagged with its STAMP CARD category.</li>
+    <li><strong>Tally your errors</strong> by category in the scoring table (1.4).</li>
+    <li><strong>Prioritise the sections</strong> that correspond to the categories where you made one or more errors. These are your weakest areas.</li>
+  </ol>
+
+  <h3 id="s1-2">1.2 The 50 Diagnostic Sentences</h3>
+  <p>Identify and correct the one error in each sentence.</p>
+  <div class="toolbar">
+    <button type="button" class="btn-ghost" id="clear-diag">Clear my answers</button>
+    <span class="saved" id="diag-saved"></span>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>No.</th><th>Sentence</th><th>Your Correction</th></tr></thead>
+      <tbody id="diag-body"></tbody>
+    </table>
+  </div>
+
+  <h3 id="s1-3">1.3 Diagnostic Answer Key</h3>
+  <p>Finish all 50 first. The key stays hidden until you choose to reveal it.</p>
+  <button type="button" class="reveal" data-target="diag-key">Reveal answer key</button>
+  <div id="diag-key" class="hidden">
+    <div class="tw">
+      <table>
+        <thead><tr><th>No.</th><th>Tag</th><th>Correction</th><th>Why</th></tr></thead>
+        <tbody id="key-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 id="s1-4">1.4 Score Yourself by Category</h3>
+  <p>Tally the number of correct answers in each row. The maximum for each category is shown in brackets; categories are tested unequally, so the totals differ.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Tag</th><th>Category</th><th>Score</th><th>Priority Section</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag">T</span></td><td>Tense (Q1, 11, 21, 22, 23, 24)</td><td>&nbsp;&nbsp;&nbsp;/6</td><td><a href="#s3-1">3.1 Tense</a></td></tr>
+        <tr><td><span class="tag">S</span></td><td>Subject-Verb Agreement (Q2, 4, 12, 20, 26, 27, 28, 29)</td><td>&nbsp;&nbsp;&nbsp;/8</td><td><a href="#s3-2">3.2 Subject-Verb</a></td></tr>
+        <tr><td><span class="tag">A1</span></td><td>Articles (Q3, 30, 31)</td><td>&nbsp;&nbsp;&nbsp;/3</td><td><a href="#s3-3">3.3 Articles</a></td></tr>
+        <tr><td><span class="tag">M</span></td><td>Match Pronouns (Q10, 32, 33, 34, 35)</td><td>&nbsp;&nbsp;&nbsp;/5</td><td><a href="#s3-4">3.4 Pronouns</a></td></tr>
+        <tr><td><span class="tag">P</span></td><td>Prepositions (Q5, 15, 37, 38, 39, 40)</td><td>&nbsp;&nbsp;&nbsp;/6</td><td><a href="#s3-5">3.5 Prepositions</a></td></tr>
+        <tr><td><span class="tag">C</span></td><td>Connectors (Q6, 16, 41, 42, 43)</td><td>&nbsp;&nbsp;&nbsp;/5</td><td><a href="#s3-6">3.6 Connectors</a></td></tr>
+        <tr><td><span class="tag">A2</span></td><td>Adjective / Adverb (Q7, 17, 44, 45, 46, 47)</td><td>&nbsp;&nbsp;&nbsp;/6</td><td><a href="#s3-7">3.7 Word Form</a></td></tr>
+        <tr><td><span class="tag">R</span></td><td>Right Number (Q8, 14, 18, 48, 49)</td><td>&nbsp;&nbsp;&nbsp;/5</td><td><a href="#s3-8">3.8 Right Number</a></td></tr>
+        <tr><td><span class="tag">D</span></td><td>Degree of Comparison (Q9, 19, 50)</td><td>&nbsp;&nbsp;&nbsp;/3</td><td><a href="#s3-9">3.9 Comparison</a></td></tr>
+        <tr><td>&mdash;</td><td>Error-free sentences (Q13, 25, 36)</td><td>&nbsp;&nbsp;&nbsp;/3</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lede"><em>Question counts per category are uneven because S and R are typically over-tested in exam passages.</em></p>
+
+  <div class="box box--think">
+    <p class="box__label">How to interpret your scores</p>
+    <ul>
+      <li><strong>0 correct in a category:</strong> Critical weakness. Read the relevant section in full, then complete all practice questions.</li>
+      <li><strong>Some but not all correct:</strong> The concept is only partially understood. Re-read the Thought Process boxes and worked examples in that section.</li>
+      <li><strong>Full marks in a category:</strong> Skim the section; focus your time elsewhere. Confirm by attempting the practice questions cold.</li>
+      <li><strong>All 50 correct:</strong> Move directly to the <a href="#s4">Worked Passage</a> and timed practice.</li>
+    </ul>
+  </div>
+  <a class="back" href="#toc">&uarr; Contents</a>
+</section>
+
+<!-- ══ 2 ══ -->
+<section id="s2">
+  <h2>2. The STAMP CARD Framework</h2>
+  <hr class="rule" />
+  <p class="lede">Each letter in STAMP CARD represents one category of grammar error tested in the O-Level editing question. Think of it like a bubble tea stamp card: go through the letters one by one for every numbered line, check each category, and stamp off errors as you find them until you collect all 8 corrections.</p>
+
+  <h3 id="s2-1">2.1 The Nine Categories</h3>
+  <p>The framework provides nine categories to check on every numbered line. The exam includes <strong>eight errors</strong> in total across the passage, with <strong>two lines deliberately error-free</strong>. The framework letters are the categories you check; they do not map one-to-one onto the eight errors.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th></th><th>Error Type</th><th>Quick Check Question</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag">S</span></td><td>Subject-Verb Agreement</td><td>Does the verb agree with the subject in number?</td></tr>
+        <tr><td><span class="tag">T</span></td><td>Tense</td><td>Is the verb in the correct tense? Check time markers.</td></tr>
+        <tr><td><span class="tag">A1</span></td><td>Articles</td><td>Is &lsquo;a&rsquo;, &lsquo;an&rsquo; or &lsquo;the&rsquo; used correctly? Based on sound, not spelling.</td></tr>
+        <tr><td><span class="tag">M</span></td><td>Match Pronouns</td><td>Does the pronoun match its antecedent in number, gender and form?</td></tr>
+        <tr><td><span class="tag">P</span></td><td>Prepositions</td><td>Is the correct preposition used? Check fixed phrases and collocations.</td></tr>
+        <tr><td><span class="tag">C</span></td><td>Connectors</td><td>Is the linking word logically correct? &lsquo;Although&rsquo; and &lsquo;but&rsquo; cannot be used together.</td></tr>
+        <tr><td><span class="tag">A2</span></td><td>Adjective / Adverb (Word Form)</td><td>Is it describing a noun (adjective) or a verb / adjective / adverb (adverb, usually -ly)?</td></tr>
+        <tr><td><span class="tag">R</span></td><td>Right Number</td><td>Is the noun singular or plural? Does the quantifier match?</td></tr>
+        <tr><td><span class="tag">D</span></td><td>Degree of Comparison</td><td>Comparative or superlative correct? An adjective takes either -er/-est or more/most, never both.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box">
+    <p class="box__label">Note on the two A&rsquo;s</p>
+    <p>STAMP CARD contains two <strong>A</strong> categories. <strong>A1 is Articles</strong> (a, an, the). <strong>A2 is Adjective / Adverb</strong> (word form). They test entirely different things &mdash; do not confuse them. When working through the checklist, treat them as two separate stops.</p>
+  </div>
+
+  <h4>2.1.1 Apply the STAMP CARD procedure to a passage</h4>
+  <p><strong>Technique:</strong> Use STAMP CARD as a checklist for every numbered line. Read the passage once for meaning first, then check each letter in order, prioritising T, S, A2.</p>
+  <ol class="steps">
+    <li>Before reading a single word, write <strong>S-T-A-M-P-C-A-R-D</strong> in the margin.</li>
+    <li>Read the entire passage once for meaning. Identify the tense and topic. Do not correct yet.</li>
+    <li>For every numbered line, work through each letter in order. Stop the moment you find the error &mdash; each line has at most one.</li>
+    <li>Write your correction clearly. Tick error-free lines. Never leave any line blank.</li>
+  </ol>
+
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Why T, S, A2</p>
+    <p>T, S and A2 errors appear in almost every exam passage because they involve the most common grammar rules in English: tense consistency, agreement, and word class. Starting with these three means you will catch the majority of errors efficiently before spending time on the less frequent categories. Treat T, S and A2 as the first pass over every line. (Note: this is <strong>A2</strong>, word form &mdash; not A1, articles, which is tested less often.)</p>
+  </div>
+
+  <h3 id="s2-2">2.2 Error Frequency by Category</h3>
+  <p>The nine categories do not appear equally often. The table below ranks them by approximate frequency across recent 1184 editing passages. Use it to allocate revision time.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Tag</th><th>Category</th><th>Frequency</th><th>Revision Priority</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag">T</span></td><td>Tense</td><td>Very high</td><td>Highest priority. Almost every passage tests at least one.</td></tr>
+        <tr><td><span class="tag">S</span></td><td>Subject-Verb Agreement</td><td>Very high</td><td>Highest priority. Often tested twice in a single passage.</td></tr>
+        <tr><td><span class="tag">A2</span></td><td>Adjective / Adverb</td><td>High</td><td>Highest priority. Almost as common as T and S.</td></tr>
+        <tr><td><span class="tag">P</span></td><td>Prepositions</td><td>High</td><td>Drill the high-yield collocations (see 3.5).</td></tr>
+        <tr><td><span class="tag">M</span></td><td>Match Pronouns</td><td>Moderate</td><td>Common in passages with people or specific noun groups.</td></tr>
+        <tr><td><span class="tag">C</span></td><td>Connectors</td><td>Moderate</td><td>Watch for paired connectors and correlative pairs.</td></tr>
+        <tr><td><span class="tag">R</span></td><td>Right Number</td><td>Moderate</td><td>Watch for uncountable nouns and determiners.</td></tr>
+        <tr><td><span class="tag">A1</span></td><td>Articles</td><td>Lower</td><td>Tested less often but easy to spot when present.</td></tr>
+        <tr><td><span class="tag">D</span></td><td>Degree of Comparison</td><td>Lower</td><td>Tested less often. Identifiable on sight by -er, -est, more, most.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--tip">
+    <p class="box__label">Revision implication</p>
+    <p>Spend roughly <strong>60 per cent</strong> of your revision time on the three highest-priority categories &mdash; T, S and A2. They account for the majority of errors in a typical passage. Divide the remaining time across the other six.</p>
+  </div>
+  <a class="back" href="#toc">&uarr; Contents</a>
+</section>
+
+<!-- ══ 3 ══ -->
+<section id="s3">
+  <h2>3. Error Types in Detail</h2>
+  <hr class="rule" />
+  <p class="lede">Each error type is explained with the full grammar rule, all known sub-patterns, worked examples, and annotated thought-process boxes that explain how an expert reader identifies and corrects each error.</p>
+
+  <!-- 3.1 -->
+  <h3 id="s3-1">3.1 Tense Errors <span class="tag">T</span></h3>
+  <h4>3.1.1 The Rule</h4>
+  <p>The tense of every verb must match the time frame the passage is set in. Narrative and recount passages use the past tense. Informative and factual passages use the present tense. Your first read of the passage exists to establish the tense.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Time Marker</th><th>Signals</th><th>Expected Tense</th></tr></thead>
+      <tbody>
+        <tr><td>yesterday, last year, in 2010, once, at that time, in the past</td><td>Past events &mdash; completed</td><td>Past Simple throughout</td></tr>
+        <tr><td>every day, now, currently, generally, always, nowadays</td><td>Present facts or habits</td><td>Present Simple throughout</td></tr>
+        <tr><td>by 2030, in the future, next year, soon, eventually</td><td>Predictions or future states</td><td>will + base verb</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>The three high-yield tenses.</strong> Past Simple, Present Simple and Present Perfect are the only tenses heavily tested in editing. Learn these three thoroughly before the others.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Tense</th><th>Form</th><th>When to Use</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Past Simple</td><td>verb+ed / irregular</td><td>Completed action; narrative passages.</td><td>She walked.</td></tr>
+        <tr><td>Present Simple</td><td>verb / verb+s</td><td>Habits, routines, general truths, factual passages.</td><td>She walks.</td></tr>
+        <tr><td>Present Perfect</td><td>have/has + p.p.</td><td>Past action with continuing relevance. Tested via clash with specific past time markers.</td><td>She has walked.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>For the full twelve-tense reference, see <a href="#sa">Appendix A</a>.</p>
+
+  <h4>3.1.2 Identify the wrong tense</h4>
+  <ol class="steps">
+    <li>Read the full passage once. Identify the tense from time markers or context.</li>
+    <li>For each numbered line, identify the main verb.</li>
+    <li>Ask &mdash; does this verb match the passage tense?</li>
+    <li>If not, correct it to the appropriate tense form.</li>
+  </ol>
+
+  <div class="worked">
+    <p class="worked__label">Worked Example 1</p>
+    <p><span class="err">She walk into the lab yesterday.</span><span class="arrow">&rarr;</span><span class="fix">She walked into the lab yesterday.</span></p>
+    <p>Time marker: <em>yesterday</em> &mdash; signals past. Main verb <em>walk</em> is the base form. Correct to Past Simple: <strong>walked</strong>.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 2</p>
+    <p><span class="err">I have seen that film last night.</span><span class="arrow">&rarr;</span><span class="fix">I saw that film last night.</span></p>
+    <p><em>Last night</em> is a specific past time, which locks the event in the past. Present Perfect cannot co-exist with it. Replace with Past Simple.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 3</p>
+    <p><span class="err">The problem is compounding.</span><span class="arrow">&rarr;</span><span class="fix">The problem is compounded.</span></p>
+    <p>Ask: is the subject doing an action, or in a condition? The problem is in a worsened <em>state</em>, so the past participle is required, not the present participle.</p>
+  </div>
+
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Present vs Past Participle After &lsquo;To Be&rsquo;</p>
+    <p>When you see <em>is/was/are/were</em> followed by a verb form, ask: is the subject doing something, or in a condition?</p>
+    <ul>
+      <li><strong>Doing something</strong> &rarr; present participle (-ing): &ldquo;The window is breaking.&rdquo;</li>
+      <li><strong>In a condition</strong> &rarr; past participle (-ed/irregular): &ldquo;The window is broken.&rdquo;</li>
+    </ul>
+    <p><em>The problem is compounding</em> implies the problem is actively compounding something. That is not the intended meaning &mdash; the problem has been made worse. Therefore: <strong>compounded</strong>.</p>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Present Perfect vs Past Simple</p>
+    <ul>
+      <li>Use <strong>Present Perfect</strong> with: already, yet, ever, never, just, since, for, recently.</li>
+      <li>Use <strong>Past Simple</strong> with: yesterday, last week, in 2010, at 3pm, on Monday &mdash; any specific past time.</li>
+    </ul>
+    <p>If a specific past time marker and <em>have/has</em> appear together in one clause &mdash; that is a T error.</p>
+  </div>
+
+  <h4>3.1.3 Practice — Tense</h4>
+  <ol>
+    <li>She walk to school every day.</li>
+    <li>He has visit the museum last week.</li>
+    <li>By the time she arrived, he left.</li>
+    <li>The bridge is building across the river. <em>(Describe a completed state.)</em></li>
+    <li>They are enjoy the show right now.</li>
+    <li>Scientists studied the effects of pollution. <em>(Passage is in present tense.)</em></li>
+    <li>She already finished her homework. <em>(Use a signal word for Present Perfect.)</em></li>
+    <li>When the teacher entered, the students finished their test.</li>
+    <li>He has called her yesterday.</li>
+    <li>The results were announcing last Friday.</li>
+  </ol>
+
+  <!-- 3.2 -->
+  <h3 id="s3-2">3.2 Subject-Verb Agreement <span class="tag">S</span></h3>
+  <h4>3.2.1 The Rule</h4>
+  <p>A singular subject takes a singular verb. A plural subject takes a plural verb. The exam places extra words between the subject and the verb to make the wrong noun look like the subject. Your job is to strip those words out.</p>
+  <h4>3.2.2 Identify the true subject</h4>
+  <ol class="steps">
+    <li>Identify the main verb in the clause.</li>
+    <li>Ask: who or what is doing or being this? That is the subject.</li>
+    <li>Ignore everything between the subject and the verb.</li>
+    <li>Is the true subject singular or plural? Match the verb accordingly.</li>
+  </ol>
+  <div class="worked">
+    <p class="worked__label">Worked Example 1</p>
+    <p><span class="err">The average age of caregivers are about 62.</span><span class="arrow">&rarr;</span><span class="fix">The average age of caregivers is about 62.</span></p>
+    <p>Cover <em>of caregivers</em>. Remaining subject: <em>the average age</em> &mdash; singular.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 2</p>
+    <p><span class="err">Each of the boys have a book.</span><span class="arrow">&rarr;</span><span class="fix">Each of the boys has a book.</span></p>
+    <p><em>Each</em> is an indefinite pronoun and is always singular.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 3</p>
+    <p><span class="err">Neither the teacher nor the students was present.</span><span class="arrow">&rarr;</span><span class="fix">Neither the teacher nor the students were present.</span></p>
+    <p>Compound subject with <em>nor</em> &mdash; apply the proximity rule. Closest subject: <em>students</em> (plural).</p>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — The Proximity Trap</p>
+    <p>Passages often place a plural noun immediately before the verb when the actual subject is singular. The nearest noun is the one the eye settles on, and that is the trap.</p>
+    <p><strong>A practical method:</strong> cover the words between <em>of</em> (or a similar preposition) and the verb with your finger, then read what remains. The true subject becomes clear.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Pattern</th><th>Rule</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Collective nouns</td><td>group, team, committee, family &mdash; singular in formal writing</td><td>The committee has decided.</td></tr>
+        <tr><td>Indefinite pronouns</td><td>each, every, either, neither, no one, someone, everyone &mdash; always singular</td><td>Everyone has submitted.</td></tr>
+        <tr><td>&lsquo;A number of&rsquo; vs &lsquo;The number of&rsquo;</td><td>A number of = plural; The number of = singular</td><td>A number of students were late.</td></tr>
+        <tr><td>Or / nor</td><td>Verb agrees with the subject closest to it</td><td>Neither he nor they were informed.</td></tr>
+        <tr><td>Relative clauses</td><td>Verb agrees with the noun the clause refers to</td><td>It is the students who are responsible.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h4>3.2.3 Practice — Subject-Verb Agreement</h4>
+  <ol>
+    <li>The group of researchers have published their findings.</li>
+    <li>Each of the students have completed the task.</li>
+    <li>Neither the manager nor the staff members was informed.</li>
+    <li>A number of residents has complained about the noise.</li>
+    <li>The committee have decided to postpone the meeting.</li>
+    <li>The list of requirements have been updated.</li>
+    <li>Everyone in the two classes are expected to attend.</li>
+    <li>Neither John nor his friends was invited to the event.</li>
+    <li>The team of engineers are working on the problem.</li>
+    <li>The number of complaints are rising every month.</li>
+  </ol>
+
+  <!-- 3.3 -->
+  <h3 id="s3-3">3.3 Article Errors <span class="tag">A1</span></h3>
+  <h4>3.3.1 The Rule</h4>
+  <p>The articles are <em>a</em>, <em>an</em> and <em>the</em>. The key distinction for <em>a</em> vs <em>an</em> is the <strong>sound</strong> the following word begins with &mdash; not the letter.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Article</th><th>When to Use</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>a</td><td>Singular countable nouns beginning with a consonant sound.</td><td>a book, a university (/j/), a one-way street (/w/), a European (/j/)</td></tr>
+        <tr><td>an</td><td>Singular countable nouns beginning with a vowel sound.</td><td>an apple, an hour (silent h), an honest man, an MBA (/em/)</td></tr>
+        <tr><td>the</td><td>Specific, already mentioned or uniquely identifiable nouns. Before superlatives.</td><td>the book I mentioned, the tallest building, the sun</td></tr>
+        <tr><td>no article</td><td>Plural countable nouns used generally; uncountable nouns generally; proper nouns.</td><td>Dogs are loyal. Water is essential. Singapore is small.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Sound, Not Spelling</p>
+    <ul>
+      <li><em>University</em> starts with U, but the first sound is like &lsquo;y&rsquo; (consonant). &rarr; <strong>a</strong> university.</li>
+      <li><em>Hour</em> starts with H, but H is silent. &rarr; <strong>an</strong> hour.</li>
+      <li><em>MBA</em> &mdash; M is spoken &lsquo;em&rsquo; (vowel sound). &rarr; <strong>an</strong> MBA.</li>
+      <li><em>European</em> starts with E, but the first sound is like &lsquo;y&rsquo;. &rarr; <strong>a</strong> European.</li>
+    </ul>
+    <p><strong>Rule:</strong> say the word aloud in your head. Whatever sound comes first determines the article.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 1</p>
+    <p><span class="err">She is a honest person.</span><span class="arrow">&rarr;</span><span class="fix">She is an honest person.</span></p>
+    <p>The H in <em>honest</em> is silent, so the first sound is a vowel.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 2</p>
+    <p><span class="err">He is an honest and a hardworking employee.</span><span class="arrow">&rarr;</span><span class="fix">He is an honest and hardworking employee.</span></p>
+    <p>Both adjectives modify the same noun, so only one article is needed.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 3</p>
+    <p><span class="err">She is interested in a environment.</span><span class="arrow">&rarr;</span><span class="fix">She is interested in the environment.</span></p>
+    <p><em>The environment</em> is a specific, uniquely identifiable concept.</p>
+  </div>
+  <h4>3.3.3 Practice — Articles</h4>
+  <ol>
+    <li>She waited for a hour before the doctor arrived.</li>
+    <li>He is an university student studying economics.</li>
+    <li>I saw a elephant at the zoo.</li>
+    <li>She is a honest and hardworking person.</li>
+    <li>He bought the some books from the library.</li>
+    <li>She is interested in a environment and sustainability.</li>
+    <li>It was an historic moment for the country. <em>(Mark &lsquo;no error&rsquo; if correct.)</em></li>
+    <li>She has a MBA from a prestigious university.</li>
+    <li>He gave an useful piece of advice.</li>
+    <li>The government introduced a new policy to protect a wildlife.</li>
+  </ol>
+
+  <!-- 3.4 -->
+  <h3 id="s3-4">3.4 Pronoun Errors <span class="tag">M</span></h3>
+  <h4>3.4.1 The Rule</h4>
+  <p>A pronoun must agree with its antecedent in number, gender and person, and must be in the correct form for its role: subject, object, possessive or reflexive.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Person</th><th>Subject</th><th>Object</th><th>Possessive</th><th>Reflexive</th></tr></thead>
+      <tbody>
+        <tr><td>1st singular</td><td>I</td><td>me</td><td>my / mine</td><td>myself</td></tr>
+        <tr><td>2nd sing./plural</td><td>you</td><td>you</td><td>your / yours</td><td>yourself / yourselves</td></tr>
+        <tr><td>3rd singular (m)</td><td>he</td><td>him</td><td>his</td><td>himself</td></tr>
+        <tr><td>3rd singular (f)</td><td>she</td><td>her</td><td>her / hers</td><td>herself</td></tr>
+        <tr><td>3rd singular (n)</td><td>it</td><td>it</td><td>its</td><td>itself</td></tr>
+        <tr><td>1st plural</td><td>we</td><td>us</td><td>our / ours</td><td>ourselves</td></tr>
+        <tr><td>3rd plural</td><td>they</td><td>them</td><td>their / theirs</td><td>themselves</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 1 — Number</p>
+    <p><span class="err">This patients are grateful for the subsidies.</span><span class="arrow">&rarr;</span><span class="fix">These patients are grateful for the subsidies.</span></p>
+    <p><em>This</em> is for singular nouns; <em>these</em> is for plural.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 2 — Subject / Object Form</p>
+    <p><span class="err">Me and my friend went to the library.</span><span class="arrow">&rarr;</span><span class="fix">My friend and I went to the library.</span></p>
+    <p>Remove <em>my friend</em>: &ldquo;Me went to the library&rdquo; &mdash; obviously wrong. Convention: put yourself last.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Example 3 — Reflexive Misuse</p>
+    <p><span class="err">Please contact myself if you have questions.</span><span class="arrow">&rarr;</span><span class="fix">Please contact me if you have questions.</span></p>
+    <p>Reflexive pronouns are only valid when subject and object are the same person.</p>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Subject vs Object Form</p>
+    <p><strong>The removal test:</strong> &ldquo;The teacher gave the award to John and I.&rdquo; &rarr; Remove John: &ldquo;gave the award to I&rdquo; &rarr; wrong &rarr; use <strong>me</strong>.</p>
+    <p><strong>The preposition rule:</strong> after any preposition (to, for, with, between, from, at, by, of) always use the object form. Never <em>I, he, she, we, they</em> after a preposition.</p>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Singular &lsquo;They&rsquo;</p>
+    <p>Indefinite pronouns (everyone, someone, anyone, each, every) are grammatically singular but refer to people of unknown or mixed gender. Modern formal English accepts singular <em>they/their</em>: &ldquo;Everyone must bring their own pen.&rdquo;</p>
+    <p><strong>Caution:</strong> the verb still follows the singular antecedent (<em>everyone has</em>, not <em>everyone have</em>). In the exam, do not mark singular <em>they</em> as an error.</p>
+  </div>
+  <h4>3.4.3 Practice — Pronouns</h4>
+  <ol>
+    <li>This students are grateful for the help.</li>
+    <li>Him and her completed the task together.</li>
+    <li>The teacher gave the books to John and I.</li>
+    <li>Please send the report to myself by Friday.</li>
+    <li>Everyone must submit their own work by the deadline. <em>(Accept singular &lsquo;their&rsquo;.)</em></li>
+    <li>Each student must complete their own project. <em>(Accept singular &lsquo;their&rsquo;.)</em></li>
+    <li>The students submitted her work on time.</li>
+    <li>The boy lost his way; she was frightened.</li>
+    <li>Between you and I, the project is behind schedule.</li>
+    <li>Neither of the candidates have submitted their application.</li>
+  </ol>
+
+  <!-- 3.5 -->
+  <h3 id="s3-5">3.5 Preposition Errors <span class="tag">P</span></h3>
+  <h4>3.5.1 The Rule</h4>
+  <p>A preposition error occurs when the wrong preposition is used with a verb, adjective or noun. These are fixed phrases (collocations): they are settled by usage rather than by rule, so each one has to be learnt individually.</p>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Why Prepositions Cannot Be Guessed</p>
+    <p>Consider <em>afflicted with</em>. Why <em>with</em> and not <em>by</em> or <em>from</em>? There is no logical grammar reason &mdash; the word simply collocates with <em>with</em>. Reasoning from meaning alone will not produce the right answer.</p>
+    <p><strong>Strategy:</strong> every time you meet a preposition error in practice, add the phrase to a personal list. A list built from your own mistakes is the most efficient way to revise this category.</p>
+  </div>
+  <p>Entries marked <strong>&#9733;</strong> are recurrent high-yield phrases. Learn these first.</p>
+  <ul class="chips">
+    <li class="star">interested in &#9733;</li><li class="star">responsible for &#9733;</li><li>different from</li>
+    <li class="star">depend on &#9733;</li><li>consist of</li><li>result in</li><li>comply with</li><li>suffer from</li>
+    <li class="star">capable of &#9733;</li><li>apologise for</li><li>accuse of</li><li class="star">associated with &#9733;</li>
+    <li class="star">afflicted with &#9733;</li><li>aim at / for</li><li>interfere with</li><li class="star">grateful for &#9733;</li>
+    <li class="star">proud of &#9733;</li><li>dedicated to</li><li>participate in</li><li>believe in</li>
+    <li class="star">insist on &#9733;</li><li class="star">good at &#9733;</li><li>afraid of</li><li class="star">familiar with &#9733;</li>
+    <li>accustomed to</li><li>fond of</li><li>disappointed with</li>
+  </ul>
+  <div class="worked">
+    <p class="worked__label">Worked Examples</p>
+    <p><span class="err">She is good in Mathematics.</span><span class="arrow">&rarr;</span><span class="fix">good at</span> &mdash; fixed phrase for a subject or skill.</p>
+    <p><span class="err">He insisted at going alone.</span><span class="arrow">&rarr;</span><span class="fix">insisted on</span> &mdash; insist on + gerund.</p>
+    <p><span class="err">She is afflicted through chronic illness.</span><span class="arrow">&rarr;</span><span class="fix">afflicted with</span> &mdash; no other preposition is idiomatic.</p>
+  </div>
+  <h4>3.5.3 Practice — Prepositions</h4>
+  <ol>
+    <li>She is very capable ______ handling pressure.</li>
+    <li>The students were grateful ______ the teacher&rsquo;s generous help.</li>
+    <li>The policy aims ______ reducing traffic congestion in the city.</li>
+    <li>He is very interested ______ learn more about marine biology.</li>
+    <li>She insisted at meeting the director in person.</li>
+    <li>They are very proud in their school&rsquo;s achievements.</li>
+    <li>The committee is responsible of ensuring fair practices.</li>
+    <li>She is very familiar in the procedures required.</li>
+    <li>He was disappointed about his examination results.</li>
+    <li>The new policy is associated to significant economic benefits.</li>
+  </ol>
+
+  <!-- 3.6 -->
+  <h3 id="s3-6">3.6 Connector Errors <span class="tag">C</span></h3>
+  <h4>3.6.1 The Rule</h4>
+  <p>A connector error occurs when the wrong linking word is used, or when two conflicting connectors appear together. The connector must accurately reflect the logical relationship between the clauses it joins.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Relationship</th><th>Connectors</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Contrast</td><td>but, however, yet, although, even though, despite, nevertheless</td><td>She studied hard, but she failed.</td></tr>
+        <tr><td>Cause</td><td>because, since, as, due to, owing to</td><td>She passed because she studied.</td></tr>
+        <tr><td>Result</td><td>so, therefore, thus, hence, consequently</td><td>She studied hard; therefore, she passed.</td></tr>
+        <tr><td>Addition</td><td>and, furthermore, moreover, in addition</td><td>She studied hard and revised her notes.</td></tr>
+        <tr><td>Condition</td><td>if, unless, provided that, as long as</td><td>She will pass if she studies.</td></tr>
+        <tr><td>Concession</td><td>although, even though, while, whereas</td><td>Although unpopular, it was necessary.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — &lsquo;Although&rsquo; + &lsquo;But&rsquo; Cannot Co-exist</p>
+    <p>This is the most commonly tested C error. <em>Although</em> signals concession; <em>but</em> also signals contrast. English allows only one connector per logical relationship.</p>
+    <ul>
+      <li>&ldquo;Although he was tired, he continued working.&rdquo; <strong>Correct.</strong></li>
+      <li>&ldquo;He was tired, but he continued working.&rdquo; <strong>Correct.</strong></li>
+      <li>&ldquo;Although he was tired, but he continued working.&rdquo; <strong>Wrong.</strong></li>
+    </ul>
+    <p>The same logic applies to <em>because</em> + <em>so</em>. <strong>One logical relationship &rarr; one connector.</strong></p>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Comma Splice with &lsquo;However&rsquo;</p>
+    <p><em>However</em> is a conjunctive adverb, not a coordinating conjunction. It cannot join two independent clauses with only a comma. &ldquo;She studied hard, however she failed.&rdquo; is a comma splice. Three fixes:</p>
+    <ul>
+      <li>Semicolon: &ldquo;She studied hard; however, she failed.&rdquo;</li>
+      <li>Full stop: &ldquo;She studied hard. However, she failed.&rdquo;</li>
+      <li>Replace with <em>but</em>: &ldquo;She studied hard, but she failed.&rdquo;</li>
+    </ul>
+    <p>The same rule applies to <em>therefore, moreover, furthermore, consequently, nevertheless</em>.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Correct Pair</th><th>Common Error</th></tr></thead>
+      <tbody>
+        <tr><td>not only &hellip; but also</td><td>not only &hellip; and also</td></tr>
+        <tr><td>neither &hellip; nor</td><td>neither &hellip; or</td></tr>
+        <tr><td>either &hellip; or</td><td>either &hellip; nor</td></tr>
+        <tr><td>both &hellip; and</td><td>both &hellip; as well as</td></tr>
+        <tr><td>whether &hellip; or</td><td>whether &hellip; nor</td></tr>
+        <tr><td>as &hellip; as</td><td>as &hellip; than</td></tr>
+        <tr><td>so &hellip; that</td><td>so &hellip; which</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Examples</p>
+    <p><span class="err">Although he was tired, but he continued working.</span><span class="arrow">&rarr;</span><span class="fix">Although he was tired, he continued working.</span></p>
+    <p><span class="err">He is not only hardworking, and also creative.</span><span class="arrow">&rarr;</span><span class="fix">not only &hellip; but also</span></p>
+    <p><span class="err">Despite he was ill, he came to school.</span><span class="arrow">&rarr;</span><span class="fix">Despite being ill, he came to school.</span> &mdash; <em>Despite</em> takes a noun or gerund, not a clause.</p>
+  </div>
+  <h4>3.6.3 Practice — Connectors</h4>
+  <ol>
+    <li>She studied hard, so she failed the exam.</li>
+    <li>Although the policy was popular, but it was poorly executed.</li>
+    <li>He is not only intelligent, and also diligent.</li>
+    <li>Neither John or Mary was invited to the event.</li>
+    <li>Despite he was late, he managed to complete the task.</li>
+    <li>She works hard, so she never achieves her targets.</li>
+    <li>Both the teacher as well as the students were present.</li>
+    <li>Whether he passes or not remains uncertain.</li>
+    <li>Although she was nervous, but she delivered an excellent speech.</li>
+    <li>She studied hard, however she failed the test.</li>
+    <li>Because he was tired, so he went to bed early.</li>
+  </ol>
+
+  <!-- 3.7 -->
+  <h3 id="s3-7">3.7 Word Form Errors — Adjective / Adverb <span class="tag">A2</span></h3>
+  <h4>3.7.1 The Rule</h4>
+  <p>An adjective modifies a noun. An adverb modifies a verb, adjective or another adverb. This is the most frequently tested error type. The error is almost always an adjective used where an adverb is needed.</p>
+  <ol class="steps">
+    <li>Find the word you are checking.</li>
+    <li>Find what it is modifying, or what role it plays in the sentence.</li>
+    <li>Apply the rule: modifies a noun &rarr; adjective; modifies a verb/adjective/adverb &rarr; adverb; is the subject or object &rarr; noun; expresses the action &rarr; verb.</li>
+    <li>Convert to the correct form.</li>
+  </ol>
+  <div class="worked">
+    <p class="worked__label">Worked Examples</p>
+    <p><span class="err">He spoke confident in front of the class.</span><span class="arrow">&rarr;</span><span class="fix">confidently</span> &mdash; modifies the verb <em>spoke</em>.</p>
+    <p><span class="err">&hellip; unable to cope mentally and physical &hellip;</span><span class="arrow">&rarr;</span><span class="fix">physically</span> &mdash; modifies <em>cope</em>, and must match <em>mentally</em> in parallel structure.</p>
+    <p><span class="err">Her improve was remarkable.</span><span class="arrow">&rarr;</span><span class="fix">improvement</span> &mdash; the subject of a sentence must be a noun.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Noun</th><th>Verb</th><th>Adjective</th><th>Adverb</th></tr></thead>
+      <tbody>
+        <tr><td>beauty</td><td>beautify</td><td>beautiful</td><td>beautifully</td></tr>
+        <tr><td>care</td><td>care</td><td>careful / careless</td><td>carefully / carelessly</td></tr>
+        <tr><td>efficiency</td><td>&mdash;</td><td>efficient</td><td>efficiently</td></tr>
+        <tr><td>confidence</td><td>&mdash;</td><td>confident</td><td>confidently</td></tr>
+        <tr><td>significance</td><td>signify</td><td>significant</td><td>significantly</td></tr>
+        <tr><td>success</td><td>succeed</td><td>successful</td><td>successfully</td></tr>
+        <tr><td>necessity</td><td>necessitate</td><td>necessary</td><td>necessarily</td></tr>
+        <tr><td>fluency</td><td>&mdash;</td><td>fluent</td><td>fluently</td></tr>
+        <tr><td>frequency</td><td>&mdash;</td><td>frequent</td><td>frequently</td></tr>
+        <tr><td>health</td><td>&mdash;</td><td>healthy</td><td>healthily</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Confusable Adjective Pairs</p>
+    <ul>
+      <li><strong>economic</strong> = relating to the economy | <strong>economical</strong> = thrifty</li>
+      <li><strong>historic</strong> = important in history | <strong>historical</strong> = relating to the past</li>
+      <li><strong>classic</strong> = of high quality, traditional | <strong>classical</strong> = ancient Greece/Rome, or traditional art forms</li>
+      <li><strong>sensitive</strong> = easily affected | <strong>sensible</strong> = showing good judgement</li>
+    </ul>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Verb vs Noun Confusables</p>
+    <ul>
+      <li><strong>advise</strong> (verb) | <strong>advice</strong> (noun)</li>
+      <li><strong>affect</strong> (verb, to influence) | <strong>effect</strong> (noun, a result)</li>
+      <li><strong>practise</strong> (verb) | <strong>practice</strong> (noun)</li>
+    </ul>
+    <p><strong>Singapore convention:</strong> Singapore follows British spelling. Use <em>practise</em> (verb) and <em>practice</em> (noun).</p>
+  </div>
+  <h4>3.7.3 Practice — Word Form</h4>
+  <ol>
+    <li>She handled the situation very efficient.</li>
+    <li>The beauty girl won the national competition.</li>
+    <li>Her improve over the semester was remarkable.</li>
+    <li>He drives careful on the expressway every day.</li>
+    <li>The students were extreme disappointed with their results.</li>
+    <li>She sings beautiful on stage every performance.</li>
+    <li>He is a fluency English speaker who lives abroad.</li>
+    <li>They work hardly to meet every single deadline.</li>
+    <li>The team performed impressive under difficult conditions.</li>
+    <li>She is a success businesswoman who founded three companies.</li>
+    <li>The economical situation in the country is worsening.</li>
+    <li>The teacher gave me good advise on my essay.</li>
+  </ol>
+
+  <!-- 3.8 -->
+  <h3 id="s3-8">3.8 Singular / Plural and Determiner Errors <span class="tag">R</span></h3>
+  <h4>3.8.1 The Rule</h4>
+  <p>R covers two related error types: (1) a noun in the wrong number; (2) a determiner or quantifier that does not match its noun. Do not confuse R with S. <strong>S is about the verb</strong> not agreeing with the subject. <strong>R is about the noun itself</strong> being in the wrong form, or its determiner being wrong.</p>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Countable vs Uncountable</p>
+    <p>A countable noun can be counted: <em>one book, two books</em>. An uncountable noun cannot: <em>information, advice, water</em>.</p>
+    <ul>
+      <li><strong>Countable plural:</strong> many, few, several, a number of, these, those, both</li>
+      <li><strong>Uncountable:</strong> much, little, a great deal of, a piece of</li>
+    </ul>
+    <p>&ldquo;Many informations&rdquo; is wrong because <em>information</em> is uncountable. Correct: <strong>much information</strong>.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Determiner</th><th>Use With</th><th>Common Error</th><th>Correct</th></tr></thead>
+      <tbody>
+        <tr><td>many</td><td>Countable plural only</td><td>many information</td><td>much information</td></tr>
+        <tr><td>much</td><td>Uncountable only</td><td>much students</td><td>many students</td></tr>
+        <tr><td>few / a few</td><td>Countable plural</td><td>few time</td><td>little time</td></tr>
+        <tr><td>little / a little</td><td>Uncountable</td><td>little students</td><td>few students</td></tr>
+        <tr><td>fewer</td><td>Countable plural</td><td>less books</td><td>fewer books</td></tr>
+        <tr><td>less</td><td>Uncountable</td><td>less students</td><td>fewer students</td></tr>
+        <tr><td>number of</td><td>Countable</td><td>A number of students was late.</td><td>A number of students were late.</td></tr>
+        <tr><td>amount of</td><td>Uncountable</td><td>amount of students</td><td>number of students</td></tr>
+        <tr><td>this / that</td><td>Singular nouns</td><td>this patients</td><td>these patients</td></tr>
+        <tr><td>these / those</td><td>Plural nouns</td><td>these information</td><td>this information</td></tr>
+        <tr><td>every / each</td><td>Singular countable</td><td>every students</td><td>every student</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Amount vs Number</p>
+    <p><strong>amount</strong> &rarr; uncountable: <em>a large amount of water</em>. <strong>number</strong> &rarr; countable plural: <em>a large number of students</em>.</p>
+    <p><strong>Memory aid:</strong> if you can count it, use <em>number</em>. If you can only measure it, use <em>amount</em>.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Examples</p>
+    <p><span class="err">The report contained many informations.</span><span class="arrow">&rarr;</span><span class="fix">much information</span> &mdash; both noun and determiner must change.</p>
+    <p><span class="err">A large amount of residents attended.</span><span class="arrow">&rarr;</span><span class="fix">A large number of residents</span> &mdash; residents is countable.</p>
+    <p><span class="err">a single criteria</span><span class="arrow">&rarr;</span><span class="fix">a single criterion</span> &mdash; <em>criteria</em> is the plural.</p>
+  </div>
+  <p><strong>Uncountable nouns (no plural form):</strong> information, advice, furniture, equipment, luggage, knowledge, news, progress, research, traffic, weather, work, music, money, food, education, evidence, homework, accommodation, behaviour, damage, harm, luck, scenery, travel.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Singular</th><th>Plural</th><th>Singular</th><th>Plural</th></tr></thead>
+      <tbody>
+        <tr><td>datum</td><td>data</td><td>analysis</td><td>analyses</td></tr>
+        <tr><td>criterion</td><td>criteria</td><td>basis</td><td>bases</td></tr>
+        <tr><td>phenomenon</td><td>phenomena</td><td>hypothesis</td><td>hypotheses</td></tr>
+        <tr><td>medium</td><td>media</td><td>curriculum</td><td>curricula</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h4>3.8.3 Practice — Singular / Plural</h4>
+  <ol>
+    <li>Many informations were shared at the conference yesterday.</li>
+    <li>Every students must submit their work by Monday morning.</li>
+    <li>The problems facing the elderly are not just medical one.</li>
+    <li>She has less friends now than she did before.</li>
+    <li>There is many water left in the tank.</li>
+    <li>The criteria for selection has not been announced.</li>
+    <li>He ate much cookies after the examination.</li>
+    <li>These information is not available to the public.</li>
+    <li>The number of complaints are rising every single month.</li>
+    <li>A number of residents has complained about the excessive noise.</li>
+    <li>A large amount of students attended the seminar.</li>
+    <li>The data shows a worrying trend. <em>(Treat &lsquo;data&rsquo; as plural in formal academic usage.)</em></li>
+  </ol>
+
+  <!-- 3.9 -->
+  <h3 id="s3-9">3.9 Comparative and Superlative Errors <span class="tag">D</span></h3>
+  <h4>3.9.1 The Rule</h4>
+  <p>D errors involve using the wrong degree of comparison, or forming it incorrectly by combining both the -er/-est suffix and the word more/most on the same adjective. Three degrees: positive (base), comparative (two), superlative (three or more).</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Adjective Type</th><th>Positive</th><th>Comparative</th><th>Superlative</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>One syllable</td><td>tall, old</td><td>taller, older</td><td>tallest, oldest</td><td>Double final consonant if short vowel + consonant: big &rarr; bigger</td></tr>
+        <tr><td>One syllable -e</td><td>wide, safe</td><td>wider, safer</td><td>widest, safest</td><td>Add -r/-st only</td></tr>
+        <tr><td>Two syllables -y</td><td>happy, easy</td><td>happier, easier</td><td>happiest, easiest</td><td>Change -y to -i</td></tr>
+        <tr><td>Two+ syllables</td><td>beautiful</td><td>more beautiful</td><td>most beautiful</td><td>Never add -er/-est</td></tr>
+        <tr><td>Irregular</td><td>good, bad, far</td><td>better, worse, further</td><td>best, worst, furthest</td><td>Memorise. Never add -er/-est or more/most</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — How Many Things Are Being Compared?</p>
+    <ul>
+      <li><strong>Exactly two</strong> &rarr; comparative (-er or more): &ldquo;She is taller than her sister.&rdquo;</li>
+      <li><strong>Three or more</strong> &rarr; superlative (-est or most): &ldquo;She is the tallest in the class.&rdquo;</li>
+    </ul>
+    <p><strong>Double comparative / superlative:</strong> if you see both <em>more</em> and <em>-er</em> on the same adjective, or both <em>most</em> and <em>-est</em> &mdash; that is always an error.</p>
+  </div>
+  <div class="worked">
+    <p class="worked__label">Worked Examples</p>
+    <p><span class="err">She is more taller than her sister.</span><span class="arrow">&rarr;</span><span class="fix">taller</span> &mdash; double comparative.</p>
+    <p><span class="err">This is the most easiest question.</span><span class="arrow">&rarr;</span><span class="fix">easiest</span> &mdash; double superlative.</p>
+    <p><span class="err">He is the most intelligent of the two.</span><span class="arrow">&rarr;</span><span class="fix">the more intelligent</span> &mdash; <em>of the two</em> signals exactly two.</p>
+  </div>
+  <h4>3.9.3 Practice — Degree of Comparison</h4>
+  <ol>
+    <li>Singapore is one of the most safest cities in the world.</li>
+    <li>She is more smarter than her classmates by a significant margin.</li>
+    <li>Of the two candidates, she is the most qualified for the role.</li>
+    <li>He is the most intelligent of the two finalists.</li>
+    <li>This method is more better than the previous one used.</li>
+    <li>25 per cent of Singaporeans will be 65 years and oldest by 2030.</li>
+    <li>She is more happier than she was last year.</li>
+    <li>This is the most simplest explanation I can provide.</li>
+    <li>He runs more faster than anyone else on the team.</li>
+    <li>Of all the students, she scored the more highly on the test.</li>
+  </ol>
+  <a class="back" href="#toc">&uarr; Contents</a>
+</section>
+
+<!-- ══ 4 ══ -->
+<section id="s4">
+  <h2>4. Worked Passage</h2>
+  <hr class="rule" />
+  <p class="lede">Work through this in three stages: attempt the clean passage on your own; check against the revealed version, where the candidate error words are underlined; then compare against the annotated key, including the common wrong corrections students typically write.</p>
+
+  <h3 id="s4-1">4.1 Clean Passage (Your First Attempt)</h3>
+  <ol class="steps">
+    <li>Write <strong>S-T-A-M-P-C-A-R-D</strong> in your margin before reading anything.</li>
+    <li>Read the entire passage once for meaning. Identify the tense. Do not correct yet.</li>
+    <li>Go back to line 1. For every numbered line, run through T, S, A2 first, then M, P, C, A1, R, D.</li>
+    <li>Write your correction. Tick error-free lines. Never leave any line blank.</li>
+    <li><strong>Target time: 10 minutes.</strong> 2 minutes first read, 6 minutes line-by-line, 2 minutes review.</li>
+  </ol>
+  <div class="toolbar">
+    <button type="button" class="btn-ghost" id="clear-pass">Clear my answers</button>
+    <span class="saved" id="pass-saved"></span>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Line</th><th>Passage</th><th>Your Answer</th></tr></thead>
+      <tbody id="pass-body"></tbody>
+    </table>
+  </div>
+
+  <h3 id="s4-2">4.2 Revealed Passage (Candidate Errors Underlined)</h3>
+  <p>The underlined words are the candidate error sites. Verify whether your corrections targeted these words. If you corrected a different word, the issue is your diagnostic &mdash; you flagged the wrong line position.</p>
+  <button type="button" class="reveal" data-target="pass-reveal">Reveal error sites</button>
+  <div id="pass-reveal" class="hidden">
+    <div class="tw">
+      <table>
+        <thead><tr><th>Line</th><th>Passage with Errors Marked</th></tr></thead>
+        <tbody id="reveal-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 id="s4-3">4.3 Annotated Answer Key with Common Traps</h3>
+  <p>The <strong>Common Wrong Correction</strong> column records the mistake students most frequently make on that line. Even if you got the right answer, read this column.</p>
+  <button type="button" class="reveal" data-target="pass-key">Reveal annotated key</button>
+  <div id="pass-key" class="hidden">
+    <div class="tw">
+      <table>
+        <thead><tr><th>Line</th><th>Correction</th><th>Tag</th><th>Explanation</th><th>Common Wrong Correction</th></tr></thead>
+        <tbody id="passkey-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Approaching Error-Free Lines</p>
+    <p>Lines 7 and 9 are error-free. <strong>Two lines are always correct in every exam passage.</strong> When you have gone through all nine STAMP CARD letters on a line and found nothing, tick it immediately and move on. Students who expect every line to have an error will manufacture one on the correct lines.</p>
+  </div>
+  <a class="back" href="#toc">&uarr; Contents</a>
+</section>
+
+<!-- ══ 5 ══ -->
+<section id="s5">
+  <h2>5. Confusables Cheat Strip</h2>
+  <hr class="rule" />
+  <p class="lede">The high-frequency word pairs that the exam exploits. These look or sound similar but mean different things, so they are easy to mix up under time pressure. Revise this single page in the final week before the exam.</p>
+
+  <h3>5.1 Adjective Confusables</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Pair</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>economic</td><td>relating to the economy</td><td>The economic outlook is poor.</td></tr>
+        <tr><td>economical</td><td>thrifty, cost-saving</td><td>This car is economical.</td></tr>
+        <tr><td>historic</td><td>important in history</td><td>A historic speech by the Prime Minister.</td></tr>
+        <tr><td>historical</td><td>relating to the past</td><td>A historical novel set in 1920s Singapore.</td></tr>
+        <tr><td>classic</td><td>of high quality, traditional</td><td>A classic film from the 1950s.</td></tr>
+        <tr><td>classical</td><td>ancient Greece/Rome, or traditional art forms</td><td>Classical music; classical literature.</td></tr>
+        <tr><td>sensitive</td><td>easily affected</td><td>Sensitive skin; a sensitive topic.</td></tr>
+        <tr><td>sensible</td><td>showing good judgement</td><td>A sensible decision; sensible shoes.</td></tr>
+        <tr><td>literal</td><td>exact, word-for-word</td><td>A literal translation.</td></tr>
+        <tr><td>literary</td><td>relating to literature</td><td>A literary device.</td></tr>
+        <tr><td>considerable</td><td>large in size or amount</td><td>A considerable sum of money.</td></tr>
+        <tr><td>considerate</td><td>kind, thoughtful of others</td><td>A considerate colleague.</td></tr>
+        <tr><td>imaginary</td><td>not real</td><td>An imaginary friend.</td></tr>
+        <tr><td>imaginative</td><td>creative</td><td>An imaginative writer.</td></tr>
+        <tr><td>industrial</td><td>relating to industry</td><td>An industrial estate.</td></tr>
+        <tr><td>industrious</td><td>hardworking</td><td>An industrious student.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.2 Verb vs Noun Confusables</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Word</th><th>Part of Speech</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>advise</td><td>verb</td><td>I advise you to study.</td></tr>
+        <tr><td>advice</td><td>noun</td><td>She gave me good advice.</td></tr>
+        <tr><td>affect</td><td>verb (to influence)</td><td>The weather affects mood.</td></tr>
+        <tr><td>effect</td><td>noun (a result)</td><td>The effect was clear.</td></tr>
+        <tr><td>practise</td><td>verb (British)</td><td>I practise piano daily.</td></tr>
+        <tr><td>practice</td><td>noun (British)</td><td>Daily practice is essential.</td></tr>
+        <tr><td>license</td><td>verb (British)</td><td>The shop is licensed to sell alcohol.</td></tr>
+        <tr><td>licence</td><td>noun (British)</td><td>She lost her driving licence.</td></tr>
+        <tr><td>prophesy</td><td>verb (to predict)</td><td>The seer will prophesy the outcome.</td></tr>
+        <tr><td>prophecy</td><td>noun (a prediction)</td><td>The prophecy came true.</td></tr>
+        <tr><td>breathe</td><td>verb</td><td>Remember to breathe deeply.</td></tr>
+        <tr><td>breath</td><td>noun</td><td>Take a deep breath.</td></tr>
+        <tr><td>lose</td><td>verb</td><td>Do not lose your way.</td></tr>
+        <tr><td>loose</td><td>adjective (not tight)</td><td>The screw is loose.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--tip">
+    <p class="box__label">Singapore convention</p>
+    <p>Singapore follows British spelling. Use <em>practise</em> (verb) / <em>practice</em> (noun), <em>licence</em> (noun) / <em>license</em> (verb). American spellings are marked wrong in 1184.</p>
+  </div>
+
+  <h3>5.3 Flat Adverbs (No -ly)</h3>
+  <p>These adverbs do not take -ly. Adding -ly either produces a non-word or a word with a different meaning.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Word</th><th>Correct Use</th><th>Trap Word</th></tr></thead>
+      <tbody>
+        <tr><td>hard</td><td>work hard (with great effort)</td><td>hardly = almost not at all</td></tr>
+        <tr><td>fast</td><td>run fast</td><td>fastly is not a word</td></tr>
+        <tr><td>late</td><td>arrive late</td><td>lately = recently</td></tr>
+        <tr><td>high</td><td>fly high</td><td>highly = to a great degree</td></tr>
+        <tr><td>near</td><td>stand near</td><td>nearly = almost</td></tr>
+        <tr><td>deep</td><td>dig deep</td><td>deeply = profoundly</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.4 Quantifier Confusables</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Pair</th><th>Use With</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>fewer</td><td>countable plural</td><td>Fewer students passed this year.</td></tr>
+        <tr><td>less</td><td>uncountable</td><td>Less time is available.</td></tr>
+        <tr><td>many</td><td>countable plural</td><td>Many people attended.</td></tr>
+        <tr><td>much</td><td>uncountable</td><td>Much effort was wasted.</td></tr>
+        <tr><td>number of</td><td>countable plural</td><td>A number of students were late.</td></tr>
+        <tr><td>amount of</td><td>uncountable</td><td>A small amount of water remained.</td></tr>
+        <tr><td>this</td><td>singular noun</td><td>This student is here.</td></tr>
+        <tr><td>these</td><td>plural noun</td><td>These students are here.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.5 Irregular Plurals (Latin / Greek Origin)</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Singular</th><th>Plural</th><th>Singular</th><th>Plural</th></tr></thead>
+      <tbody>
+        <tr><td>datum</td><td>data</td><td>analysis</td><td>analyses</td></tr>
+        <tr><td>criterion</td><td>criteria</td><td>basis</td><td>bases</td></tr>
+        <tr><td>phenomenon</td><td>phenomena</td><td>hypothesis</td><td>hypotheses</td></tr>
+        <tr><td>medium</td><td>media</td><td>curriculum</td><td>curricula</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — The Confusables Trap</p>
+    <p>These pairs are confused often enough to be worth checking on sight. If a word from this chapter appears in a passage, slow down and confirm it is the correct member of the pair. Most errors come from this list rather than from obscure rules.</p>
+  </div>
+  <a class="back" href="#toc">&uarr; Contents</a>
+</section>
+
+<!-- ══ 6 ══ -->
+<section id="s6">
+  <h2>6. Exam Tips</h2>
+  <hr class="rule" />
+
+  <h3>6.1 Timing Strategy</h3>
+  <p>The editing question is worth <strong>8 marks</strong> in Paper 1 and should take no more than <strong>10 minutes</strong>. Pacing matters more than any single grammar tip.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Stage</th><th>Time</th><th>What to Do</th></tr></thead>
+      <tbody>
+        <tr><td>First read</td><td>2 min</td><td>Read the passage for meaning. Identify the tense. Do not correct yet. Write S-T-A-M-P-C-A-R-D in the margin.</td></tr>
+        <tr><td>Line-by-line pass</td><td>6 min</td><td>About 36 seconds per numbered line. Run the checklist. Stop the moment you find one error.</td></tr>
+        <tr><td>Review pass</td><td>1.5 min</td><td>Re-check the two lines you marked &lsquo;no error&rsquo;. Re-check any line where you were uncertain.</td></tr>
+        <tr><td>Buffer</td><td>0.5 min</td><td>Reserved for any line you flagged for return.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--tip">
+    <p class="box__label">Timing self-test</p>
+    <p>During your last fortnight of revision, attempt editing passages with a stopwatch. If you cannot finish within 10 minutes, the problem is your <em>method</em> rather than your grammar. Practise the procedure before learning more rules.</p>
+  </div>
+
+  <h3>6.2 Final Strategy Checklist</h3>
+  <ol class="steps">
+    <li><strong>Read for meaning first.</strong> The first read establishes the tense and topic, essential for T and C errors.</li>
+    <li><strong>Check T, S, A2 first on every line.</strong> These three account for the majority of errors. (A2 is word form &mdash; A1, articles, is tested less often.)</li>
+    <li><strong>Two lines are always correct.</strong> If STAMP CARD reveals nothing, tick it and move on.</li>
+    <li><strong>Write corrections clearly.</strong> Underline the error word; write the correction on the answer line. Ambiguous markings lose marks even when the answer is right.</li>
+    <li><strong>Each numbered line has at most one error.</strong> Once found, move on. Do not look for a second error on the same line.</li>
+    <li><strong>Memorise the high-yield fixed phrases (P).</strong> See the starred entries in 3.5.</li>
+    <li><strong>For D errors, count the things being compared.</strong> Two &rarr; comparative. Three or more &rarr; superlative.</li>
+    <li><strong>Do not guess on the first pass.</strong> If stuck after all nine letters, mark the line and return. A second pass under T, S or A2 almost always reveals the answer.</li>
+    <li><strong>Distinguish A1 from A2.</strong> A1 is Articles. A2 is word form. Two separate checks on every line.</li>
+  </ol>
+  <a class="back" href="#toc">&uarr; Contents</a>
+</section>
+
+<!-- ══ 7 ══ -->
+<section id="s7">
+  <h2>7. Practice Question Answer Keys</h2>
+  <hr class="rule" />
+  <div class="box box--tip">
+    <p class="box__label">The practice answers are in a separate booklet</p>
+    <p>To keep you from glancing at answers while you work, all worked solutions to the practice questions in Chapter 3 (3.1&ndash;3.9) are published in a companion document: <strong>Editing &mdash; Answer Key</strong>.</p>
+    <p>Attempt every practice question on your own first. Mark your work only after you have completed a full set. Each answer in the companion booklet gives the correction and a one-line reason, cross-referenced to the relevant section here.</p>
+  </div>
+  <a class="back" href="#toc">&uarr; Contents</a>
+</section>
+
+<!-- ══ A ══ -->
+<section id="sa">
+  <h2>Appendix A — Full Twelve-Tense Reference</h2>
+  <hr class="rule" />
+  <p class="lede">The three tenses tested most often in 1184 editing are Past Simple, Present Simple and Present Perfect (see <a href="#s3-1">3.1</a>). This appendix lists all twelve for completeness.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Tense</th><th>Form</th><th>When to Use</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4"><strong>Present Tenses</strong></td></tr>
+        <tr><td>Present Simple</td><td>verb / verb+s</td><td>Habits, routines, general truths.</td><td>She walks.</td></tr>
+        <tr><td>Present Continuous</td><td>am/is/are + -ing</td><td>Action happening right now.</td><td>She is walking.</td></tr>
+        <tr><td>Present Perfect</td><td>have/has + p.p.</td><td>Past action with current relevance.</td><td>She has walked.</td></tr>
+        <tr><td>Present Perfect Cont.</td><td>have/has + been + -ing</td><td>Ongoing action from past until now.</td><td>She has been walking.</td></tr>
+        <tr><td colspan="4"><strong>Past Tenses</strong></td></tr>
+        <tr><td>Past Simple</td><td>verb+ed / irregular</td><td>Completed action; narrative passages.</td><td>She walked.</td></tr>
+        <tr><td>Past Continuous</td><td>was/were + -ing</td><td>Ongoing past action; background.</td><td>She was walking.</td></tr>
+        <tr><td>Past Perfect</td><td>had + p.p.</td><td>Earlier of two past events.</td><td>She had walked.</td></tr>
+        <tr><td>Past Perfect Cont.</td><td>had + been + -ing</td><td>Ongoing action before another past event.</td><td>She had been walking.</td></tr>
+        <tr><td colspan="4"><strong>Future Tenses</strong></td></tr>
+        <tr><td>Future Simple</td><td>will + base</td><td>Prediction, promise, decision.</td><td>She will walk.</td></tr>
+        <tr><td>Future Continuous</td><td>will + be + -ing</td><td>In progress at a future moment.</td><td>She will be walking.</td></tr>
+        <tr><td>Future Perfect</td><td>will + have + p.p.</td><td>Completed before a future point.</td><td>She will have walked.</td></tr>
+        <tr><td>Future Perfect Cont.</td><td>will + have + been + -ing</td><td>Ongoing up to a future point.</td><td>She will have been walking.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box box--think">
+    <p class="box__label">Thought Process — Why Only Three Tenses Matter for Editing</p>
+    <p>1184 editing passages are written in either present tense (factual) or past tense (narrative). The exam tests whether you can detect a verb that violates the established tense. In practice, three tenses do almost all the work: Past Simple dominates narrative passages, Present Simple dominates factual passages, and Present Perfect appears as a trap. The full table is for wider reference &mdash; not for memorisation.</p>
+  </div>
+  <a class="back" href="#toc">&uarr; Contents</a>
+</section>
+
+<footer>
+  <p>A-Worthy Education &middot; O-Level English 1184 &middot; Editing &mdash; The STAMP CARD Framework</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var KEY_D='aw-editing-diag', KEY_P='aw-editing-pass';
+
+  /* [sentence, tag, correction, why] */
+  var DIAG=[
+["While the technician was inspecting the wiring, he suddenly notices a faint smell of burning.","T","notices &rarr; noticed","The narrative is set in the past (was inspecting); the verb must stay in the past tense."],
+["The box of chocolates that my aunt sent from Belgium were left untouched on the shelf.","S","were &rarr; was","The subject is <em>box</em> (singular); <em>of chocolates &hellip; Belgium</em> is an intervening phrase."],
+["She has applied for a MBA programme at a European university.","A1","a &rarr; an (MBA)","MBA begins with a vowel sound (&lsquo;em&rsquo;). <em>A European</em> is correct, as Eu sounds like /j/."],
+["Neither the principal nor the teachers was informed about the sudden change in schedule.","S","was &rarr; were","With <em>neither &hellip; nor</em>, the verb agrees with the nearer subject, <em>teachers</em>."],
+["The latest findings are simply not consistent to the predictions of the earlier study.","P","to &rarr; with","Fixed phrase: <em>consistent with</em>."],
+["The new software was expensive, and it did little to improve our productivity.","C","and &rarr; but","The two clauses contrast, so the contrastive connector is required."],
+["She felt terribly about forgetting her best friend&rsquo;s birthday.","A2","terribly &rarr; terrible","<em>Feel</em> here is a linking verb describing her state, so it takes an adjective."],
+["The hotel kindly provides all the necessary equipments for guests who enjoy water sports.","R","equipments &rarr; equipment","<em>Equipment</em> is uncountable and has no plural form."],
+["Among the five finalists, Maria gave the more convincing speech.","D","more &rarr; most","With more than two items (five finalists), the superlative is required."],
+["This is a matter strictly between you and I, so please keep it confidential.","M","I &rarr; me","After the preposition <em>between</em>, the object form is required."],
+["Nowadays, most students preferred to do their research online rather than visit the library.","T","preferred &rarr; prefer","The time marker <em>nowadays</em> signals a present habit."],
+["A number of students in the graduating cohort has already secured university places.","S","has &rarr; have","<em>A number of</em> takes a plural verb, unlike <em>the number of</em>."],
+["It was an honour to present such a unique trophy at the European summit.","&mdash;","No error","<em>An honour</em> (silent h), <em>a unique</em> (/j/) and <em>the European</em> are all correct."],
+["There has been a considerable amount of feedbacks from parents about the new timetable.","R","feedbacks &rarr; feedback","<em>Feedback</em> is uncountable; <em>amount of</em> correctly pairs with it."],
+["Many parents felt that the new curriculum was far superior than the old one.","P","than &rarr; to","<em>Superior</em> takes <em>to</em>, never <em>than</em>."],
+["The training programme is designed neither to exhaust the recruits or to discourage them.","C","or &rarr; nor","Correlative pair: <em>neither &hellip; nor</em>."],
+["The new intern works incredible hard, often staying long after everyone else has left.","A2","incredible &rarr; incredibly","The word modifies the adverb <em>hard</em>, so an adverb is required."],
+["Surprisingly, the upgraded engine consumes much fewer fuel than the older model.","R","fewer &rarr; less","<em>Fuel</em> is uncountable; use <em>less</em>."],
+["Between the two short-listed designs, the panel agreed that the second was by far the most elegant.","D","most &rarr; more","<em>Between the two</em> signals two items, so the comparative is required."],
+["The criteria that the selection panel agreed upon last year was never published.","S","was &rarr; were","<em>Criteria</em> is plural (singular: <em>criterion</em>)."],
+["Last December the museum extends its opening hours for the school holidays.","T","extends &rarr; extended","<em>Last December</em> fixes the event in the past."],
+["The chairman spoken to the press about the merger last Friday.","T","spoken &rarr; spoke","<em>Spoken</em> is the past participle and cannot stand alone as the main verb."],
+["Every morning the caretaker unlocked the gates before the pupils arrive.","T","unlocked &rarr; unlocks","<em>Every morning</em> and <em>arrive</em> establish a present habit."],
+["By the time the inspectors reached the site, the contractors have removed the scaffolding.","T","have &rarr; had","The removal was completed before another past event, so Past Perfect is required."],
+["Water boils at 100 degrees Celsius, a fact the pupils memorised in primary school.","&mdash;","No error","A general truth stays in the present; the lesson is a past event."],
+["The list of approved contractors were circulated to every department yesterday.","S","were &rarr; was","The subject is <em>list</em> (singular)."],
+["Each of the applicants have submitted a portfolio before the closing date.","S","have &rarr; has","<em>Each</em> is an indefinite pronoun and is always singular."],
+["The committee of residents meet on the first Tuesday of every month.","S","meet &rarr; meets","<em>Committee</em> is a collective noun and takes a singular verb in formal writing."],
+["The number of complaints received by the council have risen sharply this year.","S","have &rarr; has","<em>The number of</em> takes a singular verb."],
+["She waited nearly a hour for the technician to arrive at the flat.","A1","a &rarr; an","The h in <em>hour</em> is silent, so the first sound is a vowel."],
+["The minister described the ruling as an historic victory for the union.","A1","an &rarr; a","<em>Historic</em> begins with an audible h, which is a consonant sound."],
+["The residents complained that the council had ignored his repeated requests.","M","his &rarr; their","The antecedent <em>residents</em> is plural."],
+["My colleague and myself will present the findings at the conference next week.","M","myself &rarr; I","The pronoun is part of the subject; a reflexive form cannot be a subject."],
+["The teacher praised the pupils who had submitted her essays on time.","M","her &rarr; their","The possessive must agree with the plural antecedent <em>pupils</em>."],
+["The dog wagged it&rsquo;s tail as soon as the postman opened the gate.","M","it&rsquo;s &rarr; its","<em>Its</em> is the possessive form; <em>it&rsquo;s</em> is short for <em>it is</em>."],
+["Several witnesses insisted that the driver had signalled before she turned.","&mdash;","No error","The Past Perfect correctly marks the earlier of two past events."],
+["The scholarship depends of the results of the final examination.","P","of &rarr; on","Fixed phrase: <em>depend on</em>."],
+["The residents were deeply concerned of the rising cost of utilities.","P","of &rarr; about","Fixed phrase: <em>concerned about</em>."],
+["She has always been very good in explaining difficult concepts to beginners.","P","in &rarr; at","Fixed phrase: <em>good at</em> a skill or subject."],
+["The delay in the shipment resulted from a substantial loss of revenue.","P","from &rarr; in","<em>Result in</em> introduces the consequence; <em>result from</em> introduces the cause."],
+["Despite the weather was appalling, the expedition continued as planned.","C","Despite &rarr; Although","<em>Despite</em> cannot take a full clause with a subject and verb."],
+["The road was flooded, therefore the buses were diverted through the town.","C","therefore &rarr; so","<em>Therefore</em> cannot join two clauses with only a comma."],
+["He is not only a gifted violinist and also a patient teacher.","C","and &rarr; but","Correlative pair: <em>not only &hellip; but also</em>."],
+["The pianist performed the difficult passage flawless despite her injury.","A2","flawless &rarr; flawlessly","The word modifies the verb <em>performed</em>."],
+["The candidate answered the questions confident and left a strong impression.","A2","confident &rarr; confidently","The word modifies the verb <em>answered</em>."],
+["Her sudden improve in mathematics surprised even her own form teacher.","A2","improve &rarr; improvement","The subject of a clause must be a noun, not a verb."],
+["The scheme proved economic in the long run, saving the company thousands.","A2","economic &rarr; economical","<em>Economical</em> means thrifty; <em>economic</em> relates to the economy."],
+["Fewer attention has been paid to the maintenance of the older blocks.","R","Fewer &rarr; Less","<em>Attention</em> is uncountable."],
+["A large amount of residents attended the briefing at the community centre.","R","amount &rarr; number","<em>Residents</em> is countable, so <em>number of</em> is required."],
+["Of all the applicants interviewed, she was the more experienced by some margin.","D","more &rarr; most","<em>Of all the applicants</em> signals more than two."]
+  ];
+
+  /* [lineLabel, text, markedText] — null line = unnumbered context line */
+  var PASS=[
+[null,"Many caregivers of the elderly have their own health problems. The",null],
+["1","average age of caregivers are about 62. It is estimated that by 2030,","average age of caregivers <u>are</u> about 62. It is estimated that by 2030,"],
+["2","about 25 per cent of Singaporeans will be 65 years and oldest. The","about 25 per cent of Singaporeans will be 65 years and <u>oldest</u>. The"],
+["3","problems facing the elderly are not just medical one. Asset-rich but","problems facing the elderly are not just medical <u>one</u>. Asset-rich but"],
+["4","cash-poor, this patients are grateful for subsidies in healthcare, but","cash-poor, <u>this</u> patients are grateful for subsidies in healthcare, but"],
+["5","what they fear most is to be afflicted through chronic diseases like","what they fear most is to be afflicted <u>through</u> chronic diseases like"],
+["6","dementia or stroke that leave them unable to cope mentally and physical, with conditions such as depression, and often accompanied","dementia or stroke that leave them unable to cope mentally and <u>physical</u>, with conditions such as depression, and often accompanied"],
+["7","by insomnia. A person with such ailments would need not only","by insomnia. A person with such ailments would need not only"],
+["8","caregivers, and also the financial means to afford long-term","caregivers, <u>and</u> also the financial means to afford long-term"],
+["9","treatment. When the caregivers, who are often spouses and close","treatment. When the caregivers, who are often spouses and close"],
+["10","relatives, are also unwell, the problem is compounding. Thus,","relatives, are also unwell, the problem is <u>compounding</u>. Thus,"],
+[null,"Singapore needs to be prepared for the growing caregiving challenges.",null]
+  ];
+
+  /* [line, correction, tag, explanation, commonWrong] */
+  var PASSKEY=[
+["1","are &rarr; is","S","Subject = <em>the average age</em> (singular). Strip out <em>of caregivers</em>.","Changing <em>caregivers</em> to <em>caregiver</em> &mdash; targeting the closer noun instead of the verb."],
+["2","oldest &rarr; older","D","Two points compared: now and 2030. Two things &rarr; comparative.","Leaving <em>oldest</em> alone or changing it to <em>old</em> &mdash; missing the comparison entirely."],
+["3","one &rarr; ones","R","<em>Problems</em> is plural. The pronoun substitute must match.","Changing <em>medical</em> to <em>medically</em> &mdash; applying A2 logic to a correct adjective."],
+["4","this &rarr; these","M","<em>Patients</em> is plural. <em>This</em> is for singular nouns.","Changing <em>are</em> to <em>is</em> &mdash; mistaking a determiner error for an S error."],
+["5","through &rarr; with","P","Fixed phrase: <em>afflicted with</em>. Must be learnt as a unit.","Substituting <em>by</em> or <em>from</em> &mdash; both feel logical but neither is the collocation."],
+["6","physical &rarr; physically","A2","<em>Cope</em> is a verb. Parallel structure with <em>mentally</em> also demands -ly.","Changing <em>mentally</em> to <em>mental</em> &mdash; fixing the wrong half of the pair."],
+["7","No error &check;","&mdash;","Tick this line. Do not force an error.","Inventing an error in <em>ailments</em> or <em>would</em> &mdash; both are correct."],
+["8","and &rarr; but","C","<em>Not only &hellip; but also</em> is a fixed correlative pair.","Deleting <em>also</em> or changing <em>not only</em> &mdash; both leave the pair broken."],
+["9","No error &check;","&mdash;","Tick this line. Do not force an error.","Changing <em>who</em> to <em>whom</em> &mdash; <em>who</em> is correct as the subject of <em>are unwell</em>."],
+["10","compounding &rarr; compounded","T","Past participle describes a state; <em>compounding</em> wrongly implies active doing.","Changing <em>is</em> to <em>has been</em> &mdash; altering the auxiliary instead of the participle."]
+  ];
+
+  function el(id){return document.getElementById(id)}
+  function store(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+  function load(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return {}}}
+
+  /* ── Diagnostic table ── */
+  var dSaved=load(KEY_D), body=el('diag-body'), kbody=el('key-body'), rows='',krows='';
+  for(var i=0;i<DIAG.length;i++){
+    var n=i+1, v=(dSaved[n]||'').replace(/"/g,'&quot;');
+    rows+='<tr><td class="num">'+n+'</td><td>'+DIAG[i][0]+'</td>'+
+          '<td><input class="ans" data-n="'+n+'" value="'+v+'" aria-label="Correction for sentence '+n+'" /></td></tr>';
+    krows+='<tr><td class="num">'+n+'</td><td><span class="tag">'+DIAG[i][1]+'</span></td>'+
+           '<td><strong>'+DIAG[i][2]+'</strong></td><td>'+DIAG[i][3]+'</td></tr>';
+  }
+  body.innerHTML=rows; kbody.innerHTML=krows;
+
+  /* ── Worked passage ── */
+  var pSaved=load(KEY_P), pbody=el('pass-body'), rbody=el('reveal-body'), prows='',rrows='';
+  for(var j=0;j<PASS.length;j++){
+    var ln=PASS[j][0];
+    if(ln===null){
+      prows+='<tr><td class="num">&mdash;</td><td>'+PASS[j][1]+'</td><td>&mdash;</td></tr>';
+      rrows+='<tr><td class="num">&mdash;</td><td>'+PASS[j][1]+'</td></tr>';
+    }else{
+      var pv=(pSaved[ln]||'').replace(/"/g,'&quot;');
+      prows+='<tr><td class="num">'+ln+'</td><td>'+PASS[j][1]+'</td>'+
+             '<td><input class="ans" data-p="'+ln+'" value="'+pv+'" aria-label="Correction for line '+ln+'" /></td></tr>';
+      rrows+='<tr><td class="num">'+ln+'</td><td>'+PASS[j][2]+'</td></tr>';
+    }
+  }
+  pbody.innerHTML=prows; rbody.innerHTML=rrows;
+
+  var pkrows='';
+  for(var k=0;k<PASSKEY.length;k++){
+    pkrows+='<tr><td class="num">'+PASSKEY[k][0]+'</td><td><strong>'+PASSKEY[k][1]+'</strong></td>'+
+            '<td><span class="tag">'+PASSKEY[k][2]+'</span></td><td>'+PASSKEY[k][3]+'</td><td>'+PASSKEY[k][4]+'</td></tr>';
+  }
+  el('passkey-body').innerHTML=pkrows;
+
+  /* ── Autosave ── */
+  function flash(node){ if(!node) return; node.textContent='Saved'; clearTimeout(node._t); node._t=setTimeout(function(){node.textContent=''},1200); }
+  document.addEventListener('input',function(e){
+    var t=e.target;
+    if(!t.classList||!t.classList.contains('ans')) return;
+    if(t.dataset.n){ dSaved[t.dataset.n]=t.value; store(KEY_D,dSaved); flash(el('diag-saved')); }
+    if(t.dataset.p){ pSaved[t.dataset.p]=t.value; store(KEY_P,pSaved); flash(el('pass-saved')); }
+  });
+  el('clear-diag').addEventListener('click',function(){
+    if(!confirm('Clear all 50 diagnostic answers?')) return;
+    dSaved={}; store(KEY_D,dSaved);
+    var ins=body.querySelectorAll('input.ans'); for(var a=0;a<ins.length;a++) ins[a].value='';
+  });
+  el('clear-pass').addEventListener('click',function(){
+    if(!confirm('Clear your worked-passage answers?')) return;
+    pSaved={}; store(KEY_P,pSaved);
+    var ins=pbody.querySelectorAll('input.ans'); for(var b=0;b<ins.length;b++) ins[b].value='';
+  });
+
+  /* ── Reveal toggles ── */
+  var revs=document.querySelectorAll('.reveal');
+  for(var r=0;r<revs.length;r++){
+    revs[r].addEventListener('click',function(){
+      var tgt=el(this.dataset.target), open=!tgt.classList.contains('hidden');
+      tgt.classList.toggle('hidden');
+      this.textContent=open?this.textContent.replace('Hide','Reveal'):this.textContent.replace('Reveal','Hide');
+    });
+  }
+
+  /* ── Contents toggle ── */
+  var toc=el('toc'), tog=el('toc-toggle');
+  tog.addEventListener('click',function(){
+    var open=toc.dataset.open==='1';
+    toc.dataset.open=open?'0':'1';
+    tog.textContent=open?'Show':'Hide';
+    tog.setAttribute('aria-expanded',open?'false':'true');
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { studySubjects, studyMaterialMeta } from '../data/study-materials';
+
+/*
+ * Every .html file in `public/study/` is picked up automatically at build
+ * time — drop a file in and it appears here. Curated titles, subjects and
+ * blurbs live in `src/data/study-materials.ts`; anything not listed there
+ * falls back to the file's own <title> and <meta name="description">.
+ */
+const STUDY_DIR = path.join(process.cwd(), 'public', 'study');
+
+const decodeEntities = (s: string): string =>
+  s
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&mdash;/g, '—')
+    .replace(/&ndash;/g, '–')
+    .replace(/&rsquo;/g, '’')
+    .replace(/&lsquo;/g, '‘')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const titleFromSlug = (slug: string): string =>
+  slug.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+
+let filenames: string[] = [];
+try {
+  filenames = fs.readdirSync(STUDY_DIR).filter((f) => /\.html?$/i.test(f));
+} catch {
+  filenames = []; // folder not created yet — the page renders its empty state
+}
+
+const fallbackSubject = studySubjects[studySubjects.length - 1];
+
+const materials = filenames
+  .map((file) => {
+    const slug = file.replace(/\.html?$/i, '');
+    const meta = studyMaterialMeta[slug] ?? {};
+    let title = meta.title;
+    let description = meta.description;
+
+    if (!title || !description) {
+      const head = fs.readFileSync(path.join(STUDY_DIR, file), 'utf-8').slice(0, 16000);
+      if (!title) {
+        const m = head.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+        title = m ? decodeEntities(m[1]) : '';
+      }
+      if (!description) {
+        const m = head.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["'][^>]*>/i);
+        description = m ? decodeEntities(m[1]) : '';
+      }
+    }
+
+    return {
+      slug,
+      href: `/study/${file}`,
+      title: title || titleFromSlug(slug),
+      description: description || '',
+      level: meta.level ?? '',
+      subject: studySubjects.find((s) => s.id === meta.subject) ?? fallbackSubject,
+      order: meta.order ?? 999,
+    };
+  })
+  .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+
+// Only offer a filter row for subjects that actually have something in them.
+const activeSubjects = studySubjects.filter((s) => materials.some((m) => m.subject.id === s.id));
+const showFilters = activeSubjects.length > 1;
+const count = materials.length;
+---
+
+<BaseLayout
+  title="Study Hub | Live Notes & Study Materials | A-Worthy"
+  description="Open your A-Worthy notes and study materials straight in the browser — no downloads, no apps. Frameworks, checklists and revision cards for O-Level English, Maths, H1 GP and H2 Economics."
+>
+  <Header slot="header" />
+
+  <!-- ===== HERO ===== -->
+  <section class="sh-hero">
+    <div class="container">
+      <p class="eyebrow">Study Hub</p>
+      <h1 class="sh-hero__title">Your notes, live in the browser</h1>
+      <p class="sh-hero__lead">
+        Every study material below opens right here &mdash; nothing to download, nothing to install. Works on a phone
+        between classes and on a laptop beside your practice paper. Bookmark any material to come straight back to it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== LIBRARY ===== -->
+  <section class="section sh-library">
+    <div class="container">
+      {count > 0 && (
+        <div class="sh-bar">
+          <p class="sh-count">
+            <strong>{count}</strong> {count === 1 ? 'material' : 'materials'} available
+          </p>
+          {showFilters && (
+            <div class="sh-filters" id="sh-filters" role="group" aria-label="Filter materials by subject">
+              <button type="button" class="sh-chip is-active" data-filter="all" aria-pressed="true">All</button>
+              {activeSubjects.map((s) => (
+                <button
+                  type="button"
+                  class="sh-chip"
+                  data-filter={s.id}
+                  aria-pressed="false"
+                  style={`--chip-accent: ${s.accent}; --chip-accent-dark: ${s.accentDark};`}
+                >
+                  {s.short}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {count > 0 ? (
+        <div class="sh-grid" id="sh-grid">
+          {materials.map((m) => (
+            <a
+              class="sh-card"
+              href={m.href}
+              data-slug={m.slug}
+              data-title={m.title}
+              data-subject={m.subject.label}
+              data-subject-id={m.subject.id}
+              style={`--sub: ${m.subject.accent}; --sub-dark: ${m.subject.accentDark};`}
+            >
+              <span class="sh-card__top">
+                <span class="sh-card__chip">{m.subject.short}</span>
+                {m.level && <span class="sh-card__level">{m.level}</span>}
+              </span>
+              <span class="sh-card__title">{m.title}</span>
+              {m.description && <span class="sh-card__desc">{m.description}</span>}
+              <span class="sh-card__cta" aria-hidden="true">
+                Open
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="sh-empty">
+          <h2 class="sh-empty__title">Materials are on the way</h2>
+          <p class="sh-empty__body">
+            Your study materials will appear here as soon as they&rsquo;re published. In the meantime, the
+            <a href="/frameworks/">framework library</a> and the <a href="/resources/">resource vault</a> have plenty to
+            work through.
+          </p>
+        </div>
+      )}
+
+      <p class="sh-note">
+        Studying for a specific paper? The <a href="/frameworks/">frameworks page</a> walks through STAMP CARD, SWIFT and
+        CAPS interactively, and the <a href="/resources/">resource vault</a> has printable PDFs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FULL-SCREEN VIEWER ===== -->
+  <div class="sh-viewer" id="sh-viewer" role="dialog" aria-modal="true" aria-labelledby="sh-viewer-title" hidden>
+    <div class="sh-viewer__bar">
+      <div class="sh-viewer__meta">
+        <span class="sh-viewer__chip" id="sh-viewer-chip"></span>
+        <h2 class="sh-viewer__title" id="sh-viewer-title"></h2>
+      </div>
+      <div class="sh-viewer__actions">
+        <a class="sh-viewer__btn" id="sh-newtab" href="#" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          <span class="sh-viewer__btn-label">New tab</span>
+        </a>
+        <button type="button" class="sh-viewer__btn sh-viewer__btn--close" id="sh-close">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          <span class="sh-viewer__btn-label">Close</span>
+        </button>
+      </div>
+    </div>
+    <p class="sh-viewer__loading" id="sh-loading" role="status">Loading&hellip;</p>
+    <iframe class="sh-viewer__frame" id="sh-frame" src="about:blank" title="Study material"></iframe>
+  </div>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .sh-hero { padding: 3rem 0 2rem; background: var(--bg-secondary); }
+  .sh-hero__title {
+    font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 200; line-height: 1.12;
+    margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em;
+  }
+  .sh-hero__lead { max-width: 680px; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); margin: 0; }
+
+  /* ── Bar: count + filters ── */
+  .sh-bar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .sh-count { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+  .sh-count strong { color: var(--text-primary); font-weight: 700; }
+
+  .sh-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .sh-chip {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 700; padding: 0.45rem 0.85rem; border-radius: 999px; cursor: pointer;
+    background: transparent; color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  }
+  .sh-chip:hover { color: var(--text-primary); border-color: var(--chip-accent, var(--color-primary)); }
+  .sh-chip.is-active {
+    color: #fff; background: var(--chip-accent, var(--color-primary));
+    border-color: var(--chip-accent, var(--color-primary));
+  }
+  :global([data-theme='dark']) .sh-chip:hover { border-color: var(--chip-accent-dark, var(--color-accent)); }
+  :global([data-theme='dark']) .sh-chip.is-active {
+    background: var(--chip-accent-dark, var(--color-accent)); border-color: var(--chip-accent-dark, var(--color-accent));
+    color: #0b0b0f;
+  }
+
+  /* ── Card grid ── */
+  .sh-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem; }
+  .sh-card {
+    display: flex; flex-direction: column; gap: 0.55rem; padding: 1.35rem 1.4rem;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid var(--sub);
+    border-radius: var(--border-radius-lg); text-decoration: none; color: inherit;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  :global([data-theme='dark']) .sh-card { border-left-color: var(--sub-dark); }
+  .sh-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(26, 42, 58, 0.1); }
+  .sh-card[hidden] { display: none; }
+
+  .sh-card__top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .sh-card__chip {
+    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; color: var(--sub);
+  }
+  :global([data-theme='dark']) .sh-card__chip { color: var(--sub-dark); }
+  .sh-card__level { font-size: 0.72rem; color: var(--text-muted); }
+  .sh-card__title { font-size: 1.08rem; font-weight: 700; line-height: 1.35; color: var(--text-primary); }
+  .sh-card__desc { font-size: 0.9rem; line-height: 1.55; color: var(--text-secondary); flex: 1; }
+  .sh-card__cta {
+    display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.35rem;
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; color: var(--sub);
+  }
+  :global([data-theme='dark']) .sh-card__cta { color: var(--sub-dark); }
+  .sh-card:hover .sh-card__cta svg { transform: translateX(3px); }
+  .sh-card__cta svg { transition: transform var(--transition-fast); }
+
+  /* ── Empty state ── */
+  .sh-empty {
+    text-align: center; padding: 3rem 1.5rem; border: 1px dashed var(--border-color);
+    border-radius: var(--border-radius-lg); background: var(--bg-card);
+  }
+  .sh-empty__title { font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem; }
+  .sh-empty__body { margin: 0 auto; max-width: 46ch; color: var(--text-secondary); line-height: 1.6; }
+
+  .sh-note { margin: 2rem 0 0; font-size: 0.9rem; color: var(--text-muted); text-align: center; }
+  .sh-note a, .sh-empty__body a { color: var(--color-primary); }
+  :global([data-theme='dark']) .sh-note a, :global([data-theme='dark']) .sh-empty__body a { color: var(--color-accent); }
+
+  /* ── Full-screen viewer ── */
+  .sh-viewer {
+    position: fixed; inset: 0; z-index: var(--z-modal);
+    display: flex; flex-direction: column; background: var(--bg-primary);
+  }
+  .sh-viewer[hidden] { display: none; }
+  .sh-viewer__bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.7rem 1rem; padding-top: max(0.7rem, env(safe-area-inset-top));
+    background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); flex: 0 0 auto;
+  }
+  .sh-viewer__meta { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+  .sh-viewer__chip {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; color: var(--chip, var(--color-accent));
+  }
+  .sh-viewer__title {
+    margin: 0; font-size: 0.98rem; font-weight: 700; line-height: 1.3; color: var(--text-primary);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .sh-viewer__actions { display: flex; gap: 0.5rem; flex: 0 0 auto; }
+  .sh-viewer__btn {
+    display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.85rem;
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 700; color: var(--text-secondary); text-decoration: none; cursor: pointer;
+    background: transparent; border: 1px solid var(--border-color); border-radius: var(--border-radius);
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+  .sh-viewer__btn:hover { color: var(--text-primary); border-color: var(--color-primary); }
+  .sh-viewer__btn--close:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .sh-viewer__frame { flex: 1 1 auto; width: 100%; border: 0; background: #fff; }
+  .sh-viewer__loading {
+    margin: 0; padding: 2rem 1rem; text-align: center; color: var(--text-muted);
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .sh-viewer:not(.is-loading) .sh-viewer__loading { display: none; }
+  .sh-viewer.is-loading .sh-viewer__frame { display: none; }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) { .sh-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) {
+    .sh-hero { padding: 2.25rem 0 1.5rem; }
+    .sh-grid { grid-template-columns: 1fr; }
+    .sh-bar { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  }
+  @media (max-width: 480px) {
+    .sh-viewer__btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .sh-viewer__btn { padding: 0.5rem 0.65rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sh-card, .sh-card__cta svg { transition: none; }
+    .sh-card:hover { transform: none; }
+  }
+</style>
+
+<script is:inline>
+  function initStudyHub() {
+    var grid = document.getElementById('sh-grid');
+    var viewer = document.getElementById('sh-viewer');
+    if (!viewer || (grid && grid.dataset.bound === '1')) return;
+    if (grid) grid.dataset.bound = '1';
+
+    var frame = document.getElementById('sh-frame');
+    var titleEl = document.getElementById('sh-viewer-title');
+    var chipEl = document.getElementById('sh-viewer-chip');
+    var newTab = document.getElementById('sh-newtab');
+    var closeBtn = document.getElementById('sh-close');
+    var filters = document.getElementById('sh-filters');
+    var loading = document.getElementById('sh-loading');
+    var lastFocused = null;
+    var loadToken = 0;
+
+    /*
+     * Materials are injected via `srcdoc` rather than `src`.
+     *
+     * The site sends `X-Frame-Options: DENY` and `frame-ancestors 'none'`
+     * sitewide. A path-scoped override does NOT work: Cloudflare Pages MERGES
+     * `_headers` rules rather than replacing them, so the response carries both
+     * DENY and SAMEORIGIN, and browsers intersect the two policies and block
+     * the frame. `srcdoc` has no HTTP response of its own, so neither header
+     * applies. The document still inherits this page's CSP, which permits the
+     * inline CSS/JS that self-contained materials rely on.
+     */
+    /*
+     * In a srcdoc document, in-page anchors (href="#section") resolve against
+     * the inherited base URL, so clicking one NAVIGATES the frame to /study/#section
+     * instead of scrolling. Any material with a table of contents would break.
+     * This shim intercepts same-document fragment links and scrolls instead.
+     * It is injected by the viewer so materials need no modification.
+     */
+    var ANCHOR_SHIM =
+      '<script>(function(){document.addEventListener("click",function(e){' +
+      'var a=e.target&&e.target.closest?e.target.closest(\'a[href^="#"]\'):null;' +
+      'if(!a||a.target)return;var h=a.getAttribute("href");if(!h)return;' +
+      'var id=h.slice(1);e.preventDefault();' +
+      'if(!id){window.scrollTo({top:0,behavior:"smooth"});return;}' +
+      'var t=document.getElementById(id)||document.getElementsByName(id)[0];' +
+      'if(t)t.scrollIntoView({behavior:"smooth",block:"start"});' +
+      '});})();<\/script>';
+
+    function prepareDoc(html) {
+      var baseTag = '<base href="/study/">';
+      var out = /<head[^>]*>/i.test(html)
+        ? html.replace(/<head([^>]*)>/i, '<head$1>' + baseTag)
+        : baseTag + html;
+      return /<\/body>/i.test(out)
+        ? out.replace(/<\/body>/i, ANCHOR_SHIM + '</body>')
+        : out + ANCHOR_SHIM;
+    }
+
+    function loadIntoFrame(src) {
+      var token = ++loadToken;
+      frame.removeAttribute('srcdoc');
+      frame.setAttribute('src', 'about:blank');
+      viewer.classList.add('is-loading');
+      fetch(src, { credentials: 'same-origin' })
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function (html) {
+          if (token !== loadToken) return; // a newer material was opened
+          frame.srcdoc = prepareDoc(html);
+          viewer.classList.remove('is-loading');
+        })
+        .catch(function () {
+          if (token !== loadToken) return;
+          // Fall back to the material's own standalone page.
+          window.location.href = src;
+        });
+    }
+
+    function cardFor(slug) {
+      if (!grid || !slug) return null;
+      var cards = grid.querySelectorAll('.sh-card');
+      for (var i = 0; i < cards.length; i++) {
+        if (cards[i].dataset.slug === slug) return cards[i];
+      }
+      return null;
+    }
+
+    function openCard(card, updateHash) {
+      if (!card) return;
+      lastFocused = document.activeElement;
+      var src = card.getAttribute('href');
+      titleEl.textContent = card.dataset.title;
+      chipEl.textContent = card.dataset.subject;
+      chipEl.style.setProperty('--chip', getComputedStyle(card).getPropertyValue('--sub'));
+      newTab.setAttribute('href', src);
+      frame.setAttribute('title', card.dataset.title);
+      loadIntoFrame(src);
+      viewer.hidden = false;
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+      if (updateHash) {
+        try { history.pushState(null, '', '#' + card.dataset.slug); } catch (e) {}
+      }
+      if (typeof window.plausible === 'function') {
+        window.plausible('Study Material Opened', { props: { material: card.dataset.slug } });
+      }
+    }
+
+    function closeViewer(updateHash) {
+      if (viewer.hidden) return;
+      viewer.hidden = true;
+      loadToken++; // cancel any in-flight load
+      frame.removeAttribute('srcdoc');
+      frame.setAttribute('src', 'about:blank');
+      viewer.classList.remove('is-loading');
+      document.body.style.overflow = '';
+      if (updateHash && window.location.hash) {
+        try { history.pushState(null, '', window.location.pathname); } catch (e) {}
+      }
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    if (grid) {
+      grid.addEventListener('click', function (e) {
+        // Let modified clicks (new tab, download) behave natively.
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+        var card = e.target.closest ? e.target.closest('.sh-card') : null;
+        if (!card || !grid.contains(card)) return;
+        e.preventDefault();
+        openCard(card, true);
+      });
+    }
+
+    closeBtn.addEventListener('click', function () { closeViewer(true); });
+
+    if (filters) {
+      filters.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('.sh-chip') : null;
+        if (!btn) return;
+        var want = btn.dataset.filter;
+        var chips = filters.querySelectorAll('.sh-chip');
+        for (var i = 0; i < chips.length; i++) {
+          var on = chips[i] === btn;
+          chips[i].classList.toggle('is-active', on);
+          chips[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+        var cards = grid ? grid.querySelectorAll('.sh-card') : [];
+        for (var j = 0; j < cards.length; j++) {
+          cards[j].hidden = want !== 'all' && cards[j].dataset.subjectId !== want;
+        }
+      });
+    }
+
+    // Escape closes — rebind cleanly so view transitions don't stack handlers.
+    if (window.__shEscHandler) document.removeEventListener('keydown', window.__shEscHandler);
+    window.__shEscHandler = function (e) {
+      if (e.key === 'Escape' && !viewer.hidden) closeViewer(true);
+    };
+    document.addEventListener('keydown', window.__shEscHandler);
+
+    // Deep links: /study/#slug opens that material directly, and Back closes it.
+    function syncFromHash(updateHash) {
+      var slug = window.location.hash.replace(/^#/, '');
+      var card = cardFor(slug);
+      if (card) openCard(card, false);
+      else closeViewer(updateHash);
+    }
+    if (window.__shPopHandler) window.removeEventListener('popstate', window.__shPopHandler);
+    window.__shPopHandler = function () { syncFromHash(false); };
+    window.addEventListener('popstate', window.__shPopHandler);
+
+    if (window.location.hash) syncFromHash(false);
+
+    // Leaving the page mid-view must not leave the body scroll-locked.
+    document.addEventListener('astro:before-swap', function () {
+      document.body.style.overflow = '';
+    }, { once: true });
+  }
+
+  initStudyHub();
+  document.addEventListener('astro:page-load', initStudyHub);
+</script>

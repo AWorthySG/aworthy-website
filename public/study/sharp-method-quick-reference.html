@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The SHARP Method — Quick Reference</title>
+<meta name="description" content="The five steps of the SHARP Method on one screen, with the question every step answers. Open it beside your practice paper and work down the list." />
+<style>
+  :root {
+    --ink: #1A2A3A;
+    --ink-soft: rgba(26, 42, 58, 0.72);
+    --ink-mute: rgba(26, 42, 58, 0.5);
+    --paper: #FDFBF7;
+    --panel: #ffffff;
+    --line: rgba(26, 42, 58, 0.12);
+    --navy: #2B5A8C;
+    --gold: #D4853A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f0f0f2;
+      --ink-soft: rgba(240, 240, 242, 0.68);
+      --ink-mute: rgba(240, 240, 242, 0.45);
+      --paper: #14141b;
+      --panel: #1b1b24;
+      --line: rgba(255, 255, 255, 0.1);
+      --navy: #7FA8D4;
+      --gold: #E09850;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2.5rem 1.5rem 3.5rem;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin: 0 0 0.5rem;
+  }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); font-weight: 300; margin: 0 0 0.5rem; letter-spacing: -0.01em; }
+  h1 strong { font-weight: 700; color: var(--navy); }
+  .lede { color: var(--ink-soft); margin: 0 0 0.5rem; max-width: 56ch; }
+  .rule { width: 60px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1.5rem 0 2rem; }
+
+  .step {
+    display: grid; grid-template-columns: 52px 1fr; gap: 1.15rem;
+    background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--navy);
+    border-radius: 10px; padding: 1.25rem 1.35rem; margin-bottom: 1rem;
+  }
+  .step__badge {
+    width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--navy); color: #fff; font-weight: 800; font-size: 1.25rem; line-height: 1;
+  }
+  .step:nth-child(even) { border-left-color: var(--gold); }
+  .step:nth-child(even) .step__badge { background: var(--gold); }
+  .step__name { margin: 0.1rem 0 0.15rem; font-size: 1.15rem; font-weight: 700; }
+  .step__q { margin: 0 0 0.7rem; color: var(--gold); font-weight: 600; font-size: 0.95rem; }
+  .step ul { margin: 0; padding-left: 1.1rem; color: var(--ink-soft); }
+  .step li { margin-bottom: 0.35rem; }
+  .step li:last-child { margin-bottom: 0; }
+
+  .checklist {
+    margin-top: 2.25rem; background: var(--navy); color: #fff;
+    border-radius: 10px; padding: 1.5rem 1.6rem;
+  }
+  .checklist h2 { margin: 0 0 0.9rem; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.01em; }
+  .checklist ul { margin: 0; padding: 0; list-style: none; }
+  .checklist li { padding-left: 1.75rem; position: relative; margin-bottom: 0.55rem; opacity: 0.93; }
+  .checklist li::before {
+    content: ''; position: absolute; left: 0; top: 0.42em;
+    width: 11px; height: 6px; border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+    transform: rotate(-45deg);
+  }
+  .checklist li:last-child { margin-bottom: 0; }
+
+  footer { margin-top: 2.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--ink-mute); font-size: 0.85rem; }
+
+  @media print {
+    body { background: #fff; color: #000; padding: 0; }
+    .step, .checklist { break-inside: avoid; }
+    .checklist { background: #fff; color: #000; border: 1px solid #000; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">A-Worthy · Study Card</p>
+  <h1>The <strong>SHARP</strong> Method</h1>
+  <p class="lede">Five steps you follow for every question, every subject, every exam. Open this beside your practice paper and work down the list — don't write a word until you've finished See.</p>
+  <div class="rule"></div>
+
+  <div class="step">
+    <div class="step__badge">S</div>
+    <div>
+      <h2 class="step__name">See</h2>
+      <p class="step__q">What is this question <em>actually</em> asking?</p>
+      <ul>
+        <li>Circle the command word — <em>explain</em>, <em>evaluate</em>, <em>describe</em> and <em>discuss</em> want different things.</li>
+        <li>Name the question type before you choose a method.</li>
+        <li>Hunt the hidden constraints in the rubric: word limits, the number of points, the text you must refer to.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step__badge">H</div>
+    <div>
+      <h2 class="step__name">Hit</h2>
+      <p class="step__q">Which framework is built for this exact question?</p>
+      <ul>
+        <li>Select the named tool, not generic advice — STAMP CARD for editing, RAWCP for situational writing, P-E-E-L for expository paragraphs, CAPS for summary.</li>
+        <li>If you can't name your tool, you're guessing. Go back to See.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step__badge">A</div>
+    <div>
+      <h2 class="step__name">Apply</h2>
+      <p class="step__q">Have I built the structure before writing prose?</p>
+      <ul>
+        <li>Write the plan first — the outline, the spine, the diagram. Structure before words.</li>
+        <li>Construct your own answer rather than reading a model one. Watching isn't practising.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step__badge">R</div>
+    <div>
+      <h2 class="step__name">Refine</h2>
+      <p class="step__q">What would the examiner take marks off for?</p>
+      <ul>
+        <li>Self-check against the checklist for that paper before you look at any answer key.</li>
+        <li>Fix the mark-losers first: missing text reference, wrong register, over the word limit, inconsistent tense.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step__badge">P</div>
+    <div>
+      <h2 class="step__name">Practise</h2>
+      <p class="step__q">Can I still do this a week from now?</p>
+      <ul>
+        <li>Retrieve from memory rather than re-reading — close the notes and redo the question.</li>
+        <li>Space it out: revisit the same question type days later, not minutes later.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <h2>Before you hand anything in</h2>
+    <ul>
+      <li>I answered the command word that was actually printed.</li>
+      <li>I can name the framework I used.</li>
+      <li>Every claim has evidence or a text reference behind it.</li>
+      <li>I'm inside the word limit and the format the rubric asked for.</li>
+      <li>I re-read it once for tense, spelling and agreement.</li>
+    </ul>
+  </div>
+
+  <footer>A-Worthy Education · The SHARP Method — See, Hit, Apply, Refine, Practise</footer>
+</div>
+</body>
+</html>
