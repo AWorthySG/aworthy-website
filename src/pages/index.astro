@@ -62,8 +62,14 @@ import '../styles/global.css';
       </div>
 
       <div class="audience-toggle hero-anim" style="--d:7" role="tablist" aria-label="View content for">
-        <button class="audience-btn active" data-audience="parent" role="tab" aria-selected="true" aria-controls="msg-parent" id="tab-parent">I'm a Parent</button>
-        <button class="audience-btn" data-audience="student" role="tab" aria-selected="false" aria-controls="msg-student" id="tab-student">I'm a Student</button>
+        <button class="audience-btn active" data-audience="parent" role="tab" aria-selected="true" aria-controls="msg-parent" id="tab-parent">
+          <img src="/images/mascots/mascot-heart-alt-icon.webp" alt="" class="audience-btn__icon" width="240" height="273" />
+          I'm a Parent
+        </button>
+        <button class="audience-btn" data-audience="student" role="tab" aria-selected="false" aria-controls="msg-student" id="tab-student">
+          <img src="/images/mascots/mascot-heart-alt-icon.webp" alt="" class="audience-btn__icon" width="240" height="273" />
+          I'm a Student
+        </button>
       </div>
       <div class="audience-msg audience-msg--parent" id="msg-parent" role="tabpanel" aria-labelledby="tab-parent">
         <p><strong>For parents:</strong> See your child's grades improve with SHARP &mdash; our five-step method that deploys paper-matched frameworks. Monthly progress reports, small classes of 6, and a free diagnostic assessment to start.</p>
@@ -880,7 +886,7 @@ import '../styles/global.css';
     });
   }
 })();
-
+</script>
 
 <!-- Audience Toggle -->
 <script is:inline>
@@ -1611,11 +1617,13 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .founder-band__creds li::before {
-    content: '\2713';
+    content: '';
     position: absolute;
     left: 0;
-    color: var(--color-accent);
-    font-weight: 700;
+    top: 0.05em;
+    width: 1rem;
+    height: 1rem;
+    background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat;
   }
 
   .founder-band__link {
@@ -3061,6 +3069,10 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     max-width: 280px;
   }
   .audience-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
     flex: 1;
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
@@ -3076,6 +3088,20 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: #fff;
   }
   :global([data-theme="dark"]) .audience-btn.active { color: #11100E; }
+  .audience-btn__icon {
+    height: 0.95rem;
+    width: auto;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+  .audience-btn.active .audience-btn__icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .audience-btn__icon { transition: none; }
+  }
   .audience-msg {
     text-align: center;
     max-width: 520px;
