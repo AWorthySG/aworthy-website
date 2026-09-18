@@ -85,7 +85,14 @@ scripts/
 └── convert-og-images.mjs     # Prebuild script: converts SVG OG images to PNG via sharp
 public/
 ├── images/
-│   ├── logo.svg              # Site logo
+│   ├── logo.webp              # Site logo (mascot mark) — on-page use (Header, Footer, chatbot). See "Brand Mascots"
+│   ├── logo.png               # Same mark, PNG — schema.org `logo` field only (Google's documented format)
+│   ├── mascots/                # Mascot illustrations for content-page accents — see "Brand Mascots"
+│   │   ├── mascot-<pose>.webp        # full (with caption), for light/dark page backgrounds
+│   │   └── mascot-<pose>-icon.webp   # no caption — required on dark navy backgrounds
+│   │        # 9 poses currently (heart, heart-alt, rocket, rocket-fly, avocado-wink,
+│   │        # avocado-hug, icecream, sunglasses, fishing) — check the directory for the
+│   │        # current full list, this set grows incrementally
 │   ├── og-default.svg/png    # Default Open Graph image
 │   ├── og-english.svg/png    # O-Level English OG image
 │   ├── og-gp.svg/png         # H1 GP OG image
@@ -97,12 +104,13 @@ public/
 │   └── section-divider.svg   # Decorative section divider
 ├── docs/samples/             # Sample PDF resources (grammar, essays, vocabulary, etc.)
 ├── study/                    # Study Hub materials — self-contained .html files, auto-listed on /study/
-├── sw.js                     # Service worker (cache-first for assets, network-first for navigation)
+├── sw.js                     # Service worker (cache-first for assets, network-first for navigation) — precache list references favicon.ico + logo.webp by exact path; keep in sync if either changes
 ├── manifest.json             # PWA manifest
 ├── robots.txt                # Search engine directives
-├── apple-touch-icon.svg      # iOS home screen icon
-├── favicon.ico
-└── favicon.svg
+├── apple-touch-icon.png      # iOS home screen icon (180×180, opaque cream bg)
+├── favicon.ico                # Multi-size (16/32/48)
+├── favicon-16.png / favicon-32.png
+└── icons/icon-192x192.png, icon-512x512.png  # PWA manifest icons (opaque cream bg)
 ```
 
 ## Astro Component Pattern
@@ -332,6 +340,31 @@ Cards are real `<a href>` links, so every material is also its own standalone pa
 
 When changing any stat, grep the entire `src/` directory to update every occurrence — stats appear on the homepage, subject pages, results page, landing pages, about page, and chatbot widget in BaseLayout.
 
+## Brand Mascots
+
+The site's logo and decorative brand illustrations are a hand-drawn "eraser character" mascot set (9 poses so far: heart ×2, avocado winking/hugging, rocket held ×1, rocket flying away ×1, ice cream, sunglasses, fishing), sourced as 400×400 JPGs with a flat white background and processed into transparent assets. New poses get added to this same set incrementally as they're supplied — check `public/images/mascots/` for the current full list rather than assuming this doc is exhaustive. Processing scripts live only in session scratchpads (not checked into the repo) — if you need to reprocess or add a new pose from a similar sticker set, redo the pipeline below rather than looking for a script in-repo. Before processing a newly-supplied pose, hash-compare it (e.g. `md5sum`) against the existing source set first — duplicates of already-processed poses have been sent before.
+
+**Primary mark**: the "heart2" pose (simplest silhouette — reads best at favicon size) is the sitewide logo. It replaced the old navy "A|W" SVG wordmark everywhere: Header, Footer, favicon/apple-touch-icon/manifest icons, and the schema.org `logo` field.
+
+**File locations**:
+- `public/images/logo.webp` — the on-page mark (Header, Footer, chatbot toggle/header). WebP because this hand-drawn fabric-texture art compresses far worse as PNG (~90KB) than WebP (~20KB at q82, no visible quality loss) — this file loads on every single page, so it's worth the format choice.
+- `public/images/logo.png` — same crop, PNG. Used **only** for the schema.org `logo` URL (in BaseLayout and every blog post's own Article JSON-LD) — Google's documented-supported formats for that property are JPG/PNG/GIF, not WebP, and this file is crawler-fetched rather than part of real user page weight, so the conservative format is worth it there specifically.
+- `public/images/mascots/mascot-{heart,heart-alt,rocket,rocket-fly,avocado-wink,avocado-hug,icecream,sunglasses,fishing}.webp` — "full" versions (character + prop + the sticker's own baked-in "A-Worthy Education" caption), for placement on light/dark page backgrounds.
+- `public/images/mascots/mascot-*-icon.webp` — same poses with the caption cropped off. **Required** wherever the surrounding background is dark navy (e.g. anywhere using `--bg-footer` / `--color-primary` as a solid fill) — the caption's ink color is essentially the same navy as those tokens, so it becomes illegible. Also used at small sizes (email popup, About sign-off) where the caption wouldn't be readable anyway.
+- `public/favicon.ico` (multi-size), `public/favicon-16.png`, `public/favicon-32.png`, `public/apple-touch-icon.png` (180×180, opaque cream `#FDFBF7` background — Apple recommends against transparency), `public/icons/icon-{192,512}x192.png` (same opaque-cream treatment, for PWA manifest / Android home screen).
+
+**Header/Footer pattern**: the logo image carries **no text** — "A-Worthy" is set as live HTML/CSS next to it (`.logo-text` / `.footer-logo-text`), not baked into the image. This is deliberate: it stays crisp at any zoom, adapts to theme automatically, and (critically for the footer) can be colored independently of the mascot artwork. Do not try to fold the wordmark back into the image.
+
+**Footer-specific gotcha**: the old logo used a `filter: brightness(0) invert(1)` on `.footer-logo-img` to force a navy SVG white for the dark footer. **This filter was removed** and must not be reintroduced — applied to the full-color mascot it would crush it into a flat white silhouette, destroying the art. The mascot's native colors (cream body, navy outline, pink heart) already have enough contrast against `--bg-footer` on their own.
+
+**Adding a mascot placement**: follow the pattern already used on the homepage testimonials section, Results (`.r-growth-head`), and Contact (`.contact-form-col__head`) — a flex row with the eyebrow/heading text in one child and the mascot `<img>` as a sibling, `justify-content: space-between`, mascot `height` in the 70–140px range depending on how much visual weight the section should carry, and `display: none` under ~640–768px on any placement that would otherwise crowd a data-dense or form-heavy layout on mobile. Always pass explicit `width`/`height` attributes (the source crop dimensions) to avoid layout shift, and `alt=""` since these are decorative accents (the surrounding heading already carries the meaning) — the exception is the header/footer logo `<a>`, which carries `aria-label="A-Worthy — Home"` instead.
+
+**Keep it sparse.** Mascots currently appear sitewide via Header/Footer/chatbot/email-popup (BaseLayout), plus one accent each on: the homepage, About (small icon-only flourish beside the founder's sign-off — not mid-letter, to avoid undercutting that page's sincerity), 404, Testimonials, Results, Contact, Kitchen (the win-state celebration banner — `mascot-icecream`, a "you earned a treat" beat), SHARP Decoder (the game-over score card — `mascot-sunglasses`), and Parent Portal (the "launching soon" CTA — `mascot-rocket-fly`, chosen because the pose *is* a rocket launching and the visible copy already says "launching soon"; don't reuse this pose elsewhere without an equally direct textual echo, it reads as a pun otherwise). `mascot-fishing` is processed and in the library but **not yet placed anywhere** — no page had a natural, non-gimmicky fit for it; ask before forcing it in somewhere.
+
+They were deliberately **not** added to Pricing, Programmes, or any of the five subject pages (`o-level-english`, `h1-general-paper`, `h2-economics`, `o-level-mathematics`, `pre-ib-mathematics`) — those are the highest-stakes conversion/credibility pages, and the sitewide header/footer swap already carries the new brand identity onto them without extra clutter. Kitchen and SHARP Decoder were also intentionally mascot-free in the first pass (their own bespoke game illustration system was judged enough on its own) — the second batch added one small, single accent to each only once a genuinely fitting *moment* (a win/end state) turned up, not just because the pages allow playful styling. If asked to add more mascot placements, keep this restraint — and the "does the copy already support this pose's meaning" bar the Parent Portal one had to clear — in mind rather than sprinkling them onto every page.
+
+**Reprocessing pipeline** (if new poses are added from the same sticker set): background removal uses a smooth alpha ramp (near-white → transparent, ~6–28 RGB-distance-from-white) rather than a hard threshold, to avoid jagged edges on the hand-drawn line art. Auto-cropping to content bounding box works fine for the "full" variant. For the "icon" (no-caption) variant, do **not** rely on automated gap-detection between the character and the caption text — it was tried (both a top-down first-gap scan and a row-density "waist" scan) and proved unreliable because some poses (e.g. a held prop like the rocket's flame) run close enough to the caption that there's no true empty gap. Picking the crop line by eye against a rulered render of each pose (cheap for a handful of images) was more reliable than fighting a heuristic.
+
 ## Founder Details (for schema.org and about page)
 
 - **Name**: Jeremy Lim
@@ -391,3 +424,6 @@ When the academic year rolls over, update these in order — most date-sensitive
 - PdfPreviewModal uses CSS custom properties (`--pdf-bg`, `--pdf-text`, etc.) for its intentionally dark media-viewer theme — do not tie these to the site's light/dark mode tokens
 - `404.astro` has `noindex={true}` — keep it excluded from search indexing
 - Study Hub materials live in `public/study/*.html` and are auto-discovered. The viewer loads them with `iframe.srcdoc`, **not** `iframe.src` — the sitewide `X-Frame-Options: DENY` / `frame-ancestors 'none'` blocks real iframe navigations, and a path-scoped header override does not help because Cloudflare Pages *merges* `_headers` rules instead of replacing them. Do not switch it back to `src`
+- The site logo (`public/images/logo.webp`/`.png`) is a hand-drawn mascot, not the old navy "A|W" SVG — see "Brand Mascots" above before touching Header/Footer logo markup, favicons, or the schema.org `logo` field
+- Never reintroduce `filter: brightness(0) invert(1)` on `.footer-logo-img` — it was removed because it crushes the full-color mascot into a flat white silhouette. The footer wordmark ("A-Worthy") is live text (`.footer-logo-text`), not baked into the image, specifically so it can be colored independently for the always-dark footer
+- Mascot "full" variants (with the baked-in "A-Worthy Education" caption) are illegible on dark navy backgrounds — the caption ink color is essentially the same navy as `--bg-footer`/`--color-primary`. Use the `-icon` variant (no caption) on any dark-navy-filled surface

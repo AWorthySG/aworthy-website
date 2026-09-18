@@ -31,7 +31,8 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   <div class="container header-inner">
     <!-- Logo -->
     <a href="/" class="logo" aria-label="A-Worthy — Home">
-      <img src="/images/logo.svg" alt="A-Worthy" class="logo-img" />
+      <img src="/images/logo.webp" alt="" class="logo-img" width="240" height="273" />
+      <span class="logo-text">A-Worthy</span>
     </a>
 
     <!-- Desktop Nav -->
@@ -164,10 +165,11 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     gap: var(--space-md);
   }
 
-  /* Logo — minimal text only */
+  /* Logo — mascot mark + live text (adapts to theme; not baked into the image) */
   .logo {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
     flex-shrink: 0;
   }
@@ -176,7 +178,14 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     height: 40px;
     width: auto;
     max-width: 100%;
-    filter: none;
+  }
+
+  .logo-text {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
+    white-space: nowrap;
   }
 
   /* Desktop Nav */

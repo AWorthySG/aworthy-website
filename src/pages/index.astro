@@ -330,8 +330,13 @@ import '../styles/global.css';
 
   <section id="reviews" class="section section--sand testimonials-section">
     <div class="container">
-      <span class="eyebrow" data-animate="reveal-up">What Families Say</span>
-      <h2 class="section-heading" data-animate="reveal-up">What Singapore parents and students say about our tuition</h2>
+      <div class="testimonials-head">
+        <div>
+          <span class="eyebrow" data-animate="reveal-up">What Families Say</span>
+          <h2 class="section-heading" data-animate="reveal-up">What Singapore parents and students say about our tuition</h2>
+        </div>
+        <img src="/images/mascots/mascot-heart.webp" alt="" width="279" height="393" class="testimonials-head__mascot" data-animate="reveal-up" />
+      </div>
 
       <div class="testimonials-grid">
         <div class="testimonial-card card--elevated" data-animate="reveal-up" data-animate-delay="1">
@@ -946,6 +951,23 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-bottom: 0.75rem;
     max-width: 700px;
     letter-spacing: -0.03em;
+  }
+
+  .testimonials-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .testimonials-head__mascot {
+    height: 130px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-head__mascot { display: none; }
   }
 
   /* ===== SECTION SPACING ===== */

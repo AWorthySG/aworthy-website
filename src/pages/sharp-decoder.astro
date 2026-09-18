@@ -96,6 +96,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
         <!-- END -->
         <div class="dec-screen dec-end" id="dec-end" hidden>
           <div class="dec-card">
+            <img src="/images/mascots/mascot-sunglasses.webp" alt="" width="289" height="365" class="dec-end__mascot" />
             <p class="dec-card__kicker" id="dec-rating">Sharp Shooter</p>
             <h2 class="dec-card__title"><span id="dec-final">0</span> points</h2>
             <p class="dec-end__line"><span id="dec-correct">0</span> of 10 correct &middot; best streak <span id="dec-beststreak">0</span></p>
@@ -135,6 +136,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   @keyframes dec-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
   .dec-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 2rem 1.75rem; text-align: center; }
+  .dec-end__mascot { height: 84px; width: auto; margin: 0 auto 0.75rem; }
   .dec-card__kicker { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: 0.4rem; }
   .dec-card__title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 300; color: var(--text-primary); margin-bottom: 1.25rem; }
 
