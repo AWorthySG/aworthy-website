@@ -108,9 +108,14 @@ import '../styles/global.css';
   <!-- ===== YEAR-OVER-YEAR ===== -->
   <section class="r-section">
     <div class="r-container">
-      <span class="eyebrow">Growth</span>
-      <h2 class="r-heading" data-animate="reveal-up">Consistent improvement, year after year</h2>
-      <p class="r-subtitle">Our commitment to teaching excellence is reflected in our steadily improving results.</p>
+      <div class="r-growth-head">
+        <div>
+          <span class="eyebrow">Growth</span>
+          <h2 class="r-heading" data-animate="reveal-up">Consistent improvement, year after year</h2>
+          <p class="r-subtitle">Our commitment to teaching excellence is reflected in our steadily improving results.</p>
+        </div>
+        <img src="/images/mascots/mascot-rocket.webp" alt="" width="288" height="391" class="r-growth-mascot" data-animate="reveal-up" />
+      </div>
 
       <div class="r-cards-3">
         <div class="r-card" data-animate="reveal-up">
@@ -412,6 +417,24 @@ import '../styles/global.css';
     color: var(--r-white-50);
     max-width: 600px;
     margin: 0 0 1.25rem;
+  }
+
+  .r-growth-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .r-growth-mascot {
+    height: 110px;
+    width: auto;
+    flex-shrink: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .r-growth-mascot { display: none; }
   }
 
   /* ===== STATS ROW ===== */

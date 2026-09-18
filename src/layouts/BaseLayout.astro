@@ -78,7 +78,7 @@ const schemaData = {
   "@type": ["EducationalOrganization", "LocalBusiness"],
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
-  "logo": new URL('/images/logo.svg', Astro.site).toString(),
+  "logo": new URL('/images/logo.png', Astro.site).toString(),
   "description": "Singapore's top-rated tuition centre for O-Level English & Maths, H1 General Paper & H2 Economics. Small classes, proven SHARP Method, 90% A1–B3 rate.",
   "address": {
     "@type": "PostalAddress",
@@ -242,7 +242,10 @@ import { ClientRouter } from 'astro:transitions';
 
   <!-- Manifest & icons -->
   <link rel="manifest" href="/manifest.json" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <title>{title}</title>
 
@@ -516,6 +519,12 @@ import { ClientRouter } from 'astro:transitions';
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .email-popup-mascot {
+      display: block;
+      height: 64px;
+      width: auto;
+      margin: 0 auto 0.5rem;
     }
     .email-popup-title {
       font-family: var(--font-heading);
@@ -1114,6 +1123,7 @@ import { ClientRouter } from 'astro:transitions';
   <div class="email-popup-overlay" id="email-popup" hidden>
     <div class="email-popup" role="dialog" aria-modal="true" aria-labelledby="email-popup-title">
       <button class="email-popup-close" id="email-popup-close" aria-label="Close">&times;</button>
+      <img src="/images/mascots/mascot-heart-icon.webp" alt="" class="email-popup-mascot" width="257" height="296" />
       <span class="eyebrow" style="text-align:center;display:block;">Free Download</span>
       <h3 class="email-popup-title" id="email-popup-title">Get our top-scoring essay framework</h3>
       <p class="email-popup-desc">Download the same SHARP Method essay template our A1 students use &mdash; free for your email.</p>
@@ -1215,11 +1225,14 @@ import { ClientRouter } from 'astro:transitions';
   <!-- FAQ Chatbot -->
   <div class="chatbot-widget" id="chatbot-widget">
     <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open FAQ chat">
-      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <img src="/images/logo.webp" alt="" class="chatbot-toggle-img" width="240" height="273" />
     </button>
     <div class="chatbot-panel" id="chatbot-panel" role="dialog" aria-modal="true" aria-labelledby="chatbot-title" hidden>
       <div class="chatbot-header">
-        <strong id="chatbot-title">A-Worthy Help</strong>
+        <span class="chatbot-header-brand">
+          <img src="/images/logo.webp" alt="" class="chatbot-header-img" width="240" height="273" />
+          <strong id="chatbot-title">A-Worthy Help</strong>
+        </span>
         <button class="chatbot-close" id="chatbot-close" aria-label="Close">&times;</button>
       </div>
       <div class="chatbot-body" id="chatbot-body">
@@ -1268,6 +1281,10 @@ import { ClientRouter } from 'astro:transitions';
       transition: transform 0.2s ease;
     }
     .chatbot-toggle:hover { transform: scale(1.1); }
+    .chatbot-toggle-img {
+      height: 34px;
+      width: auto;
+    }
     .chatbot-panel {
       position: absolute;
       bottom: 56px;
@@ -1296,6 +1313,16 @@ import { ClientRouter } from 'astro:transitions';
       background: var(--color-primary);
       color: #fff;
       font-size: 0.85rem;
+    }
+    .chatbot-header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .chatbot-header-img {
+      height: 26px;
+      width: auto;
+      flex-shrink: 0;
     }
     .chatbot-close {
       background: none;

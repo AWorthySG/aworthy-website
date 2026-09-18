@@ -23,8 +23,13 @@ import '../styles/global.css';
 
       <!-- Enquiry Form -->
       <div class="contact-form-col" data-animate="reveal-left">
-        <p class="eyebrow">Enquiry Form</p>
-        <h2 class="contact-form-col__heading">Send us a message</h2>
+        <div class="contact-form-col__head">
+          <div>
+            <p class="eyebrow">Enquiry Form</p>
+            <h2 class="contact-form-col__heading">Send us a message</h2>
+          </div>
+          <img src="/images/mascots/mascot-heart-alt.webp" alt="" width="258" height="386" class="contact-form-col__mascot" />
+        </div>
 
         <form id="contact-form" class="contact-form" action="https://formspree.io/f/xgoppwye" method="POST" novalidate>
           <!-- Honeypot — hidden from real users, catches bots -->
@@ -520,6 +525,24 @@ import '../styles/global.css';
   /* ===== FORM COLUMN ===== */
   .contact-form-col .eyebrow {
     margin-bottom: var(--space-sm);
+  }
+
+  .contact-form-col__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .contact-form-col__mascot {
+    height: 72px;
+    width: auto;
+    flex-shrink: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .contact-form-col__mascot { display: none; }
   }
 
   .contact-form-col__heading {

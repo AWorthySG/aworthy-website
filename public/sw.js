@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aworthy-v6';
+const CACHE_NAME = 'aworthy-v7';
 const OFFLINE_URL = '/404.html';
 
 const PRECACHE_URLS = [
@@ -17,8 +17,8 @@ const PRECACHE_URLS = [
   '/h2-economics/',
   '/o-level-mathematics/',
   '/404.html',
-  '/favicon.svg',
-  '/images/logo.svg'
+  '/favicon.ico',
+  '/images/logo.webp'
 ];
 
 self.addEventListener('install', (event) => {
