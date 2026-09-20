@@ -64,7 +64,7 @@ import '../styles/global.css';
       </div>
 
       <div class="portal-cta" data-animate="reveal-up">
-        <img src="/images/mascots/mascot-rocket-fly.webp" alt="" width="288" height="372" class="portal-cta__mascot" />
+        <img src="/images/mascots/mascot-rocket-fly.webp" alt="" width="308" height="392" class="portal-cta__mascot sticker" />
         <div class="portal-badge">Coming Soon</div>
         <h2>The Parent Portal is launching soon</h2>
         <p>We&rsquo;re building a dedicated platform for parents to stay informed and engaged. In the meantime, all enrolled families receive monthly progress updates via email.</p>
@@ -83,7 +83,7 @@ import '../styles/global.css';
   .portal-title {
     font-family: var(--font-heading);
     font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     line-height: 1.08;
     margin-bottom: 1rem;
@@ -105,7 +105,7 @@ import '../styles/global.css';
   .portal-feature {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 2rem;
     transition: all 0.3s ease;
   }
@@ -117,7 +117,7 @@ import '../styles/global.css';
   .portal-feature-icon {
     width: 48px;
     height: 48px;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     background: rgba(43, 90, 140, 0.08);
     display: flex;
     align-items: center;
@@ -142,7 +142,7 @@ import '../styles/global.css';
     padding: 3rem;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     max-width: 640px;
     margin: 0 auto;
   }
@@ -160,7 +160,7 @@ import '../styles/global.css';
     color: var(--color-accent);
     background: rgba(212,133,58,0.1);
     padding: 0.35rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     margin-bottom: 1.25rem;
   }
   .portal-cta h2 {

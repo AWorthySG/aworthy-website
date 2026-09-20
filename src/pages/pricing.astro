@@ -200,8 +200,13 @@ import '../styles/global.css';
   <!-- ===== ALL PROGRAMMES INCLUDE ===== -->
   <section class="section pricing-includes">
     <div class="container">
-      <h2 class="section-title" data-animate="reveal-up">All programmes include</h2>
-      <p class="section-subtitle" data-animate="reveal-up">Everything your child needs to succeed &mdash; no extras to pay for.</p>
+      <div class="includes-head">
+        <div>
+          <h2 class="section-title" data-animate="reveal-up">All programmes include</h2>
+          <p class="section-subtitle" data-animate="reveal-up">Everything your child needs to succeed &mdash; no extras to pay for.</p>
+        </div>
+        <img src="/images/mascots/mascot-feeding.webp" alt="" width="400" height="508" class="includes-head__sticker sticker sticker--right" loading="lazy" />
+      </div>
       <div class="includes-grid" data-animate="reveal-up" data-animate-delay="1">
         <div class="includes-item">
           <svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -412,7 +417,7 @@ import '../styles/global.css';
   .pricing-hero__heading {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.03em;
     margin-bottom: var(--space-md);
@@ -638,10 +643,9 @@ import '../styles/global.css';
     position: absolute;
     left: 0;
     top: 50%;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--color-accent);
+    width: 1rem;
+    height: 1rem;
+    background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat;
     transform: translateY(-50%);
   }
 
@@ -679,6 +683,19 @@ import '../styles/global.css';
     background: var(--bg-primary);
   }
 
+  .includes-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .includes-head__sticker {
+    flex-shrink: 0;
+    width: 140px;
+  }
+  @media (max-width: 640px) {
+    .includes-head__sticker { display: none; }
+  }
   .includes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -814,7 +831,7 @@ import '../styles/global.css';
   .pricing-cta__inner h2 {
     font-family: var(--font-heading);
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: var(--space-md);
     letter-spacing: -0.03em;
@@ -828,13 +845,13 @@ import '../styles/global.css';
   }
 
   .pricing-cta__btn {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0;
     text-decoration: none;
-    padding: 0.9rem 2.5rem;
+    padding: 0.9rem 2.25rem;
+    border-radius: var(--radius-pill);
     display: inline-block;
   }
 

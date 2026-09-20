@@ -158,22 +158,21 @@ const currentYear = new Date().getFullYear();
     font-family: var(--font-mono);
     color: #ffffff;
     margin-bottom: var(--space-md);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 500;
+    letter-spacing: 0.12em;
+    font-weight: 800;
   }
 
-  /* Accent rule under footer column headings */
+  /* Marker swash under footer column headings — same motif as section titles */
   .footer-links h4::after,
   .footer-contact h4::after {
     content: '';
     display: block;
-    width: 22px;
-    height: 2px;
-    margin-top: 0.55rem;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--color-accent), transparent);
+    width: 44px;
+    height: 8px;
+    margin-top: 0.45rem;
+    background: var(--swash) left center / contain no-repeat;
   }
 
   .footer-links ul,

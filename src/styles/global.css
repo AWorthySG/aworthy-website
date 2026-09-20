@@ -45,9 +45,11 @@
   /* ── Layout ── */
   --container-max: 1200px;
   --page-padding: 4rem;
-  /* Radius scale — 2 tokens only (claudedesign D.1) */
-  --radius-sm: 3px;     /* btn, input, chip, badge */
-  --radius-md: 6px;     /* card, modal, well */
+  /* Radius scale — soft, sticker-like geometry */
+  --radius-sm: 12px;    /* input, chip, badge, small tiles */
+  --radius-md: 18px;    /* card, modal, well */
+  --radius-lg: 28px;    /* hero panels, feature blocks */
+  --radius-pill: 999px; /* buttons, tags */
   /* Aliases — kept for backwards compat, both resolve to the new scale */
   --border-radius: var(--radius-sm);
   --border-radius-lg: var(--radius-md);
@@ -56,6 +58,16 @@
   --bg-footer: #1A2A3A;
   /* Subject-specific accent (overridden per subject page) */
   --color-accent-hue: var(--color-accent);
+
+  /* ── Sticker palette — lifted from the mascot art. Decorative only
+     (sparkles, marker highlights, tinted chips); gold stays the brand accent. ── */
+  --color-leaf: #46B054;
+  --color-sun: #F5B83D;
+  --color-berry: #F05A82;
+  --color-sky: #6FAEE8;
+  --ink-soft: rgba(26, 42, 58, 0.14);
+  /* Hand-drawn marker swash — the sitewide heading motif */
+  --swash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 14'%3E%3Cpath d='M3 9c12-5 22 1 34-2s24-4 48 1' fill='none' stroke='%23D4853A' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
 
   /* ── Decorative SVG stroke tokens (theme-aware) ── */
   --decor-cool: rgba(43, 90, 140, 0.08);
@@ -116,6 +128,12 @@
   /* Decorative strokes — warm/cool versions for dark mode */
   --decor-cool: rgba(155, 181, 214, 0.10);
   --decor-warm: rgba(229, 154, 85, 0.10);
+  --color-leaf: #5EC26C;
+  --color-sun: #F7C25A;
+  --color-berry: #F5789A;
+  --color-sky: #86BDEE;
+  --ink-soft: rgba(245, 239, 227, 0.16);
+  --swash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 14'%3E%3Cpath d='M3 9c12-5 22 1 34-2s24-4 48 1' fill='none' stroke='%23E59A55' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 /* Dark mode ambient noise texture — softened on retina (claudedesign G.3) */
@@ -182,9 +200,9 @@ body {
 /* ===== Typography ===== */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 200;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
   color: var(--text-primary);
   /* Prevent long words from overflowing on mobile */
   overflow-wrap: break-word;
@@ -194,10 +212,11 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-/* Weight contrasts: light h1 vs bold h3 — bumped for readability */
-h1 { font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 200; letter-spacing: -0.03em; }
-h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; }
-h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-family: var(--font-body); font-weight: 700; letter-spacing: -0.01em; }
+/* Display type is chunky Nunito 800 — the same rounded, hand-lettered weight
+   as the "A-Worthy Education" caption on the mascot stickers. */
+h1 { font-size: clamp(2.5rem, 6.5vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.85rem, 4.2vw, 2.75rem); font-weight: 800; }
+h3 { font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-family: var(--font-body); font-weight: 800; letter-spacing: -0.015em; }
 
 p {
   margin-bottom: var(--space-md);
@@ -284,8 +303,8 @@ li {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.6vw, 0.75rem);
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent-text);
   margin-bottom: var(--space-md);
@@ -302,7 +321,7 @@ li {
 .faq-question {
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--text-primary);
   padding: 1.25rem 0;
   min-height: 44px;
@@ -417,20 +436,19 @@ li {
 .section-title {
   text-align: center;
   margin-bottom: var(--space-sm);
-  font-weight: 400;
+  font-weight: 800;
   letter-spacing: -0.025em;
 }
 
-/* Branded accent rule under centred section titles — adds rhythm sitewide */
+/* Hand-drawn marker swash under centred section titles — the sitewide motif,
+   echoing the little dashes drawn around the mascot stickers. */
 .section-title::after {
   content: '';
   display: block;
-  width: 44px;
-  height: 3px;
-  margin: 0.8rem auto 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
-  opacity: 0.9;
+  width: 88px;
+  height: 14px;
+  margin: 0.55rem auto 0;
+  background: var(--swash) center / contain no-repeat;
 }
 
 .section-subtitle {
@@ -461,13 +479,13 @@ li {
   align-items: center;
   justify-content: center;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.875rem 2rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 0.8rem 1.75rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink-soft);
   background: transparent;
   color: var(--text-primary);
   cursor: pointer;
@@ -501,7 +519,7 @@ li {
 .btn-primary,
 .btn-accent {
   background: linear-gradient(180deg, #E09255 0%, #D4853A 70%, #C97A2D 100%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.18);
   color: #fff;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.25) inset,
@@ -542,7 +560,7 @@ li {
 .btn-secondary {
   background-color: transparent;
   color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--ink-soft);
 }
 
 @media (hover: hover) {
@@ -556,7 +574,7 @@ li {
 .btn-outline-light {
   background: transparent;
   color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255,255,255,0.3);
   box-shadow: none;
 }
 
@@ -675,7 +693,7 @@ input, textarea, select {
   /* Prevent iOS zoom on input focus by using 16px minimum */
   font-size: max(1rem, 16px);
   padding: 0.875rem 1rem;
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--ink-soft);
   border-radius: var(--radius-sm);
   background: var(--bg-primary);
   color: var(--text-primary);
@@ -884,7 +902,7 @@ label {
   :root { --page-padding: 1.25rem; --space-3xl: 1rem; }
   .container { padding: 0 var(--page-padding); }
   .section { padding: var(--space-3xl) 0; }
-  .btn { padding: 0.75rem 1.5rem; font-size: 0.85rem; width: 100%; }
+  .btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; width: 100%; }
   .eyebrow { font-size: clamp(0.75rem, 1.6vw, 0.8rem); }
 }
 
@@ -1158,7 +1176,7 @@ label {
 }
 .subject-receipts dt {
   font-family: var(--font-heading);
-  font-weight: 200;
+  font-weight: 800;
   font-size: clamp(2.6rem, 5vw, 4rem);
   letter-spacing: -0.03em;
   line-height: 0.9;
@@ -1243,23 +1261,14 @@ label {
 .section-heading::before {
   content: '';
   display: block;
-  width: 48px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
-  margin-bottom: 0.75rem;
-  border-radius: 2px;
+  width: 72px;
+  height: 12px;
+  background: var(--swash) left center / contain no-repeat;
+  margin-bottom: 0.6rem;
 }
 
 .section-heading::after {
-  content: '';
-  position: absolute;
-  bottom: -0.3em;
-  left: 0;
-  width: 100%;
-  height: 0.08em;
-  background: linear-gradient(90deg, var(--color-accent), transparent 80%);
-  opacity: 0.25;
-  border-radius: 2px;
+  content: none;
 }
 
 .section-heading.text-center {
@@ -1413,7 +1422,7 @@ label {
 details summary:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 /* Smooth scroll — native CSS, no library needed */
@@ -1624,6 +1633,45 @@ html {
   .reading-card:active, .related-link:active, .transformation-card:active {
     transform: scale(0.985);
     transition-duration: 0.1s;
+  }
+}
+
+/* ═══ Stickers — mascot art placed as decorative accents. The white die-cut
+   border is baked into the assets; this adds the "stuck on the page" read. ═══ */
+.sticker {
+  --tilt: -4deg;
+  display: block;
+  height: auto;
+  transform: rotate(var(--tilt));
+  filter: drop-shadow(0 1px 1px rgba(26, 42, 58, 0.12)) drop-shadow(0 10px 16px rgba(26, 42, 58, 0.16));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.sticker--right { --tilt: 5deg; }
+[data-theme="dark"] .sticker {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4)) drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sticker { transition: transform 0.5s var(--ease-bounce); }
+  .sticker:hover { transform: rotate(0deg) scale(1.04); }
+}
+/* Page-hero placement: floats in the empty margin beside centred hero copy on
+   wide screens, drops inline under the copy on narrower ones. The parent hero
+   section must be position: relative (the tool/page heroes below already are). */
+.sticker--hero {
+  position: absolute;
+  right: clamp(1.5rem, 5vw, 5rem);
+  top: 50%;
+  translate: 0 -50%;
+  width: clamp(130px, 12vw, 190px);
+  z-index: 1;
+}
+@media (max-width: 1279px) {
+  .sticker--hero {
+    position: static;
+    translate: none;
+    width: 112px;
+    margin: 1.25rem auto 0;
   }
 }
 
