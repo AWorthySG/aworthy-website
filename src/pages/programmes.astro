@@ -435,7 +435,7 @@ import '../styles/global.css';
 
   .prog-card__meta span {
     font-family: var(--prog-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--prog-text-secondary);
@@ -466,7 +466,7 @@ import '../styles/global.css';
 
   .prog-card__eyebrow {
     font-family: var(--prog-mono);
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -686,6 +686,14 @@ import '../styles/global.css';
     }
   }
 
+  /* Programme cards stay two-up on tablet portrait; single column only on phones */
+  @media (max-width: 600px) {
+    .card-grid--4,
+    .card-grid--3 {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (max-width: 768px) {
     .prog-hero {
       padding: 3rem 0 2.25rem;
@@ -699,8 +707,6 @@ import '../styles/global.css';
       gap: 1rem;
     }
 
-    .card-grid--4,
-    .card-grid--3,
     .card-grid--2 {
       grid-template-columns: 1fr;
     }

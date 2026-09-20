@@ -502,8 +502,12 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
 
   @media (max-width: 1024px) {
     .desktop-nav { display: none; }
-    .header-cta { display: none; }
     .hamburger { display: flex; }
+  }
+
+  /* Tablets keep the CTA pill beside the hamburger; only phones drop it */
+  @media (max-width: 640px) {
+    .header-cta { display: none; }
   }
 
   @media (max-width: 480px) {

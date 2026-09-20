@@ -2,7 +2,7 @@
 .blog-post-header { max-width: 720px; margin: 0 auto 3rem; }
 .blog-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
 .blog-back:hover { color: var(--color-accent); }
-.blog-tag { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); display: block; margin-bottom: 0.75rem; }
+.blog-tag { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); display: block; margin-bottom: 0.75rem; }
 .blog-post-header h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.1; color: var(--text-primary); margin-bottom: 1rem; }
 .blog-post-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
 .blog-author { color: var(--color-accent); text-decoration: none; font-weight: 600; transition: opacity var(--transition-fast); }

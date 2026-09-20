@@ -325,7 +325,7 @@ import { ClientRouter } from 'astro:transitions';
   <!-- Global Sticky CTA Bar (#13) -->
   <div class="sticky-cta-global" id="sticky-cta-global">
     <div class="sticky-cta-global-inner">
-      <span class="sticky-cta-global-text"><span class="sticky-cta-global-text-full">Book a free diagnostic assessment for O-Level English, Maths, GP, or H2 Economics</span><span class="sticky-cta-global-text-mobile">Limited June slots</span></span>
+      <span class="sticky-cta-global-text">Book a free diagnostic assessment for O-Level English, Maths, GP, or H2 Economics</span>
       <a href="/contact/" class="sticky-cta-global-btn">Book Free Assessment</a>
       <a href="tel:+6583384033" class="sticky-cta-phone" aria-label="Call us">
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -378,9 +378,10 @@ import { ClientRouter } from 'astro:transitions';
   <style>
     .whatsapp-widget {
       position: fixed;
-      bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+      bottom: calc(2rem + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px));
       right: calc(2rem + env(safe-area-inset-right, 0px));
       z-index: var(--z-fixed-widget);
+      transition: bottom 0.35s ease;
     }
     .whatsapp-float-btn {
       width: 56px;
@@ -471,7 +472,7 @@ import { ClientRouter } from 'astro:transitions';
       border-top: 1px solid var(--border-color);
     }
     @media (max-width: 768px) {
-      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); }
+      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px)); }
       .whatsapp-preview { width: min(300px, calc(100vw - 3rem)); }
     }
     @media (max-width: 480px) {
@@ -649,10 +650,6 @@ import { ClientRouter } from 'astro:transitions';
       color: rgba(255, 255, 255, 0.8);
     }
 
-    .sticky-cta-global-text-mobile {
-      display: none;
-    }
-
     .sticky-cta-phone {
       display: none;
       align-items: center;
@@ -672,38 +669,36 @@ import { ClientRouter } from 'astro:transitions';
       background: rgba(255, 255, 255, 0.2);
     }
 
+    /* Phone / tablet: a single 60px row — the CTA, a call button and the
+       dismiss — so the bar costs as little of the viewport as possible. */
     @media (max-width: 768px) {
       .sticky-cta-global {
-        padding: 0.75rem 1rem;
-        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
-        font-size: 0.8rem;
-      }
-      .sticky-cta-global-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.85rem;
-        width: 100%;
-        text-align: center;
-      }
-      .sticky-cta-global-text-full {
-        display: none;
-      }
-      .sticky-cta-global-text-mobile {
-        display: inline;
-        font-weight: 600;
-        color: var(--color-accent-light, #e8a060);
+        padding: 0.5rem 0.75rem;
+        padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
       }
       .sticky-cta-global-inner {
-        flex-direction: column;
         gap: 0.5rem;
+        padding-right: 2.75rem;
+      }
+      .sticky-cta-global-text {
+        display: none;
+      }
+      .sticky-cta-global-btn {
+        flex: 1;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
       }
       .sticky-cta-phone {
         display: flex;
       }
-    }
-
-    @media (max-width: 640px) {
-      .sticky-cta-global-text {
-        font-size: 0.72rem;
+      .sticky-cta-global-dismiss {
+        top: 50%;
+        right: 0.25rem;
+        transform: translateY(-50%);
       }
     }
 
@@ -887,8 +882,8 @@ import { ClientRouter } from 'astro:transitions';
     }
     @media (max-width: 480px) {
       .exam-countdown {
-        font-size: 0.7rem;
-        padding: 0.4rem 0.75rem;
+        font-size: 0.78rem;
+        padding: 0.45rem 0.75rem;
       }
     }
 
@@ -1055,7 +1050,10 @@ import { ClientRouter } from 'astro:transitions';
       if (dismissed) return;
       if (!ticking) {
         requestAnimationFrame(function(){
-          el.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.5 && !isPrivacyVisible());
+          var visible = window.scrollY > window.innerHeight * 0.5 && !isPrivacyVisible();
+          el.classList.toggle('is-visible', visible);
+          // Floating widgets read this to ride up above the bar
+          document.documentElement.style.setProperty('--sticky-bar-h', visible ? el.offsetHeight + 'px' : '0px');
           ticking = false;
         });
         ticking = true;
@@ -1064,6 +1062,7 @@ import { ClientRouter } from 'astro:transitions';
     dismiss?.addEventListener('click', function(){
       dismissed = true;
       el.classList.remove('is-visible');
+      document.documentElement.style.setProperty('--sticky-bar-h', '0px');
     });
   })();
   </script>
@@ -1262,9 +1261,10 @@ import { ClientRouter } from 'astro:transitions';
   <style>
     .chatbot-widget {
       position: fixed;
-      bottom: calc(2rem + 68px + env(safe-area-inset-bottom, 0px));
+      bottom: calc(2rem + 68px + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px));
       right: calc(2rem + env(safe-area-inset-right, 0px));
       z-index: var(--z-chatbot);
+      transition: bottom 0.35s ease;
     }
     .chatbot-toggle {
       width: 48px;
@@ -1389,11 +1389,11 @@ import { ClientRouter } from 'astro:transitions';
       background: rgba(212,133,58,0.05);
     }
     @media (max-width: 768px) {
-      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + 68px + env(safe-area-inset-bottom, 0px)); }
+      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + 68px + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px)); }
     }
     @media (max-width: 480px) {
       .chatbot-panel { width: calc(100vw - 2rem); right: -1rem; }
-      .chatbot-widget { bottom: calc(1.25rem + 64px + env(safe-area-inset-bottom, 0px)); }
+      .chatbot-widget { bottom: calc(1.25rem + 64px + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px)); }
     }
   </style>
 

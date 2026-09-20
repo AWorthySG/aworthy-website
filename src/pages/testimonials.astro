@@ -895,17 +895,30 @@ const testimonials = [
     gap: 0.5rem;
     margin-top: 1rem;
   }
-  .carousel-dot {
+  /* 8px visual dot inside a 28px hit area. The dots are created by the
+     script below, so they carry no Astro scoping attribute — these rules
+     must be :global or they never match. */
+  :global(.carousel-dot) {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    touch-action: manipulation;
+  }
+  :global(.carousel-dot::before) {
+    content: '';
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    border: none;
     background: var(--border-color);
-    cursor: pointer;
-    padding: 0;
     transition: all 0.3s ease;
   }
-  .carousel-dot.is-active {
+  :global(.carousel-dot.is-active::before) {
     background: var(--color-accent);
     transform: scale(1.3);
   }

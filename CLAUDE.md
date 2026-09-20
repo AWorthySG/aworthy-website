@@ -153,7 +153,7 @@ All pages wrap content in `<BaseLayout>` which provides:
 - Scroll-reveal animation observer (re-initializes on `astro:page-load` for view transitions)
 - Animated number counters (re-initializes on `astro:page-load`; bfcache `pageshow` fix)
 - Back-to-top button
-- Global sticky CTA bar (hidden on homepage)
+- Global sticky CTA bar (hidden on homepage; a single 60px row of CTA + call button + dismiss on phones/tablets, text label only on desktop)
 - WhatsApp chat widget (with preview bubble)
 - FAQ chatbot widget (pre-defined Q&A)
 - Email capture popup (exit-intent + 45s timer, localStorage dismissal) — submits to Formspree (`xreoozkk`) and delivers `/docs/samples/essay-framework-sample.pdf` with a fallback download link
@@ -233,6 +233,15 @@ Always use z-index tokens instead of hardcoded values for layered components.
 - Desktop: 1025px–1440px
 - Large desktop: 1441px–1920px
 - 4K: 1921px+
+
+### Mobile & tablet rules
+
+- **Display type steps down** in global.css: ≤768px h1 `clamp(2rem, 7.5vw, 3rem)` / h2 `clamp(1.6rem, 5.5vw, 2.25rem)`; ≤480px h1 `clamp(1.9rem, 8.5vw, 2.4rem)` / h2 `clamp(1.5rem, 6.5vw, 1.9rem)`, so long titles hold to ~3 lines on a phone. Page-scoped hero headings that set their own phone size (subject pages, tools) keep it.
+- **Legibility floor**: no running label smaller than **0.72rem** (11.5px) — eyebrows are 0.75rem on ≤768px, and every micro-label that used to sit at 0.55–0.68rem (hero proof labels, programme/pricing badges, `.blog-tag`, `.playbook-paper`, subject-bar chips, result stat labels, footer headings, the exam countdown) was raised. Don't add new 0.6rem labels.
+- **Touch targets**: everything tappable is ≥40px tall (44px for form controls). global.css has a `@media (pointer: coarse)` block that gives inline links in `main p / main li / .hero-meta / footer` extra *vertical padding* — on inline elements that enlarges the tap box without changing the line box, so it's layout-safe — and sets 44px minimums on selects/inputs/textareas and the FAQ summaries. Chips (`.r-filter-btn`, `.dec-chip`, `.sh-chip`, `.subject-bar-link`) carry `min-height: 40px`; the testimonials carousel dots are an 8px visual dot inside a 28px button (`::before` draws the dot) — reuse that pattern for any small indicator control.
+- **Fixed bottom chrome**: the global sticky CTA (BaseLayout) and the homepage's own `.sticky-cta` publish their visible height on `<html>` as `--sticky-bar-h` (set from JS when they toggle `is-visible`, `0px` when hidden/dismissed). The WhatsApp float, chatbot toggle and back-to-top button add `var(--sticky-bar-h, 0px)` to their `bottom`, so they ride up above the bar instead of overlapping it. **Any new fixed bottom widget must include that variable in its `bottom`.** Desktop back-to-top also sits left of the WhatsApp float (`right: 2rem + 68px`) rather than underneath it.
+- **Stats blocks** are 2×2 grids on phones (homepage `.stats-inner`, results `.r-stats-row`), never a single column of giant numbers.
+- **Header on tablets** (641–1024px): hamburger nav plus the gold CTA pill; the CTA is hidden only ≤640px.
 
 ### Key CSS Classes
 
