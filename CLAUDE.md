@@ -88,10 +88,11 @@ public/
 │   ├── logo.webp              # Site logo (mascot mark) — on-page use (Header, Footer, chatbot). See "Brand Mascots"
 │   ├── logo.png               # Same mark, PNG — schema.org `logo` field only (Google's documented format)
 │   ├── mascots/                # Mascot illustrations for content-page accents — see "Brand Mascots"
-│   │   ├── mascot-<pose>.webp        # full (with caption), for light/dark page backgrounds
-│   │   └── mascot-<pose>-icon.webp   # no caption — required on dark navy backgrounds
-│   │        # 9 poses currently (heart, heart-alt, rocket, rocket-fly, avocado-wink,
-│   │        # avocado-hug, icecream, sunglasses, fishing) — check the directory for the
+│   │   ├── mascot-<pose>.webp        # full die-cut sticker (with caption) — legible on any background
+│   │   └── mascot-<pose>-icon.webp   # no caption, no border — UI-glyph use (logo, bullets, checkbox ticks)
+│   │        # 14 poses currently (heart, heart-alt, rocket, rocket-fly, avocado-wink,
+│   │        # avocado-hug, icecream, sunglasses, fishing + teacher, reading, dad, feeding,
+│   │        # cheer — the last 5 have no -icon variant); check the directory for the
 │   │        # current full list, this set grows incrementally
 │   ├── og-default.svg/png    # Default Open Graph image
 │   ├── og-english.svg/png    # O-Level English OG image
@@ -440,7 +441,7 @@ When the academic year rolls over, update these in order — most date-sensitive
 - Study Hub materials live in `public/study/*.html` and are auto-discovered. The viewer loads them with `iframe.srcdoc`, **not** `iframe.src` — the sitewide `X-Frame-Options: DENY` / `frame-ancestors 'none'` blocks real iframe navigations, and a path-scoped header override does not help because Cloudflare Pages *merges* `_headers` rules instead of replacing them. Do not switch it back to `src`
 - The site logo (`public/images/logo.webp`/`.png`) is a hand-drawn mascot, not the old navy "A|W" SVG — see "Brand Mascots" above before touching Header/Footer logo markup, favicons, or the schema.org `logo` field
 - Never reintroduce `filter: brightness(0) invert(1)` on `.footer-logo-img` — it was removed because it crushes the full-color mascot into a flat white silhouette. The footer wordmark ("A-Worthy") is live text (`.footer-logo-text`), not baked into the image, specifically so it can be colored independently for the always-dark footer
-- Mascot "full" variants (with the baked-in "A-Worthy Education" caption) are illegible on dark navy backgrounds — the caption ink color is essentially the same navy as `--bg-footer`/`--color-primary`. Use the `-icon` variant (no caption) on any dark-navy-filled surface
+- Mascot "full" variants now carry a white die-cut border, so their baked-in navy caption stays legible on dark surfaces — the old "use the `-icon` variant on navy" rule no longer applies. Reach for `-icon` only when a small caption-less mark is wanted (bullets, ticks, the logo)
 - Below-the-fold stickers use `loading="lazy"`, so a headless full-page screenshot shows them **blank** unless the page is scrolled through first — that is a capture artifact, not a rendering bug. The verification harness scrolls before capturing; do the same rather than "fixing" it by removing `loading="lazy"`
 - The header CTA (`.header-cta`) is now a filled gold pill that inherits `.btn-accent`; it used to be a ghost/outline button with a dark-mode override that re-asserted the ghost look. Don't resurrect that override — the filled pill has white text, so the orange-on-orange problem it worked around no longer exists
 - index.astro has ~10 back-to-back inline `<script is:inline>` blocks. A missing `</script>` on any one of them silently merges it with every script after it into a single blob that fails to parse — breaking all of them with no obvious error (this happened for real: it took out both the programme quiz and the audience toggle at once, with the toggle's click handler simply never attaching). If an inline script on this page mysteriously does nothing, check for an unclosed `<script>` tag earlier in the file before assuming the handler logic itself is wrong
