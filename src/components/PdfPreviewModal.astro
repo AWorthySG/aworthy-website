@@ -97,7 +97,7 @@
     max-height: 90vh;
     background: var(--pdf-bg);
     border: 1px solid var(--pdf-border);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     transform: translateY(20px) scale(0.97);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -135,7 +135,7 @@
     color: var(--color-accent, #D4853A);
     background: rgba(212, 133, 58, 0.12);
     padding: 0.25rem 0.6rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     white-space: nowrap;
     flex-shrink: 0;
   }
@@ -163,13 +163,12 @@
     align-items: center;
     gap: 0.4rem;
     font-family: var(--font-body, 'Nunito', sans-serif);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0;
     padding: 0.5rem 1rem;
     border: none;
-    border-radius: 3px;
+    border-radius: 999px;
     cursor: pointer;
     text-decoration: none;
     white-space: nowrap;
@@ -207,7 +206,7 @@
     border: none;
     color: var(--pdf-text-muted);
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: color 0.2s ease, background 0.2s ease;
     margin-left: 0.25rem;
   }

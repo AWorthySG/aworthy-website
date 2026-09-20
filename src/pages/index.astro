@@ -28,6 +28,9 @@ import '../styles/global.css';
         <span class="hero-tagline"><span class="hero-letter" style="--i:0">A</span><span class="hero-letter hero-letter--space" style="--i:1">&nbsp;</span><span class="hero-letter hero-letter--italic" style="--i:2">W</span><span class="hero-letter hero-letter--italic" style="--i:3">o</span><span class="hero-letter hero-letter--italic" style="--i:4">r</span><span class="hero-letter hero-letter--italic" style="--i:5">t</span><span class="hero-letter hero-letter--italic" style="--i:6">h</span><span class="hero-letter hero-letter--italic" style="--i:7">y</span></span>
         <span class="hero-underline" aria-hidden="true"></span>
       </h1>
+      <div class="hero-sticker hero-anim" style="--d:9" aria-hidden="true">
+        <img src="/images/mascots/mascot-cheer.webp" alt="" width="455" height="508" class="sticker sticker--right" />
+      </div>
       <p class="hero-sub hero-anim" style="--d:10">Your child studies hard but their grades don&rsquo;t move. They know the content &mdash; they just can&rsquo;t show it under exam pressure. SHARP gives them a five-step system to see what the question wants, pick the right framework, and write answers that score &mdash; across O-Level English &amp; Maths, H1 General Paper, and H2 Economics.</p>
 
       <div class="hero-proof-row hero-anim" style="--d:12">
@@ -293,9 +296,12 @@ import '../styles/global.css';
   <section class="section whiteboard-band">
     <div class="container">
       <div class="wb-head" data-animate="reveal-up">
-        <span class="eyebrow">Learning Platform</span>
-        <h2 class="section-heading">Lessons happen on the <span class="wb-name">A-Worthy Whiteboard</span></h2>
-        <p class="wb-sub">Built for the SHARP Method &mdash; live face-to-face teaching, a shared writing canvas, and every session recorded. All in one browser tab, no downloads.</p>
+        <div class="wb-head__text">
+          <span class="eyebrow">Learning Platform</span>
+          <h2 class="section-heading">Lessons happen on the <span class="wb-name">A-Worthy Whiteboard</span></h2>
+          <p class="wb-sub">Built for the SHARP Method &mdash; live face-to-face teaching, a shared writing canvas, and every session recorded. All in one browser tab, no downloads.</p>
+        </div>
+        <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="wb-head__sticker sticker sticker--right" loading="lazy" />
       </div>
 
       <div class="wb-grid">
@@ -341,7 +347,7 @@ import '../styles/global.css';
           <span class="eyebrow" data-animate="reveal-up">What Families Say</span>
           <h2 class="section-heading" data-animate="reveal-up">What Singapore parents and students say about our tuition</h2>
         </div>
-        <img src="/images/mascots/mascot-heart.webp" alt="" width="279" height="393" class="testimonials-head__mascot" data-animate="reveal-up" />
+        <img src="/images/mascots/mascot-dad.webp" alt="" width="360" height="508" class="testimonials-head__mascot sticker sticker--right" loading="lazy" />
       </div>
 
       <div class="testimonials-grid">
@@ -951,7 +957,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .section-heading {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 4.5vw, 3rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     line-height: 1.08;
     margin-bottom: 0.75rem;
@@ -1065,9 +1071,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: block;
     font-family: var(--font-body);
     font-size: clamp(1rem, 2.5vw, 1.5rem);
-    font-weight: 300;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.35em;
+    letter-spacing: 0.3em;
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
   }
@@ -1087,11 +1093,11 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .hero-tagline {
     display: block;
     font-family: var(--font-heading);
-    font-size: clamp(4.5rem, 14vw, 10rem);
-    font-weight: 200;
+    font-size: clamp(4rem, 12vw, 8.5rem);
+    font-weight: 800;
     font-style: normal;
     line-height: 0.95;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.04em;
     color: var(--text-primary);
     /* The per-letter spans must never wrap mid-word ("A Worth / y") */
     white-space: nowrap;
@@ -1108,7 +1114,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .hero-letter--italic {
     font-style: italic;
-    font-weight: 300;
+    font-weight: 800;
     color: transparent;
     background: linear-gradient(135deg, #B87333 0%, #D4853A 35%, #e8a060 55%, #D4853A 75%, #B87333 100%);
     background-size: 200% 200%;
@@ -1185,7 +1191,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .hero-proof-num {
     font-family: var(--font-heading);
     font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 200;
+    font-weight: 800;
     letter-spacing: -0.02em;
     line-height: 1;
     color: var(--text-primary);
@@ -1203,14 +1209,13 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .btn-outline {
     background: transparent;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--ink-soft);
     color: var(--text-primary);
-    padding: 0.875rem 2rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    padding: 0.8rem 1.75rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0;
     transition: all 0.3s ease;
     text-decoration: none;
   }
@@ -1262,19 +1267,15 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   /* CTAs inherit gradient bevel + radius from .btn-accent / .btn (global D.1, D.3). */
   .hero-cta-primary {
-    padding: 0.875rem 2.5rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    padding: 0.9rem 2.25rem;
+    font-size: 1rem;
   }
 
   .hero-cta-secondary {
     display: inline-flex;
     align-items: center;
-    padding: 0.875rem 2rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    padding: 0.9rem 1.9rem;
+    font-size: 1rem;
   }
 
   .hero-badges-row {
@@ -1285,16 +1286,27 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .hero-badge {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.8rem;
-    border: 1px solid var(--border-color);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border: 1.5px solid var(--ink-soft);
     border-radius: 999px;
     color: var(--text-secondary);
-    background: transparent;
+    background: var(--bg-card);
+  }
+
+  /* Cheer sticker floats in the empty margin beside the display; hidden once
+     that margin gets narrow enough to collide with the headline. */
+  .hero-sticker {
+    position: absolute;
+    right: -9rem;
+    top: 24%;
+    width: 170px;
+    z-index: 1;
+  }
+  @media (max-width: 1279px) {
+    .hero-sticker { display: none; }
   }
 
   /* Scroll cue */
@@ -1504,7 +1516,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: block;
     font-family: var(--font-heading);
     font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.03em;
     line-height: 1;
@@ -1642,8 +1654,26 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .wb-head {
-    max-width: 720px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    max-width: 920px;
     margin: 0 auto 2.5rem;
+  }
+
+  .wb-head__text {
+    max-width: 720px;
+  }
+
+  .wb-head__sticker {
+    flex-shrink: 0;
+    width: 150px;
+  }
+
+  @media (max-width: 640px) {
+    .wb-head__sticker { width: 110px; }
+    .wb-head { flex-direction: column; gap: 1.25rem; }
   }
 
   .wb-name {
@@ -1845,7 +1875,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     transition: all 0.4s ease;
   }
@@ -2030,7 +2060,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     text-decoration: none;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     padding: 1.75rem;
     transition: all 0.35s ease;
     position: relative;
@@ -2053,7 +2083,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .vault-card:hover::before { opacity: 1; }
   .vault-icon {
     width: 44px; height: 44px;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     background: rgba(212,133,58,0.08);
     display: flex; align-items: center; justify-content: center;
     color: var(--color-accent);
@@ -2139,7 +2169,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     border: 1px solid rgba(212, 133, 58, 0.2);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all 0.3s ease;
   }
   .reviews-link:hover {
@@ -2275,13 +2305,12 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .btn-primary {
     background: var(--accent);
     color: var(--on-dark);
-    border: 1px solid var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 0.85rem 2rem;
-    border-radius: 4px;
+    border: 2px solid var(--accent);
+    letter-spacing: 0;
+    font-size: 0.95rem;
+    font-weight: 800;
+    padding: 0.8rem 1.9rem;
+    border-radius: var(--radius-pill);
     text-decoration: none;
     display: inline-block;
     transition: background 0.2s ease, transform 0.2s ease;
@@ -2295,13 +2324,12 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .btn-secondary {
     background: transparent;
     color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 0.85rem 2rem;
-    border-radius: 4px;
+    border: 2px solid var(--ink-soft);
+    letter-spacing: 0;
+    font-size: 0.95rem;
+    font-weight: 800;
+    padding: 0.8rem 1.9rem;
+    border-radius: var(--radius-pill);
     text-decoration: none;
     display: inline-block;
     transition: border-color 0.2s ease, transform 0.2s ease;
@@ -2348,7 +2376,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     padding: 2rem 0;
     margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: var(--bg-card);
     backdrop-filter: blur(12px);
   }
@@ -2361,7 +2389,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: block;
     font-family: var(--font-heading);
     font-size: 2.5rem;
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.03em;
     line-height: 1;
@@ -2411,14 +2439,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .result-bar-track {
     height: 10px;
     background: var(--border-color);
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
   }
   .result-bar-fill {
     height: 100%;
     width: 0;
     background: linear-gradient(90deg, var(--color-accent), #f5a623);
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .results-section.is-visible .result-bar-fill,
@@ -2433,7 +2461,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .transform-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding: 1.25rem;
     text-align: center;
     backdrop-filter: blur(12px);
@@ -2538,7 +2566,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-size: 0.9rem;
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     color: var(--text-primary);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     font-family: var(--font-body);
@@ -2569,7 +2597,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     padding: 1rem;
     background: rgba(212,133,58,0.1);
     border: 1px solid rgba(212,133,58,0.2);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     color: var(--color-accent);
     font-size: 0.9rem;
     margin-top: 0.5rem;
@@ -2580,7 +2608,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     padding: 1rem;
     background: rgba(248,113,113,0.1);
     border: 1px solid rgba(248,113,113,0.2);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     color: #f87171;
     font-size: 0.85rem;
     margin-top: 0.5rem;
@@ -2846,7 +2874,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
     border-top: 3px solid var(--color-accent);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 2.5rem;
     text-align: center;
     max-width: 640px;
@@ -2902,7 +2930,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: var(--text-primary);
     background: transparent;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: left;
@@ -3137,14 +3165,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .grade-before-animated {
     font-family: var(--font-heading);
     font-size: 2rem;
-    font-weight: 200;
+    font-weight: 800;
     color: var(--grade-before-ink, #C0392B);
     opacity: 0.85;
   }
   .grade-after-animated {
     font-family: var(--font-heading);
     font-size: 2.5rem;
-    font-weight: 200;
+    font-weight: 800;
     color: var(--grade-after-ink, #187A42);
     animation: grade-glow 2s ease-in-out infinite;
   }

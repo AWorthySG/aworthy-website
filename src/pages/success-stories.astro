@@ -132,6 +132,7 @@ const stories = [
       <h1>Real students, real transformations</h1>
       <p class="hero-subtitle">Every grade improvement starts with the right method &mdash; the SHARP Method (See, Hit, Apply, Refine, Practise). Here are six students across O-Level English, H1 General Paper, and H2 Economics who proved it.</p>
     </div>
+    <img src="/images/mascots/mascot-cheer.webp" alt="" width="455" height="508" class="sticker sticker--hero" />
   </section>
 
   <!-- ===== STORIES ===== -->
@@ -203,6 +204,8 @@ const stories = [
     padding: 1.25rem 0 1rem;
     text-align: center;
     background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
   }
   .hero-content {
     max-width: 720px;
@@ -212,7 +215,7 @@ const stories = [
   .hero h1 {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     line-height: 1.15;
     margin-bottom: 1rem;
@@ -330,7 +333,7 @@ const stories = [
     background: rgba(212, 133, 58, 0.1);
     border: 1px solid rgba(212, 133, 58, 0.2);
     padding: 0.2rem 0.6rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin-top: 0.25rem;
   }
 

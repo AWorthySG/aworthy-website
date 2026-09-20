@@ -350,7 +350,7 @@ const frameworkIndex = [
 
   /* ── Hero ── */
   .fw-hero { padding: 3rem 0 2rem; background: var(--bg-secondary); }
-  .fw-hero__title { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 200; line-height: 1.12; margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em; }
+  .fw-hero__title { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; line-height: 1.12; margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em; }
   .fw-hero__lead { max-width: 720px; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); margin: 0 0 2rem; }
 
   .fw-index { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
@@ -373,7 +373,7 @@ const frameworkIndex = [
 
   /* ── STAMP CARD ── */
   .stamp__tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
-  .stamp__chip { width: 52px; height: 52px; display: grid; place-items: center; border: 1.5px solid var(--border-color); background: var(--bg-card); border-radius: 10px; cursor: pointer; transition: all var(--transition-fast); color: var(--text-secondary); }
+  .stamp__chip { width: 52px; height: 52px; display: grid; place-items: center; border: 1.5px solid var(--border-color); background: var(--bg-card); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast); color: var(--text-secondary); }
   .stamp__chip-letter { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.02em; }
   .stamp__chip-letter sup { font-size: 0.6em; font-weight: 700; }
   .stamp__chip:hover { border-color: var(--fw-accent); color: var(--fw-accent); }
@@ -382,7 +382,7 @@ const frameworkIndex = [
   .stamp__panel { display: none; }
   .stamp__panel.is-active { display: block; }
   .stamp__panel-head { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
-  .stamp__panel-badge { flex-shrink: 0; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 10px; background: var(--fw-accent); color: #fff; font-size: 1.15rem; font-weight: 800; }
+  .stamp__panel-badge { flex-shrink: 0; width: 46px; height: 46px; display: grid; place-items: center; border-radius: var(--radius-md); background: var(--fw-accent); color: #fff; font-size: 1.15rem; font-weight: 800; }
   .stamp__panel-badge sup { font-size: 0.6em; }
   .stamp__panel-name { font-size: 1.2rem; font-weight: 700; margin: 0.1rem 0 0.2rem; }
   .stamp__panel-check { font-size: 0.95rem; color: var(--text-secondary); margin: 0; }
@@ -438,7 +438,7 @@ const frameworkIndex = [
   .qtype-col__head { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.75rem; }
   .qtype-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
   .qtype { display: flex; align-items: center; gap: 0.7rem; padding: 0.5rem 0.7rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); font-size: 0.88rem; }
-  .qtype__code { flex-shrink: 0; font-weight: 800; font-size: 0.78rem; padding: 0.15rem 0.45rem; border-radius: 5px; color: #fff; }
+  .qtype__code { flex-shrink: 0; font-weight: 800; font-size: 0.78rem; padding: 0.15rem 0.45rem; border-radius: var(--radius-sm); color: #fff; }
   .qtype__code--a { background: #5d6e8c; } .qtype__code--b { background: #8a5a94; }
   .qtype__name { flex: 1; color: var(--text-primary); }
   .qtype__marks { flex-shrink: 0; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); }
@@ -447,7 +447,7 @@ const frameworkIndex = [
   .caps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
   .caps-card { padding: 1.25rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); }
   .caps-card__head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; }
-  .caps-card__letter { width: 38px; height: 38px; flex-shrink: 0; display: grid; place-items: center; border-radius: 9px; background: var(--color-accent); color: #fff; font-size: 1.1rem; font-weight: 800; }
+  .caps-card__letter { width: 38px; height: 38px; flex-shrink: 0; display: grid; place-items: center; border-radius: var(--radius-md); background: var(--color-accent); color: #fff; font-size: 1.1rem; font-weight: 800; }
   .caps-card__name { font-size: 1.1rem; font-weight: 700; margin: 0; }
   .caps-card__desc { font-size: 0.9rem; line-height: 1.55; color: var(--text-secondary); margin: 0 0 0.9rem; }
   .caps-card__demo { display: flex; flex-direction: column; gap: 0.4rem; }

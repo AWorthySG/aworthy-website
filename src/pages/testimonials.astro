@@ -114,7 +114,7 @@ const testimonials = [
   <!-- ===== HERO ===== -->
   <section class="t-hero">
     <div class="t-container t-hero-inner">
-      <img src="/images/mascots/mascot-heart.webp" alt="" width="279" height="393" class="t-hero-mascot" />
+      <img src="/images/mascots/mascot-heart.webp" alt="" width="299" height="413" class="t-hero-mascot sticker sticker--right" />
       <span class="eyebrow">Reviews</span>
       <h1 class="t-hero-heading">What Singapore parents and students say about A-Worthy</h1>
       <p class="t-hero-subtitle">
@@ -307,7 +307,7 @@ const testimonials = [
   .t-hero-heading {
     font-family: var(--font-body);
     font-size: clamp(2.5rem, 5vw, 3.75rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     line-height: 1.1;
     letter-spacing: -0.03em;
@@ -347,7 +347,7 @@ const testimonials = [
     display: block;
     font-family: var(--font-body);
     font-size: 2.25rem;
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     line-height: 1.2;
     letter-spacing: -0.03em;
@@ -515,7 +515,7 @@ const testimonials = [
   .t-google-heading {
     font-family: var(--font-heading);
     font-size: clamp(1.6rem, 3.2vw, 2.2rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.03em;
     line-height: 1.25;
@@ -638,7 +638,7 @@ const testimonials = [
   .t-cta-heading {
     font-family: var(--font-body);
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     line-height: 1.15;
     letter-spacing: -0.03em;
@@ -668,7 +668,7 @@ const testimonials = [
   .t-video-heading {
     font-family: var(--font-body);
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: 200;
+    font-weight: 800;
     color: var(--text-primary);
     line-height: 1.15;
     letter-spacing: -0.03em;
@@ -691,7 +691,7 @@ const testimonials = [
     aspect-ratio: 16 / 9;
     background: linear-gradient(135deg, rgba(43, 90, 140, 0.08), rgba(212, 133, 58, 0.06));
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -738,7 +738,7 @@ const testimonials = [
     aspect-ratio: 16/9;
     background: var(--bg-card);
     border: 2px dashed var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -843,7 +843,7 @@ const testimonials = [
   }
   .carousel {
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-top: 2px solid var(--color-accent);

@@ -96,6 +96,7 @@ const count = materials.length;
         between classes and on a laptop beside your practice paper. Bookmark any material to come straight back to it.
       </p>
     </div>
+    <img src="/images/mascots/mascot-reading.webp" alt="" width="477" height="640" class="sticker sticker--hero" />
   </section>
 
   <!-- ===== LIBRARY ===== -->
@@ -195,9 +196,9 @@ const count = materials.length;
 
 <style>
   /* ── Hero ── */
-  .sh-hero { padding: 3rem 0 2rem; background: var(--bg-secondary); }
+  .sh-hero { padding: 3rem 0 2rem; background: var(--bg-secondary); position: relative; overflow: hidden; }
   .sh-hero__title {
-    font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 200; line-height: 1.12;
+    font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; line-height: 1.12;
     margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em;
   }
   .sh-hero__lead { max-width: 680px; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); margin: 0; }
@@ -294,9 +295,9 @@ const count = materials.length;
   .sh-viewer__actions { display: flex; gap: 0.5rem; flex: 0 0 auto; }
   .sh-viewer__btn {
     display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.85rem;
-    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-family: var(--font-body); font-size: 0.82rem; letter-spacing: 0;
     font-weight: 700; color: var(--text-secondary); text-decoration: none; cursor: pointer;
-    background: transparent; border: 1px solid var(--border-color); border-radius: var(--border-radius);
+    background: transparent; border: 1.5px solid var(--ink-soft); border-radius: var(--radius-pill);
     transition: color var(--transition-fast), border-color var(--transition-fast);
   }
   .sh-viewer__btn:hover { color: var(--text-primary); border-color: var(--color-primary); }
