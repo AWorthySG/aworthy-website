@@ -144,9 +144,9 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-row--l1 { padding: 0.6rem 0.75rem; background: rgba(212,133,58,0.08); border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-bottom: 1.25rem; }
   .calc-subject { font-size: 0.9rem; color: var(--text-secondary); }
   .calc-subject em { color: var(--color-accent); font-style: normal; font-weight: 600; }
-  .calc-select { min-width: 130px; padding: 0.4rem 0.6rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem; }
+  .calc-select { min-width: 130px; min-height: 44px; padding: 0.4rem 0.6rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem; }
   .calc-select:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; }
-  .calc-bonus .calc-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); padding: 0.25rem 0; cursor: pointer; }
+  .calc-bonus .calc-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); padding: 0.35rem 0; min-height: 44px; cursor: pointer; }
   .calc-check input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
   .calc-check .check-box { position: relative; display: inline-block; width: 1.15rem; height: 1.15rem; flex-shrink: 0; border: 1.5px solid var(--border-color); border-radius: 5px; background: var(--bg-primary); transition: border-color var(--transition-fast); }
   .calc-check .check-box::after { content: ''; position: absolute; inset: -3px; background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat; opacity: 0; transform: scale(0.5); transition: opacity var(--transition-fast), transform var(--transition-fast); }
@@ -156,7 +156,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   @media (prefers-reduced-motion: reduce) { .calc-check .check-box::after { transition: none; } }
   .calc-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.5rem; }
   .calc-btn { cursor: pointer; }
-  .calc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; }
+  .calc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; min-height: 44px; padding: 0.5rem 0.6rem; }
   .calc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
   :global([data-theme="dark"]) .calc-error { color: #ff8a7a; }
 

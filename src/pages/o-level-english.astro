@@ -1145,7 +1145,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .prog-nav { background: var(--prog-bg); border-bottom: 1px solid var(--prog-border); padding: 0.75rem 0; position: sticky; top: var(--nav-offset); z-index: 90; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
   .prog-nav::-webkit-scrollbar { display: none; }
   .prog-nav__inner { display: flex; justify-content: center; gap: 2rem; flex-wrap: nowrap; min-width: max-content; }
-  .prog-nav__link { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--prog-text-secondary); text-decoration: none; padding: 0.4rem 0; min-height: 44px; display: inline-flex; align-items: center; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; touch-action: manipulation; }
+  .prog-nav__link { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--prog-text-secondary); text-decoration: none; padding: 0.4rem 0.3rem; min-height: 44px; display: inline-flex; align-items: center; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; touch-action: manipulation; }
   .prog-nav__link:hover { color: var(--prog-text); border-bottom-color: var(--prog-accent); }
   .prog-nav__link.is-active { color: var(--subject-accent-text); border-bottom-color: var(--subject-accent-text); font-weight: 600; }
   .prog-section { background: var(--prog-bg); padding: 1.25rem 0; scroll-margin-top: calc(var(--nav-offset) + 48px); }
@@ -1238,7 +1238,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .prog-cta__btn--whatsapp { display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #11100E; border: none; text-decoration: none; transition: background var(--transition-fast); }
   .prog-cta__btn--whatsapp:hover { background: #4be07f; color: #11100E; }
   @media (max-width: 768px) { .prog-hero { padding: 1rem 0 0.75rem; } .prog-section { padding: 1rem 0; } .prog-section__sub { margin-bottom: 0.75rem; } .prog-nav__inner { gap: 1rem; } .card-grid--2 { grid-template-columns: 1fr; } .prog-card { padding: 1.25rem; } .prog-cta { padding: 1.25rem 0; } .faq-section, .recommended-reading, .subject-testimonials, .related-section { padding: 1rem 0; } }
-  @media (max-width: 480px) { .prog-hero { padding: 0.75rem 0 0.5rem; } .prog-hero__heading { font-size: 1.8rem; margin-bottom: 0.5rem; } .prog-hero__sub { font-size: 0.95rem; } .prog-section { padding: 0.75rem 0; } .prog-section__heading { margin-bottom: 0.5rem; } .prog-section__sub { margin-bottom: 0.5rem; } .prog-nav__inner { gap: 0.6rem; } .prog-nav__link { font-size: 0.7rem; padding: 0.5rem 0; min-height: 44px; display: inline-flex; align-items: center; } .prog-cta__actions { flex-direction: column; align-items: center; } .prog-cta__btn { width: 100%; text-align: center; } .prog-card__meta span { font-size: 0.75rem; } .lesson-step__time { font-size: 0.75rem; } .prog-card { padding: 1rem; } .faq-section, .recommended-reading, .subject-testimonials, .related-section { padding: 0.75rem 0; } }
+  @media (max-width: 480px) { .prog-hero { padding: 0.75rem 0 0.5rem; } .prog-hero__heading { font-size: 1.8rem; margin-bottom: 0.5rem; } .prog-hero__sub { font-size: 0.95rem; } .prog-section { padding: 0.75rem 0; } .prog-section__heading { margin-bottom: 0.5rem; } .prog-section__sub { margin-bottom: 0.5rem; } .prog-nav__inner { gap: 0.6rem; } .prog-nav__link { font-size: 0.75rem; padding: 0.5rem 0; min-height: 44px; display: inline-flex; align-items: center; } .prog-cta__actions { flex-direction: column; align-items: center; } .prog-cta__btn { width: 100%; text-align: center; } .prog-card__meta span { font-size: 0.75rem; } .lesson-step__time { font-size: 0.75rem; } .prog-card { padding: 1rem; } .faq-section, .recommended-reading, .subject-testimonials, .related-section { padding: 0.75rem 0; } }
 
   /* ===== STICKY TOC ===== */
   .sticky-toc {
@@ -1549,7 +1549,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     gap: 0.75rem;
     justify-content: center;
   }
-  .oral-peel__label { font-family: var(--prog-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+  .oral-peel__label { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
   .oral-peel__chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
   .oral-peel__chip { font-size: 0.85rem; padding: 0.35rem 0.65rem; border-radius: 999px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); }
   .oral-peel__chip strong { color: var(--subject-accent-text); }
@@ -1563,7 +1563,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
 
   .oral-anatomy { margin-bottom: 2.5rem; }
   .oral-anatomy__head { margin-bottom: 1.25rem; }
-  .oral-anatomy__label { display: block; font-family: var(--prog-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subject-accent-text); margin-bottom: 0.4rem; }
+  .oral-anatomy__label { display: block; font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subject-accent-text); margin-bottom: 0.4rem; }
   .oral-anatomy__prompt { font-size: 1rem; color: var(--text-primary); margin: 0; }
   .oral-anatomy__meta { display: inline-block; margin-left: 0.5rem; font-size: 0.78rem; color: var(--text-muted); font-style: normal; }
   .oral-anatomy__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
@@ -1578,15 +1578,15 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   }
   .oral-row:first-of-type { border-top: none; }
   .oral-row__stage { display: flex; flex-direction: column; gap: 0.35rem; }
-  .oral-row__badge { display: inline-block; align-self: flex-start; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--subject-accent); color: #fff; }
+  .oral-row__badge { display: inline-block; align-self: flex-start; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--subject-accent); color: #fff; }
   .oral-row__label { font-size: 0.78rem; color: var(--text-muted); }
   .oral-row__text { font-size: 0.94rem; line-height: 1.6; color: var(--text-primary); margin: 0; }
   .oral-row__why { font-size: 0.86rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
-  .oral-row__why-tag { display: block; font-family: var(--prog-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .oral-row__why-tag { display: block; font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
 
   .oral-spheres { margin-bottom: 2rem; }
   .oral-spheres__head { margin-bottom: 1.1rem; }
-  .oral-spheres__label { display: block; font-family: var(--prog-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subject-accent-text); margin-bottom: 0.4rem; }
+  .oral-spheres__label { display: block; font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subject-accent-text); margin-bottom: 0.4rem; }
   .oral-spheres__prompt { font-size: 1rem; color: var(--text-primary); margin: 0 0 0.4rem; }
   .oral-spheres__sub { font-size: 0.88rem; color: var(--text-secondary); margin: 0; }
   .oral-spheres__chain { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; }
@@ -1610,41 +1610,41 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
 
   /* Inside the exam (PEEL Model Answer Scheme) */
   .oral-exam { margin: 1.75rem 0; border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); background: var(--bg-card); padding: 1.25rem 1.4rem; }
-  .oral-exam__label { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
+  .oral-exam__label { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
   .oral-exam__facts { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0.4rem 0 1rem; }
   .oral-exam__parts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1rem; }
   .oral-part { border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 0.9rem 1rem; background: var(--bg-secondary); }
-  .oral-part__tag { display: inline-block; font-family: var(--prog-mono); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--subject-accent); border-radius: var(--radius-sm); padding: 0.15rem 0.5rem; margin-bottom: 0.35rem; }
+  .oral-part__tag { display: inline-block; font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--subject-accent); border-radius: var(--radius-sm); padding: 0.15rem 0.5rem; margin-bottom: 0.35rem; }
   .oral-part__name { display: block; font-weight: 700; color: var(--text-primary); font-size: 0.98rem; }
   .oral-part__marks { display: block; font-size: 0.76rem; color: var(--text-muted); margin: 0.1rem 0 0.4rem; }
   .oral-part__desc { font-size: 0.88rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
   .oral-band { border-top: 1px dashed var(--border-color); padding-top: 0.9rem; }
-  .oral-band__tag { display: block; font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); margin-bottom: 0.3rem; }
+  .oral-band__tag { display: block; font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); margin-bottom: 0.3rem; }
   .oral-band p { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
   .oral-band strong { color: var(--text-primary); }
 
   /* Part 2 exchange */
   .oral-exchange { margin: 0 0 1.25rem; border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.25rem 1.4rem; background: var(--bg-card); }
-  .oral-exchange__label { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
+  .oral-exchange__label { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
   .oral-exchange__prompt { font-size: 1.02rem; font-weight: 600; color: var(--text-primary); margin: 0.35rem 0 1rem; }
   .oral-exchange__meta { display: block; font-size: 0.76rem; font-weight: 400; color: var(--text-muted); margin-top: 0.2rem; }
   .oral-exchange__row { display: flex; gap: 0.8rem; align-items: flex-start; padding: 0.55rem 0; border-top: 1px dashed var(--border-color); }
   .oral-exchange__badge { flex-shrink: 0; width: 30px; height: 30px; display: grid; place-items: center; border-radius: var(--radius-sm); background: var(--subject-accent); color: #fff; font-weight: 800; font-size: 0.82rem; }
-  .oral-exchange__stage { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.15rem; }
+  .oral-exchange__stage { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.15rem; }
   .oral-exchange__text { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
   .oral-exchange__note { margin: 0.75rem 0 0; padding-top: 0.75rem; border-top: 1px dashed var(--border-color); font-size: 0.85rem; line-height: 1.55; color: var(--text-muted); }
 
   .oral-band__quote { margin-top: 0.75rem !important; padding: 0.7rem 0.9rem; background: var(--bg-secondary); border-radius: var(--border-radius); font-size: 0.88rem; font-style: italic; }
-  .oral-band__quote-tag { display: block; font-family: var(--prog-mono); font-style: normal; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .oral-band__quote-tag { display: block; font-family: var(--prog-mono); font-style: normal; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
 
   /* Part 1 planned speech, mapped */
   .oral-planned { margin: 0 0 1.25rem; border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.25rem 1.4rem; background: var(--bg-card); }
-  .oral-planned__label { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
+  .oral-planned__label { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
   .oral-planned__prompt { font-size: 1.02rem; font-weight: 600; color: var(--text-primary); margin: 0.35rem 0 1rem; }
   .oral-planned__meta { display: block; font-size: 0.76rem; font-weight: 400; color: var(--text-muted); margin-top: 0.2rem; }
   .oral-planned__flow { display: grid; gap: 0.55rem; }
   .oral-planned__step { display: grid; grid-template-columns: 150px 1fr; gap: 0.8rem; align-items: start; padding: 0.55rem 0; border-top: 1px dashed var(--border-color); }
-  .oral-planned__stage { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--subject-accent-text); padding-top: 0.2rem; }
+  .oral-planned__stage { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--subject-accent-text); padding-top: 0.2rem; }
   .oral-planned__text { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0; }
   .oral-planned__note { margin: 0.75rem 0 0; padding-top: 0.75rem; border-top: 1px dashed var(--border-color); font-size: 0.85rem; line-height: 1.55; color: var(--text-muted); }
 
@@ -1662,7 +1662,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
 
   /* Scheme page gallery (mirrors the H2 Economics notes gallery) */
   .oral-pages { margin: 0 0 1.25rem; }
-  .oral-pages__label { font-family: var(--prog-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
+  .oral-pages__label { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--subject-accent-text); }
   .oral-pages__sub { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0.35rem 0 1rem; max-width: 680px; }
   .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .notes-gallery--two { grid-template-columns: repeat(2, 1fr); }

@@ -895,6 +895,10 @@ label {
   :root { --page-padding: 1.5rem; --space-3xl: 1.5rem; }
   .section { padding: var(--space-3xl) 0; }
   .container { padding: 0 var(--page-padding); }
+  /* Display type steps down so long titles hold to ~3 lines on a phone */
+  h1 { font-size: clamp(2rem, 7.5vw, 3rem); }
+  h2 { font-size: clamp(1.6rem, 5.5vw, 2.25rem); }
+  .eyebrow { font-size: 0.75rem; }
 }
 
 /* Phone */
@@ -903,7 +907,19 @@ label {
   .container { padding: 0 var(--page-padding); }
   .section { padding: var(--space-3xl) 0; }
   .btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; width: 100%; }
-  .eyebrow { font-size: clamp(0.75rem, 1.6vw, 0.8rem); }
+  h1 { font-size: clamp(1.9rem, 8.5vw, 2.4rem); }
+  h2 { font-size: clamp(1.5rem, 6.5vw, 1.9rem); }
+  .eyebrow { font-size: 0.75rem; }
+}
+
+/* ─── Touch ergonomics ───
+   On coarse pointers, grow hit areas without moving layout: vertical padding
+   on inline links enlarges the tap box but not the line box. */
+@media (pointer: coarse) {
+  main p a, main li a, .hero-meta a, .footer-links a, .footer-contact a,
+  a[class$="__link"], a[class$="-link"] { padding-block: 0.3rem; }
+  select, textarea, input:not([type="checkbox"]):not([type="radio"]) { min-height: 44px; }
+  .faq-question { min-height: 48px; }
 }
 
 /* Tablet portrait */
@@ -1380,9 +1396,11 @@ label {
   z-index: 90;
   box-shadow: none;
   touch-action: manipulation;
-  /* Safe area for notched phones */
-  bottom: calc(2rem + var(--safe-area-bottom));
-  right: calc(2rem + var(--safe-area-right));
+  /* Safe area for notched phones; sits left of the WhatsApp float and rides
+     up with the sticky CTA bar (--sticky-bar-h is set by BaseLayout's script) */
+  bottom: calc(2rem + var(--sticky-bar-h, 0px) + var(--safe-area-bottom));
+  right: calc(2rem + 68px + var(--safe-area-right));
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, bottom 0.35s ease;
 }
 
 .back-to-top.is-visible {
@@ -1410,7 +1428,7 @@ label {
 
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: calc(5rem + var(--safe-area-bottom));
+    bottom: calc(5rem + var(--sticky-bar-h, 0px) + var(--safe-area-bottom));
     left: calc(1rem + var(--safe-area-left));
     right: auto;
     width: 44px;
@@ -1579,7 +1597,7 @@ html {
 
 /* Before/After answer-sample proof component (shared across subject pages) */
 .ba-question { background: var(--bg-secondary); border: 1px solid var(--border-color); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius); padding: 0.9rem 1.1rem; margin-bottom: 1.25rem; }
-.ba-q-label { display: block; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.35rem; }
+.ba-q-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.35rem; }
 .ba-question p { color: var(--text-primary); font-size: 0.98rem; margin: 0; line-height: 1.55; }
 .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 .ba-card { border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.25rem; background: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; }
