@@ -750,7 +750,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     min-height: 44px;
     padding: 0.7rem 1rem;
     background: var(--color-whatsapp);
-    color: #fff;
+    color: #0E2B19;
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-pill);
     box-shadow: 0 4px 0 var(--ink-shadow);
@@ -761,8 +761,8 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     transition: background-color 0.12s ease, transform 0.1s ease, box-shadow 0.1s ease;
   }
   .resource-gate-whatsapp:hover {
-    background: var(--color-whatsapp-dark);
-    color: #fff;
+    background: #4BE07F;
+    color: #0E2B19;
   }
   .resource-gate-whatsapp:active {
     transform: translateY(3px);
@@ -949,8 +949,15 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
     /* Natural heights: a compact card must never stretch to a sample card's row
-       (it would show a blank white block between blurb and link) */
+       (it would show a blank white block between blurb and link). Sample cards
+       opt back in below so their own rows are not ragged. */
     align-items: start;
+  }
+
+  /* Sample cards are all the same kind and sit together at the top of the grid,
+     so they stretch to a common row height (the compact cards below do not). */
+  .r-card--has-sample {
+    align-self: stretch;
   }
 
   /* Ink card — white sticker on the paper, 3px hard rest shadow, lifts on hover */
@@ -1020,12 +1027,9 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     margin-top: auto;
   }
 
-  .r-card-preview-btn {
-    flex: 1;
-  }
-
   .r-card-preview-btn,
   .r-card-download-btn {
+    flex: 1;
     white-space: nowrap;
   }
 

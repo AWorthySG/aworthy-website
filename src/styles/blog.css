@@ -198,7 +198,7 @@
   background: var(--color-danger-bg);
   color: var(--color-accent-text);
 }
-.blog-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.blog-related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 /* Related cards — white ink stickers that lift on hover (mirrors global .card-lift) */
 .blog-related-card {
   background: var(--bg-card);
@@ -224,10 +224,10 @@
 .blog-related-card--programme h3 { color: var(--color-accent-text); }
 
 @media (max-width: 860px) {
-  .blog-related-grid { grid-template-columns: 1fr 1fr; }
+  .blog-related-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 @media (max-width: 560px) {
-  .blog-related-grid { grid-template-columns: 1fr; }
+  .blog-related-grid { grid-template-columns: minmax(0, 1fr); }
   .blog-related { padding: 2rem 0 3rem; }
   .blog-post-cta { padding: 1.75rem 1.25rem; }
 }

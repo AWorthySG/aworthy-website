@@ -232,9 +232,6 @@ const stories = [
   }
 
   /* ===== STORY CARDS — white ink stickers that lift on hover ===== */
-  .stories-section {
-    background: var(--bg-primary);
-  }
   .story-card {
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
@@ -311,9 +308,9 @@ const stories = [
 
   /* Body */
   .story-body p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.8;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     margin-bottom: 1rem;
   }
   .story-body p:last-child {
@@ -394,8 +391,9 @@ const stories = [
     margin-top: 1.25rem;
     padding: 1rem 1.25rem;
     background: var(--bg-muted);
+    border: 2px solid var(--ink-faint);
     border-left: 6px solid var(--color-accent);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    border-radius: var(--radius-sm);
   }
   .story-quote p {
     font-size: 0.95rem;
@@ -439,10 +437,6 @@ const stories = [
     }
     .story-name {
       font-size: 1.25rem;
-    }
-    .hero {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
     }
   }
 </style>

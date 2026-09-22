@@ -143,10 +143,20 @@ import '../styles/global.css';
   .jc-cta-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
   /* The centre's own two JC programmes as LMS subject cards (sticker on its tint + subject dot) */
   .jc-cta-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; margin-top: 1rem; }
+  /* The two stickers have different intrinsic ratios, so sized by width their mats differ by ~8px and the
+     dashed divider, titles and dot rows stagger across the pair. Pin one mat height and one sticker height. */
+  .jc-cta-cards .subject-panel--sm { height: 160px; }
+  .jc-cta-cards .subject-panel--sm img { width: auto; height: 128px; max-width: 100%; }
   .jc-explainer { text-align: center; }
   .jc-explainer__note { max-width: 640px; margin: 0 auto; }
   .jc-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
+  /* Side by side the short form card leaves ~660px of blank column beside a long recommendation, and it
+     scrolls away just as the reader starts comparing — keep the control in view beside its own output.
+     --nav-offset = header + SubjectBar. Static once the columns stack. */
+  @media (min-width: 861px) {
+    .jc-card { position: sticky; top: calc(var(--nav-offset) + 1rem); }
+  }
   @media (max-width: 860px) {
     .jc-grid { grid-template-columns: 1fr; }
   }
