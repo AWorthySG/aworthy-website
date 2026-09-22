@@ -334,7 +334,20 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
         b.addEventListener('click', function () { answer(i); });
         elOpts.appendChild(b);
       });
+      revealPlay();
       if (!practice) startTimer();
+    }
+
+    // After Start or Next the play card could sit partly below the fold with the
+    // timer already running (short laptops, landscape phones). Bring the HUD,
+    // question and options into view — only when they're actually hidden, and
+    // offset for the fixed header.
+    function revealPlay() {
+      var r = screens.play.getBoundingClientRect();
+      var head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
+      if (r.top < head || r.bottom > window.innerHeight) {
+        window.scrollTo({ top: window.scrollY + r.top - head - 12, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
     }
 
     function stopTicker() {

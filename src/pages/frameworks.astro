@@ -579,7 +579,16 @@ const frameworkIndex = [
         if (badge) { badge.textContent = isB ? 'Category B' : 'Category A'; badge.className = 'classifier__badge ' + (isB ? 'is-b' : 'is-a'); }
         if (method) method.textContent = isB ? 'Infer it — use EIL (Evidence → Implication → Link)' : 'Locate it — use FLIP (Find → Lift → Interpret → Paraphrase)';
         if (reason) reason.textContent = btn.dataset.reason || '';
-        if (result) result.hidden = false;
+        if (result) {
+          result.hidden = false;
+          // On a phone the six questions stack ~430px tall, so the verdict
+          // appeared out of sight below them. Bring it into view when needed.
+          const r = result.getBoundingClientRect();
+          if (r.bottom > window.innerHeight || r.top < 0) {
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            result.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
+        }
       });
     });
 

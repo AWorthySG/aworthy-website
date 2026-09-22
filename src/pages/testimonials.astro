@@ -821,20 +821,45 @@ const testimonials = [
     });
   }
 
+  // Auto-rotate every 6 seconds. Auto-advancing content must be pausable
+  // (WCAG 2.2.2): hover pauses it for mouse users, and any touch, swipe, dot tap
+  // or keyboard focus hands control to the reader for good — touch screens have
+  // no hover, so readers there previously could not stop it. Reduced-motion
+  // users get no auto-advance at all.
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer = null;
+  var readerControl = false;
+  function start() {
+    if (reduce || readerControl || timer) return;
+    timer = setInterval(function() { goTo((current + 1) % count); }, 6000);
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function takeControl() { readerControl = true; stop(); }
+  start();
+
   dots.addEventListener('click', function(e) {
     var dot = e.target.closest('.carousel-dot');
-    if (dot) goTo(parseInt(dot.getAttribute('data-index')));
+    if (!dot) return;
+    takeControl();
+    goTo(parseInt(dot.getAttribute('data-index')));
   });
 
-  // Auto-rotate every 6 seconds
-  var timer = setInterval(function() {
-    goTo((current + 1) % count);
-  }, 6000);
+  var frame = track.parentElement;
+  frame.addEventListener('mouseenter', stop);
+  frame.addEventListener('mouseleave', start);
+  frame.addEventListener('focusin', takeControl);
 
-  // Pause on hover
-  track.parentElement.addEventListener('mouseenter', function() { clearInterval(timer); });
-  track.parentElement.addEventListener('mouseleave', function() {
-    timer = setInterval(function() { goTo((current + 1) % count); }, 6000);
-  });
+  // Swipe between testimonials on touch screens.
+  var x0 = null, y0 = null;
+  frame.addEventListener('touchstart', function(e) {
+    takeControl();
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+  }, { passive: true });
+  frame.addEventListener('touchend', function(e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    x0 = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) goTo((current + (dx < 0 ? 1 : count - 1)) % count);
+  }, { passive: true });
 })();
 </script>
