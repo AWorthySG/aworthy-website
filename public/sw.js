@@ -36,10 +36,25 @@ const PRECACHE = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(VERSION)
-      .then((cache) => cache.addAll(PRECACHE))
+      .then(precache)
       .then(() => self.skipWaiting())
   );
 });
+
+// Hosts may redirect /offline.html to /offline (Cloudflare Pages does). A
+// redirected response cannot be replayed for a navigation — the browser turns
+// it into a network error — so store a clean, non-redirected copy instead of
+// using cache.addAll().
+async function precache(cache) {
+  await Promise.all(PRECACHE.map(async (url) => {
+    const response = await fetch(url, { cache: 'reload' });
+    if (!response.ok) throw new Error(`precache ${url}: HTTP ${response.status}`);
+    const clean = response.redirected
+      ? new Response(await response.blob(), { status: response.status, statusText: response.statusText, headers: response.headers })
+      : response;
+    await cache.put(url, clean);
+  }));
+}
 
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
