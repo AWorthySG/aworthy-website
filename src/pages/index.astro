@@ -1242,7 +1242,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    z-index: var(--z-sticky-cta);
+    z-index: var(--z-sticky-bar); /* --z-sticky-cta never existed: the invalid var() left the bar at z-index auto, so page content painted over it */
     transform: translateY(100%);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border-top: 2px solid var(--color-ink);

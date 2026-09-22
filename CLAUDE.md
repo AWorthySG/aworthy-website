@@ -233,12 +233,18 @@ Subject pages use hardcoded tight spacing (1.25rem desktop, 1rem tablet, 0.75rem
 | Token | Value | Purpose |
 |-------|-------|---------|
 | `--z-base` | 1 | Base layer |
-| `--z-sticky-cta` | 90 | Global sticky CTA bar |
-| `--z-subject-bar` | 100 | Subject navigation bar |
-| `--z-header` | 110 | Site header |
-| `--z-dropdown` | 120 | Nav dropdowns |
-| `--z-modal` | 130 | PDF preview modal, chatbot |
-| `--z-scroll-progress` | 140 | Scroll progress bar |
+| `--z-overlay` | 10 | Reserved (currently unused) |
+| `--z-subject-selector` | 90 | Subject selector and the subject pages' sticky section-nav strip |
+| `--z-sticky-bar` | 95 | Global and homepage sticky CTAs |
+| `--z-header` | 100 | Site header |
+| `--z-subject-bar` | 190 | Subject navigation bar |
+| `--z-dropdown` | 250 | Nav dropdowns |
+| `--z-fixed-widget` | 900 | WhatsApp float, back-to-top |
+| `--z-chatbot` | 950 | FAQ chatbot |
+| `--z-privacy` | 999 | Cookie notice |
+| `--z-scroll-progress` | 1990 | Scroll progress bar — above the chrome, **below modals** (at 9999 it drew a red line across every open overlay) |
+| `--z-modal` | 2000 | PDF preview, Study Hub viewer, email popup, resource gate, notes lightboxes |
+| `--z-toast` | 2100 | Toasts |
 
 Always use z-index tokens instead of hardcoded values for layered components.
 
@@ -255,7 +261,7 @@ Always use z-index tokens instead of hardcoded values for layered components.
 
 - **Display type steps down** in global.css: ≤768px h1 `clamp(2rem, 7.5vw, 3rem)` / h2 `clamp(1.6rem, 5.5vw, 2.25rem)`; ≤480px h1 `clamp(1.9rem, 8.5vw, 2.4rem)` / h2 `clamp(1.5rem, 6.5vw, 1.9rem)`, so long titles hold to ~3 lines on a phone. Page-scoped hero headings that set their own phone size (subject pages, tools) keep it.
 - **Legibility floor**: no running label smaller than **0.72rem** (11.5px) — eyebrows are 0.75rem on ≤768px, and every micro-label that used to sit at 0.55–0.68rem (hero proof labels, programme/pricing badges, `.blog-tag`, `.playbook-paper`, subject-bar chips, result stat labels, footer headings, the exam countdown) was raised. Don't add new 0.6rem labels.
-- **Touch targets**: everything tappable is ≥40px tall (44px for form controls). global.css has a `@media (pointer: coarse)` block that gives inline links in `main p / main li / .hero-meta / footer` extra *vertical padding* — on inline elements that enlarges the tap box without changing the line box, so it's layout-safe — and sets 44px minimums on selects/inputs/textareas and the FAQ summaries. Chips (`.r-filter-btn`, `.dec-chip`, `.sh-chip`, `.subject-bar-link`) carry `min-height: 40px`; the testimonials carousel dots are an 8px visual dot inside a 28px button (`::before` draws the dot) — reuse that pattern for any small indicator control.
+- **Touch targets**: everything tappable is ≥40px tall (44px for form controls). global.css has a `@media (pointer: coarse)` block that gives inline links in `main p / main li / .hero-meta / footer` extra *vertical padding* — on inline elements that enlarges the tap box without changing the line box, so it's layout-safe — and sets 44px minimums on selects/inputs/textareas and the FAQ summaries. Chips (`.r-filter-btn`, `.dec-chip`, `.sh-chip`, `.subject-bar-link`) carry `min-height: 40px`; the testimonials carousel dots are an 8px visual dot inside a 40px button (`::before` draws the dot; the buttons touch, so the dots sit ~40px apart) — reuse that pattern for any small indicator control. On touch screens footer links are 40px `inline-flex` targets with tightened list spacing (Footer.astro), breadcrumb links get vertical padding (BaseLayout), and the author-bio link is a 40px target (AuthorBio.astro). Form controls (`button, input, select, textarea`) inherit the page font from global.css — without that, any button lacking its own `font-family` rendered in Arial.
 - **Fixed bottom chrome**: every bar that can occupy the bottom edge — the cookie notice, the global sticky CTA (BaseLayout) and the homepage's own `.sticky-cta` — reports its visible height through `window.aworthyBottomBar(name, px)` (defined in BaseLayout's head script; `0` when hidden or dismissed). The registry publishes the **tallest** as `--sticky-bar-h` on `<html>`, and the WhatsApp float, chatbot toggle and back-to-top add `var(--sticky-bar-h, 0px)` to their `bottom`, so they ride above whichever bar is showing. Never write `--sticky-bar-h` directly: each bar used to, the cookie notice didn't at all, and the floats sat on the notice's text and buttons for every first-time phone visitor. **Any new fixed bottom bar must report through the registry, and any new floating widget must include the variable in its `bottom`.** Both sticky CTAs stay hidden while the cookie notice is up (they look it up on each check — its markup comes after their scripts). Desktop back-to-top sits left of the WhatsApp float (`right: 2rem + 68px`).
 - **Landscape phones** (`(max-height: 500px) and (orientation: landscape)`, ~390px tall): the header drops to 56px, the subject bar and both bottom sticky CTAs are hidden (the menu lists every subject; the header shows the CTA), hero sections get compact padding, and the subject hero's mascot is sized by height (112px). Before this, headlines on the GP page, GP landing page and testimonials started below the first screen.
 - **Short laptops** (`(min-width: 1025px) and (max-height: 820px)`, e.g. 1366×768, 1280×800): the bottom sticky CTAs are hidden — from 1025px the header always shows the CTA, and the duplicate cost ~8% of every screen.
@@ -366,7 +372,7 @@ Students open study materials live in the browser — no downloads. Public (no g
 
 **Adding a material** — two steps, the second optional:
 
-1. Drop a self-contained `.html` file into `public/study/`. It is auto-discovered at build time (`fs.readdirSync` in `study.astro`'s frontmatter) and appears on the page immediately. Title falls back to the file's own `<title>`, blurb to its `<meta name="description">`.
+1. Drop a self-contained `.html` file into `public/study/`. It is auto-discovered at build time (`fs.readdirSync` in `study.astro`'s frontmatter) and appears on the page immediately. Title falls back to the file's own `<title>`, blurb to its `<meta name="description">`. Style it like the two existing materials: LMS palette tokens in `:root` (a token is either a fill or a text colour, never both), Nunito via `@font-face` pointing at `/fonts/…`, and dark tokens under both `@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) }` and `:root[data-theme="dark"]`, with the one-line `<head>` script that copies `localStorage.theme` onto `data-theme` — so the material follows the site's theme toggle (the viewer also passes the current theme in).
 2. Optionally add an entry to `src/data/study-materials.ts`, keyed by the filename without `.html`, to set `subject`, `title`, `description`, `level` and `order`. Subject determines the card's accent colour and the filter chip it appears under.
 
 **How it renders — and why `srcdoc`, not `src`**: the viewer fetches the material and injects it into the iframe via **`srcdoc`**, with a `<base href="/study/">` prepended so relative asset URLs still resolve.
@@ -509,3 +515,4 @@ When the academic year rolls over, update these in order — most date-sensitive
 - Sizes in `px` next to content in `rem` break at the big-screen root sizes (112.5% ≥1441, 125% ≥1921, 150% ≥2560): the subject bar's 1200px cap made its five rem-sized chips overflow at 2560 and the hidden-scrollbar row cut Pre-IB Maths off, unreachable by mouse. Cap such rows in `rem` (the subject bar uses `75rem`), and keep a component's padding rules together across breakpoints (the header's "Library" trigger missed the ≥1921 padding the links got, and sat 9px high)
 - Elements created by script never get Astro's scoping attribute, so a plain scoped selector silently doesn't match them — style them with `:global()` inside the component's `<style>` (the Study Hub iframe fell back to the default 300×150 box until this was fixed)
 - Verification harnesses must exercise **navigation**, not just fresh page loads: every bug fixed in the loading round (dead menus, dead widgets, stale pages, fonts failing under the service worker) only appeared on the second page or the second visit. `scratchpad/diag/verify.mjs` from that round installs the old service worker, switches the origin to the new build, and clicks between pages
+- **A `var()` that names an undefined custom property invalidates the whole declaration, silently.** The homepage sticky CTA used `z-index: var(--z-sticky-cta)` — a token that never existed — so its z-index was `auto` and page content painted over the bar while scrolling. Use only tokens defined in `global.css` (the Z-Index table above is the real scale), or give `var()` a fallback. A scan for no-fallback `var(--x)` with no `--x:` definition anywhere in `src/` is quick and currently returns nothing
