@@ -129,7 +129,7 @@ import '../styles/global.css';
         <img src="/images/mascots/mascot-rocket.webp" alt="" width="308" height="411" class="r-growth-mascot sticker sticker--right" />
       </div>
 
-      <div class="r-cards-3">
+      <div class="r-cards-3 r-cards-solo">
         <div class="r-card card-lift" data-animate="reveal-up">
           <h3 class="r-yoy-title">O-Level English A1-B3 Rate</h3>
           <div class="r-yoy-rows">
@@ -466,6 +466,12 @@ import '../styles/global.css';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
+  }
+
+  /* One card should not sit in a third of the row with two empty cells. */
+  .r-cards-solo {
+    grid-template-columns: minmax(0, 720px);
+    justify-content: center;
   }
 
   .r-cards-5 {

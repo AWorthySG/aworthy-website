@@ -1165,7 +1165,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   :global([data-theme="dark"]) .prog-hero::before { background: radial-gradient(circle, color-mix(in srgb, var(--subject-accent) 8%, transparent) 0%, transparent 70%); }
   .prog-hero .container { position: relative; z-index: 1; max-width: 1080px; }
   /* Keep the card clear of the fixed "On this page" TOC (190px + 1.5rem at the right edge from 1280px) */
-  @media (min-width: 1280px) { .prog-hero .container { max-width: min(1080px, 100vw - 300px); } }
+  @media (min-width: 1280px) { .prog-hero .container { max-width: min(1080px, 100vw - 360px); } }
   .prog-hero__copy { min-width: 0; }
   .prog-hero__sticker { width: min(200px, 48vw); margin: 0 auto 0.75rem; }
   .prog-hero__heading { font-family: var(--prog-font); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.12; color: var(--text-primary); margin-bottom: 0.75rem; letter-spacing: -0.03em; }
@@ -1297,7 +1297,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   /* ===== STICKY TOC — a small ink card ===== */
   .sticky-toc {
     position: fixed;
-    top: calc(var(--nav-offset) + 1rem);
+    top: calc(var(--nav-offset) + 44px + 1.5rem); /* 44px = the breadcrumb strip, so the card never sits on it or the hero card at load */
     right: 1.5rem;
     z-index: 50;
     max-width: 190px;
@@ -1310,6 +1310,15 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   @media (min-width: 1280px) {
     .sticky-toc { display: block; }
   }
+
+  /* The TOC only appears once the reader is past the hero. Until then the
+     section-nav strip (z-index above it) painted straight across the card on
+     pages with a short hero, and the card crowded the hero. JS-gated, so a
+     no-JS visitor still gets the plain sticky card. */
+  html.js .sticky-toc { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.25s ease, visibility 0.25s ease; }
+  html.js .sticky-toc.is-ready { opacity: 1; visibility: visible; pointer-events: auto; }
+  @media (prefers-reduced-motion: reduce) { html.js .sticky-toc { transition: none; } }
+
   .sticky-toc-eyebrow {
     display: block;
     font-family: var(--font-mono);
@@ -1853,6 +1862,22 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   });
 
   if (!toc.children.length) { document.getElementById('sticky-toc').style.display = 'none'; return; }
+
+  // Reveal the TOC only after the hero has scrolled away, so the fixed card
+  // never sits over the hero card or under the sticky section-nav strip.
+  (function () {
+    var card = document.getElementById('sticky-toc');
+    var nav = document.querySelector('.prog-nav');
+    if (!card || !nav) return;
+    function sync() {
+      var past = nav.getBoundingClientRect().top <= (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-offset')) || 116) + 2;
+      card.classList.toggle('is-ready', past);
+    }
+    sync();
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    document.addEventListener('astro:page-load', sync);
+  })();
 
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
