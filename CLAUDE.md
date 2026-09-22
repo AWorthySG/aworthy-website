@@ -90,11 +90,11 @@ public/
 │   ├── mascots/                # Mascot illustrations for content-page accents — see "Brand Mascots"
 │   │   ├── mascot-<pose>.webp        # full die-cut sticker (with caption) — legible on any background
 │   │   └── mascot-<pose>-icon.webp   # no caption, no border — UI-glyph use (logo, bullets, checkbox ticks)
-│   │        # 14 poses currently (heart, heart-alt, rocket, rocket-fly, avocado-wink,
-│   │        # avocado-hug, icecream, sunglasses, fishing + teacher, reading, dad, feeding,
-│   │        # cheer — the last 5 have no -icon variant); check the directory for the
-│   │        # current full list, this set grows incrementally
-│   ├── og-default.svg/png    # Default Open Graph image
+│   │        # 20 poses: heart, heart-alt, rocket, rocket-fly, avocado-wink, avocado-hug,
+│   │        # icecream, sunglasses, fishing (+ -icon variants) + teacher, reading, dad,
+│   │        # feeding, cheer + the subject set lightbulb, maths, graph, economics,
+│   │        # grade-a, science (no -icon variants); the set grows incrementally
+│   ├── og-default.svg/png    # Default Open Graph image (all og-*.svg use the LMS palette: cream paper, ink tile, red accents)
 │   ├── og-english.svg/png    # O-Level English OG image
 │   ├── og-gp.svg/png         # H1 GP OG image
 │   ├── og-econs.svg/png      # H2 Economics OG image
@@ -162,21 +162,34 @@ All pages wrap content in `<BaseLayout>` which provides:
 
 ## Design System (global.css)
 
+**The website's design system is a port of the LMS's (lms.a-worthy.com) "sticker-book" system — token for token.** The LMS login page is the visual reference: cream paper canvas with a faint dot texture, white cards outlined in 2px navy "sticker ink" that lift onto a hard offset shadow, ONE red action colour, warm near-black text, grey micro-labels, and four feature colours (green / pink / sky / gold) used as tinted chips, stat dots and icon circles. When the LMS tokens change, change them here too (its `:root` / `html.dark` blocks are inlined in its index.html). The full contract page-work follows is in the "LMS design spec" summary below.
+
 ### Color Tokens
 
 | Token | Light | Dark | Purpose |
 |-------|-------|------|---------|
-| `--bg-primary` | #FDFBF7 | #0b0b0f | Page background |
-| `--bg-secondary` | #F5F1EB | #111118 | Section alternate background |
-| `--bg-card` | rgba(255,255,255,0.7) | rgba(255,255,255,0.03) | Card background |
-| `--text-primary` | #1A2A3A | #f0f0f2 | Headings and body text |
-| `--text-secondary` | rgba(26,42,58,0.7) | rgba(240,240,242,0.65) | Secondary text |
-| `--text-muted` | rgba(26,42,58,0.45) | rgba(240,240,242,0.4) | Muted/subtle text |
-| `--color-primary` | #2B5A8C | #2B5A8C | Trust blue — headings, CTAs |
-| `--color-accent` | #D4853A | #E09850 | Warm gold-orange — highlights, badges |
-| `--color-accent-light` | #e8a060 | #f0b878 | Lighter accent for hovers |
-| `--border-color` | rgba(26,42,58,0.1) | rgba(255,255,255,0.08) | Borders and dividers |
-| `--bg-footer` | #1A2A3A | #0b0b0f | Footer background |
+| `--bg-primary` | #FAF6EE | #171614 | Page canvas (body carries the paper-dot texture) |
+| `--bg-secondary` | #F3EDE0 | #1C1B19 | Alternate bands (`.section--sand`), footer |
+| `--bg-muted` | #F5F0E6 | #2B2A27 | Inputs, wells, segmented-control tracks |
+| `--bg-hover` | #EEE7D6 | #33312D | Hover fill for ghost buttons / nav pills |
+| `--bg-card` | #FFFFFF | #232220 | Cards — SOLID, never translucent |
+| `--text-primary` | #1C1B19 | #F0EEE8 | Headings + body (warm near-black, **not** navy) |
+| `--text-secondary` / `--text-muted` | #6B6760 | #B3AEA3 | Secondary copy, labels, eyebrows (AA on cream) |
+| `--text-tertiary` | #A09C94 | #837F76 | Decorative only — placeholders, dividers |
+| `--color-ink` (`--color-primary` aliases it) | #22304A | rgba(240,238,232,0.26) | Sticker outline navy: 2px borders on cards, buttons, inputs, logo tile |
+| `--ink-shadow` | rgba(34,48,74,0.14) | rgba(0,0,0,0.42) | The hard offset shadow `0 4px 0` under buttons / lifted cards |
+| `--ink-faint` (`--ink-soft` aliases it) | rgba(34,48,74,0.28) | rgba(240,238,232,0.16) | Subtle outlines, dashed dividers |
+| `--color-accent` | #C0392B | #C0392B | THE action colour: primary buttons, emphasised headline word, squiggle, focus rings, active nav |
+| `--color-accent-hover` / `--color-accent-press` | #A93226 / #962D22 | same | Hover fill / hard shadow under red buttons |
+| `--color-accent-text` | #C0392B | #E4796C | Red used as text |
+| `--color-accent-soft` | rgba(192,57,43,0.10) | rgba(228,121,108,0.16) | Red tint fills (active nav pill, selected chip) |
+| `--border-color` / `--border-hover` | rgba(28,27,25,0.13) / 0.26 | rgba(240,238,232,0.16) / 0.30 | Hairline dividers only |
+| `--color-leaf` / `--color-sun` / `--color-berry` / `--color-sky` | #3DAA5C / #F5B82E / #EF476F / #5FAEE3 | lighter | Feature colours — data only (stat dots, icon circles, chips, subject accents) |
+| `--tint-{green,pink,blue,gold}-bg` / `-fg` | #E5F5E9/#1F7A3D, #FDE8EE/#B32048, #E6F1FB/#1F6FA8, #FDF3DE/#8A6205 | translucent / pastel | Tinted chip and icon-circle pairs |
+| `--color-success-bg` / `--color-warning-bg` / `--color-danger-bg` / `--gold-light` | #EDFAF4 / #FEF8E8 / #FFF0EE / #FBF3E2 | translucent | Status wells |
+| `--bg-footer` | #F3EDE0 | #1C1B19 | Footer is **light** now (the LMS has no dark band) |
+
+**Retired — never reintroduce:** the gold accent (#D4853A / #E09850 / #E59A55 / #e8a060 / #B87333 / #A35D18), navy text (#1A2A3A / #2B5A8C), the old creams (#FDFBF7 / #F5F1EB), the old darks (#11100E / #0b0b0f), `rgba(26,42,58,…)` / `rgba(212,133,58,…)` / `rgba(224,152,80,…)` / `rgba(43,90,140,…)`, gradient/bevel buttons, glow shadows, translucent card fills, backdrop-filter panels. `grep -rnEi "#(2B5A8C|1A2A3A|D4853A|E09850|E59A55|e8a060|FDFBF7|F5F1EB|11100E)" src` must stay empty. `--color-accent-light` still resolves (#E4796C) for legacy references only.
 
 ### Typography
 
@@ -185,7 +198,7 @@ All pages wrap content in `<BaseLayout>` which provides:
 - **`--font-mono`**: `'Nunito'` — the whole site is Nunito. The token is still named `--font-mono` and used for uppercase letter-spaced labels/eyebrows/HUD, but it now resolves to Nunito (no monospace face is loaded).
 - **Single typeface**: the entire site is Nunito — there are **no other font families**. The hero pen animation (`PenAnimation.astro`) and the founder sign-off on `/about/` both render in Nunito (the pen animation uses weights 600/700; the founder sign-off uses Nunito italic 600).
 
-Heading weights: h1 / h2 / h3 = **800** — chunky, rounded display type that matches the hand-lettered "A-Worthy Education" caption on the mascot stickers. The old thin-200 "premium editorial" display weight was retired sitewide in the sticker-brand refresh (page-scoped hero headings, `.section-title`, and stat numbers were all swept to 800 too). Don't reintroduce 200/300 display weights; `.hero-prelude` ("YOU ARE") is 700.
+Heading weights: h1 = **900** (page heroes), h2 / h3 = **800**, `letter-spacing: -0.02em` — the LMS's chunky display type, which also matches the hand-lettered "A-Worthy Education" caption on the stickers. The single emphasised word in a hero headline is solid red via `<span class="accent-word">` (LMS: "Learn with **purpose.**") — no text gradients, no shimmer. Micro-labels (`.eyebrow`, stat labels, table headers, chips) are **grey** (`--text-secondary`), 700, uppercase, 0.06–0.1em tracking, never below 0.72rem — red is reserved for the action colour. Don't reintroduce 200/300 display weights; `.hero-prelude` ("YOU ARE") is 700.
 
 ### Spacing Scale
 
@@ -206,10 +219,10 @@ Subject pages use hardcoded tight spacing (1.25rem desktop, 1rem tablet, 0.75rem
 - `--container-max`: 1200px
 - `--page-padding`: 4rem
 - `--header-height`: 72px
-- Radius scale: `--radius-sm` 12px (inputs, chips, small tiles), `--radius-md` 18px (cards, modals, wells), `--radius-lg` 28px, `--radius-pill` 999px (buttons, tags). `--border-radius` / `--border-radius-lg` are aliases of sm / md. Hardcoded px radii were swept to these tokens sitewide; the only intentional exceptions are tiny controls — the mascot checkboxes (`.check-box`, 5px) and `kbd` chips (4px) — which would read as circles at 12px.
+- Radius scale (the LMS's): `--radius-sm` 14px (inputs, chips, logo tile), `--radius-md` 20px (cards, modals, wells), `--radius-lg` 26px (hero panels), `--radius-pill` 999px (buttons, tags). `--border-radius` / `--border-radius-lg` are aliases of sm / md. The only intentional exceptions are tiny controls — the mascot checkboxes (`.check-box`, 5px) and `kbd` chips (4px).
 - `--transition-fast`: 0.2s / `--transition-slow`: 0.65s (both cubic-bezier)
-
-**Sticker palette + motif tokens** (decorative only — gold stays the brand accent): `--color-leaf` #46B054, `--color-sun` #F5B83D, `--color-berry` #F05A82, `--color-sky` #6FAEE8 (lighter variants in dark mode), lifted from the mascot art. `--ink-soft` (14% navy light / 16% cream dark) is the 2px border on buttons, inputs and nav pills. `--swash` is a data-URI SVG of a hand-drawn gold marker swash (dark-mode variant uses the dark accent) — the sitewide heading motif: rendered under `.section-title`, above `.section-heading`, and under footer column headings, replacing the old straight gradient rules. Don't reintroduce straight accent bars under headings.
+- `--swash`: a data-URI SVG of a hand-drawn **red** marker stroke (coral in dark mode, pale coral inside `.section--ink`) — the sitewide heading underline: rendered under `.section-title`, above `.section-heading`, under footer column headings, and anywhere `.squiggle` / `.squiggle--center` is added. Don't reintroduce straight accent bars under headings.
+- Body texture: `body` carries `radial-gradient(circle at 1px 1px, rgba(70,50,20,0.03) 1px, transparent 0)` at 22px — the LMS paper fibre. Don't add page-level backgrounds that hide it (no full-bleed gradients); hero washes are soft tints (≤0.12 alpha of `--color-sun` / `--color-sky` / `--color-berry`).
 
 ### Z-Index Tokens
 
@@ -243,26 +256,27 @@ Always use z-index tokens instead of hardcoded values for layered components.
 - **Stats blocks** are 2×2 grids on phones (homepage `.stats-inner`, results `.r-stats-row`), never a single column of giant numbers.
 - **Header on tablets** (641–1024px): hamburger nav plus the gold CTA pill; the CTA is hidden only ≤640px.
 
-### Key CSS Classes
+### Key CSS Classes (the LMS component vocabulary)
 
 - `.container` — max-width: var(--container-max), centered with page-padding
-- `.section` — standard vertical padding (var(--space-3xl) = 1.75rem desktop)
-- `.section-title` — centered section heading
-- `.section-subtitle` — centered muted subtitle (max-width: 640px)
-- `.eyebrow` — uppercase mono label in accent color
-- `.sr-only` — screen reader only (visually hidden)
-- `.btn` — base button: sentence-case Nunito 800, pill radius, 2px `--ink-soft` border (transparent fill). `.btn-accent` / `.btn-primary` = filled gold-gradient pill with white text (the header CTA now inherits this too — the old ghost/outline header button and its dark-mode override are gone). Buttons are **no longer uppercase/letter-spaced** anywhere; the page-scoped CTA rules (`.prog-cta__btn` ×6, `.pricing-cta__btn`, `.sticky-cta-global-btn`, `.sh-viewer__btn`, `.pdf-modal-btn`, index's `.btn-primary/.btn-secondary/.btn-outline`) were all swept to the same sentence-case/800/pill treatment. The subject-page `.prog-nav__link` tab labels and `.eyebrow` micro-labels stay uppercase — those are labels, not buttons.
-- `.card` — elevated box with hover effect (also `.t-card`, `.r-card`, `.programme-card`, `.approach-card`)
-- `.sticker` — decorative mascot placement: `rotate(var(--tilt, -4deg))` + layered drop-shadow so the art reads as stuck on the page; `.sticker--right` flips the tilt to +5deg; hover straightens/scales it (reduced-motion gated). `.sticker--hero` is the shared page-hero placement: absolutely positioned in the right margin of a `position: relative` hero section at ≥1280px, and drops inline (112px, centred under the copy) below that. See "Brand Mascots" for where each pose lives.
+- `.section` — standard vertical padding; `.section--sand` = `--bg-secondary` band; `.section--ink` = the navy #22304A ink band with light text (max one per page)
+- `.section-title` / `.section-subtitle` — centered heading (+ red squiggle) / muted subtitle
+- `.eyebrow` — grey uppercase micro-label above a heading
+- `.btn` — **sticker pill**: 2px `--color-ink` border, white fill, weight 800, sentence case, hard shadow `0 4px 0 var(--ink-shadow)`; `:active` presses in (translateY(3px), shadow 0). `.btn-accent` / `.btn-primary` = red fill, white text, shadow `0 4px 0 var(--color-accent-press)`, hover `--color-accent-hover`. `.btn-secondary` = white fill, red text. `.btn-outline-light` = for the ink band only. `.btn--sm` = compact. Buttons never lift on hover (LMS: "quick, no bounce"); only cards lift. Every page-scoped CTA class must show through to this look — strip colour/border/shadow/radius from page rules rather than restating them.
+- `.card` — white, 2px ink outline, 20px radius, flat at rest; hover = lift (`translateY(-2px)` + `0 6px 0 var(--ink-shadow), 0 12px 24px rgba(70,50,20,0.10)`). `.card-lift` applies the same lift to any element; global.css also lifts the known page families (`.programme-card`, `.t-card`, `.r-card`, `.pricing-card`, `.prog-card`, `.blog-card`, `.value-item`, `.wb-feature`, `.sh-card`, `.transformation-card`, `.story-card`, `.reading-card`, `.testimonial-card`, `.approach-card`). `.card--accent-left` = 6px subject-coloured left rule; `.card--featured` = subject-coloured outline.
+- `.chip` + `.chip--green|pink|blue|gold|red|ink` — tinted pill with a 1.5px border in the colour, uppercase 700 0.72rem (LMS "SECURE / SINGAPORE / PWA"). Used for badges ("Most popular" → gold, "New" → blue), levels, categories, before/after grades (pink → green), filter chips (active = red).
+- `.stat-dot` + `.stat-dot--green|pink|blue|gold|red` — 9px coloured dot with an ink ring, placed before a big 900-weight number; label underneath in grey micro-label. Every stats row uses it.
+- `.icon-circle` + colour modifier — 40px tinted circle with a 2px coloured border around an SVG icon (feature grids).
+- `.logo-tile` — 44px white rounded square with a 2px ink border holding the mascot; Header and Footer pair it with the wordmark "A-Worthy" (800) over the micro-label "Education".
+- `.segmented` / `.segmented__btn` (+ `.active` or `aria-selected`) — LMS "Sign In | Register" control: muted track with ink border, active segment red with white text.
+- `.well` — muted panel with ink border; `.divider-dashed` — 2px dashed ink-faint rule.
+- `.accent-word` — solid red span for the emphasised headline word.
+- `.sticker` / `.sticker--right` / `.sticker--hero` — see "Brand Mascots".
+- Inputs (`input, select, textarea`) are global: `--bg-muted` fill, 2px ink border, 14px radius, red focus ring (`0 0 0 3px var(--color-accent-soft)`) — page styles must not restate borders/backgrounds.
 
 ### Dark Mode
 
-Dark mode uses `[data-theme="dark"]` on `<html>`. All color tokens are overridden in this scope. Additional dark-mode features:
-- Noise texture overlay on body (`::before` pseudo-element)
-- Ambient glow box-shadow on card elements
-- Accent color shifted warmer (#D4853A → #E09850)
-
-Theme is toggled by the Header component's theme button and persisted in `localStorage`.
+Dark mode uses `[data-theme="dark"]` on `<html>` and swaps every token above to the LMS `html.dark` values: warm charcoal surfaces, ink becomes a *light* line (navy on charcoal disappears), red fills stay red, red text lifts to coral #E4796C, tints go translucent. The paper-dot texture drops to `rgba(255,255,255,0.015)`. Two surfaces are literal navy #22304A in both themes on purpose — the exam countdown strip and the chatbot header — because `var(--color-ink)` in dark mode is a translucent light line, not a fill. There is no dark-mode noise overlay or card glow any more. Theme is toggled by the Header component's theme button and persisted in `localStorage`.
 
 ## Animation System
 
@@ -355,9 +369,9 @@ When changing any stat, grep the entire `src/` directory to update every occurre
 
 ## Brand Mascots
 
-The site's logo and decorative brand illustrations are a hand-drawn "eraser character" mascot set — 14 poses: the original 9 (heart ×2, avocado winking/hugging, rocket held, rocket flying away, ice cream, sunglasses, fishing) sourced as 400×400 JPGs on a flat white background, plus 5 "family/classroom" stickers (teacher at a chalkboard with a pupil, reading together, "#1 Dad" holding a baby, feeding a baby, and a two-character "You Can Do It!" cheer) supplied as RGBA PNG/WebP with a **white die-cut sticker border already baked in**. Every "full" variant in `public/images/mascots/` now carries that die-cut border — the original 9 had one synthesised to match — so the whole set reads as physical stickers and is legible on **any** background, cream or navy. New poses get added incrementally as they're supplied — check the directory for the current full list rather than assuming this doc is exhaustive. Processing scripts live only in session scratchpads (not checked into the repo) — if you need to reprocess or add a pose, redo the pipeline below. Before processing a newly-supplied pose, hash-compare it (e.g. `md5sum`) against the existing source set first — duplicates of already-processed poses have been sent before.
+The site's logo and decorative brand illustrations are a hand-drawn "eraser character" mascot set — 20 poses: the original 9 (heart ×2, avocado winking/hugging, rocket held, rocket flying away, ice cream, sunglasses, fishing) sourced as 400×400 JPGs on a flat white background, 5 "family/classroom" stickers (teacher at a chalkboard with a pupil, reading together, "#1 Dad" holding a baby, feeding a baby, and a two-character "You Can Do It!" cheer), and 6 **subject** stickers (`lightbulb` — reading with a lightbulb, `maths` — calculator + set square with π/√/Σ, `graph` — protractor + rising curve on a board, `economics` — suit, piggy bank + growth chart, `grade-a` — an "A" paper + pencil, `science` — lab coats + flasks + atom). The newer 11 were supplied as RGBA PNG/WebP with a **white die-cut sticker border already baked in** (the `maths` and `graph` poses arrived as one side-by-side image and were split at the thinnest alpha column). Every "full" variant in `public/images/mascots/` now carries that die-cut border — the original 9 had one synthesised to match — so the whole set reads as physical stickers and is legible on **any** background, cream or navy. New poses get added incrementally as they're supplied — check the directory for the current full list rather than assuming this doc is exhaustive. Processing scripts live only in session scratchpads (not checked into the repo) — if you need to reprocess or add a pose, redo the pipeline below. Before processing a newly-supplied pose, hash-compare it (e.g. `md5sum`) against the existing source set first — duplicates of already-processed poses have been sent before.
 
-**Visual direction ("sticker-book premium")**: the site was re-tuned around this art in the same refresh — chunky Nunito 800 display type, 12/18px radii and pill buttons, a hand-drawn marker swash under headings, and a decorative palette lifted from the stickers' green/yellow/pink/blue dashes (see "Design System"). The trust palette (navy + gold on cream) is unchanged. Keep new UI inside that system: rounded, warm, hand-made accents, never neon or "gamified" outside `/kitchen/` and `/sharp-decoder/`.
+**Visual direction ("sticker-book", matched to the LMS)**: the whole site now uses the LMS's design system (see "Design System") — the stickers are the brand, and the UI is drawn the way they are: white shapes outlined in navy ink with a hard offset shadow, one red action colour, cream paper underneath. Keep new UI inside that system: ink outlines, red only for actions/emphasis, feature colours only for data, never gold, never gradients, never "gamified" outside `/kitchen/` and `/sharp-decoder/`.
 
 **Primary mark**: the "heart2" pose (simplest silhouette — reads best at favicon size) is the sitewide logo. It replaced the old navy "A|W" SVG wordmark everywhere: Header, Footer, favicon/apple-touch-icon/manifest icons, and the schema.org `logo` field.
 
@@ -365,7 +379,8 @@ The site's logo and decorative brand illustrations are a hand-drawn "eraser char
 - `public/images/logo.webp` — the on-page mark (Header, Footer, chatbot toggle/header). WebP because this hand-drawn fabric-texture art compresses far worse as PNG (~90KB) than WebP (~20KB at q82, no visible quality loss) — this file loads on every single page, so it's worth the format choice.
 - `public/images/logo.png` — same crop, PNG. Used **only** for the schema.org `logo` URL (in BaseLayout and every blog post's own Article JSON-LD) — Google's documented-supported formats for that property are JPG/PNG/GIF, not WebP, and this file is crawler-fetched rather than part of real user page weight, so the conservative format is worth it there specifically.
 - `public/images/mascots/mascot-{heart,heart-alt,rocket,rocket-fly,avocado-wink,avocado-hug,icecream,sunglasses,fishing}.webp` — "full" versions of the original 9 (character + prop + the baked-in "A-Worthy Education" caption), ~300×400px, with a synthesised 8px white die-cut border and fully opaque bodies. Place these with the `.sticker` class.
-- `public/images/mascots/mascot-{teacher,reading,dad,feeding,cheer}.webp` — the 5 newer stickers, native die-cut, 508–640px on the long side (they were supplied larger, so they can be shown bigger — up to ~190px CSS — without softening). **No `-icon` variant exists for these**: the die-cut border keeps the caption legible on dark surfaces, and none of them is used as a UI glyph.
+- `public/images/mascots/mascot-{teacher,reading,dad,feeding,cheer}.webp` — the 5 family/classroom stickers, native die-cut, 508–640px on the long side (they were supplied larger, so they can be shown bigger — up to ~220px CSS — without softening). **No `-icon` variant exists for these**: the die-cut border keeps the caption legible on dark surfaces, and none of them is used as a UI glyph.
+- `public/images/mascots/mascot-{lightbulb,maths,graph,economics,grade-a,science}.webp` — the 6 subject stickers, native die-cut, ~400×550px, no `-icon` variants. These are the hero art of the subject pages and landing pages (see placements) — each subject has its own pose, which is why the earlier "no large sticker on subject pages" restraint was lifted.
 - `public/images/mascots/mascot-*-icon.webp` — the original 9 with the caption cropped off and **no** die-cut border. These are the UI-glyph variants: the logo (`heart-alt-icon` = `logo.webp`), list bullets, checkbox marks, the audience-toggle tick, the email popup and the About sign-off. Dimensions are unchanged from the first pipeline (the width/height attributes in markup still match). They are no longer *required* for dark backgrounds — the die-cut full variants handle that now — use them where a small, caption-less mark is wanted.
 - `public/favicon.ico` (multi-size), `public/favicon-16.png`, `public/favicon-32.png`, `public/apple-touch-icon.png` (180×180, opaque cream `#FDFBF7` background — Apple recommends against transparency), `public/icons/icon-{192,512}x192.png` (same opaque-cream treatment, for PWA manifest / Android home screen).
 
@@ -387,7 +402,7 @@ The five subject pages (`o-level-english`, `h1-general-paper`, `h2-economics`, `
 
 A real, unrelated bug was found and fixed while wiring up the audience-toggle icon: index.astro's "Programme Quiz Logic (#8)" inline `<script>` block (around the SHARP-method programme-recommendation quiz) was missing its closing `</script>` tag, which silently merged it with every inline script after it on the page — including the Audience Toggle's own script — into one blob that failed to parse, breaking **both** features entirely (no JS error surfaced to a casual glance; the toggle just silently did nothing on click). If a future edit to index.astro's inline scripts breaks something else similarly non-obvious, check for unclosed `<script>` tags first — the file has ~10 separate inline `<script is:inline>` blocks back to back, and a missing close on any one of them silently swallows every block after it into a single broken parse.
 
-**Reprocessing pipeline v2** (if poses are re-made or new ones arrive): for white-background JPG sources, remove **only the exterior white** — flood-fill the near-white mask (RGB distance-from-white ≤ 28) from the image border and apply the soft alpha ramp (transparent at ≤6, opaque at ≥28) to that exterior region alone. The first pipeline keyed on near-white *everywhere*, which left the characters' cream bodies semi-transparent — invisible on cream, but grey "ghosts" on navy; v2 keeps bodies and interior whites (chalk letters, speech bubbles, eyes) fully opaque. Then drop small opaque specks (<160px² touching an edge — scanner dust and caption-letter tops), blank any sliver of a neighbouring sticker that the sheet crop caught (the fishing source has one at its top-left), autocrop, and for the "full" variant synthesise the die-cut border: dilate the alpha mask by 8px (PIL `MaxFilter`), blur it 0.8px, fill white, composite the character on top. "Icon" variants skip the border; their caption crop lines are still picked **by eye** against a rulered render (automated gap detection was tried twice and fails where a prop runs into the caption) — sunglasses is cut at y=268, the rest at 275–305. Sources that already carry alpha + a die-cut border (the newer 5) need only autocrop + downscale to ≤640px. Export WebP q82 / method 6; regenerate `logo.webp`/`logo.png` from the heart-alt icon if that pose changes.
+**Reprocessing pipeline v2** (if poses are re-made or new ones arrive): for white-background JPG sources, remove **only the exterior white** — flood-fill the near-white mask (RGB distance-from-white ≤ 28) from the image border and apply the soft alpha ramp (transparent at ≤6, opaque at ≥28) to that exterior region alone. The first pipeline keyed on near-white *everywhere*, which left the characters' cream bodies semi-transparent — invisible on cream, but grey "ghosts" on navy; v2 keeps bodies and interior whites (chalk letters, speech bubbles, eyes) fully opaque. Then drop small opaque specks (<160px² touching an edge — scanner dust and caption-letter tops), blank any sliver of a neighbouring sticker that the sheet crop caught (the fishing source has one at its top-left), autocrop, and for the "full" variant synthesise the die-cut border: dilate the alpha mask by 8px (PIL `MaxFilter`), blur it 0.8px, fill white, composite the character on top. "Icon" variants skip the border; their caption crop lines are still picked **by eye** against a rulered render (automated gap detection was tried twice and fails where a prop runs into the caption) — sunglasses is cut at y=268, the rest at 275–305. Sources that already carry alpha + a die-cut border (the newer 11) need only autocrop + downscale to ≤640px; if two stickers arrive in one image, cut at the column with the least alpha coverage in the middle 30–70% of the width (their die-cut borders touch, so there is no fully empty gap) and autocrop each half. Export WebP q82 / method 6; regenerate `logo.webp`/`logo.png` from the heart-alt icon if that pose changes.
 
 ## Founder Details (for schema.org and about page)
 

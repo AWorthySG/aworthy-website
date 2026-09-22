@@ -152,7 +152,7 @@ import { ClientRouter } from 'astro:transitions';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#2B5A8C" />
+  <meta name="theme-color" content="#FAF6EE" />
   <meta name="color-scheme" content="dark light" />
   <meta name="format-detection" content="telephone=no" />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -388,13 +388,13 @@ import { ClientRouter } from 'astro:transitions';
       height: 56px;
       background: #25D366;
       border-radius: 50%;
-      border: none;
+      border: 2px solid var(--color-ink);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 0 var(--ink-shadow);
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
       position: relative;
       text-decoration: none;
     }
@@ -417,19 +417,23 @@ import { ClientRouter } from 'astro:transitions';
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     .whatsapp-float-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--ink-shadow), 0 10px 20px rgba(37, 211, 102, 0.3);
+    }
+    .whatsapp-float-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--ink-shadow);
     }
     .whatsapp-preview {
       position: absolute;
       bottom: 64px;
       right: 0;
       width: 300px;
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      border: 2px solid var(--color-ink);
       border-radius: var(--radius-md);
       overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      box-shadow: 0 6px 0 var(--ink-shadow), 0 12px 24px rgba(70, 50, 20, 0.12);
       animation: wa-slide-up 0.3s ease;
     }
     @keyframes wa-slide-up {
@@ -445,20 +449,21 @@ import { ClientRouter } from 'astro:transitions';
     .whatsapp-preview-header span { font-size: 0.7rem; opacity: 0.7; }
     .whatsapp-preview-msg {
       padding: 1rem;
-      background: var(--bg-secondary);
+      background: var(--bg-muted);
     }
     .whatsapp-preview-msg p {
       font-size: 0.82rem;
       line-height: 1.5;
       color: var(--text-primary);
-      background: var(--bg-primary);
+      background: var(--bg-card);
+      border: 1.5px solid var(--ink-faint);
       padding: 0.6rem 0.8rem;
-      border-radius: 0 8px 8px 8px;
+      border-radius: 4px 14px 14px 14px;
       position: relative;
     }
     .whatsapp-preview-time {
-      font-size: 0.65rem;
-      color: var(--text-muted);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
       display: block;
       text-align: right;
       margin-top: 0.25rem;
@@ -497,14 +502,14 @@ import { ClientRouter } from 'astro:transitions';
       display: flex;
     }
     .email-popup {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 2px solid var(--color-ink);
+      border-radius: var(--radius-lg);
       padding: 2.5rem;
       max-width: min(400px, calc(100vw - 2rem));
       width: 100%;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 0 var(--ink-shadow), 0 24px 48px rgba(0, 0, 0, 0.18);
     }
     .email-popup-close {
       position: absolute;
@@ -530,7 +535,7 @@ import { ClientRouter } from 'astro:transitions';
     .email-popup-title {
       font-family: var(--font-heading);
       font-size: 1.4rem;
-      font-weight: 300;
+      font-weight: 800;
       color: var(--text-primary);
       text-align: center;
       margin: 0.5rem 0;
@@ -548,23 +553,11 @@ import { ClientRouter } from 'astro:transitions';
       gap: 0.75rem;
     }
     .email-popup-form input {
-      padding: 0.75rem 1rem;
       min-height: 44px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-    }
-    .email-popup-form input:focus {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
-      border-color: var(--color-accent);
     }
     .email-popup-note {
-      font-size: 0.7rem;
-      color: var(--text-muted);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
       text-align: center;
       margin-top: 0.75rem;
     }
@@ -579,7 +572,8 @@ import { ClientRouter } from 'astro:transitions';
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(26, 42, 58, 0.95);
+      /* Cream glass strip with an ink rule — the LMS glass header, flipped */
+      background: rgba(250, 246, 238, 0.92);
       -webkit-backdrop-filter: blur(12px);
       backdrop-filter: blur(12px);
       padding: 0.65rem 1.5rem;
@@ -587,7 +581,10 @@ import { ClientRouter } from 'astro:transitions';
       z-index: var(--z-sticky-bar);
       transform: translateY(100%);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 2px solid var(--color-ink);
+    }
+    :global([data-theme="dark"]) .sticky-cta-global {
+      background: rgba(23, 22, 20, 0.92);
     }
 
     .sticky-cta-global.is-visible {
@@ -604,9 +601,9 @@ import { ClientRouter } from 'astro:transitions';
     }
 
     .sticky-cta-global-text {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      font-weight: 600;
     }
 
     .sticky-cta-global-btn {
@@ -614,18 +611,25 @@ import { ClientRouter } from 'astro:transitions';
       font-size: 0.85rem;
       font-weight: 800;
       letter-spacing: 0;
-      color: #1A2A3A;
+      color: #fff;
       background: var(--color-accent);
+      border: 2px solid var(--color-ink);
+      box-shadow: 0 3px 0 var(--color-accent-press);
       padding: 0.5rem 1.25rem;
       border-radius: var(--radius-pill);
       text-decoration: none;
       white-space: nowrap;
-      transition: background 0.2s ease;
+      transition: background 0.12s ease, transform 0.1s ease, box-shadow 0.1s ease;
     }
 
     .sticky-cta-global-btn:hover {
-      background: #e8a060;
-      color: #1A2A3A;
+      background: var(--color-accent-hover);
+      color: #fff;
+      opacity: 1;
+    }
+    .sticky-cta-global-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 var(--color-accent-press);
     }
 
     .sticky-cta-global-dismiss {
@@ -634,7 +638,7 @@ import { ClientRouter } from 'astro:transitions';
       right: 0.5rem;
       background: none;
       border: none;
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--text-secondary);
       font-size: 1.1rem;
       cursor: pointer;
       padding: 0.5rem;
@@ -647,26 +651,29 @@ import { ClientRouter } from 'astro:transitions';
     }
 
     .sticky-cta-global-dismiss:hover {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--text-primary);
     }
 
     .sticky-cta-phone {
       display: none;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.9);
-      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 2px solid var(--color-ink);
+      box-shadow: 0 3px 0 var(--ink-shadow);
       border-radius: 50%;
       width: 44px;
       height: 44px;
       text-decoration: none;
       flex-shrink: 0;
-      transition: background 0.2s ease;
+      transition: background 0.12s ease;
       touch-action: manipulation;
     }
 
     .sticky-cta-phone:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--bg-hover);
+      opacity: 1;
     }
 
     /* Phone / tablet: a single 60px row — the CTA, a call button and the
@@ -717,11 +724,9 @@ import { ClientRouter } from 'astro:transitions';
       right: 0;
       z-index: var(--z-privacy);
       background: var(--bg-card);
-      border-top: 1px solid var(--border-color);
+      border-top: 2px solid var(--color-ink);
       padding: 1rem 1.5rem;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 -6px 0 var(--ink-shadow);
     }
     .privacy-notice-inner {
       max-width: var(--container-max);
@@ -753,31 +758,35 @@ import { ClientRouter } from 'astro:transitions';
       min-height: 44px;
       display: inline-flex;
       align-items: center;
-      border-radius: var(--border-radius);
-      font-size: 0.8rem;
-      font-weight: 600;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 800;
       cursor: pointer;
       text-decoration: none;
       white-space: nowrap;
-      border: none;
-      transition: background var(--transition-fast);
+      border: 2px solid var(--color-ink);
+      transition: background var(--transition-fast), transform 0.1s ease, box-shadow 0.1s ease;
       touch-action: manipulation;
     }
+    .privacy-btn:active { transform: translateY(3px); box-shadow: none !important; }
     .privacy-btn--accept {
-      background: var(--color-primary);
+      background: var(--color-accent);
       color: #fff;
+      box-shadow: 0 3px 0 var(--color-accent-press);
     }
     .privacy-btn--accept:hover {
-      background: var(--color-accent);
+      background: var(--color-accent-hover);
+      color: #fff;
     }
     .privacy-btn--learn {
-      background: transparent;
-      color: var(--text-secondary);
-      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: 0 3px 0 var(--ink-shadow);
     }
     .privacy-btn--learn:hover {
-      background: var(--bg-secondary);
+      background: var(--bg-hover);
       color: var(--text-primary);
+      opacity: 1;
     }
     @media (max-width: 600px) {
       .privacy-notice-inner {
@@ -796,7 +805,7 @@ import { ClientRouter } from 'astro:transitions';
       left: 0;
       height: 3px;
       width: 0%;
-      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+      background: var(--color-accent);
       z-index: var(--z-scroll-progress);
       transition: width var(--transition-instant);
       pointer-events: none;
@@ -857,15 +866,15 @@ import { ClientRouter } from 'astro:transitions';
 
     /* Exam Countdown Bar */
     .exam-countdown {
-      background: linear-gradient(180deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 90%, black) 100%);
-      color: #fff;
+      /* Ink band — the sticker outline navy, in both themes */
+      background: #22304A;
+      color: #F0EEE8;
       text-align: center;
       padding: 0.5rem 1rem;
       font-size: 0.8rem;
       font-family: var(--font-mono);
       letter-spacing: 0.03em;
-      border-bottom: 1px solid rgba(212, 133, 58, 0.4);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
     .exam-countdown-inner {
       display: flex;
@@ -878,7 +887,7 @@ import { ClientRouter } from 'astro:transitions';
       opacity: 0.8;
     }
     .exam-countdown-text {
-      font-weight: 500;
+      font-weight: 700;
     }
     @media (max-width: 480px) {
       .exam-countdown {
@@ -902,11 +911,9 @@ import { ClientRouter } from 'astro:transitions';
         gap: 0.5rem;
         padding: 0.4rem;
         background: var(--bg-card);
-        border: 1px solid var(--border-color);
+        border: 2px solid var(--color-ink);
         border-radius: 999px;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 3px 0 var(--ink-shadow);
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s ease;
@@ -923,7 +930,7 @@ import { ClientRouter } from 'astro:transitions';
       align-items: center;
       border-radius: 999px;
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: 800;
       text-decoration: none;
       color: var(--text-secondary);
       background: transparent;
@@ -934,6 +941,7 @@ import { ClientRouter } from 'astro:transitions';
     .subject-pill:hover, .subject-pill:active {
       background: var(--color-accent);
       color: #fff;
+      opacity: 1;
     }
 
     ::view-transition-old(root) {
@@ -1270,17 +1278,18 @@ import { ClientRouter } from 'astro:transitions';
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--color-primary);
-      color: #fff;
-      border: none;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 2px solid var(--color-ink);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(43,90,140,0.3);
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 0 var(--ink-shadow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .chatbot-toggle:hover { transform: scale(1.1); }
+    .chatbot-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ink-shadow); }
+    .chatbot-toggle:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-shadow); }
     .chatbot-toggle-img {
       height: 34px;
       width: auto;
@@ -1291,10 +1300,10 @@ import { ClientRouter } from 'astro:transitions';
       right: 0;
       width: 320px;
       max-height: 520px;
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      border: 2px solid var(--color-ink);
       border-radius: var(--radius-md);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 0 var(--ink-shadow), 0 16px 32px rgba(70, 50, 20, 0.14);
       display: none;
       flex-direction: column;
       overflow: hidden;
@@ -1310,9 +1319,10 @@ import { ClientRouter } from 'astro:transitions';
       justify-content: space-between;
       align-items: center;
       padding: 0.75rem 1rem;
-      background: var(--color-primary);
-      color: #fff;
+      background: #22304A;
+      color: #F0EEE8;
       font-size: 0.85rem;
+      font-weight: 800;
     }
     .chatbot-header-brand {
       display: flex;
@@ -1353,15 +1363,15 @@ import { ClientRouter } from 'astro:transitions';
       line-height: 1.5;
       max-width: 85%;
     }
-    .chatbot-msg a { color: var(--color-accent); }
+    .chatbot-msg a { color: var(--color-accent-text); font-weight: 700; }
     .chatbot-msg--bot {
-      background: var(--bg-secondary);
+      background: var(--bg-muted);
       color: var(--text-primary);
       align-self: flex-start;
       border-bottom-left-radius: 4px;
     }
     .chatbot-msg--user {
-      background: var(--color-primary);
+      background: var(--color-accent);
       color: #fff;
       align-self: flex-end;
       border-bottom-right-radius: 4px;
@@ -1375,18 +1385,20 @@ import { ClientRouter } from 'astro:transitions';
     .chatbot-option {
       text-align: left;
       padding: 0.5rem 0.75rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      background: transparent;
+      border: 1.5px solid var(--ink-faint);
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
       color: var(--text-primary);
       font-size: 0.78rem;
+      font-weight: 700;
       cursor: pointer;
       font-family: var(--font-body);
-      transition: all 0.2s ease;
+      transition: all 0.12s ease;
     }
     .chatbot-option:hover {
       border-color: var(--color-accent);
-      background: rgba(212,133,58,0.05);
+      background: var(--color-accent-soft);
+      color: var(--color-accent-text);
     }
     @media (max-width: 768px) {
       .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + 68px + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px)); }
