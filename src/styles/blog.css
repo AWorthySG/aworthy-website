@@ -32,6 +32,17 @@
   color: var(--tint-blue-fg);
 }
 .blog-post-header h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1rem; }
+/* Red hand-drawn underline under every post title — the same --swash stroke the global
+   .squiggle draws under hero headings on every other page. h1 only: repeating it under
+   each body h2 would be noisy in a long article. */
+.blog-post-header h1::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 12px;
+  margin-top: 0.5rem;
+  background: var(--swash) left center / contain no-repeat;
+}
 .blog-post-meta { font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
 .blog-author { color: var(--color-accent-text); text-decoration: none; font-weight: 700; transition: color var(--transition-fast); }
 .blog-author:hover { color: var(--color-accent-hover); text-decoration: underline; }
@@ -49,7 +60,9 @@
 
 .blog-post-body { max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.8; color: var(--text-primary); }
 .blog-post-body h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 2.5rem 0 1rem; color: var(--text-primary); line-height: 1.3; }
-.blog-post-body h3 { font-family: var(--font-body); font-size: 1.15rem; font-weight: 800; margin: 2rem 0 0.75rem; color: var(--text-primary); }
+/* Clear step down from h2 (1.6rem) and clear of the 1.05rem bold "The fix:" lead-ins in
+   the body, so numbered sub-headings still read as headings when skimming. */
+.blog-post-body h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; margin: 2.25rem 0 0.75rem; color: var(--text-primary); }
 /* Body copy is near-black: the global `p` / `li` element rules set --text-secondary and
    would otherwise beat the colour inherited from .blog-post-body. */
 .blog-post-body p { margin-bottom: 1.25rem; color: var(--text-primary); }
@@ -150,15 +163,40 @@
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
 }
+/* Category badge on a related card — the same tinted-chip treatment as .blog-tag and the
+   /blog/ index cards, so one data type reads one way sitewide. .blog-related-card is a
+   column flexbox, so align-self stops a chip with a background stretching to the full
+   card width. The default colours sit in :where() (zero specificity) because this sheet
+   loads AFTER global.css and would otherwise beat a .chip--* modifier set in markup. */
 .related-card-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  border-width: 1.5px;
+  border-style: solid;
   font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  line-height: 1.2;
+  white-space: nowrap;
   margin-bottom: 0.625rem;
+}
+:where(.related-card-tag) {
+  border-color: var(--ink-faint);
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+}
+/* The programme card is identifiable structurally, so it gets the red chip on every post
+   without each post's markup having to opt in. */
+:where(.blog-related-card--programme .related-card-tag) {
+  border-color: var(--color-accent);
+  background: var(--color-danger-bg);
+  color: var(--color-accent-text);
 }
 .blog-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 /* Related cards — white ink stickers that lift on hover (mirrors global .card-lift) */

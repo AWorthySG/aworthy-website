@@ -494,13 +494,16 @@ const frameworkIndex = [
   }
   .notes-shot:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
   /* Each page sits centred on a subject-tint mat (the LMS subject-panel pattern); on the 3-column layout the
-     tiles share a 4:3 ratio so the row stays level without cropping the pages — the lightbox opens the full image. */
+     tiles share a 4:3 ratio so the row stays level. The two landscape pages fill that box on `contain`; the
+     portrait CAPS page would shrink to ~15% scale inside it, so --tall fills the mat from the top instead
+     (cropped, but legible — the lightbox still opens the whole page). */
   .notes-shot img {
     display: block; width: 100%; height: auto; box-sizing: border-box; padding: 0.75rem;
     object-fit: contain; background: var(--fw-accent-soft); border-bottom: 2px dashed var(--ink-faint);
   }
   @media (min-width: 641px) {
     .notes-shot img { aspect-ratio: 4 / 3; }
+    .notes-shot--tall img { object-fit: cover; object-position: top center; }
   }
   .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; font-weight: 600; line-height: 1.4; color: var(--text-secondary); }
   .notes-lightbox {
