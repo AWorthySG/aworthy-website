@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import '../styles/playbook.css';
+import { nextIntakeLabel } from '../data/site-config';
 
 const sharpSteps = [
   { letter: 'S', name: 'See' },
@@ -92,12 +93,17 @@ const playbookRows = [
   </nav>
 
   <!-- ===== PAGE HERO ===== -->
-  <section class="prog-hero">
+  <section class="prog-hero subject--maths">
     <div class="container">
-      <img class="sticker prog-hero__sticker" src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" loading="eager" decoding="async" />
-      <p class="eyebrow">O-Level Mathematics</p>
-      <h1 class="prog-hero__heading">Best O-Level <span class="accent-word">Mathematics</span> Tuition<br />in Singapore</h1>
-      <p class="prog-hero__sub">Master every topic on the GCE O-Level Mathematics 4048 syllabus with the SHARP Method &mdash; a systematic five-step approach that gives your child named, repeatable frameworks for algebra and equations, geometry and mensuration, trigonometry and vectors, functions and graphs, and statistics and probability across both Paper 1 and Paper 2.</p>
+      <div class="hero-card prog-hero__card">
+        <div class="prog-hero__copy">
+          <p class="eyebrow">O-Level Mathematics</p>
+          <h1 class="prog-hero__heading squiggle">Best <span class="nb">O-Level</span> <span class="accent-word">Mathematics</span> Tuition <br />in Singapore</h1>
+          <p class="prog-hero__sub">Master every topic on the GCE O-Level Mathematics 4048 syllabus with the SHARP Method &mdash; a systematic five-step approach that gives your child named, repeatable frameworks for algebra and equations, geometry and mensuration, trigonometry and vectors, functions and graphs, and statistics and probability across both Paper 1 and Paper 2.</p>
+          <p class="speech-bubble prog-hero__intake">Next intake: <strong>{nextIntakeLabel}</strong> &middot; Sec 1&ndash;4 &middot; max 6 per class</p>
+        </div>
+        <img class="sticker sticker--right prog-hero__sticker" src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" loading="eager" decoding="async" />
+      </div>
     </div>
   </section>
 
@@ -205,7 +211,7 @@ const playbookRows = [
   <section class="prog-section" id="syllabus">
     <div class="container">
       <p class="eyebrow">4048 Syllabus</p>
-      <h2 class="prog-section__heading">Complete GCE O-Level Mathematics (4048) Syllabus Coverage</h2>
+      <h2 class="prog-section__heading">Complete GCE <span class="nb">O-Level</span> Mathematics (4048) Syllabus Coverage</h2>
       <p class="prog-section__sub">Every topic in the GCE O-Level Mathematics syllabus (4048), taught with precision and exam alignment.</p>
 
       <div class="card-grid card-grid--2">
@@ -244,7 +250,7 @@ const playbookRows = [
   <section class="prog-section" id="approach">
     <div class="container">
       <p class="eyebrow">The SHARP Method</p>
-      <h2 class="prog-section__heading">Why the SHARP Method produces O-Level Mathematics results other approaches can&rsquo;t</h2>
+      <h2 class="prog-section__heading">Why the SHARP Method produces <span class="nb">O-Level</span> Mathematics results other approaches can&rsquo;t</h2>
       <p class="prog-section__sub">Developed by Jeremy Lim (LLB Hons, NUS Faculty of Law), the SHARP Method adapts legal analytical precision to O-Level Mathematics exam technique.</p>
 
       <div class="card-grid card-grid--2">
@@ -275,7 +281,7 @@ const playbookRows = [
   <section class="prog-section" id="frameworks">
     <div class="container">
       <p class="eyebrow">Question-Type Frameworks</p>
-      <h2 class="prog-section__heading">A named framework for every question type on the O-Level Mathematics paper</h2>
+      <h2 class="prog-section__heading">A named framework for every question type on the <span class="nb">O-Level</span> Mathematics paper</h2>
       <p class="prog-section__sub">Most tuition centres teach &ldquo;how to do maths.&rdquo; We teach your child exactly which tool to reach for &mdash; and exactly how to use it &mdash; for every topic on every paper.</p>
 
       <div class="card-grid card-grid--2">
@@ -403,7 +409,7 @@ const playbookRows = [
   <section class="prog-section playbook-section" id="playbook">
     <div class="container">
       <p class="eyebrow">The SHARP Playbook</p>
-      <h2 class="prog-section__heading">SHARP, mapped to every section of the O-Level Mathematics paper</h2>
+      <h2 class="prog-section__heading">SHARP, mapped to every section of the <span class="nb">O-Level</span> Mathematics paper</h2>
       <p class="prog-section__sub">Each row is a topic area. Each column is one SHARP step. Read across to see exactly what your child does at every stage &mdash; from decoding the question to retrieval practice.</p>
 
       <div class="playbook-matrix" role="table" aria-label="SHARP method mapped to each O-Level Mathematics topic">
@@ -485,7 +491,7 @@ const playbookRows = [
   <section class="prog-section lesson-flow" id="lesson-flow">
     <div class="container">
       <p class="eyebrow">Inside a Lesson</p>
-      <h2 class="prog-section__heading">What 90 minutes at A-Worthy actually looks like</h2>
+      <h2 class="prog-section__heading">What 90 minutes at <span class="nb">A-Worthy</span> actually looks like</h2>
       <p class="prog-section__intro">Most parents have never seen the inside of a maths tuition lesson. Here&rsquo;s exactly how a typical O-Level Mathematics session unfolds &mdash; from the first warm-up question to the homework that gets set before students log off.</p>
 
       <ol class="lesson-timeline">
@@ -563,7 +569,7 @@ const playbookRows = [
   <section class="prog-section subject-receipts-section">
     <div class="container">
       <span class="eyebrow">By the numbers</span>
-      <h2 class="prog-section__heading">Why parents pick A-Worthy for O-Level Mathematics</h2>
+      <h2 class="prog-section__heading">Why parents pick <span class="nb">A-Worthy</span> for <span class="nb">O-Level</span> Mathematics</h2>
       <aside class="subject-receipts">
         <dl>
           <div>
@@ -595,7 +601,7 @@ const playbookRows = [
   <section class="faq-section" id="faq">
     <div class="container">
       <span class="eyebrow">FAQ</span>
-      <h2 class="section-title">O-Level Mathematics Tuition FAQ</h2>
+      <h2 class="section-title"><span class="nb">O-Level</span> Mathematics Tuition FAQ</h2>
       <div class="faq-list">
         <details class="faq-item">
           <summary class="faq-question">How much does O-Level Mathematics tuition cost in Singapore?</summary>
@@ -688,11 +694,11 @@ const playbookRows = [
 
       <div class="slots-banner">
         <div class="slots-indicator">
-          <span class="slots-dot pulse"></span>
+          <span class="stat-dot stat-dot--gold" aria-hidden="true"></span>
           <span class="slots-text"><strong>Sec 1&ndash;2 Mathematics:</strong> 5 of 6 slots remaining</span>
         </div>
         <div class="slots-indicator">
-          <span class="slots-dot pulse"></span>
+          <span class="stat-dot stat-dot--gold" aria-hidden="true"></span>
           <span class="slots-text"><strong>Sec 3&ndash;4 O-Level Mathematics:</strong> 4 of 6 slots remaining</span>
         </div>
       </div>
@@ -709,22 +715,22 @@ const playbookRows = [
           </thead>
           <tbody>
             <tr>
-              <td>Sec 1&ndash;2 Foundation</td>
-              <td>Sunday, 2:00 PM &ndash; 3:30 PM</td>
-              <td>90 min</td>
-              <td><span class="chip chip--gold">5 slots left</span></td>
+              <td data-label="Programme">Sec 1&ndash;2 Foundation</td>
+              <td data-label="Day &amp; time">Sunday, 2:00 PM &ndash; 3:30 PM</td>
+              <td data-label="Duration">90 min</td>
+              <td data-label="Status"><span class="chip chip--gold">5 slots left</span></td>
             </tr>
             <tr>
-              <td>Sec 3&ndash;4 Intensive</td>
-              <td>Wednesday, 7:30 PM &ndash; 9:00 PM</td>
-              <td>90 min</td>
-              <td><span class="chip chip--gold">4 slots left</span></td>
+              <td data-label="Programme">Sec 3&ndash;4 Intensive</td>
+              <td data-label="Day &amp; time">Wednesday, 7:30 PM &ndash; 9:00 PM</td>
+              <td data-label="Duration">90 min</td>
+              <td data-label="Status"><span class="chip chip--gold">4 slots left</span></td>
             </tr>
             <tr>
-              <td>One-to-One</td>
-              <td>Flexible &ndash; by arrangement</td>
-              <td>60&ndash;90 min</td>
-              <td><span class="chip chip--green">Available</span></td>
+              <td data-label="Programme">One-to-One</td>
+              <td data-label="Day &amp; time">Flexible &ndash; by arrangement</td>
+              <td data-label="Duration">60&ndash;90 min</td>
+              <td data-label="Status"><span class="chip chip--green">Available</span></td>
             </tr>
           </tbody>
         </table>
@@ -792,6 +798,37 @@ const playbookRows = [
 
   <section class="section related-section">
     <div class="container">
+      <span class="eyebrow">Other subjects</span>
+      <div class="related-subjects">
+        <a href="/pre-ib-mathematics/" class="subject-card subject--preib">
+          <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" loading="lazy" decoding="async" /></div>
+          <div class="subject-card__body">
+            <p class="subject-card__title">Pre-IB Mathematics</p>
+            <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>Year 3&ndash;4 maths for the IB track</p>
+          </div>
+        </a>
+        <a href="/o-level-english/" class="subject-card subject--english">
+          <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" loading="lazy" decoding="async" /></div>
+          <div class="subject-card__body">
+            <p class="subject-card__title">O-Level English</p>
+            <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>English tuition for Sec 1&ndash;4 students</p>
+          </div>
+        </a>
+        <a href="/h1-general-paper/" class="subject-card subject--gp">
+          <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" loading="lazy" decoding="async" /></div>
+          <div class="subject-card__body">
+            <p class="subject-card__title">H1 General Paper</p>
+            <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>GP tuition for JC 1&ndash;2 students</p>
+          </div>
+        </a>
+        <a href="/h2-economics/" class="subject-card subject--econ">
+          <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" loading="lazy" decoding="async" /></div>
+          <div class="subject-card__body">
+            <p class="subject-card__title">H2 Economics</p>
+            <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>Economics tuition for JC 1&ndash;2 students</p>
+          </div>
+        </a>
+      </div>
       <span class="eyebrow">Explore More</span>
       <div class="related-links">
         <a href="/resources/" class="related-link">
@@ -814,22 +851,6 @@ const playbookRows = [
           <strong>Pricing &amp; Plans</strong>
           <span>Compare programme fees and what&rsquo;s included</span>
         </a>
-        <a href="/pre-ib-mathematics/" class="related-link">
-          <strong>Pre-IB Mathematics</strong>
-          <span>Year 3&ndash;4 maths for the IB track</span>
-        </a>
-        <a href="/o-level-english/" class="related-link">
-          <strong>O-Level English</strong>
-          <span>English tuition for Sec 1&ndash;4 students</span>
-        </a>
-        <a href="/h1-general-paper/" class="related-link">
-          <strong>H1 General Paper</strong>
-          <span>GP tuition for JC 1&ndash;2 students</span>
-        </a>
-        <a href="/h2-economics/" class="related-link">
-          <strong>H2 Economics</strong>
-          <span>Economics tuition for JC 1&ndash;2 students</span>
-        </a>
       </div>
     </div>
   </section>
@@ -841,9 +862,9 @@ const playbookRows = [
   /* ===== SUBJECT ACCENT: O-Level Mathematics =====
      Used only where a surface is deliberately "subject-coloured" (the quote
      rail, the mid-page CTA rail, the diagram strokes, the playbook chrome).
-     Cards default to ink, actions are the sitewide red. */
-  :root { --subject-accent: #7B5EA7; --subject-accent-text: #5E4390; }
-  :global([data-theme="dark"]) { --subject-accent: #9B7EC7; --subject-accent-text: #B9A2DD; }
+     Cards default to ink, actions are the sitewide red. The colour is the LMS
+     subject token, which carries its own dark-mode value (no override here). */
+  :root { --subject-accent: var(--subject-maths); --subject-accent-text: var(--subject-maths-text); }
 
   /* ===== DESIGN TOKENS ===== */
   :root {
@@ -857,19 +878,34 @@ const playbookRows = [
     --prog-mono: var(--font-mono);
   }
 
-  /* ===== HERO — sticker centred above the headline, like the LMS ===== */
+  /* Keeps hyphenated names ("Pre-IB", "A-Worthy", "O-Level") whole at line ends */
+  .nb { white-space: nowrap; }
+
+  /* ===== HERO — the LMS welcome card: a white ink card with the subject-tint
+     wash (global .hero-card), eyebrow + squiggled headline + intake bubble on
+     the left and the subject sticker on the right at >=1024px; on narrower
+     screens the sticker sits centred above the copy. The 56.25rem cap keeps
+     the card clear of the fixed "On this page" card at 1280px+. ===== */
   .prog-hero {
     background: var(--prog-bg);
-    padding: 1.25rem 0 0.75rem;
+    padding: 1.25rem 0 1rem;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
 
-  .prog-hero .container { position: relative; z-index: 1; max-width: 860px; }
+  .prog-hero .container { position: relative; z-index: 1; max-width: 56.25rem; }
+
+  .prog-hero__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prog-hero__copy { width: 100%; min-width: 0; }
 
   .prog-hero__sticker {
-    --tilt: -3deg;
+    order: -1;
     width: min(200px, 48vw);
     height: auto;
     margin: 0 auto 0.75rem;
@@ -885,6 +921,9 @@ const playbookRows = [
     letter-spacing: -0.03em;
   }
 
+  /* The red squiggle (global .squiggle) is centred while the copy is centred */
+  .prog-hero__heading::after { margin-left: auto; margin-right: auto; }
+
   .prog-hero__sub {
     font-family: var(--prog-font);
     font-size: 1.1rem;
@@ -892,6 +931,34 @@ const playbookRows = [
     color: var(--prog-text-secondary);
     max-width: 640px;
     margin: 0 auto;
+  }
+
+  /* Intake line rides on the global .speech-bubble (LMS welcome-card callout);
+     the bottom margin leaves room for the bubble's tail */
+  .prog-hero__intake {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 1rem auto 0.75rem;
+    text-align: left;
+  }
+  .prog-hero__intake strong { font-weight: 800; }
+
+  @media (min-width: 1024px) {
+    .prog-hero { text-align: left; }
+    .prog-hero__card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      align-items: center;
+      gap: 2rem;
+    }
+    .prog-hero__sticker { order: 0; width: 180px; margin: 0; }
+    .prog-hero__heading { font-size: clamp(2.2rem, 3.1vw, 2.6rem); }
+    /* The forced break leaves an orphaned "Tuition" line in the card column — let the two lines balance instead */
+    .prog-hero__heading br { display: none; }
+    .prog-hero__heading { text-wrap: balance; }
+    .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
+    .prog-hero__sub { margin: 0; }
+    .prog-hero__intake { margin: 1rem 0 0.75rem; }
   }
 
   /* ===== NAV — glass strip, grey tabs, red active rule ===== */
@@ -1221,6 +1288,9 @@ const playbookRows = [
 
     .prog-nav {
       padding: 0.5rem 0;
+      /* Fade the right edge so the clipped tab row reads as scrollable */
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
     }
 
     .prog-section {
@@ -1233,6 +1303,8 @@ const playbookRows = [
 
     .prog-nav__inner {
       gap: 1rem;
+      /* the last tab clears the 40px fade */
+      padding-inline: var(--page-padding) 2.5rem;
     }
 
     .card-grid--2 {
@@ -1309,7 +1381,7 @@ const playbookRows = [
   /* ===== STICKY TOC — a small ink card in the right margin ===== */
   .sticky-toc {
     position: fixed;
-    top: calc(var(--nav-offset) + 1rem);
+    top: calc(var(--nav-offset) + 44px + 1rem); /* 44px = the breadcrumb strip, so the card never sits on it at load */
     right: 1.5rem;
     z-index: 50;
     max-width: 200px;
@@ -1361,8 +1433,15 @@ const playbookRows = [
     margin-left: -2px;
   }
 
-  /* ===== RELATED LINKS — ink cards ===== */
+  /* ===== RELATED LINKS — the other subjects as LMS subject cards (global
+     .subject-card: sticker on its pastel panel), then plain ink link cards ===== */
   .related-section { background: var(--bg-secondary); padding: 1.25rem 0; }
+  .related-subjects {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
   .related-links {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1398,17 +1477,18 @@ const playbookRows = [
   }
   @media (max-width: 1024px) {
     .related-links { grid-template-columns: 1fr 1fr; }
+    .related-subjects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 480px) {
     .related-links { grid-template-columns: 1fr; }
+    .related-subjects { gap: 0.75rem; }
   }
 
   /* ===== SCHEDULE TABLE — white table inside an ink-outlined sticker ===== */
   .schedule-table-wrap {
-    overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;
+    overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch;
     background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md);
   }
-  .schedule-table-wrap::-webkit-scrollbar { display: none; }
   .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
   .schedule-table th, .schedule-table td { padding: 0.75rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); }
   .schedule-table th { background: var(--bg-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
@@ -1417,8 +1497,25 @@ const playbookRows = [
   .schedule-table tbody tr:hover { background: var(--bg-muted); }
   .schedule-note { margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); }
   .schedule-note a { color: var(--color-accent-text); font-weight: 700; text-decoration: underline; }
+  /* Phones: each row becomes a stacked card (label left, value right) so the
+     Status chips are never off-canvas behind a hidden horizontal scroll */
   @media (max-width: 640px) {
-    .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
+    .schedule-table, .schedule-table tbody, .schedule-table tr { display: block; }
+    .schedule-table thead { display: none; }
+    .schedule-table tr { padding: 0.6rem 1rem; }
+    .schedule-table tbody tr + tr { border-top: 1px solid var(--border-color); }
+    .schedule-table tbody tr:hover { background: transparent; }
+    .schedule-table td {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding: 0.3rem 0; border: 0; font-size: 0.9rem; text-align: right;
+    }
+    .schedule-table td::before {
+      content: attr(data-label);
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);
+      text-align: left; flex-shrink: 0;
+    }
+    .schedule-table td:first-child { font-weight: 800; }
   }
 
   /* ===== FAQ — one ink card, hairline-divided items ===== */
@@ -1580,6 +1677,16 @@ const playbookRows = [
   /* ===== SUBJECT RECEIPTS — coloured stat dots before each number ===== */
   .subject-receipts dt { display: flex; align-items: center; gap: 0.35rem; }
   .subject-receipts dt .stat-dot { width: 12px; height: 12px; margin-right: 0; }
+  /* Five stats: one row on desktop/tablet, 2-up on phones (the sitewide rule —
+     never a single column of giant numbers); the shared 3-column grid lives in
+     global.css, so this override carries the section class for specificity */
+  .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; }
+  .subject-receipts-section .subject-receipts dt { font-size: clamp(2rem, 3.3vw, 3rem); }
+  @media (max-width: 720px) {
+    .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; }
+    .subject-receipts-section .subject-receipts dt { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+    .subject-receipts-section .subject-receipts dl > div:last-child { grid-column: 1 / -1; }
+  }
 
   /* ===== SLOTS BANNER — a muted well ===== */
   .slots-banner {
@@ -1597,21 +1704,9 @@ const playbookRows = [
     align-items: center;
     gap: 0.75rem;
   }
-  .slots-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    border: 1.5px solid var(--color-ink);
-    flex-shrink: 0;
-  }
-  .slots-dot.pulse {
-    animation: slot-pulse 2s ease-in-out infinite;
-  }
-  @keyframes slot-pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--color-accent-soft); }
-    50% { opacity: 0.75; box-shadow: 0 0 0 6px transparent; }
-  }
+  /* Availability is data, not an action: the gold stat dot matches the
+     "slots left" chips in the table (red stays reserved for buttons) */
+  .slots-indicator .stat-dot { width: 12px; height: 12px; margin-right: 0; }
   .slots-text {
     font-size: 0.9rem;
     color: var(--text-primary);

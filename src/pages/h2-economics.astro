@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import '../styles/playbook.css';
+import { nextIntakeLabel } from '../data/site-config';
 
 const sharpSteps = [
   { letter: 'S', name: 'See' },
@@ -92,12 +93,17 @@ const playbookRows = [
   </nav>
 
   <!-- ===== PAGE HERO ===== -->
-  <section class="prog-hero">
+  <section class="prog-hero subject--econ">
     <div class="container">
-      <img class="sticker prog-hero__sticker" src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" loading="eager" decoding="async" />
-      <p class="eyebrow">H2 Economics</p>
-      <h1 class="prog-hero__heading">Best H2 <span class="accent-word">Economics</span> Tuition<br />in Singapore for JC Students</h1>
-      <p class="prog-hero__sub">Master the A-Level H2 Economics 9570 syllabus with the SHARP Method &mdash; a five-step analytical system that gives your child precision frameworks for diagram accuracy, DEED essay structure, Extract-Link-Apply case study technique, and the higher-order evaluation that separates L2 from L3 in the Cambridge mark scheme.</p>
+      <div class="hero-card prog-hero__card">
+        <div class="prog-hero__copy">
+          <p class="eyebrow">H2 Economics</p>
+          <h1 class="prog-hero__heading squiggle">Best H2 <span class="accent-word">Economics</span> Tuition <br />in Singapore for JC Students</h1>
+          <p class="prog-hero__sub">Master the A-Level H2 Economics 9570 syllabus with the SHARP Method &mdash; a five-step analytical system that gives your child precision frameworks for diagram accuracy, DEED essay structure, Extract-Link-Apply case study technique, and the higher-order evaluation that separates L2 from L3 in the Cambridge mark scheme.</p>
+          <p class="speech-bubble prog-hero__intake">Next intake: <strong>{nextIntakeLabel}</strong> &middot; JC 1 &amp; JC 2 &middot; max 6 per class</p>
+        </div>
+        <img class="sticker sticker--right prog-hero__sticker" src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" loading="eager" decoding="async" />
+      </div>
     </div>
   </section>
 
@@ -152,7 +158,7 @@ const playbookRows = [
     <div class="container">
       <p class="eyebrow">JC 2</p>
       <h2 class="prog-section__heading">Push from B to A with JC 2 Exam-Intensive Prep</h2>
-      <p class="prog-section__sub">Exam-focused H2 Economics preparation with timed essay practice, case study drills, and detailed marker-style feedback to push your child&rsquo;s grade from B to A.</p>
+      <p class="prog-section__sub">Exam-focused H2 Economics preparation with timed essay practice, case study drills, and detailed marker-style feedback to push your child&rsquo;s grade from B&nbsp;to&nbsp;A.</p>
 
       <div class="card-grid card-grid--1">
         <div class="prog-card">
@@ -365,7 +371,7 @@ const playbookRows = [
       </div>
 
       <div class="if-worked">
-        <span class="if-worked__tag">Worked Example &middot; Missing Information</span>
+        <span class="chip if-chip if-worked__tag">Worked Example &middot; Missing Information</span>
         <h3 class="if-worked__title">Childhood immunisations</h3>
         <div class="if-worked__body">
           <figure class="if-diagram-wrap">
@@ -417,7 +423,7 @@ const playbookRows = [
       </div>
 
       <div class="if-worked if-worked--alt">
-        <span class="if-worked__tag">Worked Example &middot; Adverse Selection</span>
+        <span class="chip if-chip if-worked__tag">Worked Example &middot; Adverse Selection</span>
         <h3 class="if-worked__title">The second-hand car market</h3>
         <p class="if-worked__narrative">Sellers know a car&rsquo;s real condition &mdash; mileage, accident history, hidden faults. Buyers don&rsquo;t, so they offer a price that reflects the <em>average</em> quality they expect. That price is too low for genuinely good cars (&ldquo;gems&rdquo;) and too generous for genuinely bad ones (&ldquo;lemons&rdquo;) &mdash; so gem owners exit the market first. As the average quality on sale keeps falling, buyers revise their price down again, and more gem owners leave. Play this forward and only lemons remain: not a market that&rsquo;s merely under-supplied, but a <strong>missing market</strong> for good used cars &mdash; complete market failure.</p>
       </div>
@@ -425,11 +431,11 @@ const playbookRows = [
       <div class="if-also">
         <span class="if-also__label">Also covered in this topic:</span>
         <ul class="if-also__list">
-          <li>Persuasive advertising &mdash; infant milk powder</li>
-          <li>Adverse selection &mdash; health insurance</li>
-          <li>Moral hazard &mdash; fire insurance</li>
-          <li>Moral hazard &mdash; personal healthcare insurance</li>
-          <li>Moral hazard &mdash; doctors &amp; professional services</li>
+          <li class="chip if-chip">Persuasive advertising &mdash; infant milk powder</li>
+          <li class="chip if-chip">Adverse selection &mdash; health insurance</li>
+          <li class="chip if-chip">Moral hazard &mdash; fire insurance</li>
+          <li class="chip if-chip">Moral hazard &mdash; personal healthcare insurance</li>
+          <li class="chip if-chip">Moral hazard &mdash; doctors &amp; professional services</li>
         </ul>
       </div>
     </div>
@@ -439,7 +445,7 @@ const playbookRows = [
   <section class="prog-section notes-section" id="real-notes">
     <div class="container">
       <p class="eyebrow">See The Notes</p>
-      <h2 class="prog-section__heading">Real pages from A-Worthy&rsquo;s H2 Economics notes</h2>
+      <h2 class="prog-section__heading">Real pages from <span class="nb">A-Worthy</span>&rsquo;s H2 Economics notes</h2>
       <p class="prog-section__sub">Every topic comes with notes built the same way &mdash; a real diagram, paired with the numbered framework that turns it into a Level 3 answer. Six pages from our actual Market Failure notes, unedited. Click to enlarge.</p>
 
       <div class="notes-gallery">
@@ -577,7 +583,7 @@ const playbookRows = [
   <section class="prog-section lesson-flow" id="lesson-flow">
     <div class="container">
       <p class="eyebrow">Inside a Lesson</p>
-      <h2 class="prog-section__heading">What 90 minutes at A-Worthy actually looks like</h2>
+      <h2 class="prog-section__heading">What 90 minutes at <span class="nb">A-Worthy</span> actually looks like</h2>
       <p class="prog-section__intro">H2 Economics is where memorisation goes to die. Here&rsquo;s exactly how a typical A-Worthy Economics lesson runs &mdash; built around the case study and essay technique that actually move marks.</p>
 
       <ol class="lesson-timeline">
@@ -655,7 +661,7 @@ const playbookRows = [
   <section class="prog-section subject-receipts-section">
     <div class="container">
       <span class="eyebrow">By the numbers</span>
-      <h2 class="prog-section__heading">Why JC students pick A-Worthy for H2 Economics</h2>
+      <h2 class="prog-section__heading">Why JC students pick <span class="nb">A-Worthy</span> for H2 Economics</h2>
       <aside class="subject-receipts">
         <dl>
           <div>
@@ -772,11 +778,11 @@ const playbookRows = [
 
       <div class="slots-banner">
         <div class="slots-indicator">
-          <span class="slots-dot pulse"></span>
+          <span class="stat-dot stat-dot--gold" aria-hidden="true"></span>
           <span class="slots-text"><strong>JC1 H2 Economics:</strong> 3 of 6 slots remaining</span>
         </div>
         <div class="slots-indicator">
-          <span class="slots-dot pulse"></span>
+          <span class="stat-dot stat-dot--gold" aria-hidden="true"></span>
           <span class="slots-text"><strong>JC2 H2 Economics:</strong> 2 of 6 slots remaining</span>
         </div>
       </div>
@@ -793,22 +799,22 @@ const playbookRows = [
           </thead>
           <tbody>
             <tr>
-              <td>JC 1 Foundation</td>
-              <td>Saturday, 10:00 AM &ndash; 11:30 AM</td>
-              <td>90 min</td>
-              <td><span class="chip chip--gold">3 slots left</span></td>
+              <td data-label="Programme">JC 1 Foundation</td>
+              <td data-label="Day &amp; time">Saturday, 10:00 AM &ndash; 11:30 AM</td>
+              <td data-label="Duration">90 min</td>
+              <td data-label="Status"><span class="chip chip--gold">3 slots left</span></td>
             </tr>
             <tr>
-              <td>JC 2 Intensive</td>
-              <td>Sunday, 2:00 PM &ndash; 3:30 PM</td>
-              <td>90 min</td>
-              <td><span class="chip chip--gold">2 slots left</span></td>
+              <td data-label="Programme">JC 2 Intensive</td>
+              <td data-label="Day &amp; time">Sunday, 2:00 PM &ndash; 3:30 PM</td>
+              <td data-label="Duration">90 min</td>
+              <td data-label="Status"><span class="chip chip--gold">2 slots left</span></td>
             </tr>
             <tr>
-              <td>One-to-One</td>
-              <td>Flexible &ndash; by arrangement</td>
-              <td>60&ndash;90 min</td>
-              <td><span class="chip chip--green">Available</span></td>
+              <td data-label="Programme">One-to-One</td>
+              <td data-label="Day &amp; time">Flexible &ndash; by arrangement</td>
+              <td data-label="Duration">60&ndash;90 min</td>
+              <td data-label="Status"><span class="chip chip--green">Available</span></td>
             </tr>
           </tbody>
         </table>
@@ -876,6 +882,37 @@ const playbookRows = [
 
   <section class="section related-section">
     <div class="container">
+      <span class="eyebrow">Other subjects</span>
+      <div class="related-subjects">
+        <a href="/pre-ib-mathematics/" class="subject-card subject--preib">
+          <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" loading="lazy" decoding="async" /></div>
+          <div class="subject-card__body">
+            <p class="subject-card__title">Pre-IB Mathematics</p>
+            <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>Year 3&ndash;4 maths for the IB track</p>
+          </div>
+        </a>
+        <a href="/o-level-english/" class="subject-card subject--english">
+          <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" loading="lazy" decoding="async" /></div>
+          <div class="subject-card__body">
+            <p class="subject-card__title">O-Level English</p>
+            <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>English tuition for Sec 1–4 students</p>
+          </div>
+        </a>
+        <a href="/o-level-mathematics/" class="subject-card subject--maths">
+          <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" loading="lazy" decoding="async" /></div>
+          <div class="subject-card__body">
+            <p class="subject-card__title">O-Level Mathematics</p>
+            <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>Maths tuition for Sec 1&ndash;4 students</p>
+          </div>
+        </a>
+        <a href="/h1-general-paper/" class="subject-card subject--gp">
+          <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" loading="lazy" decoding="async" /></div>
+          <div class="subject-card__body">
+            <p class="subject-card__title">H1 General Paper</p>
+            <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>GP tuition for JC 1–2 students</p>
+          </div>
+        </a>
+      </div>
       <span class="eyebrow">Explore More</span>
       <div class="related-links">
         <a href="/resources/" class="related-link">
@@ -898,22 +935,6 @@ const playbookRows = [
           <strong>Pricing &amp; Plans</strong>
           <span>Compare programme fees and what's included</span>
         </a>
-        <a href="/pre-ib-mathematics/" class="related-link">
-          <strong>Pre-IB Mathematics</strong>
-          <span>Year 3&ndash;4 maths for the IB track</span>
-        </a>
-        <a href="/o-level-english/" class="related-link">
-          <strong>O-Level English</strong>
-          <span>English tuition for Sec 1–4 students</span>
-        </a>
-        <a href="/o-level-mathematics/" class="related-link">
-          <strong>O-Level Mathematics</strong>
-          <span>Maths tuition for Sec 1&ndash;4 students</span>
-        </a>
-        <a href="/h1-general-paper/" class="related-link">
-          <strong>H1 General Paper</strong>
-          <span>GP tuition for JC 1–2 students</span>
-        </a>
         <a href="/about/" class="related-link">
           <strong>About A-Worthy</strong>
           <span>Meet Jeremy Lim and the SHARP Method</span>
@@ -934,9 +955,9 @@ const playbookRows = [
   /* ===== SUBJECT ACCENT: H2 Economics =====
      Used only where a surface is deliberately "subject-coloured" (the quote
      rail, the mid-page CTA rail, the diagram strokes, the playbook chrome).
-     Cards default to ink, actions are the sitewide red. */
-  :root { --subject-accent: #3DAA5C; --subject-accent-text: #1F7A3D; }
-  :global([data-theme="dark"]) { --subject-accent: #5EC26C; --subject-accent-text: #7ED89A; }
+     Cards default to ink, actions are the sitewide red. The colour is the LMS
+     subject token, which carries its own dark-mode value (no override here). */
+  :root { --subject-accent: var(--subject-econ); --subject-accent-text: var(--subject-econ-text); }
 
   /* ===== DESIGN TOKENS ===== */
   :root {
@@ -950,19 +971,34 @@ const playbookRows = [
     --prog-mono: var(--font-mono);
   }
 
-  /* ===== HERO — sticker centred above the headline, like the LMS ===== */
+  /* Keeps hyphenated names ("Pre-IB", "A-Worthy", "O-Level") whole at line ends */
+  .nb { white-space: nowrap; }
+
+  /* ===== HERO — the LMS welcome card: a white ink card with the subject-tint
+     wash (global .hero-card), eyebrow + squiggled headline + intake bubble on
+     the left and the subject sticker on the right at >=1024px; on narrower
+     screens the sticker sits centred above the copy. The 56.25rem cap keeps
+     the card clear of the fixed "On this page" card at 1280px+. ===== */
   .prog-hero {
     background: var(--prog-bg);
-    padding: 1.25rem 0 0.75rem;
+    padding: 1.25rem 0 1rem;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
 
-  .prog-hero .container { position: relative; z-index: 1; max-width: 860px; }
+  .prog-hero .container { position: relative; z-index: 1; max-width: 56.25rem; }
+
+  .prog-hero__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prog-hero__copy { width: 100%; min-width: 0; }
 
   .prog-hero__sticker {
-    --tilt: -3deg;
+    order: -1;
     width: min(200px, 48vw);
     height: auto;
     margin: 0 auto 0.75rem;
@@ -978,6 +1014,9 @@ const playbookRows = [
     letter-spacing: -0.03em;
   }
 
+  /* The red squiggle (global .squiggle) is centred while the copy is centred */
+  .prog-hero__heading::after { margin-left: auto; margin-right: auto; }
+
   .prog-hero__sub {
     font-family: var(--prog-font);
     font-size: 1.1rem;
@@ -985,6 +1024,31 @@ const playbookRows = [
     color: var(--prog-text-secondary);
     max-width: 640px;
     margin: 0 auto;
+  }
+
+  /* Intake line rides on the global .speech-bubble (LMS welcome-card callout);
+     the bottom margin leaves room for the bubble's tail */
+  .prog-hero__intake {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 1rem auto 0.75rem;
+    text-align: left;
+  }
+  .prog-hero__intake strong { font-weight: 800; }
+
+  @media (min-width: 1024px) {
+    .prog-hero { text-align: left; }
+    .prog-hero__card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      align-items: center;
+      gap: 2rem;
+    }
+    .prog-hero__sticker { order: 0; width: 180px; margin: 0; }
+    .prog-hero__heading { font-size: clamp(2.2rem, 3.1vw, 2.6rem); }
+    .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
+    .prog-hero__sub { margin: 0; }
+    .prog-hero__intake { margin: 1rem 0 0.75rem; }
   }
 
   /* ===== NAV — glass strip, grey tabs, red active rule ===== */
@@ -1314,6 +1378,9 @@ const playbookRows = [
 
     .prog-nav {
       padding: 0.5rem 0;
+      /* Fade the right edge so the clipped tab row reads as scrollable */
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
     }
 
     .prog-section {
@@ -1326,6 +1393,8 @@ const playbookRows = [
 
     .prog-nav__inner {
       gap: 1rem;
+      /* the last tab clears the 40px fade */
+      padding-inline: var(--page-padding) 2.5rem;
     }
 
     .card-grid--2 {
@@ -1402,7 +1471,7 @@ const playbookRows = [
   /* ===== STICKY TOC — a small ink card in the right margin ===== */
   .sticky-toc {
     position: fixed;
-    top: calc(var(--nav-offset) + 1rem);
+    top: calc(var(--nav-offset) + 44px + 1rem); /* 44px = the breadcrumb strip, so the card never sits on it at load */
     right: 1.5rem;
     z-index: 50;
     max-width: 200px;
@@ -1454,8 +1523,15 @@ const playbookRows = [
     margin-left: -2px;
   }
 
-  /* ===== RELATED LINKS — ink cards ===== */
+  /* ===== RELATED LINKS — the other subjects as LMS subject cards (global
+     .subject-card: sticker on its pastel panel), then plain ink link cards ===== */
   .related-section { background: var(--bg-secondary); padding: 1.25rem 0; }
+  .related-subjects {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
   .related-links {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1491,17 +1567,18 @@ const playbookRows = [
   }
   @media (max-width: 1024px) {
     .related-links { grid-template-columns: 1fr 1fr; }
+    .related-subjects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 480px) {
     .related-links { grid-template-columns: 1fr; }
+    .related-subjects { gap: 0.75rem; }
   }
 
   /* ===== SCHEDULE TABLE — white table inside an ink-outlined sticker ===== */
   .schedule-table-wrap {
-    overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;
+    overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch;
     background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md);
   }
-  .schedule-table-wrap::-webkit-scrollbar { display: none; }
   .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
   .schedule-table th, .schedule-table td { padding: 0.75rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); }
   .schedule-table th { background: var(--bg-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
@@ -1510,8 +1587,25 @@ const playbookRows = [
   .schedule-table tbody tr:hover { background: var(--bg-muted); }
   .schedule-note { margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); }
   .schedule-note a { color: var(--color-accent-text); font-weight: 700; text-decoration: underline; }
+  /* Phones: each row becomes a stacked card (label left, value right) so the
+     Status chips are never off-canvas behind a hidden horizontal scroll */
   @media (max-width: 640px) {
-    .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
+    .schedule-table, .schedule-table tbody, .schedule-table tr { display: block; }
+    .schedule-table thead { display: none; }
+    .schedule-table tr { padding: 0.6rem 1rem; }
+    .schedule-table tbody tr + tr { border-top: 1px solid var(--border-color); }
+    .schedule-table tbody tr:hover { background: transparent; }
+    .schedule-table td {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding: 0.3rem 0; border: 0; font-size: 0.9rem; text-align: right;
+    }
+    .schedule-table td::before {
+      content: attr(data-label);
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);
+      text-align: left; flex-shrink: 0;
+    }
+    .schedule-table td:first-child { font-weight: 800; }
   }
 
   /* ===== FAQ — one ink card, hairline-divided items ===== */
@@ -1673,6 +1767,16 @@ const playbookRows = [
   /* ===== SUBJECT RECEIPTS — coloured stat dots before each number ===== */
   .subject-receipts dt { display: flex; align-items: center; gap: 0.35rem; }
   .subject-receipts dt .stat-dot { width: 12px; height: 12px; margin-right: 0; }
+  /* Five stats: one row on desktop/tablet, 2-up on phones (the sitewide rule —
+     never a single column of giant numbers); the shared 3-column grid lives in
+     global.css, so this override carries the section class for specificity */
+  .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; }
+  .subject-receipts-section .subject-receipts dt { font-size: clamp(2rem, 3.3vw, 3rem); }
+  @media (max-width: 720px) {
+    .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; }
+    .subject-receipts-section .subject-receipts dt { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+    .subject-receipts-section .subject-receipts dl > div:last-child { grid-column: 1 / -1; }
+  }
 
   /* ===== SLOTS BANNER — a muted well ===== */
   .slots-banner {
@@ -1690,21 +1794,9 @@ const playbookRows = [
     align-items: center;
     gap: 0.75rem;
   }
-  .slots-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    border: 1.5px solid var(--color-ink);
-    flex-shrink: 0;
-  }
-  .slots-dot.pulse {
-    animation: slot-pulse 2s ease-in-out infinite;
-  }
-  @keyframes slot-pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--color-accent-soft); }
-    50% { opacity: 0.75; box-shadow: 0 0 0 6px transparent; }
-  }
+  /* Availability is data, not an action: the gold stat dot matches the
+     "slots left" chips in the table (red stays reserved for buttons) */
+  .slots-indicator .stat-dot { width: 12px; height: 12px; margin-right: 0; }
   .slots-text {
     font-size: 0.9rem;
     color: var(--text-primary);
@@ -1761,7 +1853,10 @@ const playbookRows = [
   .if-steps :global(sub) { font-size: 0.75em; }
 
   .if-worked { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.25rem; }
-  .if-worked__tag { display: inline-flex; align-items: center; padding: 0.3rem 0.8rem; border-radius: var(--radius-pill); border: 1.5px solid var(--subject-accent); background: color-mix(in srgb, var(--subject-accent) 12%, transparent); font-family: var(--prog-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--subject-accent-text); font-weight: 700; margin-bottom: 0.6rem; }
+  /* Subject-coloured chip (global .chip + the Econ brick) — the WORKED EXAMPLE
+     tags and the "also covered" topic pills share it */
+  .chip.if-chip { border-color: var(--subject-accent); background: color-mix(in srgb, var(--subject-accent) 12%, transparent); color: var(--subject-accent-text); }
+  .if-worked__tag { margin-bottom: 0.6rem; }
   .if-worked__title { font-family: var(--prog-font); font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0 0 1rem; }
   .if-worked__body { display: grid; grid-template-columns: 300px 1fr; gap: 1.75rem; align-items: start; }
   .if-diagram-wrap { margin: 0; background: var(--bg-muted); border: 2px solid var(--color-ink); border-radius: var(--radius-sm); padding: 0.75rem; }
@@ -1773,7 +1868,7 @@ const playbookRows = [
   .if-also { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-top: 1.5rem; }
   .if-also__label { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); }
   .if-also__list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; }
-  .if-also__list li { font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); background: var(--bg-muted); border: 1.5px solid var(--ink-faint); border-radius: var(--radius-pill); padding: 0.3rem 0.75rem; margin: 0; }
+  .if-also__list li { margin: 0; white-space: normal; text-align: left; line-height: 1.3; }
 
   @media (max-width: 768px) {
     .if-taxonomy { grid-template-columns: 1fr; }

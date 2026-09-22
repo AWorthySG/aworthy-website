@@ -116,7 +116,7 @@ const count = materials.length;
                   class="sh-chip"
                   data-filter={s.id}
                   aria-pressed="false"
-                  style={`--chip-accent: ${s.accent}; --chip-accent-dark: ${s.accentDark};`}
+                  style={`--chip-accent: ${s.accent};`}
                 >
                   {s.short}
                 </button>
@@ -136,7 +136,7 @@ const count = materials.length;
               data-title={m.title}
               data-subject={m.subject.label}
               data-subject-id={m.subject.id}
-              style={`--sub: ${m.subject.accent}; --sub-dark: ${m.subject.accentDark};`}
+              style={`--sub: ${m.subject.accent}; --sub-text: ${m.subject.accentText};`}
             >
               <span class="sh-card__top">
                 <span class="sh-card__chip chip">{m.subject.short}</span>
@@ -232,22 +232,20 @@ const count = materials.length;
     background: var(--bg-card); border: 2px solid var(--color-ink); border-top: 6px solid var(--sub);
     border-radius: var(--radius-md); text-decoration: none; color: inherit;
   }
-  :global([data-theme='dark']) .sh-card { border-top-color: var(--sub-dark); }
   .sh-card:hover { color: inherit; opacity: 1; }
   .sh-card[hidden] { display: none; }
 
   .sh-card__top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
-  .sh-card__chip { background: var(--bg-card); color: var(--sub); border-color: var(--sub); }
-  :global([data-theme='dark']) .sh-card__chip { color: var(--sub-dark); border-color: var(--sub-dark); }
+  /* --sub is the subject dot colour (top edge, chip border); --sub-text is its AA text pair — both tokens swap in dark mode */
+  .sh-card__chip { background: var(--bg-card); color: var(--sub-text); border-color: var(--sub); }
   .sh-card__level { text-transform: none; letter-spacing: 0.02em; font-size: 0.75rem; }
   .sh-card__title { font-size: 1.08rem; font-weight: 800; line-height: 1.35; color: var(--text-primary); letter-spacing: -0.01em; }
   .sh-card__desc { font-size: 0.9rem; line-height: 1.55; color: var(--text-secondary); flex: 1; }
   .sh-card__cta {
     display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.35rem;
     font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-    font-weight: 700; color: var(--sub);
+    font-weight: 700; color: var(--sub-text);
   }
-  :global([data-theme='dark']) .sh-card__cta { color: var(--sub-dark); }
   .sh-card:hover .sh-card__cta svg { transform: translateX(3px); }
   .sh-card__cta svg { transition: transform var(--transition-fast); }
 
@@ -274,7 +272,7 @@ const count = materials.length;
     background: var(--bg-card); border-bottom: 2px solid var(--color-ink); flex: 0 0 auto;
   }
   .sh-viewer__meta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; min-width: 0; }
-  .sh-viewer__chip { background: var(--bg-card); color: var(--chip, var(--text-secondary)); border-color: var(--chip, var(--ink-faint)); }
+  .sh-viewer__chip { background: var(--bg-card); color: var(--chip, var(--text-secondary)); border-color: var(--chip-border, var(--ink-faint)); }
   .sh-viewer__chip:empty { display: none; }
   .sh-viewer__title {
     margin: 0; font-size: 0.98rem; font-weight: 800; line-height: 1.3; color: var(--text-primary);
@@ -401,7 +399,9 @@ const count = materials.length;
       var src = card.getAttribute('href');
       titleEl.textContent = card.dataset.title;
       chipEl.textContent = card.dataset.subject;
-      chipEl.style.setProperty('--chip', getComputedStyle(card).getPropertyValue('--sub'));
+      var cardStyle = getComputedStyle(card);
+      chipEl.style.setProperty('--chip', cardStyle.getPropertyValue('--sub-text'));
+      chipEl.style.setProperty('--chip-border', cardStyle.getPropertyValue('--sub'));
       newTab.setAttribute('href', src);
       frame.setAttribute('title', card.dataset.title);
       loadIntoFrame(src);

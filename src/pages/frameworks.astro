@@ -273,7 +273,7 @@ const frameworkIndex = [
           <div class="caps-parts">
             <div class="caps-part">
               <span class="caps-part__label">Single-part</span>
-              <span class="caps-part__bar caps-part__bar--one">One theme · ~80 words</span>
+              <span class="caps-part__bar">One theme · ~80 words</span>
             </div>
             <div class="caps-part">
               <span class="caps-part__label">Two-part</span>
@@ -462,7 +462,6 @@ const frameworkIndex = [
   .caps-part { display: flex; flex-direction: column; gap: 0.3rem; }
   .caps-part__label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); }
   .caps-part__bar { display: inline-block; padding: 0.5rem 0.75rem; background: var(--fw-accent-soft); border: 2px solid var(--color-ink); border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 700; text-align: center; color: var(--text-primary); }
-  .caps-part__bar--one { background: var(--color-accent); color: #fff; }
   .caps-part__split { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
   .caps-part__transition { font-size: 0.75rem; font-style: italic; font-weight: 600; color: var(--text-secondary); padding: 0 0.2rem; }
   .caps-tt { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
@@ -494,7 +493,15 @@ const frameworkIndex = [
     background: var(--bg-card); box-shadow: 0 3px 0 var(--ink-shadow); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
   }
   .notes-shot:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
-  .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 2px dashed var(--ink-faint); }
+  /* Each page sits centred on a subject-tint mat (the LMS subject-panel pattern); on the 3-column layout the
+     tiles share a 4:3 ratio so the row stays level without cropping the pages — the lightbox opens the full image. */
+  .notes-shot img {
+    display: block; width: 100%; height: auto; box-sizing: border-box; padding: 0.75rem;
+    object-fit: contain; background: var(--fw-accent-soft); border-bottom: 2px dashed var(--ink-faint);
+  }
+  @media (min-width: 641px) {
+    .notes-shot img { aspect-ratio: 4 / 3; }
+  }
   .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; font-weight: 600; line-height: 1.4; color: var(--text-secondary); }
   .notes-lightbox {
     position: fixed; inset: 0; z-index: var(--z-modal); display: none; align-items: center; justify-content: center;
