@@ -6,13 +6,17 @@ import '../styles/global.css';
 
 // Each "station" = a subject. Cook it to plate up the dish (the result),
 // then a link to the real subject page appears. Colours are the LMS subject
-// tokens from global.css (theme-aware), passed in as the --st custom property.
+// tokens from global.css (theme-aware): `color` is the stroke token (pot fill,
+// cooked outline) passed in as --st, and `text` is the matching `-text` token
+// (AA on the white plated card) passed in as --st-text. The ingredient
+// separator is a literal U+00B7: an `&middot;` entity inside a {} expression
+// is HTML-escaped by Astro and printed verbatim.
 const stations = [
-  { key: 'eng', subject: 'O-Level English', short: 'English', href: '/o-level-english/', color: 'var(--subject-english)', ingredients: ['Comprehension', 'Composition', 'Oral'], dish: 'A1 Essay' },
-  { key: 'math', subject: 'O-Level Maths', short: 'Maths', href: '/o-level-mathematics/', color: 'var(--subject-maths)', ingredients: ['Algebra', 'Trigonometry', 'Statistics'], dish: 'A1 Paper' },
-  { key: 'preib', subject: 'Pre-IB Maths', short: 'Pre-IB', href: '/pre-ib-mathematics/', color: 'var(--subject-preib)', ingredients: ['Surds', 'Logarithms', 'Calculus'], dish: 'Top Set' },
-  { key: 'gp', subject: 'H1 General Paper', short: 'GP', href: '/h1-general-paper/', color: 'var(--subject-gp)', ingredients: ['Argument', 'Evidence', 'Evaluation'], dish: 'Band 1' },
-  { key: 'econs', subject: 'H2 Economics', short: 'Econs', href: '/h2-economics/', color: 'var(--subject-econ)', ingredients: ['Diagrams', 'Essays', 'Case Studies'], dish: 'Distinction' },
+  { key: 'eng', subject: 'O-Level English', short: 'English', href: '/o-level-english/', color: 'var(--subject-english)', text: 'var(--subject-english-text)', ingredients: ['Comprehension', 'Composition', 'Oral'], dish: 'A1 Essay' },
+  { key: 'math', subject: 'O-Level Maths', short: 'Maths', href: '/o-level-mathematics/', color: 'var(--subject-maths)', text: 'var(--subject-maths-text)', ingredients: ['Algebra', 'Trigonometry', 'Statistics'], dish: 'A1 Paper' },
+  { key: 'preib', subject: 'Pre-IB Maths', short: 'Pre-IB', href: '/pre-ib-mathematics/', color: 'var(--subject-preib)', text: 'var(--subject-preib-text)', ingredients: ['Surds', 'Logarithms', 'Calculus'], dish: 'Top Set' },
+  { key: 'gp', subject: 'H1 General Paper', short: 'GP', href: '/h1-general-paper/', color: 'var(--subject-gp)', text: 'var(--subject-gp-text)', ingredients: ['Argument', 'Evidence', 'Evaluation'], dish: 'Band 1' },
+  { key: 'econs', subject: 'H2 Economics', short: 'Econs', href: '/h2-economics/', color: 'var(--subject-econ)', text: 'var(--subject-econ-text)', ingredients: ['Diagrams', 'Essays', 'Case Studies'], dish: 'Distinction' },
 ];
 const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
 ---
@@ -44,7 +48,7 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
       <div class="k-floor">
         <div class="k-stations">
           {stations.map((s) => (
-            <div class="k-station" style={`--st: ${s.color};`} data-key={s.key}>
+            <div class="k-station" style={`--st: ${s.color}; --st-text: ${s.text};`} data-key={s.key}>
               <button type="button" class="k-pot" aria-pressed="false" aria-label={`Cook the ${s.subject} station`}>
                 <span class="k-steam" aria-hidden="true"><i></i><i></i><i></i></span>
                 <svg class="k-pot__svg" viewBox="0 0 120 96" aria-hidden="true">
@@ -65,8 +69,8 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
               <div class="k-card" hidden>
                 <span class="k-card__dish" aria-hidden="true">🍽️</span>
                 <strong class="k-card__title">{s.dish} &mdash; plated!</strong>
-                <span class="k-card__ing">{s.ingredients.join(' &middot; ')}</span>
-                <a class="k-card__cta" href={s.href}>Cook this for real &mdash; {s.subject} &rarr;</a>
+                <span class="k-card__ing">{s.ingredients.join(' · ')}</span>
+                <a class="btn btn--sm k-card__cta" href={s.href}>Cook this for real &mdash; {s.subject} &rarr;</a>
               </div>
             </div>
           ))}
@@ -169,13 +173,13 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
   .k-steam i { width: 7px; height: 7px; border-radius: 50%; background: var(--st); background: color-mix(in srgb, var(--st) 45%, #fff); }
   .k-pot:hover .k-steam, .k-station.is-cooked .k-steam { opacity: 1; }
 
-  /* plated card */
-  .k-card { margin-top: 0.75rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; animation: k-pop 0.4s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
+  /* plated card — a white sticker body (LMS subject card), never type straight on the gingham floor */
+  .k-card { width: 100%; margin-top: 0.75rem; padding: 0.75rem 0.6rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); animation: k-pop 0.4s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
   .k-card__dish { font-size: 1.6rem; }
-  .k-card__title { font-size: 0.9rem; font-weight: 800; color: var(--st); }
+  .k-card__title { font-size: 0.9rem; font-weight: 800; color: var(--st-text); }
   .k-card__ing { font-size: 0.72rem; color: var(--text-secondary); }
-  .k-card__cta { font-size: 0.78rem; font-weight: 700; color: var(--st); text-decoration: none; margin-top: 0.25rem; }
-  .k-card__cta:hover { text-decoration: underline; }
+  /* the link is a global .btn.btn--sm sticker pill (≥40px tap target); it only needs room to wrap inside a narrow plate */
+  .k-card__cta { margin-top: 0.5rem; width: 100%; padding-inline: 0.75rem; white-space: normal; text-align: center; line-height: 1.3; }
   @keyframes k-pop { from { opacity: 0; transform: scale(0.7) translateY(6px); } to { opacity: 1; transform: none; } }
 
   /* recipe strip — ink-outlined pills with a red step number */
