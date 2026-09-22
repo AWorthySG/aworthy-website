@@ -135,9 +135,13 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
       var(--bg-secondary);
     border: 2px solid var(--color-ink);
   }
-  .k-stations { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1040px; margin: 0 auto; }
-  @media (max-width: 880px) { .k-stations { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 520px) { .k-stations { grid-template-columns: repeat(2, 1fr); } }
+  .k-stations { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; max-width: 1040px; margin: 0 auto; }
+  @media (max-width: 880px) { .k-stations { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 520px) {
+    .k-stations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* five pots in two columns leave the last one alone — centre it instead of an empty cell beside it */
+    .k-station:nth-child(5) { grid-column: 1 / -1; width: calc(50% - 0.5rem); margin: 0 auto; }
+  }
 
   .k-station { display: flex; flex-direction: column; align-items: center; }
 
