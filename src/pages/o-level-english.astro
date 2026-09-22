@@ -409,7 +409,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
       <h2 class="prog-section__heading">Real pages from A-Worthy&rsquo;s English materials</h2>
       <p class="prog-section__sub">The frameworks above aren&rsquo;t slideware &mdash; each one lives in a full teaching document your child works from. Eight excerpts, two from each document, unedited. Click to enlarge.</p>
 
-      <div class="notes-gallery">
+      <div class="notes-gallery notes-gallery--mixed">
         <button type="button" class="notes-shot" data-full="/images/english-mat-stampcard.webp" aria-label="Enlarge: STAMP CARD nine-category quick reference from the editing notes">
           <img src="/images/english-mat-stampcard.webp" alt="The STAMP CARD quick-reference table from A-Worthy's editing notes: nine error types from Subject-Verb Agreement to Degree of Comparison, each with its quick check question" loading="lazy" width="1100" height="758" />
           <span class="notes-shot__cap">Editing notes &mdash; the STAMP CARD nine-category quick reference</span>
@@ -1181,11 +1181,20 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     .prog-hero__sub { margin: 0; }
   }
 
-  /* ===== SECTION NAV — glass strip like the header ===== */
-  .prog-nav { background: rgba(250, 246, 238, 0.86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 0.25rem 0; position: sticky; top: var(--nav-offset); z-index: var(--z-subject-selector); overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  :global([data-theme="dark"]) .prog-nav { background: rgba(23, 22, 20, 0.85); }
+  /* ===== SECTION NAV — a solid sticky strip under the header ===== */
+  /* Solid, never translucent (the LMS system retires frosted panels): the old
+     rgba + backdrop-filter let section headings and their squiggles read
+     straight through the bar while scrolling. The token resolves per theme,
+     so no dark override is needed. */
+  .prog-nav { background: var(--bg-primary); border-bottom: 1px solid var(--border-color); padding: 0.25rem 0; position: sticky; top: var(--nav-offset); z-index: var(--z-subject-selector); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .prog-nav::-webkit-scrollbar { display: none; }
   .prog-nav__inner { display: flex; justify-content: center; gap: 1.75rem; flex-wrap: nowrap; min-width: max-content; }
+  /* Scroll affordance: below ~1100px the links overflow and, with the scrollbar
+     hidden, the strip used to guillotine the last link mid-word with no cue
+     that it scrolls. This sticky chip rides the right edge of the scrollport
+     and fades the trailing link into the bar colour. It is an opaque overlay,
+     not a mask, so the bar itself stays solid. */
+  .prog-nav__inner::after { content: ''; position: sticky; right: 0; flex: 0 0 2.5rem; align-self: stretch; margin-left: -2.5rem; background: linear-gradient(90deg, transparent, var(--bg-primary)); pointer-events: none; }
   .prog-nav__link { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; padding: 0.4rem 0.3rem; min-height: 44px; display: inline-flex; align-items: center; border-bottom: 2px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; touch-action: manipulation; }
   .prog-nav__link:hover { color: var(--text-primary); border-bottom-color: var(--ink-faint); }
   .prog-nav__link.is-active { color: var(--color-accent-text); border-bottom-color: var(--color-accent); }
@@ -1207,7 +1216,10 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .prog-card__desc { font-family: var(--prog-font); font-size: 0.9rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 0.75rem; }
   .prog-card__topics { list-style: none; padding: 0; margin: 0 0 auto; flex-grow: 1; }
   .prog-card__topics li { font-family: var(--prog-font); font-size: 0.82rem; line-height: 1.5; color: var(--prog-text-secondary); padding: 0.45rem 0; border-bottom: 1px solid var(--border-color); padding-left: 1rem; position: relative; }
-  .prog-card__topics li::before { content: ''; position: absolute; left: 0; top: 50%; width: 0.85rem; height: 0.85rem; background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat; transform: translateY(-50%); }
+  /* Pinned to the FIRST line (0.45rem padding + half the 1.23rem line box - half
+     the marker), not the li's centre — a wrapped item used to float the mascot
+     in the gap between its lines. */
+  .prog-card__topics li::before { content: ''; position: absolute; left: 0; top: 0.64rem; width: 0.85rem; height: 0.85rem; background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat; }
   .prog-card__topics li:last-child { border-bottom: none; }
   .prog-card__meta { display: flex; gap: 1.25rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 2px dashed var(--ink-faint); flex-wrap: wrap; }
   .prog-card__meta span { font-family: var(--prog-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); }
@@ -1373,6 +1385,10 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   }
   /* Equal panel heights: the subject stickers differ by a few px in aspect ratio */
   .related-section .subject-panel--sm { min-height: 160px; }
+  /* The subject dot sits on the FIRST line of the meta, not the centre of a
+     wrapped two-line one (where it read as a stray dot starting line 2). */
+  .subject-card__meta { align-items: flex-start; }
+  .subject-card__meta .subject-dot { margin-top: 0.42em; flex: 0 0 auto; }
   .related-link {
     display: block;
     text-decoration: none;
@@ -1442,7 +1458,8 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     .schedule-table th, .schedule-table td { padding: 0.75rem; font-size: 0.85rem; }
   }
 
-  /* ===== FAQ — each item is an ink card ===== */
+  /* ===== FAQ — one ink card, hairline-divided items (as on the other
+     subject pages) ===== */
   .faq-section {
     padding: 1.25rem 0;
     background: var(--bg-secondary);
@@ -1451,17 +1468,17 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .faq-list {
     max-width: 800px;
     margin: 0 auto;
-  }
-  .faq-item {
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 0.75rem;
-    transition: box-shadow 0.2s ease;
+    padding: 0.25rem 1.25rem;
   }
-  .faq-item[open] {
-    box-shadow: 0 4px 0 var(--ink-shadow);
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.85rem 0;
+  }
+  .faq-item:last-child {
+    border-bottom: none;
   }
   .faq-question {
     font-family: var(--font-body);
@@ -1479,7 +1496,8 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     transition: color var(--transition-fast);
   }
   .faq-question::-webkit-details-marker { display: none; }
-  .faq-question:hover {
+  .faq-question:hover,
+  .faq-item[open] .faq-question {
     color: var(--color-accent-text);
   }
   .faq-question::after {
@@ -1494,9 +1512,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     content: '\2212';
   }
   .faq-answer {
-    padding: 0.5rem 0 0.5rem;
-    border-top: 2px dashed var(--ink-faint);
-    margin-top: 0.5rem;
+    padding-top: 0.5rem;
     color: var(--text-secondary);
     line-height: 1.7;
   }
@@ -1597,6 +1613,19 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
 
   /* ===== SUBJECT RECEIPTS — coloured stat dots before the big numbers ===== */
   .subject-receipts dt .stat-dot { width: 12px; height: 12px; margin-right: 0.55rem; vertical-align: 0.38em; }
+  /* Five stats on one desktop row, left-aligned with the section eyebrow and
+     heading. The shared rail in global.css is a centred 960px box on a
+     3-column grid, which pushed the band ~70px right of the heading and left a
+     conspicuous empty third cell in row 2. Still 2-up on phones (the sitewide
+     stats rule), with the odd fifth stat spanning the row. */
+  .subject-receipts-section .subject-receipts { max-width: none; margin-inline: 0; }
+  .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1.5rem; }
+  .subject-receipts-section .subject-receipts dt { font-size: clamp(2rem, 3.3vw, 3rem); }
+  @media (max-width: 720px) {
+    .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; }
+    .subject-receipts-section .subject-receipts dt { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+    .subject-receipts-section .subject-receipts dl > div:last-child { grid-column: 1 / -1; }
+  }
 
   /* ===== SLOTS BANNER — a muted well ===== */
   .slots-banner {
@@ -1772,7 +1801,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .oral-pages { margin: 0 0 1.25rem; }
   .oral-pages__label { font-family: var(--prog-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-secondary); }
   .oral-pages__sub { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0.35rem 0 1rem; max-width: 680px; }
-  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: start; }
+  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .notes-gallery--two { grid-template-columns: repeat(2, 1fr); }
   .notes-shot {
     display: flex; flex-direction: column; padding: 0; border: 2px solid var(--color-ink); border-radius: var(--radius-md);
@@ -1785,6 +1814,13 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .notes-shot:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
   .notes-shot:active { transform: translateY(1px); box-shadow: 0 2px 0 var(--ink-shadow); }
   .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 2px solid var(--color-ink); }
+  /* The materials gallery mixes tall page scans with wide framework cards, so
+     its rows ran ragged (one thumbnail ~5x its neighbour, leaving voids in the
+     band). Cap the tall scans — anchored to the top, and the full page is one
+     click away in the lightbox — and let the grid's default stretch square the
+     rows up. The wide cards are below the cap, so their titles are never cut;
+     a fixed aspect-ratio crop would have sliced them off. */
+  .notes-gallery--mixed .notes-shot img { max-height: 300px; object-fit: cover; object-position: top center; }
   .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1.4; color: var(--text-secondary); }
 
   .notes-lightbox {

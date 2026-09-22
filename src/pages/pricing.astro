@@ -468,7 +468,7 @@ import '../styles/global.css';
        in the middle. min-width keeps each column wide enough for its longest
        word before the wrapper starts scrolling horizontally. */
     table-layout: fixed;
-    min-width: 880px;
+    min-width: 860px;
   }
 
   .pricing-table thead th {
@@ -481,7 +481,9 @@ import '../styles/global.css';
        the empty label column has no .subject--* class and falls back to muted */
     background: var(--subject-tint, var(--bg-muted));
     border-bottom: 2px solid var(--color-ink);
-    vertical-align: bottom;
+    /* top-aligned so the sticker row stays level even if one programme name
+       needs an extra line at narrow widths */
+    vertical-align: top;
   }
 
   .pricing-table__label-col {
@@ -489,8 +491,9 @@ import '../styles/global.css';
   }
 
   .pricing-table__programme-name {
-    /* Two lines are reserved for every name (most wrap), and the text sits on
-       the bottom of that box, so all six stickers share one baseline */
+    /* Two lines are reserved for every name (most of them wrap), and the text
+       sits at the bottom of that box, so the level micro-label underneath
+       lands at the same height in every column */
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -572,8 +575,10 @@ import '../styles/global.css';
 
   .pricing-table__sticker {
     display: block;
-    width: 48px;
-    height: auto;
+    /* sized by HEIGHT so all six stickers share a baseline despite different
+       source aspect ratios */
+    height: 64px;
+    width: auto;
     margin: 0 auto 0.4rem;
     filter: drop-shadow(0 1px 1px rgba(34, 48, 74, 0.12));
   }
