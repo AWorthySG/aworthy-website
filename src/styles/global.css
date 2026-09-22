@@ -85,6 +85,16 @@
   --color-warning-bg: #FEF8E8;
   --color-danger-bg: #FFF0EE;
   --gold-light: #FBF3E2;
+
+  /* ── Subject colours — sampled from the LMS dashboard: each subject has a
+     dot colour (sidebar), a text-safe variant, and a pastel panel tint the
+     subject sticker sits on. ── */
+  --subject-english: #3F72AB;  --subject-english-text: #3F72AB;  --subject-english-tint: #E4ECF3;
+  --subject-maths: #3B7A73;    --subject-maths-text: #3B7A73;    --subject-maths-tint: #D9E5E4;
+  --subject-preib: #647836;    --subject-preib-text: #647836;    --subject-preib-tint: #EDEFDC;
+  --subject-gp: #53945F;       --subject-gp-text: #3F7A4B;       --subject-gp-tint: #E3ECE1;
+  --subject-econ: #993F36;     --subject-econ-text: #993F36;     --subject-econ-tint: #EFE1DA;
+  --subject-coaching: #A18234; --subject-coaching-text: #7A6220; --subject-coaching-tint: #F3EBD3;
   /* Hand-drawn red marker stroke — the sitewide heading underline */
   --swash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 14'%3E%3Cpath d='M3 9c12-5 22 1 34-2s24-4 48 1' fill='none' stroke='%23C0392B' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
 
@@ -161,6 +171,12 @@
   --color-danger-bg: rgba(224, 80, 64, 0.14);
   --gold-light: rgba(176, 125, 42, 0.18);
   --color-success: #7ED89A;
+  --subject-english: #7FA8DA;  --subject-english-text: #9CC0EA;  --subject-english-tint: rgba(63, 114, 171, 0.22);
+  --subject-maths: #6FB3AA;    --subject-maths-text: #8FCBC3;    --subject-maths-tint: rgba(59, 122, 115, 0.22);
+  --subject-preib: #A3B86A;    --subject-preib-text: #BDCF8A;    --subject-preib-tint: rgba(100, 120, 54, 0.22);
+  --subject-gp: #7FC08A;       --subject-gp-text: #9AD4A4;       --subject-gp-tint: rgba(83, 148, 95, 0.22);
+  --subject-econ: #D9776C;     --subject-econ-text: #E89A90;     --subject-econ-tint: rgba(153, 63, 54, 0.22);
+  --subject-coaching: #D2B15E; --subject-coaching-text: #E0C67E; --subject-coaching-tint: rgba(161, 130, 52, 0.22);
   --swash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 14'%3E%3Cpath d='M3 9c12-5 22 1 34-2s24-4 48 1' fill='none' stroke='%23E4796C' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
   --decor-cool: rgba(240, 238, 232, 0.08);
   --decor-warm: rgba(228, 121, 108, 0.10);
@@ -593,6 +609,7 @@ li {
   border: 2px solid var(--color-ink);
   border-radius: var(--radius-md);
   padding: var(--space-xl);
+  box-shadow: 0 3px 0 var(--ink-shadow);
   transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, border-color 0.2s ease;
 }
 @media (hover: hover) {
@@ -629,6 +646,7 @@ li {
   background: var(--bg-card);
   border: 2px solid var(--color-ink);
   border-radius: var(--radius-md);
+  box-shadow: 0 3px 0 var(--ink-shadow);
   transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
 }
 @media (hover: hover) {
@@ -805,6 +823,141 @@ label {
   padding: 1.25rem;
 }
 .divider-dashed { border: 0; border-top: 2px dashed var(--ink-faint); margin: 1.25rem 0; }
+
+/* ===== Subject artwork (LMS dashboard "Your subjects" cards) =====
+   Every subject has a sticker, a dot colour and a pastel panel tint. Put a
+   .subject--* modifier on any container and these custom properties resolve:
+   --subject-accent / --subject-accent-text / --subject-tint. */
+.subject--english  { --subject-accent: var(--subject-english);  --subject-accent-text: var(--subject-english-text);  --subject-tint: var(--subject-english-tint); }
+.subject--maths    { --subject-accent: var(--subject-maths);    --subject-accent-text: var(--subject-maths-text);    --subject-tint: var(--subject-maths-tint); }
+.subject--preib    { --subject-accent: var(--subject-preib);    --subject-accent-text: var(--subject-preib-text);    --subject-tint: var(--subject-preib-tint); }
+.subject--gp       { --subject-accent: var(--subject-gp);       --subject-accent-text: var(--subject-gp-text);       --subject-tint: var(--subject-gp-tint); }
+.subject--econ     { --subject-accent: var(--subject-econ);     --subject-accent-text: var(--subject-econ-text);     --subject-tint: var(--subject-econ-tint); }
+.subject--coaching { --subject-accent: var(--subject-coaching); --subject-accent-text: var(--subject-coaching-text); --subject-tint: var(--subject-coaching-tint); }
+
+/* Sticker on its pastel panel, with the dashed divider underneath */
+.subject-panel {
+  background: var(--subject-tint, var(--bg-muted));
+  border-bottom: 2px dashed var(--ink-faint);
+  display: grid;
+  place-items: center;
+  padding: 1.1rem 1rem;
+  min-height: 156px;
+}
+.subject-panel img { width: min(140px, 62%); height: auto; }
+.subject-panel--sm { min-height: 112px; padding: 0.85rem; }
+.subject-panel--sm img { width: 96px; }
+
+/* The whole card: panel + body */
+.subject-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 3px 0 var(--ink-shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
+}
+@media (hover: hover) {
+  .subject-card:hover, a.subject-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--ink-shadow), 0 12px 24px rgba(70, 50, 20, 0.10);
+    opacity: 1;
+    color: inherit;
+  }
+}
+.subject-card:active { transform: translateY(1px); box-shadow: 0 2px 0 var(--ink-shadow); }
+.subject-card__body {
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+.subject-card__title { font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin: 0; letter-spacing: -0.01em; }
+.subject-card__meta { font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.4rem; margin: 0; }
+.subject-card__meta strong { color: var(--text-primary); font-weight: 800; }
+
+/* Coloured subject dot (LMS sidebar) */
+.subject-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--subject-accent, var(--color-ink));
+  flex-shrink: 0;
+}
+
+/* Stat card — white, ink border, icon circle, 900 number, grey label */
+.stat-card {
+  background: var(--bg-card);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-md);
+  box-shadow: 0 3px 0 var(--ink-shadow);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.stat-card__num { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 900; line-height: 1; color: var(--text-primary); letter-spacing: -0.02em; }
+.stat-card__label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); }
+.stat-card--hot { background: var(--color-danger-bg); }
+.stat-card--hot .stat-card__num { color: var(--color-accent-text); }
+
+/* Tinted secondary pills (LMS "Take Attendance / View Progress / Community") */
+.btn--tint-blue  { background: var(--tint-blue-bg);  color: var(--tint-blue-fg); }
+.btn--tint-green { background: var(--tint-green-bg); color: var(--tint-green-fg); }
+.btn--tint-gold  { background: var(--tint-gold-bg);  color: var(--tint-gold-fg); }
+.btn--tint-pink  { background: var(--tint-pink-bg);  color: var(--tint-pink-fg); }
+@media (hover: hover) {
+  .btn--tint-blue:hover, a.btn--tint-blue:hover   { background: var(--tint-blue-bg);  color: var(--tint-blue-fg);  filter: brightness(0.97); }
+  .btn--tint-green:hover, a.btn--tint-green:hover { background: var(--tint-green-bg); color: var(--tint-green-fg); filter: brightness(0.97); }
+  .btn--tint-gold:hover, a.btn--tint-gold:hover   { background: var(--tint-gold-bg);  color: var(--tint-gold-fg);  filter: brightness(0.97); }
+  .btn--tint-pink:hover, a.btn--tint-pink:hover   { background: var(--tint-pink-bg);  color: var(--tint-pink-fg);  filter: brightness(0.97); }
+}
+
+/* Speech-bubble callout (LMS welcome card: "2 submissions awaiting your review.") */
+.speech-bubble {
+  position: relative;
+  display: inline-block;
+  background: var(--bg-card);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.speech-bubble::before, .speech-bubble::after {
+  content: '';
+  position: absolute;
+  left: 1.25rem;
+  border-style: solid;
+  border-color: transparent;
+}
+.speech-bubble::before { bottom: -12px; border-width: 12px 10px 0 0; border-top-color: var(--color-ink); }
+.speech-bubble::after  { bottom: -8px;  border-width: 9px 7px 0 0;  border-top-color: var(--bg-card); left: calc(1.25rem + 2px); }
+
+/* Hero card (LMS welcome card): ink card with a soft subject-tinted wash */
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 0 var(--ink-shadow);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 100% 0%, var(--subject-tint, var(--tint-green-bg)) 0%, transparent 52%);
+  pointer-events: none;
+}
+.hero-card > * { position: relative; }
 
 /* ===== Animations ===== */
 @keyframes fadeInUp {
@@ -1391,7 +1544,13 @@ label {
   display: none;
 }
 
-/* ─── Card families lift off the paper on hover (LMS .card-lift) ─── */
+/* ─── Card families sit on a 3px hard shadow and lift off the paper on hover (LMS dashboard cards) ─── */
+.programme-card, .approach-card, .testimonial-card,
+.t-card, .r-card, .pricing-card, .prog-card,
+.blog-card, .value-item, .wb-feature, .sh-card,
+.transformation-card, .story-card, .reading-card {
+  box-shadow: 0 3px 0 var(--ink-shadow);
+}
 @media (hover: hover) {
   .programme-card:hover, .approach-card:hover, .testimonial-card:hover,
   .t-card:hover, .r-card:hover, .pricing-card:hover, .prog-card:hover,

@@ -25,28 +25,34 @@ import '../styles/global.css';
           <thead>
             <tr>
               <th scope="col" class="pricing-table__label-col"></th>
-              <th scope="col" class="pricing-table__th--popular">
+              <th scope="col" class="pricing-table__th--popular subject--english">
                 <span class="chip chip--gold pricing-table__popular-badge">Most popular</span>
+                <img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">O-Level English</span>
                 <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--maths">
+                <img src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">O-Level Maths</span>
                 <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--preib">
+                <img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">Pre-IB Maths</span>
                 <span class="pricing-table__programme-level">Year 3 &ndash; 4</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--gp">
+                <img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">H1 General Paper</span>
                 <span class="pricing-table__programme-level">JC 1 &ndash; 2</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--econ">
+                <img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">H2 Economics</span>
                 <span class="pricing-table__programme-level">JC 1 &ndash; 2</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--coaching">
+                <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">1-to-1 Coaching</span>
                 <span class="pricing-table__programme-level">All Subjects</span>
               </th>
@@ -114,7 +120,8 @@ import '../styles/global.css';
       <!-- Mobile pricing cards (visible on small screens) -->
       <h2 class="sr-only">Programme pricing</h2>
       <div class="pricing-cards" data-animate="reveal-up">
-        <div class="pricing-card card--elevated pricing-card--popular">
+        <div class="pricing-card subject--english card--elevated pricing-card--popular">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" class="sticker" loading="lazy" /></div>
           <span class="chip chip--gold pricing-card__popular-badge">Most popular</span>
           <h3 class="pricing-card__name">O-Level English</h3>
           <p class="pricing-card__level">Sec 1 &ndash; 4</p>
@@ -128,7 +135,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--maths card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">O-Level Mathematics</h3>
           <p class="pricing-card__level">Sec 1 &ndash; 4</p>
           <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
@@ -141,7 +149,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--preib card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">Pre-IB Mathematics</h3>
           <p class="pricing-card__level">Year 3 &ndash; 4</p>
           <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
@@ -154,7 +163,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--gp card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">H1 General Paper</h3>
           <p class="pricing-card__level">JC 1 &ndash; 2</p>
           <p class="pricing-card__price">SGD 360&ndash;400<span>/month</span></p>
@@ -167,7 +177,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--econ card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">H2 Economics</h3>
           <p class="pricing-card__level">JC 1 &ndash; 2</p>
           <p class="pricing-card__price">SGD 360&ndash;400<span>/month</span></p>
@@ -180,7 +191,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--coaching card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">1-to-1 Coaching</h3>
           <p class="pricing-card__level">All Subjects</p>
           <p class="pricing-card__price">SGD 120&ndash;140<span>/session</span></p>
@@ -531,6 +543,20 @@ import '../styles/global.css';
     border-radius: var(--radius-md);
     padding: 2rem;
     text-align: center;
+    overflow: hidden;
+  }
+
+  /* Subject sticker on its pastel panel across the top of the card */
+  .pricing-card__panel {
+    margin: -2rem -2rem 1.25rem;
+  }
+
+  .pricing-table__sticker {
+    display: block;
+    width: 48px;
+    height: auto;
+    margin: 0 auto 0.4rem;
+    filter: drop-shadow(0 1px 1px rgba(34, 48, 74, 0.12));
   }
 
   .pricing-card--popular {

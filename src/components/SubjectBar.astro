@@ -1,11 +1,11 @@
 ---
 const currentPath = Astro.url.pathname;
 const subjects = [
-  { href: '/o-level-english/', label: 'O-Level English', short: 'English', level: 'Sec 1–4' },
-  { href: '/h1-general-paper/', label: 'H1 General Paper', short: 'GP', level: 'JC 1–2' },
-  { href: '/h2-economics/', label: 'H2 Economics', short: 'Economics', level: 'JC 1–2' },
-  { href: '/o-level-mathematics/', label: 'O-Level Mathematics', short: 'Maths', level: 'Sec 1–4' },
-  { href: '/pre-ib-mathematics/', label: 'Pre-IB Mathematics', short: 'Pre-IB Maths', level: 'Year 3–4' },
+  { href: '/o-level-english/', label: 'O-Level English', short: 'English', level: 'Sec 1–4', subject: 'english' },
+  { href: '/h1-general-paper/', label: 'H1 General Paper', short: 'GP', level: 'JC 1–2', subject: 'gp' },
+  { href: '/h2-economics/', label: 'H2 Economics', short: 'Economics', level: 'JC 1–2', subject: 'econ' },
+  { href: '/o-level-mathematics/', label: 'O-Level Mathematics', short: 'Maths', level: 'Sec 1–4', subject: 'maths' },
+  { href: '/pre-ib-mathematics/', label: 'Pre-IB Mathematics', short: 'Pre-IB Maths', level: 'Year 3–4', subject: 'preib' },
 ];
 ---
 
@@ -16,8 +16,9 @@ const subjects = [
       {subjects.map(s => (
         <a
           href={s.href}
-          class:list={['subject-bar-link', { 'is-active': currentPath.startsWith(s.href) }]}
+          class:list={['subject-bar-link', `subject--${s.subject}`, { 'is-active': currentPath.startsWith(s.href) }]}
         >
+          <span class="subject-dot" aria-hidden="true"></span>
           <span class="subject-bar-name">{s.label}</span>
           <span class="subject-bar-name--short">{s.short}</span>
           <span class="subject-bar-level">{s.level}</span>
@@ -104,10 +105,11 @@ const subjects = [
     background: rgba(23, 22, 20, 0.85);
   }
 
+  /* Active chip takes its subject's colour (LMS sidebar dots) */
   .subject-bar-link.is-active {
-    color: var(--color-accent-text);
-    border-color: var(--color-accent);
-    background: var(--color-accent-soft);
+    color: var(--subject-accent-text);
+    border-color: var(--subject-accent);
+    background: var(--subject-tint);
     font-weight: 800;
   }
 
