@@ -56,8 +56,9 @@
     --pdf-bg-alt: #1a1a24;
     --pdf-text: #f0f0f2;
     --pdf-text-muted: rgba(240, 240, 242, 0.6);
-    --pdf-border: rgba(255, 255, 255, 0.1);
+    --pdf-border: rgba(255, 255, 255, 0.18);
     --pdf-border-subtle: rgba(255, 255, 255, 0.08);
+    --pdf-shadow: rgba(0, 0, 0, 0.45);
     --pdf-hover: rgba(255, 255, 255, 0.06);
     --pdf-hover-active: rgba(255, 255, 255, 0.12);
   }
@@ -96,8 +97,8 @@
     height: 90vh;
     max-height: 90vh;
     background: var(--pdf-bg);
-    border: 1px solid var(--pdf-border);
-    border-radius: var(--radius-sm);
+    border: 2px solid var(--pdf-border);
+    border-radius: var(--radius-md);
     overflow: hidden;
     transform: translateY(20px) scale(0.97);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -127,15 +128,19 @@
   }
 
   .pdf-modal-badge {
-    font-family: var(--font-mono, 'Nunito', sans-serif);
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body, 'Nunito', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--color-accent, #D4853A);
-    background: rgba(212, 133, 58, 0.12);
-    padding: 0.25rem 0.6rem;
-    border-radius: var(--radius-sm);
+    line-height: 1.2;
+    color: var(--pdf-text);
+    background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+    border: 1.5px solid var(--color-accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-pill);
     white-space: nowrap;
     flex-shrink: 0;
   }
@@ -143,7 +148,7 @@
   .pdf-modal-title {
     font-family: var(--font-body, 'Nunito', sans-serif);
     font-size: 0.95rem;
-    font-weight: 400;
+    font-weight: 700;
     color: var(--pdf-text);
     margin: 0;
     white-space: nowrap;
@@ -164,21 +169,27 @@
     gap: 0.4rem;
     font-family: var(--font-body, 'Nunito', sans-serif);
     font-size: 0.82rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 999px;
+    min-height: 40px;
+    padding: 0.5rem 1.1rem;
+    border: 2px solid var(--pdf-border);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 3px 0 var(--pdf-shadow);
     cursor: pointer;
     text-decoration: none;
     white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .pdf-modal-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--pdf-shadow);
   }
 
   .pdf-modal-btn--download {
     color: var(--pdf-text);
     background: var(--pdf-hover);
-    border: 1px solid var(--pdf-border);
   }
 
   .pdf-modal-btn--download:hover {
@@ -187,13 +198,18 @@
   }
 
   .pdf-modal-btn--full {
-    color: var(--pdf-text);
-    background: var(--color-accent, #D4853A);
+    color: #fff;
+    background: var(--color-accent);
+    box-shadow: 0 3px 0 var(--color-accent-press);
   }
 
   .pdf-modal-btn--full:hover {
-    background: #e8a060;
-    color: var(--pdf-text);
+    background: var(--color-accent-hover);
+    color: #fff;
+  }
+
+  .pdf-modal-btn--full:active {
+    box-shadow: 0 1px 0 var(--color-accent-press);
   }
 
   .pdf-modal-close {
@@ -206,7 +222,7 @@
     border: none;
     color: var(--pdf-text-muted);
     cursor: pointer;
-    border-radius: var(--radius-sm);
+    border-radius: 50%;
     transition: color 0.2s ease, background 0.2s ease;
     margin-left: 0.25rem;
   }
@@ -251,7 +267,7 @@
   .pdf-fallback-heading {
     font-family: var(--font-body, 'Nunito', sans-serif);
     font-size: 1.1rem;
-    font-weight: 400;
+    font-weight: 800;
     color: var(--pdf-text);
     margin: 0 0 0.5rem;
   }
@@ -278,7 +294,7 @@
 
   .pdf-modal-footer p {
     font-family: var(--font-body, 'Nunito', sans-serif);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--pdf-text-muted);
     margin: 0;
     text-align: center;

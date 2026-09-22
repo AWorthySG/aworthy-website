@@ -129,7 +129,7 @@ const stories = [
   <section class="hero">
     <div class="hero-content">
       <span class="eyebrow">Success Stories</span>
-      <h1>Real students, real transformations</h1>
+      <h1>Real students, real <span class="accent-word">transformations</span></h1>
       <p class="hero-subtitle">Every grade improvement starts with the right method &mdash; the SHARP Method (See, Hit, Apply, Refine, Practise). Here are six students across O-Level English, H1 General Paper, and H2 Economics who proved it.</p>
     </div>
     <img src="/images/mascots/mascot-cheer.webp" alt="" width="455" height="508" class="sticker sticker--hero" />
@@ -139,19 +139,19 @@ const stories = [
   <section class="section stories-section">
     <div class="container">
       {stories.map((story, i) => (
-        <article class="story-card">
+        <article class="story-card card-lift">
           <div class="story-header">
             <div class="story-grade-change">
-              <span class="grade grade-before">{story.before}</span>
+              <span class="grade grade-before chip chip--pink">{story.before}</span>
               <span class="grade-arrow" aria-label="to">
                 <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </span>
-              <span class="grade grade-after">{story.after}</span>
+              <span class="grade grade-after chip chip--green">{story.after}</span>
             </div>
             <div class="story-meta">
               <h2 class="story-name">{story.name}</h2>
               <span class="story-subject">{story.subject}</span>
-              <span class="story-duration-badge">{story.duration}</span>
+              <span class="story-duration-badge chip">{story.duration}</span>
             </div>
           </div>
 
@@ -199,6 +199,8 @@ const stories = [
 </BaseLayout>
 
 <style>
+  /* Uses the sticker-book tokens + vocabulary from global.css. */
+
   /* ===== HERO ===== */
   .hero {
     padding: 1.25rem 0 1rem;
@@ -215,8 +217,9 @@ const stories = [
   .hero h1 {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800;
+    font-weight: 900;
     color: var(--text-primary);
+    letter-spacing: -0.02em;
     line-height: 1.15;
     margin-bottom: 1rem;
   }
@@ -228,25 +231,24 @@ const stories = [
     margin: 0 auto;
   }
 
-  /* ===== STORY CARDS ===== */
+  /* ===== STORY CARDS — white ink stickers that lift on hover ===== */
   .stories-section {
     background: var(--bg-primary);
   }
   .story-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-left: 3px solid var(--color-accent);
-    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
     padding: 1.25rem;
     margin-bottom: 1.25rem;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
   }
-  .story-card:hover {
-    border-left-color: var(--color-accent-light);
-    box-shadow: 0 8px 28px rgba(212, 133, 58, 0.1);
-  }
-  :global([data-theme="dark"]) .story-card:hover {
-    box-shadow: 0 8px 28px rgba(224, 152, 80, 0.12);
+  @media (hover: hover) {
+    .story-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--ink-shadow), 0 12px 24px rgba(70, 50, 20, 0.10);
+    }
   }
   .story-card:last-child {
     margin-bottom: 0;
@@ -258,7 +260,7 @@ const stories = [
     gap: 1.25rem;
     margin-bottom: 1.25rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px dashed var(--ink-faint);
   }
 
   .story-grade-change {
@@ -267,36 +269,15 @@ const stories = [
     gap: 0.75rem;
     flex-shrink: 0;
   }
-  .grade {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
+  /* Before / after grades are .chip--pink / .chip--green; only the size is page-specific */
+  .grade.chip {
     font-family: var(--font-heading);
     font-size: 1.1rem;
-    font-weight: 600;
-  }
-  .grade-before {
-    background: rgba(220, 80, 80, 0.1);
-    color: #c0392b;
-    border: 1.5px solid rgba(220, 80, 80, 0.25);
-  }
-  .grade-after {
-    background: rgba(39, 174, 96, 0.1);
-    color: #27ae60;
-    border: 1.5px solid rgba(39, 174, 96, 0.25);
-  }
-  :global([data-theme="dark"]) .grade-before {
-    background: rgba(220, 80, 80, 0.15);
-    color: #e74c3c;
-    border-color: rgba(220, 80, 80, 0.3);
-  }
-  :global([data-theme="dark"]) .grade-after {
-    background: rgba(39, 174, 96, 0.15);
-    color: #2ecc71;
-    border-color: rgba(39, 174, 96, 0.3);
+    font-weight: 800;
+    letter-spacing: 0;
+    padding: 0.4rem 1rem;
+    min-height: 44px;
+    line-height: 1.2;
   }
   .grade-arrow {
     display: flex;
@@ -311,29 +292,20 @@ const stories = [
   .story-name {
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     color: var(--text-primary);
     margin: 0;
   }
   .story-subject {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-weight: 500;
+    font-weight: 700;
   }
   .story-duration-badge {
-    display: inline-block;
     width: fit-content;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-accent);
-    background: rgba(212, 133, 58, 0.1);
-    border: 1px solid rgba(212, 133, 58, 0.2);
-    padding: 0.2rem 0.6rem;
-    border-radius: var(--radius-sm);
     margin-top: 0.25rem;
   }
 
@@ -348,11 +320,11 @@ const stories = [
     margin-bottom: 0;
   }
 
-  /* Timeline */
+  /* Timeline — feature-colour dots with an ink ring on a faint rule */
   .story-timeline {
     margin-top: 1.25rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 2px dashed var(--ink-faint);
   }
   .timeline-heading {
     font-family: var(--font-body);
@@ -360,7 +332,7 @@ const stories = [
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-bottom: 1rem;
   }
   .timeline {
@@ -373,11 +345,11 @@ const stories = [
   .timeline::before {
     content: '';
     position: absolute;
-    left: 5px;
+    left: 6px;
     top: 4px;
     bottom: 4px;
-    width: 1px;
-    background: var(--border-color);
+    width: 2px;
+    background: var(--ink-faint);
   }
   .timeline-item {
     display: flex;
@@ -388,26 +360,28 @@ const stories = [
   .timeline-marker {
     position: absolute;
     left: -1.5rem;
-    top: 6px;
-    width: 11px;
-    height: 11px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: var(--color-accent);
-    border: 2px solid var(--bg-primary);
+    background: var(--color-leaf);
+    border: 2px solid var(--color-ink);
+    box-shadow: 0 0 0 2px var(--bg-card);
     flex-shrink: 0;
   }
+  .timeline-item:nth-child(3n + 2) .timeline-marker { background: var(--color-berry); }
+  .timeline-item:nth-child(3n + 3) .timeline-marker { background: var(--color-sky); }
   .timeline-content {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
   }
   .timeline-week {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-accent);
+    color: var(--text-secondary);
   }
   .timeline-text {
     font-size: 0.88rem;
@@ -415,16 +389,13 @@ const stories = [
     line-height: 1.5;
   }
 
-  /* Quote */
+  /* Quote — muted well with a red left rule */
   .story-quote {
     margin-top: 1.25rem;
     padding: 1rem 1.25rem;
-    background: rgba(43, 90, 140, 0.04);
-    border-left: 3px solid var(--color-primary);
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  }
-  :global([data-theme="dark"]) .story-quote {
-    background: rgba(43, 90, 140, 0.08);
+    background: var(--bg-muted);
+    border-left: 6px solid var(--color-accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   }
   .story-quote p {
     font-size: 0.95rem;
@@ -435,8 +406,9 @@ const stories = [
   }
   .story-quote cite {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-style: normal;
+    font-weight: 700;
   }
 
   /* CTA */
@@ -460,10 +432,10 @@ const stories = [
       align-items: flex-start;
       gap: 1rem;
     }
-    .grade {
-      width: 44px;
-      height: 44px;
+    .grade.chip {
       font-size: 0.95rem;
+      padding: 0.3rem 0.8rem;
+      min-height: 40px;
     }
     .story-name {
       font-size: 1.25rem;

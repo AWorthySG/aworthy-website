@@ -200,32 +200,37 @@ import AuthorBio from '../../components/AuthorBio.astro';
 </BaseLayout>
 
 <style>
+  /* COP table — ink-bordered wrapper, muted header row, green-tinted score cells */
   .cop-table-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin: 1.5rem 0 0.75rem;
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-ink);
+    background: var(--bg-card);
   }
   .cop-table-wrap::-webkit-scrollbar { height: 4px; }
-  .cop-table-wrap::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+  .cop-table-wrap::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 2px; }
   .cop-table {
     width: 100%;
     border-collapse: collapse;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
     font-size: 0.95rem;
     white-space: nowrap;
   }
-  .cop-table thead {
-    background: var(--color-primary);
-    color: #fff;
-  }
+  .cop-table thead { background: var(--bg-muted); color: var(--text-secondary); }
   .cop-table th {
     padding: 0.75rem 1rem;
     text-align: left;
-    font-weight: 600;
-    font-size: 0.8rem;
+    font-weight: 700;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    background: var(--bg-muted);
+    border-bottom: 2px solid var(--color-ink);
   }
   .cop-table th:nth-child(2),
   .cop-table th:nth-child(3) { text-align: center; }
@@ -233,23 +238,27 @@ import AuthorBio from '../../components/AuthorBio.astro';
     padding: 0.65rem 1rem;
     border-bottom: 1px solid var(--border-color);
   }
+  .cop-table tbody tr:last-child td { border-bottom: 0; }
   .cop-table td:nth-child(2),
   .cop-table td:nth-child(3) {
     text-align: center;
-    font-family: var(--font-mono);
-    font-weight: 600;
+    font-family: var(--font-body);
+    font-weight: 800;
     font-size: 0.9rem;
+    color: var(--tint-green-fg);
+    background: var(--tint-green-bg);
   }
-  .cop-table tbody tr:hover { background: rgba(43, 90, 140, 0.04); }
-  .cop-table-mi td { color: var(--text-muted); font-style: italic; }
+  .cop-table tbody tr:hover td { background: var(--bg-secondary); }
+  .cop-table tbody tr:hover td:nth-child(2),
+  .cop-table tbody tr:hover td:nth-child(3) { background: var(--tint-green-bg); }
+  .cop-table-mi td { color: var(--text-secondary); font-style: italic; }
+  .cop-table-mi td:nth-child(2),
+  .cop-table-mi td:nth-child(3) { color: var(--text-secondary); background: var(--bg-muted); }
   .table-note {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1.5rem;
   }
-  .table-note a { color: var(--color-accent); }
-
-  :global([data-theme="dark"]) .cop-table thead { background: rgba(43, 90, 140, 0.6); }
-  :global([data-theme="dark"]) .cop-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+  .table-note a { color: var(--color-accent-text); }
 </style>

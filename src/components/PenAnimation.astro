@@ -34,7 +34,7 @@
       <!-- Wet ink: specular highlight + indigo halo -->
       <filter id="pa-wet" x="-4%" y="-4%" width="108%" height="108%">
         <feGaussianBlur in="SourceAlpha" stdDeviation="0.8" result="b"/>
-        <feFlood flood-color="#2a3f6b" flood-opacity="0.2" result="c"/>
+        <feFlood class="pa-flood-ink" flood-opacity="0.2" result="c"/>
         <feComposite in="c" in2="b" operator="in" result="halo"/>
         <feSpecularLighting in="b" surfaceScale="2" specularConstant="0.45" specularExponent="40" lighting-color="#fff" result="spec">
           <fePointLight x="320" y="-130" z="220"/>
@@ -46,29 +46,29 @@
       <!-- Dry ink: matte with micro-shadow -->
       <filter id="pa-dry" x="-1%" y="-1%" width="102%" height="102%">
         <feGaussianBlur in="SourceAlpha" stdDeviation="0.2" result="b"/>
-        <feFlood flood-color="#14243a" flood-opacity="0.06" result="c"/>
+        <feFlood class="pa-flood-ink" flood-opacity="0.06" result="c"/>
         <feComposite in="c" in2="b" operator="in" result="sh"/>
         <feMerge><feMergeNode in="sh"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
 
-      <!-- Gold glow pulse -->
+      <!-- Sun-gold glow pulse -->
       <filter id="pa-gold" x="-8%" y="-8%" width="116%" height="116%">
         <feGaussianBlur in="SourceAlpha" stdDeviation="3.5" result="b"/>
-        <feFlood flood-color="#C9A84C" flood-opacity="0.18" result="c"/>
+        <feFlood class="pa-flood-gold" flood-opacity="0.18" result="c"/>
         <feComposite in="c" in2="b" operator="in" result="g"/>
         <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
 
       <!-- ═══ GRADIENTS ═══ -->
       <linearGradient id="pa-nib" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#E8D5A3"/><stop offset="25%" stop-color="#C9A84C"/>
-        <stop offset="50%" stop-color="#F0E0B0"/><stop offset="75%" stop-color="#C9A84C"/>
-        <stop offset="100%" stop-color="#8B7340"/>
+        <stop offset="0%" class="pa-gold-hi"/><stop offset="25%" class="pa-gold-mid"/>
+        <stop offset="50%" class="pa-gold-hi"/><stop offset="75%" class="pa-gold-mid"/>
+        <stop offset="100%" class="pa-gold-lo"/>
       </linearGradient>
       <linearGradient id="pa-brl" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#08080e"/><stop offset="20%" stop-color="#1a1a2e"/>
-        <stop offset="45%" stop-color="#2d2d45"/><stop offset="55%" stop-color="#3a3a55"/>
-        <stop offset="80%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#08080e"/>
+        <stop offset="0%" class="pa-ink-lo"/><stop offset="20%" class="pa-ink-mid"/>
+        <stop offset="45%" class="pa-ink-hi"/><stop offset="55%" class="pa-ink-hi"/>
+        <stop offset="80%" class="pa-ink-mid"/><stop offset="100%" class="pa-ink-lo"/>
       </linearGradient>
       <linearGradient id="pa-bsp" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="transparent"/><stop offset="40%" stop-color="transparent"/>
@@ -77,9 +77,9 @@
         <stop offset="60%" stop-color="transparent"/><stop offset="100%" stop-color="transparent"/>
       </linearGradient>
       <linearGradient id="pa-gld" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#F0E0B0"/><stop offset="25%" stop-color="#D4B050"/>
-        <stop offset="50%" stop-color="#C9A84C"/><stop offset="75%" stop-color="#B8923E"/>
-        <stop offset="100%" stop-color="#8B7340"/>
+        <stop offset="0%" class="pa-gold-hi"/><stop offset="25%" class="pa-gold-mid"/>
+        <stop offset="50%" class="pa-gold-mid"/><stop offset="75%" class="pa-gold-lo"/>
+        <stop offset="100%" class="pa-gold-lo"/>
       </linearGradient>
       <filter id="pa-psh" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="1.5" dy="3" stdDeviation="2" flood-color="#000" flood-opacity="0.18"/>
@@ -108,20 +108,20 @@
           <circle cx="0" cy="-74" r="2.5" fill="url(#pa-gld)"/>
           <rect x="-6" y="-20" width="12" height="3.5" rx="1" fill="url(#pa-gld)"/>
           <path d="M5.5 -72 L6.5 -72 L6.5 -40 L5 -37.5 L5.5 -40 Z" fill="url(#pa-gld)"/>
-          <ellipse cx="5.8" cy="-37.5" rx="1.5" ry="1.2" fill="#C9A84C"/>
-          <rect x="-4.5" y="-16.5" width="9" height="15" rx="2.5" fill="#10101a"/>
+          <ellipse class="pa-fill-gold" cx="5.8" cy="-37.5" rx="1.5" ry="1.2"/>
+          <rect class="pa-fill-ink-lo" x="-4.5" y="-16.5" width="9" height="15" rx="2.5"/>
           <line x1="-3" y1="-13" x2="3" y2="-13" stroke="rgba(255,255,255,0.05)" stroke-width="0.3"/>
           <line x1="-3" y1="-10" x2="3" y2="-10" stroke="rgba(255,255,255,0.05)" stroke-width="0.3"/>
           <line x1="-3" y1="-7" x2="3" y2="-7" stroke="rgba(255,255,255,0.05)" stroke-width="0.3"/>
           <line x1="-3" y1="-4" x2="3" y2="-4" stroke="rgba(255,255,255,0.05)" stroke-width="0.3"/>
           <path d="M-4.5 -1.5 L-3 -1.5 L-2 6 L2 6 L3 -1.5 L4.5 -1.5 L3.5 8 L-3.5 8 Z" fill="url(#pa-gld)"/>
-          <path d="M-1.8 6 L0 16 L1.8 6" fill="#12121e"/>
-          <line x1="0" y1="6" x2="0" y2="15" stroke="#2a3f6b" stroke-width="0.4" opacity="0.4"/>
+          <path class="pa-fill-ink-lo" d="M-1.8 6 L0 16 L1.8 6"/>
+          <line class="pa-stroke-ink" x1="0" y1="6" x2="0" y2="15" stroke-width="0.4" opacity="0.4"/>
           <path d="M-3.2 5 L0 18 L3.2 5" fill="url(#pa-nib)"/>
-          <line x1="0" y1="17" x2="0" y2="7" stroke="#12121e" stroke-width="0.5"/>
-          <circle cx="0" cy="7.5" r="0.9" fill="#12121e"/>
+          <line class="pa-stroke-ink-lo" x1="0" y1="17" x2="0" y2="7" stroke-width="0.5"/>
+          <circle class="pa-fill-ink-lo" cx="0" cy="7.5" r="0.9"/>
           <path d="M-1.5 6 L-0.2 16 L0.5 16 L1 6" fill="rgba(255,255,255,0.12)"/>
-          <ellipse cx="0" cy="17.5" rx="0.7" ry="0.5" fill="#E8D5A3"/>
+          <ellipse class="pa-fill-gold-hi" cx="0" cy="17.5" rx="0.7" ry="0.5"/>
         </g>
       </g>
     </defs>
@@ -130,65 +130,65 @@
     <g class="tg tg1" mask="url(#m1)" filter="url(#pa-bleed)">
       <text x="60" y="92"
         font-family="'Nunito', sans-serif"
-        font-size="54" fill="#1B2A4A">You are</text>
+        font-size="54">You are</text>
     </g>
     <g class="tg tg2" mask="url(#m2)" filter="url(#pa-bleed)">
       <text x="85" y="185"
         font-family="'Nunito', sans-serif"
-        font-size="76" fill="#1B2A4A">worth the A</text>
+        font-size="76">worth the A</text>
     </g>
 
     <!-- Trace strokes — thin outlines that draw + fade -->
     <text class="ts ts1" x="60" y="92"
       font-family="'Nunito', sans-serif"
-      font-size="54" fill="none" stroke="#2a3f6b" stroke-width="0.4"
+      font-size="54" fill="none" stroke-width="0.4"
       stroke-linecap="round" opacity="0.35">You are</text>
     <text class="ts ts2" x="85" y="185"
       font-family="'Nunito', sans-serif"
-      font-size="76" fill="none" stroke="#2a3f6b" stroke-width="0.5"
+      font-size="76" fill="none" stroke-width="0.5"
       stroke-linecap="round" opacity="0.35">worth the A</text>
 
     <!-- Ink pool — small blob at pen's starting point -->
-    <ellipse class="ink-pool" cx="62" cy="82" rx="0" ry="0" fill="#1B2A4A" opacity="0"/>
+    <ellipse class="ink-pool" cx="62" cy="82" rx="0" ry="0" opacity="0"/>
 
     <!-- Ink settle shadow — grows under text as ink "pools" into paper -->
     <text class="ink-shadow ink-sh1" x="60" y="92"
       font-family="'Nunito', sans-serif"
-      font-size="54" fill="rgba(26,42,58,0.06)" filter="url(#pa-bleed)">You are</text>
+      font-size="54" filter="url(#pa-bleed)">You are</text>
     <text class="ink-shadow ink-sh2" x="85" y="187"
       font-family="'Nunito', sans-serif"
-      font-size="76" fill="rgba(26,42,58,0.06)" filter="url(#pa-bleed)">worth the A</text>
+      font-size="76" filter="url(#pa-bleed)">worth the A</text>
 
     <!-- Primary flourish -->
     <path class="fl fl1"
       d="M 140 200 C 220 225, 360 225, 440 200 C 475 190, 510 197, 545 200"
-      fill="none" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" opacity="0"/>
+      fill="none" stroke-width="1" stroke-linecap="round" opacity="0"/>
 
     <!-- Second decorative flourish — elegant swirl -->
     <path class="fl fl2"
       d="M 100 205 C 80 215, 75 230, 95 235 C 115 240, 130 225, 120 215"
-      fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round" opacity="0"/>
+      fill="none" stroke-width="0.8" stroke-linecap="round" opacity="0"/>
 
     <!-- End dot — final punctuation -->
-    <circle class="end-dot" cx="548" cy="200" r="0" fill="#C9A84C" opacity="0"/>
+    <circle class="end-dot" cx="548" cy="200" r="0" opacity="0"/>
 
     <!-- Ink particles -->
-    <circle class="pt pt1" cx="105" cy="78" r="0.5" fill="#1B2A4A" opacity="0"/>
-    <circle class="pt pt2" cx="165" cy="74" r="0.4" fill="#2a3f6b" opacity="0"/>
-    <circle class="pt pt3" cx="240" cy="80" r="0.5" fill="#1B2A4A" opacity="0"/>
-    <circle class="pt pt4" cx="170" cy="168" r="0.4" fill="#2a3f6b" opacity="0"/>
-    <circle class="pt pt5" cx="260" cy="164" r="0.6" fill="#1B2A4A" opacity="0"/>
-    <circle class="pt pt6" cx="360" cy="170" r="0.5" fill="#1B2A4A" opacity="0"/>
-    <circle class="pt pt7" cx="450" cy="165" r="0.4" fill="#2a3f6b" opacity="0"/>
-    <circle class="pt pt8" cx="530" cy="169" r="0.5" fill="#1B2A4A" opacity="0"/>
+    <circle class="pt pt1" cx="105" cy="78" r="0.5" opacity="0"/>
+    <circle class="pt pt2" cx="165" cy="74" r="0.4" opacity="0"/>
+    <circle class="pt pt3" cx="240" cy="80" r="0.5" opacity="0"/>
+    <circle class="pt pt4" cx="170" cy="168" r="0.4" opacity="0"/>
+    <circle class="pt pt5" cx="260" cy="164" r="0.6" opacity="0"/>
+    <circle class="pt pt6" cx="360" cy="170" r="0.5" opacity="0"/>
+    <circle class="pt pt7" cx="450" cy="165" r="0.4" opacity="0"/>
+    <circle class="pt pt8" cx="530" cy="169" r="0.5" opacity="0"/>
 
     <!-- Ink splatters -->
-    <circle class="sp sp1" cx="120" cy="76" r="0.7" fill="#1B2A4A" opacity="0"/>
-    <circle class="sp sp2" cx="208" cy="70" r="0.5" fill="#1B2A4A" opacity="0"/>
-    <circle class="sp sp3" cx="290" cy="80" r="0.6" fill="#2a3f6b" opacity="0"/>
-    <circle class="sp sp4" cx="310" cy="162" r="0.6" fill="#1B2A4A" opacity="0"/>
-    <circle class="sp sp5" cx="440" cy="167" r="0.8" fill="#1B2A4A" opacity="0"/>
-    <circle class="sp sp6" cx="535" cy="172" r="0.5" fill="#2a3f6b" opacity="0"/>
+    <circle class="sp sp1" cx="120" cy="76" r="0.7" opacity="0"/>
+    <circle class="sp sp2" cx="208" cy="70" r="0.5" opacity="0"/>
+    <circle class="sp sp3" cx="290" cy="80" r="0.6" opacity="0"/>
+    <circle class="sp sp4" cx="310" cy="162" r="0.6" opacity="0"/>
+    <circle class="sp sp5" cx="440" cy="167" r="0.8" opacity="0"/>
+    <circle class="sp sp6" cx="535" cy="172" r="0.5" opacity="0"/>
 
     <!-- Pen cursor -->
     <use href="#pa-pen" class="pc"/>
@@ -203,30 +203,59 @@
     contain: layout style paint;
     perspective: 900px;
     transform-style: preserve-3d;
+    /* Palette — sticker-ink navy for the writing, sun-gold for the pen trim,
+       the red action colour for the flourish. All resolve from global tokens. */
+    --pa-ink: var(--color-ink);
+    --pa-ink-lo: color-mix(in srgb, var(--color-ink) 80%, #000);
+    --pa-ink-hi: color-mix(in srgb, var(--color-ink) 82%, #fff);
+    --pa-gold: var(--color-sun);
+    --pa-gold-hi: color-mix(in srgb, var(--color-sun) 55%, #fff);
+    --pa-gold-lo: color-mix(in srgb, var(--color-sun) 62%, #000);
+    --pa-red: var(--color-accent);
   }
+
+  /* ═══ INK & TRIM COLOURS — applied via CSS so the SVG follows the theme ═══ */
+  .tg text, .ink-pool, .pt, .sp { fill: var(--pa-ink); }
+  .ts { stroke: var(--pa-ink); }
+  .ink-shadow { fill: var(--pa-ink); fill-opacity: 0.06; }
+  .fl { stroke: var(--pa-red); }
+  .end-dot { fill: var(--pa-red); }
+  .pa-flood-ink { flood-color: var(--pa-ink); }
+  .pa-flood-gold { flood-color: var(--pa-gold); }
+  .pa-gold-hi { stop-color: var(--pa-gold-hi); }
+  .pa-gold-mid { stop-color: var(--pa-gold); }
+  .pa-gold-lo { stop-color: var(--pa-gold-lo); }
+  .pa-ink-hi { stop-color: var(--pa-ink-hi); }
+  .pa-ink-mid { stop-color: var(--pa-ink); }
+  .pa-ink-lo { stop-color: var(--pa-ink-lo); }
+  .pa-fill-gold { fill: var(--pa-gold); }
+  .pa-fill-gold-hi { fill: var(--pa-gold-hi); }
+  .pa-fill-ink-lo { fill: var(--pa-ink-lo); }
+  .pa-stroke-ink { stroke: var(--pa-ink); }
+  .pa-stroke-ink-lo { stroke: var(--pa-ink-lo); }
 
   /* Paper surface — with subtle 3D tilt on hover */
   .pen-paper {
     position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background:
-      repeating-conic-gradient(rgba(26,42,58,0.007) 0% 25%, transparent 0% 50%) 0 0 / 3px 3px,
-      radial-gradient(ellipse at 30% 35%, rgba(212,168,76,0.03) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 65%, rgba(43,90,140,0.02) 0%, transparent 50%);
+      repeating-conic-gradient(color-mix(in srgb, var(--pa-ink) 1%, transparent) 0% 25%, transparent 0% 50%) 0 0 / 3px 3px,
+      radial-gradient(ellipse at 30% 35%, color-mix(in srgb, var(--color-sun) 4%, transparent) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 65%, color-mix(in srgb, var(--color-sky) 3%, transparent) 0%, transparent 50%);
   }
 
   /* Paper curl — folded corner effect bottom-right */
   .pen-paper-curl {
     position: absolute; bottom: 0; right: 0; z-index: 3;
     width: 32px; height: 32px; pointer-events: none;
-    background: linear-gradient(135deg, transparent 50%, rgba(230,225,218,0.7) 50%);
-    box-shadow: -2px -2px 4px rgba(0,0,0,0.04);
+    background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--bg-hover) 80%, transparent) 50%);
+    box-shadow: -2px -2px 4px var(--ink-shadow);
     border-top-left-radius: 4px;
   }
 
   /* Vignette */
   .pen-vignette {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background: radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(245,241,235,0.4) 100%);
+    background: radial-gradient(ellipse at 50% 50%, transparent 55%, color-mix(in srgb, var(--bg-primary) 45%, transparent) 100%);
     opacity: 0;
   }
   .pen-animation.is-active .pen-vignette {
@@ -424,34 +453,15 @@
     .pen-animation { contain: layout style; }
   }
 
-  /* ═══ DARK MODE ═══ */
-  :global([data-theme="dark"]) .pen-paper {
-    background:
-      repeating-conic-gradient(rgba(240,240,242,0.01) 0% 25%, transparent 0% 50%) 0 0 / 3px 3px,
-      radial-gradient(ellipse at 30% 35%, rgba(212,168,76,0.02) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 65%, rgba(43,90,140,0.02) 0%, transparent 50%);
+  /* ═══ DARK MODE — the ink token is a faint line in dark mode, so the
+     writing and pen body switch to the light text token instead; the paper,
+     curl and vignette already follow --bg-* tokens. ═══ */
+  :global([data-theme="dark"]) .pen-animation {
+    --pa-ink: var(--text-primary);
+    --pa-ink-lo: color-mix(in srgb, var(--text-primary) 78%, #000);
+    --pa-ink-hi: var(--text-primary);
   }
-  :global([data-theme="dark"]) .pen-paper-curl {
-    background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.06) 50%);
-    box-shadow: -2px -2px 4px rgba(0,0,0,0.2);
-  }
-  :global([data-theme="dark"]) .pen-vignette {
-    background: radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(11,11,15,0.5) 100%);
-  }
-  :global([data-theme="dark"]) .tg text,
-  :global([data-theme="dark"]) .ink-pool {
-    fill: #c8d0e0;
-  }
-  :global([data-theme="dark"]) .ts {
-    stroke: #8898b8;
-  }
-  :global([data-theme="dark"]) .pt,
-  :global([data-theme="dark"]) .sp {
-    fill: #c8d0e0;
-  }
-  :global([data-theme="dark"]) .ink-shadow {
-    fill: rgba(200,208,224,0.04);
-  }
+  :global([data-theme="dark"]) .ink-shadow { fill-opacity: 0.04; }
 
   /* ═══ RESPONSIVE ═══ */
   @media (max-width: 768px) { .pen-animation { max-width: 460px; } }

@@ -14,7 +14,7 @@ import '../styles/global.css';
       <div class="container" style="text-align: center; max-width: 600px;">
         <img src="/images/mascots/mascot-avocado-wink.webp" alt="" width="292" height="407" class="sticker" style="height: 150px; width: auto; margin: 0 auto 0.75rem;" />
         <span class="eyebrow">404</span>
-        <h1 style="font-family: var(--font-heading); font-size: clamp(4rem, 10vw, 8rem); font-weight: 800; color: var(--color-accent); line-height: 1; margin-bottom: 1rem;">Oops</h1>
+        <h1 class="error-title">Oops</h1>
         <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
         <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; margin-bottom: 3rem;">
           <a href="/" class="btn btn-primary" style="min-width: 240px; text-align: center;">Go to Homepage</a>
@@ -22,38 +22,38 @@ import '../styles/global.css';
           <a href="/contact/" class="btn btn-secondary" style="min-width: 240px; text-align: center;">Contact Us</a>
         </div>
         <p style="font-size: 0.85rem; color: var(--text-muted);">Popular pages:</p>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 0.75rem;">
-          <a href="/o-level-english/" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">O-Level English</a>
+        <div class="error-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 0.75rem;">
+          <a href="/o-level-english/">O-Level English</a>
           <span style="color: var(--text-muted);">&middot;</span>
-          <a href="/h1-general-paper/" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">H1 General Paper</a>
+          <a href="/h1-general-paper/">H1 General Paper</a>
           <span style="color: var(--text-muted);">&middot;</span>
-          <a href="/h2-economics/" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">H2 Economics</a>
+          <a href="/h2-economics/">H2 Economics</a>
           <span style="color: var(--text-muted);">&middot;</span>
-          <a href="/o-level-mathematics/" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">O-Level Maths</a>
+          <a href="/o-level-mathematics/">O-Level Maths</a>
           <span style="color: var(--text-muted);">&middot;</span>
-          <a href="/pre-ib-mathematics/" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">Pre-IB Maths</a>
+          <a href="/pre-ib-mathematics/">Pre-IB Maths</a>
           <span style="color: var(--text-muted);">&middot;</span>
-          <a href="/resources/" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">Free Resources</a>
+          <a href="/resources/">Free Resources</a>
           <span style="color: var(--text-muted);">&middot;</span>
-          <a href="/results/" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: none;">Results</a>
+          <a href="/results/">Results</a>
         </div>
 
         <div class="suggestions" data-animate="reveal-up">
-          <h2>You might be looking for</h2>
+          <h2 class="section-title">You might be looking for</h2>
           <div class="suggestion-grid">
-            <a href="/programmes/" class="suggestion-card">
+            <a href="/programmes/" class="suggestion-card card-lift">
               <h3>Programmes</h3>
               <p>O-Level English, Maths, H1 GP & H2 Economics</p>
             </a>
-            <a href="/pricing/" class="suggestion-card">
+            <a href="/pricing/" class="suggestion-card card-lift">
               <h3>Pricing</h3>
               <p>Transparent fees from SGD 280/month</p>
             </a>
-            <a href="/resources/" class="suggestion-card">
+            <a href="/resources/" class="suggestion-card card-lift">
               <h3>Free Resources</h3>
               <p>Study guides, checklists & worksheets</p>
             </a>
-            <a href="/contact/" class="suggestion-card">
+            <a href="/contact/" class="suggestion-card card-lift">
               <h3>Contact Us</h3>
               <p>Book a free diagnostic assessment</p>
             </a>
@@ -74,10 +74,10 @@ import '../styles/global.css';
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: var(--bg-primary);
     overflow: hidden;
   }
 
+  /* Watermark "404" — sits on the paper texture in the sand tone */
   .error-bg {
     position: absolute;
     top: 50%;
@@ -85,7 +85,7 @@ import '../styles/global.css';
     transform: translate(-50%, -50%);
     font-family: var(--font-body);
     font-size: clamp(16rem, 30vw, 28rem);
-    font-weight: 800;
+    font-weight: 900;
     color: var(--bg-secondary);
     line-height: 1;
     letter-spacing: -0.04em;
@@ -93,83 +93,25 @@ import '../styles/global.css';
     pointer-events: none;
   }
 
-  .error-content {
-    position: relative;
-    z-index: 1;
-    max-width: 480px;
-    padding: 2rem;
-  }
+  .error-section { position: relative; z-index: 1; }
 
-  .eyebrow {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 1.5rem;
-  }
-
-  .heading {
+  .error-title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    color: var(--text-primary);
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 900;
     letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin: 0 0 1rem 0;
+    color: var(--color-accent-text);
+    line-height: 1;
+    margin-bottom: 1rem;
   }
 
-  .subtitle {
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    margin: 0 0 2.5rem 0;
-  }
-
-  .actions {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .actions .btn {
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    font-weight: 500;
-    padding: 0.75rem 1.75rem;
-    border-radius: 0;
+  .error-links a {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent-text);
     text-decoration: none;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    letter-spacing: 0.01em;
   }
-
-  .actions .btn-primary {
-    background: var(--color-accent);
-    color: var(--text-primary);
-    border: 1px solid var(--color-accent);
-  }
-
-  .actions .btn-primary:hover {
-    background: var(--color-accent-light);
-    border-color: var(--color-accent-light);
-  }
-
-  .actions .btn-secondary {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-  }
-
-  .actions .btn-secondary:hover {
-    color: var(--text-primary);
-    border-color: rgba(26, 42, 58, 0.2);
-  }
+  .error-links a:hover { text-decoration: underline; }
 
   .suggestion-grid {
     display: grid;
@@ -180,27 +122,22 @@ import '../styles/global.css';
     margin-left: auto;
     margin-right: auto;
   }
+  /* Sticker cards — white, 2px ink outline, lift onto a hard shadow (global .card-lift) */
   .suggestion-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
     padding: 1.5rem;
     text-decoration: none;
-    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-  }
-  .suggestion-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(212, 133, 58, 0.3);
-    box-shadow: 0 12px 32px -16px rgba(212, 133, 58, 0.3);
-  }
-  :global([data-theme="dark"]) .suggestion-card:hover {
-    border-color: rgba(224, 152, 80, 0.32);
-    box-shadow: 0 12px 32px -16px rgba(224, 152, 80, 0.35);
+    color: inherit;
   }
   .suggestion-card h3 {
-    color: var(--color-primary);
+    color: var(--text-primary);
     margin: 0 0 0.5rem;
     font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
   }
   .suggestion-card p {
     color: var(--text-secondary);
@@ -208,21 +145,6 @@ import '../styles/global.css';
     font-size: 0.9rem;
   }
   .suggestions h2 {
-    text-align: center;
     margin-top: 3rem;
-  }
-
-  /* ===== VISUAL PLACEHOLDER ===== */
-  .error-visual-placeholder {
-    background: var(--bg-secondary);
-    border: 1px dashed var(--border-color);
-    border-radius: var(--border-radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
   }
 </style>

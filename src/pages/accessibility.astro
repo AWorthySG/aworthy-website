@@ -11,7 +11,7 @@ import '../styles/global.css';
   <section class="section">
     <div class="container a11y-content">
       <span class="eyebrow">Accessibility</span>
-      <h1 class="a11y-title">Accessibility statement &mdash; A-Worthy Singapore</h1>
+      <h1 class="a11y-title squiggle">Accessibility statement &mdash; A-Worthy Singapore</h1>
 
       <p>A-Worthy is committed to ensuring our website is accessible to all users, including those with disabilities. We strive to meet <strong>WCAG 2.2 Level AA</strong> standards.</p>
 
@@ -50,16 +50,16 @@ import '../styles/global.css';
   .a11y-title {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: -0.02em;
     margin-bottom: 1.5rem;
   }
   .a11y-content h2 {
     font-family: var(--font-heading);
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin: 2rem 0 1rem;
-    padding-left: 0.85rem;
-    border-left: 3px solid var(--color-accent);
     line-height: 1.3;
   }
   .a11y-content ul {
@@ -69,11 +69,13 @@ import '../styles/global.css';
     margin-bottom: 0.5rem;
   }
   .a11y-content a {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
   .a11y-updated {
     margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 2px dashed var(--ink-faint);
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
   }
 </style>
