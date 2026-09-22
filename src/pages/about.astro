@@ -382,11 +382,8 @@ import '../styles/global.css';
     background: var(--bg-secondary);
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
+  /* .container is the global one — same gutter (--page-padding) as the rest
+     of the site, so the SharpWalkthrough block lines up with every section */
 
   .section h2 {
     font-family: var(--font-heading);
@@ -632,10 +629,6 @@ import '../styles/global.css';
       padding: 1.75rem 0;
     }
 
-    .container {
-      padding: 0 1.5rem;
-    }
-
     .values-grid,
     .centres-grid {
       grid-template-columns: 1fr;
@@ -688,10 +681,6 @@ import '../styles/global.css';
 
   @media (min-width: 1921px) {
     .hero-content {
-      max-width: 1400px;
-    }
-
-    .container {
       max-width: 1400px;
     }
 
