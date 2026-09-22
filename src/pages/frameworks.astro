@@ -351,7 +351,7 @@ const frameworkIndex = [
   /* ── Hero ── */
   .fw-hero { padding: 3rem 0 2rem; background: var(--bg-secondary); }
   .fw-hero__title { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 900; line-height: 1.12; margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em; color: var(--text-primary); }
-  .fw-hero__lead { max-width: 720px; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); margin: 0 0 2rem; }
+  .fw-hero__lead { max-width: 60ch; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); margin: 0 0 2rem; }
 
   .fw-index { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .fw-index__card { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.25rem; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); text-decoration: none; color: inherit; }
@@ -365,10 +365,10 @@ const frameworkIndex = [
   .fw-section { padding: 3rem 0; }
   .fw-section--alt { background: var(--bg-secondary); }
   .fw-section__title { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; margin: 0.4rem 0 0.9rem; letter-spacing: -0.02em; color: var(--text-primary); }
-  .fw-section__sub { max-width: 760px; font-size: 1.02rem; line-height: 1.65; color: var(--text-secondary); margin: 0 0 2rem; }
+  .fw-section__sub { max-width: 60ch; font-size: 1.02rem; line-height: 1.65; color: var(--text-secondary); margin: 0 0 2rem; }
 
-  .fw-tip { max-width: 760px; margin: 1.75rem 0 0; padding: 0.9rem 1.1rem; background: var(--fw-accent-soft); border: 2px solid var(--color-ink); border-radius: var(--radius-md); font-size: 0.95rem; line-height: 1.6; color: var(--text-primary); }
-  .fw-tip--plain { background: transparent; border: none; padding: 0; color: var(--text-secondary); }
+  .fw-tip { max-width: 64ch; margin: 1.75rem 0 0; padding: 0.9rem 1.1rem; background: var(--fw-accent-soft); border: 2px solid var(--color-ink); border-radius: var(--radius-md); font-size: 0.95rem; line-height: 1.6; color: var(--text-primary); }
+  .fw-tip--plain { max-width: 60ch; background: transparent; border: none; padding: 0; color: var(--text-secondary); }
   .fw-tip sup { font-size: 0.7em; }
 
   /* ── STAMP CARD — white ink tiles that press like the LMS buttons; the active letter goes red ── */
@@ -390,7 +390,7 @@ const frameworkIndex = [
   .stamp__panel-check { font-size: 0.95rem; color: var(--text-secondary); margin: 0; }
   .stamp__fix { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.1rem 1.25rem; }
   .stamp__row { display: flex; gap: 0.75rem; align-items: baseline; margin: 0 0 0.5rem; font-size: 1rem; line-height: 1.55; color: var(--text-primary); }
-  .stamp__label { flex-shrink: 0; width: 48px; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding-top: 0.15rem; }
+  .stamp__label { flex-shrink: 0; width: 4.2em; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding-top: 0.15rem; }
   .stamp__row--error .stamp__label { color: var(--color-accent-text); }
   .stamp__row--error :global(strong) { color: var(--color-accent-text); text-decoration: line-through; text-decoration-color: var(--color-accent-text); }
   .stamp__row--fix .stamp__label { color: var(--tint-green-fg); }
@@ -457,7 +457,7 @@ const frameworkIndex = [
 
   .caps-extra { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .caps-extra__title { font-size: 1.05rem; font-weight: 800; margin: 0 0 0.6rem; color: var(--text-primary); }
-  .caps-extra__lead { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem; }
+  .caps-extra__lead { max-width: 60ch; font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1rem; }
   .caps-parts { display: flex; flex-direction: column; gap: 0.75rem; }
   .caps-part { display: flex; flex-direction: column; gap: 0.3rem; }
   .caps-part__label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); }
@@ -472,7 +472,7 @@ const frameworkIndex = [
   /* ── CTA — the page's one ink band; colours come from the global .section--ink ── */
   .fw-cta { padding: 3rem 0; text-align: center; }
   .fw-cta__title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin: 0 0 0.6rem; }
-  .fw-cta__sub { max-width: 620px; margin: 0 auto 1.75rem; font-size: 1rem; line-height: 1.6; }
+  .fw-cta__sub { max-width: 64ch; margin: 0 auto 1.75rem; font-size: 1rem; line-height: 1.6; }
   .fw-cta__actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
 
   /* ── Responsive ── */
@@ -485,6 +485,18 @@ const frameworkIndex = [
     .swift-word { flex-direction: row; align-items: center; gap: 0.6rem; text-align: left; }
     .swift-word__eg { margin-left: auto; text-align: right; }
     .stamp__chip { width: 46px; height: 46px; }
+  }
+  /* Tablet portrait / landscape phone: no orphan cards — the third index card spans the row and the
+     five SWIFT words sit 3 + 2 (placed after the ≤900px block so it overrides its two-column tracks) */
+  @media (min-width: 641px) and (max-width: 900px) {
+    .fw-index__card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .swift-words { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .swift-word { grid-column: span 2; }
+    .swift-word:nth-child(n + 4) { grid-column: span 3; }
+  }
+  /* Laptops and up: running copy stays at or above 15px */
+  @media (min-width: 1024px) {
+    .caps-extra__lead { font-size: 0.95rem; }
   }
   /* Real-pages gallery + lightbox (shared pattern) */
   .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
