@@ -143,7 +143,6 @@ const schemaData = {
     ]
   }
 };
-import { ClientRouter } from 'astro:transitions';
 ---
 
 <!DOCTYPE html>
@@ -220,13 +219,12 @@ import { ClientRouter } from 'astro:transitions';
     ]
   })} />
 
-  <!-- Fonts — non-render-blocking async load. Nunito is the sole sitewide
-       typeface (weights 200–900 + italic). No other font families. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400..900&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..900;1,400..900&display=swap" rel="stylesheet" /></noscript>
+  {/* Fonts — Nunito is self-hosted (@font-face in global.css, files in
+       public/fonts/). Preload the one file every page needs so it arrives with
+       the stylesheet instead of after it; the other subsets load on demand.
+       crossorigin is required on font preloads even for same-origin files, or
+       the browser fetches the font twice. */}
+  <link rel="preload" href="/fonts/nunito-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="preconnect" href="https://plausible.io" />
 
@@ -249,7 +247,14 @@ import { ClientRouter } from 'astro:transitions';
 
   <title>{title}</title>
 
-  <ClientRouter />
+  {/* No ClientRouter. Astro's router swaps page bodies in place and keeps a
+       session-wide record of every inline script it has run, so it never runs
+       the same script twice: a page revisited by clicking around came back
+       with its toggles, quizzes and calculators unwired, and the header's
+       menu and theme toggle stopped responding after the first link. Plain
+       navigation runs every script exactly once per page. The cross-fade
+       between pages is native CSS (@view-transition in global.css) and links
+       are prefetched on hover (astro.config.mjs), so navigation stays quick. */}
 
   <!-- Theme initialization (auto-detect system preference) -->
   <script is:inline>
@@ -963,8 +968,8 @@ import { ClientRouter } from 'astro:transitions';
   <!-- Scroll reveal animation observer -->
   <script is:inline>
     function initScrollReveal() {
-      // Re-assert the JS gate after ClientRouter swaps (html attributes may
-      // be replaced by the incoming page, which lacks the runtime-added class)
+      // Re-assert the JS gate (html.js) that global.css uses to hide
+      // [data-animate] content only while JS is running.
       document.documentElement.classList.add('js');
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -980,7 +985,6 @@ import { ClientRouter } from 'astro:transitions';
       });
     }
     initScrollReveal();
-    document.addEventListener('astro:page-load', initScrollReveal);
   </script>
 
   <script is:inline>
@@ -1017,7 +1021,6 @@ import { ClientRouter } from 'astro:transitions';
       });
     }
     initCounters();
-    document.addEventListener('astro:page-load', initCounters);
   </script>
   <!-- Back to Top -->
   <button class="back-to-top" id="back-to-top" aria-label="Scroll to top">

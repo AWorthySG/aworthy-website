@@ -1731,7 +1731,6 @@ const playbookRows = [
     sync();
     window.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
-    document.addEventListener('astro:page-load', sync);
   })();
 
   var observer = new IntersectionObserver(function(entries) {

@@ -228,7 +228,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
     var dataEl = document.getElementById('dec-data');
     var stage = document.getElementById('dec-stage');
     if (!dataEl || !stage) return;
-    if (stage.getAttribute('data-init')) return; // avoid double-binding on initial astro:page-load
+    if (stage.getAttribute('data-init')) return; // guard against double-binding
     stage.setAttribute('data-init', '1');
     var ALL = JSON.parse(dataEl.textContent || '[]');
 
@@ -418,5 +418,4 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   }
 
   initDecoder();
-  document.addEventListener('astro:page-load', initDecoder);
 </script>

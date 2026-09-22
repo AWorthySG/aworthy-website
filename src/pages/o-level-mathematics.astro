@@ -1840,7 +1840,6 @@ const playbookRows = [
     sync();
     window.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
-    document.addEventListener('astro:page-load', sync);
   })();
 
   var observer = new IntersectionObserver(function(entries) {
@@ -1915,6 +1914,5 @@ function initNotesLightbox() {
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
 }
 initNotesLightbox();
-document.addEventListener('astro:page-load', initNotesLightbox);
 </script>
 

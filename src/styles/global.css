@@ -1,3 +1,59 @@
+/* ===== Nunito — self-hosted ===== */
+/* Served from /fonts/ rather than Google Fonts. A third-party font stylesheet
+   failed in two ways: the service worker re-fetched it under a CSP whose
+   connect-src does not list the Google hosts (so Nunito silently fell back
+   after the first visit), and any network, blocker or regional block on
+   Google took the brand font down with it. Same-origin files have neither
+   problem. Variable font, weights 200–1000, Latin + Latin Extended subsets,
+   upright + italic; the browser downloads only the subsets a page uses.
+   Files and licence (SIL OFL 1.1): public/fonts/. The latin-normal file is
+   preloaded in BaseLayout — keep that <link> in sync if the filename changes. */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-ext-wght-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-wght-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-ext-wght-italic.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Metric-matched stand-in shown for the instant before Nunito arrives, so
+   text does not reflow when it swaps in. Arial scaled to Nunito's regular-
+   weight average glyph width (0.4555em vs Arial's 0.4414em) with Nunito's
+   vertical metrics (ascent 1011, descent 353, no line gap, per 1000 upm),
+   each divided by the size-adjust. Measured from the woff2 at wght 400. */
+@font-face {
+  font-family: 'Nunito Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 103.19%;
+  ascent-override: 97.97%;
+  descent-override: 34.21%;
+  line-gap-override: 0%;
+}
+
 /* ===== CSS Custom Properties ===== */
 /* A-Worthy — Warm, professional, and inviting. Premium education brand. */
 /* Breakpoints reference:
@@ -40,9 +96,9 @@
   --border-hover: rgba(28, 27, 25, 0.26);
   --header-height: 72px;
   --nav-offset: calc(var(--header-height) + 44px);
-  --font-heading: 'Nunito', -apple-system, sans-serif;
-  --font-body: 'Nunito', -apple-system, sans-serif;
-  --font-mono: 'Nunito', -apple-system, sans-serif;
+  --font-heading: 'Nunito', 'Nunito Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Nunito', 'Nunito Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Nunito', 'Nunito Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -1916,3 +1972,19 @@ html {
   z-index: 1;
 }
 
+
+/* ===== Page-to-page cross-fade =====
+   Native cross-document view transitions (Chrome 126+, Safari 18.2+): pure
+   CSS, no router. Browsers without support simply navigate normally, and
+   reduced-motion users get an instant switch. This replaces the fade that
+   Astro's ClientRouter used to provide — the router itself was removed
+   because it left page scripts unwired after navigation (see BaseLayout). */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.18s;
+  }
+}
