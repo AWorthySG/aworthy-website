@@ -141,7 +141,10 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
       var(--bg-secondary);
     border: 2px solid var(--color-ink);
   }
-  .k-stations { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; max-width: 1040px; margin: 0 auto; }
+  /* rem cap (= 1040px at the 16px root): a px cap stayed 1040px wide while the floor grew with the
+     ≥1441 root scaling — at 2560 the five pots huddled in the middle half of a 2100px floor and the
+     plated cards wrapped their CTA to five lines */
+  .k-stations { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; max-width: 65rem; margin: 0 auto; }
   /* three-up on tablets: a 6-track grid lets the trailing pair sit centred
      instead of leaving a bare gingham cell at the right of row two */
   @media (min-width: 521px) and (max-width: 880px) {
@@ -166,6 +169,8 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
     padding: 1.4rem 0.6rem 0.9rem;
+    /* buttons don't inherit the page font — without this the pot labels rendered in the UA's Arial */
+    font-family: var(--font-body);
     cursor: pointer;
     display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
     box-shadow: 0 6px 0 var(--ink-shadow);
@@ -174,7 +179,7 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
   .k-pot:hover { transform: translateY(-4px); box-shadow: 0 10px 0 var(--ink-shadow), 0 14px 24px rgba(70, 50, 20, 0.10); }
   .k-pot:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ink-shadow); }
   .k-pot:focus-visible { outline: none; border-color: var(--color-accent); box-shadow: 0 6px 0 var(--ink-shadow), 0 0 0 3px var(--color-accent-soft); }
-  .k-pot__svg { width: 84px; height: auto; overflow: visible; }
+  .k-pot__svg { width: 5.25rem; height: auto; overflow: visible; } /* 84px at the 16px root; scales with the station */
   .k-pot__shadow { fill: rgba(0,0,0,0.08); }
   .k-pot__name { font-weight: 800; font-size: 0.9rem; color: var(--text-primary); }
 
@@ -209,6 +214,13 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
 
   /* win banner — a white sticker card on a hard ink shadow */
   .k-win { max-width: 600px; margin: 1.75rem auto 0; text-align: center; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: 0 6px 0 var(--ink-shadow); animation: k-pop 0.5s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
+  /* the script scrolls the banner in with block:'nearest' (bottom edge to the screen edge), which parked its
+     second button under the fixed bottom CTA bar on phones — leave the bar's height clear. On ≤768px the bar
+     can appear *after* that scroll (it shows past half a screen), so reserve its ~60px there regardless. */
+  .k-win { --k-bar: var(--sticky-bar-h, 0px); scroll-margin-bottom: calc(var(--k-bar) + 1rem); }
+  @media (max-width: 768px) {
+    .k-win { --k-bar: max(var(--sticky-bar-h, 0px), 4rem); }
+  }
   .k-win__mascot { height: 88px; width: auto; margin: 0 auto 0.5rem; }
   .k-win__title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.5rem; }
   .k-win__sub { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
