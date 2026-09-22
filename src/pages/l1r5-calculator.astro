@@ -112,8 +112,8 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
           <p><strong>English and Maths affect every L1R5.</strong> They&rsquo;re the two subjects every student takes &mdash; so every grade you raise there shifts your whole aggregate.</p>
           <div class="calc-cta-links">
             <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
-            <a href="/o-level-english/" class="calc-cta-link">O-Level English &rarr;</a>
-            <a href="/o-level-mathematics/" class="calc-cta-link">O-Level Maths &rarr;</a>
+            <a href="/o-level-english/" class="calc-cta-link subject--english"><span class="subject-dot" aria-hidden="true"></span>O-Level English &rarr;</a>
+            <a href="/o-level-mathematics/" class="calc-cta-link subject--maths"><span class="subject-dot" aria-hidden="true"></span>O-Level Maths &rarr;</a>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
     <div class="container">
       <h2 class="section-title">How L1R5 works</h2>
       <p class="section-subtitle">L1R5 = 1 Language + 5 Relevant subjects &mdash; the aggregate of your six best grades, selected by MOE&rsquo;s rules. Each grade is worth points (A1&nbsp;=&nbsp;1 up to F9&nbsp;=&nbsp;9), so a <em>lower</em> score is better, and bonus points for CCA and Higher Mother Tongue are subtracted to give your net aggregate.</p>
-      <p style="text-align:center;">For the full breakdown, bonus-point rules, and the complete 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points-2026/">complete L1R5 &amp; cut-off points guide</a>. Already heading to JC? Plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>, or test your exam instincts with the <a href="/sharp-decoder/">SHARP Decoder game</a>.</p>
+      <p class="calc-explainer__note">For the full breakdown, bonus-point rules, and the complete 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points-2026/">complete L1R5 &amp; cut-off points guide</a>. Already heading to JC? Plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>, or test your exam instincts with the <a href="/sharp-decoder/">SHARP Decoder game</a>.</p>
     </div>
   </section>
 
@@ -136,6 +136,11 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: var(--text-primary); margin-bottom: 0.75rem; }
   .calc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
   .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  /* Until a result exists the lone form card sits centred instead of leaving the right column blank */
+  .calc-grid:has(> .calc-result[hidden]) { grid-template-columns: minmax(0, 640px); justify-content: center; }
+  /* The global sun blob (520px, top -32%) is taller than this short hero, so its dense band was
+     clipped into a hard edge — shrink it and centre it on the sticker so it fades out inside the hero */
+  section.calc-hero::before { top: 50%; translate: 0 -50%; right: -2rem; width: 380px; height: 380px; }
 
   /* ── Form card — white sticker card with a 2px ink outline ── */
   .calc-card { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; }
@@ -146,12 +151,8 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-row--l1 { padding: 0.6rem 0.75rem; background: var(--bg-muted); border: 2px dashed var(--ink-faint); border-radius: var(--radius-sm); margin-bottom: 1.25rem; }
   .calc-subject { font-size: 0.9rem; color: var(--text-primary); font-weight: 600; }
   .calc-subject em { color: var(--color-accent-text); font-style: normal; font-weight: 800; }
-  /* Selects take the global ink-outlined look; only size + a chevron are page-scoped (appearance:none drops the native arrow) */
-  .calc-select {
-    min-width: 130px; width: auto; min-height: 44px; padding: 0.4rem 2.1rem 0.4rem 0.75rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B6760' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 16px;
-  }
+  /* Selects take the global ink-outlined look and the global chevron (ink in light, cream in dark) — only size is page-scoped */
+  .calc-select { min-width: 130px; width: auto; min-height: 44px; padding: 0.4rem 2.1rem 0.4rem 0.75rem; }
   .calc-bonus .calc-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0; color: var(--text-primary); padding: 0.35rem 0; margin-bottom: 0; min-height: 44px; cursor: pointer; }
   .calc-check input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
   .calc-check .check-box { position: relative; display: inline-block; width: 1.15rem; height: 1.15rem; flex-shrink: 0; border: 2px solid var(--color-ink); border-radius: 5px; background: var(--bg-muted); transition: border-color var(--transition-fast); }
@@ -167,7 +168,9 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-error { color: var(--color-accent-text); font-weight: 600; font-size: 0.85rem; margin-top: 0.75rem; }
 
   /* ── Result card ── */
-  .calc-result { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; position: sticky; top: calc(var(--header-height) + 1rem); }
+  /* --nav-offset = header + SubjectBar (header alone ≤640px): the stuck card and the post-Calculate
+     scrollIntoView both clear the fixed chrome instead of sliding under the programmes strip */
+  .calc-result { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; position: sticky; top: calc(var(--nav-offset) + 1rem); scroll-margin-top: calc(var(--nav-offset) + 1rem); }
   .calc-score { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 1.25rem; }
   .calc-score-block { text-align: center; }
   .calc-score-num { display: flex; align-items: center; justify-content: center; gap: 0.1rem; font-family: var(--font-heading); font-size: 2.75rem; font-weight: 900; letter-spacing: -0.02em; color: var(--text-primary); line-height: 1; margin-bottom: 0.35rem; }
@@ -196,9 +199,10 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6; }
   .calc-cta p strong { color: var(--text-primary); }
   .calc-cta-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-  .calc-cta-link { color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.9rem; min-height: 40px; display: inline-flex; align-items: center; }
+  .calc-cta-link { color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.9rem; min-height: 40px; display: inline-flex; align-items: center; gap: 0.45rem; }
   .calc-cta-link:hover { text-decoration: underline; text-underline-offset: 3px; }
   .calc-explainer { text-align: center; }
+  .calc-explainer__note { max-width: 640px; margin: 0 auto; }
   .calc-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
   @media (max-width: 900px) {
