@@ -763,15 +763,16 @@ const testimonials = [
   .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0;
     margin-top: 1rem;
   }
-  /* 8px visual dot inside a 28px hit area. The dots are created by the
-     script below, so they carry no Astro scoping attribute — these rules
-     must be :global or they never match. */
+  /* 8px visual dot inside a 40px hit area (the site's touch-target standard;
+     it was 28px). The buttons touch, so the dots still sit ~40px apart. The
+     dots are created by the script below, so they carry no Astro scoping
+     attribute — these rules must be :global or they never match. */
   :global(.carousel-dot) {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: none;
     background: transparent;
