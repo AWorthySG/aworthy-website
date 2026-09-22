@@ -1362,6 +1362,8 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
   }
+  /* Equal panel heights: the subject stickers differ by a few px in aspect ratio */
+  .related-section .subject-panel--sm { min-height: 160px; }
   .related-link {
     display: block;
     text-decoration: none;
