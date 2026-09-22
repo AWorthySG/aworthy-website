@@ -12,7 +12,7 @@ import '../styles/global.css';
   <section class="prog-hero">
     <div class="container">
       <p class="eyebrow">Programmes</p>
-      <h1 class="prog-hero__heading">Singapore tuition <span class="accent-word">programmes</span> for O-Level English, Maths, GP &amp; H2 Economics</h1>
+      <h1 class="prog-hero__heading">Singapore tuition <span class="accent-word">programmes</span> for <span class="prog-hero__nobr">O-Level</span> English, Maths, GP &amp; H2 Economics</h1>
       <p class="prog-hero__sub">Every A-Worthy programme is built on the proven SHARP Method &mdash; See, Hit, Apply, Refine, Practise. Small groups of 6, online on the A-Worthy Whiteboard, with personalised feedback every session. Choose the programme that fits your child.</p>
     </div>
     <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="sticker sticker--hero" />
@@ -248,7 +248,6 @@ import '../styles/global.css';
 <style>
   /* ===== DESIGN TOKENS ===== */
   :root {
-    --prog-bg: var(--bg-primary);
     --prog-bg-card: var(--bg-card);
     --prog-border: var(--border-color);
     --prog-text: var(--text-primary);
@@ -266,8 +265,9 @@ import '../styles/global.css';
     max-width: 860px;
   }
 
+  /* No page fill on the hero / sections / CTA — the body's paper-dot texture
+     is the canvas (LMS); only the sand .why-section band paints over it */
   .prog-hero {
-    background: var(--prog-bg);
     padding: 1.75rem 0;
     text-align: center;
   }
@@ -282,6 +282,11 @@ import '../styles/global.css';
     letter-spacing: -0.03em;
   }
 
+  /* Keep the compound "O-Level" on one line (the hyphen was a break point) */
+  .prog-hero__nobr {
+    white-space: nowrap;
+  }
+
   .prog-hero__sub {
     font-family: var(--prog-font);
     font-size: 1.1rem;
@@ -293,7 +298,7 @@ import '../styles/global.css';
 
   /* ===== NAV ===== */
   .prog-nav {
-    background: var(--prog-bg);
+    background: var(--bg-primary);
     border-bottom: 1px solid var(--prog-border);
     padding: 1.25rem 0;
     position: sticky;
@@ -339,7 +344,6 @@ import '../styles/global.css';
 
   /* ===== SECTIONS ===== */
   .prog-section {
-    background: var(--prog-bg);
     padding: 1.75rem 0;
     scroll-margin-top: 60px;
   }
@@ -411,8 +415,13 @@ import '../styles/global.css';
     flex-direction: column;
     flex: 1;
   }
+  /* Fixed sticker height so every panel is the same height regardless of each
+     pose's aspect ratio (the teacher sticker is squarer than the subject set) */
   .prog-card--subject .subject-panel img {
-    width: min(150px, 60%);
+    height: 200px;
+    width: auto;
+    max-width: 60%;
+    object-fit: contain;
   }
 
   .prog-card__title {
@@ -502,6 +511,10 @@ import '../styles/global.css';
      .chip--blue in the eyebrow carries the emphasis instead */
 
   .prog-card__eyebrow {
+    /* Same height whether it holds text or a "New" chip, so titles line up across a row */
+    display: flex;
+    align-items: center;
+    min-height: 1.75rem;
     font-family: var(--prog-mono);
     font-size: 0.72rem;
     font-weight: 700;
@@ -555,7 +568,6 @@ import '../styles/global.css';
 
   /* ===== CTA ===== */
   .prog-cta {
-    background: var(--prog-bg);
     border-top: 1px solid var(--prog-border);
     padding: 1.75rem 0;
   }
@@ -614,7 +626,12 @@ import '../styles/global.css';
     padding: 1.25rem 0;
     background: var(--bg-secondary);
   }
-  /* White table inside an ink-outlined rounded sticker wrapper */
+  /* Centre the eyebrow over the centred .section-title (global .eyebrow is inline-block) */
+  .why-section .eyebrow {
+    display: block;
+    text-align: center;
+  }
+  /* White table inside an ink-outlined rounded sticker wrapper, on the 3px rest shadow */
   .comparison-table-wrap {
     overflow-x: auto;
     overflow-y: hidden;
@@ -624,6 +641,7 @@ import '../styles/global.css';
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
   .comparison-table {
     width: 100%;

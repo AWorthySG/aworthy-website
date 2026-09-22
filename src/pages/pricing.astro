@@ -327,7 +327,7 @@ import '../styles/global.css';
   <!-- ===== CTA ===== -->
   <section class="section pricing-cta">
     <div class="container">
-      <div class="pricing-cta__inner" data-animate="reveal-up">
+      <div class="pricing-cta__inner hero-card" data-animate="reveal-up">
         <h2>Ready to get started?</h2>
         <p>Book a free 20-minute diagnostic assessment &mdash; we&rsquo;ll identify your child&rsquo;s gaps and recommend the right programme.</p>
         <a href="/contact/" class="btn btn-accent pricing-cta__btn">Book Free Assessment</a>
@@ -420,10 +420,11 @@ import '../styles/global.css';
 
 <style>
   /* ===== HERO ===== */
+  /* No page fill on the hero / includes / FAQ bands — the body's paper-dot
+     texture is the canvas (LMS); only the sand bands paint over it */
   .pricing-hero {
     padding: 1.75rem 0;
     text-align: center;
-    background: var(--bg-primary);
   }
 
   .pricing-hero__heading {
@@ -456,6 +457,7 @@ import '../styles/global.css';
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
 
   .pricing-table {
@@ -467,7 +469,9 @@ import '../styles/global.css';
   .pricing-table thead th {
     padding: 1.5rem 1.25rem;
     text-align: center;
-    background: var(--bg-muted);
+    /* Each column header carries its subject's pastel tint (LMS "Your subjects");
+       the empty label column has no .subject--* class and falls back to muted */
+    background: var(--subject-tint, var(--bg-muted));
     border-bottom: 2px solid var(--color-ink);
     vertical-align: bottom;
   }
@@ -566,8 +570,9 @@ import '../styles/global.css';
   .pricing-card__popular-badge {
     margin-bottom: 0.75rem;
   }
+  /* The featured column keeps its subject tint — the gold chip, the red top
+     rule and the gold-light body column already mark it as "Most popular" */
   .pricing-table thead th.pricing-table__th--popular {
-    background: var(--tint-gold-bg);
     border-top: 3px solid var(--color-accent);
   }
   .pricing-table tbody td:nth-child(2) {
@@ -576,8 +581,8 @@ import '../styles/global.css';
   .pricing-table__popular-badge {
     margin-bottom: 0.35rem;
   }
-  .pricing-cta__reassure {
-    margin-top: 0.9rem;
+  .pricing-cta__inner .pricing-cta__reassure {
+    margin: 0.9rem 0 0;
     font-size: 0.85rem;
     color: var(--text-secondary);
   }
@@ -672,10 +677,6 @@ import '../styles/global.css';
   }
 
   /* ===== INCLUDES ===== */
-  .pricing-includes {
-    background: var(--bg-primary);
-  }
-
   .includes-head {
     display: flex;
     align-items: center;
@@ -703,6 +704,7 @@ import '../styles/global.css';
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
     padding: 1.25rem;
+    box-shadow: 0 3px 0 var(--ink-shadow); /* rest shadow; .card-lift lifts it to 6px */
   }
 
   .includes-item .icon-circle {
@@ -728,6 +730,11 @@ import '../styles/global.css';
   .pricing-compare {
     background: var(--bg-secondary);
   }
+  /* Centre the eyebrow over the centred .section-title (global .eyebrow is inline-block) */
+  .pricing-compare .eyebrow {
+    display: block;
+    text-align: center;
+  }
   .compare-table-wrap {
     margin-top: var(--space-xl);
     overflow-x: auto;
@@ -736,11 +743,13 @@ import '../styles/global.css';
     border-radius: var(--radius-md);
     border: 2px solid var(--color-ink);
     background: var(--bg-card);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
+  /* No fixed min-width: three fluid columns down to 641px (a 720px floor
+     overflowed tablet-portrait containers with no scroll cue); phones stack */
   .compare-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 720px;
   }
   .compare-table thead th {
     padding: 1.25rem 1.25rem;
@@ -801,14 +810,65 @@ import '../styles/global.css';
     font-style: italic;
   }
 
+  /* Phones: each row becomes a stacked block — label, then the typical value,
+     then the A-Worthy value in its green well — so the winning column is never
+     pushed off-screen behind an unhinted horizontal scroll */
   @media (max-width: 640px) {
-    .compare-table {
-      min-width: 560px;
-    }
-    .compare-table thead th,
+    .compare-table,
+    .compare-table tbody,
+    .compare-table tbody tr,
     .compare-table tbody td {
-      padding: 0.85rem 0.9rem;
-      font-size: 0.85rem;
+      display: block;
+    }
+    .compare-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+    .compare-table tbody tr {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .compare-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    .compare-table tbody td {
+      width: auto;
+      padding: 0;
+      border: 0;
+      font-size: 0.9rem;
+    }
+    .compare-table tbody td.compare-row-label {
+      width: auto;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+    .compare-table tbody td:nth-child(2)::before,
+    .compare-table tbody td:last-child::before {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.15rem;
+    }
+    .compare-table tbody td:nth-child(2)::before {
+      content: 'Typical tuition';
+    }
+    .compare-table tbody td:last-child {
+      margin-top: 0.6rem;
+      padding: 0.6rem 0.75rem;
+      border-left: 3px solid var(--color-leaf);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .compare-table tbody td:last-child::before {
+      content: 'A-Worthy';
+      color: var(--tint-green-fg);
     }
   }
 
@@ -817,9 +877,12 @@ import '../styles/global.css';
     background: var(--bg-secondary);
   }
 
+  /* The LMS welcome-card treatment comes from the global .hero-card (white ink
+     card, soft tint wash, hard shadow) so the conversion moment sits in its own
+     container on the sand band instead of merging with the comparison above */
   .pricing-cta__inner {
     text-align: center;
-    max-width: 600px;
+    max-width: 720px;
     margin: 0 auto;
   }
 
@@ -845,8 +908,14 @@ import '../styles/global.css';
   }
 
   /* ===== FAQ ===== */
-  .pricing-faq {
-    background: var(--bg-primary);
+  /* The global reveal-up wipe ends at clip-path: inset(0), which slices off
+     anything painted outside the revealed box — the 3px hard rest shadows on
+     the table wraps and the CTA card, and the rest/hover shadows of the cards
+     inside the includes and pricing-card grids. Once revealed, open the clip
+     past the box so the sticker shadows survive (harmless for text blocks). */
+  :global(html.js) [data-animate="reveal-up"].is-visible {
+    -webkit-clip-path: inset(-16px -24px -40px);
+    clip-path: inset(-16px -24px -40px);
   }
 
   .faq-list {
