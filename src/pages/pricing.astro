@@ -912,11 +912,6 @@ import '../styles/global.css';
      anything painted outside the revealed box — the 3px hard rest shadows on
      the table wraps and the CTA card, and the rest/hover shadows of the cards
      inside the includes and pricing-card grids. Once revealed, open the clip
-     past the box so the sticker shadows survive (harmless for text blocks). */
-  :global(html.js) [data-animate="reveal-up"].is-visible {
-    -webkit-clip-path: inset(-16px -24px -40px);
-    clip-path: inset(-16px -24px -40px);
-  }
 
   .faq-list {
     max-width: 720px;
