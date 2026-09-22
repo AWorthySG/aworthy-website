@@ -14,7 +14,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
     <div class="container">
       <div class="blog-post-header">
         <a href="/blog/" class="blog-back">&larr; Back to Blog</a>
-        <span class="blog-tag">O-Level Admissions</span>
+        <span class="blog-tag chip chip--gold">O-Level Admissions</span>
         <h1>2026 O-Level Cut-Off Points for JC: The Complete L1R5 Guide</h1>
         <div class="blog-post-meta">
           <a class="blog-author" href="/about/" rel="author">By Jeremy Lim, Founder</a>
@@ -208,6 +208,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
     border-radius: var(--radius-md);
     border: 2px solid var(--color-ink);
     background: var(--bg-card);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
   .cop-table-wrap::-webkit-scrollbar { height: 4px; }
   .cop-table-wrap::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 2px; }
@@ -261,4 +262,15 @@ import AuthorBio from '../../components/AuthorBio.astro';
     margin-bottom: 1.5rem;
   }
   .table-note a { color: var(--color-accent-text); }
+  /* Phones: fixed layout with 76px score columns and wrapping JC names keeps all three
+     columns inside the wrapper (no hidden horizontal scroll); the wrapper's overflow-x
+     stays only as a safety net. */
+  @media (max-width: 480px) {
+    .cop-table { white-space: normal; table-layout: fixed; }
+    .cop-table th:nth-child(n+2),
+    .cop-table td:nth-child(n+2) { width: 76px; }
+    .cop-table th,
+    .cop-table td { padding: 0.55rem 0.5rem; }
+    .cop-table th { letter-spacing: 0.05em; }
+  }
 </style>

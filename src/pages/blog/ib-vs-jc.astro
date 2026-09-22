@@ -14,7 +14,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
     <div class="container">
       <div class="blog-post-header">
         <a href="/blog/" class="blog-back">&larr; Back to Blog</a>
-        <span class="blog-tag">Admissions</span>
+        <span class="blog-tag chip chip--gold">Admissions</span>
         <h1>IB or JC? How to Choose the Right Path After O-Levels</h1>
         <div class="blog-post-meta">
           <a class="blog-author" href="/about/" rel="author">By Jeremy Lim, Founder</a>
@@ -228,6 +228,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
     border-radius: var(--radius-md);
     border: 2px solid var(--color-ink);
     background: var(--bg-card);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
   .compare-table-wrap::-webkit-scrollbar { height: 4px; }
   .compare-table-wrap::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 2px; }
@@ -267,4 +268,13 @@ import AuthorBio from '../../components/AuthorBio.astro';
   }
   .compare-table tbody tr:hover td { background: var(--bg-secondary); }
   .compare-table tbody tr:hover td.compare-label { background: var(--tint-green-bg); }
+  /* Phones: wrapping labels + tighter cell padding let all three columns fit inside the
+     wrapper (~346px at 390px, ~316px at 360px) instead of clipping the IB column behind an
+     invisible horizontal scroll; overflow-x: auto stays as the safety net. */
+  @media (max-width: 640px) {
+    .compare-table { font-size: 0.85rem; }
+    .compare-table th,
+    .compare-table td { padding: 0.6rem 0.55rem; }
+    .compare-label { white-space: normal; font-size: 0.8rem; }
+  }
 </style>
