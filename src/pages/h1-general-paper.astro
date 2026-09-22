@@ -92,12 +92,16 @@ const playbookRows = [
   </nav>
 
   <!-- ===== PAGE HERO ===== -->
-  <section class="prog-hero">
+  <section class="prog-hero subject--gp">
     <div class="container">
-      <p class="eyebrow">H1 General Paper</p>
-      <img class="sticker prog-hero__sticker" src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" loading="eager" decoding="async" />
-      <h1 class="prog-hero__heading">Top-Rated <span class="accent-word">GP</span> Tuition<br />in Singapore for JC Students</h1>
-      <p class="prog-hero__sub">Master A-Level General Paper with the SHARP Method &mdash; a five-step analytical system adapted from legal reasoning that gives your child a named framework for every GP question type: thesis-driven essays, balanced discursive arguments, criteria-led evaluations, SAQ comprehension, summary, and the Application Question that most students leave marks on.</p>
+      <div class="hero-card prog-hero__card">
+        <img class="sticker sticker--right prog-hero__sticker" src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" loading="eager" decoding="async" />
+        <div class="prog-hero__copy">
+          <p class="eyebrow">H1 General Paper</p>
+          <h1 class="prog-hero__heading">Top-Rated <span class="accent-word">GP</span> Tuition<br />in Singapore for JC Students</h1>
+          <p class="prog-hero__sub">Master A-Level General Paper with the SHARP Method &mdash; a five-step analytical system adapted from legal reasoning that gives your child a named framework for every GP question type: thesis-driven essays, balanced discursive arguments, criteria-led evaluations, SAQ comprehension, summary, and the Application Question that most students leave marks on.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -763,25 +767,48 @@ const playbookRows = [
           <strong>Pricing &amp; Plans</strong>
           <span>Compare programme fees and what's included</span>
         </a>
-        <a href="/pre-ib-mathematics/" class="related-link">
-          <strong>Pre-IB Mathematics</strong>
-          <span>Year 3&ndash;4 maths for the IB track</span>
-        </a>
-        <a href="/o-level-english/" class="related-link">
-          <strong>O-Level English</strong>
-          <span>English tuition for Sec 1&ndash;4 students</span>
-        </a>
-        <a href="/o-level-mathematics/" class="related-link">
-          <strong>O-Level Mathematics</strong>
-          <span>Maths tuition for Sec 1&ndash;4 students</span>
-        </a>
-        <a href="/h2-economics/" class="related-link">
-          <strong>H2 Economics</strong>
-          <span>Economics tuition for JC 1&ndash;2 students</span>
-        </a>
         <a href="/about/" class="related-link">
           <strong>About A-Worthy</strong>
           <span>Meet Jeremy Lim and the SHARP Method</span>
+        </a>
+      </div>
+      <span class="eyebrow related-subjects__label">Other subjects</span>
+      <div class="related-subjects">
+        <a href="/pre-ib-mathematics/" class="subject-card subject--preib">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" class="sticker" loading="lazy" decoding="async" />
+          </div>
+          <div class="subject-card__body">
+            <strong class="subject-card__title">Pre-IB Mathematics</strong>
+            <span class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span><span>Year 3&ndash;4 maths for the IB track</span></span>
+          </div>
+        </a>
+        <a href="/o-level-english/" class="subject-card subject--english">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" class="sticker" loading="lazy" decoding="async" />
+          </div>
+          <div class="subject-card__body">
+            <strong class="subject-card__title">O-Level English</strong>
+            <span class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span><span>English tuition for Sec 1&ndash;4 students</span></span>
+          </div>
+        </a>
+        <a href="/o-level-mathematics/" class="subject-card subject--maths">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" class="sticker sticker--right" loading="lazy" decoding="async" />
+          </div>
+          <div class="subject-card__body">
+            <strong class="subject-card__title">O-Level Mathematics</strong>
+            <span class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span><span>Maths tuition for Sec 1&ndash;4 students</span></span>
+          </div>
+        </a>
+        <a href="/h2-economics/" class="subject-card subject--econ">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" class="sticker" loading="lazy" decoding="async" />
+          </div>
+          <div class="subject-card__body">
+            <strong class="subject-card__title">H2 Economics</strong>
+            <span class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span><span>Economics tuition for JC 1&ndash;2 students</span></span>
+          </div>
         </a>
       </div>
     </div>
@@ -790,17 +817,14 @@ const playbookRows = [
   <Footer slot="footer" />
 </BaseLayout>
 
-<!-- Per-subject accent — sun gold (H1 GP identity), mapped from the
-     LMS feature palette. Only --subject-accent / --subject-accent-text change;
-     the action colour (--color-accent) stays the sitewide red. -->
+<!-- Per-subject accent — the LMS GP green (--subject-gp, sampled from the LMS
+     dashboard). Only --subject-accent / --subject-accent-text change; the
+     action colour (--color-accent) stays the sitewide red. The global tokens
+     already carry their dark-mode values, so there is no dark override. -->
 <style is:global>
   :root {
-    --subject-accent: #F5B82E;
-    --subject-accent-text: #8A6205;
-  }
-  [data-theme="dark"] {
-    --subject-accent: #F7C25A;
-    --subject-accent-text: #F1CB6E;
+    --subject-accent: var(--subject-gp);
+    --subject-accent-text: var(--subject-gp-text);
   }
 </style>
 
@@ -820,14 +844,31 @@ const playbookRows = [
     --wa-ink: #0E2B19;
   }
 
-  /* ===== HERO ===== */
+  /* ===== HERO — the LMS welcome card: a white ink card with the subject-tint
+     wash (global .hero-card; .subject--gp on the section resolves the tint).
+     Sticker centred above the copy on narrow screens; from 1025px the copy
+     sits left and the sticker in a right column. The section itself stays
+     on the cream canvas. ===== */
   .prog-hero { background: var(--prog-bg); padding: 1.25rem 0 0.75rem; text-align: center; position: relative; overflow: hidden; }
   .prog-hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--subject-accent) 12%, transparent) 0%, transparent 70%); pointer-events: none; z-index: 0; }
   :global([data-theme="dark"]) .prog-hero::before { background: radial-gradient(circle, color-mix(in srgb, var(--subject-accent) 8%, transparent) 0%, transparent 70%); }
-  .prog-hero .container { position: relative; z-index: 1; max-width: 860px; }
+  .prog-hero .container { position: relative; z-index: 1; max-width: 1080px; }
+  /* Keep the card clear of the fixed "On this page" TOC (190px + 1.5rem at the right edge from 1280px) */
+  @media (min-width: 1280px) { .prog-hero .container { max-width: min(1080px, 100vw - 300px); } }
+  .prog-hero__copy { min-width: 0; }
   .prog-hero__sticker { width: min(200px, 48vw); margin: 0 auto 0.75rem; }
   .prog-hero__heading { font-family: var(--prog-font); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.12; color: var(--text-primary); margin-bottom: 0.75rem; letter-spacing: -0.03em; }
+  /* Red marker squiggle under the headline (LMS: "Welcome to the A-Worthy World") */
+  .prog-hero__heading::after { content: ''; display: block; width: 72px; height: 12px; margin: 0.45rem auto 0; background: var(--swash) left center / contain no-repeat; }
   .prog-hero__sub { font-family: var(--prog-font); font-size: 1.1rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 640px; margin: 0 auto; }
+  @media (min-width: 1025px) {
+    .prog-hero__card { display: flex; align-items: center; gap: 1.5rem; text-align: left; }
+    .prog-hero__copy { flex: 1 1 auto; }
+    .prog-hero__sticker { order: 2; flex: 0 0 auto; width: 180px; margin: 0; }
+    .prog-hero__heading { font-size: clamp(2.2rem, 3vw, 2.8rem); }
+    .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
+    .prog-hero__sub { margin: 0; }
+  }
 
   /* ===== SECTION NAV — glass strip like the header ===== */
   .prog-nav { background: rgba(250, 246, 238, 0.86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 0.25rem 0; position: sticky; top: var(--nav-offset); z-index: var(--z-subject-selector); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
@@ -842,6 +883,8 @@ const playbookRows = [
   .prog-section { background: var(--prog-bg); padding: 1.25rem 0; scroll-margin-top: calc(var(--nav-offset) + 48px); }
   .prog-section + .prog-section { border-top: 1px solid var(--prog-border); }
   .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+  /* Red marker squiggle under every section heading (the sitewide motif) */
+  .prog-section__heading::after { content: ''; display: block; width: 72px; height: 12px; margin-top: 0.4rem; background: var(--swash) left center / contain no-repeat; }
   .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 1rem; }
   .card-grid { display: grid; gap: 1rem; }
   .card-grid--1 { grid-template-columns: 1fr; max-width: 800px; }
@@ -993,11 +1036,19 @@ const playbookRows = [
     margin-left: -2px;
   }
 
-  /* ===== RELATED LINKS — ink cards that lift ===== */
+  /* ===== RELATED LINKS — ink cards that lift; the other subjects render as
+     LMS subject cards (global .subject-card: sticker on its pastel panel,
+     dashed divider, title + subject dot) in their own row ===== */
   .related-section { background: var(--bg-secondary); padding: 1.25rem 0; }
   .related-links {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .related-section .related-subjects__label { display: block; margin: 1.25rem 0 0.75rem; }
+  .related-subjects {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
   }
   .related-link {
@@ -1027,7 +1078,7 @@ const playbookRows = [
     line-height: 1.4;
   }
   @media (max-width: 1024px) {
-    .related-links { grid-template-columns: 1fr 1fr; }
+    .related-links, .related-subjects { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 480px) {
     .related-links { grid-template-columns: 1fr; }
