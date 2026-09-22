@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import PdfPreviewModal from '../components/PdfPreviewModal.astro';
 import '../styles/global.css';
 
+// Order matters: entries with a samplePdf (taller cards with the faux-page tile)
+// come first so they fill whole grid rows; the compact request-only cards follow.
 const resources = [
   {
     title: "O-Level English Scoring Guide",
@@ -42,17 +44,17 @@ const resources = [
     samplePdf: "/docs/samples/situational-writing-sample.pdf",
   },
   {
-    title: "Oral Preparation Checklist",
-    description: "Structure, timing, vocabulary lists by topic, and self-assessment rubric for the video stimulus response. Use it to practise independently before each session.",
-    category: "Exam Prep",
-    type: "Checklist",
-  },
-  {
     title: "50 High-Impact O-Level Vocabulary Words",
     description: "Organised by theme with definitions, model sentences, and synonyms. Print it out and work through five words a day for ten days of focused revision.",
     category: "English",
     type: "PDF Guide",
     samplePdf: "/docs/samples/vocabulary-50-sample.pdf",
+  },
+  {
+    title: "Oral Preparation Checklist",
+    description: "Structure, timing, vocabulary lists by topic, and self-assessment rubric for the video stimulus response. Use it to practise independently before each session.",
+    category: "Exam Prep",
+    type: "Checklist",
   },
   {
     title: "Summary Writing: The 80-Word Challenge",
@@ -207,10 +209,16 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
                       <span class="r-prev-page-num">2 / 8</span>
                     </div>
                     <div class="r-card-preview-blur-overlay">
-                      <span class="r-card-preview-unlock chip chip--red">
+                      <button
+                        type="button"
+                        class="r-card-preview-unlock chip chip--red"
+                        data-preview-pdf={resource.samplePdf}
+                        data-preview-title={resource.title}
+                        tabindex="-1"
+                      >
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                         Preview
-                      </span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -239,7 +247,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
             ) : (
               <a
                 href="#"
-                class="r-card-link"
+                class="r-card-link btn btn--sm"
                 data-resource-title={resource.title}
                 data-resource-mode="request"
               >
@@ -940,6 +948,9 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
+    /* Natural heights: a compact card must never stretch to a sample card's row
+       (it would show a blank white block between blurb and link) */
+    align-items: start;
   }
 
   /* Ink card — white sticker on the paper, 3px hard rest shadow, lifts on hover */
@@ -994,21 +1005,11 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     margin: 0 0 1.25rem;
   }
 
+  /* "Request Free Copy" is a .btn.btn--sm sticker pill — the same treatment as
+     "Download" on the sample cards; only its placement is page-specific */
   .r-card-link {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    gap: 0.4rem;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 800;
-    color: var(--color-accent-text);
-    text-decoration: none;
-    transition: gap 0.2s ease;
-  }
-
-  .r-card-link:hover {
-    gap: 0.7rem;
+    align-self: flex-start;
+    margin-top: auto;
   }
 
   /* ===== CARD ACTIONS (preview = red pill, download = white pill) ===== */
@@ -1046,7 +1047,8 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 
   .r-prev-page {
     position: relative;
-    aspect-ratio: 1 / 1.414;
+    /* Cropped top of a page, not a full A4 sheet — the tile only carries ~6 lines */
+    aspect-ratio: 1 / 1.05;
     background: var(--bg-muted);
     border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-sm);
@@ -1110,11 +1112,26 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     pointer-events: none;
   }
 
-  /* .r-card-preview-unlock is a .chip.chip--red */
+  /* .r-card-preview-unlock is a .chip.chip--red rendered as a real <button> that
+     opens the same PDF modal as "Preview Sample" (the modal delegates on
+     [data-preview-pdf]). It sits inside the aria-hidden thumb with tabindex=-1, so
+     it is a pointer-only shortcut — keyboard/AT users get the button below.
+     ::after enlarges the tap box to ≥40px without changing the chip's size. */
   .r-card-preview-unlock {
+    position: relative;
     cursor: pointer;
     box-shadow: 0 2px 0 var(--ink-shadow);
     pointer-events: auto;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  .r-card-preview-unlock::after {
+    content: '';
+    position: absolute;
+    inset: -8px -4px;
+  }
+  .r-card-preview-unlock:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 var(--ink-shadow);
   }
 
   /* ===== NO RESULTS ===== */
@@ -1240,7 +1257,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 
   @media (max-width: 640px) {
     .r-hero {
-      padding: 5rem 0 3rem;
+      padding: 1.5rem 0 2rem;
     }
 
     .r-grid {
