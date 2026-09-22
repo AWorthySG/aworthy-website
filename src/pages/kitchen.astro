@@ -142,7 +142,14 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
     border: 2px solid var(--color-ink);
   }
   .k-stations { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; max-width: 1040px; margin: 0 auto; }
-  @media (max-width: 880px) { .k-stations { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  /* three-up on tablets: a 6-track grid lets the trailing pair sit centred
+     instead of leaving a bare gingham cell at the right of row two */
+  @media (min-width: 521px) and (max-width: 880px) {
+    .k-stations { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .k-station { grid-column: span 2; }
+    .k-station:nth-child(4) { grid-column: 2 / span 2; }
+    .k-station:nth-child(5) { grid-column: 4 / span 2; }
+  }
   @media (max-width: 520px) {
     .k-stations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     /* five pots in two columns leave the last one alone — centre it instead of an empty cell beside it */

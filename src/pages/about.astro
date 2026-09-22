@@ -435,6 +435,15 @@ import '../styles/global.css';
     .subjects-grid { grid-template-columns: minmax(0, 1fr); }
   }
 
+  /* Size the sticker by height, not width, so every panel in a row is the
+     same depth — the teacher pose is a wider crop than the subject stickers
+     and would otherwise render ~18px shorter, stepping the dashed divider. */
+  .subjects-grid .subject-panel--sm img {
+    height: 128px;
+    width: auto;
+    object-fit: contain;
+  }
+
   .subject-card__body h3 {
     display: flex;
     align-items: center;
@@ -491,12 +500,12 @@ import '../styles/global.css';
   }
 
   /* ===== CENTRES (online delivery) — global .card--elevated draws the ink card ===== */
-  /* One card: a single comfortable-measure track, not a half-empty 2-up grid */
+  /* One card that fills the band — capping it at 680px left the right half of
+     the section empty next to the full-width subject and values grids. */
   .centres-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
-    max-width: 680px;
   }
   /* Explicit band colours after the (cream) SharpWalkthrough so the page keeps
      alternating: values (sand) → walkthrough (cream) → online delivery (sand)
@@ -521,6 +530,22 @@ import '../styles/global.css';
   .centre-card p {
     font-size: 0.92rem;
     line-height: 1.7;
+    margin: 0;
+  }
+
+  /* At desktop the card spans the band, so lay the heading beside the copy
+     instead of letting one paragraph run the full 1100px measure. */
+  @media (min-width: 1025px) {
+    .centre-card {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 1.75rem 2rem;
+    }
+    .centre-card h3 {
+      margin: 0;
+    }
   }
 
   /* ===== CTA ===== */

@@ -463,11 +463,19 @@ import '../styles/global.css';
   .pricing-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 700px;
+    /* Equal-width subject columns (the label column keeps its 160px) so the
+       header row reads as one tidy row of stickers rather than stepping down
+       in the middle. min-width keeps each column wide enough for its longest
+       word before the wrapper starts scrolling horizontally. */
+    table-layout: fixed;
+    min-width: 880px;
   }
 
   .pricing-table thead th {
-    padding: 1.5rem 1.25rem;
+    /* anchors the "Most popular" chip, which is taken out of flow below so it
+       cannot push this one column's sticker down past its neighbours */
+    position: relative;
+    padding: 3.4rem 1rem 1.5rem;
     text-align: center;
     /* Each column header carries its subject's pastel tint (LMS "Your subjects");
        the empty label column has no .subject--* class and falls back to muted */
@@ -481,7 +489,14 @@ import '../styles/global.css';
   }
 
   .pricing-table__programme-name {
-    display: block;
+    /* Two lines are reserved for every name (most wrap), and the text sits on
+       the bottom of that box, so all six stickers share one baseline */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 2.5em;
+    line-height: 1.25;
+    overflow-wrap: break-word;
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 800;
@@ -570,16 +585,23 @@ import '../styles/global.css';
   .pricing-card__popular-badge {
     margin-bottom: 0.75rem;
   }
-  /* The featured column keeps its subject tint — the gold chip, the red top
-     rule and the gold-light body column already mark it as "Most popular" */
+  /* The featured column is tinted top to bottom in ONE colour — the English
+     subject tint, matching its header cell — so it reads as a single
+     highlighted column. The gold chip and the red top rule mark it as
+     "Most popular"; a second tint below the header split the column in two. */
   .pricing-table thead th.pricing-table__th--popular {
     border-top: 3px solid var(--color-accent);
   }
   .pricing-table tbody td:nth-child(2) {
-    background: var(--gold-light);
+    background: var(--subject-english-tint);
   }
+  /* Out of flow, centred in the header cell's reserved top padding */
   .pricing-table__popular-badge {
-    margin-bottom: 0.35rem;
+    position: absolute;
+    top: 0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
   }
   .pricing-cta__inner .pricing-cta__reassure {
     margin: 0.9rem 0 0;
