@@ -50,5 +50,11 @@ const whatsappFeedback = 'https://wa.me/6583384033?text=' + encodeURIComponent('
   .review-alt__link { color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
   .review-alt__link:hover { text-decoration: underline; }
   .review-alt__or { display: block; margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); }
-  .review-alt__or a { color: var(--text-secondary); }
+  /* The fallback contact link must read as a link (WCAG 1.4.1 — not colour
+     alone) and be comfortably tappable: inline-block + vertical padding grows
+     the hit box; on coarse pointers it reaches the 40px floor. */
+  .review-alt__or a { display: inline-block; color: var(--color-accent-text); font-weight: 700; text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1.5px; padding-block: 0.3rem; }
+  @media (pointer: coarse) {
+    .review-alt__or a { padding-block: 0.6rem; }
+  }
 </style>

@@ -11,7 +11,7 @@ import '../styles/global.css';
   <section class="section">
     <div class="container a11y-content">
       <span class="eyebrow">Accessibility</span>
-      <h1 class="a11y-title squiggle">Accessibility statement &mdash; A-Worthy Singapore</h1>
+      <h1 class="a11y-title squiggle">Accessibility statement&nbsp;&mdash; <span class="nowrap">A-Worthy</span> Singapore</h1>
 
       <p>A-Worthy is committed to ensuring our website is accessible to all users, including those with disabilities. We strive to meet <strong>WCAG 2.2 Level AA</strong> standards.</p>
 
@@ -53,6 +53,10 @@ import '../styles/global.css';
     font-weight: 900;
     letter-spacing: -0.02em;
     margin-bottom: 1.5rem;
+  }
+  /* Keep the em dash on line 1 and never split "A-Worthy" at its hyphen */
+  .a11y-title .nowrap {
+    white-space: nowrap;
   }
   .a11y-content h2 {
     font-family: var(--font-heading);

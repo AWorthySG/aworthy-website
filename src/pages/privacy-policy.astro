@@ -15,7 +15,7 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
   <section class="section">
     <div class="container policy-content">
       <span class="eyebrow">Privacy Policy</span>
-      <h1 class="policy-title squiggle">Privacy Policy &mdash; A-Worthy Pte Ltd</h1>
+      <h1 class="policy-title squiggle">Privacy Policy&nbsp;&mdash; <span class="nowrap">A-Worthy</span> Pte Ltd</h1>
       <p class="policy-updated">Last updated: May 2026</p>
 
       <p>A-Worthy Pte Ltd (&ldquo;A-Worthy&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) operates the website at <a href="https://a-worthy.com">a-worthy.com</a>. This Privacy Policy explains how we collect, use, disclose, and protect your personal data in accordance with Singapore&rsquo;s <strong>Personal Data Protection Act 2012 (PDPA)</strong>.</p>
@@ -118,6 +118,14 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
     letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
   }
+  /* Keep the em dash on line 1 and never split "A-Worthy" at its hyphen */
+  .policy-title .nowrap {
+    white-space: nowrap;
+  }
+  /* Don't break the domain link at its own hyphen ("a-" / "worthy.com") */
+  .policy-content a[href^="https://a-worthy.com"] {
+    white-space: nowrap;
+  }
   .policy-updated {
     font-size: 0.75rem;
     font-weight: 700;
@@ -152,6 +160,19 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
     border-radius: var(--radius-md);
     margin: 1rem 0 1.5rem;
     line-height: 1.9;
+  }
+  /* <address> sits outside the global p/li/dd/td underline rule — links in
+     the well must not rely on colour alone, and get the coarse-pointer
+     tap padding the global rule gives running-text links */
+  .policy-content address a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+  @media (pointer: coarse) {
+    .policy-content address a {
+      padding-block: 0.25rem;
+    }
   }
   .policy-content code {
     font-family: var(--font-mono);
