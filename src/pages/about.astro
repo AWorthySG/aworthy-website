@@ -87,11 +87,6 @@ import '../styles/global.css';
         </div>
         <aside class="founder-card" data-animate="reveal-up">
           <div class="founder-card__photo" aria-label="Jeremy Lim, Founder of A-Worthy">
-            <svg aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="200" height="200" rx="100" fill="var(--bg-muted)"/>
-              <circle cx="100" cy="80" r="32" fill="var(--color-ink)" fill-opacity="0.18"/>
-              <ellipse cx="100" cy="155" rx="50" ry="38" fill="var(--color-ink)" fill-opacity="0.14"/>
-            </svg>
             <span class="founder-card__initials">JL</span>
           </div>
           <div class="founder-card__body">
@@ -112,54 +107,83 @@ import '../styles/global.css';
   <!-- ===== WHAT WE TEACH ===== -->
   <section class="section subjects">
     <div class="container">
-      <div class="subjects-head">
-        <div>
-          <span class="eyebrow" data-animate="reveal-up">What We Teach</span>
-          <h2 class="squiggle" data-animate="reveal-up">Five subjects, one proven tuition framework</h2>
-        </div>
-        <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="subjects-head__sticker sticker sticker--right" loading="lazy" />
-      </div>
+      <span class="eyebrow" data-animate="reveal-up">What We Teach</span>
+      <h2 class="squiggle" data-animate="reveal-up">Five subjects, one proven tuition framework</h2>
 
-      <div class="values-grid">
-        <div class="value-item subject--english" data-animate="reveal-up" data-animate-delay="1">
-          <h3><span class="subject-dot" aria-hidden="true"></span>O-Level English</h3>
-          <p>
-            For Sec 1&ndash;4 students. Comprehension, composition, oral, and editing &mdash;
-            every component taught through the SHARP Method, with paper-matched frameworks at the Hit step. Foundation and intensive programmes available.
-          </p>
+      <!-- LMS "Your subjects" grid: each card is a global .subject-card — the
+           tinted .subject-panel holds the subject sticker above a dashed
+           divider, then the title (with its subject dot) and description.
+           Cards keep the ink border; the panel tint carries the subject. -->
+      <div class="subjects-grid">
+        <div class="subject-card subject--english" data-animate="reveal-up" data-animate-delay="1">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>O-Level English</h3>
+            <p>
+              For Sec 1&ndash;4 students. Comprehension, composition, oral, and editing &mdash;
+              every component taught through the SHARP Method, with paper-matched frameworks at the Hit step. Foundation and intensive programmes available.
+            </p>
+          </div>
         </div>
-        <div class="value-item subject--maths" data-animate="reveal-up" data-animate-delay="2">
-          <h3><span class="subject-dot" aria-hidden="true"></span>O-Level Mathematics</h3>
-          <p>
-            For Sec 1&ndash;4 students. Algebra, geometry, trigonometry, functions, statistics, and probability &mdash; each topic area taught with a named framework (READ, LABEL, PLOT, DATA, RULE, SHOW) that maps directly to the 4048 mark scheme.
-          </p>
+        <div class="subject-card subject--maths" data-animate="reveal-up" data-animate-delay="2">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>O-Level Mathematics</h3>
+            <p>
+              For Sec 1&ndash;4 students. Algebra, geometry, trigonometry, functions, statistics, and probability &mdash; each topic area taught with a named framework (READ, LABEL, PLOT, DATA, RULE, SHOW) that maps directly to the 4048 mark scheme.
+            </p>
+          </div>
         </div>
-        <div class="value-item subject--preib" data-animate="reveal-up" data-animate-delay="3">
-          <h3><span class="subject-dot" aria-hidden="true"></span>Pre-IB Mathematics</h3>
-          <p>
-            For Year 3 &amp; Year 4 (pre-IB) students. Indices, surds, algebra, logarithms, trigonometry, and an introduction to calculus &mdash; taught with the SHARP Method and annotated, line-by-line working that IB examiners reward.
-          </p>
+        <div class="subject-card subject--preib" data-animate="reveal-up" data-animate-delay="3">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>Pre-IB Mathematics</h3>
+            <p>
+              For Year 3 &amp; Year 4 (pre-IB) students. Indices, surds, algebra, logarithms, trigonometry, and an introduction to calculus &mdash; taught with the SHARP Method and annotated, line-by-line working that IB examiners reward.
+            </p>
+          </div>
         </div>
-        <div class="value-item subject--gp" data-animate="reveal-up" data-animate-delay="4">
-          <h3><span class="subject-dot" aria-hidden="true"></span>H1 General Paper</h3>
-          <p>
-            For JC 1&ndash;2 students. Essay argumentation, comprehension, and AQ mastery across all
-            12 content themes. The SHARP Method&rsquo;s analytical roots make it a natural fit for GP.
-          </p>
+        <div class="subject-card subject--gp" data-animate="reveal-up" data-animate-delay="4">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>H1 General Paper</h3>
+            <p>
+              For JC 1&ndash;2 students. Essay argumentation, comprehension, and AQ mastery across all
+              12 content themes. The SHARP Method&rsquo;s analytical roots make it a natural fit for GP.
+            </p>
+          </div>
         </div>
-        <div class="value-item subject--econ" data-animate="reveal-up" data-animate-delay="5">
-          <h3><span class="subject-dot" aria-hidden="true"></span>H2 Economics</h3>
-          <p>
-            For JC 1&ndash;2 students. Diagram precision, essay technique, and case study mastery
-            covering the full 9570 syllabus. Analytical rigour applied to economic reasoning.
-          </p>
+        <div class="subject-card subject--econ" data-animate="reveal-up" data-animate-delay="5">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>H2 Economics</h3>
+            <p>
+              For JC 1&ndash;2 students. Diagram precision, essay technique, and case study mastery
+              covering the full 9570 syllabus. Analytical rigour applied to economic reasoning.
+            </p>
+          </div>
         </div>
-        <div class="value-item subject--coaching" data-animate="reveal-up" data-animate-delay="6">
-          <h3><span class="subject-dot" aria-hidden="true"></span>One-to-One Coaching</h3>
-          <p>
-            Available across all five subjects. Fully customised to the student&rsquo;s specific gaps,
-            with flexible scheduling and personalised feedback every session.
-          </p>
+        <div class="subject-card subject--coaching" data-animate="reveal-up" data-animate-delay="6">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>One-to-One Coaching</h3>
+            <p>
+              Available across all five subjects. Fully customised to the student&rsquo;s specific gaps,
+              with flexible scheduling and personalised feedback every session.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -174,12 +198,7 @@ import '../styles/global.css';
       <div class="founder-profile" data-animate="reveal-up">
         <div class="founder-photo-wrap">
           <div class="founder-photo-placeholder" role="img" aria-label="Founder photo">
-            <svg aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
-              <rect width="200" height="200" rx="100" fill="var(--bg-muted)"/>
-              <circle cx="100" cy="75" r="35" fill="var(--color-ink)" fill-opacity="0.18"/>
-              <ellipse cx="100" cy="155" rx="55" ry="40" fill="var(--color-ink)" fill-opacity="0.14"/>
-              <text x="100" y="195" text-anchor="middle" font-family="Nunito, sans-serif" font-size="10" font-weight="700" fill="var(--text-tertiary)" letter-spacing="0.1em">PHOTO</text>
-            </svg>
+            <span class="founder-photo-initials" aria-hidden="true">JL</span>
           </div>
           <div class="founder-signature" aria-hidden="true">Jeremy Lim</div>
         </div>
@@ -396,26 +415,53 @@ import '../styles/global.css';
   .story-text h2 {
     max-width: 100%;
   }
+  /* The founder letter is the page's primary long-form copy — body colour,
+     not the grey reserved for card descriptions and meta text */
+  .story-text p {
+    color: var(--text-primary);
+  }
 
-  /* ===== WHAT WE TEACH / VALUES ===== */
-  .subjects-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
+  /* ===== WHAT WE TEACH — the LMS "Your subjects" grid ===== */
+  /* 3×2 at desktop, 2 columns on tablets, 1 on phones. The global
+     .subject-card / .subject-panel--sm rules draw the ink card, the tinted
+     panel with the sticker and the dashed divider; only the body type is
+     page-specific. */
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
   }
-  .subjects-head h2 {
-    margin-bottom: 0;
-  }
-  .subjects-head__sticker {
-    flex-shrink: 0;
-    width: 130px;
+  @media (max-width: 1023px) {
+    .subjects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
-    .subjects-head__sticker { display: none; }
+    .subjects-grid { grid-template-columns: minmax(0, 1fr); }
   }
 
+  .subject-card__body h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .subject-card__body h3 .subject-dot {
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid var(--color-ink);
+  }
+
+  .subject-card__body p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  /* ===== VALUES ===== */
   .values-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -430,11 +476,6 @@ import '../styles/global.css';
     padding: 1.5rem;
   }
 
-  /* Subject cards take their LMS subject colour on the border and title dot */
-  .value-item[class*="subject--"] {
-    border-color: var(--subject-accent);
-  }
-
   .value-item h3 {
     display: flex;
     align-items: center;
@@ -447,22 +488,24 @@ import '../styles/global.css';
     letter-spacing: -0.01em;
   }
 
-  .value-item h3 .subject-dot {
-    width: 10px;
-    height: 10px;
-    border: 1.5px solid var(--color-ink);
-  }
-
   .value-item p {
     font-size: 0.92rem;
     line-height: 1.7;
   }
 
   /* ===== CENTRES (online delivery) — global .card--elevated draws the ink card ===== */
+  /* One card: a single comfortable-measure track, not a half-empty 2-up grid */
   .centres-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
+    max-width: 680px;
+  }
+  /* Explicit band colours after the (cream) SharpWalkthrough so the page keeps
+     alternating: values (sand) → walkthrough (cream) → online delivery (sand)
+     → CTA (cream) → footer (sand). */
+  .section.centres {
+    background: var(--bg-secondary);
   }
 
   .centre-card {
@@ -485,7 +528,7 @@ import '../styles/global.css';
 
   /* ===== CTA ===== */
   .section.cta {
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     text-align: center;
   }
 
@@ -532,11 +575,18 @@ import '../styles/global.css';
     overflow: hidden;
     border: 2px solid var(--color-ink);
     background: var(--bg-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .founder-photo-placeholder svg {
-    display: block;
-    width: 100%;
-    height: 100%;
+  /* Initials avatar — the same treatment as the sidebar founder card */
+  .founder-photo-initials {
+    font-family: var(--font-heading);
+    font-size: 3.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+    line-height: 1;
   }
   /* Founder sign-off — Nunito italic (sitewide single-typeface). */
   .founder-signature {
@@ -604,6 +654,10 @@ import '../styles/global.css';
       display: flex;
       justify-content: center;
     }
+    /* Body copy stays left-aligned; only the photo column and chips centre */
+    .founder-info {
+      text-align: left;
+    }
     .founder-credentials {
       justify-content: center;
     }
@@ -626,6 +680,9 @@ import '../styles/global.css';
     .founder-photo-placeholder {
       width: 160px;
       height: 160px;
+    }
+    .founder-photo-initials {
+      font-size: 2.6rem;
     }
   }
 
@@ -680,11 +737,6 @@ import '../styles/global.css';
     overflow: hidden;
     border: 2px solid var(--color-ink);
     background: var(--bg-muted);
-  }
-  .founder-card__photo svg {
-    width: 100%;
-    height: 100%;
-    display: block;
   }
   .founder-card__photo img {
     width: 100%;
