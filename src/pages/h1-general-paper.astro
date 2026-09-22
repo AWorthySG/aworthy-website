@@ -662,22 +662,22 @@ const playbookRows = [
           </thead>
           <tbody>
             <tr>
-              <td>JC 1 Foundation</td>
-              <td>Saturday, 2:00 PM &ndash; 3:30 PM</td>
-              <td>90 min</td>
-              <td><span class="slot-badge chip chip--gold">4 slots left</span></td>
+              <td data-label="Programme">JC 1 Foundation</td>
+              <td data-label="Day &amp; time">Saturday, 2:00 PM &ndash; 3:30 PM</td>
+              <td data-label="Duration">90 min</td>
+              <td data-label="Status"><span class="slot-badge chip chip--gold">4 slots left</span></td>
             </tr>
             <tr>
-              <td>JC 2 Intensive</td>
-              <td>Sunday, 10:00 AM &ndash; 11:30 AM</td>
-              <td>90 min</td>
-              <td><span class="slot-badge chip chip--gold">2 slots left</span></td>
+              <td data-label="Programme">JC 2 Intensive</td>
+              <td data-label="Day &amp; time">Sunday, 10:00 AM &ndash; 11:30 AM</td>
+              <td data-label="Duration">90 min</td>
+              <td data-label="Status"><span class="slot-badge chip chip--gold">2 slots left</span></td>
             </tr>
             <tr>
-              <td>One-to-One</td>
-              <td>Flexible &ndash; by arrangement</td>
-              <td>60&ndash;90 min</td>
-              <td><span class="slot-badge chip chip--green">Available</span></td>
+              <td data-label="Programme">One-to-One</td>
+              <td data-label="Day &amp; time">Flexible &ndash; by arrangement</td>
+              <td data-label="Duration">60&ndash;90 min</td>
+              <td data-label="Status"><span class="slot-badge chip chip--green">Available</span></td>
             </tr>
           </tbody>
         </table>
@@ -871,7 +871,7 @@ const playbookRows = [
   }
 
   /* ===== SECTION NAV — glass strip like the header ===== */
-  .prog-nav { background: rgba(250, 246, 238, 0.86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 0.25rem 0; position: sticky; top: var(--nav-offset); z-index: var(--z-subject-selector); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+  .prog-nav { background: rgba(250, 246, 238, 0.86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 0.25rem 0; position: sticky; top: var(--nav-offset); z-index: var(--z-subject-selector); overflow-x: auto; -webkit-overflow-scrolling: touch; }
   :global([data-theme="dark"]) .prog-nav { background: rgba(23, 22, 20, 0.85); }
   .prog-nav::-webkit-scrollbar { display: none; }
   .prog-nav__inner { display: flex; justify-content: center; gap: 1.75rem; flex-wrap: nowrap; min-width: max-content; }
@@ -1088,11 +1088,33 @@ const playbookRows = [
 
   /* ===== SCHEDULE — table inside an ink card ===== */
   .schedule-table-wrap { overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); }
-  .schedule-table-wrap::-webkit-scrollbar { display: none; }
   .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
   .schedule-table th, .schedule-table td { padding: 0.75rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); }
   .schedule-table th { background: var(--bg-muted); font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); font-weight: 700; border-bottom: 2px solid var(--color-ink); }
   .schedule-table td { color: var(--text-primary); }
+
+  /* Phones: the 4-column schedule becomes labelled cards — it was 466px wide
+     inside a 350px wrapper whose scrollbar is hidden, so the Status chip was
+     unreachable. Same treatment as the other subject pages. */
+  @media (max-width: 640px) {
+    .schedule-table, .schedule-table tbody, .schedule-table tr { display: block; }
+    .schedule-table thead { display: none; }
+    .schedule-table tr { padding: 0.6rem 1rem; }
+    .schedule-table tbody tr + tr { border-top: 1px solid var(--border-color); }
+    .schedule-table tbody tr:hover { background: transparent; }
+    .schedule-table td {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding: 0.3rem 0; border: 0; font-size: 0.9rem; text-align: right;
+    }
+    .schedule-table td::before {
+      content: attr(data-label);
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);
+      text-align: left; flex-shrink: 0;
+    }
+    .schedule-table td:first-child { font-weight: 800; }
+  }
+
   .schedule-table tbody tr:last-child td { border-bottom: none; }
   .schedule-table tbody tr:hover { background: var(--bg-muted); }
   .schedule-note { margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); }
