@@ -35,15 +35,15 @@ import '../styles/global.css';
 
       <div class="hero-proof-row hero-anim" style="--d:12">
         <div class="hero-proof-item">
-          <span class="hero-proof-num">90%</span>
+          <span class="hero-proof-num"><span class="stat-dot stat-dot--green" aria-hidden="true"></span>90%</span>
           <span class="hero-proof-lbl">A1–B3 rate</span>
         </div>
         <div class="hero-proof-item">
-          <span class="hero-proof-num">4.9</span>
+          <span class="hero-proof-num"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span>4.9</span>
           <span class="hero-proof-lbl">Google rating</span>
         </div>
         <div class="hero-proof-item">
-          <span class="hero-proof-num">6</span>
+          <span class="hero-proof-num"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span>6</span>
           <span class="hero-proof-lbl">max class size</span>
         </div>
       </div>
@@ -59,17 +59,17 @@ import '../styles/global.css';
       </div>
 
       <div class="hero-badges-row hero-anim" style="--d:17">
-        <span class="hero-badge">MOE-Aligned</span>
-        <span class="hero-badge">100% Online</span>
-        <span class="hero-badge">NUS Law Graduate Founder</span>
+        <span class="chip chip--green">MOE-Aligned</span>
+        <span class="chip chip--blue">100% Online</span>
+        <span class="chip chip--gold">NUS Law Graduate Founder</span>
       </div>
 
-      <div class="audience-toggle hero-anim" style="--d:7" role="tablist" aria-label="View content for">
-        <button class="audience-btn active" data-audience="parent" role="tab" aria-selected="true" aria-controls="msg-parent" id="tab-parent">
+      <div class="audience-toggle segmented hero-anim" style="--d:7" role="tablist" aria-label="View content for">
+        <button class="audience-btn segmented__btn active" data-audience="parent" role="tab" aria-selected="true" aria-controls="msg-parent" id="tab-parent">
           <img src="/images/mascots/mascot-heart-alt-icon.webp" alt="" class="audience-btn__icon" width="240" height="273" />
           I'm a Parent
         </button>
-        <button class="audience-btn" data-audience="student" role="tab" aria-selected="false" aria-controls="msg-student" id="tab-student">
+        <button class="audience-btn segmented__btn" data-audience="student" role="tab" aria-selected="false" aria-controls="msg-student" id="tab-student">
           <img src="/images/mascots/mascot-heart-alt-icon.webp" alt="" class="audience-btn__icon" width="240" height="273" />
           I'm a Student
         </button>
@@ -92,22 +92,22 @@ import '../styles/global.css';
   <section class="stats-bar section--sand">
     <div class="container stats-inner">
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="1">
-        <span class="stat-number" data-count="90" data-count-suffix="%">90%</span>
+        <span class="stat-figure"><span class="stat-dot stat-dot--green" aria-hidden="true"></span><span class="stat-number" data-count="90" data-count-suffix="%">90%</span></span>
         <span class="stat-label">A1–B3 Rate</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="2">
-        <span class="stat-number">6</span>
+        <span class="stat-figure"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span><span class="stat-number">6</span></span>
         <span class="stat-label">Maximum class size</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="3">
-        <span class="stat-number" data-count="500" data-count-suffix="+">500+</span>
+        <span class="stat-figure"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span class="stat-number" data-count="500" data-count-suffix="+">500+</span></span>
         <span class="stat-label">Students taught</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item" data-animate="reveal-up" data-animate-delay="4">
-        <span class="stat-number">Law</span>
+        <span class="stat-figure"><span class="stat-dot stat-dot--gold" aria-hidden="true"></span><span class="stat-number">Law</span></span>
         <span class="stat-label">Graduate founder</span>
       </div>
     </div>
@@ -119,12 +119,12 @@ import '../styles/global.css';
       <h2 class="section-heading" data-animate="reveal-up">Tuition programmes for every level &mdash; Sec 1 to JC 2</h2>
 
       <div class="programmes-grid">
-        <a href="/o-level-english/" class="programme-card programme-card--popular" data-animate="reveal-up" data-animate-delay="1">
+        <a href="/o-level-english/" class="programme-card" data-animate="reveal-up" data-animate-delay="1">
           <div class="programme-card-illustration">
-            <img src="/images/illustration-english.svg" alt="O-Level English tuition in Singapore — Secondary 1 to 4" width="400" height="240" loading="lazy" />
+            <img src="/images/mascots/mascot-grade-a.webp" alt="O-Level English tuition in Singapore — Secondary 1 to 4" width="414" height="553" class="sticker" loading="lazy" />
           </div>
           <div class="programme-body">
-            <span class="programme-popular-badge">Most Popular</span>
+            <span class="chip chip--gold programme-badge">Most Popular</span>
             <span class="programme-level">Sec 1 &ndash; 4</span>
             <h3>O-Level English</h3>
             <p>Comprehensive O-Level English tuition for Secondary 1&ndash;4. Master comprehension, composition, oral, and editing with our proprietary SHARP Method.</p>
@@ -137,7 +137,7 @@ import '../styles/global.css';
 
         <a href="/h1-general-paper/" class="programme-card" data-animate="reveal-up" data-animate-delay="2">
           <div class="programme-card-illustration">
-            <img src="/images/illustration-gp.svg" alt="H1 General Paper tuition in Singapore — JC 1 and JC 2" width="400" height="240" loading="lazy" />
+            <img src="/images/mascots/mascot-lightbulb.webp" alt="H1 General Paper tuition in Singapore — JC 1 and JC 2" width="399" height="546" class="sticker sticker--right" loading="lazy" />
           </div>
           <div class="programme-body">
             <span class="programme-level">JC 1 &ndash; 2</span>
@@ -150,12 +150,12 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/o-level-mathematics/" class="programme-card programme-card--new" data-animate="reveal-up" data-animate-delay="3">
+        <a href="/o-level-mathematics/" class="programme-card" data-animate="reveal-up" data-animate-delay="3">
           <div class="programme-card-illustration">
-            <img src="/images/illustration-maths.svg" alt="O-Level Mathematics tuition in Singapore — Secondary 1 to 4" width="400" height="240" loading="lazy" />
+            <img src="/images/mascots/mascot-maths.webp" alt="O-Level Mathematics tuition in Singapore — Secondary 1 to 4" width="417" height="553" class="sticker" loading="lazy" />
           </div>
           <div class="programme-body">
-            <span class="programme-new-badge">New</span>
+            <span class="chip chip--blue programme-badge">New</span>
             <span class="programme-level">Sec 1 &ndash; 4</span>
             <h3>O-Level Mathematics</h3>
             <p>O-Level Mathematics tuition using the SHARP Method. Master algebra, geometry, trigonometry, functions, and statistics with named frameworks for every question type.</p>
@@ -166,12 +166,12 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/pre-ib-mathematics/" class="programme-card programme-card--new" data-animate="reveal-up" data-animate-delay="4">
+        <a href="/pre-ib-mathematics/" class="programme-card" data-animate="reveal-up" data-animate-delay="4">
           <div class="programme-card-illustration">
-            <img src="/images/illustration-maths.svg" alt="Pre-IB Mathematics tuition in Singapore — Year 3 and Year 4" width="400" height="240" loading="lazy" />
+            <img src="/images/mascots/mascot-graph.webp" alt="Pre-IB Mathematics tuition in Singapore — Year 3 and Year 4" width="418" height="550" class="sticker sticker--right" loading="lazy" />
           </div>
           <div class="programme-body">
-            <span class="programme-new-badge">New</span>
+            <span class="chip chip--blue programme-badge">New</span>
             <span class="programme-level">Year 3 &ndash; 4</span>
             <h3>Pre-IB Mathematics</h3>
             <p>Pre-IB Mathematics tuition for Year 3 &amp; Year 4. From indices and surds to logarithms and an introduction to calculus &mdash; taught with the SHARP Method and annotated, line-by-line working that IB examiners reward.</p>
@@ -184,7 +184,7 @@ import '../styles/global.css';
 
         <a href="/h2-economics/" class="programme-card" data-animate="reveal-up" data-animate-delay="5">
           <div class="programme-card-illustration">
-            <img src="/images/illustration-econs.svg" alt="H2 Economics tuition in Singapore — A-Level JC 1 and JC 2" width="400" height="240" loading="lazy" />
+            <img src="/images/mascots/mascot-economics.webp" alt="H2 Economics tuition in Singapore — A-Level JC 1 and JC 2" width="426" height="551" class="sticker" loading="lazy" />
           </div>
           <div class="programme-body">
             <span class="programme-level">JC 1 &ndash; 2</span>
@@ -199,7 +199,7 @@ import '../styles/global.css';
 
         <a href="/programmes/" class="programme-card" data-animate="reveal-up" data-animate-delay="6">
           <div class="programme-card-illustration">
-            <img src="/images/illustration-coaching.svg" alt="One-to-one coaching for O-Level English, Maths, GP and H2 Economics" width="400" height="240" loading="lazy" />
+            <img src="/images/mascots/mascot-teacher.webp" alt="One-to-one coaching for O-Level English, Maths, GP and H2 Economics" width="560" height="640" class="sticker sticker--right" loading="lazy" />
           </div>
           <div class="programme-body">
             <span class="programme-level">All Subjects</span>
@@ -225,42 +225,42 @@ import '../styles/global.css';
             <div class="quiz-step" data-step="1">
               <p class="quiz-question">What level is your child in?</p>
               <div class="quiz-options">
-                <button class="quiz-option" data-value="sec1-2" data-next="1a">Sec 1 or 2</button>
-                <button class="quiz-option" data-value="sec3-4" data-next="1a">Sec 3 or 4</button>
-                <button class="quiz-option" data-value="jc" data-next="1b">JC 1 or 2</button>
+                <button class="btn quiz-option" data-value="sec1-2" data-next="1a">Sec 1 or 2</button>
+                <button class="btn quiz-option" data-value="sec3-4" data-next="1a">Sec 3 or 4</button>
+                <button class="btn quiz-option" data-value="jc" data-next="1b">JC 1 or 2</button>
               </div>
             </div>
             <div class="quiz-step" data-step="1a" hidden>
               <p class="quiz-question">Which subject?</p>
               <div class="quiz-options">
-                <button class="quiz-option" data-value="english" data-next="2">O-Level English</button>
-                <button class="quiz-option" data-value="maths" data-next="2">O-Level Mathematics</button>
+                <button class="btn quiz-option" data-value="english" data-next="2">O-Level English</button>
+                <button class="btn quiz-option" data-value="maths" data-next="2">O-Level Mathematics</button>
               </div>
             </div>
             <div class="quiz-step" data-step="1b" hidden>
               <p class="quiz-question">Which subject?</p>
               <div class="quiz-options">
-                <button class="quiz-option" data-value="gp" data-next="2">H1 General Paper</button>
-                <button class="quiz-option" data-value="econs" data-next="2">H2 Economics</button>
+                <button class="btn quiz-option" data-value="gp" data-next="2">H1 General Paper</button>
+                <button class="btn quiz-option" data-value="econs" data-next="2">H2 Economics</button>
               </div>
             </div>
             <div class="quiz-step" data-step="2" hidden>
               <p class="quiz-question">What's the biggest challenge?</p>
               <div class="quiz-options">
-                <button class="quiz-option" data-value="comprehension" data-next="3">Comprehension & inference</button>
-                <button class="quiz-option" data-value="writing" data-next="3">Essay writing & structure</button>
-                <button class="quiz-option" data-value="overall" data-next="3">Overall grade improvement</button>
+                <button class="btn quiz-option" data-value="comprehension" data-next="3">Comprehension & inference</button>
+                <button class="btn quiz-option" data-value="writing" data-next="3">Essay writing & structure</button>
+                <button class="btn quiz-option" data-value="overall" data-next="3">Overall grade improvement</button>
               </div>
             </div>
             <div class="quiz-step" data-step="3" hidden>
               <p class="quiz-question">What kind of support does your child need?</p>
               <div class="quiz-options">
-                <button class="quiz-option" data-value="group" data-next="result">Small group learning</button>
-                <button class="quiz-option" data-value="individual" data-next="result">Individual attention</button>
+                <button class="btn quiz-option" data-value="group" data-next="result">Small group learning</button>
+                <button class="btn quiz-option" data-value="individual" data-next="result">Individual attention</button>
               </div>
             </div>
             <div class="quiz-result" id="quiz-result" hidden>
-              <div class="quiz-result-icon">&#10003;</div>
+              <div class="quiz-result-icon icon-circle icon-circle--green">&#10003;</div>
               <h4 class="quiz-result-heading" id="quiz-result-title"></h4>
               <p class="quiz-result-desc" id="quiz-result-desc"></p>
               <a href="/programmes/" class="btn btn-accent quiz-result-cta" id="quiz-result-link">View Programme Details</a>
@@ -306,7 +306,7 @@ import '../styles/global.css';
 
       <div class="wb-grid">
         <div class="wb-feature" data-animate="reveal-up" data-animate-delay="1">
-          <div class="wb-feature__icon" aria-hidden="true">
+          <div class="wb-feature__icon icon-circle icon-circle--green" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M22 8l-6 4 6 4z"/></svg>
           </div>
           <h3 class="wb-feature__title">Live face-to-face</h3>
@@ -314,7 +314,7 @@ import '../styles/global.css';
         </div>
 
         <div class="wb-feature" data-animate="reveal-up" data-animate-delay="2">
-          <div class="wb-feature__icon" aria-hidden="true">
+          <div class="wb-feature__icon icon-circle icon-circle--pink" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
           </div>
           <h3 class="wb-feature__title">Shared writing canvas</h3>
@@ -322,7 +322,7 @@ import '../styles/global.css';
         </div>
 
         <div class="wb-feature" data-animate="reveal-up" data-animate-delay="3">
-          <div class="wb-feature__icon" aria-hidden="true">
+          <div class="wb-feature__icon icon-circle icon-circle--blue" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>
           </div>
           <h3 class="wb-feature__title">Past papers, marked live</h3>
@@ -330,7 +330,7 @@ import '../styles/global.css';
         </div>
 
         <div class="wb-feature" data-animate="reveal-up" data-animate-delay="4">
-          <div class="wb-feature__icon" aria-hidden="true">
+          <div class="wb-feature__icon icon-circle icon-circle--gold" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
           </div>
           <h3 class="wb-feature__title">Every lesson recorded</h3>
@@ -357,7 +357,7 @@ import '../styles/global.css';
             "My son's English improved from C5 to A2 in just three months. At the See step, he learned to spot inference traps he'd been falling for. The SHARP Method gave him a systematic way to approach every comprehension question."
           </blockquote>
           <div class="testimonial-author">
-            <div class="testimonial-avatar-circle" style="--avatar-hue: 30">
+            <div class="testimonial-avatar-circle icon-circle icon-circle--gold">
               <span>LT</span>
             </div>
             <div>
@@ -367,13 +367,13 @@ import '../styles/global.css';
           </div>
         </div>
 
-        <div class="testimonial-card testimonial-featured card--elevated" data-animate="reveal-up" data-animate-delay="2">
+        <div class="testimonial-card card--elevated" data-animate="reveal-up" data-animate-delay="2">
           <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>
             "I used to hate essay writing. The Hit step taught me to pick the right essay framework before I start writing. Now I actually enjoy it because I know how to structure my arguments properly."
           </blockquote>
           <div class="testimonial-author">
-            <div class="testimonial-avatar-circle" style="--avatar-hue: 210">
+            <div class="testimonial-avatar-circle icon-circle icon-circle--blue">
               <span>EL</span>
             </div>
             <div>
@@ -389,7 +389,7 @@ import '../styles/global.css';
             "What impressed me most was how SHARP's See-then-Hit approach made inference questions click for my daughter. She now reads the question, identifies the type, and picks a framework before she even looks at the passage."
           </blockquote>
           <div class="testimonial-author">
-            <div class="testimonial-avatar-circle" style="--avatar-hue: 150">
+            <div class="testimonial-avatar-circle icon-circle icon-circle--green">
               <span>RK</span>
             </div>
             <div>
@@ -401,7 +401,7 @@ import '../styles/global.css';
       </div>
 
       <div class="reviews-cta" data-animate="reveal-up">
-        <a href="https://g.page/r/aworthy-sg/review" target="_blank" rel="noopener noreferrer" class="reviews-link">
+        <a href="https://g.page/r/aworthy-sg/review" target="_blank" rel="noopener noreferrer" class="btn reviews-link">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           Read all 127 reviews on Google
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -412,17 +412,17 @@ import '../styles/global.css';
         <h3 class="transformations__title">Recent grade transformations</h3>
         <div class="transformations__grid">
           <a class="transformation-card" href="/success-stories/">
-            <span class="transformation-card__jump"><span class="transformation-card__before">D7</span><span class="transformation-card__arrow">&rarr;</span><span class="transformation-card__after">B3</span></span>
+            <span class="transformation-card__jump"><span class="chip chip--pink transformation-card__before">D7</span><span class="transformation-card__arrow">&rarr;</span><span class="chip chip--green transformation-card__after">B3</span></span>
             <span class="transformation-card__meta">O-Level English &middot; 4 months</span>
             <span class="transformation-card__quote">&ldquo;I went from failing English to actually looking forward to the exam.&rdquo;</span>
           </a>
           <a class="transformation-card" href="/success-stories/">
-            <span class="transformation-card__jump"><span class="transformation-card__before">U</span><span class="transformation-card__arrow">&rarr;</span><span class="transformation-card__after">B</span></span>
+            <span class="transformation-card__jump"><span class="chip chip--pink transformation-card__before">U</span><span class="transformation-card__arrow">&rarr;</span><span class="chip chip--green transformation-card__after">B</span></span>
             <span class="transformation-card__meta">H1 General Paper &middot; 6 months</span>
             <span class="transformation-card__quote">&ldquo;GP felt like a guessing game until the frameworks made every question answerable.&rdquo;</span>
           </a>
           <a class="transformation-card" href="/success-stories/">
-            <span class="transformation-card__jump"><span class="transformation-card__before">U</span><span class="transformation-card__arrow">&rarr;</span><span class="transformation-card__after">A</span></span>
+            <span class="transformation-card__jump"><span class="chip chip--pink transformation-card__before">U</span><span class="transformation-card__arrow">&rarr;</span><span class="chip chip--green transformation-card__after">A</span></span>
             <span class="transformation-card__meta">H2 Economics &middot; 8 months</span>
             <span class="transformation-card__quote">&ldquo;I went from blank-staring at case studies to actually enjoying them.&rdquo;</span>
           </a>
@@ -439,22 +439,22 @@ import '../styles/global.css';
 
       <div class="results-stats" data-animate="reveal-up">
         <div class="result-stat">
-          <span class="result-stat-number" data-count="90" data-count-suffix="%">90%</span>
+          <span class="result-stat-figure"><span class="stat-dot stat-dot--green" aria-hidden="true"></span><span class="result-stat-number" data-count="90" data-count-suffix="%">90%</span></span>
           <span class="result-stat-label">A1–B3 Rate</span>
         </div>
         <div class="result-stat-divider"></div>
         <div class="result-stat">
-          <span class="result-stat-number">6</span>
+          <span class="result-stat-figure"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span><span class="result-stat-number">6</span></span>
           <span class="result-stat-label">Max Class Size</span>
         </div>
         <div class="result-stat-divider"></div>
         <div class="result-stat">
-          <span class="result-stat-number" data-count="500" data-count-suffix="+">500+</span>
+          <span class="result-stat-figure"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span class="result-stat-number" data-count="500" data-count-suffix="+">500+</span></span>
           <span class="result-stat-label">Students Taught</span>
         </div>
         <div class="result-stat-divider"></div>
         <div class="result-stat">
-          <span class="result-stat-number">3 months</span>
+          <span class="result-stat-figure"><span class="stat-dot stat-dot--gold" aria-hidden="true"></span><span class="result-stat-number">3 months</span></span>
           <span class="result-stat-label">Avg. Improvement</span>
         </div>
       </div>
@@ -485,56 +485,56 @@ import '../styles/global.css';
 
       <h3 class="results-sub-heading" data-animate="reveal-up">Grade Transformations</h3>
       <div class="results-transforms" data-animate="reveal-up">
-        <div class="transform-card">
+        <div class="transform-card card-lift">
           <strong>Sarah T.</strong>
-          <div class="transform-grades"><span class="grade-before">C5</span><span class="grade-arrow">&rarr;</span><span class="grade-after">A2</span></div>
+          <div class="transform-grades"><span class="chip chip--pink grade-before">C5</span><span class="grade-arrow">&rarr;</span><span class="chip chip--green grade-after">A2</span></div>
           <span class="transform-duration">3 months</span>
         </div>
-        <div class="transform-card">
+        <div class="transform-card card-lift">
           <strong>Marcus L.</strong>
-          <div class="transform-grades"><span class="grade-before">D7</span><span class="grade-arrow">&rarr;</span><span class="grade-after">B3</span></div>
+          <div class="transform-grades"><span class="chip chip--pink grade-before">D7</span><span class="grade-arrow">&rarr;</span><span class="chip chip--green grade-after">B3</span></div>
           <span class="transform-duration">4 months</span>
         </div>
-        <div class="transform-card">
+        <div class="transform-card card-lift">
           <strong>Priya K.</strong>
-          <div class="transform-grades"><span class="grade-before">C6</span><span class="grade-arrow">&rarr;</span><span class="grade-after">A1</span></div>
+          <div class="transform-grades"><span class="chip chip--pink grade-before">C6</span><span class="grade-arrow">&rarr;</span><span class="chip chip--green grade-after">A1</span></div>
           <span class="transform-duration">5 months</span>
         </div>
-        <div class="transform-card">
+        <div class="transform-card card-lift">
           <strong>Wei Jie C.</strong>
-          <div class="transform-grades"><span class="grade-before">B4</span><span class="grade-arrow">&rarr;</span><span class="grade-after">A2</span></div>
+          <div class="transform-grades"><span class="chip chip--pink grade-before">B4</span><span class="grade-arrow">&rarr;</span><span class="chip chip--green grade-after">A2</span></div>
           <span class="transform-duration">2 months</span>
         </div>
-        <div class="transform-card">
+        <div class="transform-card card-lift">
           <strong>Aisha M.</strong>
-          <div class="transform-grades"><span class="grade-before">U</span><span class="grade-arrow">&rarr;</span><span class="grade-after">B</span></div>
+          <div class="transform-grades"><span class="chip chip--pink grade-before">U</span><span class="grade-arrow">&rarr;</span><span class="chip chip--green grade-after">B</span></div>
           <span class="transform-duration">6 months</span>
         </div>
       </div>
 
       <div class="grade-transforms" data-animate="reveal-up">
-        <div class="grade-card">
-          <div class="grade-before-animated">C5</div>
+        <div class="grade-card card-lift">
+          <div class="chip chip--pink grade-before-animated">C5</div>
           <div class="grade-arrow-icon">
             <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
-          <div class="grade-after-animated">A2</div>
+          <div class="chip chip--green grade-after-animated">A2</div>
           <div class="grade-label">O-Level English &mdash; 3 months</div>
         </div>
-        <div class="grade-card">
-          <div class="grade-before-animated">D</div>
+        <div class="grade-card card-lift">
+          <div class="chip chip--pink grade-before-animated">D</div>
           <div class="grade-arrow-icon">
             <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
-          <div class="grade-after-animated">B</div>
+          <div class="chip chip--green grade-after-animated">B</div>
           <div class="grade-label">H1 General Paper &mdash; 2 terms</div>
         </div>
-        <div class="grade-card">
-          <div class="grade-before-animated">U</div>
+        <div class="grade-card card-lift">
+          <div class="chip chip--pink grade-before-animated">U</div>
           <div class="grade-arrow-icon">
             <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
-          <div class="grade-after-animated">B</div>
+          <div class="chip chip--green grade-after-animated">B</div>
           <div class="grade-label">H2 Economics &mdash; 1 term</div>
         </div>
       </div>
@@ -657,8 +657,8 @@ import '../styles/global.css';
         <div class="contact-info-col" data-animate="reveal-up" data-animate-delay="2">
           <h3 class="contact-col-heading">Contact details</h3>
           <div class="info-card">
-            <div class="info-card-icon">
-              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div class="info-card-icon icon-circle icon-circle--blue">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
             <div>
               <strong>Online Lessons</strong>
@@ -666,8 +666,8 @@ import '../styles/global.css';
             </div>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">
-              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <div class="info-card-icon icon-circle icon-circle--green">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             </div>
             <div>
               <strong>Reach Us</strong>
@@ -675,8 +675,8 @@ import '../styles/global.css';
             </div>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">
-              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div class="info-card-icon icon-circle icon-circle--gold">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div>
               <strong>Operating Hours</strong>
@@ -915,45 +915,27 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 </script>
 
 <style>
-  /* ===== DESIGN TOKENS ===== */
-  :root {
-    --section-bg: var(--bg-primary);
-    --section-bg-alt: var(--bg-secondary);
-    --card-bg: var(--bg-card);
-    --accent: var(--color-accent);
-    --on-dark: #1A2A3A;
-    --on-dark-muted: rgba(26,42,58,0.6);
-    --divider: var(--border-color);
-    --on-dark-subtle: rgba(26,42,58,0.03);
-  }
+  /* ===== HOMEPAGE — LMS "sticker-book" system =====
+     Cream paper canvas (body texture shows through — no section fills except
+     the .section--sand bands), white cards outlined in 2px ink, one red action
+     per view, grey micro-labels, coloured stat dots / tinted chips for data.
+     All colour comes from global.css tokens — nothing hardcoded here. */
 
-  /* Hero depth — single warm vignette, no canvas, no geometric decor (claudedesign A.1).
-     A premium law-firm-adjacent brand reads more confident with less decoration. */
+  /* Hero wash — two soft tints (sun top-left, sky bottom-right), never gold. */
   .hero-depth-layer {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(120% 80% at 50% 0%, #FBF6EC 0%, transparent 55%),
-      radial-gradient(60% 50% at 50% 100%, rgba(43, 90, 140, 0.05), transparent 70%);
-  }
-  :global([data-theme="dark"]) .hero-depth-layer {
-    background:
-      radial-gradient(120% 80% at 50% 0%, rgba(229, 154, 85, 0.04) 0%, transparent 55%),
-      radial-gradient(60% 50% at 50% 100%, rgba(43, 90, 140, 0.08), transparent 70%);
+      radial-gradient(55% 45% at 12% 18%, color-mix(in srgb, var(--color-sun) 12%, transparent) 0%, transparent 70%),
+      radial-gradient(45% 40% at 88% 82%, color-mix(in srgb, var(--color-sky) 10%, transparent) 0%, transparent 70%);
   }
 
-  /* ===== EYEBROW ===== */
+  /* ===== EYEBROW (global look; block-level here so it sits above headings) ===== */
   .eyebrow {
     display: block;
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--color-accent-text);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   /* ===== SECTION HEADING ===== */
@@ -988,32 +970,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   /* ===== SECTION SPACING ===== */
   .section {
     padding: 1.75rem 0;
-    background: var(--bg-primary);
-    scroll-margin-top: var(--header-height);
-  }
-
-  /* Override default .section background when modifier is present (claudedesign C.1). */
-  .section.section--sand { background: var(--bg-secondary); }
-  .section.section--ink {
-    background: #1A2A3A;
-    color: #F5F1EB;
-    --text-primary: #F5F1EB;
-    --text-secondary: rgba(245, 241, 235, 0.78);
-    --text-muted: rgba(245, 241, 235, 0.58);
-    --border-color: rgba(245, 241, 235, 0.12);
-  }
-  .section.section--ink h1, .section.section--ink h2, .section.section--ink h3,
-  .section.section--ink h4, .section.section--ink h5, .section.section--ink h6 {
-    color: var(--text-primary);
-  }
-  .section.section--ink p, .section.section--ink li {
-    color: var(--text-secondary);
-  }
-  :global([data-theme="dark"]) .section.section--ink {
-    background: #1f1c16;
-  }
-
-  .cta-section {
     scroll-margin-top: var(--header-height);
   }
 
@@ -1024,7 +980,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-primary);
     /* Top padding must clear the fixed header + subject bar: the negative
        margin pulls the hero under them, and on shorter viewports (~900px)
        flex-centering pushed the kicker/prelude up into the nav. */
@@ -1059,8 +1014,8 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: rgba(212,133,58,0.9);
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
   }
 
@@ -1097,7 +1052,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: block;
     font-family: var(--font-heading);
     font-size: clamp(4rem, 12vw, 8.5rem);
-    font-weight: 800;
+    font-weight: 900;
     font-style: normal;
     line-height: 0.95;
     letter-spacing: -0.04em;
@@ -1115,23 +1070,15 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     animation-delay: calc(1.2s + var(--i) * 0.08s);
   }
 
+  /* "Worthy" — the one emphasised word, solid red like the LMS's "purpose." */
   .hero-letter--italic {
-    font-style: italic;
-    font-weight: 800;
-    color: transparent;
-    background: linear-gradient(135deg, #B87333 0%, #D4853A 35%, #e8a060 55%, #D4853A 75%, #B87333 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation:
-      letter-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-      gold-shimmer 6s ease-in-out 2.5s infinite;
-    animation-delay: calc(1.2s + var(--i) * 0.08s), calc(2.5s + var(--i) * 0.1s);
+    font-style: normal;
+    font-weight: 900;
+    color: var(--color-accent-text);
   }
 
   .hero-letter--space {
     width: 0.25em;
-    background: none;
   }
 
   @keyframes letter-reveal {
@@ -1143,26 +1090,21 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     }
   }
 
-  @keyframes gold-shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
+  /* Red marker swash drawn in under the display once the letters have landed */
   .hero-underline {
     display: block;
     width: 0;
-    height: 2px;
+    height: 14px;
     margin: 0.5rem auto 0;
-    background: linear-gradient(90deg, transparent, #D4853A, transparent);
-    border-radius: 2px;
+    background: var(--swash) left center / 88px 14px no-repeat;
     animation: underline-draw 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
   }
 
   @keyframes underline-draw {
-    to { width: min(60%, 400px); }
+    to { width: 88px; }
   }
 
-  /* Hero subtitle — capped measure for readability (claudedesign A.2). */
+  /* Hero subtitle — capped measure for readability. */
   .hero-sub {
     font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     line-height: 1.5;
@@ -1173,7 +1115,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     text-wrap: pretty;
   }
 
-  /* Proof row — typographic mini-table, no separator divs (claudedesign A.4). */
+  /* Proof row — stat dots + 900 numbers, like the LMS "150+ / AI / 7 / 100%" row. */
   .hero-proof-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1192,9 +1134,11 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .hero-proof-num {
+    display: inline-flex;
+    align-items: center;
     font-family: var(--font-heading);
     font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.02em;
     line-height: 1;
     color: var(--text-primary);
@@ -1202,39 +1146,13 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-variant-numeric: tabular-nums lining-nums;
   }
 
-  .proof-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-secondary);
-    margin-top: 0.15rem;
-  }
-
-  .btn-outline {
-    background: transparent;
-    border: 2px solid var(--ink-soft);
-    color: var(--text-primary);
-    padding: 0.8rem 1.75rem;
-    border-radius: var(--radius-pill);
-    font-size: 0.95rem;
-    font-weight: 800;
-    letter-spacing: 0;
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-
-  .btn-outline:hover {
-    border-color: rgba(26, 42, 58, 0.25);
-    background: rgba(26, 42, 58, 0.04);
-    color: var(--text-primary);
-  }
-
   .hero-proof-lbl {
     font-family: var(--font-mono);
     font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
     margin-top: 0.4rem;
   }
 
@@ -1250,9 +1168,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .hero-meta a {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     white-space: nowrap;
   }
 
@@ -1268,15 +1186,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-bottom: 1.5rem;
   }
 
-  /* CTAs inherit gradient bevel + radius from .btn-accent / .btn (global D.1, D.3). */
+  /* CTAs inherit the sticker-pill look from the global .btn / .btn-accent —
+     only size is tweaked here. */
   .hero-cta-primary {
     padding: 0.9rem 2.25rem;
     font-size: 1rem;
   }
 
   .hero-cta-secondary {
-    display: inline-flex;
-    align-items: center;
     padding: 0.9rem 1.9rem;
     font-size: 1rem;
   }
@@ -1286,17 +1203,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.5rem;
-  }
-
-  .hero-badge {
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 0.35rem 0.85rem;
-    border: 1.5px solid var(--ink-soft);
-    border-radius: 999px;
-    color: var(--text-secondary);
-    background: var(--bg-card);
   }
 
   /* Cheer sticker floats in the empty margin beside the display; hidden once
@@ -1329,16 +1235,18 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .hero-scroll-cue span {
     font-family: var(--font-mono);
-    font-size: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
   }
 
   .hero-scroll-line {
-    width: 1px;
+    width: 2px;
     height: 40px;
-    background: linear-gradient(to bottom, var(--text-muted), transparent);
+    border-radius: 2px;
+    background: var(--ink-faint);
     animation: scroll-pulse 2s ease-in-out infinite;
   }
 
@@ -1347,13 +1255,13 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     50% { opacity: 0.3; transform: scaleY(0.6); }
   }
 
-  /* ===== STICKY MOBILE CTA ===== */
+  /* ===== STICKY MOBILE CTA — cream glass strip with an ink top rule ===== */
   .sticky-cta {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(253, 251, 247, 0.95);
+    background: rgba(250, 246, 238, 0.92);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     padding: 0.5rem var(--space-lg);
@@ -1366,11 +1274,11 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     z-index: 110;
     transform: translateY(100%);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    border-top: 1px solid var(--border-color);
+    border-top: 2px solid var(--color-ink);
   }
 
   :global([data-theme="dark"]) .sticky-cta {
-    background: rgba(11, 11, 15, 0.95);
+    background: rgba(23, 22, 20, 0.92);
   }
 
   .sticky-cta.is-visible {
@@ -1389,7 +1297,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     right: 0.25rem;
     background: none;
     border: none;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-size: 1.25rem;
     cursor: pointer;
     padding: 0.5rem;
@@ -1412,10 +1320,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     }
     .section {
       padding: 1.5rem 0;
-    }
-    .problem-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
     }
   }
 
@@ -1458,48 +1362,12 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     }
   }
 
-  .testimonial-initials {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(212, 133, 58, 0.1);
-    border: 1px solid rgba(212, 133, 58, 0.2);
-    color: var(--color-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-  }
-
-  .programme-illustration {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
-  }
-
-  /* ===== AUDIENCE SELECTOR ===== */
-
-  /* ===== STATS BAR ===== */
+  /* ===== STATS BAR — sand band, stat dots + 900 numbers ===== */
   .stats-bar {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(212, 133, 58, 0.04) 50%, var(--bg-secondary) 100%);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     padding: 1.75rem 0;
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
     position: relative;
-  }
-  .stats-bar::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.25);
-    pointer-events: none;
-  }
-  :global([data-theme="dark"]) .stats-bar::before {
-    background: rgba(255, 255, 255, 0.02);
   }
 
   .stats-inner {
@@ -1515,40 +1383,40 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     padding: 0.5rem 1.5rem;
   }
 
+  .stat-figure {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .stat-number {
-    display: block;
+    display: inline-block;
     font-family: var(--font-heading);
     font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 800;
+    font-weight: 900;
     color: var(--text-primary);
     letter-spacing: -0.03em;
     line-height: 1;
-    animation: shimmer-glow 6s ease-in-out infinite;
   }
 
   .stat-label {
     display: block;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-top: 0.25rem;
+    margin-top: 0.35rem;
   }
 
   .stat-divider {
     width: 1px;
     height: 40px;
-    background: var(--divider);
+    background: var(--border-color);
     flex-shrink: 0;
   }
 
   /* ===== PROGRAMMES ===== */
-  .programmes-section {
-    background:
-      radial-gradient(ellipse at 80% 20%, rgba(43, 90, 140, 0.04) 0%, transparent 50%),
-      var(--bg-secondary);
-  }
-
   .programmes-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1563,7 +1431,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .programmes-pricing-link a {
     color: var(--color-accent-text);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.95rem;
   }
 
@@ -1580,26 +1448,29 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin: 0 auto;
   }
 
+  /* Avatar as a sticker tile — white, 2px ink, hard offset shadow */
   .founder-band__avatar {
     flex-shrink: 0;
     width: 120px;
     height: 120px;
-    border-radius: 50%;
+    border-radius: var(--radius-md);
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, rgba(212, 133, 58, 0.18), rgba(43, 90, 140, 0.14));
-    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    box-shadow: 0 4px 0 var(--ink-shadow);
   }
 
   .founder-band__avatar span {
     font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--color-primary);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
   }
 
   .founder-band__title {
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text-primary);
     margin: 0.4rem 0 0.75rem;
     line-height: 1.25;
@@ -1644,7 +1515,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .founder-band__link {
     color: var(--color-accent-text);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .founder-band__link:hover {
@@ -1681,7 +1552,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .wb-name {
     color: var(--color-accent-text);
-    font-style: italic;
     white-space: nowrap;
   }
 
@@ -1700,44 +1570,24 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin: 0 auto;
   }
 
+  /* Feature cards — white sticker cards (lift comes from the global list) */
   .wb-feature {
     text-align: left;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     padding: 1.5rem 1.5rem 1.75rem;
-    transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-  }
-
-  .wb-feature:hover {
-    transform: translateY(-3px);
-    border-color: rgba(212, 133, 58, 0.3);
-    box-shadow: 0 14px 30px -18px rgba(212, 133, 58, 0.32);
-  }
-  :global([data-theme="dark"]) .wb-feature:hover {
-    border-color: rgba(224, 152, 80, 0.32);
-    box-shadow: 0 14px 30px -18px rgba(224, 152, 80, 0.35);
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
   }
 
   .wb-feature__icon {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: rgba(212, 133, 58, 0.1);
-    color: var(--color-accent);
     margin-bottom: 1rem;
-  }
-  :global([data-theme="dark"]) .wb-feature__icon {
-    background: rgba(224, 152, 80, 0.12);
-    color: var(--color-accent-light);
   }
 
   .wb-feature__title {
     font-family: var(--font-heading);
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--text-primary);
     margin: 0 0 0.4rem;
     line-height: 1.3;
@@ -1780,7 +1630,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .transformations__title {
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
   }
@@ -1799,20 +1649,12 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     gap: 0.6rem;
     padding: 1.75rem 1.25rem;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     text-decoration: none;
-    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
   }
 
-  .transformation-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-accent);
-    box-shadow: 0 18px 36px -20px rgba(212, 133, 58, 0.32);
-  }
-  :global([data-theme="dark"]) .transformation-card:hover {
-    box-shadow: 0 18px 36px -20px rgba(224, 152, 80, 0.35);
-  }
   .transformation-card:hover .transformation-card__arrow {
     transform: translateX(5px);
   }
@@ -1821,31 +1663,30 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1.75rem;
-    font-weight: 800;
   }
 
-  .transformation-card__before {
-    color: var(--text-muted);
+  /* Before / after grades ride on the global .chip--pink / .chip--green, sized up */
+  .transformation-card__before,
+  .transformation-card__after {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    padding: 0.3rem 0.85rem;
   }
 
   .transformation-card__arrow {
-    color: var(--color-accent);
+    color: var(--text-primary);
     font-size: 1.4rem;
+    font-weight: 800;
     transition: transform var(--transition-fast);
   }
 
-  .transformation-card__after {
-    color: var(--color-primary);
-  }
-  :global([data-theme="dark"]) .transformation-card__after { color: #8FBCEF; }
-
   .transformation-card__meta {
-    font-size: 0.78rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.06em;
   }
 
   .transformation-card__quote {
@@ -1858,7 +1699,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .transformations__link {
     color: var(--color-accent-text);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .transformations__link:hover {
@@ -1871,73 +1712,47 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     }
   }
 
+  /* Programme cards — white sticker cards, subject mascot in the top well */
   .programme-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     background: var(--bg-card);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    transition: all 0.4s ease;
-  }
-
-  @media (hover: hover) {
-    .programme-card:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(212, 133, 58, 0.28);
-      transform: translateY(-4px);
-      border-left: 3px solid var(--color-accent);
-      box-shadow: 0 18px 36px -22px rgba(212, 133, 58, 0.3);
-    }
-  }
-  :global([data-theme="dark"]) .programme-card:hover {
-    border-color: rgba(224, 152, 80, 0.32);
-    box-shadow: 0 18px 36px -22px rgba(224, 152, 80, 0.35);
-  }
-
-  .programme-img-wrap {
-    height: 200px;
-    overflow: hidden;
-  }
-
-  .programme-img,
-  .programme-img-wrap .placeholder-img {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.4s ease;
-  }
-
-  .programme-card:hover .programme-img,
-  .programme-card:hover .programme-img-wrap .placeholder-img {
-    transform: scale(1.04);
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
   }
 
   .programme-body {
-    padding: 1.75rem;
+    padding: 1.5rem 1.5rem 1.75rem;
     display: flex;
     flex-direction: column;
     flex: 1;
   }
 
+  .programme-badge {
+    align-self: flex-start;
+    margin-bottom: 0.65rem;
+  }
+
   .programme-level {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    font-weight: 500;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-accent-text);
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
   }
 
   .programme-body h3 {
-    font-family: var(--font-body);
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
 
   .programme-body p {
@@ -1952,206 +1767,25 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
     padding-top: 1rem;
-    border-top: 1px solid var(--divider);
+    border-top: 2px dashed var(--ink-faint);
   }
 
   .programme-price {
     font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-weight: 800;
+    color: var(--color-accent-text);
   }
 
   .programme-link {
     font-size: 0.85rem;
-    color: var(--color-accent-text);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-
-  /* ===== POPULAR BADGE ===== */
-  .programme-card--popular {
-    border-color: var(--color-accent);
-    border-width: 2px;
-    position: relative;
-    background: rgba(212, 133, 58, 0.03);
-    overflow: hidden;
-  }
-  .programme-card--popular::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 80px;
-    background: linear-gradient(180deg, rgba(212, 133, 58, 0.07) 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .programme-popular-badge {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
+    color: var(--text-primary);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    background: var(--color-accent);
-    border: 1px solid var(--color-accent);
-    color: #ffffff;
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius-pill);
-    margin-bottom: 0.75rem;
-    animation: shimmer-border 3s ease-in-out infinite,
-               shimmer-glow 3s ease-in-out infinite;
-  }
-
-  .programme-card--new {
-    border-color: var(--color-primary);
-    border-width: 2px;
-    position: relative;
-    background: rgba(43, 90, 140, 0.03);
-    overflow: hidden;
-  }
-  .programme-card--new::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 80px;
-    background: linear-gradient(180deg, rgba(43, 90, 140, 0.07) 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .programme-new-badge {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    background: var(--color-primary);
-    border: 1px solid var(--color-primary);
-    color: #ffffff;
-    padding: 0.3rem 0.75rem;
-    border-radius: 0;
-    margin-bottom: 0.75rem;
   }
 
   /* ===== TESTIMONIALS ===== */
-  /* ═══ THE VAULT ═══ */
-  .vault-section {
-    background:
-      radial-gradient(circle at 2px 2px, rgba(212,133,58,0.025) 1px, transparent 1px) 0 0 / 32px 32px,
-      linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-    position: relative;
-  }
-  .vault-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin-bottom: 1.5rem;
-    margin-top: -0.5rem;
-    line-height: 1.7;
-  }
-  .vault-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
-  .vault-card {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: 1.75rem;
-    transition: all 0.35s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .vault-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
-  .vault-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(212,133,58,0.2);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    background: var(--bg-card-hover);
-  }
-  .vault-card:hover::before { opacity: 1; }
-  .vault-icon {
-    width: 44px; height: 44px;
-    border-radius: var(--radius-md);
-    background: rgba(212,133,58,0.08);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--color-accent);
-    margin-bottom: 1rem;
-  }
-  .vault-tag {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
-  }
-  .vault-card h3 {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-  }
-  .vault-card p {
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    flex: 1;
-    margin-bottom: 1rem;
-  }
-  .vault-dl {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-accent);
-    transition: letter-spacing 0.2s ease;
-  }
-  .vault-card:hover .vault-dl {
-    letter-spacing: 0.12em;
-  }
-  .vault-note {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 2rem;
-    font-style: italic;
-  }
-  .vault-cta {
-    text-align: center;
-    margin-top: var(--space-xl);
-  }
-  @media (max-width: 1024px) {
-    .vault-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .vault-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ═══ TESTIMONIALS ═══ */
-  .testimonials-section {
-    background:
-      radial-gradient(ellipse at 20% 80%, rgba(212, 133, 58, 0.03) 0%, transparent 45%),
-      var(--bg-secondary);
-  }
-
   .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2162,70 +1796,41 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     text-align: center;
     margin-top: 2.5rem;
   }
+  /* Google-reviews link is a plain white .btn pill; just the inline icon sizing here */
   .reviews-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
     font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--color-accent-text);
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid rgba(212, 133, 58, 0.2);
-    border-radius: var(--radius-sm);
-    transition: all 0.3s ease;
   }
-  .reviews-link:hover {
-    background: rgba(212, 133, 58, 0.08);
-    border-color: var(--color-accent);
+  .reviews-link svg {
+    flex-shrink: 0;
   }
 
-  /* Pull-quote treatment (claudedesign B.4) — magazine-style on the homepage too. */
+  /* Testimonial cards — white sticker cards (hover lift from the global list) */
   .testimonial-card {
     position: relative;
-    background: transparent;
-    border: 0;
-    border-top: 1px solid var(--border-color);
-    border-radius: 0;
-    padding: 2.5rem 0.5rem 2rem 3.5rem;
-    transition: none;
-    overflow: visible;
-  }
-  .testimonial-card::before {
-    content: '\201C';
-    position: absolute;
-    top: 0.5rem;
-    left: 0;
-    right: auto;
-    font-family: var(--font-heading);
-    font-weight: 300;
-    font-size: 6rem;
-    line-height: 1;
-    color: var(--color-accent);
-    opacity: 0.18;
-    pointer-events: none;
-    user-select: none;
-  }
-  :global([data-theme="dark"]) .testimonial-card::before {
-    opacity: 0.22;
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .testimonial-stars {
-    color: var(--color-accent);
-    font-size: 0.9rem;
+    color: var(--color-sun);
+    font-size: 0.95rem;
     letter-spacing: 0.1em;
     margin-bottom: 1rem;
-    animation: shimmer-glow 4s ease-in-out infinite;
   }
 
   .testimonial-card blockquote {
-    font-family: var(--font-heading);
-    font-weight: 300;
+    font-family: var(--font-body);
+    font-weight: 600;
     font-style: italic;
-    font-size: 1.25rem;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    line-height: 1.55;
     color: var(--text-primary);
-    margin-bottom: 1.5rem;
+    margin: 0 0 1.5rem;
+    flex: 1;
     text-wrap: pretty;
   }
 
@@ -2234,21 +1839,13 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     align-items: center;
     gap: 0.75rem;
     padding-top: 1.25rem;
-    border-top: 1px solid var(--divider);
-  }
-
-  .testimonial-avatar,
-  .testimonial-author .placeholder-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    flex-shrink: 0;
+    border-top: 2px dashed var(--ink-faint);
   }
 
   .testimonial-author strong {
     display: block;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--text-primary);
   }
 
@@ -2257,119 +1854,21 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: var(--text-secondary);
   }
 
-  /* ===== CTA ===== */
-  .cta-section {
-    padding: 4rem 0;
-    background: var(--bg-secondary);
-    text-align: center;
-    position: relative;
+  /* Avatar initials — a tinted .icon-circle, sized up */
+  .testimonial-avatar-circle {
+    width: 44px;
+    height: 44px;
   }
-
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(212, 133, 58, 0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta-inner {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .cta-section .eyebrow {
-    display: inline-block;
-  }
-
-  .cta-section h2 {
-    font-family: var(--font-body);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-  }
-
-  .cta-section p {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    line-height: 1.7;
-  }
-
-  /* ===== BUTTON OVERRIDES ===== */
-  .btn-primary {
-    background: var(--accent);
-    color: var(--on-dark);
-    border: 2px solid var(--accent);
-    letter-spacing: 0;
-    font-size: 0.95rem;
+  .testimonial-avatar-circle span {
+    font-size: 0.72rem;
     font-weight: 800;
-    padding: 0.8rem 1.9rem;
-    border-radius: var(--radius-pill);
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-
-  .btn-primary:hover {
-    background: #d4622e;
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--ink-soft);
-    letter-spacing: 0;
-    font-size: 0.95rem;
-    font-weight: 800;
-    padding: 0.8rem 1.9rem;
-    border-radius: var(--radius-pill);
-    text-decoration: none;
-    display: inline-block;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--text-primary);
-    transform: translateY(-1px);
-  }
-
-  .btn-lg {
-    padding: 1rem 2.5rem;
-    font-size: 0.9rem;
-  }
-
-  /* ===== TESTIMONIAL FEATURED ===== */
-  .testimonial-featured {
-    border-color: rgba(212, 133, 58, 0.2);
-    background: rgba(212, 133, 58, 0.03);
-  }
-  @media (max-width: 768px) {
-    .testimonial-featured { transform: none; background: rgba(212, 133, 58, 0.03); }
+    letter-spacing: 0.05em;
   }
 
   /* ===== RESULTS SECTION ===== */
   .results-section {
-    background: var(--section-bg-alt);
+    background: var(--bg-secondary);
     position: relative;
-    overflow: hidden;
-  }
-  .results-section::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(212,133,58,0.06) 0%, transparent 70%);
-    pointer-events: none;
   }
   .results-stats {
     display: flex;
@@ -2378,32 +1877,36 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     gap: 0;
     padding: 2rem 0;
     margin-bottom: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     background: var(--bg-card);
-    backdrop-filter: blur(12px);
   }
   .result-stat {
     flex: 1;
     text-align: center;
     padding: 1rem;
   }
+  .result-stat-figure {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
   .result-stat-number {
-    display: block;
+    display: inline-block;
     font-family: var(--font-heading);
     font-size: 2.5rem;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--text-primary);
     letter-spacing: -0.03em;
     line-height: 1;
-    animation: shimmer-glow 6s ease-in-out infinite;
   }
   .result-stat-label {
     display: block;
     font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-top: 0.5rem;
   }
   .result-stat-divider {
@@ -2414,7 +1917,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .results-sub-heading {
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
     margin-top: 2rem;
@@ -2431,25 +1934,28 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: flex;
     justify-content: space-between;
     font-size: 0.85rem;
+    font-weight: 700;
     color: var(--text-secondary);
   }
   .result-bar-pct {
-    font-weight: 600;
-    color: var(--color-accent-text);
+    font-weight: 800;
+    color: var(--text-primary);
     font-family: var(--font-mono);
     font-size: 0.8rem;
   }
+  /* Progress track — a small ink-outlined well, sun-yellow data fill */
   .result-bar-track {
-    height: 10px;
-    background: var(--border-color);
-    border-radius: var(--radius-sm);
+    height: 12px;
+    background: var(--bg-muted);
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-pill);
     overflow: hidden;
   }
   .result-bar-fill {
     height: 100%;
     width: 0;
-    background: linear-gradient(90deg, var(--color-accent), #f5a623);
-    border-radius: var(--radius-sm);
+    background: var(--color-sun);
+    border-radius: var(--radius-pill);
     transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .results-section.is-visible .result-bar-fill,
@@ -2463,20 +1969,15 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .transform-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     padding: 1.25rem;
     text-align: center;
-    backdrop-filter: blur(12px);
-    transition: all 0.3s ease;
-  }
-  .transform-card:hover {
-    border-color: rgba(212,133,58,0.2);
-    transform: translateY(-2px);
   }
   .transform-card strong {
     display: block;
     font-size: 0.85rem;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 0.75rem;
   }
@@ -2487,48 +1988,29 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     gap: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  .grade-before {
-    font-weight: 600;
-    color: var(--grade-before-ink, #C0392B);
-    font-size: 1.1rem;
+  /* Grade pills ride on the global .chip--pink / .chip--green */
+  .grade-before,
+  .grade-after {
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    padding: 0.25rem 0.7rem;
   }
   .grade-arrow {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-size: 0.9rem;
   }
-  .grade-after {
-    font-weight: 600;
-    color: var(--grade-after-ink, #187A42);
-    font-size: 1.1rem;
-  }
-
-  /* Dark mode: soft grade tints pass on the dark canvas; the light-mode inks
-     above are the AA-compliant equivalents on cream cards. */
-  :global([data-theme="dark"]) .grade-before { color: #f87171; }
-  :global([data-theme="dark"]) .grade-after { color: #6ee7b7; }
   .transform-duration {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
   /* ===== CONTACT SECTION ===== */
   .contact-section {
-    background:
-      radial-gradient(ellipse at 30% 20%, rgba(212, 133, 58, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 80%, rgba(43, 90, 140, 0.04) 0%, transparent 50%),
-      linear-gradient(180deg, var(--bg-secondary) 0%, rgba(212, 133, 58, 0.02) 50%, var(--bg-primary) 100%);
     position: relative;
-    overflow: hidden;
-    border-top: 3px solid var(--color-accent);
-  }
-  .contact-section::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-    pointer-events: none;
   }
   .contact-grid {
     display: grid;
@@ -2538,7 +2020,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .contact-col-heading {
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
   }
@@ -2553,41 +2035,23 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-  .form-group { display: flex; flex-direction: column; gap: 0.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  /* Inputs take the global look (muted fill, 2px ink, red focus ring);
+     labels are grey micro-labels. */
   .form-group label {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: 700;
+    margin-bottom: 0;
   }
-  .required { color: var(--color-accent); }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 0.75rem 0.875rem;
-    font-size: 0.9rem;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    color: var(--text-primary);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    font-family: var(--font-body);
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(212,133,58,0.12), 0 0 16px rgba(212,133,58,0.06);
-  }
+  .required { color: var(--color-accent-text); }
   .form-group select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6760' fill='none' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    padding-right: 2rem;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
   }
   .btn-submit {
     width: 100%;
@@ -2598,22 +2062,24 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     align-items: center;
     gap: 0.5rem;
     padding: 1rem;
-    background: rgba(212,133,58,0.1);
-    border: 1px solid rgba(212,133,58,0.2);
+    background: var(--tint-green-bg);
+    border: 2px solid var(--color-leaf);
     border-radius: var(--radius-sm);
-    color: var(--color-accent);
+    color: var(--tint-green-fg);
     font-size: 0.9rem;
+    font-weight: 600;
     margin-top: 0.5rem;
   }
   .form-success[hidden] { display: none; }
   .form-success:not([hidden]) { display: flex; }
   .form-errors {
     padding: 1rem;
-    background: rgba(248,113,113,0.1);
-    border: 1px solid rgba(248,113,113,0.2);
+    background: var(--color-danger-bg);
+    border: 2px solid var(--color-accent);
     border-radius: var(--radius-sm);
-    color: #f87171;
+    color: var(--color-accent-text);
     font-size: 0.85rem;
+    font-weight: 600;
     margin-top: 0.5rem;
   }
   .info-card {
@@ -2624,19 +2090,10 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     border-bottom: 1px solid var(--border-color);
   }
   .info-card:last-of-type { border-bottom: none; }
-  .info-card-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(212,133,58,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
   .info-card strong {
     display: block;
     font-size: 0.9rem;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 0.25rem;
   }
@@ -2647,16 +2104,17 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     line-height: 1.6;
   }
   .info-card a {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
+    font-weight: 700;
   }
   .enrol-steps {
     margin-top: 2rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 2px dashed var(--ink-faint);
   }
   .enrol-steps-heading {
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 1rem;
   }
@@ -2673,60 +2131,17 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     height: 28px;
     border-radius: 50%;
     background: var(--color-accent);
+    border: 2px solid var(--color-ink);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 800;
     flex-shrink: 0;
   }
 
-  /* ===== ENHANCED CTA GRADIENT ===== */
-  .cta-section {
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-section::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(from 0deg at 50% 50%,
-      transparent 0deg,
-      rgba(212,133,58,0.03) 60deg,
-      transparent 120deg,
-      rgba(43,90,140,0.03) 180deg,
-      transparent 240deg,
-      rgba(212,133,58,0.02) 300deg,
-      transparent 360deg
-    );
-    animation: cta-rotate 30s linear infinite;
-    pointer-events: none;
-  }
-  @keyframes cta-rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
   /* ===== RESPONSIVE ===== */
-  @media (min-width: 1024px) {
-    .approach-scroll-track {
-      overflow: visible;
-      margin: 0;
-      padding: 0;
-    }
-    .approach-scroll-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .approach-scroll-inner .approach-card {
-      min-width: unset;
-    }
-  }
-
   @media (max-width: 1024px) {
     .programmes-grid,
     .testimonials-grid {
@@ -2736,10 +2151,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   @media (max-width: 768px) {
     .section {
-      padding: 1.5rem 0;
-    }
-
-    .cta-section {
       padding: 1.5rem 0;
     }
 
@@ -2826,13 +2237,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     .section {
       padding: 2.25rem 0;
     }
-    .cta-section {
-      padding: 2.5rem 0;
-    }
     .programmes-grid {
-      gap: 2rem;
-    }
-    .approach-grid {
       gap: 2rem;
     }
     .testimonials-grid {
@@ -2843,27 +2248,15 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     }
   }
 
-  /* ── Reduced motion: disable shimmer animations ── */
+  /* ── Reduced motion: settle every entrance/loop into its end state ── */
   @media (prefers-reduced-motion: reduce) {
-    .proof-number,
-    .stat-number,
-    .testimonial-stars,
-    .programme-popular-badge,
-    .approach-letter,
-    .sharp-flow-icon,
-    .orb,
-    .icon-ring,
-    .result-stat-number,
-    .cta-section::after {
-      animation: none;
-    }
-    .connector-line { stroke-dashoffset: 0; }
-    .connector-arrow { opacity: 1; }
+    .hero-scroll-line { animation: none; }
     .result-bar-fill { transition: none; width: var(--bar-width); }
     .hero-anim { opacity: 1; transform: none; animation: none; }
     .hero-prelude-word { opacity: 1; transform: none; animation: none; }
     .hero-letter { opacity: 1; transform: none; filter: none; animation: none; }
-    .hero-underline { width: min(60%, 400px); animation: none; }
+    .hero-underline { width: 88px; animation: none; }
+    .hero-scroll-cue { opacity: 1; animation: none; }
   }
 
 
@@ -2874,44 +2267,25 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .quiz-card {
     background: var(--bg-card);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-top: 3px solid var(--color-accent);
+    border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
     padding: 2.5rem;
     text-align: center;
     max-width: 640px;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .quiz-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 140px;
-    background: linear-gradient(180deg, rgba(212, 133, 58, 0.05), transparent);
-    pointer-events: none;
-    z-index: -1;
-  }
-  :global([data-theme="dark"]) .quiz-card::before {
-    background: linear-gradient(180deg, rgba(224, 152, 80, 0.07), transparent);
   }
 
   .quiz-heading {
     font-size: 1.3rem;
-    font-weight: 300;
+    font-weight: 800;
     margin-bottom: 2rem;
     letter-spacing: -0.02em;
   }
 
   .quiz-question {
     font-size: 1.05rem;
-    font-weight: 500;
+    font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 1.25rem;
   }
@@ -2924,50 +2298,29 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin: 0 auto;
   }
 
+  /* Options are white .btn pills; the picked one turns red like a segmented tab */
   .quiz-option {
-    display: block;
     width: 100%;
-    padding: 0.85rem 1.5rem;
-    font-family: var(--font-body);
     font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-primary);
-    background: transparent;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: left;
-  }
-
-  .quiz-option:hover {
-    border-color: var(--color-accent);
-    background: rgba(212, 133, 58, 0.05);
   }
 
   .quiz-option.selected {
-    border-color: var(--color-accent);
-    background: rgba(212, 133, 58, 0.1);
-    color: var(--color-accent);
+    background: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 4px 0 var(--color-accent-press);
   }
 
   .quiz-result-icon {
     width: 48px;
     height: 48px;
-    border-radius: 50%;
-    background: rgba(52, 211, 153, 0.1);
-    color: #34d399;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin: 0 auto 1rem;
   }
 
   .quiz-result-heading {
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 800;
     margin-bottom: 0.75rem;
   }
 
@@ -2989,116 +2342,44 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: inline-block;
     font-family: var(--font-body);
     font-size: 0.8rem;
-    color: var(--text-muted);
+    font-weight: 700;
+    color: var(--text-secondary);
     background: none;
     border: none;
     cursor: pointer;
     text-decoration: underline;
     padding: 0.5rem;
+    min-height: 40px;
   }
 
   .quiz-restart:hover {
     color: var(--text-primary);
   }
 
-  /* ===== PROGRAMME CARD ILLUSTRATIONS ===== */
+  /* ===== PROGRAMME CARD MASCOT WELL ===== */
   .programme-card-illustration {
     width: 100%;
-    height: 160px;
+    height: 170px;
     overflow: hidden;
-    background: #F5F1EB;
-    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    border-bottom: 2px solid var(--color-ink);
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  :global([data-theme="dark"]) .programme-card-illustration {
-    background: rgba(255, 255, 255, 0.02);
+    padding: 0.75rem;
   }
   .programme-card-illustration img {
-    width: 100%;
+    width: auto;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .programme-card:hover .programme-card-illustration img {
-    transform: scale(1.05);
+    max-width: 100%;
+    object-fit: contain;
   }
 
-  /* ===== ENHANCED TESTIMONIAL AVATARS ===== */
-  .testimonial-avatar-circle {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(
-      135deg,
-      hsl(var(--avatar-hue, 30), 60%, 92%) 0%,
-      hsl(var(--avatar-hue, 30), 50%, 85%) 100%
-    );
-    border: 2px solid hsl(var(--avatar-hue, 30), 50%, 80%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .testimonial-avatar-circle::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
-  }
-  .testimonial-avatar-circle span {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: hsl(var(--avatar-hue, 30), 40%, 35%);
-    position: relative;
-    z-index: 1;
-  }
-  :global([data-theme="dark"]) .testimonial-avatar-circle {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--avatar-hue, 30), 40%, 20%) 0%,
-      hsl(var(--avatar-hue, 30), 35%, 15%) 100%
-    );
-    border-color: hsl(var(--avatar-hue, 30), 40%, 30%);
-  }
-  :global([data-theme="dark"]) .testimonial-avatar-circle span {
-    color: hsl(var(--avatar-hue, 30), 50%, 70%);
-  }
-
-  /* ===== FEATURE 1: HERO REVIEW BADGE ===== */
-  .hero-review-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .hero-stars {
-    color: #FBBC05;
-    font-size: 1rem;
-    letter-spacing: 2px;
-  }
-  .hero-review-text {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-  }
-
-  /* ===== FEATURE 2: AUDIENCE TOGGLE ===== */
+  /* ===== FEATURE 2: AUDIENCE TOGGLE — the LMS segmented control ===== */
   .audience-toggle {
     display: flex;
-    justify-content: center;
-    gap: 0;
     margin: 2rem auto 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 999px;
-    overflow: hidden;
-    max-width: 280px;
+    max-width: 300px;
   }
   .audience-btn {
     display: inline-flex;
@@ -3107,20 +2388,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     gap: 0.35rem;
     flex: 1;
     min-height: 42px;
-    padding: 0.55rem 1.1rem;
+    padding: 0.55rem 1rem;
     font-size: 0.85rem;
-    font-weight: 700;
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all var(--transition-fast);
   }
-  .audience-btn.active {
-    background: var(--color-accent-text);
-    color: #fff;
-  }
-  :global([data-theme="dark"]) .audience-btn.active { color: #11100E; }
   .audience-btn__icon {
     height: 0.95rem;
     width: auto;
@@ -3148,7 +2418,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: none;
   }
 
-  /* ===== FEATURE 5: ANIMATED GRADE TRANSFORMATION CARDS ===== */
+  /* ===== FEATURE 5: GRADE TRANSFORMATION CARDS ===== */
   .grade-transforms {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -3162,57 +2432,44 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     justify-content: center;
     gap: 1rem;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     padding: 1.5rem;
     flex-wrap: wrap;
   }
+  /* Big before / after pills — global .chip--pink / .chip--green scaled up */
   .grade-before-animated {
     font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--grade-before-ink, #C0392B);
-    opacity: 0.85;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    padding: 0.3rem 0.9rem;
   }
   .grade-after-animated {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--grade-after-ink, #187A42);
-    animation: grade-glow 2s ease-in-out infinite;
-  }
-  :global([data-theme="dark"]) .grade-before-animated { color: #ed8175; }
-  :global([data-theme="dark"]) .grade-after-animated { color: #6ee7b7; }
-  @keyframes grade-glow {
-    0%, 100% { text-shadow: 0 0 0 transparent; }
-    50% { text-shadow: 0 0 20px rgba(39, 174, 96, 0.3); }
+    font-size: 1.9rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    padding: 0.3rem 1rem;
   }
   .grade-arrow-icon {
     flex-shrink: 0;
+    display: flex;
+    color: var(--text-primary);
   }
   .grade-label {
     width: 100%;
     text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
     margin-top: 0.25rem;
     font-family: var(--font-mono);
-    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   /* ===== SECTION INTRO VARIETY — left-aligned headings ===== */
-  .problem-section .eyebrow,
-  .problem-section .problem-heading {
-    text-align: left;
-  }
-  .vault-section .eyebrow,
-  .vault-section .section-heading {
-    text-align: left;
-  }
-  .vault-section .vault-subtitle {
-    text-align: left;
-    margin-left: 0;
-  }
   .results-section .eyebrow,
   .results-section .section-heading {
     text-align: left;
