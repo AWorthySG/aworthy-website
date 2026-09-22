@@ -1607,7 +1607,7 @@ const schemaData = {
   },
   "telephone": "+6561234567",
   "email": "hello@aworthy.sg",
-  "sameAs": ["https://wa.me/6583384033", "https://instagram.com/aworthy.sg", "https://tiktok.com/@aworthy.sg", "https://youtube.com/@aworthysg"],
+  "sameAs": ["https://wa.me/6589913181", "https://instagram.com/aworthy.sg", "https://tiktok.com/@aworthy.sg", "https://youtube.com/@aworthysg"],
   "areaServed": {
     "@type": "Country",
     "name": "Singapore"
@@ -1778,7 +1778,7 @@ import { ClientRouter } from 'astro:transitions';
     <div class="sticky-cta-global-inner">
       <span class="sticky-cta-global-text"><span class="sticky-cta-global-text-full">Book a free diagnostic assessment for O-Level English, GP, or H2 Economics</span><span class="sticky-cta-global-text-mobile">Limited June slots</span></span>
       <a href="/contact/" class="sticky-cta-global-btn">Book Free Assessment</a>
-      <a href="tel:+6583384033" class="sticky-cta-phone" aria-label="Call us">
+      <a href="tel:+6589913181" class="sticky-cta-phone" aria-label="Call us">
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       </a>
     </div>
@@ -1795,7 +1795,7 @@ import { ClientRouter } from 'astro:transitions';
         <p>Hi! 👋 How can we help you today? Ask us about our programmes or book a free assessment.</p>
         <span class="whatsapp-preview-time">Just now</span>
       </div>
-      <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener" class="whatsapp-preview-cta">
+      <a href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener" class="whatsapp-preview-cta">
         <input type="text" placeholder="Type a message..." readonly style="flex:1;border:none;background:transparent;color:var(--text-muted);font-size:0.8rem;cursor:pointer;" />
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent)"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </a>
@@ -3267,7 +3267,7 @@ const currentYear = new Date().getFullYear();
           <img src="/images/logo.svg" alt="A-Worthy" class="footer-logo-img" />
         </a>
         <div class="footer-socials">
-          <a href="https://wa.me/6583384033" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          <a href="https://wa.me/6589913181" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
           <a href="mailto:hello@aworthy.sg" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
           <a href="https://instagram.com/aworthy.sg" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
           <a href="https://tiktok.com/@aworthy.sg" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-.81-.07 4.83 4.83 0 01-.38-4.56z"/></svg></a>
@@ -4591,7 +4591,7 @@ import '../styles/global.css';
 
       <div class="hero-btns hero-anim" style="--d:15">
         <a href="/#contact" class="btn btn-accent hero-cta-primary">Find Out Where Your Child Is Losing Marks</a>
-        <a href="https://wa.me/6583384033" class="btn btn-outline hero-cta-secondary" target="_blank" rel="noopener">
+        <a href="https://wa.me/6589913181" class="btn btn-outline hero-cta-secondary" target="_blank" rel="noopener">
           <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp Us
         </a>
@@ -5740,7 +5740,7 @@ import '../styles/global.css';
           <span class="eyebrow">Referral Programme</span>
           <h2 class="referral-heading">Refer a friend, both get a free session</h2>
           <p class="referral-desc">Know a family who&rsquo;d benefit from the SHARP Method? When they enrol, both families get a free session. No limit &mdash; refer as many as you like.</p>
-          <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20refer%20a%20friend%20to%20A-Worthy" class="btn btn-accent" target="_blank" rel="noopener">Refer via WhatsApp</a>
+          <a href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20refer%20a%20friend%20to%20A-Worthy" class="btn btn-accent" target="_blank" rel="noopener">Refer via WhatsApp</a>
           <a href="https://wa.me/?text=I%27ve%20been%20attending%20A-Worthy%20tuition%20and%20my%20grades%20improved%20significantly!%20Check%20them%20out%3A%20https%3A%2F%2Fa-worthy.com" target="_blank" rel="noopener" class="btn btn-whatsapp-share">
             <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Share via WhatsApp
@@ -5810,7 +5810,7 @@ import '../styles/global.css';
         </div>
       </div>
       <div style="margin-top: 2rem;" data-animate="reveal-up">
-        <a href="https://wa.me/6583384033?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20trial%20lesson" class="btn btn-accent" target="_blank" rel="noopener">Book Free Trial via WhatsApp</a>
+        <a href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20trial%20lesson" class="btn btn-accent" target="_blank" rel="noopener">Book Free Trial via WhatsApp</a>
       </div>
     </div>
   </section>
@@ -5906,7 +5906,7 @@ import '../styles/global.css';
             </div>
             <div>
               <strong>Reach Us</strong>
-              <p><a href="tel:+6561234567">+65 6123 4567</a> &middot; <a href="https://wa.me/6583384033">WhatsApp 8338 4033</a><br/><a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></p>
+              <p><a href="tel:+6561234567">+65 6123 4567</a> &middot; <a href="https://wa.me/6589913181">WhatsApp 8991 3181</a><br/><a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></p>
             </div>
           </div>
           <div class="info-card">
@@ -11485,7 +11485,7 @@ import '../styles/global.css';
       <p class="prog-cta__sub">Book a free 20-minute diagnostic assessment. We&rsquo;ll analyse your child&rsquo;s recent English paper, identify their specific gaps, and recommend the right programme &mdash; no obligation, no sales pitch.</p>
       <div class="prog-cta__actions">
         <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book Assessment</a>
-        <a href="https://wa.me/6583384033?text=Hi%2C%20I%27m%20interested%20in%20O-Level%20English%20tuition%20for%20my%20child.%20Could%20you%20share%20more%20details%20on%20the%20programme%20and%20available%20slots%3F" target="_blank" rel="noopener" class="prog-cta__btn prog-cta__btn--whatsapp">
+        <a href="https://wa.me/6589913181?text=Hi%2C%20I%27m%20interested%20in%20O-Level%20English%20tuition%20for%20my%20child.%20Could%20you%20share%20more%20details%20on%20the%20programme%20and%20available%20slots%3F" target="_blank" rel="noopener" class="prog-cta__btn prog-cta__btn--whatsapp">
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp Us
         </a>
@@ -12269,7 +12269,7 @@ import '../styles/global.css';
       <p class="prog-cta__sub">Book a free 20-minute diagnostic assessment. We&rsquo;ll review your child&rsquo;s recent GP paper and identify specific areas for improvement &mdash; no obligation, no sales pitch.</p>
       <div class="prog-cta__actions">
         <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book Assessment</a>
-        <a href="https://wa.me/6583384033?text=Hi%2C%20I%27m%20interested%20in%20H1%20General%20Paper%20tuition%20for%20my%20child.%20Could%20you%20share%20more%20details%20on%20the%20programme%20and%20available%20slots%3F" target="_blank" rel="noopener" class="prog-cta__btn prog-cta__btn--whatsapp">
+        <a href="https://wa.me/6589913181?text=Hi%2C%20I%27m%20interested%20in%20H1%20General%20Paper%20tuition%20for%20my%20child.%20Could%20you%20share%20more%20details%20on%20the%20programme%20and%20available%20slots%3F" target="_blank" rel="noopener" class="prog-cta__btn prog-cta__btn--whatsapp">
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp Us
         </a>
@@ -13372,7 +13372,7 @@ import '../styles/global.css';
       <p class="prog-cta__sub">Book a free 20-minute diagnostic assessment. We&rsquo;ll review your child&rsquo;s recent Economics paper and identify specific areas for improvement &mdash; no obligation, no sales pitch.</p>
       <div class="prog-cta__actions">
         <a href="/contact/" class="prog-cta__btn prog-cta__btn--primary">Book Assessment</a>
-        <a href="https://wa.me/6583384033?text=Hi%2C%20I%27m%20interested%20in%20H2%20Economics%20tuition%20for%20my%20child.%20Could%20you%20share%20more%20details%20on%20the%20programme%20and%20available%20slots%3F" target="_blank" rel="noopener" class="prog-cta__btn prog-cta__btn--whatsapp">
+        <a href="https://wa.me/6589913181?text=Hi%2C%20I%27m%20interested%20in%20H2%20Economics%20tuition%20for%20my%20child.%20Could%20you%20share%20more%20details%20on%20the%20programme%20and%20available%20slots%3F" target="_blank" rel="noopener" class="prog-cta__btn prog-cta__btn--whatsapp">
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp Us
         </a>
@@ -14487,7 +14487,7 @@ import '../styles/global.css';
       <p class="r-cta-sub">Join the students who have transformed their English grades with A-Worthy. Book a free assessment today.</p>
       <div class="r-cta-actions">
         <a href="/contact/" class="r-btn-primary">Book Free Assessment</a>
-        <a href="https://wa.me/6583384033" class="r-btn-outline">WhatsApp Us</a>
+        <a href="https://wa.me/6589913181" class="r-btn-outline">WhatsApp Us</a>
       </div>
     </div>
   </section>
@@ -15896,7 +15896,7 @@ const testimonials = [
       <p class="t-cta-subtitle">Join the hundreds of families who trust A-Worthy. Book a free trial lesson and see the results for yourself.</p>
       <div class="t-cta-actions">
         <a href="/contact/" class="t-btn t-btn--primary">Book a Free Trial</a>
-        <a href="https://wa.me/6583384033" class="t-btn t-btn--outline" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/6589913181" class="t-btn t-btn--outline" target="_blank" rel="noopener noreferrer">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
@@ -17738,7 +17738,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
       : 'Enter your details and we’ll email "' + title + '" to you within 24 hours.';
 
     var waMessage = encodeURIComponent('Hi A-Worthy, I would like the full version of "' + title + '". Could you send it to me?');
-    var waUrl = 'https://wa.me/6583384033?text=' + waMessage;
+    var waUrl = 'https://wa.me/6589913181?text=' + waMessage;
 
     overlay.innerHTML =
       '<div class="resource-gate" role="dialog" aria-modal="true" aria-labelledby="resource-gate-title">' +
@@ -18714,7 +18714,7 @@ import '../styles/global.css';
             </div>
             <div class="form-group">
               <label for="phone">WhatsApp or phone number <span class="required">*</span></label>
-              <input type="tel" id="phone" name="phone" required placeholder="+65 8338 4033" />
+              <input type="tel" id="phone" name="phone" required placeholder="+65 8991 3181" />
             </div>
           </div>
 
@@ -18791,8 +18791,8 @@ import '../styles/global.css';
           <div>
             <h3>Reach Us</h3>
             <ul class="contact-details">
-              <li><strong>Phone:</strong> <a href="tel:+6583384033">+65 8338 4033</a></li>
-              <li><strong>WhatsApp:</strong> <a href="https://wa.me/6583384033">8338 4033</a></li>
+              <li><strong>Phone:</strong> <a href="tel:+6589913181">+65 8991 3181</a></li>
+              <li><strong>WhatsApp:</strong> <a href="https://wa.me/6589913181">8991 3181</a></li>
               <li><strong>Email:</strong> <a href="mailto:hello@aworthy.sg">hello@aworthy.sg</a></li>
             </ul>
           </div>
@@ -18841,7 +18841,7 @@ import '../styles/global.css';
           </div>
           <div class="form-group">
             <label for="trial-phone">WhatsApp number <span class="required">*</span></label>
-            <input type="tel" id="trial-phone" name="phone" required placeholder="+65 8338 4033" />
+            <input type="tel" id="trial-phone" name="phone" required placeholder="+65 8991 3181" />
           </div>
           <div class="form-group">
             <label for="trial-level">Student Level <span class="required">*</span></label>
@@ -18993,7 +18993,7 @@ import '../styles/global.css';
       <p class="eyebrow">Enrol Now</p>
       <h2 data-animate="reveal-up">Ready to start?</h2>
       <p class="cta-subtitle">Reach out on WhatsApp for the fastest response.</p>
-      <a href="https://wa.me/6583384033" class="btn btn-accent" target="_blank" rel="noopener noreferrer">
+      <a href="https://wa.me/6589913181" class="btn btn-accent" target="_blank" rel="noopener noreferrer">
         <span>
           <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Chat on WhatsApp
@@ -19807,7 +19807,7 @@ import '../styles/global.css';
         <p>We&rsquo;re building a dedicated platform for parents to stay informed and engaged. In the meantime, all enrolled families receive monthly progress updates via email.</p>
         <div class="portal-actions">
           <a href="/contact/" class="btn btn-accent">Enquire About Enrolment</a>
-          <a href="https://wa.me/6583384033" class="btn" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+          <a href="https://wa.me/6589913181" class="btn" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
         </div>
       </div>
     </div>
