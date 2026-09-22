@@ -42,7 +42,7 @@ src/
 │   ├── h1-general-paper.astro # H1 GP subject page (sticky TOC, schedule, related links)
 │   ├── o-level-english.astro # O-Level English subject page (sticky TOC, schedule, related links)
 │   ├── o-level-mathematics.astro # O-Level Mathematics subject page (sticky TOC, schedule, related links)
-│   ├── pre-ib-mathematics.astro # Pre-IB Mathematics (Year 3 & 4) subject page — garnet accent (#B0436A); calculus/first-principles SHARP content
+│   ├── pre-ib-mathematics.astro # Pre-IB Mathematics (Year 3 & 4) subject page — olive `--subject-preib` accent; calculus/first-principles SHARP content
 │   ├── l1r5-calculator.astro # Interactive L1R5 aggregate calculator (free tool)
 │   ├── jc-subject-combinations.astro # Interactive JC subject-combination advisor (free tool)
 │   ├── sharp-decoder.astro   # Beat-the-clock "pick the framework" game (free tool); fires confetti via window.aworthyCelebrate
@@ -370,7 +370,7 @@ Cards are real `<a href>` links, so every material is also its own standalone pa
 - **Students taught**: 500+
 - **Max class size**: 6 students (display as "6", never "6:1")
 - **Google rating**: 4.9
-- **O-Level Mathematics accent color**: #7B5EA7 (light), #9B7EC7 (dark)
+- **Subject accent colours**: every subject uses its LMS token from global.css (`--subject-english` / `-maths` / `-preib` / `-gp` / `-econ` / `-coaching`, each with a `-text` and `-tint` pair). Subject pages map them in their own `:root` (`--subject-accent: var(--subject-maths)`), never a literal — the old per-page hex accents (maths #7B5EA7, Pre-IB #B0436A, GP gold, English sky) are retired.
 - **SHARP step headings**: See, Hit, Apply, Refine, Practise — no time durations (e.g. not "See (5 min)")
 
 When changing any stat, grep the entire `src/` directory to update every occurrence — stats appear on the homepage, subject pages, results page, landing pages, about page, and chatbot widget in BaseLayout.
