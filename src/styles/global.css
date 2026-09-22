@@ -183,7 +183,7 @@
   --z-privacy: 999;
   --z-modal: 2000;
   --z-toast: 2100;
-  --z-scroll-progress: 9999;
+  --z-scroll-progress: 1990; /* above the header, floats and cookie notice; below modals — at 9999 it drew a red line across every open overlay */
 
   /* ── Safe area insets for notched devices ── */
   --safe-area-top: env(safe-area-inset-top, 0px);
@@ -710,6 +710,13 @@ li {
 }
 
 /* ===== Forms ===== */
+/* Form controls do not inherit the page font by default: any button, input,
+   select or textarea without its own font-family rendered in the browser's
+   (Arial on Chrome/Windows, system-ui on Apple) — another way the site showed
+   "another font" even with Nunito loaded. Family only, so size/weight rules on
+   individual controls are untouched. */
+button, input, select, textarea, optgroup { font-family: inherit; }
+
 input, textarea, select {
   font-family: var(--font-body);
   font-size: 1rem;
@@ -1300,6 +1307,9 @@ label {
   .container { max-width: 1800px; padding: 0 var(--space-2xl); }
   .section { padding: var(--space-3xl) 0; }
   .btn { padding: 1.1rem 2.5rem; font-size: 0.95rem; }
+  /* Same specificity and later than .btn--sm, so without this every compact pill
+     became a full-size button from 1921px up. */
+  .btn--sm { padding: 0.5rem 1.15rem; font-size: 0.85rem; }
 }
 
 /* Ultra-wide / 4K+ */
@@ -1869,7 +1879,7 @@ html {
 /* Before/After answer-sample proof component (shared across subject pages) */
 .ba-question { background: var(--bg-muted); border: 2px solid var(--color-ink); border-left-width: 6px; border-left-color: var(--color-accent); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin-bottom: 1.25rem; }
 .ba-q-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.35rem; }
-.ba-question p { color: var(--text-primary); font-size: 0.98rem; margin: 0; line-height: 1.55; }
+.ba-question p { color: var(--text-primary); font-size: 0.98rem; margin: 0; line-height: 1.55; max-width: 62ch; }
 .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 .ba-card { border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.25rem; background: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; }
 .ba-card--before { border-top: 6px solid var(--color-berry); }
@@ -1886,7 +1896,7 @@ html {
 .ba-mark { align-self: flex-start; margin-top: auto; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; }
 .ba-mark--before { color: var(--text-secondary); }
 .ba-mark--after { color: var(--tint-green-fg); }
-.ba-footnote { font-size: 0.78rem; color: var(--text-secondary); margin-top: 1rem; font-style: italic; max-width: 60ch; } /* ran 155–247 characters a line on laptops */
+.ba-footnote { font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem; font-style: italic; max-width: 60ch; } /* ran 155–247 characters a line on laptops */
 @media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════════════════════════════

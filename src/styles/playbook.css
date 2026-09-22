@@ -95,9 +95,9 @@
   line-height: 1.5;
 }
 
-/* 901–1024 (iPad landscape): the six column minimums above need ~890px and the
-   container has 817–880, so overflow:hidden clipped the Practise column. */
-@media (min-width: 901px) and (max-width: 1024px) {
+/* 901–1100 (iPad landscape and just above): the six column minimums above need
+   ~890px plus padding, so overflow:hidden clipped the Practise column up to ~1040px. */
+@media (min-width: 901px) and (max-width: 1100px) {
   .playbook-matrix { grid-template-columns: minmax(150px, 1.3fr) repeat(5, minmax(0, 1fr)); }
 }
 

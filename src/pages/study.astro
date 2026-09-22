@@ -396,8 +396,21 @@ const count = materials.length;
       "@font-face{font-family:'Nunito';font-style:italic;font-weight:200 1000;font-display:swap;src:url('/fonts/nunito-latin-wght-italic.woff2') format('woff2')}" +
       '</style>';
 
+    /*
+     * Hand the site's current theme to the material, so a reader who picked
+     * dark with the header toggle on a light-mode device doesn't get a bright
+     * page inside a dark site. Materials style both :root[data-theme="dark"]
+     * and their prefers-color-scheme block (see public/study/*.html).
+     */
+    function themeScript() {
+      var t = document.documentElement.getAttribute('data-theme');
+      return (t === 'dark' || t === 'light')
+        ? '<script>document.documentElement.dataset.theme=' + JSON.stringify(t) + '<\/script>'
+        : '';
+    }
+
     function prepareDoc(html) {
-      var head = '<base href="/study/">' + FONT_FACES;
+      var head = '<base href="/study/">' + themeScript() + FONT_FACES;
       var out = /<head[^>]*>/i.test(html)
         ? html.replace(/<head([^>]*)>/i, '<head$1>' + head)
         : head + html;
