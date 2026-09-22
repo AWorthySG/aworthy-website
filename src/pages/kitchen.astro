@@ -5,14 +5,18 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 // Each "station" = a subject. Cook it to plate up the dish (the result),
-// then a link to the real subject page appears. Colours echo each
-// subject's identity accent.
+// then a link to the real subject page appears. Colours are the LMS subject
+// tokens from global.css (theme-aware): `color` is the stroke token (pot fill,
+// cooked outline) passed in as --st, and `text` is the matching `-text` token
+// (AA on the white plated card) passed in as --st-text. The ingredient
+// separator is a literal U+00B7: an `&middot;` entity inside a {} expression
+// is HTML-escaped by Astro and printed verbatim.
 const stations = [
-  { key: 'eng', subject: 'O-Level English', short: 'English', href: '/o-level-english/', color: '#3B7DD8', ingredients: ['Comprehension', 'Composition', 'Oral'], dish: 'A1 Essay' },
-  { key: 'math', subject: 'O-Level Maths', short: 'Maths', href: '/o-level-mathematics/', color: '#7B5EA7', ingredients: ['Algebra', 'Trigonometry', 'Statistics'], dish: 'A1 Paper' },
-  { key: 'preib', subject: 'Pre-IB Maths', short: 'Pre-IB', href: '/pre-ib-mathematics/', color: '#B0436A', ingredients: ['Surds', 'Logarithms', 'Calculus'], dish: 'Top Set' },
-  { key: 'gp', subject: 'H1 General Paper', short: 'GP', href: '/h1-general-paper/', color: '#4A8C6F', ingredients: ['Argument', 'Evidence', 'Evaluation'], dish: 'Band 1' },
-  { key: 'econs', subject: 'H2 Economics', short: 'Econs', href: '/h2-economics/', color: '#2B8A8A', ingredients: ['Diagrams', 'Essays', 'Case Studies'], dish: 'Distinction' },
+  { key: 'eng', subject: 'O-Level English', short: 'English', href: '/o-level-english/', color: 'var(--subject-english)', text: 'var(--subject-english-text)', ingredients: ['Comprehension', 'Composition', 'Oral'], dish: 'A1 Essay' },
+  { key: 'math', subject: 'O-Level Maths', short: 'Maths', href: '/o-level-mathematics/', color: 'var(--subject-maths)', text: 'var(--subject-maths-text)', ingredients: ['Algebra', 'Trigonometry', 'Statistics'], dish: 'A1 Paper' },
+  { key: 'preib', subject: 'Pre-IB Maths', short: 'Pre-IB', href: '/pre-ib-mathematics/', color: 'var(--subject-preib)', text: 'var(--subject-preib-text)', ingredients: ['Surds', 'Logarithms', 'Calculus'], dish: 'Top Set' },
+  { key: 'gp', subject: 'H1 General Paper', short: 'GP', href: '/h1-general-paper/', color: 'var(--subject-gp)', text: 'var(--subject-gp-text)', ingredients: ['Argument', 'Evidence', 'Evaluation'], dish: 'Band 1' },
+  { key: 'econs', subject: 'H2 Economics', short: 'Econs', href: '/h2-economics/', color: 'var(--subject-econ)', text: 'var(--subject-econ-text)', ingredients: ['Diagrams', 'Essays', 'Case Studies'], dish: 'Distinction' },
 ];
 const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
 ---
@@ -26,7 +30,7 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
   <section class="k-hero">
     <div class="container">
       <span class="eyebrow">The A-Worthy Kitchen</span>
-      <h1 class="k-title">Cooking up A&rsquo;s,<br />one method at a time</h1>
+      <h1 class="k-title">Cooking up <span class="accent-word">A&rsquo;s</span>,<br /> one method at a time</h1>
       <p class="k-sub">Every great grade is a recipe: the right ingredients, the right method, plated under pressure. Tap a station to cook a subject with the <strong>SHARP</strong> recipe and plate up your A.</p>
     </div>
   </section>
@@ -44,7 +48,7 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
       <div class="k-floor">
         <div class="k-stations">
           {stations.map((s) => (
-            <div class="k-station" style={`--st: ${s.color};`} data-key={s.key}>
+            <div class="k-station" style={`--st: ${s.color}; --st-text: ${s.text};`} data-key={s.key}>
               <button type="button" class="k-pot" aria-pressed="false" aria-label={`Cook the ${s.subject} station`}>
                 <span class="k-steam" aria-hidden="true"><i></i><i></i><i></i></span>
                 <svg class="k-pot__svg" viewBox="0 0 120 96" aria-hidden="true">
@@ -55,8 +59,8 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
                   <rect x="100" y="44" width="14" height="9" rx="4.5" fill="var(--st)"/>
                   <ellipse class="k-pot__brew" cx="60" cy="40" rx="42" ry="9" fill="rgba(0,0,0,0.18)"/>
                   <g class="k-pot__lid">
-                    <rect x="10" y="24" width="100" height="13" rx="6.5" fill="#2A2A38"/>
-                    <circle cx="60" cy="20" r="6" fill="#C9A84C"/>
+                    <rect x="10" y="24" width="100" height="13" rx="6.5" fill="var(--text-primary)"/>
+                    <circle cx="60" cy="20" r="6" fill="var(--color-sun)"/>
                   </g>
                 </svg>
                 <span class="k-pot__name">{s.short}</span>
@@ -65,8 +69,8 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
               <div class="k-card" hidden>
                 <span class="k-card__dish" aria-hidden="true">🍽️</span>
                 <strong class="k-card__title">{s.dish} &mdash; plated!</strong>
-                <span class="k-card__ing">{s.ingredients.join(' &middot; ')}</span>
-                <a class="k-card__cta" href={s.href}>Cook this for real &mdash; {s.subject} &rarr;</a>
+                <span class="k-card__ing">{s.ingredients.join(' · ')}</span>
+                <a class="k-card__cta" href={s.href}>Cook this for real &mdash; {s.subject}&nbsp;&rarr;</a>
               </div>
             </div>
           ))}
@@ -85,12 +89,12 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
 
       <!-- win banner -->
       <div class="k-win" id="k-win" hidden>
-        <img src="/images/mascots/mascot-icecream.webp" alt="" width="297" height="420" class="k-win__mascot sticker" />
+        <img src="/images/mascots/mascot-icecream.webp" alt="" width="297" height="420" class="k-win__mascot sticker" loading="lazy" />
         <h2 class="k-win__title">Full A-grade menu plated! 🎉</h2>
         <p class="k-win__sub">That&rsquo;s the SHARP Method in a nutshell &mdash; the right framework for every order. Ready to cook the real thing?</p>
         <div class="k-win__actions">
           <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
-          <a href="/sharp-decoder/" class="k-win__link">Or play the Kitchen Rush &rarr;</a>
+          <a href="/sharp-decoder/" class="btn k-win__link">Or play the Kitchen Rush &rarr;</a>
         </div>
       </div>
     </div>
@@ -108,53 +112,68 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
 
 <style>
   .k-hero { padding: 1.75rem 0 0.5rem; text-align: center; }
-  .k-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; line-height: 1.05; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .k-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 900; line-height: 1.05; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  @media (max-width: 480px) {
+    /* phone: the hard break plus natural wrapping orphaned "time" on a third line — drop the break, step down to
+       the sitewide phone h1 size so "Cooking up A's, one / method at a time" holds to two lines, and balance the rest */
+    .k-title { font-size: clamp(1.9rem, 8.5vw, 2.4rem); text-wrap: balance; }
+    .k-title br { display: none; }
+  }
   .k-sub { font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
-  .k-sub strong { color: var(--color-accent); }
+  .k-sub strong { color: var(--color-accent-text); }
 
   .k-stage-wrap { padding: 1.5rem 0 2.5rem; }
 
-  /* Order ticket / HUD */
-  .k-ticket { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; justify-content: center; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 999px; padding: 0.6rem 1.4rem; max-width: 560px; margin: 0 auto 1.75rem; box-shadow: 0 6px 0 var(--border-color); }
-  .k-ticket__label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
+  /* Order ticket / HUD — an ink-outlined pill on a hard shadow */
+  .k-ticket { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; justify-content: center; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-pill); padding: 0.6rem 1.4rem; max-width: 560px; margin: 0 auto 1.75rem; box-shadow: 0 4px 0 var(--ink-shadow); }
+  .k-ticket__label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); }
   .k-ticket__count { font-weight: 800; color: var(--text-primary); }
-  #k-plated { color: var(--color-accent); }
+  #k-plated { color: var(--color-accent-text); }
   .k-ticket__hint { font-size: 0.85rem; color: var(--text-secondary); }
 
-  /* Kitchen floor — warm tiled surface */
+  /* Kitchen floor — sand tiles inside an ink outline (theme-aware decor strokes) */
   .k-floor {
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--radius-md);
     padding: 2rem 1rem;
     background:
-      repeating-linear-gradient(45deg, rgba(212,133,58,0.05) 0 14px, transparent 14px 28px),
-      repeating-linear-gradient(-45deg, rgba(43,90,140,0.04) 0 14px, transparent 14px 28px),
+      repeating-linear-gradient(45deg, var(--decor-warm) 0 14px, transparent 14px 28px),
+      repeating-linear-gradient(-45deg, var(--decor-cool) 0 14px, transparent 14px 28px),
       var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--color-ink);
   }
-  .k-stations { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1040px; margin: 0 auto; }
-  @media (max-width: 880px) { .k-stations { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 520px) { .k-stations { grid-template-columns: repeat(2, 1fr); } }
+  .k-stations { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; max-width: 1040px; margin: 0 auto; }
+  /* three-up on tablets: a 6-track grid lets the trailing pair sit centred
+     instead of leaving a bare gingham cell at the right of row two */
+  @media (min-width: 521px) and (max-width: 880px) {
+    .k-stations { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .k-station { grid-column: span 2; }
+    .k-station:nth-child(4) { grid-column: 2 / span 2; }
+    .k-station:nth-child(5) { grid-column: 4 / span 2; }
+  }
+  @media (max-width: 520px) {
+    .k-stations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* five pots in two columns leave the last one alone — centre it instead of an empty cell beside it */
+    .k-station:nth-child(5) { grid-column: 1 / -1; width: calc(50% - 0.5rem); margin: 0 auto; }
+  }
 
   .k-station { display: flex; flex-direction: column; align-items: center; }
 
-  /* The pot = a chunky 3D press-button */
+  /* The pot = a chunky sticker press-button: white, 2px ink, hard offset shadow */
   .k-pot {
     position: relative;
     width: 100%;
     background: var(--bg-card);
-    border: 2px solid var(--st); /* fallback */
-    border: 2px solid color-mix(in srgb, var(--st) 35%, var(--border-color));
-    border-radius: 18px;
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     padding: 1.4rem 0.6rem 0.9rem;
     cursor: pointer;
     display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
-    box-shadow: 0 8px 0 var(--st); /* fallback */
-    box-shadow: 0 8px 0 color-mix(in srgb, var(--st) 30%, var(--bg-secondary));
-    transition: transform 0.25s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)), box-shadow 0.25s;
+    box-shadow: 0 6px 0 var(--ink-shadow);
+    transition: transform 0.25s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)), box-shadow 0.25s, border-color 0.25s;
   }
-  .k-pot:hover { transform: translateY(-4px); box-shadow: 0 12px 0 color-mix(in srgb, var(--st) 30%, var(--bg-secondary)); }
-  .k-pot:active { transform: translateY(2px); box-shadow: 0 4px 0 color-mix(in srgb, var(--st) 30%, var(--bg-secondary)); }
-  .k-pot:focus-visible { outline: 3px solid var(--st); outline-offset: 3px; }
+  .k-pot:hover { transform: translateY(-4px); box-shadow: 0 10px 0 var(--ink-shadow), 0 14px 24px rgba(70, 50, 20, 0.10); }
+  .k-pot:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ink-shadow); }
+  .k-pot:focus-visible { outline: none; border-color: var(--color-accent); box-shadow: 0 6px 0 var(--ink-shadow), 0 0 0 3px var(--color-accent-soft); }
   .k-pot__svg { width: 84px; height: auto; overflow: visible; }
   .k-pot__shadow { fill: rgba(0,0,0,0.08); }
   .k-pot__name { font-weight: 800; font-size: 0.9rem; color: var(--text-primary); }
@@ -163,40 +182,40 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
   .k-pot__lid { transform-origin: 60px 30px; transition: transform 0.3s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
   .k-pot:hover .k-pot__lid { transform: translateY(-4px) rotate(-3deg); }
   .k-station.is-cooked .k-pot__lid { transform: translateY(-10px) rotate(-8deg); }
-  .k-station.is-cooked .k-pot { border-color: var(--st); box-shadow: 0 8px 0 var(--st); }
+  /* a cooked pot takes its subject colour for the outline + shadow */
+  .k-station.is-cooked .k-pot { border-color: var(--st); box-shadow: 0 6px 0 var(--st); }
 
   /* steam */
   .k-steam { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); display: flex; gap: 9px; opacity: 0; }
   .k-steam i { width: 7px; height: 7px; border-radius: 50%; background: var(--st); background: color-mix(in srgb, var(--st) 45%, #fff); }
   .k-pot:hover .k-steam, .k-station.is-cooked .k-steam { opacity: 1; }
 
-  /* plated card */
-  .k-card { margin-top: 0.75rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; animation: k-pop 0.4s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
+  /* plated card — a white sticker body (LMS subject card), never type straight on the gingham floor */
+  .k-card { width: 100%; margin-top: 0.75rem; padding: 0.75rem 0.6rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); animation: k-pop 0.4s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
   .k-card__dish { font-size: 1.6rem; }
-  .k-card__title { font-size: 0.9rem; color: var(--st); }
-  .k-card__ing { font-size: 0.72rem; color: var(--text-muted); }
-  .k-card__cta { font-size: 0.78rem; font-weight: 700; color: var(--st); text-decoration: none; margin-top: 0.25rem; }
+  .k-card__title { font-size: 0.9rem; font-weight: 800; color: var(--st-text); }
+  .k-card__ing { font-size: 0.72rem; color: var(--text-secondary); }
+  /* red action-text link on the white plate (a pill wraps to four lines on a phone plate); padded to a ≥40px tap box */
+  .k-card__cta { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; margin-top: 0.35rem; padding: 0.4rem 0.25rem; font-size: 0.85rem; font-weight: 700; line-height: 1.35; color: var(--color-accent-text); text-decoration: none; }
   .k-card__cta:hover { text-decoration: underline; }
   @keyframes k-pop { from { opacity: 0; transform: scale(0.7) translateY(6px); } to { opacity: 1; transform: none; } }
 
-  /* recipe strip */
+  /* recipe strip — ink-outlined pills with a red step number */
   .k-recipe { max-width: 1040px; margin: 1.75rem auto 0; text-align: center; }
-  .k-recipe__label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
+  .k-recipe__label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); }
   .k-recipe__steps { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; padding: 0.6rem 0 0; margin: 0; }
-  .k-recipe__step { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; font-weight: 700; font-size: 0.85rem; color: var(--text-primary); }
-  .k-recipe__num { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--color-accent); color: #fff; font-size: 0.72rem; }
+  .k-recipe__step { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-pill); box-shadow: 0 3px 0 var(--ink-shadow); padding: 0.4rem 0.9rem; font-weight: 800; font-size: 0.85rem; color: var(--text-primary); }
+  .k-recipe__num { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--color-accent); border: 1.5px solid var(--color-ink); color: #fff; font-size: 0.72rem; font-weight: 800; }
 
-  /* win banner */
-  .k-win { max-width: 600px; margin: 1.75rem auto 0; text-align: center; background: var(--bg-card); border: 2px solid var(--color-accent); border-radius: var(--border-radius-lg); padding: 1.5rem; box-shadow: 0 10px 0 color-mix(in srgb, var(--color-accent) 30%, var(--bg-secondary)); animation: k-pop 0.5s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
+  /* win banner — a white sticker card on a hard ink shadow */
+  .k-win { max-width: 600px; margin: 1.75rem auto 0; text-align: center; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: 0 6px 0 var(--ink-shadow); animation: k-pop 0.5s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
   .k-win__mascot { height: 88px; width: auto; margin: 0 auto 0.5rem; }
-  .k-win__title { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
+  .k-win__title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.5rem; }
   .k-win__sub { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
-  .k-win__actions { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; }
-  .k-win__link { color: var(--color-accent); font-weight: 700; text-decoration: none; }
-  .k-win__link:hover { text-decoration: underline; }
+  .k-win__actions { display: flex; gap: 0.75rem; align-items: center; justify-content: center; flex-wrap: wrap; }
 
   .k-explainer { text-align: center; }
-  .k-explainer a { color: var(--color-accent); }
+  .k-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
   @media (prefers-reduced-motion: reduce) {
     .k-pot, .k-pot__lid, .k-card, .k-win { transition: none; animation: none; }

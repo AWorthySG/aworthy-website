@@ -13,7 +13,7 @@ import '../styles/global.css';
   <section class="hero about-hero">
     <div class="hero-content">
       <span class="eyebrow">About A-Worthy</span>
-      <h1>Singapore&rsquo;s analytical tuition centre &mdash; where legal precision meets academic results</h1>
+      <h1>Singapore&rsquo;s analytical tuition centre &mdash; where legal precision meets academic <span class="accent-word">results</span></h1>
     </div>
   </section>
 
@@ -38,7 +38,7 @@ import '../styles/global.css';
       <div class="story-layout">
         <div class="story-text" data-animate="reveal-up">
           <span class="eyebrow">Our Story</span>
-          <h2>A letter from our founder</h2>
+          <h2 class="squiggle">A letter from our founder</h2>
           <p>Dear parents,</p>
           <p>
             People ask me why I left law to teach tuition. The honest answer is I didn&rsquo;t really leave &mdash; I just found a better use for the training.
@@ -87,17 +87,6 @@ import '../styles/global.css';
         </div>
         <aside class="founder-card" data-animate="reveal-up">
           <div class="founder-card__photo" aria-label="Jeremy Lim, Founder of A-Worthy">
-            <svg aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="founder-gradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="rgba(212, 133, 58, 0.15)" />
-                  <stop offset="100%" stop-color="rgba(43, 90, 140, 0.12)" />
-                </linearGradient>
-              </defs>
-              <rect width="200" height="200" rx="100" fill="url(#founder-gradient)"/>
-              <circle cx="100" cy="80" r="32" fill="rgba(43, 90, 140, 0.2)"/>
-              <ellipse cx="100" cy="155" rx="50" ry="38" fill="rgba(43, 90, 140, 0.15)"/>
-            </svg>
             <span class="founder-card__initials">JL</span>
           </div>
           <div class="founder-card__body">
@@ -118,54 +107,83 @@ import '../styles/global.css';
   <!-- ===== WHAT WE TEACH ===== -->
   <section class="section subjects">
     <div class="container">
-      <div class="subjects-head">
-        <div>
-          <span class="eyebrow" data-animate="reveal-up">What We Teach</span>
-          <h2 data-animate="reveal-up">Five subjects, one proven tuition framework</h2>
-        </div>
-        <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="subjects-head__sticker sticker sticker--right" loading="lazy" />
-      </div>
+      <span class="eyebrow" data-animate="reveal-up">What We Teach</span>
+      <h2 class="squiggle" data-animate="reveal-up">Five subjects, one proven tuition framework</h2>
 
-      <div class="values-grid">
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="1">
-          <h3>O-Level English</h3>
-          <p>
-            For Sec 1&ndash;4 students. Comprehension, composition, oral, and editing &mdash;
-            every component taught through the SHARP Method, with paper-matched frameworks at the Hit step. Foundation and intensive programmes available.
-          </p>
+      <!-- LMS "Your subjects" grid: each card is a global .subject-card — the
+           tinted .subject-panel holds the subject sticker above a dashed
+           divider, then the title (with its subject dot) and description.
+           Cards keep the ink border; the panel tint carries the subject. -->
+      <div class="subjects-grid">
+        <div class="subject-card subject--english" data-animate="reveal-up" data-animate-delay="1">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>O-Level English</h3>
+            <p>
+              For Sec 1&ndash;4 students. Comprehension, composition, oral, and editing &mdash;
+              every component taught through the SHARP Method, with paper-matched frameworks at the Hit step. Foundation and intensive programmes available.
+            </p>
+          </div>
         </div>
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="2">
-          <h3>O-Level Mathematics</h3>
-          <p>
-            For Sec 1&ndash;4 students. Algebra, geometry, trigonometry, functions, statistics, and probability &mdash; each topic area taught with a named framework (READ, LABEL, PLOT, DATA, RULE, SHOW) that maps directly to the 4048 mark scheme.
-          </p>
+        <div class="subject-card subject--maths" data-animate="reveal-up" data-animate-delay="2">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>O-Level Mathematics</h3>
+            <p>
+              For Sec 1&ndash;4 students. Algebra, geometry, trigonometry, functions, statistics, and probability &mdash; each topic area taught with a named framework (READ, LABEL, PLOT, DATA, RULE, SHOW) that maps directly to the 4048 mark scheme.
+            </p>
+          </div>
         </div>
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="3">
-          <h3>Pre-IB Mathematics</h3>
-          <p>
-            For Year 3 &amp; Year 4 (pre-IB) students. Indices, surds, algebra, logarithms, trigonometry, and an introduction to calculus &mdash; taught with the SHARP Method and annotated, line-by-line working that IB examiners reward.
-          </p>
+        <div class="subject-card subject--preib" data-animate="reveal-up" data-animate-delay="3">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>Pre-IB Mathematics</h3>
+            <p>
+              For Year 3 &amp; Year 4 (pre-IB) students. Indices, surds, algebra, logarithms, trigonometry, and an introduction to calculus &mdash; taught with the SHARP Method and annotated, line-by-line working that IB examiners reward.
+            </p>
+          </div>
         </div>
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="4">
-          <h3>H1 General Paper</h3>
-          <p>
-            For JC 1&ndash;2 students. Essay argumentation, comprehension, and AQ mastery across all
-            12 content themes. The SHARP Method&rsquo;s analytical roots make it a natural fit for GP.
-          </p>
+        <div class="subject-card subject--gp" data-animate="reveal-up" data-animate-delay="4">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>H1 General Paper</h3>
+            <p>
+              For JC 1&ndash;2 students. Essay argumentation, comprehension, and AQ mastery across all
+              12 content themes. The SHARP Method&rsquo;s analytical roots make it a natural fit for GP.
+            </p>
+          </div>
         </div>
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="5">
-          <h3>H2 Economics</h3>
-          <p>
-            For JC 1&ndash;2 students. Diagram precision, essay technique, and case study mastery
-            covering the full 9570 syllabus. Analytical rigour applied to economic reasoning.
-          </p>
+        <div class="subject-card subject--econ" data-animate="reveal-up" data-animate-delay="5">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>H2 Economics</h3>
+            <p>
+              For JC 1&ndash;2 students. Diagram precision, essay technique, and case study mastery
+              covering the full 9570 syllabus. Analytical rigour applied to economic reasoning.
+            </p>
+          </div>
         </div>
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="6">
-          <h3>One-to-One Coaching</h3>
-          <p>
-            Available across all five subjects. Fully customised to the student&rsquo;s specific gaps,
-            with flexible scheduling and personalised feedback every session.
-          </p>
+        <div class="subject-card subject--coaching" data-animate="reveal-up" data-animate-delay="6">
+          <div class="subject-panel subject-panel--sm" aria-hidden="true">
+            <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="sticker" loading="lazy" />
+          </div>
+          <div class="subject-card__body">
+            <h3><span class="subject-dot" aria-hidden="true"></span>One-to-One Coaching</h3>
+            <p>
+              Available across all five subjects. Fully customised to the student&rsquo;s specific gaps,
+              with flexible scheduling and personalised feedback every session.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -175,17 +193,12 @@ import '../styles/global.css';
   <section class="section team">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">The Founder</span>
-      <h2 data-animate="reveal-up">Legal mind, teaching heart</h2>
+      <h2 class="squiggle" data-animate="reveal-up">Legal mind, teaching heart</h2>
 
       <div class="founder-profile" data-animate="reveal-up">
         <div class="founder-photo-wrap">
           <div class="founder-photo-placeholder" role="img" aria-label="Founder photo">
-            <svg aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
-              <rect width="200" height="200" rx="100" fill="rgba(43,90,140,0.08)"/>
-              <circle cx="100" cy="75" r="35" fill="rgba(43,90,140,0.15)"/>
-              <ellipse cx="100" cy="155" rx="55" ry="40" fill="rgba(43,90,140,0.12)"/>
-              <text x="100" y="195" text-anchor="middle" font-family="Nunito, sans-serif" font-size="10" fill="rgba(43,90,140,0.4)" letter-spacing="0.1em">PHOTO</text>
-            </svg>
+            <span class="founder-photo-initials" aria-hidden="true">JL</span>
           </div>
           <div class="founder-signature" aria-hidden="true">Jeremy Lim</div>
         </div>
@@ -194,9 +207,9 @@ import '../styles/global.css';
           <h3>Jeremy Lim &mdash; NUS Law Graduate &amp; Educator</h3>
           <p>With a law degree from NUS and years of direct teaching experience, Jeremy asked a simple question: why do law students learn to think so precisely, but secondary and JC students are told to &ldquo;just practise more&rdquo;? The answer became the SHARP Method &mdash; a five-step system (See, Hit, Apply, Refine, Practise) that distils legal-analytical rigour into a repeatable framework any student can master. Paper-matched frameworks are deployed at the Hit step, producing the kind of structured thinking that examiners reward with top grades.</p>
           <div class="founder-credentials">
-            <span class="founder-credential"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> NUS Faculty of Law</span>
-            <span class="founder-credential"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 500+ Students Taught</span>
-            <span class="founder-credential"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> SHARP Method Creator</span>
+            <span class="founder-credential chip chip--green"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> NUS Faculty of Law</span>
+            <span class="founder-credential chip chip--blue"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 500+ Students Taught</span>
+            <span class="founder-credential chip chip--gold"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> SHARP Method Creator</span>
           </div>
         </div>
       </div>
@@ -207,28 +220,28 @@ import '../styles/global.css';
   <section class="section values">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Our Values</span>
-      <h2 data-animate="reveal-up">The pillars that define who we are</h2>
+      <h2 class="squiggle" data-animate="reveal-up">The pillars that define who we are</h2>
 
       <div class="values-grid">
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="1">
+        <div class="value-item" data-animate="reveal-up" data-animate-delay="1">
           <h3>Analytical Precision</h3>
           <p>
             Other tuition centres teach content. We teach the thinking process behind the content. The same rigour that trains lawyers to win cases trains your child to win marks &mdash; systematically, across every exam component.
           </p>
         </div>
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="2">
+        <div class="value-item" data-animate="reveal-up" data-animate-delay="2">
           <h3>Proven Results</h3>
           <p>
             90% A1&ndash;B3 rate. Students going from D7 to A2 in three months. We don&rsquo;t make vague promises &mdash; we track every student&rsquo;s progress against official marking criteria and show you the numbers.
           </p>
         </div>
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="3">
+        <div class="value-item" data-animate="reveal-up" data-animate-delay="3">
           <h3>Small Groups</h3>
           <p>
             Six students maximum. No exceptions. Your child can&rsquo;t be invisible in a class this small &mdash; they get live feedback on their work every session, and the tutor knows their specific strengths and weaknesses by name.
           </p>
         </div>
-        <div class="value-item card--accent-left" data-animate="reveal-up" data-animate-delay="4">
+        <div class="value-item" data-animate="reveal-up" data-animate-delay="4">
           <h3>The SHARP Method</h3>
           <p>
             See, Hit, Apply, Refine, Practise &mdash; five steps your child follows for every question, every subject, every exam. Paper-matched frameworks are deployed at the Hit step, giving students precise tools for each paper type. It&rsquo;s not a gimmick; it&rsquo;s a repeatable system that compounds over time, turning analytical thinking into exam results.
@@ -245,7 +258,7 @@ import '../styles/global.css';
   <section class="section centres">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Online Delivery</span>
-      <h2 data-animate="reveal-up">100% Online Delivery</h2>
+      <h2 class="squiggle" data-animate="reveal-up">100% Online Delivery</h2>
 
       <div class="centres-grid">
         <div class="centre-card card--elevated" data-animate="reveal-up">
@@ -263,11 +276,11 @@ import '../styles/global.css';
   <section class="section cta">
     <div class="container cta-inner">
       <span class="eyebrow" data-animate="reveal-up">Get Started</span>
-      <h2 data-animate="reveal-up">Book a free diagnostic assessment</h2>
+      <h2 class="squiggle squiggle--center" data-animate="reveal-up">Book a free diagnostic assessment</h2>
       <p class="cta-desc">
         A 20-minute session analysing your child&rsquo;s recent paper &mdash; English, Maths, GP, or Economics.
       </p>
-      <a href="/contact/" class="cta-button">Book Free Assessment</a>
+      <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
     </div>
   </section>
 
@@ -295,41 +308,17 @@ import '../styles/global.css';
 </BaseLayout>
 
 <style>
-  /* ===== DESIGN TOKENS ===== */
-  :root {
-    --about-bg: var(--bg-primary);
-    --about-bg-alt: var(--bg-secondary);
-    --about-white: #ffffff;
-    --about-gray: var(--text-secondary);
-    --about-border: var(--border-color);
-    --about-accent: var(--color-accent);
-    --about-font: var(--font-body);
-    --about-mono: var(--font-mono);
-  }
-
-  /* ===== EYEBROW ===== */
-  .eyebrow {
-    display: inline-block;
-    font-family: var(--about-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-accent-text);
-    margin-bottom: 1.25rem;
-  }
-
   /* ===== HERO ===== */
   .hero {
     width: 100%;
     display: flex;
     align-items: center;
-    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-primary);
     padding: 1.75rem 0;
     text-align: center;
   }
 
+  /* Soft pastel washes, like the LMS login page — sun top-right, sky bottom-left */
   .about-hero { position: relative; overflow: hidden; }
   .about-hero::before {
     content: '';
@@ -339,12 +328,9 @@ import '../styles/global.css';
     width: 520px;
     height: 520px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(212, 133, 58, 0.10) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(245, 184, 46, 0.12) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
-  }
-  :global([data-theme="dark"]) .about-hero::before {
-    background: radial-gradient(circle, rgba(224, 152, 80, 0.10) 0%, transparent 70%);
   }
   .about-hero::after {
     content: '';
@@ -354,8 +340,14 @@ import '../styles/global.css';
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(212, 133, 58, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(95, 174, 227, 0.10) 0%, transparent 70%);
     pointer-events: none;
+  }
+  :global([data-theme="dark"]) .about-hero::before {
+    background: radial-gradient(circle, rgba(245, 184, 46, 0.07) 0%, transparent 70%);
+  }
+  :global([data-theme="dark"]) .about-hero::after {
+    background: radial-gradient(circle, rgba(95, 174, 227, 0.06) 0%, transparent 70%);
   }
   .about-hero > * {
     position: relative;
@@ -370,9 +362,9 @@ import '../styles/global.css';
   }
 
   .hero-content h1 {
-    font-family: var(--about-font);
+    font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800;
+    font-weight: 900;
     line-height: 1.15;
     color: var(--text-primary);
     max-width: 700px;
@@ -382,36 +374,33 @@ import '../styles/global.css';
 
   /* ===== SECTIONS ===== */
   .section {
-    background: var(--about-bg);
+    background: var(--bg-primary);
     padding: 1.75rem 0;
   }
 
   .section:nth-child(even) {
-    background: var(--about-bg-alt);
+    background: var(--bg-secondary);
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
+  /* .container is the global one — same gutter (--page-padding) as the rest
+     of the site, so the SharpWalkthrough block lines up with every section */
 
   .section h2 {
-    font-family: var(--about-font);
+    font-family: var(--font-heading);
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 800;
     color: var(--text-primary);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     line-height: 1.2;
-    margin: 0 0 3rem;
+    margin: 0 0 2rem;
     max-width: 600px;
   }
 
   .section p {
-    font-family: var(--about-font);
+    font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.75;
-    color: var(--about-gray);
+    color: var(--text-secondary);
     margin: 0 0 1.25rem;
   }
 
@@ -423,53 +412,86 @@ import '../styles/global.css';
   .story-text h2 {
     max-width: 100%;
   }
-
-  /* ===== VALUES ===== */
-  .subjects-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
+  /* The founder letter is the page's primary long-form copy — body colour,
+     not the grey reserved for card descriptions and meta text */
+  .story-text p {
+    color: var(--text-primary);
   }
-  .subjects-head__sticker {
-    flex-shrink: 0;
-    width: 130px;
+
+  /* ===== WHAT WE TEACH — the LMS "Your subjects" grid ===== */
+  /* 3×2 at desktop, 2 columns on tablets, 1 on phones. The global
+     .subject-card / .subject-panel--sm rules draw the ink card, the tinted
+     panel with the sticker and the dashed divider; only the body type is
+     page-specific. */
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  @media (max-width: 1023px) {
+    .subjects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
-    .subjects-head__sticker { display: none; }
+    .subjects-grid { grid-template-columns: minmax(0, 1fr); }
   }
 
+  /* Size the sticker by height, not width, so every panel in a row is the
+     same depth — the teacher pose is a wider crop than the subject stickers
+     and would otherwise render ~18px shorter, stepping the dashed divider. */
+  .subjects-grid .subject-panel--sm img {
+    height: 128px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .subject-card__body h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .subject-card__body h3 .subject-dot {
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid var(--color-ink);
+  }
+
+  .subject-card__body p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  /* ===== VALUES ===== */
   .values-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
 
+  /* White ink cards; rest shadow + hover lift come from the global .value-item rules */
   .value-item {
     background: var(--bg-card);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     padding: 1.5rem;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  @media (hover: hover) {
-    .value-item:hover {
-      transform: translateY(-3px);
-      border-color: rgba(26, 42, 58, 0.12);
-    }
   }
 
   .value-item h3 {
-    font-family: var(--about-font);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
     font-size: 1.1rem;
-    font-weight: 300;
+    font-weight: 800;
     color: var(--text-primary);
     margin: 0 0 0.75rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.01em;
   }
 
   .value-item p {
@@ -477,47 +499,58 @@ import '../styles/global.css';
     line-height: 1.7;
   }
 
-  /* ===== CENTRES ===== */
+  /* ===== CENTRES (online delivery) — global .card--elevated draws the ink card ===== */
+  /* One card that fills the band — capping it at 680px left the right half of
+     the section empty next to the full-width subject and values grids. */
   .centres-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
+  }
+  /* Explicit band colours after the (cream) SharpWalkthrough so the page keeps
+     alternating: values (sand) → walkthrough (cream) → online delivery (sand)
+     → CTA (cream) → footer (sand). */
+  .section.centres {
+    background: var(--bg-secondary);
   }
 
   .centre-card {
-    background: var(--bg-card);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
     padding: 1.5rem;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  @media (hover: hover) {
-    .centre-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(26, 42, 58, 0.12);
-    }
   }
 
   .centre-card h3 {
-    font-family: var(--about-font);
+    font-family: var(--font-heading);
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 800;
     color: var(--text-primary);
     margin: 0 0 0.5rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.01em;
   }
 
   .centre-card p {
     font-size: 0.92rem;
     line-height: 1.7;
+    margin: 0;
+  }
+
+  /* At desktop the card spans the band, so lay the heading beside the copy
+     instead of letting one paragraph run the full 1100px measure. */
+  @media (min-width: 1025px) {
+    .centre-card {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 1.75rem 2rem;
+    }
+    .centre-card h3 {
+      margin: 0;
+    }
   }
 
   /* ===== CTA ===== */
   .section.cta {
-    background: var(--about-bg-alt);
+    background: var(--bg-primary);
     text-align: center;
   }
 
@@ -538,27 +571,7 @@ import '../styles/global.css';
     margin-bottom: 1.5rem;
   }
 
-  .cta-button {
-    display: inline-block;
-    font-family: var(--about-font);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--text-primary);
-    background: var(--color-accent);
-    border: none;
-    border-radius: 0;
-    padding: 0.9rem 2.5rem;
-    text-decoration: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-
-  .cta-button:hover {
-    opacity: 0.9;
-    transform: translateY(-3px);
-  }
-
-  /* ===== FOUNDER PROFILE ===== */
+  /* ===== FOUNDER PROFILE — white ink card ===== */
   .founder-profile {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -566,16 +579,10 @@ import '../styles/global.css';
     align-items: center;
     margin-top: 1.5rem;
     padding: 1.5rem;
-    background: #FFFDF6;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.7) inset,
-      0 1px 2px rgba(26, 42, 58, 0.04),
-      0 14px 30px -22px rgba(26, 42, 58, 0.18);
-  }
-  :global([data-theme="dark"]) .founder-profile {
     background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
   .founder-photo-wrap {
     flex-shrink: 0;
@@ -588,24 +595,37 @@ import '../styles/global.css';
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--color-ink);
+    background: var(--bg-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  /* Founder sign-off â Nunito italic (sitewide single-typeface). */
+  /* Initials avatar — the same treatment as the sidebar founder card */
+  .founder-photo-initials {
+    font-family: var(--font-heading);
+    font-size: 3.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+  /* Founder sign-off — Nunito italic (sitewide single-typeface). */
   .founder-signature {
     font-family: var(--font-heading);
     font-style: italic;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.6rem;
     line-height: 1;
-    color: var(--color-accent-text);
+    color: var(--text-primary);
     margin-top: 1rem;
-    opacity: 0.85;
     text-align: center;
   }
   .founder-info h3 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    font-weight: 300;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
     color: var(--text-primary);
   }
@@ -618,15 +638,13 @@ import '../styles/global.css';
   .founder-credentials {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.6rem;
   }
-  .founder-credential {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+  /* Credentials are tinted chips (global .chip); the tick takes the chip colour */
+  .founder-credential svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -634,10 +652,6 @@ import '../styles/global.css';
   @media (max-width: 768px) {
     .section {
       padding: 1.75rem 0;
-    }
-
-    .container {
-      padding: 0 1.5rem;
     }
 
     .values-grid,
@@ -658,6 +672,10 @@ import '../styles/global.css';
       display: flex;
       justify-content: center;
     }
+    /* Body copy stays left-aligned; only the photo column and chips centre */
+    .founder-info {
+      text-align: left;
+    }
     .founder-credentials {
       justify-content: center;
     }
@@ -669,13 +687,20 @@ import '../styles/global.css';
     }
 
     .section h2 {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .team-card,
     .value-item,
     .centre-card {
       padding: 1.5rem;
+    }
+
+    .founder-photo-placeholder {
+      width: 160px;
+      height: 160px;
+    }
+    .founder-photo-initials {
+      font-size: 2.6rem;
     }
   }
 
@@ -684,18 +709,8 @@ import '../styles/global.css';
       max-width: 1400px;
     }
 
-    .container {
-      max-width: 1400px;
-    }
-
     .section {
       padding: 1.75rem 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .team-photo-wrap {
-      animation: none;
     }
   }
 
@@ -716,36 +731,16 @@ import '../styles/global.css';
     }
   }
 
-  /* ===== FOUNDER CARD ===== */
+  /* ===== FOUNDER CARD — sticky white ink card ===== */
   .founder-card {
     position: sticky;
     top: calc(var(--header-height) + 44px + 1.5rem);
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-top: 3px solid var(--color-accent);
+    border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
     padding: 2rem 1.75rem;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
     text-align: center;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .founder-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    background: linear-gradient(180deg, rgba(212, 133, 58, 0.06), transparent);
-    pointer-events: none;
-    z-index: -1;
-  }
-  :global([data-theme="dark"]) .founder-card {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-  }
-  :global([data-theme="dark"]) .founder-card::before {
-    background: linear-gradient(180deg, rgba(224, 152, 80, 0.08), transparent);
   }
   .founder-card__photo {
     position: relative;
@@ -754,13 +749,8 @@ import '../styles/global.css';
     margin: 0 auto 1.25rem;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid var(--bg-card);
-    box-shadow: 0 0 0 1px var(--border-color), 0 8px 24px rgba(0, 0, 0, 0.08);
-  }
-  .founder-card__photo svg {
-    width: 100%;
-    height: 100%;
-    display: block;
+    border: 2px solid var(--color-ink);
+    background: var(--bg-muted);
   }
   .founder-card__photo img {
     width: 100%;
@@ -775,8 +765,8 @@ import '../styles/global.css';
     justify-content: center;
     font-family: var(--font-heading);
     font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--color-accent);
+    font-weight: 800;
+    color: var(--text-primary);
     letter-spacing: 0.05em;
     pointer-events: none;
   }
@@ -784,19 +774,19 @@ import '../styles/global.css';
     display: block;
     font-family: var(--font-heading);
     font-size: 1.35rem;
-    font-weight: 400;
+    font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 0.25rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
   .founder-card__role {
     display: block;
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
   }
   .founder-card__creds {
@@ -811,7 +801,7 @@ import '../styles/global.css';
     font-size: 0.88rem;
     line-height: 1.4;
     color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px dashed var(--ink-faint);
   }
   .founder-card__creds li:last-child {
     border-bottom: none;

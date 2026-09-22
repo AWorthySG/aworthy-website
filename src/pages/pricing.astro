@@ -12,7 +12,7 @@ import '../styles/global.css';
   <section class="pricing-hero">
     <div class="container">
       <p class="eyebrow">Pricing</p>
-      <h1 class="pricing-hero__heading">Tuition pricing in Singapore &mdash; transparent and all-inclusive</h1>
+      <h1 class="pricing-hero__heading">Tuition pricing in Singapore &mdash; <span class="accent-word">transparent</span> and all-inclusive</h1>
       <p class="pricing-hero__sub">No hidden fees, no lock-in contracts. Every A-Worthy programme &mdash; O-Level English, O-Level Mathematics, H1 General Paper, and H2 Economics &mdash; includes materials, assessments, and WhatsApp support, so you know exactly what you&rsquo;re paying for.</p>
     </div>
   </section>
@@ -25,28 +25,34 @@ import '../styles/global.css';
           <thead>
             <tr>
               <th scope="col" class="pricing-table__label-col"></th>
-              <th scope="col" class="pricing-table__th--popular">
-                <span class="pricing-table__popular-badge">Most popular</span>
+              <th scope="col" class="pricing-table__th--popular subject--english">
+                <span class="chip chip--gold pricing-table__popular-badge">Most popular</span>
+                <img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">O-Level English</span>
                 <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--maths">
+                <img src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">O-Level Maths</span>
                 <span class="pricing-table__programme-level">Sec 1 &ndash; 4</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--preib">
+                <img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">Pre-IB Maths</span>
                 <span class="pricing-table__programme-level">Year 3 &ndash; 4</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--gp">
+                <img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">H1 General Paper</span>
                 <span class="pricing-table__programme-level">JC 1 &ndash; 2</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--econ">
+                <img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">H2 Economics</span>
                 <span class="pricing-table__programme-level">JC 1 &ndash; 2</span>
               </th>
-              <th scope="col">
+              <th scope="col" class="subject--coaching">
+                <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="pricing-table__sticker" />
                 <span class="pricing-table__programme-name">1-to-1 Coaching</span>
                 <span class="pricing-table__programme-level">All Subjects</span>
               </th>
@@ -114,8 +120,9 @@ import '../styles/global.css';
       <!-- Mobile pricing cards (visible on small screens) -->
       <h2 class="sr-only">Programme pricing</h2>
       <div class="pricing-cards" data-animate="reveal-up">
-        <div class="pricing-card card--elevated pricing-card--popular">
-          <span class="pricing-card__popular-badge">Most popular</span>
+        <div class="pricing-card subject--english card--elevated pricing-card--popular">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-grade-a.webp" alt="" width="414" height="553" class="sticker" loading="lazy" /></div>
+          <span class="chip chip--gold pricing-card__popular-badge">Most popular</span>
           <h3 class="pricing-card__name">O-Level English</h3>
           <p class="pricing-card__level">Sec 1 &ndash; 4</p>
           <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
@@ -128,7 +135,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--maths card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">O-Level Mathematics</h3>
           <p class="pricing-card__level">Sec 1 &ndash; 4</p>
           <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
@@ -141,7 +149,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--preib card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-graph.webp" alt="" width="418" height="550" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">Pre-IB Mathematics</h3>
           <p class="pricing-card__level">Year 3 &ndash; 4</p>
           <p class="pricing-card__price">SGD 280&ndash;320<span>/month</span></p>
@@ -154,7 +163,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--gp card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">H1 General Paper</h3>
           <p class="pricing-card__level">JC 1 &ndash; 2</p>
           <p class="pricing-card__price">SGD 360&ndash;400<span>/month</span></p>
@@ -167,7 +177,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--econ card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">H2 Economics</h3>
           <p class="pricing-card__level">JC 1 &ndash; 2</p>
           <p class="pricing-card__price">SGD 360&ndash;400<span>/month</span></p>
@@ -180,7 +191,8 @@ import '../styles/global.css';
           </ul>
           <a href="/contact/" class="btn btn-accent pricing-card__cta">Book Free Assessment</a>
         </div>
-        <div class="pricing-card card--elevated">
+        <div class="pricing-card subject--coaching card--elevated">
+          <div class="subject-panel subject-panel--sm pricing-card__panel" aria-hidden="true"><img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="sticker" loading="lazy" /></div>
           <h3 class="pricing-card__name">1-to-1 Coaching</h3>
           <p class="pricing-card__level">All Subjects</p>
           <p class="pricing-card__price">SGD 120&ndash;140<span>/session</span></p>
@@ -208,28 +220,28 @@ import '../styles/global.css';
         <img src="/images/mascots/mascot-feeding.webp" alt="" width="400" height="508" class="includes-head__sticker sticker sticker--right" loading="lazy" />
       </div>
       <div class="includes-grid" data-animate="reveal-up" data-animate-delay="1">
-        <div class="includes-item">
-          <svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <div class="includes-item card-lift">
+          <span class="icon-circle icon-circle--green" aria-hidden="true"><svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
           <h3>Free Diagnostic Assessment</h3>
           <p>20-minute assessment to identify gaps and recommend the right programme.</p>
         </div>
-        <div class="includes-item">
-          <svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div class="includes-item card-lift">
+          <span class="icon-circle icon-circle--pink" aria-hidden="true"><svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
           <h3>Monthly Progress Reports</h3>
           <p>Detailed feedback on your child&rsquo;s strengths, areas for improvement, and next steps.</p>
         </div>
-        <div class="includes-item">
-          <svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="includes-item card-lift">
+          <span class="icon-circle icon-circle--blue" aria-hidden="true"><svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
           <h3>WhatsApp Support</h3>
           <p>Ask questions between sessions &mdash; your child gets help when they need it most.</p>
         </div>
-        <div class="includes-item">
-          <svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <div class="includes-item card-lift">
+          <span class="icon-circle icon-circle--gold" aria-hidden="true"><svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
           <h3>SHARP Method Resources</h3>
           <p>Proprietary notes, practice papers, and model answers &mdash; all included in the fee. See how SHARP works for <a href="/o-level-english/#playbook">English</a>, <a href="/o-level-mathematics/#playbook">Maths</a>, <a href="/h1-general-paper/#playbook">GP</a>, and <a href="/h2-economics/#playbook">Economics</a>.</p>
         </div>
-        <div class="includes-item">
-          <svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="includes-item card-lift">
+          <span class="icon-circle icon-circle--red" aria-hidden="true"><svg class="includes-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
           <h3>Money-Back Guarantee</h3>
           <p>Not satisfied after the first month? We&rsquo;ll refund your fees &mdash; no questions asked.</p>
         </div>
@@ -315,7 +327,7 @@ import '../styles/global.css';
   <!-- ===== CTA ===== -->
   <section class="section pricing-cta">
     <div class="container">
-      <div class="pricing-cta__inner" data-animate="reveal-up">
+      <div class="pricing-cta__inner hero-card" data-animate="reveal-up">
         <h2>Ready to get started?</h2>
         <p>Book a free 20-minute diagnostic assessment &mdash; we&rsquo;ll identify your child&rsquo;s gaps and recommend the right programme.</p>
         <a href="/contact/" class="btn btn-accent pricing-cta__btn">Book Free Assessment</a>
@@ -408,16 +420,17 @@ import '../styles/global.css';
 
 <style>
   /* ===== HERO ===== */
+  /* No page fill on the hero / includes / FAQ bands — the body's paper-dot
+     texture is the canvas (LMS); only the sand bands paint over it */
   .pricing-hero {
     padding: 1.75rem 0;
     text-align: center;
-    background: var(--bg-primary);
   }
 
   .pricing-hero__heading {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 800;
+    font-weight: 900;
     color: var(--text-primary);
     letter-spacing: -0.03em;
     margin-bottom: var(--space-md);
@@ -436,25 +449,41 @@ import '../styles/global.css';
     background: var(--bg-secondary);
   }
 
+  /* White table inside an ink-outlined rounded sticker wrapper */
   .pricing-table-wrap {
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
 
   .pricing-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 700px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    /* Equal-width subject columns (the label column keeps its 160px) so the
+       header row reads as one tidy row of stickers rather than stepping down
+       in the middle. min-width keeps each column wide enough for its longest
+       word before the wrapper starts scrolling horizontally. */
+    table-layout: fixed;
+    min-width: 860px;
   }
 
   .pricing-table thead th {
-    padding: 1.5rem 1.25rem;
+    /* anchors the "Most popular" chip, which is taken out of flow below so it
+       cannot push this one column's sticker down past its neighbours */
+    position: relative;
+    padding: 3.4rem 1rem 1.5rem;
     text-align: center;
-    border-bottom: 2px solid var(--border-color);
-    vertical-align: bottom;
+    /* Each column header carries its subject's pastel tint (LMS "Your subjects");
+       the empty label column has no .subject--* class and falls back to muted */
+    background: var(--subject-tint, var(--bg-muted));
+    border-bottom: 2px solid var(--color-ink);
+    /* top-aligned so the sticker row stays level even if one programme name
+       needs an extra line at narrow widths */
+    vertical-align: top;
   }
 
   .pricing-table__label-col {
@@ -462,10 +491,19 @@ import '../styles/global.css';
   }
 
   .pricing-table__programme-name {
-    display: block;
+    /* Two lines are reserved for every name (most of them wrap), and the text
+       sits at the bottom of that box, so the level micro-label underneath
+       lands at the same height in every column */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 2.5em;
+    line-height: 1.25;
+    overflow-wrap: break-word;
     font-family: var(--font-heading);
     font-size: 1.1rem;
-    font-weight: 400;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     color: var(--text-primary);
     margin-bottom: 0.25rem;
   }
@@ -473,10 +511,11 @@ import '../styles/global.css';
   .pricing-table__programme-level {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent-text);
+    color: var(--text-secondary);
   }
 
   .pricing-table tbody td {
@@ -495,10 +534,10 @@ import '../styles/global.css';
     text-align: left;
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: 700;
   }
 
   .pricing-table__note {
@@ -510,7 +549,8 @@ import '../styles/global.css';
 
   .pricing-table tbody td strong {
     color: var(--color-accent-text);
-    font-weight: 600;
+    font-weight: 800;
+    font-size: 1.05rem;
   }
 
   /* Mobile pricing cards — hidden on desktop, shown on mobile */
@@ -518,75 +558,58 @@ import '../styles/global.css';
     display: none;
   }
 
+  /* White sticker cards — ink outline, flat at rest, lift on hover (global) */
   .pricing-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
     padding: 2rem;
     text-align: center;
+    overflow: hidden;
+  }
+
+  /* Subject sticker on its pastel panel across the top of the card */
+  .pricing-card__panel {
+    margin: -2rem -2rem 1.25rem;
+  }
+
+  .pricing-table__sticker {
+    display: block;
+    /* sized by HEIGHT so all six stickers share a baseline despite different
+       source aspect ratios */
+    height: 64px;
+    width: auto;
+    margin: 0 auto 0.4rem;
+    filter: drop-shadow(0 1px 1px rgba(34, 48, 74, 0.12));
   }
 
   .pricing-card--popular {
     border-color: var(--color-accent);
-    box-shadow: 0 12px 36px rgba(212, 133, 58, 0.18), 0 0 0 1px var(--color-accent);
-    position: relative;
-    transform: translateY(-4px);
   }
-  .pricing-card--popular::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: var(--border-radius-lg);
-    background: linear-gradient(180deg, rgba(212, 133, 58, 0.08), transparent 40%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .pricing-card--popular > * {
-    position: relative;
-    z-index: 1;
-  }
+  /* "Most popular" is a global .chip.chip--gold — only spacing lives here */
   .pricing-card__popular-badge {
-    display: inline-block;
-    background: var(--color-accent-text);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
     margin-bottom: 0.75rem;
   }
-  .pricing-table__th--popular {
-    background: rgba(212, 133, 58, 0.08);
+  /* The featured column is tinted top to bottom in ONE colour — the English
+     subject tint, matching its header cell — so it reads as a single
+     highlighted column. The gold chip and the red top rule mark it as
+     "Most popular"; a second tint below the header split the column in two. */
+  .pricing-table thead th.pricing-table__th--popular {
     border-top: 3px solid var(--color-accent);
   }
   .pricing-table tbody td:nth-child(2) {
-    background: rgba(212, 133, 58, 0.04);
+    background: var(--subject-english-tint);
   }
-  :global([data-theme="dark"]) .pricing-table__th--popular {
-    background: rgba(224, 152, 80, 0.12);
-    border-top-color: var(--color-accent);
-  }
-  :global([data-theme="dark"]) .pricing-table tbody td:nth-child(2) {
-    background: rgba(224, 152, 80, 0.06);
-  }
+  /* Out of flow, centred in the header cell's reserved top padding */
   .pricing-table__popular-badge {
-    display: inline-block;
-    background: var(--color-accent-text);
-    color: #fff;
-    font-size: 0.6rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.12rem 0.5rem;
-    border-radius: 999px;
-    margin-bottom: 0.35rem;
+    position: absolute;
+    top: 0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
   }
-  :global([data-theme="dark"]) .pricing-card__popular-badge,
-  :global([data-theme="dark"]) .pricing-table__popular-badge { color: #11100E; }
-  .pricing-cta__reassure {
-    margin-top: 0.9rem;
+  .pricing-cta__inner .pricing-cta__reassure {
+    margin: 0.9rem 0 0;
     font-size: 0.85rem;
     color: var(--text-secondary);
   }
@@ -594,7 +617,8 @@ import '../styles/global.css';
   .pricing-card__name {
     font-family: var(--font-heading);
     font-size: 1.3rem;
-    font-weight: 400;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     color: var(--text-primary);
     margin: 0 0 0.25rem;
   }
@@ -602,23 +626,26 @@ import '../styles/global.css';
   .pricing-card__level {
     font-family: var(--font-mono);
     font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--text-secondary);
     margin: 0 0 1rem;
   }
 
   .pricing-card__price {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-accent);
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-accent-text);
     margin: 0 0 1.5rem;
   }
 
   .pricing-card__price span {
     font-size: 0.85rem;
-    font-weight: 400;
+    font-weight: 600;
+    letter-spacing: 0;
     color: var(--text-muted);
   }
 
@@ -653,11 +680,9 @@ import '../styles/global.css';
     border-bottom: none;
   }
 
+  /* Look comes from the global .btn.btn-accent — size only here */
   .pricing-card__cta {
-    display: block;
     width: 100%;
-    text-align: center;
-    font-size: 0.75rem;
     padding: 0.8rem 1.5rem;
   }
 
@@ -679,10 +704,6 @@ import '../styles/global.css';
   }
 
   /* ===== INCLUDES ===== */
-  .pricing-includes {
-    background: var(--bg-primary);
-  }
-
   .includes-head {
     display: flex;
     align-items: center;
@@ -699,25 +720,28 @@ import '../styles/global.css';
   .includes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    gap: 1rem;
     margin-top: var(--space-xl);
   }
 
+  /* LMS feature cards: tinted icon circle, bold title, small copy */
   .includes-item {
-    text-align: center;
+    text-align: left;
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: 0 3px 0 var(--ink-shadow); /* rest shadow; .card-lift lifts it to 6px */
   }
 
-  .includes-icon {
-    width: 32px;
-    height: 32px;
-    color: var(--color-accent);
+  .includes-item .icon-circle {
     margin-bottom: var(--space-sm);
   }
 
   .includes-item h3 {
     font-family: var(--font-body);
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--text-primary);
     margin: 0 0 0.5rem;
   }
@@ -733,34 +757,43 @@ import '../styles/global.css';
   .pricing-compare {
     background: var(--bg-secondary);
   }
+  /* Centre the eyebrow over the centred .section-title (global .eyebrow is inline-block) */
+  .pricing-compare .eyebrow {
+    display: block;
+    text-align: center;
+  }
   .compare-table-wrap {
     margin-top: var(--space-xl);
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-ink);
     background: var(--bg-card);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
+  /* No fixed min-width: three fluid columns down to 641px (a 720px floor
+     overflowed tablet-portrait containers with no scroll cue); phones stack */
   .compare-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 720px;
   }
   .compare-table thead th {
     padding: 1.25rem 1.25rem;
     text-align: left;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-secondary);
-    border-bottom: 2px solid var(--border-color);
-    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--color-ink);
+    background: var(--bg-muted);
   }
   .compare-table thead .compare-col-us {
-    color: var(--color-accent-text);
-    border-bottom-color: var(--color-accent);
+    color: var(--tint-green-fg);
+    background: var(--tint-green-bg);
+    border-left: 2px solid var(--color-leaf);
   }
   .compare-table__label-col {
     width: 28%;
@@ -777,24 +810,22 @@ import '../styles/global.css';
     border-bottom: none;
   }
   .compare-table tbody tr:hover {
-    background: rgba(212, 133, 58, 0.025);
+    background: var(--bg-muted);
   }
   .compare-table tbody td.compare-row-label {
     font-family: var(--font-body);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     width: 28%;
   }
   .compare-table tbody td strong {
     color: var(--text-primary);
-    font-weight: 600;
+    font-weight: 800;
   }
+  /* The winning column — green tint, like a .chip--green stretched tall */
   .compare-table tbody td:last-child {
-    background: rgba(212, 133, 58, 0.04);
-    border-left: 2px solid var(--color-accent);
-  }
-  :global([data-theme="dark"]) .compare-table tbody td:last-child {
-    background: rgba(224, 152, 80, 0.05);
+    background: var(--tint-green-bg);
+    border-left: 2px solid var(--color-leaf);
   }
   .compare-footnote {
     font-size: 0.8rem;
@@ -806,14 +837,65 @@ import '../styles/global.css';
     font-style: italic;
   }
 
+  /* Phones: each row becomes a stacked block — label, then the typical value,
+     then the A-Worthy value in its green well — so the winning column is never
+     pushed off-screen behind an unhinted horizontal scroll */
   @media (max-width: 640px) {
-    .compare-table {
-      min-width: 560px;
-    }
-    .compare-table thead th,
+    .compare-table,
+    .compare-table tbody,
+    .compare-table tbody tr,
     .compare-table tbody td {
-      padding: 0.85rem 0.9rem;
-      font-size: 0.85rem;
+      display: block;
+    }
+    .compare-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+    .compare-table tbody tr {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .compare-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    .compare-table tbody td {
+      width: auto;
+      padding: 0;
+      border: 0;
+      font-size: 0.9rem;
+    }
+    .compare-table tbody td.compare-row-label {
+      width: auto;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+    .compare-table tbody td:nth-child(2)::before,
+    .compare-table tbody td:last-child::before {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.15rem;
+    }
+    .compare-table tbody td:nth-child(2)::before {
+      content: 'Typical tuition';
+    }
+    .compare-table tbody td:last-child {
+      margin-top: 0.6rem;
+      padding: 0.6rem 0.75rem;
+      border-left: 3px solid var(--color-leaf);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .compare-table tbody td:last-child::before {
+      content: 'A-Worthy';
+      color: var(--tint-green-fg);
     }
   }
 
@@ -822,9 +904,12 @@ import '../styles/global.css';
     background: var(--bg-secondary);
   }
 
+  /* The LMS welcome-card treatment comes from the global .hero-card (white ink
+     card, soft tint wash, hard shadow) so the conversion moment sits in its own
+     container on the sand band instead of merging with the comparison above */
   .pricing-cta__inner {
     text-align: center;
-    max-width: 600px;
+    max-width: 720px;
     margin: 0 auto;
   }
 
@@ -844,69 +929,19 @@ import '../styles/global.css';
     margin-bottom: var(--space-xl);
   }
 
+  /* Look comes from the global .btn.btn-accent — size only here */
   .pricing-cta__btn {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 800;
-    letter-spacing: 0;
-    text-decoration: none;
     padding: 0.9rem 2.25rem;
-    border-radius: var(--radius-pill);
-    display: inline-block;
   }
 
   /* ===== FAQ ===== */
-  .pricing-faq {
-    background: var(--bg-primary);
-  }
 
   .faq-list {
     max-width: 720px;
     margin: var(--space-xl) auto 0;
   }
 
-  .faq-item {
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  .faq-question {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-primary);
-    padding: 1.25rem 0;
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .faq-question::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-question::after {
-    content: '+';
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: var(--text-muted);
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-  }
-
-  .faq-item[open] .faq-question::after {
-    content: '\2212';
-  }
-
-  .faq-answer {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    padding: 0 0 1.25rem;
-    margin: 0;
-  }
+  /* .faq-item / .faq-question / .faq-answer come from the global accordion */
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 480px) {

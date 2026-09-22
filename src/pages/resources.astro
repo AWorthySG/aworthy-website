@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import PdfPreviewModal from '../components/PdfPreviewModal.astro';
 import '../styles/global.css';
 
+// Order matters: entries with a samplePdf (taller cards with the faux-page tile)
+// come first so they fill whole grid rows; the compact request-only cards follow.
 const resources = [
   {
     title: "O-Level English Scoring Guide",
@@ -42,17 +44,17 @@ const resources = [
     samplePdf: "/docs/samples/situational-writing-sample.pdf",
   },
   {
-    title: "Oral Preparation Checklist",
-    description: "Structure, timing, vocabulary lists by topic, and self-assessment rubric for the video stimulus response. Use it to practise independently before each session.",
-    category: "Exam Prep",
-    type: "Checklist",
-  },
-  {
     title: "50 High-Impact O-Level Vocabulary Words",
     description: "Organised by theme with definitions, model sentences, and synonyms. Print it out and work through five words a day for ten days of focused revision.",
     category: "English",
     type: "PDF Guide",
     samplePdf: "/docs/samples/vocabulary-50-sample.pdf",
+  },
+  {
+    title: "Oral Preparation Checklist",
+    description: "Structure, timing, vocabulary lists by topic, and self-assessment rubric for the video stimulus response. Use it to practise independently before each session.",
+    category: "Exam Prep",
+    type: "Checklist",
   },
   {
     title: "Summary Writing: The 80-Word Challenge",
@@ -126,7 +128,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   <section class="r-hero">
     <div class="r-container">
       <span class="eyebrow">Resources</span>
-      <h1 class="r-hero-heading">Free O-Level English tuition resources &amp; study guides</h1>
+      <h1 class="r-hero-heading"><span class="accent-word">Free</span> O-Level English tuition resources &amp; study guides</h1>
       <p class="r-hero-sub">Download free O-Level English study guides, checklists, and exam frameworks curated by A-Worthy&rsquo;s Singapore tutors. Sample resources available instantly &mdash; full versions by request.</p>
     </div>
     <img src="/images/mascots/mascot-reading.webp" alt="" width="477" height="640" class="sticker sticker--hero" />
@@ -149,7 +151,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
       <div class="r-filter-row" role="group" aria-label="Filter by category">
         {categories.map((cat) => (
           <button
-            class:list={["r-filter-btn", { active: cat === "All" }]}
+            class:list={["r-filter-btn", "chip", { active: cat === "All" }]}
             data-category={cat}
           >
             {cat}
@@ -184,7 +186,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
           >
             <div class="r-card-top">
               <span class="eyebrow">{resource.category}</span>
-              <span class:list={["r-type-badge", { "r-type-badge--sample": !!resource.samplePdf }]}>
+              <span class:list={["r-type-badge", "chip", { "chip--green": !!resource.samplePdf }]}>
                 {resource.samplePdf ? "Sample Available" : resource.type}
               </span>
             </div>
@@ -207,16 +209,22 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
                       <span class="r-prev-page-num">2 / 8</span>
                     </div>
                     <div class="r-card-preview-blur-overlay">
-                      <span class="r-card-preview-unlock">
+                      <button
+                        type="button"
+                        class="r-card-preview-unlock chip chip--red"
+                        data-preview-pdf={resource.samplePdf}
+                        data-preview-title={resource.title}
+                        tabindex="-1"
+                      >
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                         Preview
-                      </span>
+                      </button>
                     </div>
                   </div>
                 </div>
                 <div class="r-card-actions">
                   <button
-                    class="r-card-preview-btn"
+                    class="r-card-preview-btn btn btn-accent btn--sm"
                     data-preview-pdf={resource.samplePdf}
                     data-preview-title={resource.title}
                     type="button"
@@ -225,7 +233,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
                     Preview Sample
                   </button>
                   <a
-                    class="r-card-download-btn plausible-event-name=Resource+Download"
+                    class="r-card-download-btn btn btn--sm plausible-event-name=Resource+Download"
                     href={resource.samplePdf}
                     data-resource-title={resource.title}
                     data-resource-mode="download"
@@ -239,7 +247,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
             ) : (
               <a
                 href="#"
-                class="r-card-link"
+                class="r-card-link btn btn--sm"
                 data-resource-title={resource.title}
                 data-resource-mode="request"
               >
@@ -276,7 +284,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
               placeholder="you@email.com"
               required
             />
-            <button type="submit" class="r-btn-subscribe" id="newsletter-submit">Subscribe</button>
+            <button type="submit" class="r-btn-subscribe btn btn-accent" id="newsletter-submit">Subscribe</button>
           </div>
           <p class="r-newsletter-note">Join 3,000+ parents and students. Unsubscribe anytime.</p>
           <p class="r-newsletter-success" id="newsletter-success" hidden>Thanks for subscribing! You'll receive our next newsletter shortly.</p>
@@ -291,7 +299,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
       <span class="eyebrow">Next Step</span>
       <h2 class="r-cta-heading" data-animate="reveal-up">Want personalised guidance?</h2>
       <p class="r-cta-sub">Our resources are a great start — personalised tuition takes it further.</p>
-      <a href="/contact/" class="r-btn-cta">Book Free Assessment</a>
+      <a href="/contact/" class="r-btn-cta btn btn-accent">Book Free Assessment</a>
     </div>
   </section>
 
@@ -575,28 +583,29 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 })();
 </script>
 
-<style>
+<style is:global>
+  /* Email gate + toast are created by script at runtime, so this block is
+     is:global — a scoped block would never match them. Sticker-book look:
+     white ink card, muted inputs, one red submit. */
   .resource-gate-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 2000;
+    background: rgba(28, 27, 25, 0.55);
+    z-index: var(--z-modal);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
   }
   .resource-gate {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
+    box-shadow: 0 4px 0 var(--ink-shadow);
     padding: 2rem 1.75rem 1.5rem;
     max-width: 420px;
     width: 100%;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
   }
   .resource-gate-close {
     position: absolute;
@@ -606,27 +615,28 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     border: none;
     font-size: 1.5rem;
     line-height: 1;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     cursor: pointer;
     padding: 0.25rem 0.5rem;
+    min-width: 40px;
+    min-height: 40px;
   }
   .resource-gate-close:hover {
     color: var(--text-primary);
   }
   .resource-gate-eyebrow {
     display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
   }
   .resource-gate h4 {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: 1.15rem;
-    font-weight: 500;
+    font-weight: 800;
     color: var(--text-primary);
     margin: 0 0 0.5rem;
     line-height: 1.35;
@@ -646,66 +656,69 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+    margin-bottom: 0;
   }
   .resource-gate-label > span {
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    font-weight: 600;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--text-secondary);
-    letter-spacing: 0.01em;
   }
   .resource-gate-label em {
     font-style: normal;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     margin-left: 0.15rem;
   }
   .resource-gate-label em.resource-gate-optional {
-    color: var(--text-muted);
+    color: var(--text-tertiary);
     font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
   }
   .resource-gate-form input {
     padding: 0.7rem 0.85rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    font-size: 0.9rem;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: max(1rem, 16px);
   }
-  .resource-gate-form input:focus {
-    outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(212, 133, 58, 0.18);
-  }
+  /* Red sticker pill — mirrors the global .btn-accent */
   .resource-gate-submit {
     margin-top: 0.25rem;
-    padding: 0.85rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.8rem 1.5rem;
     font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #fff;
     background: var(--color-accent);
-    border: none;
-    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 0 var(--color-accent-press);
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background-color 0.12s ease, transform 0.1s ease, box-shadow 0.1s ease;
   }
   .resource-gate-submit:hover:not(:disabled) {
-    background: var(--color-accent-light);
+    background: var(--color-accent-hover);
+  }
+  .resource-gate-submit:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 var(--color-accent-press);
   }
   .resource-gate-submit:disabled {
     opacity: 0.7;
     cursor: not-allowed;
   }
   .resource-gate-error {
-    color: #c0392b;
+    color: var(--color-accent-text);
     font-size: 0.8rem;
+    font-weight: 700;
     margin: 0;
   }
   .resource-gate-note {
     font-size: 0.72rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin: 0;
     text-align: center;
     line-height: 1.5;
@@ -716,18 +729,17 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     align-items: center;
     gap: 0.75rem;
     margin: 1rem 0 0.85rem;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--text-secondary);
   }
   .resource-gate-divider::before,
   .resource-gate-divider::after {
     content: '';
     flex: 1;
-    height: 1px;
-    background: var(--border-color);
+    border-top: 2px dashed var(--ink-faint);
   }
 
   .resource-gate-whatsapp {
@@ -735,55 +747,56 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    min-height: 44px;
     padding: 0.7rem 1rem;
-    background: #25D366;
-    color: #fff;
-    border-radius: var(--radius-sm);
+    background: var(--color-whatsapp);
+    color: #0E2B19;
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 0 var(--ink-shadow);
     font-family: var(--font-body);
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 800;
     text-decoration: none;
-    transition: background 0.2s ease, transform 0.15s ease;
+    transition: background-color 0.12s ease, transform 0.1s ease, box-shadow 0.1s ease;
   }
   .resource-gate-whatsapp:hover {
-    background: #1da851;
-    transform: translateY(-1px);
+    background: #4BE07F;
+    color: #0E2B19;
+  }
+  .resource-gate-whatsapp:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 var(--ink-shadow);
   }
   .resource-gate-whatsapp svg {
     flex-shrink: 0;
   }
 
-  :global([data-theme="dark"]) .resource-gate-error {
-    color: #ff7361;
-  }
-  :global([data-theme="dark"]) .resource-gate {
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
-  }
-  :global([data-theme="dark"]) .resource-toast {
-    background: var(--bg-card);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-  }
-
-  /* ===== TOAST ===== */
+  /* ===== TOAST — ink band, sits above the sticky bar ===== */
   .resource-toast {
     position: fixed;
-    bottom: max(1.5rem, env(safe-area-inset-bottom));
+    bottom: calc(max(1.5rem, env(safe-area-inset-bottom)) + var(--sticky-bar-h, 0px));
     left: 50%;
     transform: translate(-50%, 1rem);
-    z-index: 2100;
-    background: var(--text-primary);
-    color: var(--bg-primary);
+    z-index: var(--z-toast);
+    background: var(--color-ink);
+    color: #fff;
+    border: 2px solid var(--color-ink);
     font-family: var(--font-body);
     font-size: 0.85rem;
+    font-weight: 600;
     line-height: 1.5;
     padding: 0.85rem 1.25rem;
     border-radius: var(--radius-sm);
     max-width: min(420px, calc(100% - 2rem));
-    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 0 var(--ink-shadow);
     opacity: 0;
     transition: opacity 0.25s ease, transform 0.25s ease;
     pointer-events: none;
+  }
+  [data-theme="dark"] .resource-toast {
+    background: var(--bg-card);
+    color: var(--text-primary);
   }
   .resource-toast--show {
     opacity: 1;
@@ -798,24 +811,14 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 </style>
 
 <style>
-  /* Uses global design tokens from global.css */
+  /* Uses the sticker-book tokens + vocabulary from global.css (ink cards,
+     chips, red action colour, grey micro-labels). */
 
   /* ===== SHARED ===== */
   .r-container {
     max-width: 1120px;
     margin: 0 auto;
     padding: 0 1.5rem;
-  }
-
-  .eyebrow {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 1rem;
   }
 
   .sr-only {
@@ -832,15 +835,14 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 
   /* ===== HERO ===== */
   .r-hero {
-    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     padding: 1.75rem 0;
     text-align: center;
   }
 
   .r-hero-heading {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 800;
+    font-weight: 900;
     color: var(--text-primary);
     letter-spacing: -0.03em;
     line-height: 1.1;
@@ -858,7 +860,6 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 
   /* ===== SEARCH + FILTERS ===== */
   .r-filters {
-    background: var(--bg-primary);
     padding: 0 0 3rem;
   }
 
@@ -867,28 +868,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     margin: 0 auto 2rem;
   }
 
-  .r-search {
-    width: 100%;
-    padding: 0.85rem 1.25rem;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    transition: border-color 0.2s ease;
-  }
-
-  .r-search::placeholder {
-    color: var(--text-muted);
-  }
-
-  .r-search:focus {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-    border-color: rgba(212, 133, 58, 0.6);
-    box-shadow: 0 0 0 3px rgba(212, 133, 58, 0.15);
-  }
+  /* .r-search takes the global input look (muted fill, 2px ink, red focus ring) */
 
   .r-filter-row {
     display: flex;
@@ -897,43 +877,34 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     gap: 0.4rem;
   }
 
+  /* Filter buttons are .chip pills; the active one takes the red chip tint */
   .r-filter-btn {
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    background: transparent;
-    border: 1px solid var(--border-color);
-    padding: 0.45rem 0.95rem;
     min-height: 40px;
+    padding: 0.45rem 0.95rem;
     cursor: pointer;
-    transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
-    border-radius: 999px;
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
   }
 
-  .r-filter-btn:hover {
-    color: var(--text-primary);
-    border-color: rgba(212, 133, 58, 0.4);
+  @media (hover: hover) {
+    .r-filter-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-hover);
+      border-color: var(--color-ink);
+    }
   }
 
   .r-filter-btn.active {
-    color: var(--color-accent);
-    background: rgba(212, 133, 58, 0.1);
-    border-color: rgba(212, 133, 58, 0.4);
-    font-weight: 600;
-  }
-  :global([data-theme="dark"]) .r-filter-btn.active {
-    background: rgba(224, 152, 80, 0.13);
-    border-color: rgba(224, 152, 80, 0.45);
+    color: var(--color-accent-text);
+    background: var(--color-danger-bg);
+    border-color: var(--color-accent);
   }
 
   /* ===== RESOURCE CARDS ===== */
   .r-cards-section {
-    background: var(--bg-primary);
     padding: 0 0 5rem;
   }
 
-  /* Reading Room catalogue header (claudedesign F.3) */
+  /* Reading Room catalogue header */
   .r-catalogue-head {
     max-width: 760px;
     margin: 0 auto 3rem;
@@ -945,7 +916,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   }
   .r-catalogue-copy {
     font-family: var(--font-heading);
-    font-weight: 300;
+    font-weight: 700;
     font-size: clamp(1.2rem, 2.1vw, 1.45rem);
     line-height: 1.5;
     color: var(--text-secondary);
@@ -954,10 +925,10 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   }
   .r-count {
     font-family: var(--font-heading);
-    font-weight: 800;
+    font-weight: 900;
     font-size: clamp(2.4rem, 4vw, 3.2rem);
     letter-spacing: -0.03em;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     margin-right: 0.25rem;
     font-feature-settings: "tnum" 1, "lnum" 1;
     font-variant-numeric: tabular-nums lining-nums;
@@ -967,54 +938,52 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   .r-catalogue-head::after {
     content: '';
     display: block;
-    width: 80px;
-    height: 1px;
-    margin: 1.5rem auto 0;
-    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-    opacity: 0.6;
+    width: 88px;
+    height: 14px;
+    margin: 1.25rem auto 0;
+    background: var(--swash) center / contain no-repeat;
   }
 
   .r-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
+    /* Natural heights: a compact card must never stretch to a sample card's row
+       (it would show a blank white block between blurb and link). Sample cards
+       opt back in below so their own rows are not ragged. */
+    align-items: start;
   }
 
+  /* Sample cards are all the same kind and sit together at the top of the grid,
+     so they stretch to a common row height (the compact cards below do not). */
+  .r-card--has-sample {
+    align-self: stretch;
+  }
+
+  /* Ink card — white sticker on the paper, 3px hard rest shadow, lifts on hover */
   .r-card {
     display: flex;
     flex-direction: column;
-    background: #FFFDF6;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 2rem 1.75rem;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.7) inset,
-      0 1px 2px rgba(26, 42, 58, 0.04),
-      0 14px 30px -22px rgba(26, 42, 58, 0.18);
-  }
-  :global([data-theme="dark"]) .r-card {
     background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
+    padding: 2rem 1.75rem;
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
   }
 
   @media (hover: hover) {
     .r-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(212, 133, 58, 0.3);
-      box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.7) inset,
-        0 1px 2px rgba(26, 42, 58, 0.04),
-        0 18px 36px -20px rgba(212, 133, 58, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--ink-shadow), 0 12px 24px rgba(70, 50, 20, 0.10);
     }
-  }
-  :global([data-theme="dark"]) .r-card:hover {
-    border-color: rgba(224, 152, 80, 0.32);
   }
 
   .r-card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
     margin-bottom: 0.75rem;
   }
 
@@ -1022,115 +991,46 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     margin-bottom: 0;
   }
 
-  .r-type-badge {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    background: transparent;
-    border: 1px solid var(--border-color);
-    padding: 0.25rem 0.6rem;
-    border-radius: var(--radius-sm);
-  }
+  /* .r-type-badge is a .chip (chip--green when a sample is available) */
 
   .r-card-title {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: 1.1rem;
-    font-weight: 300;
+    font-weight: 800;
     color: var(--text-primary);
     line-height: 1.4;
     margin: 0 0 0.75rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.01em;
   }
 
   .r-card-desc {
     font-family: var(--font-body);
     font-size: 0.875rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     line-height: 1.65;
     flex-grow: 1;
     margin: 0 0 1.25rem;
   }
 
+  /* "Request Free Copy" is a .btn.btn--sm sticker pill — the same treatment as
+     "Download" on the sample cards; only its placement is page-specific */
   .r-card-link {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    gap: 0.4rem;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: gap 0.2s ease;
+    align-self: flex-start;
+    margin-top: auto;
   }
 
-  .r-card-link:hover {
-    gap: 0.7rem;
-  }
-
-  /* ===== SAMPLE BADGE ===== */
-  .r-type-badge--sample {
-    color: var(--color-accent);
-    border-color: rgba(212, 133, 58, 0.25);
-    background: rgba(212, 133, 58, 0.08);
-  }
-
-  /* ===== CARD WITH SAMPLE ===== */
-  .r-card--has-sample {
-    border-color: rgba(212, 133, 58, 0.12);
-  }
-
-  /* ===== CARD ACTIONS (preview + download) ===== */
+  /* ===== CARD ACTIONS (preview = red pill, download = white pill) ===== */
   .r-card-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: auto;
   }
 
   .r-card-preview-btn,
   .r-card-download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    font-weight: 600;
-    padding: 0.55rem 1rem;
-    min-height: 44px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s ease, border-color 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .r-card-preview-btn {
-    color: var(--text-primary);
-    background: var(--color-accent);
-    border: 1px solid var(--color-accent);
     flex: 1;
-    justify-content: center;
-  }
-
-  .r-card-preview-btn:hover {
-    background: #e8a060;
-    border-color: #e8a060;
-  }
-
-  .r-card-download-btn {
-    color: var(--text-secondary);
-    background: transparent;
-    border: 1px solid var(--border-color);
-    justify-content: center;
-  }
-
-  .r-card-download-btn:hover {
-    border-color: rgba(26, 42, 58, 0.15);
-    color: var(--text-primary);
-    background: rgba(26, 42, 58, 0.04);
+    white-space: nowrap;
   }
 
   .r-arrow {
@@ -1138,7 +1038,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     transition: transform 0.2s ease;
   }
 
-  /* ===== INLINE PREVIEW — paper-page treatment (claudedesign F.1) ===== */
+  /* ===== INLINE PREVIEW — faux paper page on a muted, ink-outlined tile ===== */
   .r-card-inline-preview {
     margin-bottom: 1rem;
     overflow: visible;
@@ -1147,37 +1047,29 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 
   .r-card-preview-thumb {
     position: relative;
-    perspective: 800px;
   }
 
-  /* The faux document — paper-toned tile, title + rule + lines + page counter */
   .r-prev-page {
     position: relative;
-    aspect-ratio: 1 / 1.414;
-    background: #FBF7EF;
-    border: 1px solid var(--border-color);
-    box-shadow:
-      0 2px 8px rgba(26, 42, 58, 0.04),
-      0 18px 40px -22px rgba(26, 42, 58, 0.18);
+    /* Cropped top of a page, not a full A4 sheet — the tile only carries ~6 lines */
+    aspect-ratio: 1 / 1.05;
+    background: var(--bg-muted);
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
     padding: 1.1rem 1.2rem;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
-            mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
-  }
-  :global([data-theme="dark"]) .r-prev-page {
-    background: rgba(245, 239, 227, 0.06);
   }
   .r-prev-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.55rem;
-    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-bottom: 0.4rem;
   }
   .r-prev-title {
     font-family: var(--font-heading);
-    font-weight: 300;
+    font-weight: 800;
     font-size: 1rem;
     line-height: 1.2;
     color: var(--text-primary);
@@ -1189,64 +1081,61 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     overflow: hidden;
   }
   .r-prev-rule {
-    height: 1px;
-    background: var(--color-accent);
-    opacity: 0.4;
+    width: 2.6rem;
+    height: 8px;
+    background: var(--swash) left center / contain no-repeat;
     margin: 0.4rem 0 0.7rem;
-    width: 2.2rem;
   }
   .r-prev-line {
     height: 5px;
-    background: rgba(26, 42, 58, 0.08);
+    background: var(--ink-faint);
+    opacity: 0.55;
     border-radius: 2px;
     margin-bottom: 0.45rem;
-  }
-  :global([data-theme="dark"]) .r-prev-line {
-    background: rgba(245, 239, 227, 0.08);
   }
   .r-prev-page-num {
     position: absolute;
     right: 0.9rem;
     bottom: 0.7rem;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--text-muted);
-    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
   }
 
+  /* Fade the faux page into the tile so the "Preview" chip sits on a calm edge */
   .r-card-preview-blur-overlay {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(253, 251, 247, 0.85) 90%);
+    inset: 1.5px;
+    border-radius: calc(var(--radius-sm) - 1.5px);
+    background: linear-gradient(180deg, transparent 35%, var(--bg-muted) 92%);
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 0.75rem;
     pointer-events: none;
   }
-  :global([data-theme="dark"]) .r-card-preview-blur-overlay {
-    background: linear-gradient(180deg, transparent 0%, rgba(17, 16, 14, 0.85) 90%);
-  }
 
+  /* .r-card-preview-unlock is a .chip.chip--red rendered as a real <button> that
+     opens the same PDF modal as "Preview Sample" (the modal delegates on
+     [data-preview-pdf]). It sits inside the aria-hidden thumb with tabindex=-1, so
+     it is a pointer-only shortcut — keyboard/AT users get the button below.
+     ::after enlarges the tap box to ≥40px without changing the chip's size. */
   .r-card-preview-unlock {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-accent);
-    background: #fff;
-    border: 1px solid rgba(212, 133, 58, 0.25);
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius-sm);
+    position: relative;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(26, 42, 58, 0.08);
+    box-shadow: 0 2px 0 var(--ink-shadow);
     pointer-events: auto;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
   }
-  :global([data-theme="dark"]) .r-card-preview-unlock {
-    background: rgba(245, 239, 227, 0.06);
+  .r-card-preview-unlock::after {
+    content: '';
+    position: absolute;
+    inset: -8px -4px;
+  }
+  .r-card-preview-unlock:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 var(--ink-shadow);
   }
 
   /* ===== NO RESULTS ===== */
@@ -1258,56 +1147,49 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   }
 
   .r-no-results-heading {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--text-secondary);
+    font-weight: 800;
+    color: var(--text-primary);
     margin: 0 0 0.5rem;
   }
 
   .r-no-results-sub {
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin: 0;
   }
 
-  /* ===== NEWSLETTER ===== */
+  /* ===== NEWSLETTER — ink card, red submit ===== */
   .r-newsletter-section {
-    background: var(--bg-primary);
     padding: 0 0 5rem;
   }
 
   .r-newsletter-card {
-    background: #FFFDF6;
-    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
     padding: 3rem;
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.7) inset,
-      0 1px 2px rgba(26, 42, 58, 0.04),
-      0 14px 30px -22px rgba(26, 42, 58, 0.18);
-  }
-  :global([data-theme="dark"]) .r-newsletter-card {
-    background: var(--bg-card);
   }
 
   .r-newsletter-heading {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 800;
     color: var(--text-primary);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     margin: 0 0 0.75rem;
   }
 
   .r-newsletter-sub {
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     line-height: 1.6;
     margin: 0 0 1.75rem;
   }
@@ -1321,132 +1203,69 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     gap: 0.5rem;
   }
 
+  /* .r-newsletter-input takes the global input look */
   .r-newsletter-input {
     flex: 1;
-    padding: 0.8rem 1rem;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    transition: border-color 0.2s ease;
   }
 
-  .r-newsletter-input::placeholder {
-    color: var(--text-muted);
-  }
-
-  .r-newsletter-input:focus {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-    border-color: rgba(212, 133, 58, 0.6);
-    box-shadow: 0 0 0 3px rgba(212, 133, 58, 0.15);
-  }
-
+  /* .r-btn-subscribe is a .btn.btn-accent */
   .r-btn-subscribe {
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    background: var(--color-accent);
-    border: none;
-    border-radius: 0;
-    padding: 0.8rem 1.5rem;
-    cursor: pointer;
     white-space: nowrap;
-    transition: background 0.2s ease;
-  }
-
-  .r-btn-subscribe:hover {
-    background: var(--color-accent-light);
   }
 
   .r-newsletter-note {
     font-family: var(--font-body);
     font-size: 0.75rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin: 0.75rem 0 0;
   }
 
   .r-newsletter-success {
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--color-accent);
+    color: var(--color-success);
     margin: 0.75rem 0 0;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   /* ===== CTA ===== */
   .r-cta {
-    background: var(--bg-primary);
     padding: 2.25rem 0 5rem;
     text-align: center;
   }
 
   .r-cta-heading {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
     color: var(--text-primary);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     margin: 0 0 0.75rem;
   }
 
   .r-cta-sub {
     font-family: var(--font-body);
     font-size: 1rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin: 0 0 2rem;
   }
 
-  .r-btn-cta {
-    display: inline-block;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    background: var(--color-accent);
-    border: none;
-    border-radius: 0;
-    padding: 0.85rem 2rem;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-
-  .r-btn-cta:hover {
-    background: var(--color-accent-light);
-  }
-
-  /* ===== VISUAL PLACEHOLDER ===== */
-  .r-visual-placeholder {
-    background: var(--bg-secondary);
-    border: 1px dashed var(--border-color);
-    border-radius: var(--border-radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
+  /* .r-btn-cta is a .btn.btn-accent */
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
     .r-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 640px) {
     .r-hero {
-      padding: 5rem 0 3rem;
+      padding: 1.5rem 0 2rem;
     }
 
     .r-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 1rem;
     }
 
@@ -1455,11 +1274,10 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     }
 
     .r-filter-row {
-      gap: 0;
+      gap: 0.35rem;
     }
 
     .r-filter-btn {
-      font-size: 0.8rem;
       padding: 0.4rem 0.75rem;
     }
 

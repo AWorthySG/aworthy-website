@@ -10,24 +10,28 @@ import '../../styles/global.css';
 
   <section class="lp-hero">
     <div class="container">
-      <span class="eyebrow">H1 General Paper Tuition</span>
-      <h1 class="lp-title">Struggling with GP essays?<br/><strong>88% of our students</strong> improve at least one grade band</h1>
-      <p class="lp-subtitle">The SHARP Method brings legal-analytical precision to GP essay writing, comprehension, and AQ. Small groups of 6, live on the A-Worthy Whiteboard &mdash; personalised feedback every session. <a href="/h1-general-paper/#playbook" style="color: var(--color-accent); text-decoration: underline;">See the full SHARP Playbook &rarr;</a></p>
-      <div class="lp-cta-row">
-        <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
-        <a href="/h1-general-paper/" class="btn">View Full Programme</a>
+      <div class="hero-card lp-hero-card subject--gp">
+        <div class="lp-hero-copy">
+          <span class="eyebrow">H1 General Paper Tuition</span>
+          <h1 class="lp-title squiggle">Struggling with GP essays?<br/><span class="accent-word">88% of our students</span> improve at least one grade band</h1>
+          <p class="lp-subtitle">The SHARP Method brings legal-analytical precision to GP essay writing, comprehension, and AQ. Small groups of 6, live on the A-Worthy Whiteboard &mdash; personalised feedback every session. <a href="/h1-general-paper/#playbook">See the full SHARP Playbook&nbsp;&rarr;</a></p>
+          <div class="lp-cta-row">
+            <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
+            <a href="/h1-general-paper/" class="btn">View Full Programme</a>
+          </div>
+          <div class="lp-stats">
+            <div class="lp-stat"><span class="stat-dot stat-dot--green" aria-hidden="true"></span><span class="lp-stat-num" data-count="88" data-count-suffix="%">0</span><span class="lp-stat-label">improve at least one grade band</span></div>
+            <div class="lp-stat"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span><span class="lp-stat-num">6</span><span class="lp-stat-label">max per class</span></div>
+            <div class="lp-stat"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span class="lp-stat-num" data-count="4.9">0</span><span class="lp-stat-label">Google rating</span></div>
+          </div>
+        </div>
+        <img class="sticker sticker--right lp-hero-art" src="/images/mascots/mascot-lightbulb.webp" width="399" height="546" alt="" decoding="async">
       </div>
     </div>
   </section>
 
   <section class="section lp-proof">
     <div class="container">
-      <div class="lp-stats">
-        <div class="lp-stat"><span class="lp-stat-num" data-count="88" data-count-suffix="%">0</span><span class="lp-stat-label">improve at least one grade band</span></div>
-        <div class="lp-stat"><span class="lp-stat-num">6</span><span class="lp-stat-label">max per class</span></div>
-        <div class="lp-stat"><span class="lp-stat-num" data-count="4.9">0</span><span class="lp-stat-label">Google rating</span></div>
-      </div>
-
       <div class="lp-testimonial">
         <blockquote>&ldquo;My daughter went from S grade to B in two terms. The structured essay framework changed everything.&rdquo;</blockquote>
         <cite>&mdash; Mrs. Chen, mother of JC 2 student</cite>
@@ -37,21 +41,25 @@ import '../../styles/global.css';
 
   <section class="section lp-features">
     <div class="container">
-      <h2>What you get</h2>
+      <h2 class="squiggle squiggle--center">What you get</h2>
       <div class="lp-features-grid">
-        <div class="lp-feature">
+        <div class="lp-feature card-lift">
+          <span class="icon-circle icon-circle--green" aria-hidden="true">1</span>
           <h3>Essay Mastery</h3>
           <p>Learn the P-E-E-L framework &mdash; Point, Evidence, Explanation, Link &mdash; that turns scattered arguments into Band 3+ essays across all 12 GP themes.</p>
         </div>
-        <div class="lp-feature">
+        <div class="lp-feature card-lift">
+          <span class="icon-circle icon-circle--pink" aria-hidden="true">2</span>
           <h3>Comprehension Technique</h3>
           <p>Systematic approach to inference, vocabulary-in-context, and summary questions using legal reading skills.</p>
         </div>
-        <div class="lp-feature">
+        <div class="lp-feature card-lift">
+          <span class="icon-circle icon-circle--blue" aria-hidden="true">3</span>
           <h3>AQ Precision</h3>
           <p>Master the Application Question with our AQ Response Template. Where most students lose marks, ours gain them.</p>
         </div>
-        <div class="lp-feature">
+        <div class="lp-feature card-lift">
+          <span class="icon-circle icon-circle--gold" aria-hidden="true">4</span>
           <h3>Weekly Feedback</h3>
           <p>Detailed written feedback on one essay or comprehension passage every week &mdash; not just a grade, but what to fix.</p>
         </div>
@@ -59,9 +67,9 @@ import '../../styles/global.css';
     </div>
   </section>
 
-  <section class="section lp-final-cta">
+  <section class="section section--sand lp-final-cta">
     <div class="container" style="text-align:center;">
-      <h2>Ready to improve your GP grade?</h2>
+      <h2 class="squiggle squiggle--center">Ready to improve your GP grade?</h2>
       <p style="max-width:540px;margin:0 auto 2rem;color:var(--text-secondary);">Book a free 20-minute diagnostic assessment. We&rsquo;ll identify your specific gaps and recommend the right programme.</p>
       <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
     </div>
@@ -71,23 +79,81 @@ import '../../styles/global.css';
 </BaseLayout>
 
 <style>
-  .lp-hero { padding: 1.25rem 0 1.5rem; text-align: center; }
-  .lp-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.1; color: var(--text-primary); margin-bottom: 1.25rem; }
-  .lp-title strong { color: var(--color-accent); font-weight: 800; }
-  .lp-subtitle { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.25rem; }
+  /* ── Hero — the LMS welcome card: a white ink card with the subject-tint wash,
+     copy + proof row on the left and the subject sticker on the right (≥1024px);
+     the sticker sits centred above the headline on narrower screens ── */
+  .lp-hero { padding: 1.5rem 0 var(--space-3xl); }
+  .lp-hero-card { display: flex; flex-direction: column; text-align: center; }
+  .lp-hero-copy { min-width: 0; }
+  .lp-hero-art { order: -1; width: 140px; margin: 0 auto 1rem; }
+  .lp-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.25rem; }
+  .lp-title::after { margin-inline: auto; }
+  .lp-subtitle { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto 1.25rem; text-wrap: pretty; }
+  .lp-subtitle a { color: var(--color-accent-text); text-decoration: underline; text-underline-offset: 0.15em; }
   .lp-cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .lp-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem; }
+
+  /* ── Proof row — coloured stat dots before 900-weight numbers, grey micro-labels;
+     three equal columns under a dashed rule inside the hero card ── */
+  .lp-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 0.5rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 2px dashed var(--ink-faint); }
   .lp-stat { text-align: center; }
-  .lp-stat-num { display: block; font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; color: var(--color-accent); }
-  .lp-stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font-mono); }
-  .lp-testimonial { max-width: 600px; margin: 0 auto; text-align: center; }
-  .lp-testimonial blockquote { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 300; font-style: italic; color: var(--text-primary); line-height: 1.6; margin-bottom: 0.75rem; }
-  .lp-testimonial cite { font-size: 0.85rem; color: var(--text-muted); font-style: normal; }
-  .lp-features h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 400; text-align: center; margin-bottom: 1.25rem; }
+  .lp-stat .stat-dot { width: 11px; height: 11px; margin-right: 0.5rem; vertical-align: 0.55em; }
+  .lp-stat-num { display: inline-block; font-family: var(--font-heading); font-size: 2.5rem; font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: var(--text-primary); }
+  .lp-stat-label { display: block; margin-top: 0.4rem; font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  @media (min-width: 1024px) {
+    .lp-hero-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: clamp(1.5rem, 3vw, 3rem); text-align: left; }
+    .lp-hero-art { order: 0; width: clamp(150px, 15vw, 180px); margin: 0; }
+    .lp-title::after { margin-inline: 0; }
+    .lp-subtitle { margin-inline: 0; }
+    .lp-cta-row { justify-content: flex-start; }
+    .lp-stats { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1rem 2.5rem; }
+    .lp-stat { text-align: left; }
+  }
+
+  /* ── Testimonial — a white ink card with a red squiggle above the quote ── */
+  .lp-testimonial {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.75rem 2rem;
+    text-align: center;
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
+  }
+  .lp-testimonial::before {
+    content: '';
+    display: block;
+    width: 72px;
+    height: 12px;
+    margin: 0 auto 1rem;
+    background: var(--swash) center / contain no-repeat;
+  }
+  .lp-testimonial blockquote { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; font-style: italic; color: var(--text-primary); line-height: 1.6; margin: 0 0 0.75rem; }
+  .lp-testimonial cite { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); font-style: normal; }
+
+  /* ── Feature grid — white ink cards that lift, numbered icon circles ── */
+  .lp-features h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; text-align: center; margin-bottom: 1.5rem; }
   .lp-features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto; }
-  .lp-feature { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; }
-  .lp-feature h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .lp-feature { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.25rem; }
+  .lp-feature .icon-circle { margin-bottom: 0.75rem; font-family: var(--font-heading); font-size: 0.9rem; font-weight: 800; }
+  .lp-feature h3 { font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
   .lp-feature p { font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary); }
-  .lp-final-cta h2 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 300; margin-bottom: 0.75rem; }
-  @media (max-width: 640px) { .lp-stats { gap: 2rem; } .lp-features-grid { grid-template-columns: 1fr; } }
+
+  /* ── Final CTA — sand band, one red button ── */
+  .lp-final-cta h2 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+
+  @media (max-width: 640px) {
+    /* The three proofs share one row: smaller dot, number scaled to the column
+       (widest number is "S$280"), labels at the 0.72rem floor and wrapping */
+    .lp-stat .stat-dot { width: 9px; height: 9px; margin-right: 0.4rem; }
+    .lp-stat-num { font-size: clamp(1.4rem, 6.7vw, 2.1rem); }
+    .lp-stat-label { font-size: 0.72rem; letter-spacing: 0.06em; }
+    .lp-testimonial { padding: 1.5rem 1.25rem; }
+    .lp-features-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .lp-hero-card { padding: 1.25rem; }
+  }
 </style>

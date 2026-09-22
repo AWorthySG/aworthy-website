@@ -24,19 +24,23 @@ export interface StudySubject {
   label: string;
   /** Short label used on the card chip. */
   short: string;
+  /** Dot / border colour — the LMS subject token (it swaps for dark mode by itself). */
   accent: string;
-  accentDark: string;
+  /** AA-safe text colour for the card chip and "Open" label — the subject's matching `-text` token. */
+  accentText: string;
   /** Subject page this material supports, if any. */
   href?: string;
 }
 
 export const studySubjects: StudySubject[] = [
-  { id: 'english', label: 'O-Level English', short: 'English', accent: '#3B7DD8', accentDark: '#6FA4E8', href: '/o-level-english/' },
-  { id: 'gp', label: 'H1 General Paper', short: 'GP', accent: '#4A8C6F', accentDark: '#77B79A', href: '/h1-general-paper/' },
-  { id: 'econs', label: 'H2 Economics', short: 'Economics', accent: '#2B8A8A', accentDark: '#5FB8B8', href: '/h2-economics/' },
-  { id: 'maths', label: 'O-Level Mathematics', short: 'Maths', accent: '#7B5EA7', accentDark: '#9B7EC7', href: '/o-level-mathematics/' },
-  { id: 'pre-ib', label: 'Pre-IB Mathematics', short: 'Pre-IB', accent: '#B0436A', accentDark: '#D06D91', href: '/pre-ib-mathematics/' },
-  { id: 'general', label: 'Study Skills', short: 'Study Skills', accent: '#D4853A', accentDark: '#E09850' },
+  // Accents are the LMS subject tokens from global.css (they already swap for dark mode):
+  // `accent` is the dot / border colour, `accentText` its AA text pair (GP and coaching dots fail 4.5:1 as text on white).
+  { id: 'english', label: 'O-Level English', short: 'English', accent: 'var(--subject-english)', accentText: 'var(--subject-english-text)', href: '/o-level-english/' },
+  { id: 'gp', label: 'H1 General Paper', short: 'GP', accent: 'var(--subject-gp)', accentText: 'var(--subject-gp-text)', href: '/h1-general-paper/' },
+  { id: 'econs', label: 'H2 Economics', short: 'Economics', accent: 'var(--subject-econ)', accentText: 'var(--subject-econ-text)', href: '/h2-economics/' },
+  { id: 'maths', label: 'O-Level Mathematics', short: 'Maths', accent: 'var(--subject-maths)', accentText: 'var(--subject-maths-text)', href: '/o-level-mathematics/' },
+  { id: 'pre-ib', label: 'Pre-IB Mathematics', short: 'Pre-IB', accent: 'var(--subject-preib)', accentText: 'var(--subject-preib-text)', href: '/pre-ib-mathematics/' },
+  { id: 'general', label: 'Study Skills', short: 'Study Skills', accent: 'var(--subject-coaching)', accentText: 'var(--subject-coaching-text)' },
 ];
 
 export interface StudyMaterialMeta {

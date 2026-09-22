@@ -14,7 +14,7 @@ const whatsappFeedback = 'https://wa.me/6583384033?text=' + encodeURIComponent('
   <section class="review-hero">
     <div class="container">
       <span class="eyebrow">Thank You</span>
-      <h1 class="review-title">How did we do?</h1>
+      <h1 class="review-title squiggle squiggle--center">How did we do?</h1>
       <p class="review-sub">Your experience helps us improve &mdash; and helps other Singapore families decide. It takes less than a minute.</p>
 
       <div class="review-card">
@@ -37,17 +37,24 @@ const whatsappFeedback = 'https://wa.me/6583384033?text=' + encodeURIComponent('
 
 <style>
   .review-hero { padding: 2rem 0 3rem; text-align: center; }
-  .review-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .review-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.75rem; }
   .review-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 540px; margin: 0 auto 2rem; }
-  .review-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 2.25rem 1.75rem; max-width: 480px; margin: 0 auto 1.5rem; }
-  .review-stars { color: var(--color-accent); font-size: 1.6rem; letter-spacing: 0.15em; margin-bottom: 1rem; }
-  .review-card__title { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; }
+  /* Sticker card — white, 2px ink outline, hard offset shadow */
+  .review-card { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 2.25rem 1.75rem; max-width: 480px; margin: 0 auto 1.5rem; }
+  .review-stars { color: var(--color-sun); font-size: 1.6rem; letter-spacing: 0.15em; margin-bottom: 1rem; }
+  .review-card__title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.6rem; }
   .review-card__text { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem; }
-  .review-card__cta { display: inline-block; }
+  .review-card__cta { display: inline-flex; }
   .review-alt { max-width: 480px; margin: 0 auto; }
   .review-alt p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
-  .review-alt__link { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .review-alt__link { color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
   .review-alt__link:hover { text-decoration: underline; }
-  .review-alt__or { display: block; margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-muted); }
-  .review-alt__or a { color: var(--text-secondary); }
+  .review-alt__or { display: block; margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); }
+  /* The fallback contact link must read as a link (WCAG 1.4.1 — not colour
+     alone) and be comfortably tappable: inline-block + vertical padding grows
+     the hit box; on coarse pointers it reaches the 40px floor. */
+  .review-alt__or a { display: inline-block; color: var(--color-accent-text); font-weight: 700; text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1.5px; padding-block: 0.3rem; }
+  @media (pointer: coarse) {
+    .review-alt__or a { padding-block: 0.6rem; }
+  }
 </style>

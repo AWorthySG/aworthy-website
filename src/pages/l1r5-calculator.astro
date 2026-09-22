@@ -25,7 +25,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   <section class="calc-hero">
     <div class="container">
       <span class="eyebrow">Free Tool</span>
-      <h1 class="calc-title">L1R5 Calculator</h1>
+      <h1 class="calc-title">L1R5 <span class="accent-word">Calculator</span></h1>
       <p class="calc-sub">Work out your net L1R5 aggregate in seconds, apply your CCA and Higher Mother Tongue bonus points, and see which junior colleges you&rsquo;d qualify for under the 2026 cut-off points. Built by A-Worthy&rsquo;s Singapore tutors.</p>
     </div>
     <img src="/images/mascots/mascot-cheer.webp" alt="" width="455" height="508" class="sticker sticker--hero" />
@@ -95,25 +95,25 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
       <div class="calc-result" id="calc-result" aria-live="polite" hidden>
         <div class="calc-score">
           <div class="calc-score-block">
-            <span class="calc-score-num" id="calc-gross">&ndash;</span>
+            <span class="calc-score-num"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span id="calc-gross">&ndash;</span></span>
             <span class="calc-score-label">Gross L1R5</span>
           </div>
           <div class="calc-score-arrow">&rarr;</div>
           <div class="calc-score-block calc-score-block--net">
-            <span class="calc-score-num" id="calc-net">&ndash;</span>
+            <span class="calc-score-num"><span class="stat-dot stat-dot--green" aria-hidden="true"></span><span id="calc-net">&ndash;</span></span>
             <span class="calc-score-label">Net L1R5</span>
           </div>
         </div>
         <div class="calc-breakdown" id="calc-breakdown"></div>
-        <h3 class="calc-jc-heading">JCs you&rsquo;d qualify for <span>(2026 JAE, indicative)</span></h3>
+        <h3 class="calc-jc-heading squiggle">JCs you&rsquo;d qualify for <span>(2026 JAE, indicative)</span></h3>
         <div class="calc-jc" id="calc-jc"></div>
         <p class="calc-disclaimer">Cut-off points change every year and depend on stream and choice order. This is an indicative guide only &mdash; always verify the latest figures on <a href="https://www.moe.gov.sg/schoolfinder" target="_blank" rel="noopener noreferrer">MOE SchoolFinder</a>.</p>
         <div class="calc-cta">
           <p><strong>English and Maths affect every L1R5.</strong> They&rsquo;re the two subjects every student takes &mdash; so every grade you raise there shifts your whole aggregate.</p>
           <div class="calc-cta-links">
             <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
-            <a href="/o-level-english/" class="calc-cta-link">O-Level English &rarr;</a>
-            <a href="/o-level-mathematics/" class="calc-cta-link">O-Level Maths &rarr;</a>
+            <a href="/o-level-english/" class="calc-cta-link subject--english"><span class="subject-dot" aria-hidden="true"></span>O-Level English &rarr;</a>
+            <a href="/o-level-mathematics/" class="calc-cta-link subject--maths"><span class="subject-dot" aria-hidden="true"></span>O-Level Maths &rarr;</a>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
     <div class="container">
       <h2 class="section-title">How L1R5 works</h2>
       <p class="section-subtitle">L1R5 = 1 Language + 5 Relevant subjects &mdash; the aggregate of your six best grades, selected by MOE&rsquo;s rules. Each grade is worth points (A1&nbsp;=&nbsp;1 up to F9&nbsp;=&nbsp;9), so a <em>lower</em> score is better, and bonus points for CCA and Higher Mother Tongue are subtracted to give your net aggregate.</p>
-      <p style="text-align:center;">For the full breakdown, bonus-point rules, and the complete 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points-2026/">complete L1R5 &amp; cut-off points guide</a>. Already heading to JC? Plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>, or test your exam instincts with the <a href="/sharp-decoder/">SHARP Decoder game</a>.</p>
+      <p class="calc-explainer__note">For the full breakdown, bonus-point rules, and the complete 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points-2026/">complete L1R5 &amp; cut-off points guide</a>. Already heading to JC? Plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>, or test your exam instincts with the <a href="/sharp-decoder/">SHARP Decoder game</a>.</p>
     </div>
   </section>
 
@@ -133,22 +133,33 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
 
 <style>
   .calc-hero { padding: 1.5rem 0 0.75rem; text-align: center; }
-  .calc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .calc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: var(--text-primary); margin-bottom: 0.75rem; }
   .calc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
   .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
-  .calc-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; }
+  /* Until a result exists the lone form card sits centred instead of leaving the right column blank */
+  .calc-grid:has(> .calc-result[hidden]) { grid-template-columns: minmax(0, 640px); justify-content: center; }
+  /* The global sun blob (520px, top -32%) is taller than this short hero, so its dense band was clipped
+     into a hard edge — span the hero's own height instead and fade the blob out before the top/bottom edges */
+  section.calc-hero::before {
+    top: 0; height: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+  }
+
+  /* ── Form card — white sticker card with a 2px ink outline ── */
+  .calc-card { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; }
   .calc-group { border: none; padding: 0; margin: 0 0 1.25rem; }
-  .calc-group legend { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; padding: 0; margin-bottom: 0.5rem; }
-  .calc-group legend span { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; }
-  .calc-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.35rem 0; }
-  .calc-row--l1 { padding: 0.6rem 0.75rem; background: rgba(212,133,58,0.08); border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-bottom: 1.25rem; }
-  .calc-subject { font-size: 0.9rem; color: var(--text-secondary); }
-  .calc-subject em { color: var(--color-accent); font-style: normal; font-weight: 600; }
-  .calc-select { min-width: 130px; min-height: 44px; padding: 0.4rem 0.6rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem; }
-  .calc-select:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; }
-  .calc-bonus .calc-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); padding: 0.35rem 0; min-height: 44px; cursor: pointer; }
+  .calc-group legend { font-weight: 700; color: var(--text-secondary); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0; margin-bottom: 0.5rem; }
+  .calc-group legend span { font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--text-secondary); font-size: 0.78rem; }
+  .calc-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.35rem 0; margin-bottom: 0; font-weight: 400; letter-spacing: 0; }
+  .calc-row--l1 { padding: 0.6rem 0.75rem; background: var(--bg-muted); border: 2px dashed var(--ink-faint); border-radius: var(--radius-sm); margin-bottom: 1.25rem; }
+  .calc-subject { font-size: 0.9rem; color: var(--text-primary); font-weight: 600; }
+  .calc-subject em { color: var(--color-accent-text); font-style: normal; font-weight: 800; }
+  /* Selects take the global ink-outlined look and the global chevron (ink in light, cream in dark) — only size is page-scoped */
+  .calc-select { min-width: 130px; width: auto; min-height: 44px; padding: 0.4rem 2.1rem 0.4rem 0.75rem; }
+  .calc-bonus .calc-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0; color: var(--text-primary); padding: 0.35rem 0; margin-bottom: 0; min-height: 44px; cursor: pointer; }
   .calc-check input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
-  .calc-check .check-box { position: relative; display: inline-block; width: 1.15rem; height: 1.15rem; flex-shrink: 0; border: 1.5px solid var(--border-color); border-radius: 5px; background: var(--bg-primary); transition: border-color var(--transition-fast); }
+  .calc-check .check-box { position: relative; display: inline-block; width: 22px; height: 22px; flex-shrink: 0; border: 2px solid var(--color-ink); border-radius: 6px; background: var(--bg-muted); transition: border-color var(--transition-fast); }
   .calc-check .check-box::after { content: ''; position: absolute; inset: -3px; background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat; opacity: 0; transform: scale(0.5); transition: opacity var(--transition-fast), transform var(--transition-fast); }
   .calc-check input:checked ~ .check-box { border-color: var(--color-accent); }
   .calc-check input:checked ~ .check-box::after { opacity: 1; transform: scale(1); }
@@ -156,34 +167,47 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   @media (prefers-reduced-motion: reduce) { .calc-check .check-box::after { transition: none; } }
   .calc-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.5rem; }
   .calc-btn { cursor: pointer; }
-  .calc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; min-height: 44px; padding: 0.5rem 0.6rem; }
-  .calc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
-  :global([data-theme="dark"]) .calc-error { color: #ff8a7a; }
+  .calc-reset { background: none; border: none; color: var(--text-secondary); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; min-height: 44px; padding: 0.5rem 0.6rem; }
+  .calc-reset:hover { color: var(--text-primary); }
+  .calc-error { color: var(--color-accent-text); font-weight: 600; font-size: 0.85rem; margin-top: 0.75rem; }
 
-  .calc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--color-accent); border-radius: var(--border-radius-lg); padding: 1.5rem; position: sticky; top: calc(var(--header-height) + 1rem); }
+  /* ── Result card ── */
+  /* --nav-offset = header + SubjectBar (header alone ≤640px): the stuck card and the post-Calculate
+     scrollIntoView both clear the fixed chrome instead of sliding under the programmes strip */
+  .calc-result { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; position: sticky; top: calc(var(--nav-offset) + 1rem); scroll-margin-top: calc(var(--nav-offset) + 1rem); }
   .calc-score { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 1.25rem; }
   .calc-score-block { text-align: center; }
-  .calc-score-num { display: block; font-family: var(--font-heading); font-size: 2.75rem; font-weight: 800; color: var(--text-muted); line-height: 1; }
-  .calc-score-block--net .calc-score-num { color: var(--color-accent); font-weight: 400; }
-  .calc-score-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-family: var(--font-mono); }
-  .calc-score-arrow { color: var(--text-muted); font-size: 1.5rem; }
-  .calc-breakdown { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 0.9rem 0; margin-bottom: 1rem; }
+  .calc-score-num { display: flex; align-items: center; justify-content: center; gap: 0.1rem; font-family: var(--font-heading); font-size: 2.75rem; font-weight: 900; letter-spacing: -0.02em; color: var(--text-primary); line-height: 1; margin-bottom: 0.35rem; }
+  .calc-score-num .stat-dot { width: 11px; height: 11px; }
+  .calc-score-block--net .calc-score-num { color: var(--color-accent-text); }
+  .calc-score-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); font-family: var(--font-body); }
+  .calc-score-arrow { color: var(--text-tertiary); font-size: 1.5rem; }
+  .calc-breakdown { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; border-top: 2px dashed var(--ink-faint); border-bottom: 2px dashed var(--ink-faint); padding: 0.9rem 0; margin-bottom: 1rem; }
   .calc-breakdown span { display: inline-block; }
-  .calc-jc-heading { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
-  .calc-jc-heading span { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; }
-  .calc-jc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-  .calc-jc-chip { font-size: 0.8rem; padding: 0.3rem 0.7rem; border-radius: 999px; background: rgba(212, 133, 58, 0.1); color: var(--color-accent); border: 1px solid rgba(212, 133, 58, 0.28); font-weight: 600; }
-  :global([data-theme="dark"]) .calc-jc-chip { background: rgba(224, 152, 80, 0.12); color: var(--color-accent-light); border-color: rgba(224, 152, 80, 0.32); }
-  .calc-jc-none { font-size: 0.9rem; color: var(--text-secondary); }
-  .calc-disclaimer { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
-  .calc-disclaimer a { color: var(--color-accent); }
-  .calc-cta { border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
+  .calc-breakdown :global(strong) { color: var(--text-primary); }
+  .calc-jc-heading { font-size: 1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .calc-jc-heading::after { width: 56px; height: 10px; margin-top: 0.3rem; }
+  .calc-jc-heading span { font-weight: 600; color: var(--text-secondary); font-size: 0.8rem; }
+  /* The JC list is built by the script, so its pieces are :global — green tinted chips, like the LMS */
+  .calc-jc { margin-bottom: 1rem; }
+  .calc-jc :global(.calc-jc) { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .calc-jc :global(.calc-jc-chip) {
+    display: inline-flex; align-items: center; min-height: 32px; padding: 0.3rem 0.8rem; border-radius: var(--radius-pill);
+    background: var(--tint-green-bg); color: var(--tint-green-fg); border: 1.5px solid var(--color-leaf);
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1.2; white-space: nowrap;
+  }
+  .calc-jc :global(.calc-jc-none) { font-size: 0.9rem; color: var(--text-secondary); }
+  .calc-disclaimer { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
+  .calc-disclaimer a { color: var(--color-accent-text); font-weight: 700; }
+  .calc-cta { border-top: 2px dashed var(--ink-faint); padding-top: 1.25rem; }
   .calc-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6; }
+  .calc-cta p strong { color: var(--text-primary); }
   .calc-cta-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-  .calc-cta-link { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
-  .calc-cta-link:hover { text-decoration: underline; }
+  .calc-cta-link { color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.9rem; min-height: 40px; display: inline-flex; align-items: center; gap: 0.45rem; }
+  .calc-cta-link:hover { text-decoration: underline; text-underline-offset: 3px; }
   .calc-explainer { text-align: center; }
-  .calc-explainer a { color: var(--color-accent); }
+  .calc-explainer__note { max-width: 640px; margin: 0 auto; }
+  .calc-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
   @media (max-width: 900px) {
     .calc-grid { grid-template-columns: 1fr; }

@@ -1,10 +1,12 @@
+/* SHARP playbook matrix (shared by the subject pages) — LMS sticker-book:
+   white ink-outlined cells, grey micro-labels, red letter badges. */
 .playbook-section { background: var(--bg-secondary); }
 .playbook-matrix {
   display: grid;
   grid-template-columns: minmax(180px, 1.4fr) repeat(5, minmax(140px, 1fr));
-  gap: 1px;
-  background: var(--prog-border);
-  border: 1px solid var(--prog-border);
+  gap: 2px;
+  background: var(--color-ink);
+  border: 2px solid var(--color-ink);
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-top: 1.5rem;
@@ -15,53 +17,64 @@
 .playbook-matrix__step,
 .playbook-matrix__row-label,
 .playbook-matrix__cell {
-  background: var(--prog-bg-card);
+  background: var(--bg-card);
   padding: 1rem 0.9rem;
 }
 .playbook-matrix__col-label,
 .playbook-matrix__step {
-  background: var(--subject-accent-text);
-  color: white;
-  font-family: var(--prog-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+  font-family: var(--prog-mono, var(--font-body));
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.4rem;
   text-align: center;
 }
 .playbook-matrix__col-label { text-align: left; align-items: flex-start; justify-content: flex-end; }
+/* Step letter — red badge with an ink ring */
 .playbook-letter {
-  font-family: var(--prog-font);
-  font-size: 1.5rem;
+  font-family: var(--prog-font, var(--font-body));
+  font-size: 1.1rem;
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: #fff;
+  border: 2px solid var(--color-ink);
+  box-shadow: 0 2px 0 var(--color-accent-press);
 }
-.playbook-step-name { font-size: 0.7rem; opacity: 0.92; }
+.playbook-step-name { font-size: 0.72rem; color: inherit; opacity: 0.92; }
 .playbook-matrix__row-label {
-  background: var(--bg-secondary);
+  background: var(--bg-muted);
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
   justify-content: center;
 }
 .playbook-paper {
-  font-family: var(--prog-mono);
+  font-family: var(--prog-mono, var(--font-body));
   font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--subject-accent-text);
-  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  font-weight: 700;
 }
 .playbook-section-name {
-  font-family: var(--prog-font);
-  font-weight: 400;
-  color: var(--prog-text);
+  font-family: var(--prog-font, var(--font-body));
+  font-weight: 800;
+  color: var(--text-primary);
   font-size: 1rem;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -69,16 +82,16 @@
 .playbook-matrix__cell { display: flex; flex-direction: column; gap: 0.3rem; }
 .playbook-matrix__cell-body { display: contents; }
 .playbook-matrix__cell strong {
-  font-family: var(--prog-font);
-  font-weight: 600;
-  color: var(--prog-text);
+  font-family: var(--prog-font, var(--font-body));
+  font-weight: 800;
+  color: var(--text-primary);
   font-size: 0.85rem;
   line-height: 1.3;
 }
 .playbook-matrix__cell span {
-  font-family: var(--prog-font);
+  font-family: var(--prog-font, var(--font-body));
   font-size: 0.75rem;
-  color: var(--prog-text-secondary);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
@@ -96,8 +109,8 @@
   .playbook-matrix__row {
     display: flex;
     flex-direction: column;
-    background: var(--prog-bg-card);
-    border: 1px solid var(--prog-border);
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
     padding: 1rem;
     gap: 0;
@@ -105,7 +118,7 @@
   .playbook-matrix__row-label {
     background: transparent;
     padding: 0 0 0.6rem;
-    border-bottom: 1px solid var(--prog-border);
+    border-bottom: 2px dashed var(--ink-faint);
     margin-bottom: 0.15rem;
   }
   .playbook-matrix__cell {
@@ -116,16 +129,17 @@
     gap: 0.6rem;
     align-items: flex-start;
   }
-  .playbook-matrix__cell:not(:last-child) { border-bottom: 1px solid var(--prog-border); }
+  .playbook-matrix__cell:not(:last-child) { border-bottom: 1px solid var(--border-color); }
   .playbook-matrix__cell::before {
     content: attr(data-step);
-    font-family: var(--prog-font);
-    font-weight: 600;
-    color: white;
-    background: var(--subject-accent-text);
+    font-family: var(--prog-font, var(--font-body));
+    font-weight: 800;
+    color: #fff;
+    background: var(--color-accent);
+    border: 2px solid var(--color-ink);
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,19 +166,8 @@
   padding: 1.25rem 0 0;
 }
 .playbook-cta p {
-  font-family: var(--prog-font);
+  font-family: var(--prog-font, var(--font-body));
   font-size: 1.05rem;
-  color: var(--prog-text-secondary);
+  color: var(--text-secondary);
   margin-bottom: 1rem;
-}
-
-/* Dark mode: the light subject accents fail 4.5:1 with white text, so the
-   matrix chrome flips to dark ink on the light accent. */
-[data-theme="dark"] .playbook-matrix__col-label,
-[data-theme="dark"] .playbook-matrix__step {
-  background: var(--subject-accent);
-  color: #11100E;
-}
-@media (max-width: 900px) {
-  [data-theme="dark"] .playbook-matrix__cell::before { background: var(--subject-accent); color: #11100E; }
 }

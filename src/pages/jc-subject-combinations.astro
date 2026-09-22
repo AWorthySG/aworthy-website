@@ -14,9 +14,10 @@ import '../styles/global.css';
   <section class="jc-hero">
     <div class="container">
       <span class="eyebrow">Free Tool</span>
-      <h1 class="jc-title">JC Subject Combination Advisor</h1>
+      <h1 class="jc-title">JC Subject Combination <span class="accent-word">Advisor</span></h1>
       <p class="jc-sub">Choosing your A-Level subjects? Pick your likely direction and where your strengths lie, and we&rsquo;ll suggest common, broadly-applicable H2/H1 combinations to discuss with your school.</p>
     </div>
+    <img src="/images/mascots/mascot-science.webp" alt="" width="406" height="553" class="sticker sticker--hero" />
   </section>
 
   <section class="section jc-section">
@@ -26,11 +27,11 @@ import '../styles/global.css';
           <span class="jc-label">What might you want to study?</span>
           <select id="jc-direction" class="jc-select">
             <option value="">Choose a direction&hellip;</option>
-            <option value="medicine">Medicine, Dentistry &amp; Health Sciences</option>
-            <option value="engineering">Engineering, Computing &amp; Physical Sciences</option>
-            <option value="business">Business, Economics &amp; Accountancy</option>
-            <option value="law">Law, Humanities &amp; Social Sciences</option>
-            <option value="undecided">Not sure yet &mdash; keep my options open</option>
+            <option value="medicine">Medicine &amp; Health Sciences</option>
+            <option value="engineering">Engineering &amp; Computing</option>
+            <option value="business">Business &amp; Economics</option>
+            <option value="law">Law &amp; Humanities</option>
+            <option value="undecided">Not sure yet</option>
           </select>
         </label>
 
@@ -45,14 +46,14 @@ import '../styles/global.css';
         </label>
 
         <div class="jc-actions">
-          <button type="submit" class="btn btn-accent">Show recommended combinations</button>
+          <button type="submit" class="btn btn-accent">Show combinations</button>
           <button type="button" class="jc-reset" id="jc-reset">Reset</button>
         </div>
         <p class="jc-error" id="jc-error" role="alert" hidden></p>
       </form>
 
       <div class="jc-result" id="jc-result" aria-live="polite" hidden>
-        <span class="jc-rec-eyebrow">Suggested for</span>
+        <span class="jc-rec-eyebrow chip chip--blue">Suggested for</span>
         <h2 class="jc-rec-title" id="jc-rec-title"></h2>
         <div class="jc-combos" id="jc-combos"></div>
         <p class="jc-why" id="jc-why"></p>
@@ -62,8 +63,22 @@ import '../styles/global.css';
           <p><strong>Already in JC?</strong> We coach the two subjects most students find hardest to lift on their own.</p>
           <div class="jc-cta-links">
             <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
-            <a href="/h1-general-paper/" class="jc-cta-link">H1 General Paper &rarr;</a>
-            <a href="/h2-economics/" class="jc-cta-link">H2 Economics &rarr;</a>
+          </div>
+          <div class="jc-cta-cards">
+            <a href="/h1-general-paper/" class="subject-card subject--gp">
+              <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-lightbulb.webp" alt="" width="399" height="546" loading="lazy" /></div>
+              <div class="subject-card__body">
+                <p class="subject-card__title">H1 General Paper</p>
+                <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>JC 1&ndash;2</p>
+              </div>
+            </a>
+            <a href="/h2-economics/" class="subject-card subject--econ">
+              <div class="subject-panel subject-panel--sm"><img src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" loading="lazy" /></div>
+              <div class="subject-card__body">
+                <p class="subject-card__title">H2 Economics</p>
+                <p class="subject-card__meta"><span class="subject-dot" aria-hidden="true"></span>JC 1&ndash;2</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -74,7 +89,7 @@ import '../styles/global.css';
     <div class="container">
       <h2 class="section-title">How JC subject combinations work</h2>
       <p class="section-subtitle">Most Singapore JC students offer <strong>3 H2 + 1 H1</strong> content subjects, plus compulsory <strong>H1 General Paper</strong>, <strong>Project Work</strong> and <strong>Mother Tongue</strong>. At least one subject must <em>contrast</em> with the others &mdash; so science students take an arts H1 (often Economics), and arts students take H1 Mathematics.</p>
-      <p style="text-align:center;">Still weighing JC against other paths? Read our <a href="/blog/ib-vs-jc/">IB vs JC comparison</a>, or work out your eligibility with the <a href="/l1r5-calculator/">L1R5 calculator</a>, or sharpen your exam instincts with the <a href="/sharp-decoder/">SHARP Decoder game</a>.</p>
+      <p class="jc-explainer__note">Still weighing JC against other paths? Read our <a href="/blog/ib-vs-jc/">IB vs JC comparison</a>, or work out your eligibility with the <a href="/l1r5-calculator/">L1R5 calculator</a>, or sharpen your exam instincts with the <a href="/sharp-decoder/">SHARP Decoder game</a>.</p>
     </div>
   </section>
 
@@ -83,38 +98,70 @@ import '../styles/global.css';
 
 <style>
   .jc-hero { padding: 1.5rem 0 0.75rem; text-align: center; }
-  .jc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .jc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: var(--text-primary); margin-bottom: 0.75rem; }
   .jc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
   .jc-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; align-items: start; }
-  .jc-card { background: var(--bg-card); border: 1px solid var(--border-color); border-top: 3px solid var(--color-accent); border-radius: var(--border-radius-lg); padding: 1.5rem; }
+  /* Until a result exists the lone form card sits centred instead of hugging the left edge */
+  .jc-grid:has(> .jc-result[hidden]) { grid-template-columns: minmax(0, 640px); justify-content: center; }
+  /* The global sun blob (520px, top -32%) is taller than this short hero, so its dense band was clipped
+     into a hard edge — span the hero's own height instead and fade the blob out before the top/bottom edges */
+  section.jc-hero::before {
+    top: 0; height: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+  }
+
+  /* ── Form card — white sticker card with a 2px ink outline ── */
+  .jc-card { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; }
   .jc-field { display: block; margin-bottom: 1.1rem; }
-  .jc-label { display: block; font-weight: 700; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 0.45rem; }
-  .jc-select { width: 100%; min-height: 44px; padding: 0.55rem 0.7rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; }
-  .jc-select:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+  .jc-label { display: block; font-weight: 700; color: var(--text-secondary); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.45rem; }
+  /* Selects take the global ink-outlined look and the global chevron (ink in light, cream in dark) — only size is page-scoped */
+  .jc-select { width: 100%; min-height: 44px; padding: 0.55rem 2.6rem 0.55rem 0.9rem; }
   .jc-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.25rem; }
-  .jc-reset { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; min-height: 44px; padding: 0.5rem 0.6rem; }
-  .jc-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; }
-  :global([data-theme="dark"]) .jc-error { color: #ff8a7a; }
+  .jc-reset { background: none; border: none; color: var(--text-secondary); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; min-height: 44px; padding: 0.5rem 0.6rem; }
+  .jc-reset:hover { color: var(--text-primary); }
+  .jc-error { color: var(--color-accent-text); font-weight: 600; font-size: 0.85rem; margin-top: 0.75rem; }
 
-  .jc-result { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; }
-  .jc-rec-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
-  .jc-rec-title { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 0.2rem 0 1rem; }
+  /* ── Result card ── */
+  .jc-result { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; }
+  .jc-rec-title { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0.6rem 0 1rem; }
+  /* Combination rows are built by the script, so they are :global — ink-outlined rows with a green subject edge */
   .jc-combos { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.1rem; }
-  .jc-combo { background: var(--bg-secondary); border: 1px solid var(--border-color); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius); padding: 0.7rem 0.9rem; font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
-  .jc-combo span { display: block; font-weight: 400; font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.25rem; }
+  .jc-combos :global(.jc-combo) { background: var(--bg-card); border: 2px solid var(--color-ink); border-left: 6px solid var(--color-leaf); border-radius: var(--radius-sm); box-shadow: 0 3px 0 var(--ink-shadow); padding: 0.75rem 0.95rem; font-weight: 800; color: var(--text-primary); font-size: 0.95rem; line-height: 1.45; }
+  .jc-combos :global(.jc-combo__subjects) { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.55rem; }
+  .jc-combos :global(.jc-subj) { display: inline-flex; align-items: flex-start; gap: 0.4rem; }
+  .jc-combos :global(.jc-subj .subject-dot) { margin-top: calc(0.725em - 4px); }
+  .jc-combos :global(.jc-sep) { color: var(--text-tertiary); font-weight: 700; }
+  .jc-combos :global(.jc-combo__note) { display: block; font-weight: 500; font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.35rem; }
   .jc-why { font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 0.8rem; }
-  .jc-note { font-size: 0.88rem; line-height: 1.6; color: var(--text-primary); background: rgba(212,133,58,0.08); border-radius: var(--border-radius); padding: 0.6rem 0.8rem; margin-bottom: 1rem; }
-  .jc-disclaimer { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
-  .jc-cta { border-top: 1px solid var(--border-color); padding-top: 1.1rem; }
-  .jc-cta p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.9rem; line-height: 1.6; }
+  .jc-note { font-size: 0.88rem; line-height: 1.6; color: var(--tint-gold-fg); background: var(--tint-gold-bg); border: 1.5px solid var(--color-sun); border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; margin-bottom: 1rem; }
+  .jc-disclaimer { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
+  .jc-disclaimer strong { color: var(--text-primary); }
+  .jc-cta { border-top: 2px dashed var(--ink-faint); padding-top: 1.1rem; }
+  .jc-cta > p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.9rem; line-height: 1.6; }
+  .jc-cta > p strong { color: var(--text-primary); }
   .jc-cta-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-  .jc-cta-link { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
-  .jc-cta-link:hover { text-decoration: underline; }
+  /* The centre's own two JC programmes as LMS subject cards (sticker on its tint + subject dot) */
+  .jc-cta-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; margin-top: 1rem; }
+  /* The two stickers have different intrinsic ratios, so sized by width their mats differ by ~8px and the
+     dashed divider, titles and dot rows stagger across the pair. Pin one mat height and one sticker height. */
+  .jc-cta-cards .subject-panel--sm { height: 160px; }
+  .jc-cta-cards .subject-panel--sm img { width: auto; height: 128px; max-width: 100%; }
   .jc-explainer { text-align: center; }
-  .jc-explainer a { color: var(--color-accent); }
+  .jc-explainer__note { max-width: 640px; margin: 0 auto; }
+  .jc-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
+  /* Side by side the short form card leaves ~660px of blank column beside a long recommendation, and it
+     scrolls away just as the reader starts comparing — keep the control in view beside its own output.
+     --nav-offset = header + SubjectBar. Static once the columns stack. */
+  @media (min-width: 861px) {
+    .jc-card { position: sticky; top: calc(var(--nav-offset) + 1rem); }
+  }
   @media (max-width: 860px) {
     .jc-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .jc-cta-cards { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -131,6 +178,28 @@ import '../styles/global.css';
     var resetBtn = document.getElementById('jc-reset');
 
     function combo(main, sub) { return { main: main, sub: sub }; }
+
+    // Each subject in a combination gets an LMS-style subject dot. The H2s are separated by
+    // " · " and the contrasting H1 follows " + "; a mixed/placeholder entry keeps the plain ink dot.
+    function subjectClass(name) {
+      var n = name.toLowerCase(), hits = [];
+      if (/econom/.test(n)) hits.push('subject--econ');
+      if (/math|computing/.test(n)) hits.push('subject--maths');
+      if (/literature|english/.test(n)) hits.push('subject--english');
+      if (/physics|chemistry|biology|science/.test(n)) hits.push('subject--preib');
+      if (/history|geography|humanit/.test(n)) hits.push('subject--gp');
+      return hits.length === 1 ? hits[0] : '';
+    }
+    function subjectItem(name) {
+      var cls = subjectClass(name);
+      return '<span class="jc-subj' + (cls ? ' ' + cls : '') + '"><span class="subject-dot" aria-hidden="true"></span>' + name + '</span>';
+    }
+    function subjectList(main) {
+      var parts = main.split(' + ');
+      var html = parts[0].split(' · ').map(subjectItem).join('<span class="jc-sep">·</span>');
+      if (parts[1]) html += '<span class="jc-sep">+</span>' + subjectItem(parts[1]);
+      return '<span class="jc-combo__subjects">' + html + '</span>';
+    }
 
     function recommend(dir, str) {
       var contrast = 'The H1 subject is the contrasting one — required by MOE.';
@@ -205,7 +274,7 @@ import '../styles/global.css';
       var r = recommend(dir, str);
       titleEl.textContent = r.title;
       combosEl.innerHTML = r.combos.map(function (c) {
-        return '<div class="jc-combo">' + c.main + '<span>' + c.sub + '</span></div>';
+        return '<div class="jc-combo">' + subjectList(c.main) + '<span class="jc-combo__note">' + c.sub + '</span></div>';
       }).join('');
       whyEl.textContent = r.why;
       noteEl.textContent = r.note;

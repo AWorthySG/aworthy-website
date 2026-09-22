@@ -116,7 +116,7 @@ const testimonials = [
     <div class="t-container t-hero-inner">
       <img src="/images/mascots/mascot-heart.webp" alt="" width="299" height="413" class="t-hero-mascot sticker sticker--right" />
       <span class="eyebrow">Reviews</span>
-      <h1 class="t-hero-heading">What Singapore parents and students say about A-Worthy</h1>
+      <h1 class="t-hero-heading">What Singapore parents and students say about <span class="accent-word">A-Worthy</span></h1>
       <p class="t-hero-subtitle">
         Real reviews from families whose children improved their O-Level English, GP, and H2 Economics grades with A-Worthy&rsquo;s SHARP Method tuition.
       </p>
@@ -127,17 +127,17 @@ const testimonials = [
   <section class="t-stats-bar">
     <div class="t-container t-stats-inner">
       <div class="t-stat" data-animate="reveal-up" data-animate-delay="1">
-        <span class="t-stat-number">127</span>
+        <span class="t-stat-number"><span class="stat-dot stat-dot--green" aria-hidden="true"></span>127</span>
         <span class="t-stat-label">Five-Star Reviews</span>
       </div>
       <div class="t-stat-divider"></div>
       <div class="t-stat" data-animate="reveal-up" data-animate-delay="2">
-        <span class="t-stat-number">98%</span>
+        <span class="t-stat-number"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span>98%</span>
         <span class="t-stat-label">Parent Satisfaction</span>
       </div>
       <div class="t-stat-divider"></div>
       <div class="t-stat" data-animate="reveal-up" data-animate-delay="3">
-        <span class="t-stat-number">4.9/5</span>
+        <span class="t-stat-number"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span>4.9/5</span>
         <span class="t-stat-label">Google Rating</span>
       </div>
     </div>
@@ -184,7 +184,7 @@ const testimonials = [
     <div class="t-container">
       <div class="t-testimonials-grid">
         {testimonials.map((t, i) => (
-          <div class:list={['t-card', { 't-card--featured': t.featured }]} style={`--card-tint: ${i % 3 === 0 ? 'rgba(212, 133, 58, 0.03)' : i % 3 === 1 ? 'rgba(43, 90, 140, 0.03)' : 'transparent'}`} data-animate="reveal-up" data-animate-delay={String((i % 3) + 1)}>
+          <div class:list={['t-card', { 't-card--featured': t.featured }]} data-animate="reveal-up" data-animate-delay={String((i % 3) + 1)}>
             <div class="t-card-stars" aria-label={`${t.stars} out of 5 stars`}>
               {Array.from({ length: t.stars }).map(() => (
                 <span class="t-star">&#9733;</span>
@@ -210,7 +210,7 @@ const testimonials = [
   <section class="t-section t-google-section">
     <div class="t-container t-google-inner">
       <span class="eyebrow" data-animate="reveal-up">Verified on Google</span>
-      <h2 class="t-google-heading" data-animate="reveal-up">Don&rsquo;t take our word for it &mdash; read what families say on Google</h2>
+      <h2 class="t-google-heading squiggle squiggle--center" data-animate="reveal-up">Don&rsquo;t take our word for it &mdash; read what families say on Google</h2>
       <p class="t-google-sub" data-animate="reveal-up">Every review on our Google Business Profile is from a verified A-Worthy family. We don&rsquo;t curate them, we don&rsquo;t hide the difficult ones, and we don&rsquo;t pay for them.</p>
 
       <div class="t-google-badge" data-animate="scale-in">
@@ -231,10 +231,10 @@ const testimonials = [
       </div>
 
       <div class="t-google-actions" data-animate="reveal-up">
-        <a href="https://g.page/r/aworthy-sg" class="t-btn t-btn--primary" target="_blank" rel="noopener noreferrer">
+        <a href="https://g.page/r/aworthy-sg" class="btn btn-accent" target="_blank" rel="noopener noreferrer">
           Read all reviews on Google &rarr;
         </a>
-        <a href="/review/" class="t-btn t-btn--outline">
+        <a href="/review/" class="btn">
           Leave us a review
         </a>
       </div>
@@ -245,11 +245,11 @@ const testimonials = [
   <section class="t-section t-cta">
     <div class="t-container t-cta-inner">
       <span class="eyebrow">Get Started</span>
-      <h2 class="t-cta-heading" data-animate="reveal-up">Experience the A-Worthy difference</h2>
+      <h2 class="t-cta-heading squiggle squiggle--center" data-animate="reveal-up">Experience the A-Worthy difference</h2>
       <p class="t-cta-subtitle">Join the hundreds of families who trust A-Worthy. Book a free trial lesson and see the results for yourself.</p>
       <div class="t-cta-actions">
-        <a href="/contact/" class="t-btn t-btn--primary">Book Free Assessment</a>
-        <a href="https://wa.me/6583384033" class="t-btn t-btn--outline" target="_blank" rel="noopener noreferrer">
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+        <a href="https://wa.me/6583384033" class="btn" target="_blank" rel="noopener noreferrer">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
@@ -276,15 +276,12 @@ const testimonials = [
     padding: 1.75rem 0;
   }
 
-  .eyebrow {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 20px;
+  /* Eyebrows stack centred above their (centred) section titles — the plain
+     .t-container bands don't centre their children the way the hero /
+     Google / CTA wrappers do. */
+  .t-section > .t-container > .eyebrow {
+    display: block;
+    text-align: center;
   }
 
   /* ===== HERO ===== */
@@ -298,16 +295,17 @@ const testimonials = [
     max-width: 720px;
   }
 
+  /* Sticker centred above the headline, LMS-style */
   .t-hero-mascot {
-    height: 120px;
+    height: 160px;
     width: auto;
-    margin: 0 auto 0.5rem;
+    margin: 0 auto 0.75rem;
   }
 
   .t-hero-heading {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: clamp(2.5rem, 5vw, 3.75rem);
-    font-weight: 800;
+    font-weight: 900;
     color: var(--text-primary);
     line-height: 1.1;
     letter-spacing: -0.03em;
@@ -324,12 +322,10 @@ const testimonials = [
     margin-right: auto;
   }
 
-  /* ===== STATS BAR ===== */
+  /* ===== STATS BAR — coloured stat dots before 900-weight numbers ===== */
   .t-stats-bar {
     background: var(--bg-secondary);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    padding: 48px 0;
+    padding: 40px 0;
   }
 
   .t-stats-inner {
@@ -344,10 +340,12 @@ const testimonials = [
   }
 
   .t-stat-number {
-    display: block;
-    font-family: var(--font-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
     font-size: 2.25rem;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--text-primary);
     line-height: 1.2;
     letter-spacing: -0.03em;
@@ -355,16 +353,18 @@ const testimonials = [
 
   .t-stat-label {
     display: block;
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
     margin-top: 6px;
-    letter-spacing: 0.02em;
   }
 
   .t-stat-divider {
-    width: 1px;
+    width: 0;
     height: 48px;
-    background: var(--border-color);
+    border-left: 2px dashed var(--ink-faint);
   }
 
   /* ===== TESTIMONIALS GRID ===== */
@@ -377,42 +377,23 @@ const testimonials = [
     column-gap: 24px;
   }
 
-  /* Pull-quote treatment (claudedesign B.4) — magazine-style, not card-style.
-     Oversized opening quote in gold, hairline top border, italic body. */
+  /* White ink cards; rest shadow + hover lift come from the global .t-card rules */
   .t-card {
     position: relative;
     break-inside: avoid;
     display: inline-block;
     width: 100%;
-    background: transparent;
-    border: 0;
-    border-top: 1px solid var(--border-color);
-    border-radius: 0;
-    padding: 1.5rem 0.5rem 1.25rem 2.5rem;
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
     margin-bottom: 24px;
-    box-shadow: none;
-    transition: none;
-  }
-  .t-card::before {
-    content: "\201C";
-    position: absolute;
-    top: 0.5rem;
-    left: 0;
-    font-family: var(--font-heading);
-    font-weight: 300;
-    font-size: 6rem;
-    line-height: 1;
-    color: var(--color-accent);
-    opacity: 0.18;
-    pointer-events: none;
   }
 
-  .t-card--featured::before {
-    opacity: 0.32;
-  }
-
+  /* Highlighted cards stay solid white like the rest of the grid (no tinted
+     card fills); only the quote is set larger */
   .t-card--featured .t-card-quote {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
   }
 
   .t-card-stars {
@@ -421,33 +402,21 @@ const testimonials = [
     margin-bottom: 1rem;
   }
 
+  /* Stars carry data → sun, not the action red */
   .t-star {
-    color: var(--color-accent);
+    color: var(--color-sun);
     font-size: 1.1rem;
     line-height: 1;
-    animation: star-shimmer 4s ease-in-out infinite;
-    animation-delay: calc(var(--star-i, 0) * 0.15s);
-  }
-
-  .t-star:nth-child(1) { --star-i: 0; }
-  .t-star:nth-child(2) { --star-i: 1; }
-  .t-star:nth-child(3) { --star-i: 2; }
-  .t-star:nth-child(4) { --star-i: 3; }
-  .t-star:nth-child(5) { --star-i: 4; }
-
-  @keyframes star-shimmer {
-    0%, 100% { text-shadow: 0 0 0 transparent; opacity: 1; }
-    50% { text-shadow: 0 0 10px rgba(212, 133, 58, 0.5), 0 0 25px rgba(201, 169, 110, 0.2); opacity: 1; }
   }
 
   .t-card-quote {
     font-family: var(--font-heading);
-    font-weight: 300;
+    font-weight: 600;
     font-style: italic;
-    font-size: 1.25rem;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    line-height: 1.55;
     color: var(--text-primary);
-    margin: 0 0 24px;
+    margin: 0 0 20px;
     padding: 0;
     border: none;
     text-wrap: pretty;
@@ -457,18 +426,21 @@ const testimonials = [
     display: flex;
     align-items: center;
     gap: 14px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    border-top: 2px dashed var(--ink-faint);
   }
 
+  /* Initials tile — ink-ringed circle on the muted fill */
   .t-avatar-initials {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: var(--color-primary);
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 600;
+    background: var(--bg-muted);
+    border: 2px solid var(--color-ink);
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 800;
     letter-spacing: 0.04em;
     display: flex;
     align-items: center;
@@ -485,19 +457,18 @@ const testimonials = [
   .t-card-author-info strong {
     color: var(--text-primary);
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 800;
   }
 
   .t-card-author-info span {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     line-height: 1.4;
   }
 
   /* ===== GOOGLE REVIEWS ===== */
   .t-google-section {
     background: var(--bg-secondary);
-    border-top: 1px solid var(--border-color);
     padding: 64px 0;
   }
 
@@ -517,7 +488,7 @@ const testimonials = [
     font-size: clamp(1.6rem, 3.2vw, 2.2rem);
     font-weight: 800;
     color: var(--text-primary);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     line-height: 1.25;
     margin: 0;
   }
@@ -539,10 +510,10 @@ const testimonials = [
   .t-google-badge {
     text-align: center;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
     padding: 1.75rem 2.5rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
   }
 
   .t-google-logo {
@@ -552,6 +523,7 @@ const testimonials = [
     letter-spacing: -0.5px;
   }
 
+  /* Google's own brand colours — third-party mark, kept verbatim */
   .t-g { font-family: var(--font-body); }
   .t-g-blue { color: #4285F4; }
   .t-g-red { color: #EA4335; }
@@ -576,58 +548,18 @@ const testimonials = [
 
   .t-google-score {
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--text-primary);
   }
 
   .t-google-count {
     font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  /* ===== BUTTONS ===== */
-  .t-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 28px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 0;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    border: none;
-  }
-
-  .t-btn--primary {
-    background: var(--color-accent);
-    color: var(--text-primary);
-  }
-
-  .t-btn--primary:hover {
-    background: var(--color-accent-light);
-    transform: translateY(-1px);
-  }
-
-  .t-btn--outline {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-  }
-
-  @media (hover: hover) {
-    .t-btn--outline:hover {
-      border-color: rgba(26, 42, 58, 0.2);
-      background: var(--bg-secondary);
-      transform: translateY(-1px);
-    }
+    color: var(--text-secondary);
   }
 
   /* ===== CTA ===== */
   .t-cta {
     background: var(--bg-primary);
-    border-top: 1px solid var(--border-color);
     text-align: center;
   }
 
@@ -636,20 +568,20 @@ const testimonials = [
   }
 
   .t-cta-heading {
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 800;
     color: var(--text-primary);
     line-height: 1.15;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     margin: 0 0 16px;
   }
 
   .t-cta-subtitle {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: var(--text-muted);
-    margin: 0 0 40px;
+    color: var(--text-secondary);
+    margin: 0 0 32px;
   }
 
   .t-cta-actions {
@@ -657,106 +589,6 @@ const testimonials = [
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
-  }
-
-  /* ===== VIDEO SECTION (#12) ===== */
-  .t-video-section {
-    background: var(--bg-primary);
-    border-top: 1px solid var(--border-color);
-  }
-
-  .t-video-heading {
-    font-family: var(--font-body);
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: 800;
-    color: var(--text-primary);
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-    margin: 0 0 16px;
-  }
-
-  .t-video-sub {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-    margin: 0 0 2.5rem;
-    max-width: 560px;
-  }
-
-  .t-video-wrap {
-    max-width: 720px;
-  }
-
-  .t-video-placeholder {
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, rgba(43, 90, 140, 0.08), rgba(212, 133, 58, 0.06));
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .t-video-play {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: rgba(212, 133, 58, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .t-video-play:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 32px rgba(212, 133, 58, 0.3);
-  }
-
-  .t-video-caption {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-style: italic;
-    margin: 0;
-  }
-
-  /* ===== VIDEO TESTIMONIALS ===== */
-  .video-testimonials-section {
-    background: var(--bg-secondary);
-    padding: 1.75rem 0;
-  }
-  .video-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 700px;
-  }
-  .video-placeholder {
-    aspect-ratio: 16/9;
-    background: var(--bg-card);
-    border: 2px dashed var(--border-color);
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .video-placeholder-inner {
-    text-align: center;
-    color: var(--text-muted);
-  }
-  .video-placeholder-inner p {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-top: 1rem;
-    color: var(--text-secondary);
-  }
-  .video-placeholder-inner span {
-    font-size: 0.85rem;
-    display: block;
-    margin-top: 0.5rem;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -775,14 +607,23 @@ const testimonials = [
       padding: 1.75rem 0;
     }
 
+    /* Compact 3-up grid on phones — never a single column of giant numbers */
     .t-stats-inner {
-      flex-direction: column;
-      gap: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .t-stat-divider {
-      width: 60px;
-      height: 1px;
+      display: none;
+    }
+
+    .t-stat-number {
+      font-size: 1.75rem;
+    }
+
+    .t-stat-label {
+      font-size: 0.72rem;
     }
 
     .t-google-inner {
@@ -800,16 +641,22 @@ const testimonials = [
       font-size: 2rem;
     }
 
-    .t-card {
-      padding: 24px;
+    .t-hero-mascot {
+      height: 120px;
     }
 
-    .t-cta-actions {
+    .t-card {
+      padding: 1.25rem;
+    }
+
+    .t-cta-actions,
+    .t-google-actions {
       flex-direction: column;
       align-items: center;
     }
 
-    .t-btn {
+    .t-cta-actions .btn,
+    .t-google-actions .btn {
       width: 100%;
       max-width: 300px;
     }
@@ -830,12 +677,6 @@ const testimonials = [
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .t-star {
-      animation: none;
-    }
-  }
-
   /* ===== CAROUSEL ===== */
   .carousel-wrap {
     max-width: 700px;
@@ -845,8 +686,8 @@ const testimonials = [
     overflow: hidden;
     border-radius: var(--radius-md);
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-top: 2px solid var(--color-accent);
+    border: 2px solid var(--color-ink);
+    box-shadow: 0 3px 0 var(--ink-shadow);
     position: relative;
   }
   .carousel::before {
@@ -856,9 +697,10 @@ const testimonials = [
     left: 1rem;
     font-family: var(--font-heading);
     font-size: 6rem;
+    font-weight: 900;
     line-height: 1;
-    color: var(--color-accent);
-    opacity: 0.15;
+    color: var(--color-ink);
+    opacity: 0.12;
     pointer-events: none;
     z-index: 0;
   }
@@ -875,8 +717,8 @@ const testimonials = [
   }
   .carousel-quote {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 1.15rem;
+    font-weight: 600;
     line-height: 1.6;
     color: var(--text-primary);
     font-style: italic;
@@ -884,10 +726,11 @@ const testimonials = [
   }
   .carousel-author {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
   }
   .carousel-author strong {
     color: var(--text-primary);
+    font-weight: 800;
   }
   .carousel-dots {
     display: flex;
@@ -915,7 +758,7 @@ const testimonials = [
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--border-color);
+    background: var(--ink-faint);
     transition: all 0.3s ease;
   }
   :global(.carousel-dot.is-active::before) {

@@ -21,38 +21,46 @@
     align-items: flex-start;
     padding: 1.5rem;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    margin: 2.5rem 0 1.5rem;
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
+    /* Same 720px column as .blog-post-body and .blog-post-cta */
+    max-width: 720px;
+    margin: 2.5rem auto 1.5rem;
   }
+  /* Avatar tile — initials in a small ink-ringed square (LMS logo-tile shape) */
   .author-bio__avatar {
     flex-shrink: 0;
     width: 64px;
     height: 64px;
-    border-radius: 50%;
+    border-radius: var(--radius-sm);
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, rgba(212, 133, 58, 0.18), rgba(43, 90, 140, 0.14));
-    border: 1px solid var(--border-color);
+    background: var(--tint-gold-bg);
+    border: 2px solid var(--color-ink);
+    box-shadow: 0 3px 0 var(--ink-shadow);
   }
   .author-bio__avatar span {
-    font-weight: 700;
-    color: var(--color-primary);
-    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
   }
   .author-bio__body { flex: 1; min-width: 0; }
   .author-bio__label {
     display: block;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-bottom: 0.2rem;
   }
   .author-bio__name {
     font-size: 1.15rem;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     color: var(--text-primary);
     margin: 0 0 0.2rem;
   }
@@ -68,11 +76,11 @@
     margin: 0 0 0.75rem;
   }
   .author-bio__link {
-    color: var(--color-accent);
-    font-weight: 600;
+    color: var(--color-accent-text);
+    font-weight: 700;
     text-decoration: none;
     font-size: 0.9rem;
   }
-  .author-bio__link:hover { text-decoration: underline; }
+  .author-bio__link:hover { color: var(--color-accent-hover); text-decoration: underline; }
   @media (max-width: 540px) { .author-bio { flex-direction: column; } }
 </style>

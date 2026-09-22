@@ -31,8 +31,8 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   <div class="container header-inner">
     <!-- Logo -->
     <a href="/" class="logo" aria-label="A-Worthy — Home">
-      <img src="/images/logo.webp" alt="" class="logo-img" width="240" height="273" />
-      <span class="logo-text">A-Worthy</span>
+      <span class="logo-tile"><img src="/images/logo.webp" alt="" class="logo-img" width="240" height="273" /></span>
+      <span class="logo-words"><span class="logo-text">A-Worthy</span><span class="logo-sub">Education</span></span>
     </a>
 
     <!-- Desktop Nav -->
@@ -145,16 +145,16 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     border-bottom: 1px solid transparent;
   }
 
+  /* Glass header — the LMS .glass-header */
   .site-header.scrolled {
-    background: rgba(253, 251, 247, 0.9);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(26, 42, 58, 0.08);
+    background: rgba(250, 246, 238, 0.86);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
   }
 
   :global([data-theme="dark"]) .site-header.scrolled {
-    background: rgba(17, 16, 14, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(23, 22, 20, 0.85);
   }
 
   .header-inner {
@@ -169,22 +169,36 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     text-decoration: none;
     flex-shrink: 0;
   }
 
   .logo-img {
-    height: 40px;
-    width: auto;
-    max-width: 100%;
+    width: 28px;
+    height: auto;
+  }
+
+  .logo-words {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
   }
 
   .logo-text {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 800;
     letter-spacing: -0.01em;
-    color: var(--color-primary);
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  .logo-sub {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
     white-space: nowrap;
   }
 
@@ -215,15 +229,14 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
 
   .desktop-nav a:hover {
     color: var(--text-primary);
-    background: rgba(26, 42, 58, 0.06);
+    background: var(--bg-hover);
+    opacity: 1;
   }
 
   .desktop-nav a.active {
     color: var(--color-accent-text);
-    background: rgba(212, 133, 58, 0.12);
+    background: var(--color-accent-soft);
   }
-  :global([data-theme="dark"]) .desktop-nav a:hover { background: rgba(245, 239, 227, 0.08); }
-  :global([data-theme="dark"]) .desktop-nav a.active { background: rgba(229, 154, 85, 0.14); }
 
   /* Desktop dropdown trigger + panel */
   .desktop-nav .has-dropdown {
@@ -251,14 +264,12 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   }
   .desktop-nav .nav-trigger:hover {
     color: var(--text-primary);
-    background: rgba(26, 42, 58, 0.06);
+    background: var(--bg-hover);
   }
   .desktop-nav .nav-trigger.active {
     color: var(--color-accent-text);
-    background: rgba(212, 133, 58, 0.12);
+    background: var(--color-accent-soft);
   }
-  :global([data-theme="dark"]) .desktop-nav .nav-trigger:hover { background: rgba(245, 239, 227, 0.08); }
-  :global([data-theme="dark"]) .desktop-nav .nav-trigger.active { background: rgba(229, 154, 85, 0.14); }
   .desktop-nav .nav-trigger__caret {
     transition: transform 0.2s ease;
     opacity: 0.7;
@@ -279,16 +290,14 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     padding: 0.4rem;
     list-style: none;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    box-shadow: 0 12px 30px -8px rgba(26, 42, 58, 0.18), 0 1px 2px rgba(26, 42, 58, 0.05);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 6px 0 var(--ink-shadow), 0 12px 24px rgba(70, 50, 20, 0.10);
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
     z-index: var(--z-dropdown);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
   }
   .desktop-nav .has-dropdown:hover > .nav-dropdown,
   .desktop-nav .has-dropdown:focus-within > .nav-dropdown {
@@ -313,16 +322,12 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   .desktop-nav .nav-dropdown a:hover,
   .desktop-nav .nav-dropdown a:focus-visible,
   .desktop-nav .nav-dropdown a.active {
-    color: var(--color-accent);
-    background: rgba(212, 133, 58, 0.08);
+    color: var(--color-accent-text);
+    background: var(--color-accent-soft);
+    opacity: 1;
   }
   .desktop-nav .nav-dropdown a.active::after {
     content: none;
-  }
-  :global([data-theme="dark"]) .desktop-nav .nav-dropdown a:hover,
-  :global([data-theme="dark"]) .desktop-nav .nav-dropdown a:focus-visible,
-  :global([data-theme="dark"]) .desktop-nav .nav-dropdown a.active {
-    background: rgba(224, 152, 80, 0.1);
   }
 
   /* Header Actions */
@@ -359,10 +364,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
 
   .theme-toggle:hover {
     color: var(--text-primary);
-    background: rgba(26, 42, 58, 0.06);
-  }
-  :global([data-theme="dark"]) .theme-toggle:hover {
-    background: rgba(245, 239, 227, 0.08);
+    background: var(--bg-hover);
   }
 
   :global([data-theme="dark"]) .theme-icon-dark,
@@ -425,10 +427,8 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     /* Use dvh for mobile browser chrome awareness, fallback to vh */
     height: 100vh;
     height: 100dvh;
-    background: rgba(253, 251, 247, 0.98);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    border-left: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    border-left: 2px solid var(--color-ink);
     z-index: calc(var(--z-dropdown) + 1);
     transition: right var(--transition-slow);
     padding: calc(5rem + env(safe-area-inset-top, 0px)) 2rem calc(2rem + env(safe-area-inset-bottom, 0px));
@@ -472,8 +472,8 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
     border-bottom: 1px solid var(--border-color);
   }
   .mobile-nav .mobile-nav-child a {
@@ -489,8 +489,8 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     justify-content: center;
   }
 
-  :global([data-theme="dark"]) .mobile-nav {
-    background: rgba(17, 16, 14, 0.98);
+  .mobile-nav a:hover {
+    color: var(--color-accent-text);
   }
 
   .theme-toggle:focus-visible,
@@ -529,7 +529,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   /* TV / Large screen — larger nav text and logo */
   @media (min-width: 1921px) {
     .logo-img {
-      height: 48px;
+      width: 32px;
     }
     .desktop-nav a {
       font-size: 0.8rem;

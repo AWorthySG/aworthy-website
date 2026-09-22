@@ -15,7 +15,7 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
   <section class="section">
     <div class="container policy-content">
       <span class="eyebrow">Privacy Policy</span>
-      <h1 class="policy-title">Privacy Policy &mdash; A-Worthy Pte Ltd</h1>
+      <h1 class="policy-title squiggle">Privacy Policy&nbsp;&mdash; <span class="nowrap">A-Worthy</span> Pte Ltd</h1>
       <p class="policy-updated">Last updated: May 2026</p>
 
       <p>A-Worthy Pte Ltd (&ldquo;A-Worthy&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) operates the website at <a href="https://a-worthy.com">a-worthy.com</a>. This Privacy Policy explains how we collect, use, disclose, and protect your personal data in accordance with Singapore&rsquo;s <strong>Personal Data Protection Act 2012 (PDPA)</strong>.</p>
@@ -114,21 +114,32 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
   .policy-title {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
   }
+  /* Keep the em dash on line 1 and never split "A-Worthy" at its hyphen */
+  .policy-title .nowrap {
+    white-space: nowrap;
+  }
+  /* Don't break the domain link at its own hyphen ("a-" / "worthy.com") */
+  .policy-content a[href^="https://a-worthy.com"] {
+    white-space: nowrap;
+  }
   .policy-updated {
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
   }
   .policy-content h2 {
     font-family: var(--font-heading);
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin: 2rem 0 1rem;
-    padding-left: 0.85rem;
-    border-left: 3px solid var(--color-accent);
     line-height: 1.3;
   }
   .policy-content ul {
@@ -138,29 +149,45 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
     margin-bottom: 0.5rem;
   }
   .policy-content a {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
+  /* Contact block — an ink-bordered well, like the LMS read-only panels */
   .policy-content address {
     font-style: normal;
-    background: var(--bg-secondary);
-    border-left: 3px solid var(--color-accent);
+    background: var(--bg-muted);
+    border: 2px solid var(--color-ink);
     padding: 1.25rem 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     margin: 1rem 0 1.5rem;
     line-height: 1.9;
+  }
+  /* <address> sits outside the global p/li/dd/td underline rule — links in
+     the well must not rely on colour alone, and get the coarse-pointer
+     tap padding the global rule gives running-text links */
+  .policy-content address a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+  @media (pointer: coarse) {
+    .policy-content address a {
+      padding-block: 0.25rem;
+    }
   }
   .policy-content code {
     font-family: var(--font-mono);
     font-size: 0.85em;
-    background: var(--bg-secondary);
-    padding: 0.15em 0.4em;
-    border-radius: var(--radius-sm);
+    font-weight: 700;
+    background: var(--bg-muted);
+    border: 1.5px solid var(--ink-faint);
+    padding: 0.1em 0.4em;
+    border-radius: 6px;
   }
   .policy-links {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 2px dashed var(--ink-faint);
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
   }
 </style>

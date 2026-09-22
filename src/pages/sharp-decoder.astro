@@ -48,7 +48,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   <section class="dec-hero">
     <div class="container">
       <span class="eyebrow">Free Game</span>
-      <h1 class="dec-title">SHARP Decoder</h1>
+      <h1 class="dec-title">SHARP <span class="accent-word">Decoder</span></h1>
       <p class="dec-sub">Top students don&rsquo;t just know the content &mdash; they instantly know <em>which method</em> each question needs. Read the question, pick the right framework before the timer runs out, and see how sharp your exam instincts really are.</p>
     </div>
   </section>
@@ -60,11 +60,11 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
         <!-- START -->
         <div class="dec-screen dec-start" id="dec-start">
           <div class="dec-card">
-            <p class="dec-card__kicker">10 questions &middot; beat the clock</p>
+            <p class="dec-card__kicker" id="dec-kicker">Up to 10 questions &middot; beat the clock</p>
             <h2 class="dec-card__title">Choose your challenge</h2>
             <div class="dec-chips" role="group" aria-label="Choose a subject">
               {subjects.map((s, i) => (
-                <button type="button" class:list={['dec-chip', i === 0 && 'is-active']} data-subject={s}>{s}</button>
+                <button type="button" class:list={['chip', 'dec-chip', i === 0 && 'is-active']} data-subject={s}>{s}</button>
               ))}
             </div>
             <label class="dec-practice">
@@ -80,13 +80,13 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
         <!-- PLAY -->
         <div class="dec-screen dec-play" id="dec-play" hidden>
           <div class="dec-hud">
-            <div class="dec-hud__item"><span class="dec-hud__label">Score</span><span class="dec-hud__val" id="dec-score">0</span></div>
-            <div class="dec-hud__item"><span class="dec-hud__label">Streak</span><span class="dec-hud__val" id="dec-streak">0</span></div>
-            <div class="dec-hud__item"><span class="dec-hud__label">Question</span><span class="dec-hud__val"><span id="dec-qnum">1</span>/<span id="dec-qtotal">10</span></span></div>
+            <div class="dec-hud__item"><span class="dec-hud__label"><span class="stat-dot stat-dot--green" aria-hidden="true"></span>Score</span><span class="dec-hud__val" id="dec-score">0</span></div>
+            <div class="dec-hud__item"><span class="dec-hud__label"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span>Streak</span><span class="dec-hud__val" id="dec-streak">0</span></div>
+            <div class="dec-hud__item"><span class="dec-hud__label"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span>Question</span><span class="dec-hud__val"><span id="dec-qnum">1</span>/<span id="dec-qtotal">10</span></span></div>
           </div>
           <div class="dec-timer" id="dec-timer-wrap"><span class="dec-timer__bar" id="dec-timer-bar"></span></div>
           <div class="dec-q">
-            <span class="dec-q__tag" id="dec-q-tag">English</span>
+            <span class="chip dec-q__tag" id="dec-q-tag">English</span>
             <p class="dec-q__text" id="dec-q-text"></p>
           </div>
           <div class="dec-options" id="dec-options" role="group" aria-label="Pick the framework"></div>
@@ -100,11 +100,11 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
             <img src="/images/mascots/mascot-sunglasses.webp" alt="" width="309" height="385" class="dec-end__mascot sticker" />
             <p class="dec-card__kicker" id="dec-rating">Sharp Shooter</p>
             <h2 class="dec-card__title"><span id="dec-final">0</span> points</h2>
-            <p class="dec-end__line"><span id="dec-correct">0</span> of 10 correct &middot; best streak <span id="dec-beststreak">0</span></p>
+            <p class="dec-end__line"><span id="dec-correct">0</span> of <span id="dec-total">10</span> correct &middot; best streak <span id="dec-beststreak">0</span></p>
             <p class="dec-end__pitch">Knowing the right framework on sight is exactly what the SHARP Method drills. That instinct is what turns understanding into marks under exam pressure.</p>
             <div class="dec-end__actions">
-              <button type="button" class="btn btn-accent" id="dec-replay">Play again</button>
-              <a href="/contact/" class="dec-end__cta plausible-event-name=Tool+CTA+Click">Book Free Assessment &rarr;</a>
+              <button type="button" class="btn" id="dec-replay">Play again</button>
+              <a href="/contact/" class="btn btn-accent dec-end__cta plausible-event-name=Tool+CTA+Click">Book Free Assessment &rarr;</a>
             </div>
             <p class="dec-end__tools">Try our other free tools: <a href="/l1r5-calculator/">L1R5 calculator</a> &middot; <a href="/jc-subject-combinations/">JC subject advisor</a></p>
           </div>
@@ -128,82 +128,96 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
 
 <style>
   .dec-hero { padding: 1.5rem 0 0.5rem; text-align: center; }
-  .dec-title { font-family: var(--font-heading); font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.6rem; letter-spacing: -0.03em; }
+  .dec-title { font-family: var(--font-heading); font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 900; color: var(--text-primary); margin-bottom: 0.6rem; letter-spacing: -0.03em; }
   .dec-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 620px; margin: 0 auto; }
-  .dec-sub em { color: var(--color-accent); font-style: normal; font-weight: 600; }
+  .dec-sub em { color: var(--color-accent-text); font-style: normal; font-weight: 700; }
   .dec-section { padding-top: 1rem; }
   .dec-stage { max-width: 640px; margin: 0 auto; }
   .dec-screen { animation: dec-fade 0.3s ease; }
   @keyframes dec-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-  .dec-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 2rem 1.75rem; text-align: center; }
+  /* Start / end card — a white sticker card with the 2px ink outline */
+  .dec-card { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 2rem 1.75rem; text-align: center; }
   .dec-end__mascot { height: 84px; width: auto; margin: 0 auto 0.75rem; }
-  .dec-card__kicker { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: 0.4rem; }
-  .dec-card__title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 300; color: var(--text-primary); margin-bottom: 1.25rem; }
+  .dec-card__kicker { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 0.4rem; }
+  .dec-card__title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.25rem; }
 
+  /* Subject chips — global .chip look; the active one takes the red fill */
   .dec-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.25rem; }
-  .dec-chip { font-family: var(--font-mono); font-size: 0.8rem; padding: 0.4rem 0.9rem; min-height: 40px; border-radius: 999px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-secondary); cursor: pointer; transition: all var(--transition-fast); }
-  .dec-chip:hover { border-color: var(--color-accent); }
-  .dec-chip.is-active { background: var(--color-accent); border-color: var(--color-accent); color: #fff; font-weight: 600; }
-  .dec-practice { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; cursor: pointer; }
+  .dec-chip { min-height: 40px; padding: 0.4rem 1rem; cursor: pointer; transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast); }
+  .dec-chip:hover { border-color: var(--color-ink); color: var(--text-primary); }
+  .dec-chip.is-active { background: var(--color-accent); border-color: var(--color-ink); color: #fff; }
+  .dec-chip:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-accent-soft); }
+  .dec-practice { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0.35rem 0.6rem; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; cursor: pointer; }
   .dec-practice input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
-  .dec-practice .check-box { position: relative; display: inline-block; width: 1.15rem; height: 1.15rem; flex-shrink: 0; border: 1.5px solid var(--border-color); border-radius: 5px; background: var(--bg-primary); transition: border-color var(--transition-fast); }
+  .dec-practice .check-box { position: relative; display: inline-block; width: 1.15rem; height: 1.15rem; flex-shrink: 0; border: 2px solid var(--color-ink); border-radius: 5px; background: var(--bg-muted); transition: border-color var(--transition-fast); }
   .dec-practice .check-box::after { content: ''; position: absolute; inset: -3px; background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat; opacity: 0; transform: scale(0.5); transition: opacity var(--transition-fast), transform var(--transition-fast); }
   .dec-practice input:checked ~ .check-box { border-color: var(--color-accent); }
   .dec-practice input:checked ~ .check-box::after { opacity: 1; transform: scale(1); }
-  .dec-practice input:focus-visible ~ .check-box { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .dec-practice input:focus-visible ~ .check-box { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-soft); }
   @media (prefers-reduced-motion: reduce) { .dec-practice .check-box::after { transition: none; } }
-  .dec-start-btn { display: block; width: 100%; cursor: pointer; }
-  .dec-hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.9rem; }
-  .dec-hint kbd { font-family: var(--font-mono); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 0 0.3rem; font-size: 0.75rem; }
+  .dec-start-btn { display: flex; width: 100%; cursor: pointer; }
+  .dec-hint { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.9rem; }
+  .dec-hint kbd { font-family: var(--font-mono); font-weight: 700; background: var(--bg-muted); border: 1.5px solid var(--ink-faint); border-radius: 4px; padding: 0 0.3rem; font-size: 0.75rem; }
 
-  /* HUD */
+  /* HUD — three small ink tiles with a coloured stat dot per label */
   .dec-hud { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.85rem; }
-  .dec-hud__item { display: flex; flex-direction: column; align-items: center; flex: 1; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 0.5rem; }
-  .dec-hud__label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
-  .dec-hud__val { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400; color: var(--text-primary); line-height: 1.1; }
-  #dec-score { color: var(--color-accent); }
+  .dec-hud__item { display: flex; flex-direction: column; align-items: center; flex: 1; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-sm); box-shadow: 0 3px 0 var(--ink-shadow); padding: 0.5rem; }
+  .dec-hud__label { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
+  .dec-hud__label .stat-dot { width: 8px; height: 8px; margin-right: 0.35rem; }
+  .dec-hud__val { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; color: var(--text-primary); line-height: 1.1; }
+  #dec-score { color: var(--color-accent-text); }
 
-  .dec-timer { height: 8px; background: var(--bg-secondary); border-radius: 999px; overflow: hidden; margin-bottom: 1.1rem; }
-  .dec-timer__bar { display: block; height: 100%; width: 100%; background: var(--color-accent); border-radius: 999px; transform-origin: left; }
+  /* Timer — ink-outlined track, green fill that turns red when time is short */
+  .dec-timer { height: 12px; background: var(--bg-muted); border: 2px solid var(--color-ink); border-radius: var(--radius-pill); overflow: hidden; margin-bottom: 1.1rem; }
+  .dec-timer__bar { display: block; height: 100%; width: 100%; background: var(--color-leaf); transform-origin: left; }
   .dec-timer__bar.run { transition: transform linear; transform: scaleX(0); }
-  .dec-timer__bar.warn { background: #e74c3c; }
+  .dec-timer__bar.warn { background: var(--color-accent); }
 
-  .dec-q { background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
-  .dec-q__tag { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .dec-q { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+  .dec-q__tag { margin-bottom: 0.6rem; }
+  /* the tag takes the question's own LMS subject colour (set as data-subject by the script), like the SubjectBar's active chip */
+  .dec-q__tag[data-subject="English"] { background: var(--subject-english-tint); color: var(--subject-english-text); border-color: var(--subject-english); }
+  .dec-q__tag[data-subject="Maths"]   { background: var(--subject-maths-tint);   color: var(--subject-maths-text);   border-color: var(--subject-maths); }
+  .dec-q__tag[data-subject="Pre-IB"]  { background: var(--subject-preib-tint);   color: var(--subject-preib-text);   border-color: var(--subject-preib); }
+  .dec-q__tag[data-subject="GP"]      { background: var(--subject-gp-tint);      color: var(--subject-gp-text);      border-color: var(--subject-gp); }
+  .dec-q__tag[data-subject="Econs"]   { background: var(--subject-econ-tint);    color: var(--subject-econ-text);    border-color: var(--subject-econ); }
   .dec-q__text { font-size: 1.1rem; line-height: 1.5; color: var(--text-primary); margin: 0; }
 
+  /* Answer buttons are created by the script, so they carry no Astro scope
+     attribute — style them through :global() under the scoped container. */
   .dec-options { display: grid; gap: 0.6rem; }
-  .dec-opt { display: flex; align-items: center; gap: 0.75rem; text-align: left; padding: 0.85rem 1rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--bg-card); color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; cursor: pointer; transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast); }
-  .dec-opt:hover:not(:disabled) { border-color: var(--color-accent); transform: translateY(-1px); }
-  .dec-opt__key { font-family: var(--font-mono); font-size: 0.75rem; width: 1.4rem; height: 1.4rem; flex-shrink: 0; display: grid; place-items: center; border-radius: var(--radius-sm); background: var(--bg-secondary); color: var(--text-muted); }
-  .dec-opt.correct { border-color: #1e7a52; background: rgba(39,140,90,0.12); }
-  .dec-opt.correct .dec-opt__key { background: #1e7a52; color: #fff; }
-  .dec-opt.wrong { border-color: #c0392b; background: rgba(192,57,43,0.1); }
-  .dec-opt.wrong .dec-opt__key { background: #c0392b; color: #fff; }
-  :global([data-theme="dark"]) .dec-opt.correct { background: rgba(95,208,160,0.14); }
-  :global([data-theme="dark"]) .dec-opt.wrong { background: rgba(255,138,122,0.14); }
+  .dec-options :global(.dec-opt) { display: flex; align-items: center; gap: 0.75rem; text-align: left; padding: 0.85rem 1rem; min-height: 44px; border: 2px solid var(--color-ink); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text-primary); box-shadow: 0 3px 0 var(--ink-shadow); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast); }
+  .dec-options :global(.dec-opt:hover:not(:disabled)) { background: var(--bg-hover); transform: translateY(-1px); box-shadow: 0 4px 0 var(--ink-shadow); }
+  .dec-options :global(.dec-opt:active:not(:disabled)) { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-shadow); }
+  .dec-options :global(.dec-opt:focus-visible) { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-soft); }
+  .dec-options :global(.dec-opt:disabled) { cursor: default; }
+  .dec-options :global(.dec-opt__key) { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; width: 1.5rem; height: 1.5rem; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--ink-faint); background: var(--bg-muted); color: var(--text-secondary); }
+  .dec-options :global(.dec-opt.correct) { border-color: var(--color-leaf); background: var(--tint-green-bg); color: var(--text-primary); }
+  /* white digit on the leaf fill was ~2.9:1 — a white coin with a leaf ring and the green tint text reads at 5:1+ in both themes */
+  .dec-options :global(.dec-opt.correct .dec-opt__key) { background: var(--bg-card); border-color: var(--color-leaf); color: var(--tint-green-fg); }
+  .dec-options :global(.dec-opt.wrong) { border-color: var(--color-accent); background: var(--color-danger-bg); color: var(--text-primary); }
+  .dec-options :global(.dec-opt.wrong .dec-opt__key) { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
 
-  .dec-feedback { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: var(--border-radius); font-size: 0.92rem; line-height: 1.55; background: var(--bg-secondary); color: var(--text-primary); }
-  .dec-feedback strong { color: var(--color-accent); }
+  .dec-feedback { margin-top: 1rem; padding: 0.75rem 1rem; border: 2px dashed var(--ink-faint); border-radius: var(--radius-sm); font-size: 0.92rem; line-height: 1.55; background: var(--bg-muted); color: var(--text-primary); }
+  .dec-feedback :global(strong) { color: var(--color-accent-text); }
   .dec-next-btn { margin-top: 1rem; width: 100%; cursor: pointer; }
 
   .dec-end__line { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; }
   .dec-end__pitch { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem; }
-  .dec-end__actions { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .dec-end__actions { display: flex; gap: 0.75rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
   .dec-end__actions .btn { cursor: pointer; }
-  .dec-end__cta { color: var(--color-accent); font-weight: 600; text-decoration: none; }
-  .dec-end__cta:hover { text-decoration: underline; }
-  .dec-end__tools { font-size: 0.85rem; color: var(--text-muted); }
-  .dec-end__tools a { color: var(--color-accent); }
+  .dec-end__tools { font-size: 0.85rem; color: var(--text-secondary); }
+  .dec-end__tools a { color: var(--color-accent-text); font-weight: 700; }
   .dec-explainer { text-align: center; }
-  .dec-explainer a { color: var(--color-accent); }
+  .dec-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
   @media (prefers-reduced-motion: reduce) {
     .dec-screen { animation: none; }
-    .dec-opt:hover:not(:disabled) { transform: none; }
+    .dec-options :global(.dec-opt:hover:not(:disabled)) { transform: none; }
   }
   @media (max-width: 480px) {
+    .dec-hud { gap: 0.5rem; }
     .dec-hud__val { font-size: 1.2rem; }
     .dec-q__text { font-size: 1rem; }
   }
@@ -236,11 +250,13 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
     var elTimerWrap = document.getElementById('dec-timer-wrap');
     var startBtn = document.getElementById('dec-start-btn');
     var practiceToggle = document.getElementById('dec-practice-toggle');
+    var elKicker = document.getElementById('dec-kicker');
+    var elTotal = document.getElementById('dec-total');
 
     var ROUND = 10, PER_Q = 12; // seconds
     var subject = 'All', practice = false;
     var deck = [], idx = 0, score = 0, streak = 0, bestStreak = 0, correctCount = 0;
-    var timer = null, locked = false;
+    var timer = null, ticker = null, locked = false;
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function show(name) {
@@ -251,6 +267,15 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
       for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
       return a;
     }
+    function poolFor(sub) {
+      return sub === 'All' ? ALL : ALL.filter(function (q) { return q.s === sub; });
+    }
+    // only the All deck has ROUND questions — the kicker promises the chosen subject's real count
+    function updateKicker() {
+      if (!elKicker) return;
+      var n = Math.min(ROUND, poolFor(subject).length);
+      elKicker.textContent = n + ' question' + (n === 1 ? '' : 's') + ' · beat the clock';
+    }
 
     // chip selection
     stage.querySelectorAll('.dec-chip').forEach(function (chip) {
@@ -258,13 +283,15 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
         stage.querySelectorAll('.dec-chip').forEach(function (c) { c.classList.remove('is-active'); });
         chip.classList.add('is-active');
         subject = chip.getAttribute('data-subject');
+        updateKicker();
       });
     });
+    updateKicker();
 
     function startGame() {
       practice = practiceToggle.checked;
       elTimerWrap.style.display = practice ? 'none' : '';
-      var pool = subject === 'All' ? ALL : ALL.filter(function (q) { return q.s === subject; });
+      var pool = poolFor(subject);
       deck = shuffle(pool).slice(0, Math.min(ROUND, pool.length));
       idx = 0; score = 0; streak = 0; bestStreak = 0; correctCount = 0;
       elScore.textContent = '0'; elStreak.textContent = '0';
@@ -278,6 +305,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
       var item = deck[idx];
       elQnum.textContent = String(idx + 1);
       elTag.textContent = item.s;
+      elTag.setAttribute('data-subject', item.s); // drives the chip's subject colour
       elQ.textContent = item.q;
       elFb.hidden = true; elFb.innerHTML = '';
       elNext.hidden = true;
@@ -293,19 +321,34 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
       if (!practice) startTimer();
     }
 
+    function stopTicker() {
+      if (ticker) { clearInterval(ticker); ticker = null; }
+    }
     function startTimer() {
       elBar.classList.remove('run', 'warn');
+      stopTicker();
       elBar.style.transition = 'none';
       elBar.style.transform = 'scaleX(1)';
       // force reflow then animate
       void elBar.offsetWidth;
-      elBar.style.transition = 'transform ' + PER_Q + 's linear';
-      elBar.style.transform = 'scaleX(0)';
+      var startedAt = Date.now();
+      if (reduceMotion) {
+        // The global reduced-motion rule collapses every transition to 0.01ms, which would empty
+        // the track the instant a question renders — step the bar four times a second instead.
+        ticker = setInterval(function () {
+          var left = Math.max(0, PER_Q - (Date.now() - startedAt) / 1000);
+          elBar.style.transform = 'scaleX(' + (left / PER_Q).toFixed(3) + ')';
+        }, 250);
+      } else {
+        elBar.style.transition = 'transform ' + PER_Q + 's linear';
+        elBar.style.transform = 'scaleX(0)';
+      }
       var warnAt = setTimeout(function () { elBar.classList.add('warn'); }, (PER_Q - 4) * 1000);
-      timer = { to: setTimeout(function () { clearTimeout(warnAt); answer(-1); }, PER_Q * 1000), warnAt: warnAt, start: Date.now() };
+      timer = { to: setTimeout(function () { clearTimeout(warnAt); answer(-1); }, PER_Q * 1000), warnAt: warnAt, start: startedAt };
     }
     function stopTimer() {
       if (timer) { clearTimeout(timer.to); clearTimeout(timer.warnAt); }
+      stopTicker();
       elBar.style.transition = 'none';
     }
 
@@ -352,6 +395,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
       document.getElementById('dec-rating').textContent = rating;
       document.getElementById('dec-final').textContent = String(score);
       document.getElementById('dec-correct').textContent = String(correctCount);
+      if (elTotal) elTotal.textContent = String(deck.length); // "N of <deck size>", not a hard-coded 10
       document.getElementById('dec-beststreak').textContent = String(bestStreak);
       if (window.plausible) window.plausible('SHARP Decoder Completed');
       if (pct >= 0.7 && window.aworthyCelebrate) window.aworthyCelebrate();
