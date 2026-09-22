@@ -213,14 +213,13 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
   .k-recipe__num { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--color-accent); border: 1.5px solid var(--color-ink); color: #fff; font-size: 0.72rem; font-weight: 800; }
 
   /* win banner — a white sticker card on a hard ink shadow */
-  .k-win { max-width: 600px; margin: 1.75rem auto 0; text-align: center; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: 0 6px 0 var(--ink-shadow); animation: k-pop 0.5s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
+  .k-win { max-width: 37.5rem; margin: 1.75rem auto 0; text-align: center; background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: 0 6px 0 var(--ink-shadow); animation: k-pop 0.5s var(--ease-bounce, cubic-bezier(0.34,1.56,0.64,1)); }
   /* the script scrolls the banner in with block:'nearest' (bottom edge to the screen edge), which parked its
      second button under the fixed bottom CTA bar on phones — leave the bar's height clear. On ≤768px the bar
      can appear *after* that scroll (it shows past half a screen), so reserve its ~60px there regardless. */
-  .k-win { --k-bar: var(--sticky-bar-h, 0px); scroll-margin-bottom: calc(var(--k-bar) + 1rem); }
-  @media (max-width: 768px) {
-    .k-win { --k-bar: max(var(--sticky-bar-h, 0px), 4rem); }
-  }
+  /* The global sticky CTA can appear after this scroll at any width (it shows past half a screen),
+     so reserve room for it everywhere, in rem so it tracks the big-screen root size (bar ~62/72/94px). */
+  .k-win { --k-bar: max(var(--sticky-bar-h, 0px), 4.5rem); scroll-margin-bottom: calc(var(--k-bar) + 1rem); }
   .k-win__mascot { height: 88px; width: auto; margin: 0 auto 0.5rem; }
   .k-win__title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 0.5rem; }
   .k-win__sub { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }

@@ -1159,6 +1159,10 @@ const schemaData = {
       // sit above it instead of on top of its text and buttons.
       function report() { window.aworthyBottomBar('privacy', notice.hidden ? 0 : notice.offsetHeight); }
       report();
+      // The notice appears on idle (up to 3s after load). A visitor who has
+      // already scrolled has a sticky CTA showing; the CTAs only re-check the
+      // notice on scroll, so nudge them now or both bars stack until the next one.
+      window.dispatchEvent(new Event('scroll'));
       window.addEventListener('resize', report, { passive: true });
       btn.addEventListener('click', function() {
         try { localStorage.setItem('privacy-accepted', '1'); } catch (e) {}

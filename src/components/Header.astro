@@ -527,6 +527,15 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     }
   }
 
+  /* 1025–1140px: the full nav plus the CTA is ~27px wider than the viewport
+     at 1025, so the red pill ran off the right edge. Tighter link padding
+     frees ~64px across the eight items. */
+  @media (min-width: 1025px) and (max-width: 1140px) {
+    .desktop-nav a,
+    .desktop-nav .nav-trigger { padding-left: 0.6rem; padding-right: 0.6rem; }
+    .header-actions { gap: 0.5rem; }
+  }
+
   /* TV / Large screen — larger nav text and logo */
   @media (min-width: 1921px) {
     .logo-img {

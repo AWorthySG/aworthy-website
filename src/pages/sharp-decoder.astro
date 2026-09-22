@@ -342,8 +342,9 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
     // timer already running (short laptops, landscape phones). Bring the HUD,
     // question and options into view — only when they're actually hidden, and
     // offset for the fixed header.
-    function revealPlay() {
-      var r = screens.play.getBoundingClientRect();
+    function revealPlay() { revealScreen(screens.play); }
+    function revealScreen(el) {
+      var r = el.getBoundingClientRect();
       var head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
       if (r.top < head || r.bottom > window.innerHeight) {
         window.scrollTo({ top: window.scrollY + r.top - head - 12, behavior: reduceMotion ? 'auto' : 'smooth' });
@@ -419,6 +420,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
 
     function endGame() {
       show('end');
+      revealScreen(screens.end); // on landscape phones the card opened scrolled past its rating
       var pct = deck.length ? correctCount / deck.length : 0;
       var rating = pct >= 0.9 ? 'SHARP Method Master' : pct >= 0.7 ? 'Sharp Shooter' : pct >= 0.5 ? 'Getting Sharp' : 'Keep Practising';
       document.getElementById('dec-rating').textContent = rating;

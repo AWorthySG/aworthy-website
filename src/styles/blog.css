@@ -74,9 +74,11 @@
    strip). Running text is held to ~78 characters a line; tables, figures and
    callouts keep the full column. */
 .blog-post-body > p,
-.blog-post-body > ul,
-.blog-post-body > ol,
 .blog-post-body > blockquote { max-width: 38rem; }
+/* Lists carry a 1.5rem left indent, so subtract it or their text overshoots
+   the paragraphs' right edge. */
+.blog-post-body > ul,
+.blog-post-body > ol { max-width: calc(38rem - 1.5rem); }
 .blog-post-body h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 2.5rem 0 1rem; color: var(--text-primary); line-height: 1.3; }
 /* Clear step down from h2 (1.6rem) and clear of the 1.05rem bold "The fix:" lead-ins in
    the body, so numbered sub-headings still read as headings when skimming. */
