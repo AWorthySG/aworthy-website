@@ -295,6 +295,14 @@ import '../styles/global.css';
     max-width: 640px;
     margin: 0 auto;
   }
+  /* Below 1280 the sticker sits inline under the copy, so the 860px cap that
+     clears the floating sticker only made the hero taller: widen the copy and
+     shrink the sticker so the first programme card reaches the first screen */
+  @media (min-width: 769px) and (max-width: 1279px) {
+    .prog-hero .container { max-width: 1000px; }
+    .prog-hero__sub { max-width: 46rem; }
+    .prog-hero .sticker--hero { width: 96px; margin-top: 0.75rem; }
+  }
 
   /* ===== NAV ===== */
   .prog-nav {

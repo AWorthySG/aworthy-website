@@ -1169,7 +1169,6 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
      a narrow box with a 7-line intro lost in the page's whitespace. */
   .prog-hero .container { position: relative; z-index: 1; max-width: 67.5rem; }
   /* Keep the card clear of the fixed "On this page" TOC (190px + 1.5rem at the right edge from 1280px) */
-  @media (min-width: 1280px) { .prog-hero .container { max-width: min(67.5rem, 100vw - 360px); } }
   .prog-hero__copy { min-width: 0; }
   .prog-hero__sticker { width: min(200px, 48vw); margin: 0 auto 0.75rem; }
   .prog-hero__heading { font-family: var(--prog-font); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.12; color: var(--text-primary); margin-bottom: 0.75rem; letter-spacing: -0.03em; }
@@ -1181,7 +1180,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   @media (min-width: 1024px) {
     .prog-hero__card { display: flex; align-items: center; gap: 1.5rem; text-align: left; }
     .prog-hero__copy { flex: 1 1 auto; }
-    .prog-hero__sticker { order: 2; flex: 0 0 auto; width: 11.25rem; margin: 0; }
+    .prog-hero__sticker { order: 2; flex: 0 0 auto; width: min(11.25rem, 207px); margin: 0; }
     .prog-hero__heading { font-size: clamp(2.2rem, 3vw, 2.8rem); }
     .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
     .prog-hero__sub { margin: 0; }
@@ -1190,8 +1189,9 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
      pushed "in Singapore" below the first screen. Put it beside the copy
      (global.css already caps it at 112px tall here) and step the headline
      down so it holds to two lines. */
-  @media (max-height: 500px) and (orientation: landscape) {
-    .prog-hero__card { display: flex; align-items: center; gap: 1.25rem; text-align: left; }
+  @media (max-height: 500px) and (orientation: landscape) and (max-width: 1023px) {
+    /* top-aligned: centred, the sticker sat under the WhatsApp and chat floats */
+    .prog-hero__card { display: flex; align-items: flex-start; gap: 1.25rem; text-align: left; }
     .prog-hero__copy { flex: 1 1 auto; }
     .prog-hero__sticker { order: 2; flex: 0 0 auto; margin: 0; }
     .prog-hero__heading { font-size: clamp(1.75rem, 4.2vw, 2.2rem); }
@@ -1223,9 +1223,9 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
   /* Red marker squiggle under every section heading (the sitewide motif) */
   .prog-section__heading::after { content: ''; display: block; width: 72px; height: 12px; margin-top: 0.4rem; background: var(--swash) left center / contain no-repeat; }
-  .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 1rem; }
+  .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 37.5rem; margin-bottom: 1rem; }
   .card-grid { display: grid; gap: 1rem; }
-  .card-grid--1 { grid-template-columns: 1fr; max-width: 800px; }
+  .card-grid--1 { grid-template-columns: minmax(0, 1fr); max-width: 50rem; }
   .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
 
   /* ===== PROGRAMME CARD — white sticker card, 2px ink ===== */
@@ -1499,7 +1499,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
-    max-width: 800px;
+    max-width: 50rem; /* 800px at the 16px root */
     margin: 0 auto;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
@@ -1914,7 +1914,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .prog-midcta { padding-top: 0; }
   .prog-midcta__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; border: 2px solid var(--color-ink); border-left: 6px solid var(--subject-accent); border-radius: var(--radius-md); background: var(--bg-card); padding: 1.5rem 1.75rem; }
   .prog-midcta__heading { font-size: 1.25rem; font-weight: 800; margin: 0 0 0.3rem; font-family: var(--font-body); letter-spacing: -0.015em; color: var(--text-primary); }
-  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 560px; }
+  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 35rem; }
   .prog-midcta__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   @media (max-width: 700px) {
     .prog-midcta__inner { flex-direction: column; align-items: stretch; text-align: center; }
@@ -1937,7 +1937,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   }
   /* The eight excerpts are two per document: four across on wide screens
      reads as two rows of document pairs instead of 3 + 3 + 2 with a hole. */
-  @media (min-width: 1180px) {
+  @media (min-width: 1024px) {
     .notes-gallery--mixed { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
 

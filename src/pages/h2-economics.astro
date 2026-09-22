@@ -1005,6 +1005,7 @@ const playbookRows = [
 
   .prog-hero__sticker {
     order: -1;
+    z-index: 1; /* order:-1 paints it before the card's ::before tint wash, which greyed it out */
     width: min(200px, 48vw);
     height: auto;
     margin: 0 auto 0.75rem;
@@ -1028,7 +1029,7 @@ const playbookRows = [
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--prog-text-secondary);
-    max-width: 640px;
+    max-width: 40rem;
     margin: 0 auto;
   }
 
@@ -1050,7 +1051,7 @@ const playbookRows = [
       align-items: center;
       gap: 2rem;
     }
-    .prog-hero__sticker { order: 0; width: 11.25rem; margin: 0; }
+    .prog-hero__sticker { order: 0; width: min(11.25rem, 210px); justify-self: center; margin: 0; }
     .prog-hero__heading { font-size: clamp(2.2rem, 3.1vw, 2.6rem); }
     .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
     .prog-hero__sub { margin: 0; }
@@ -1102,6 +1103,19 @@ const playbookRows = [
     gap: 2rem;
     flex-wrap: nowrap;
     min-width: max-content;
+  }
+  /* 769-1199px: the nine tabs are wider than the screen, so on a 1024px iPad
+     "Schedule" was hard-clipped with no hint that the strip scrolls. Same
+     treatment as phones: tighter gap, edge padding, right-edge fade. */
+  @media (min-width: 769px) and (max-width: 1199px) {
+    .prog-nav {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    }
+    .prog-nav__inner {
+      gap: 1.25rem;
+      padding-inline: var(--page-padding) 2.5rem;
+    }
   }
 
   .prog-nav__link {
@@ -1166,7 +1180,7 @@ const playbookRows = [
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--prog-text-secondary);
-    max-width: 600px;
+    max-width: 37.5rem;
     margin-bottom: 1rem;
   }
 
@@ -1177,12 +1191,18 @@ const playbookRows = [
   }
 
   .card-grid--1 {
-    grid-template-columns: 1fr;
-    max-width: 800px;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 50rem; /* 800px at the 16px root; as px the lone card shrank to a third of a 2560px screen */
   }
 
   .card-grid--2 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Two columns hold down to 721px: one full-width column on a 768px iPad ran
+     the SHARP and framework paragraphs at ~100 characters a line, and below
+     ~720 two columns drop them to ~35 */
+  @media (max-width: 720px) {
+    .card-grid--2 { grid-template-columns: minmax(0, 1fr); }
   }
 
   /* ===== PROGRAMME CARD — white sticker, ink outline, lifts on hover
@@ -1369,7 +1389,7 @@ const playbookRows = [
 
   .prog-cta__inner {
     text-align: center;
-    max-width: 600px;
+    max-width: 37.5rem;
     margin: 0 auto;
   }
 
@@ -1439,9 +1459,6 @@ const playbookRows = [
       padding-inline: var(--page-padding) 2.5rem;
     }
 
-    .card-grid--2 {
-      grid-template-columns: 1fr;
-    }
 
     .prog-card {
       padding: 1.25rem;
@@ -1684,7 +1701,7 @@ const playbookRows = [
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
-    max-width: 800px;
+    max-width: 50rem; /* 800px at the 16px root */
     margin: 0 auto;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
@@ -1880,7 +1897,7 @@ const playbookRows = [
   .prog-midcta { padding-top: 0; }
   .prog-midcta__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; border: 2px solid var(--color-ink); border-left: 6px solid var(--subject-accent); border-radius: var(--radius-md); background: var(--prog-bg-card); padding: 1.5rem 1.75rem; }
   .prog-midcta__heading { font-size: 1.25rem; font-weight: 800; margin: 0 0 0.3rem; font-family: var(--font-body); letter-spacing: -0.02em; }
-  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 560px; }
+  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 35rem; }
   .prog-midcta__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   @media (max-width: 700px) {
     .prog-midcta__inner { flex-direction: column; align-items: stretch; text-align: center; }
@@ -1900,6 +1917,10 @@ const playbookRows = [
   @media (max-width: 900px) {
     .playbook-matrix { gap: 0.75rem; background: transparent; border: none; }
     .playbook-matrix__row { border: 2px solid var(--color-ink); border-radius: var(--radius-md); }
+  }
+  /* Tablet portrait: two topic cards per row instead of one ~2,400px column */
+  @media (min-width: 641px) and (max-width: 900px) {
+    .playbook-matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   /* ===== WORKED EXAMPLE: INFORMATION FAILURE — ink cards, red numbered dots,
@@ -1926,6 +1947,8 @@ const playbookRows = [
   .if-steps :global(sub) { font-size: 0.75em; }
 
   .if-worked { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.25rem; }
+  /* The second example is narrative only (capped at 62ch), so the card hugs it rather than leaving half of it empty */
+  .if-worked--alt { max-width: 44rem; }
   /* Subject-coloured chip (global .chip + the Econ brick) — the WORKED EXAMPLE
      tags and the "also covered" topic pills share it */
   .chip.if-chip { border-color: var(--subject-accent); background: color-mix(in srgb, var(--subject-accent) 12%, transparent); color: var(--subject-accent-text); }

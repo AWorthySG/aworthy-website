@@ -916,6 +916,7 @@ const playbookRows = [
 
   .prog-hero__sticker {
     order: -1;
+    z-index: 1; /* order:-1 paints it before the card's ::before tint wash, which greyed it out */
     width: min(200px, 48vw);
     height: auto;
     margin: 0 auto 0.75rem;
@@ -961,7 +962,7 @@ const playbookRows = [
       align-items: center;
       gap: 2rem;
     }
-    .prog-hero__sticker { order: 0; width: 11.25rem; margin: 0; }
+    .prog-hero__sticker { order: 0; width: min(11.25rem, 210px); justify-self: center; margin: 0; }
     .prog-hero__heading { font-size: clamp(2.2rem, 3.1vw, 2.6rem); }
     /* The forced break leaves an orphaned "Tuition" line in the card column — let the two lines balance instead */
     .prog-hero__heading br { display: none; }
@@ -1117,7 +1118,7 @@ const playbookRows = [
   /* Two columns hold down to 641px: a single full-width column on a 768px
      iPad ran the SHARP and framework paragraphs at ~105 characters a line
      (and the 820px iPad already got two columns). */
-  @media (max-width: 640px) {
+  @media (max-width: 720px) {
     .card-grid--2 { grid-template-columns: minmax(0, 1fr); }
   }
 
@@ -1627,7 +1628,7 @@ const playbookRows = [
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
-    max-width: 800px;
+    max-width: 50rem; /* 800px at the 16px root */
     margin: 0 auto;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);

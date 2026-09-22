@@ -157,7 +157,7 @@ const stories = [
 
           <div class="story-body">
             {story.paragraphs.map((p: string) => (
-              <p>{p}</p>
+              <p>{p.split('A-Worthy').map((part: string, i: number) => i === 0 ? part : [<span class="nobr">A-Worthy</span>, part])}</p>
             ))}
           </div>
 
@@ -462,7 +462,13 @@ const stories = [
     .stories-section .container {
       max-width: 72rem;
     }
+    /* rem, not px: at the 150% root the 720px cap minus 4rem padding left
+       528px for 84px type, and "transformations" broke mid-word */
+    .hero-content { max-width: 45rem; }
+    .hero-subtitle { max-width: 31.25rem; }
   }
+  /* the brand name never breaks at its hyphen ("A- / Worthy") */
+  .nobr { white-space: nowrap; }
 
   /* Responsive */
   @media (max-width: 640px) {

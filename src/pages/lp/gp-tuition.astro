@@ -85,7 +85,8 @@ import '../../styles/global.css';
   .lp-hero { padding: 1.5rem 0 var(--space-3xl); }
   .lp-hero-card { display: flex; flex-direction: column; text-align: center; }
   .lp-hero-copy { min-width: 0; }
-  .lp-hero-art { order: -1; width: 140px; margin: 0 auto 1rem; }
+  /* z-index: order:-1 paints the sticker before the card's ::before tint wash, which greyed it out */
+  .lp-hero-art { order: -1; width: 140px; margin: 0 auto 1rem; z-index: 1; }
   .lp-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.25rem; }
   .lp-title::after { margin-inline: auto; }
   /* max-widths are in rem (not px) so they grow with the root font-size step-ups
@@ -120,7 +121,8 @@ import '../../styles/global.css';
     .lp-title { font-size: clamp(1.75rem, 4.2vw, 2.2rem); }
   }
   @media (min-width: 1024px) {
-    .lp-hero-art { width: clamp(150px, 15vw, 11.25rem); }
+    /* capped at ~half the ~410px source width so it stays sharp on 2x screens at the 150% root */
+    .lp-hero-art { width: clamp(150px, 15vw, min(11.25rem, 200px)); }
   }
   /* Large desktops: cap the hero card so it keeps the laptop proportions with the
      50rem column below instead of stretching to the 1600–2200px container */
@@ -190,5 +192,9 @@ import '../../styles/global.css';
     .lp-title { font-size: clamp(1.75rem, 7.8vw, 2.2rem); margin-bottom: 1rem; }
     .lp-title br { display: none; }
     .lp-subtitle { font-size: 1rem; line-height: 1.6; }
+  }
+  /* 360px phones: the GP CTA ended 15px below a 740px-tall first screen */
+  @media (max-width: 380px) {
+    .lp-hero-art { width: 88px; margin-bottom: 0.5rem; }
   }
 </style>

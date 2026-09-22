@@ -870,7 +870,7 @@ const playbookRows = [
   @media (min-width: 1024px) {
     .prog-hero__card { display: flex; align-items: center; gap: 1.5rem; text-align: left; }
     .prog-hero__copy { flex: 1 1 auto; }
-    .prog-hero__sticker { order: 2; flex: 0 0 auto; width: 11.25rem; margin: 0; }
+    .prog-hero__sticker { order: 2; flex: 0 0 auto; width: min(11.25rem, 200px); margin: 0; }
     .prog-hero__heading { font-size: clamp(2.2rem, 3vw, 2.8rem); }
     .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
     .prog-hero__sub { margin: 0; }
@@ -923,7 +923,7 @@ const playbookRows = [
   .card-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* Two columns hold down to 641px: a single full-width column on a 768px
      iPad ran the SHARP and framework paragraphs at ~100 characters a line */
-  @media (max-width: 640px) {
+  @media (max-width: 720px) {
     .card-grid--2 { grid-template-columns: minmax(0, 1fr); }
   }
 
@@ -1010,6 +1010,7 @@ const playbookRows = [
     line-height: 1.7;
     color: var(--prog-text-secondary);
     margin: 0;
+    max-width: 62ch; /* the 42rem timeline sets the measure from 768px; below that it ran ~88 characters */
     text-wrap: pretty;
   }
   .lesson-step__desc em { font-style: italic; color: var(--subject-accent-text); font-weight: 700; }
@@ -1215,7 +1216,7 @@ const playbookRows = [
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
-    max-width: 800px;
+    max-width: 50rem; /* 800px at the 16px root */
     margin: 0 auto;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);

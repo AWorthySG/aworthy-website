@@ -515,7 +515,7 @@ import '../styles/global.css';
             <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
           <div class="chip chip--green grade-after-animated">A2</div>
-          <div class="grade-label">O-Level English &mdash; 3 months</div>
+          <div class="grade-label">O-Level English&nbsp;&mdash; 3&nbsp;months</div>
         </div>
         <div class="grade-card card-lift">
           <div class="chip chip--pink grade-before-animated">D</div>
@@ -523,7 +523,7 @@ import '../styles/global.css';
             <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
           <div class="chip chip--green grade-after-animated">B</div>
-          <div class="grade-label">H1 General Paper &mdash; 2 terms</div>
+          <div class="grade-label">H1 General Paper&nbsp;&mdash; 2&nbsp;terms</div>
         </div>
         <div class="grade-card card-lift">
           <div class="chip chip--pink grade-before-animated">U</div>
@@ -531,7 +531,7 @@ import '../styles/global.css';
             <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
           <div class="chip chip--green grade-after-animated">B</div>
-          <div class="grade-label">H2 Economics &mdash; 1 term</div>
+          <div class="grade-label">H2 Economics&nbsp;&mdash; 1&nbsp;term</div>
         </div>
       </div>
     </div>
@@ -1267,7 +1267,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
      absolutely-placed dismiss needs its 44px reserved up to 768 (it sat on
      top of the red pill at 641-768). */
   @media (max-width: 768px) {
-    .sticky-cta-btn { flex: 1; margin-right: 44px; }
+    /* width:auto — the phone .btn rule in global.css sets width:100%, which
+       ignored the margin and pushed the pill under the × on every phone */
+    .sticky-cta-btn { flex: 1; margin-right: 44px; width: auto; }
   }
 
   .sticky-cta-dismiss {

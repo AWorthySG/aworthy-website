@@ -790,6 +790,11 @@ import '../styles/global.css';
       column-gap: 3rem;
     }
   }
+  /* While the container is still full-bleed (to ~1680px) its right edge sits
+     12px inside the chat/WhatsApp/back-to-top lane; keep the sticky card out of it */
+  @media (min-width: 1441px) and (max-width: 1680px) {
+    .story-layout { padding-right: 1.5rem; }
+  }
 
   /* ===== FOUNDER CARD — sticky white ink card ===== */
   .founder-card {
@@ -816,6 +821,12 @@ import '../styles/global.css';
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  /* Short tablet-landscape screens (1024x768): the sticky card's CTA ended in
+     the back-to-top / WhatsApp lane. A smaller photo and padding lift it clear. */
+  @media (min-width: 901px) and (max-width: 1100px) and (max-height: 820px) {
+    .founder-card { padding: 1.5rem; }
+    .founder-card__photo { width: 96px; height: 96px; margin-bottom: 0.75rem; }
   }
   .founder-card__initials {
     position: absolute;

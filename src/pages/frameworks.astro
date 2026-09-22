@@ -306,7 +306,7 @@ const frameworkIndex = [
     <div class="container">
       <p class="eyebrow">Straight From The Materials</p>
       <h2 class="fw-section__title squiggle">The frameworks, on the actual pages</h2>
-      <p class="fw-section__sub">Each framework above lives in a full teaching document. Three pages, unedited &mdash; click to enlarge.</p>
+      <p class="fw-section__sub">Each framework above lives in a full teaching document. Three pages, unedited&nbsp;&mdash; click to enlarge.</p>
       <div class="notes-gallery">
         <button type="button" class="notes-shot card-lift" data-full="/images/english-mat-stampcard.webp" aria-label="Enlarge: STAMP CARD nine-category quick reference from the editing notes">
           <img src="/images/english-mat-stampcard.webp" alt="The STAMP CARD quick-reference table from A-Worthy's editing notes: nine error types from Subject-Verb Agreement to Degree of Comparison, each with its quick check question" loading="lazy" width="1100" height="758" />
@@ -414,7 +414,8 @@ const frameworkIndex = [
   .classifier__q:hover { background: var(--bg-hover); }
   .classifier__q:active { transform: translateY(3px); box-shadow: 0 0 0 var(--ink-shadow); }
   .classifier__q.is-active { border-color: var(--color-accent); background: var(--color-accent-soft); box-shadow: 0 3px 0 var(--color-accent-press); }
-  .classifier__result { margin-top: 1rem; padding-top: 1rem; border-top: 2px dashed var(--ink-faint); }
+  /* scroll margins: brought into view after a tap, the verdict clears the header and the sticky CTA bar */
+  .classifier__result { margin-top: 1rem; padding-top: 1rem; border-top: 2px dashed var(--ink-faint); scroll-margin-top: calc(var(--nav-offset) + 1rem); scroll-margin-bottom: calc(var(--sticky-bar-h, 0px) + 1rem); }
   .classifier__verdict { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
   .classifier__badge { display: inline-flex; align-items: center; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: var(--radius-pill); border: 1.5px solid var(--ink-faint); background: var(--bg-muted); color: var(--text-secondary); }
   .classifier__badge.is-a { background: var(--tint-blue-bg); color: var(--tint-blue-fg); border-color: var(--color-sky); }
@@ -584,7 +585,8 @@ const frameworkIndex = [
           // On a phone the six questions stack ~430px tall, so the verdict
           // appeared out of sight below them. Bring it into view when needed.
           const r = result.getBoundingClientRect();
-          if (r.bottom > window.innerHeight || r.top < 0) {
+          const barH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sticky-bar-h')) || 0;
+          if (r.bottom > window.innerHeight - barH || r.top < 0) {
             const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             result.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
           }

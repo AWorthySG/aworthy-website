@@ -338,7 +338,7 @@ import '../styles/global.css';
     <div class="r-container">
       <span class="eyebrow">Get Started</span>
       <h2 class="r-cta-heading" data-animate="reveal-up">Your child could see results like these</h2>
-      <p class="r-cta-sub">Join the students who have transformed their English grades with A-Worthy. Book a free assessment today.</p>
+      <p class="r-cta-sub">Join the students who have transformed their English grades with <span class="r-nobr">A-Worthy</span>. Book a free assessment today.</p>
       <div class="r-cta-actions">
         <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
         <a href="https://wa.me/6589913181" class="btn">WhatsApp Us</a>
@@ -700,6 +700,14 @@ import '../styles/global.css';
     color: var(--text-secondary);
     max-width: 550px;
     margin: 0 auto 2rem;
+  }
+  /* the brand name never breaks at its hyphen ("A- / Worthy") */
+  .r-nobr { white-space: nowrap; }
+  /* rem at the 112.5-150% roots (600px / 550px at 16px): in px the hero and
+     CTA copy ran ~35-40 characters a line at 2560 */
+  @media (min-width: 1441px) {
+    .r-hero-sub { max-width: 37.5rem; }
+    .r-cta-sub { max-width: 34.375rem; }
   }
 
   .r-cta-actions {

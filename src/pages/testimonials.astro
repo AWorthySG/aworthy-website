@@ -211,7 +211,7 @@ const testimonials = [
     <div class="t-container t-google-inner">
       <span class="eyebrow" data-animate="reveal-up">Verified on Google</span>
       <h2 class="t-google-heading squiggle squiggle--center" data-animate="reveal-up">Don&rsquo;t take our word for it &mdash; read what families say on Google</h2>
-      <p class="t-google-sub" data-animate="reveal-up">Every review on our Google Business Profile is from a verified A-Worthy family. We don&rsquo;t curate them, we don&rsquo;t hide the difficult ones, and we don&rsquo;t pay for them.</p>
+      <p class="t-google-sub" data-animate="reveal-up">Every review on our Google Business Profile is from a verified <span class="t-nowrap">A-Worthy</span> family. We don&rsquo;t curate them, we don&rsquo;t hide the difficult ones, and we don&rsquo;t pay for them.</p>
 
       <div class="t-google-badge" data-animate="scale-in">
         <div class="t-google-logo">
@@ -246,7 +246,7 @@ const testimonials = [
     <div class="t-container t-cta-inner">
       <span class="eyebrow">Get Started</span>
       <h2 class="t-cta-heading squiggle squiggle--center" data-animate="reveal-up">Experience the <span class="t-nowrap">A-Worthy</span> difference</h2>
-      <p class="t-cta-subtitle">Join the hundreds of families who trust A-Worthy. Book a free trial lesson and see the results for yourself.</p>
+      <p class="t-cta-subtitle">Join the hundreds of families who trust <span class="t-nowrap">A-Worthy</span>. Book a free trial lesson and see the results for yourself.</p>
       <div class="t-cta-actions">
         <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
         <a href="https://wa.me/6589913181" class="btn" target="_blank" rel="noopener noreferrer">
@@ -684,8 +684,14 @@ const testimonials = [
       max-width: 75rem;
     }
 
+    /* rem: at the 150% root the px caps ran the headline to 4 lines and the
+       lead to ~35 characters */
     .t-hero-inner {
-      max-width: 900px;
+      max-width: 45rem;
+    }
+    .t-hero-subtitle,
+    .t-google-sub {
+      max-width: 35rem;
     }
 
     /* The .t-container rule above would otherwise override these narrow

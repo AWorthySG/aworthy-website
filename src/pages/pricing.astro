@@ -712,7 +712,17 @@ import '../styles/global.css';
     }
   }
 
-  @media (min-width: 481px) and (max-width: 959px) {
+  /* Large phones and landscape phones (481-699px): one centred column. Two-up
+     there squeezed the cards to ~200-275px, wrapping the CTA onto two lines
+     and splitting the price. */
+  @media (min-width: 481px) and (max-width: 699px) {
+    .pricing-cards {
+      max-width: 30rem;
+      margin-inline: auto;
+    }
+  }
+
+  @media (min-width: 700px) and (max-width: 959px) {
     .pricing-cards {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
