@@ -10,25 +10,28 @@ import '../../styles/global.css';
 
   <section class="lp-hero">
     <div class="container">
-      <span class="eyebrow">O-Level Mathematics Tuition</span>
-      <h1 class="lp-title">Your child deserves an <span class="accent-word">A for Maths</span></h1>
-      <p class="lp-subtitle">The SHARP Method gives your child a named, examiner-aligned framework for every question type — so they always know which method to reach for. Small groups of 6, live on the A-Worthy Whiteboard. <a href="/o-level-mathematics/#playbook" style="color: var(--color-accent); text-decoration: underline;">See the full SHARP Playbook &rarr;</a></p>
-      <div class="lp-cta-row">
-        <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
-        <a href="/o-level-mathematics/" class="btn">View Full Programme</a>
+      <div class="hero-card lp-hero-card subject--maths">
+        <div class="lp-hero-copy">
+          <span class="eyebrow">O-Level Mathematics Tuition</span>
+          <h1 class="lp-title squiggle">Your child deserves an <span class="accent-word">A for Maths</span></h1>
+          <p class="lp-subtitle">The SHARP Method gives your child a named, examiner-aligned framework for every question type — so they always know which method to reach for. Small groups of 6, live on the A-Worthy Whiteboard. <a href="/o-level-mathematics/#playbook">See the full SHARP Playbook&nbsp;&rarr;</a></p>
+          <div class="lp-cta-row">
+            <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
+            <a href="/o-level-mathematics/" class="btn">View Full Programme</a>
+          </div>
+          <div class="lp-stats">
+            <div class="lp-stat"><span class="stat-dot stat-dot--green" aria-hidden="true"></span><span class="lp-stat-num">6</span><span class="lp-stat-label">max per class</span></div>
+            <div class="lp-stat"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span><span class="lp-stat-num" data-count="4.9">0</span><span class="lp-stat-label">Google rating</span></div>
+            <div class="lp-stat"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span class="lp-stat-num">S$280</span><span class="lp-stat-label">from / month</span></div>
+          </div>
+        </div>
+        <img class="sticker sticker--right lp-hero-art" src="/images/mascots/mascot-maths.webp" width="417" height="553" alt="" decoding="async">
       </div>
     </div>
-    <img class="sticker sticker--hero sticker--right" src="/images/mascots/mascot-maths.webp" width="417" height="553" alt="" decoding="async">
   </section>
 
   <section class="section lp-proof">
     <div class="container">
-      <div class="lp-stats">
-        <div class="lp-stat"><span class="stat-dot stat-dot--green" aria-hidden="true"></span><span class="lp-stat-num">6</span><span class="lp-stat-label">max per class</span></div>
-        <div class="lp-stat"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span><span class="lp-stat-num" data-count="4.9">0</span><span class="lp-stat-label">Google rating</span></div>
-        <div class="lp-stat"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span class="lp-stat-num">S$280</span><span class="lp-stat-label">from / month</span></div>
-      </div>
-
       <div class="lp-testimonial">
         <blockquote>&ldquo;Built on the same SHARP Method behind multi-grade jumps in English, GP and Economics &mdash; now engineered for the O-Level Mathematics 4048 syllabus, with a named framework for every question type.&rdquo;</blockquote>
         <cite>&mdash; The A-Worthy method, taught by Jeremy Lim, LLB (Hons) NUS Law</cite>
@@ -76,31 +79,36 @@ import '../../styles/global.css';
 </BaseLayout>
 
 <style>
-  /* ── Hero — centred copy, soft sunlit wash, subject sticker in the right margin ── */
-  .lp-hero { position: relative; overflow: hidden; padding: 1.5rem 0 1.75rem; text-align: center; }
-  .lp-hero::before {
-    content: '';
-    position: absolute;
-    top: -32%;
-    right: -10%;
-    width: 520px;
-    height: 520px;
-    border-radius: 50%;
-    background: radial-gradient(circle, color-mix(in srgb, var(--color-sun) 12%, transparent) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .lp-hero > .container { position: relative; z-index: 1; }
-  .lp-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.25rem; }
-  .lp-subtitle { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.25rem; }
+  /* ── Hero — the LMS welcome card: a white ink card with the subject-tint wash,
+     copy + proof row on the left and the subject sticker on the right (≥1024px);
+     the sticker sits centred above the headline on narrower screens ── */
+  .lp-hero { padding: 1.5rem 0 0; }
+  .lp-hero-card { display: flex; flex-direction: column; text-align: center; }
+  .lp-hero-copy { min-width: 0; }
+  .lp-hero-art { order: -1; width: 140px; margin: 0 auto 1rem; }
+  .lp-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.25rem; }
+  .lp-title::after { margin-inline: auto; }
+  .lp-subtitle { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto 1.25rem; text-wrap: pretty; }
+  .lp-subtitle a { color: var(--color-accent-text); text-decoration: underline; text-underline-offset: 0.15em; }
   .lp-cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-  /* ── Proof row — coloured stat dots before 900-weight numbers, grey micro-labels ── */
-  .lp-stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem 3rem; margin-bottom: 2rem; }
+  /* ── Proof row — coloured stat dots before 900-weight numbers, grey micro-labels;
+     three equal columns under a dashed rule inside the hero card ── */
+  .lp-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 0.5rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 2px dashed var(--ink-faint); }
   .lp-stat { text-align: center; }
   .lp-stat .stat-dot { width: 11px; height: 11px; margin-right: 0.5rem; vertical-align: 0.55em; }
   .lp-stat-num { display: inline-block; font-family: var(--font-heading); font-size: 2.5rem; font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: var(--text-primary); }
   .lp-stat-label { display: block; margin-top: 0.4rem; font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  @media (min-width: 1024px) {
+    .lp-hero-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: clamp(1.5rem, 3vw, 3rem); text-align: left; }
+    .lp-hero-art { order: 0; width: clamp(150px, 15vw, 180px); margin: 0; }
+    .lp-title::after { margin-inline: 0; }
+    .lp-subtitle { margin-inline: 0; }
+    .lp-cta-row { justify-content: flex-start; }
+    .lp-stats { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1rem 2.5rem; }
+    .lp-stat { text-align: left; }
+  }
 
   /* ── Testimonial — a white ink card with a red squiggle above the quote ── */
   .lp-testimonial {
@@ -136,9 +144,16 @@ import '../../styles/global.css';
   .lp-final-cta h2 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
 
   @media (max-width: 640px) {
-    .lp-stats { gap: 1.5rem 2rem; }
-    .lp-stat-num { font-size: 2.1rem; }
+    /* The three proofs share one row: smaller dot, number scaled to the column
+       (widest number is "S$280"), labels at the 0.72rem floor and wrapping */
+    .lp-stat .stat-dot { width: 9px; height: 9px; margin-right: 0.4rem; }
+    .lp-stat-num { font-size: clamp(1.4rem, 6.7vw, 2.1rem); }
+    .lp-stat-label { font-size: 0.72rem; letter-spacing: 0.06em; }
     .lp-testimonial { padding: 1.5rem 1.25rem; }
     .lp-features-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .lp-hero-card { padding: 1.25rem; }
   }
 </style>
