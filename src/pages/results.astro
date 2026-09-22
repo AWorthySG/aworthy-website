@@ -23,21 +23,33 @@ import '../styles/global.css';
   <section class="r-section">
     <div class="r-container">
       <div class="r-stats-row">
-        <div class="r-stat" data-animate="reveal-up" data-animate-delay="1">
-          <span class="r-stat-figure"><span class="stat-dot stat-dot--green" aria-hidden="true"></span><span class="r-stat-num" data-count="90" data-count-suffix="%">90%</span></span>
-          <span class="r-stat-label">A1-B3 Rate</span>
+        <div class="stat-card r-stat" data-animate="reveal-up" data-animate-delay="1">
+          <span class="icon-circle icon-circle--green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 12.9 17 22l-5-3-5 3 1.5-9.1"/></svg>
+          </span>
+          <span class="stat-card__num r-stat-num" data-count="90" data-count-suffix="%">90%</span>
+          <span class="stat-card__label r-stat-label">A1-B3 Rate</span>
         </div>
-        <div class="r-stat" data-animate="reveal-up" data-animate-delay="2">
-          <span class="r-stat-figure"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span><span class="r-stat-num">6</span></span>
-          <span class="r-stat-label">Max Class Size</span>
+        <div class="stat-card r-stat" data-animate="reveal-up" data-animate-delay="2">
+          <span class="icon-circle icon-circle--pink" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <span class="stat-card__num r-stat-num">6</span>
+          <span class="stat-card__label r-stat-label">Max Class Size</span>
         </div>
-        <div class="r-stat" data-animate="reveal-up" data-animate-delay="3">
-          <span class="r-stat-figure"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span class="r-stat-num" data-count="500" data-count-suffix="+">500+</span></span>
-          <span class="r-stat-label">Students Taught</span>
+        <div class="stat-card r-stat" data-animate="reveal-up" data-animate-delay="3">
+          <span class="icon-circle icon-circle--blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </span>
+          <span class="stat-card__num r-stat-num" data-count="500" data-count-suffix="+">500+</span>
+          <span class="stat-card__label r-stat-label">Students Taught</span>
         </div>
-        <div class="r-stat" data-animate="reveal-up" data-animate-delay="4">
-          <span class="r-stat-figure"><span class="stat-dot stat-dot--gold" aria-hidden="true"></span><span class="r-stat-num">3 months</span></span>
-          <span class="r-stat-label">Avg. Improvement Time</span>
+        <div class="stat-card r-stat" data-animate="reveal-up" data-animate-delay="4">
+          <span class="icon-circle icon-circle--gold" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </span>
+          <span class="stat-card__num r-stat-num">3 <span class="r-stat-unit">months</span></span>
+          <span class="stat-card__label r-stat-label">Avg. Improvement Time</span>
         </div>
       </div>
     </div>
@@ -279,7 +291,6 @@ import '../styles/global.css';
               <span class="r-grade-val r-grade-after chip chip--green">A2</span>
             </div>
           </div>
-          <p class="r-story-subject">O-Level English</p>
           <p class="r-story-quote">"The SHARP Method completely changed how I approach comprehension questions."</p>
         </div>
 
@@ -298,7 +309,6 @@ import '../styles/global.css';
               <span class="r-grade-val r-grade-after chip chip--green">B3</span>
             </div>
           </div>
-          <p class="r-story-subject">O-Level English</p>
           <p class="r-story-quote">"I finally understand how to structure my essays properly."</p>
         </div>
 
@@ -317,7 +327,6 @@ import '../styles/global.css';
               <span class="r-grade-val r-grade-after chip chip--green">A1</span>
             </div>
           </div>
-          <p class="r-story-subject">O-Level English</p>
           <p class="r-story-quote">"The legal reasoning approach made inference questions click."</p>
         </div>
       </div>
@@ -424,53 +433,32 @@ import '../styles/global.css';
     .r-transform-mascot { display: none; }
   }
 
-  /* ===== STATS ROW — one ink-bordered sticker, cells split by faint rules ===== */
+  /* ===== STATS ROW — the LMS dashboard stat tiles: global .stat-card with a
+     tinted .icon-circle, 900 number and grey micro-label. Four tiles → 2×2 on
+     tablets and phones, so no grid cell is ever left empty. ===== */
   .r-stats-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    background: var(--ink-faint);
-    border: 2px solid var(--color-ink);
-    border-radius: var(--radius-md);
-    box-shadow: 0 3px 0 var(--ink-shadow);
-    overflow: hidden;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
+  /* Page-level sizing only — the tile look itself comes from .stat-card */
   .r-stat {
-    background: var(--bg-card);
-    text-align: center;
-    padding: 2.25rem 1rem;
-  }
-
-  .r-stat-figure {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .r-stat-figure .stat-dot {
-    width: 12px;
-    height: 12px;
+    padding: 1.5rem 1.5rem 1.35rem;
+    gap: 0.45rem;
   }
 
   .r-stat-num {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 2.8rem;
-    font-weight: 900;
-    color: var(--text-primary);
-    letter-spacing: -0.03em;
-    line-height: 1;
+    font-size: 2.5rem;
+    white-space: nowrap;
+    margin-top: 0.55rem;
   }
 
-  .r-stat-label {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    margin-top: 0.75rem;
+  /* "3 months": the unit rides along at half size so the figure never wraps */
+  .r-stat-unit {
+    font-size: 0.5em;
+    font-weight: 800;
+    letter-spacing: 0;
   }
 
   /* ===== CARDS GRID ===== */
@@ -666,16 +654,6 @@ import '../styles/global.css';
     font-weight: 700;
   }
 
-  .r-story-subject {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    text-align: center;
-    margin: 0 0 1rem;
-  }
-
   .r-story-quote {
     font-size: 0.9rem;
     font-style: italic;
@@ -752,6 +730,8 @@ import '../styles/global.css';
     display: flex;
     align-items: center;
     gap: 1rem;
+    /* Reserves room under the line for the always-visible milestone labels */
+    padding-bottom: 1.35rem;
   }
 
   /* Before / after grades are .chip--pink / .chip--green; size only here */
@@ -805,23 +785,17 @@ import '../styles/global.css';
     border: 2px solid var(--color-ink);
   }
 
+  /* Milestone labels sit under their dot and are always readable — no hover-only data */
   .journey-milestone-label {
     position: absolute;
-    bottom: calc(100% + 6px);
+    top: calc(100% + 4px);
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.72rem;
     font-weight: 700;
+    line-height: 1.3;
     color: var(--text-secondary);
     white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  @media (hover: hover) {
-    .journey-card:hover .journey-milestone-label {
-      opacity: 1;
-    }
   }
 
   @media (max-width: 640px) {
@@ -831,15 +805,20 @@ import '../styles/global.css';
     .journey-grade.chip {
       font-size: 0.9rem;
     }
-    .journey-milestone-label {
-      display: none;
+    /* Two labels on a short line would collide — the second one drops a row */
+    .journey-progress {
+      padding-bottom: 2.4rem;
+    }
+    .journey-milestone + .journey-milestone .journey-milestone-label {
+      top: calc(100% + 4px + 1.05rem);
     }
   }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
     .r-stats-row {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
     }
 
     .r-cards-3 {
@@ -857,7 +836,11 @@ import '../styles/global.css';
     }
 
     .r-stats-row {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .r-stat-num {
+      font-size: 2.2rem;
     }
 
     .r-cards-3,
@@ -876,11 +859,12 @@ import '../styles/global.css';
     }
 
     .r-stats-row {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
     }
 
     .r-stat {
-      padding: 1.5rem 0.75rem;
+      padding: 1.1rem 1rem 1rem;
     }
 
     .r-stat-num {
@@ -910,7 +894,7 @@ import '../styles/global.css';
       padding: 2.25rem 0;
     }
     .r-stat-num {
-      font-size: 3.5rem;
+      font-size: 3rem;
     }
     .r-cards-3 {
       gap: 2rem;
@@ -923,7 +907,7 @@ import '../styles/global.css';
   /* Tablet portrait */
   @media (min-width: 481px) and (max-width: 768px) {
     .r-stats-row {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .r-cards-3 {
       grid-template-columns: 1fr;
