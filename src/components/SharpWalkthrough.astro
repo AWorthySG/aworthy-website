@@ -84,7 +84,17 @@ const steps = [
 </section>
 
 <style>
-  .sharp-walk { padding: 2rem 0; background: var(--bg-secondary); }
+  /* Cream, so the band alternates with the sand "Our values" section above it */
+  .sharp-walk { padding: 2rem 0; background: var(--bg-primary); }
+  /* Same heading scale as the page's other section h2s (about.astro .section h2),
+     with breathing room between the squiggle and the subtitle */
+  .sharp-walk h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.25rem;
+    max-width: 600px;
+  }
   .sharp-walk__sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 640px; }
 
   /* Tabs — the LMS segmented control (track = muted well, active = red pill) */

@@ -382,11 +382,8 @@ const testimonials = [
     margin-bottom: 24px;
   }
 
-  /* A highlighted card gets a soft gold wash (LMS "hot" card) */
-  .t-card--featured {
-    background: var(--tint-gold-bg);
-  }
-
+  /* Highlighted cards stay solid white like the rest of the grid (no tinted
+     card fills); only the quote is set larger */
   .t-card--featured .t-card-quote {
     font-size: 1.15rem;
   }
@@ -602,16 +599,23 @@ const testimonials = [
       padding: 1.75rem 0;
     }
 
+    /* Compact 3-up grid on phones — never a single column of giant numbers */
     .t-stats-inner {
-      flex-direction: column;
-      gap: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .t-stat-divider {
-      width: 60px;
-      height: 0;
-      border-left: none;
-      border-top: 2px dashed var(--ink-faint);
+      display: none;
+    }
+
+    .t-stat-number {
+      font-size: 1.75rem;
+    }
+
+    .t-stat-label {
+      font-size: 0.72rem;
     }
 
     .t-google-inner {
