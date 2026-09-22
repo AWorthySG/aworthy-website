@@ -60,7 +60,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
         <!-- START -->
         <div class="dec-screen dec-start" id="dec-start">
           <div class="dec-card">
-            <p class="dec-card__kicker">10 questions &middot; beat the clock</p>
+            <p class="dec-card__kicker" id="dec-kicker">Up to 10 questions &middot; beat the clock</p>
             <h2 class="dec-card__title">Choose your challenge</h2>
             <div class="dec-chips" role="group" aria-label="Choose a subject">
               {subjects.map((s, i) => (
@@ -86,7 +86,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
           </div>
           <div class="dec-timer" id="dec-timer-wrap"><span class="dec-timer__bar" id="dec-timer-bar"></span></div>
           <div class="dec-q">
-            <span class="chip chip--blue dec-q__tag" id="dec-q-tag">English</span>
+            <span class="chip dec-q__tag" id="dec-q-tag">English</span>
             <p class="dec-q__text" id="dec-q-text"></p>
           </div>
           <div class="dec-options" id="dec-options" role="group" aria-label="Pick the framework"></div>
@@ -100,7 +100,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
             <img src="/images/mascots/mascot-sunglasses.webp" alt="" width="309" height="385" class="dec-end__mascot sticker" />
             <p class="dec-card__kicker" id="dec-rating">Sharp Shooter</p>
             <h2 class="dec-card__title"><span id="dec-final">0</span> points</h2>
-            <p class="dec-end__line"><span id="dec-correct">0</span> of 10 correct &middot; best streak <span id="dec-beststreak">0</span></p>
+            <p class="dec-end__line"><span id="dec-correct">0</span> of <span id="dec-total">10</span> correct &middot; best streak <span id="dec-beststreak">0</span></p>
             <p class="dec-end__pitch">Knowing the right framework on sight is exactly what the SHARP Method drills. That instinct is what turns understanding into marks under exam pressure.</p>
             <div class="dec-end__actions">
               <button type="button" class="btn" id="dec-replay">Play again</button>
@@ -137,7 +137,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   @keyframes dec-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
   /* Start / end card — a white sticker card with the 2px ink outline */
-  .dec-card { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 4px 0 var(--ink-shadow); padding: 2rem 1.75rem; text-align: center; }
+  .dec-card { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 2rem 1.75rem; text-align: center; }
   .dec-end__mascot { height: 84px; width: auto; margin: 0 auto 0.75rem; }
   .dec-card__kicker { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 0.4rem; }
   .dec-card__title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.25rem; }
@@ -148,7 +148,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   .dec-chip:hover { border-color: var(--color-ink); color: var(--text-primary); }
   .dec-chip.is-active { background: var(--color-accent); border-color: var(--color-ink); color: #fff; }
   .dec-chip:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--color-accent-soft); }
-  .dec-practice { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; cursor: pointer; }
+  .dec-practice { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0.35rem 0.6rem; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; cursor: pointer; }
   .dec-practice input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
   .dec-practice .check-box { position: relative; display: inline-block; width: 1.15rem; height: 1.15rem; flex-shrink: 0; border: 2px solid var(--color-ink); border-radius: 5px; background: var(--bg-muted); transition: border-color var(--transition-fast); }
   .dec-practice .check-box::after { content: ''; position: absolute; inset: -3px; background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat; opacity: 0; transform: scale(0.5); transition: opacity var(--transition-fast), transform var(--transition-fast); }
@@ -176,6 +176,12 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
 
   .dec-q { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
   .dec-q__tag { margin-bottom: 0.6rem; }
+  /* the tag takes the question's own LMS subject colour (set as data-subject by the script), like the SubjectBar's active chip */
+  .dec-q__tag[data-subject="English"] { background: var(--subject-english-tint); color: var(--subject-english-text); border-color: var(--subject-english); }
+  .dec-q__tag[data-subject="Maths"]   { background: var(--subject-maths-tint);   color: var(--subject-maths-text);   border-color: var(--subject-maths); }
+  .dec-q__tag[data-subject="Pre-IB"]  { background: var(--subject-preib-tint);   color: var(--subject-preib-text);   border-color: var(--subject-preib); }
+  .dec-q__tag[data-subject="GP"]      { background: var(--subject-gp-tint);      color: var(--subject-gp-text);      border-color: var(--subject-gp); }
+  .dec-q__tag[data-subject="Econs"]   { background: var(--subject-econ-tint);    color: var(--subject-econ-text);    border-color: var(--subject-econ); }
   .dec-q__text { font-size: 1.1rem; line-height: 1.5; color: var(--text-primary); margin: 0; }
 
   /* Answer buttons are created by the script, so they carry no Astro scope
@@ -188,7 +194,8 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   .dec-options :global(.dec-opt:disabled) { cursor: default; }
   .dec-options :global(.dec-opt__key) { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; width: 1.5rem; height: 1.5rem; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--ink-faint); background: var(--bg-muted); color: var(--text-secondary); }
   .dec-options :global(.dec-opt.correct) { border-color: var(--color-leaf); background: var(--tint-green-bg); color: var(--text-primary); }
-  .dec-options :global(.dec-opt.correct .dec-opt__key) { background: var(--color-leaf); border-color: var(--color-leaf); color: #fff; }
+  /* white digit on the leaf fill was ~2.9:1 — a white coin with a leaf ring and the green tint text reads at 5:1+ in both themes */
+  .dec-options :global(.dec-opt.correct .dec-opt__key) { background: var(--bg-card); border-color: var(--color-leaf); color: var(--tint-green-fg); }
   .dec-options :global(.dec-opt.wrong) { border-color: var(--color-accent); background: var(--color-danger-bg); color: var(--text-primary); }
   .dec-options :global(.dec-opt.wrong .dec-opt__key) { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
 
@@ -243,11 +250,13 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
     var elTimerWrap = document.getElementById('dec-timer-wrap');
     var startBtn = document.getElementById('dec-start-btn');
     var practiceToggle = document.getElementById('dec-practice-toggle');
+    var elKicker = document.getElementById('dec-kicker');
+    var elTotal = document.getElementById('dec-total');
 
     var ROUND = 10, PER_Q = 12; // seconds
     var subject = 'All', practice = false;
     var deck = [], idx = 0, score = 0, streak = 0, bestStreak = 0, correctCount = 0;
-    var timer = null, locked = false;
+    var timer = null, ticker = null, locked = false;
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function show(name) {
@@ -258,6 +267,15 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
       for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
       return a;
     }
+    function poolFor(sub) {
+      return sub === 'All' ? ALL : ALL.filter(function (q) { return q.s === sub; });
+    }
+    // only the All deck has ROUND questions — the kicker promises the chosen subject's real count
+    function updateKicker() {
+      if (!elKicker) return;
+      var n = Math.min(ROUND, poolFor(subject).length);
+      elKicker.textContent = n + ' question' + (n === 1 ? '' : 's') + ' · beat the clock';
+    }
 
     // chip selection
     stage.querySelectorAll('.dec-chip').forEach(function (chip) {
@@ -265,13 +283,15 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
         stage.querySelectorAll('.dec-chip').forEach(function (c) { c.classList.remove('is-active'); });
         chip.classList.add('is-active');
         subject = chip.getAttribute('data-subject');
+        updateKicker();
       });
     });
+    updateKicker();
 
     function startGame() {
       practice = practiceToggle.checked;
       elTimerWrap.style.display = practice ? 'none' : '';
-      var pool = subject === 'All' ? ALL : ALL.filter(function (q) { return q.s === subject; });
+      var pool = poolFor(subject);
       deck = shuffle(pool).slice(0, Math.min(ROUND, pool.length));
       idx = 0; score = 0; streak = 0; bestStreak = 0; correctCount = 0;
       elScore.textContent = '0'; elStreak.textContent = '0';
@@ -285,6 +305,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
       var item = deck[idx];
       elQnum.textContent = String(idx + 1);
       elTag.textContent = item.s;
+      elTag.setAttribute('data-subject', item.s); // drives the chip's subject colour
       elQ.textContent = item.q;
       elFb.hidden = true; elFb.innerHTML = '';
       elNext.hidden = true;
@@ -300,19 +321,34 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
       if (!practice) startTimer();
     }
 
+    function stopTicker() {
+      if (ticker) { clearInterval(ticker); ticker = null; }
+    }
     function startTimer() {
       elBar.classList.remove('run', 'warn');
+      stopTicker();
       elBar.style.transition = 'none';
       elBar.style.transform = 'scaleX(1)';
       // force reflow then animate
       void elBar.offsetWidth;
-      elBar.style.transition = 'transform ' + PER_Q + 's linear';
-      elBar.style.transform = 'scaleX(0)';
+      var startedAt = Date.now();
+      if (reduceMotion) {
+        // The global reduced-motion rule collapses every transition to 0.01ms, which would empty
+        // the track the instant a question renders — step the bar four times a second instead.
+        ticker = setInterval(function () {
+          var left = Math.max(0, PER_Q - (Date.now() - startedAt) / 1000);
+          elBar.style.transform = 'scaleX(' + (left / PER_Q).toFixed(3) + ')';
+        }, 250);
+      } else {
+        elBar.style.transition = 'transform ' + PER_Q + 's linear';
+        elBar.style.transform = 'scaleX(0)';
+      }
       var warnAt = setTimeout(function () { elBar.classList.add('warn'); }, (PER_Q - 4) * 1000);
-      timer = { to: setTimeout(function () { clearTimeout(warnAt); answer(-1); }, PER_Q * 1000), warnAt: warnAt, start: Date.now() };
+      timer = { to: setTimeout(function () { clearTimeout(warnAt); answer(-1); }, PER_Q * 1000), warnAt: warnAt, start: startedAt };
     }
     function stopTimer() {
       if (timer) { clearTimeout(timer.to); clearTimeout(timer.warnAt); }
+      stopTicker();
       elBar.style.transition = 'none';
     }
 
@@ -359,6 +395,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
       document.getElementById('dec-rating').textContent = rating;
       document.getElementById('dec-final').textContent = String(score);
       document.getElementById('dec-correct').textContent = String(correctCount);
+      if (elTotal) elTotal.textContent = String(deck.length); // "N of <deck size>", not a hard-coded 10
       document.getElementById('dec-beststreak').textContent = String(bestStreak);
       if (window.plausible) window.plausible('SHARP Decoder Completed');
       if (pct >= 0.7 && window.aworthyCelebrate) window.aworthyCelebrate();

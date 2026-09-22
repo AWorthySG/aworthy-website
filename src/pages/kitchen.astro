@@ -70,7 +70,7 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
                 <span class="k-card__dish" aria-hidden="true">🍽️</span>
                 <strong class="k-card__title">{s.dish} &mdash; plated!</strong>
                 <span class="k-card__ing">{s.ingredients.join(' · ')}</span>
-                <a class="btn btn--sm k-card__cta" href={s.href}>Cook this for real &mdash; {s.subject} &rarr;</a>
+                <a class="k-card__cta" href={s.href}>Cook this for real &mdash; {s.subject}&nbsp;&rarr;</a>
               </div>
             </div>
           ))}
@@ -113,6 +113,12 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
 <style>
   .k-hero { padding: 1.75rem 0 0.5rem; text-align: center; }
   .k-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 900; line-height: 1.05; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  @media (max-width: 480px) {
+    /* phone: the hard break plus natural wrapping orphaned "time" on a third line — drop the break, step down to
+       the sitewide phone h1 size so "Cooking up A's, one / method at a time" holds to two lines, and balance the rest */
+    .k-title { font-size: clamp(1.9rem, 8.5vw, 2.4rem); text-wrap: balance; }
+    .k-title br { display: none; }
+  }
   .k-sub { font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
   .k-sub strong { color: var(--color-accent-text); }
 
@@ -182,8 +188,9 @@ const sharp = ['See', 'Hit', 'Apply', 'Refine', 'Practise'];
   .k-card__dish { font-size: 1.6rem; }
   .k-card__title { font-size: 0.9rem; font-weight: 800; color: var(--st-text); }
   .k-card__ing { font-size: 0.72rem; color: var(--text-secondary); }
-  /* the link is a global .btn.btn--sm sticker pill (≥40px tap target); it only needs room to wrap inside a narrow plate */
-  .k-card__cta { margin-top: 0.5rem; width: 100%; padding-inline: 0.75rem; white-space: normal; text-align: center; line-height: 1.3; }
+  /* red action-text link on the white plate (a pill wraps to four lines on a phone plate); padded to a ≥40px tap box */
+  .k-card__cta { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; margin-top: 0.35rem; padding: 0.4rem 0.25rem; font-size: 0.85rem; font-weight: 700; line-height: 1.35; color: var(--color-accent-text); text-decoration: none; }
+  .k-card__cta:hover { text-decoration: underline; }
   @keyframes k-pop { from { opacity: 0; transform: scale(0.7) translateY(6px); } to { opacity: 1; transform: none; } }
 
   /* recipe strip — ink-outlined pills with a red step number */
