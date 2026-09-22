@@ -251,22 +251,22 @@ const playbookRows = [
 
       <div class="card-grid card-grid--2">
         <div class="prog-card">
-          <h3 class="prog-card__title">See</h3>
+          <h3 class="prog-card__title"><span class="step-dot" aria-hidden="true">S</span>See</h3>
           <p class="prog-card__desc">Most students lose marks before they write a single line of working &mdash; because they misread what the question is actually asking. In the See step, your child learns to decode every question the way a lawyer reads a contract: what is the command word (solve, simplify, factorise, differentiate, show that)? Is this a first-principles question or one to be done by the rules? Which topic &mdash; indices, surds, logarithms, trigonometry, calculus &mdash; is really being tested? For differentiation, this means recognising whether the limit definition is required or a standard rule applies. For surds, it means seeing the conjugate that will rationalise the denominator. By the time your child picks up the pen, they already know exactly which method to deploy.</p>
         </div>
 
         <div class="prog-card">
-          <h3 class="prog-card__title">Hit</h3>
+          <h3 class="prog-card__title"><span class="step-dot" aria-hidden="true">H</span>Hit</h3>
           <p class="prog-card__desc">Once the question type is clear, your child reaches for the right tool &mdash; and states the rule before applying it. This isn&rsquo;t vague advice like &lsquo;show your working&rsquo;; it&rsquo;s a specific, named procedure for each topic: the limit definition for differentiation from first principles, the power rule for standard differentiation, the laws of logarithms for log equations, the conjugate method for surds, and the &lsquo;reverse the power rule, never drop the + C&rsquo; routine for integration. Writing the rule down first &mdash; exactly as our annotated manuals do &mdash; is what turns a guess into a method an examiner can award marks for.</p>
         </div>
 
         <div class="prog-card">
-          <h3 class="prog-card__title">Apply</h3>
+          <h3 class="prog-card__title"><span class="step-dot" aria-hidden="true">A</span>Apply</h3>
           <p class="prog-card__desc">This is where the method becomes actual working &mdash; line by line, nothing skipped. Your child constructs the solution under guided conditions with live tutor intervention, not by passively watching. For differentiation from first principles, that means substituting x + h everywhere, expanding, and cancelling the h in the denominator <em>before</em> letting h tend to zero &mdash; the move the whole method hinges on. For integration, it means carrying the + C every time. Jeremy provides real-time feedback on screen-shared workings, flagging missing steps and careless slips as they happen. With a maximum of 6 students, every child gets at least three individual feedback touches per session.</p>
         </div>
 
         <div class="prog-card">
-          <h3 class="prog-card__title">Refine &amp; Practise</h3>
+          <h3 class="prog-card__title"><span class="step-dot" aria-hidden="true">R</span><span class="step-dot" aria-hidden="true">P</span>Refine &amp; Practise</h3>
           <p class="prog-card__desc">The steps that turn good students into excellent ones. Your child self-checks every solution against a topic-specific checklist drawn straight from our &lsquo;Watch:&rsquo; callouts: did you let h tend to zero rather than substitute h = 0 too early? Did the + C survive? Do logs only ever take positive arguments? Then comes retrieval practice &mdash; the most underrated study technique in education. Your child reworks key problems from memory until the procedure is automatic. This is how technique transfers from the classroom to the exam hall: not through last-minute cramming, but through spaced, deliberate repetition &mdash; the kind our 120-question calculus drill set is built for.</p>
         </div>
       </div>
@@ -778,6 +778,10 @@ const playbookRows = [
           <strong>Pricing &amp; Plans</strong>
           <span>Compare programme fees and what&rsquo;s included</span>
         </a>
+        <a href="/about/" class="related-link">
+          <strong>About A-Worthy</strong>
+          <span>Meet Jeremy Lim and the SHARP Method</span>
+        </a>
       </div>
     </div>
   </section>
@@ -811,17 +815,20 @@ const playbookRows = [
   /* ===== HERO — the LMS welcome card: a white ink card with the subject-tint
      wash (global .hero-card), eyebrow + squiggled headline + intake bubble on
      the left and the subject sticker on the right at >=1024px; on narrower
-     screens the sticker sits centred above the copy. The 56.25rem cap keeps
-     the card clear of the fixed "On this page" card at 1280px+. ===== */
+     screens the sticker sits centred above the copy. The container matches the
+     other subject pages (1080px) and narrows at 1280px+ so the card stays clear
+     of the fixed "On this page" card. ===== */
   .prog-hero {
-    background: var(--prog-bg);
+    background: transparent;
     padding: 1.25rem 0 1rem;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
 
-  .prog-hero .container { position: relative; z-index: 1; max-width: 56.25rem; }
+  .prog-hero .container { position: relative; z-index: 1; max-width: 1080px; }
+  /* Narrowed at 1280px+ so the hero card clears the fixed "On this page" TOC */
+  @media (min-width: 1280px) { .prog-hero .container { max-width: min(1080px, 100vw - 360px); } }
 
   .prog-hero__card {
     display: flex;
@@ -942,7 +949,7 @@ const playbookRows = [
 
   /* ===== SECTIONS ===== */
   .prog-section {
-    background: var(--prog-bg);
+    background: transparent;
     padding: 1.25rem 0;
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
@@ -1005,6 +1012,11 @@ const playbookRows = [
     flex-direction: column;
   }
 
+  /* SHARP step cards: red letter badge before the step name, so this band
+     carries the same S/H/A/R/P chrome as the playbook matrix below it. */
+  #approach .prog-card__title { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  #approach .prog-card__title .step-dot { width: 32px; height: 32px; font-size: 0.9rem; }
+
   .prog-card__title {
     font-family: var(--prog-font);
     font-size: 1.15rem;
@@ -1044,11 +1056,13 @@ const playbookRows = [
     content: '';
     position: absolute;
     left: 0;
-    top: 50%;
+    /* Pinned to the FIRST line (padding 0.45rem + half of the 1.23rem line box
+       - half the 0.85rem marker), not the li's centre — a wrapped item used to
+       float the mascot in the gap between its two lines. */
+    top: 0.64rem;
     width: 0.85rem;
     height: 0.85rem;
     background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat;
-    transform: translateY(-50%);
   }
 
   .prog-card__topics li:last-child {
@@ -1154,7 +1168,7 @@ const playbookRows = [
 
   /* ===== CTA ===== */
   .prog-cta {
-    background: var(--prog-bg);
+    background: transparent;
     border-top: 1px solid var(--prog-border);
     padding: 1.25rem 0;
   }
@@ -1375,9 +1389,15 @@ const playbookRows = [
     gap: 1rem;
     margin-bottom: 1.5rem;
   }
+  /* Equal panel heights: the subject stickers differ by a few px in aspect ratio,
+     which staggered the dashed dividers and the titles underneath them. */
+  .related-section .subject-panel--sm { min-height: 160px; }
+  /* Keep the subject dot beside the first line when the meta text wraps */
+  .related-subjects .subject-card__meta { align-items: flex-start; }
+  .related-subjects .subject-dot { margin-top: 0.42em; }
   .related-links {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
   }
   .related-link {
@@ -1664,6 +1684,9 @@ const playbookRows = [
      matrix reads as an ink-outlined sticker (the shared file is not ours to edit) ===== */
   .playbook-matrix { gap: 2px; background: var(--color-ink); border: 2px solid var(--color-ink); }
   .playbook-matrix__col-label, .playbook-matrix__step { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; }
+  /* Light mode: header chrome is the ink navy (dark mode keeps playbook.css's light-accent flip) */
+  :global(html:not([data-theme="dark"])) .playbook-matrix__col-label,
+  :global(html:not([data-theme="dark"])) .playbook-matrix__step { background: var(--color-ink); color: #fff; }
   .playbook-matrix__cell strong { font-weight: 800; }
   .playbook-step-name { font-size: 0.72rem; }
   .playbook-section-name { font-weight: 700; }

@@ -117,7 +117,7 @@ import '../styles/global.css';
       <!-- Contact Information -->
       <div class="contact-info-col" data-animate="reveal-right">
         <p class="eyebrow">Contact Details</p>
-        <h2 class="contact-info-col__heading squiggle">How we teach</h2>
+        <h2 class="contact-info-col__heading squiggle">How to reach us</h2>
 
         <div class="info-card">
           <div class="info-card__icon icon-circle icon-circle--blue">
@@ -168,7 +168,7 @@ import '../styles/global.css';
       <!-- ===== TRIAL BOOKING ===== -->
       <div class="trial-booking" data-animate="reveal-up">
         <span class="eyebrow">Free Trial</span>
-        <h3>Book a free trial lesson</h3>
+        <h3 class="squiggle">Book a free trial lesson</h3>
         <p class="trial-desc">Experience the SHARP Method first-hand. Select your subject and preferred timeslot &mdash; we&rsquo;ll confirm within 24 hours.</p>
         <form class="trial-form" action="https://formspree.io/f/xgoppwye" method="POST">
           <input type="hidden" name="_subject" value="Trial Lesson Booking" />
@@ -233,7 +233,7 @@ import '../styles/global.css';
   <section class="section enrol-section">
     <div class="container">
       <p class="eyebrow">How to Enrol</p>
-      <h2 class="enrol-heading squiggle" data-animate="reveal-up">Three simple steps to get started</h2>
+      <h2 class="enrol-heading squiggle squiggle--center" data-animate="reveal-up">Three simple steps to get started</h2>
 
       <div class="enrol-timeline" data-animate="reveal-up">
         <div class="enrol-step">
@@ -524,8 +524,8 @@ import '../styles/global.css';
   }
 
   .contact-form-col__mascot {
-    height: 96px;
-    width: auto;
+    width: 140px;
+    height: auto;
     flex-shrink: 0;
     margin-bottom: 0.25rem;
   }
@@ -788,6 +788,13 @@ import '../styles/global.css';
   }
 
   /* ===== ENROL TIMELINE ===== */
+  /* Head is centred like the neighbouring trial / FAQ / CTA bands;
+     the steps themselves stay left-aligned inside the centred column. */
+  .enrol-section .eyebrow,
+  .enrol-heading {
+    text-align: center;
+  }
+
   .enrol-heading {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 800;
@@ -798,6 +805,7 @@ import '../styles/global.css';
 
   .enrol-timeline {
     max-width: 640px;
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -1057,6 +1065,7 @@ import '../styles/global.css';
   @media (min-width: 481px) and (max-width: 768px) {
     .form-row {
       grid-template-columns: 1fr 1fr;
+      column-gap: var(--space-lg);
     }
   }
 

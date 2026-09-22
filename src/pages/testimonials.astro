@@ -276,6 +276,14 @@ const testimonials = [
     padding: 1.75rem 0;
   }
 
+  /* Eyebrows stack centred above their (centred) section titles — the plain
+     .t-container bands don't centre their children the way the hero /
+     Google / CTA wrappers do. */
+  .t-section > .t-container > .eyebrow {
+    display: block;
+    text-align: center;
+  }
+
   /* ===== HERO ===== */
   .t-hero {
     background: var(--bg-primary);

@@ -1480,6 +1480,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .founder-band__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
     color: var(--color-accent-text);
     text-decoration: none;
     font-weight: 700;
@@ -1668,6 +1671,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .transformations__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
     color: var(--color-accent-text);
     text-decoration: none;
     font-weight: 700;
@@ -1705,6 +1711,15 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .programme-badge {
     align-self: flex-start;
     margin-bottom: 0.65rem;
+  }
+
+  /* Cards without a "Most Popular" / "New" chip reserve the chip row, so the
+     level eyebrow and title share a baseline across each row of the grid.
+     Chip height = 0.72rem x 1.2 line-height + 0.6rem padding + 3px borders. */
+  @media (min-width: 481px) {
+    .programme-card:not(:has(.programme-badge)) .programme-body {
+      padding-top: calc(1.5rem + 1.65rem + 0.65rem);
+    }
   }
 
   .programme-level {
