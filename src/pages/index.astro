@@ -48,7 +48,7 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <p class="hero-meta hero-anim" style="--d:14">Next intake: <strong>Term 3, July 2026</strong> &middot; from <strong>S$280/mo</strong>, no registration fee &middot; <a href="/pricing/">See pricing &rarr;</a></p>
+      <p class="hero-meta speech-bubble hero-anim" style="--d:14">Next intake: <strong>Term 3, July 2026</strong> &middot; from <strong>S$280/mo</strong>, no registration fee &middot; <a href="/pricing/">See pricing &rarr;</a></p>
 
       <div class="hero-btns hero-anim" style="--d:15">
         <a href="/#contact" class="btn btn-accent hero-cta-primary">Book Free Assessment</a>
@@ -119,8 +119,8 @@ import '../styles/global.css';
       <h2 class="section-heading" data-animate="reveal-up">Tuition programmes for every level &mdash; Sec 1 to JC 2</h2>
 
       <div class="programmes-grid">
-        <a href="/o-level-english/" class="programme-card" data-animate="reveal-up" data-animate-delay="1">
-          <div class="programme-card-illustration">
+        <a href="/o-level-english/" class="programme-card subject--english" data-animate="reveal-up" data-animate-delay="1">
+          <div class="subject-panel">
             <img src="/images/mascots/mascot-grade-a.webp" alt="O-Level English tuition in Singapore — Secondary 1 to 4" width="414" height="553" class="sticker" loading="lazy" />
           </div>
           <div class="programme-body">
@@ -135,8 +135,8 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/h1-general-paper/" class="programme-card" data-animate="reveal-up" data-animate-delay="2">
-          <div class="programme-card-illustration">
+        <a href="/h1-general-paper/" class="programme-card subject--gp" data-animate="reveal-up" data-animate-delay="2">
+          <div class="subject-panel">
             <img src="/images/mascots/mascot-lightbulb.webp" alt="H1 General Paper tuition in Singapore — JC 1 and JC 2" width="399" height="546" class="sticker sticker--right" loading="lazy" />
           </div>
           <div class="programme-body">
@@ -150,8 +150,8 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/o-level-mathematics/" class="programme-card" data-animate="reveal-up" data-animate-delay="3">
-          <div class="programme-card-illustration">
+        <a href="/o-level-mathematics/" class="programme-card subject--maths" data-animate="reveal-up" data-animate-delay="3">
+          <div class="subject-panel">
             <img src="/images/mascots/mascot-maths.webp" alt="O-Level Mathematics tuition in Singapore — Secondary 1 to 4" width="417" height="553" class="sticker" loading="lazy" />
           </div>
           <div class="programme-body">
@@ -166,8 +166,8 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/pre-ib-mathematics/" class="programme-card" data-animate="reveal-up" data-animate-delay="4">
-          <div class="programme-card-illustration">
+        <a href="/pre-ib-mathematics/" class="programme-card subject--preib" data-animate="reveal-up" data-animate-delay="4">
+          <div class="subject-panel">
             <img src="/images/mascots/mascot-graph.webp" alt="Pre-IB Mathematics tuition in Singapore — Year 3 and Year 4" width="418" height="550" class="sticker sticker--right" loading="lazy" />
           </div>
           <div class="programme-body">
@@ -182,8 +182,8 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/h2-economics/" class="programme-card" data-animate="reveal-up" data-animate-delay="5">
-          <div class="programme-card-illustration">
+        <a href="/h2-economics/" class="programme-card subject--econ" data-animate="reveal-up" data-animate-delay="5">
+          <div class="subject-panel">
             <img src="/images/mascots/mascot-economics.webp" alt="H2 Economics tuition in Singapore — A-Level JC 1 and JC 2" width="426" height="551" class="sticker" loading="lazy" />
           </div>
           <div class="programme-body">
@@ -197,8 +197,8 @@ import '../styles/global.css';
           </div>
         </a>
 
-        <a href="/programmes/" class="programme-card" data-animate="reveal-up" data-animate-delay="6">
-          <div class="programme-card-illustration">
+        <a href="/programmes/" class="programme-card subject--coaching" data-animate="reveal-up" data-animate-delay="6">
+          <div class="subject-panel">
             <img src="/images/mascots/mascot-teacher.webp" alt="One-to-one coaching for O-Level English, Maths, GP and H2 Economics" width="560" height="640" class="sticker sticker--right" loading="lazy" />
           </div>
           <div class="programme-body">
@@ -435,7 +435,7 @@ import '../styles/global.css';
   <section id="results" class="section results-section">
     <div class="container">
       <span class="eyebrow" data-animate="reveal-up">Results</span>
-      <h2 class="section-heading" data-animate="reveal-up">Proven tuition results across O-Level English, GP &amp; Economics</h2>
+      <h2 class="section-heading" data-animate="reveal-up">Proven tuition results across <span class="nobr">O-Level</span> English, GP &amp; Economics</h2>
 
       <div class="results-stats" data-animate="reveal-up">
         <div class="result-stat">
@@ -1156,11 +1156,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-top: 0.4rem;
   }
 
+  /* Intake / pricing line rides on the global .speech-bubble (LMS welcome-card
+     callout); the 1.75rem bottom margin leaves room for the bubble's tail. */
   .hero-meta {
     font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
     line-height: 1.55;
+    max-width: 640px;
+    text-align: left;
   }
 
   .hero-meta strong {
@@ -1543,6 +1546,10 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .wb-head__text {
     max-width: 720px;
   }
+  .wb-head .section-heading::before {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   .wb-head__sticker {
     flex-shrink: 0;
@@ -1769,10 +1776,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .programme-meta {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
     padding-top: 1rem;
     border-top: 2px dashed var(--ink-faint);
   }
@@ -2204,7 +2210,11 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
       grid-template-columns: repeat(2, 1fr);
     }
     .result-stat {
-      flex: 0 0 100%;
+      flex: 0 0 50%;
+      padding: 0.75rem 0.5rem;
+    }
+    .result-stat-number {
+      font-size: clamp(1.6rem, 8vw, 2.2rem);
     }
 
     .section-heading {
@@ -2360,23 +2370,11 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: var(--text-primary);
   }
 
-  /* ===== PROGRAMME CARD MASCOT WELL ===== */
-  .programme-card-illustration {
-    width: 100%;
-    height: 170px;
-    overflow: hidden;
-    background: var(--bg-muted);
-    border-bottom: 2px solid var(--color-ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem;
-  }
-  .programme-card-illustration img {
-    width: auto;
-    height: 100%;
-    max-width: 100%;
-    object-fit: contain;
+  /* ===== PROGRAMME CARD MASCOT WELL — the global .subject-panel (pastel
+     subject tint + dashed divider, from the card's .subject--* scope); sticker
+     sized to match the /programmes/ cards ===== */
+  .programme-card .subject-panel img {
+    width: min(150px, 60%);
   }
 
   /* ===== FEATURE 2: AUDIENCE TOGGLE — the LMS segmented control ===== */
@@ -2433,6 +2431,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .grade-card {
     display: flex;
     align-items: center;
+    align-content: flex-start;
     justify-content: center;
     gap: 1rem;
     background: var(--bg-card);
@@ -2441,20 +2440,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     padding: 1.5rem;
     flex-wrap: wrap;
   }
-  /* Big before / after pills — global .chip--pink / .chip--green scaled up */
-  .grade-before-animated {
-    font-family: var(--font-heading);
-    font-size: 1.6rem;
-    font-weight: 900;
-    letter-spacing: 0;
-    padding: 0.3rem 0.9rem;
-  }
+  /* Before / after pills — same size as the .transform-card chips above */
+  .grade-before-animated,
   .grade-after-animated {
     font-family: var(--font-heading);
-    font-size: 1.9rem;
+    font-size: 0.95rem;
     font-weight: 900;
     letter-spacing: 0;
-    padding: 0.3rem 1rem;
+    padding: 0.25rem 0.7rem;
   }
   .grade-arrow-icon {
     flex-shrink: 0;
@@ -2477,6 +2470,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .results-section .eyebrow,
   .results-section .section-heading {
     text-align: left;
+  }
+  .nobr {
+    white-space: nowrap;
   }
   .results-section .results-sub-heading {
     text-align: left;
