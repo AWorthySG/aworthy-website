@@ -1319,8 +1319,20 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     border-radius: var(--radius-md);
     padding: 0.9rem 1rem;
   }
-  @media (min-width: 1280px) {
-    .sticky-toc { display: block; }
+  /* Only where it fits beside the content. From 1280 to 1680px the 190px card
+     covered the page by 46–155px and ran into the WhatsApp, chat and
+     back-to-top floats; the sticky section-nav strip already gives in-page
+     navigation at those widths. On wide monitors it sits in the margin,
+     narrowed, and stops above the floats and the bottom sticky bar. */
+  @media (min-width: 1920px) {
+    .sticky-toc {
+      display: block;
+      right: 1rem;
+      max-width: 170px;
+      max-height: calc(100vh - (var(--nav-offset) + 44px + 1.5rem) - 12rem - var(--sticky-bar-h, 0px));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
   }
 
   /* The TOC only appears once the reader is past the hero. Until then the

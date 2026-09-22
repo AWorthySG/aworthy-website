@@ -43,6 +43,16 @@
   margin-top: 0.5rem;
   background: var(--swash) left center / contain no-repeat;
 }
+.blog-post-header h1 { overflow-wrap: break-word; }
+/* Post titles are long (60–80 characters for search). The 2rem floor above
+   beat the sitewide phone step-down, so on a phone a title ran to 5–6 lines
+   before any of the article showed. These keep it to ~3–4. */
+@media (max-width: 768px) {
+  .blog-post-header h1 { font-size: clamp(1.8rem, 5.5vw, 2.3rem); line-height: 1.12; }
+}
+@media (max-width: 480px) {
+  .blog-post-header h1 { font-size: clamp(1.5rem, 7vw, 1.85rem); line-height: 1.15; }
+}
 .blog-post-meta { font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
 .blog-author { color: var(--color-accent-text); text-decoration: none; font-weight: 700; transition: color var(--transition-fast); }
 .blog-author:hover { color: var(--color-accent-hover); text-decoration: underline; }

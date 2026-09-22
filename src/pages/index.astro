@@ -706,6 +706,7 @@ import '../styles/global.css';
   (function() {
     const sticky = document.getElementById('sticky-cta');
     const dismissBtn = document.getElementById('sticky-cta-dismiss');
+    const privacyNotice = document.getElementById('privacy-notice');
     if (!sticky) return;
     let dismissed = false;
     let ticking = false;
@@ -713,9 +714,10 @@ import '../styles/global.css';
       if (dismissed) return;
       if (!ticking) {
         requestAnimationFrame(function() {
-          const visible = window.scrollY > window.innerHeight * 0.8;
+          // Stay out of the way while the cookie notice is up (it owns the bottom edge then).
+          const visible = window.scrollY > window.innerHeight * 0.8 && !(privacyNotice && !privacyNotice.hidden);
           sticky.classList.toggle('is-visible', visible);
-          document.documentElement.style.setProperty('--sticky-bar-h', visible ? sticky.offsetHeight + 'px' : '0px');
+          window.aworthyBottomBar('cta', visible ? sticky.offsetHeight : 0);
           ticking = false;
         });
         ticking = true;
@@ -724,7 +726,7 @@ import '../styles/global.css';
     dismissBtn?.addEventListener('click', function() {
       dismissed = true;
       sticky.classList.remove('is-visible');
-      document.documentElement.style.setProperty('--sticky-bar-h', '0px');
+      window.aworthyBottomBar('cta', 0);
     });
   })();
 </script>
@@ -1282,6 +1284,21 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   .sticky-cta-dismiss:hover {
     color: var(--text-primary);
+  }
+
+  /* Landscape phones: the header already carries the CTA; a bottom bar here
+     only eats a ~390px-tall screen (same rule as the global sticky CTA). */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .sticky-cta {
+      display: none;
+    }
+  }
+  /* Short laptop screens: the header carries the CTA from 1025px up (same
+     rule as the global sticky CTA). */
+  @media (min-width: 1025px) and (max-height: 820px) {
+    .sticky-cta {
+      display: none;
+    }
   }
 
   @media (max-width: 768px) {
@@ -1947,12 +1964,19 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   .results-bars.is-visible .result-bar-fill {
     width: var(--bar-width);
   }
+  /* Flex, not a 5-column 1fr grid: 1fr means minmax(auto, 1fr), so the grade
+     chips' min-content width pushed the cards past the viewport (overflow at
+     360, 820 and 844). Five across on wide screens, then 3 + 2 and 2 + 2 + 1
+     with the short last row centred rather than left-hanging. */
   .results-transforms {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
   }
   .transform-card {
+    flex: 1 1 0;
+    min-width: 0;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
@@ -1968,6 +1992,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .transform-grades {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
@@ -2128,6 +2153,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
+    .transform-card {
+      flex: 0 1 calc((100% - 2rem) / 3);
+    }
     .programmes-grid,
     .testimonials-grid {
       grid-template-columns: 1fr 1fr;
@@ -2157,8 +2185,8 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     .form-row {
       grid-template-columns: 1fr;
     }
-    .results-transforms {
-      grid-template-columns: repeat(3, 1fr);
+    .transform-card {
+      flex: 0 1 calc((100% - 2rem) / 3);
     }
     .results-stats {
       flex-wrap: wrap;
@@ -2181,8 +2209,8 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
       flex: 0 0 calc(50% - 0.5rem);
       padding: 0.5rem 0.5rem;
     }
-    .results-transforms {
-      grid-template-columns: repeat(2, 1fr);
+    .transform-card {
+      flex: 0 1 calc((100% - 1rem) / 2);
     }
     .result-stat {
       flex: 0 0 50%;

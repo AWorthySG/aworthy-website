@@ -263,14 +263,36 @@ const schemaData = {
       // pre-reveal when JS is running (html.js in global.css), so no-JS
       // visitors always see the page.
       document.documentElement.classList.add('js');
-      const saved = localStorage.getItem('theme');
-      if (saved) {
+      // Storage access throws (not just returns null) when a browser blocks
+      // it — Safari with "Block All Cookies", some in-app browsers — so every
+      // read/write on the site is guarded, or the rest of its script dies.
+      let saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      if (saved === 'dark' || saved === 'light') {
         document.documentElement.setAttribute('data-theme', saved);
       } else {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
       }
     })();
+
+    /*
+     * Bottom-bar registry. Several fixed bars can occupy the bottom of the
+     * screen — the cookie notice, the global sticky CTA, the homepage's own
+     * sticky CTA. Each reports its visible height here (0 when hidden) and the
+     * tallest is published as --sticky-bar-h, which the WhatsApp float, chatbot
+     * and back-to-top add to their `bottom` so they ride above whichever bar is
+     * showing. Previously each bar wrote the variable directly and the cookie
+     * notice not at all, so the floats sat on top of the notice's text and
+     * buttons for every first-time visitor on a phone.
+     */
+    window.aworthyBottomBar = function (name, px) {
+      var bars = window.__aworthyBars || (window.__aworthyBars = {});
+      bars[name] = px > 0 ? Math.round(px) : 0;
+      var tallest = 0;
+      for (var k in bars) if (bars[k] > tallest) tallest = bars[k];
+      document.documentElement.style.setProperty('--sticky-bar-h', tallest + 'px');
+    };
   </script>
 </head>
 <body>
@@ -370,10 +392,12 @@ const schemaData = {
     var preview = document.getElementById('whatsapp-preview');
     if (!preview) return;
 
-    if (!sessionStorage.getItem('wa-shown')) {
+    var waShown = null;
+    try { waShown = sessionStorage.getItem('wa-shown'); } catch (e) {}
+    if (!waShown) {
       setTimeout(function() {
         preview.hidden = false;
-        sessionStorage.setItem('wa-shown', '1');
+        try { sessionStorage.setItem('wa-shown', '1'); } catch (e) {}
         setTimeout(function() { preview.hidden = true; }, 8000);
       }, 10000);
     }
@@ -681,6 +705,19 @@ const schemaData = {
       opacity: 1;
     }
 
+    /* Landscape phones (~390px tall): the header already shows the CTA, so a
+       second, bottom bar only costs screen. Hidden — its offsetHeight is then
+       0, so the floats stay put too. */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .sticky-cta-global { display: none; }
+    }
+    /* Short laptop screens (1366×768, 1280×800…): from 1025px the header
+       always shows the CTA, and a second copy in a bottom bar cost ~8% of
+       every screen on top of the fixed header + subject bar. */
+    @media (min-width: 1025px) and (max-height: 820px) {
+      .sticky-cta-global { display: none; }
+    }
+
     /* Phone / tablet: a single 60px row — the CTA, a call button and the
        dismiss — so the bar costs as little of the viewport as possible. */
     @media (max-width: 768px) {
@@ -731,6 +768,8 @@ const schemaData = {
       background: var(--bg-card);
       border-top: 2px solid var(--color-ink);
       padding: 1rem 1.5rem;
+      /* Keep the buttons clear of the iPhone home indicator. */
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
       box-shadow: 0 -6px 0 var(--ink-shadow);
     }
     .privacy-notice-inner {
@@ -794,9 +833,14 @@ const schemaData = {
       opacity: 1;
     }
     @media (max-width: 600px) {
+      .privacy-notice:not([hidden]) {
+        padding: 0.8rem 1rem;
+        padding-bottom: calc(0.8rem + env(safe-area-inset-bottom, 0px));
+      }
       .privacy-notice-inner {
         flex-direction: column;
         text-align: center;
+        gap: 0.75rem;
       }
       .privacy-notice-actions {
         width: 100%;
@@ -867,6 +911,13 @@ const schemaData = {
     }
     @media (max-width: 768px) {
       .breadcrumb-list { padding: 0 var(--space-lg); }
+    }
+    @media (pointer: coarse) {
+      /* 12px inline links measured 16px tall. Vertical padding on an inline
+         element enlarges its tap box (to ~40px) without changing the line box,
+         so the 44px strip — which the subject pages' TOC offset relies on —
+         keeps its height. */
+      .breadcrumb-list a { padding-block: 0.75rem; }
     }
 
     /* Exam Countdown Bar */
@@ -1049,13 +1100,15 @@ const schemaData = {
   (function(){
     var el = document.getElementById('sticky-cta-global');
     var dismiss = document.getElementById('sticky-cta-global-dismiss');
-    var privacyNotice = document.getElementById('privacy-notice');
     if (!el) return;
     if (window.location.pathname === '/' || window.location.pathname === '/index.html') return;
     var dismissed = false;
     var ticking = false;
+    // Looked up on each call: the notice's markup comes after this script, so
+    // a lookup at start-up found nothing and the bar showed on top of it.
     function isPrivacyVisible() {
-      return privacyNotice && !privacyNotice.hidden;
+      var notice = document.getElementById('privacy-notice');
+      return !!(notice && !notice.hidden);
     }
     window.addEventListener('scroll', function(){
       if (dismissed) return;
@@ -1064,7 +1117,7 @@ const schemaData = {
           var visible = window.scrollY > window.innerHeight * 0.5 && !isPrivacyVisible();
           el.classList.toggle('is-visible', visible);
           // Floating widgets read this to ride up above the bar
-          document.documentElement.style.setProperty('--sticky-bar-h', visible ? el.offsetHeight + 'px' : '0px');
+          window.aworthyBottomBar('cta', visible ? el.offsetHeight : 0);
           ticking = false;
         });
         ticking = true;
@@ -1073,7 +1126,7 @@ const schemaData = {
     dismiss?.addEventListener('click', function(){
       dismissed = true;
       el.classList.remove('is-visible');
-      document.documentElement.style.setProperty('--sticky-bar-h', '0px');
+      window.aworthyBottomBar('cta', 0);
     });
   })();
   </script>
@@ -1098,11 +1151,20 @@ const schemaData = {
       var notice = document.getElementById('privacy-notice');
       var btn = document.getElementById('privacy-accept');
       if (!notice || !btn) return;
-      if (localStorage.getItem('privacy-accepted')) return;
+      var accepted = null;
+      try { accepted = localStorage.getItem('privacy-accepted'); } catch (e) {}
+      if (accepted) return;
       notice.hidden = false;
+      // Report the notice's height so the WhatsApp/chatbot/back-to-top floats
+      // sit above it instead of on top of its text and buttons.
+      function report() { window.aworthyBottomBar('privacy', notice.hidden ? 0 : notice.offsetHeight); }
+      report();
+      window.addEventListener('resize', report, { passive: true });
       btn.addEventListener('click', function() {
-        localStorage.setItem('privacy-accepted', '1');
+        try { localStorage.setItem('privacy-accepted', '1'); } catch (e) {}
         notice.hidden = true;
+        window.removeEventListener('resize', report);
+        window.aworthyBottomBar('privacy', 0);
       });
     }
     if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 3000 });
@@ -1157,7 +1219,9 @@ const schemaData = {
       if (!popup) return;
 
       // Don't show if already dismissed or on contact page
-      if (localStorage.getItem('email-popup-dismissed')) return;
+      var dismissed = null;
+      try { dismissed = localStorage.getItem('email-popup-dismissed'); } catch (e) { return; } // can't remember a dismissal: don't nag
+      if (dismissed) return;
       if (window.location.pathname.indexOf('/contact') > -1) return;
 
       function showPopup() {
@@ -1169,7 +1233,7 @@ const schemaData = {
     function hidePopup() {
       popup.hidden = true;
       document.body.style.overflow = '';
-      localStorage.setItem('email-popup-dismissed', '1');
+      try { localStorage.setItem('email-popup-dismissed', '1'); } catch (e) {}
     }
 
     // Show after 45 seconds
@@ -1209,7 +1273,7 @@ const schemaData = {
           'Your SHARP essay framework is opening in a new tab. If it doesn’t, ' +
           '<a href="' + PDF_URL + '" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;">download it here</a>. ' +
           'We’ll also email you the full version shortly.</p>';
-        localStorage.setItem('email-popup-dismissed', '1');
+        try { localStorage.setItem('email-popup-dismissed', '1'); } catch (e) {}
         setTimeout(hidePopup, 6000);
       }
 

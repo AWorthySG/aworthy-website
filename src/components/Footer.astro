@@ -212,6 +212,16 @@ const currentYear = new Date().getFullYear();
     opacity: 1;
   }
 
+  /* Touch screens: every footer link is a full 40px target (the site's
+     standard; they measured 29px), with the list spacing tightened by the
+     same amount so the footer does not grow. */
+  @media (pointer: coarse) {
+    .footer-links li,
+    .footer-contact li { margin-bottom: 0.2rem; }
+    .footer-links a,
+    .footer-contact a { display: inline-flex; align-items: center; min-height: 40px; padding: 0; }
+  }
+
   .footer-bottom {
     border-top: 2px dashed var(--ink-faint);
     padding-top: 1.5rem;

@@ -82,5 +82,9 @@
     font-size: 0.9rem;
   }
   .author-bio__link:hover { color: var(--color-accent-hover); text-decoration: underline; }
+  /* Touch: a standalone link, so give it the site's full 40px target (was 30px). */
+  @media (pointer: coarse) {
+    .author-bio__link { display: inline-flex; align-items: center; min-height: 40px; }
+  }
   @media (max-width: 540px) { .author-bio { flex-direction: column; } }
 </style>

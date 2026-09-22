@@ -1704,10 +1704,34 @@ html {
 
 /* ─── Landscape phone optimizations ─── */
 @media (max-height: 500px) and (orientation: landscape) {
-  .hero, [class*="-hero"] {
+  /* Hero SECTIONS only, with compact padding. This used to be
+     `.hero, [class*="-hero"] { padding-top: calc(var(--header-height) + 1.5rem) }`,
+     and the attribute selector also matched every child with a BEM "-hero__"
+     class and the mascots (sticker--hero, lp-hero-art, t-hero-mascot): each
+     got ~96px of top padding, the art was squashed, and on a 390px-tall
+     screen the GP, landing-page and testimonials headlines started below the
+     first screen. Heroes already sit under the fixed header (main or the
+     breadcrumb carries that offset), so no header-height is added here. */
+  .hero, section[class*="-hero"] {
     min-height: auto;
-    padding-top: calc(var(--header-height) + 1.5rem);
-    padding-bottom: 1.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  /* A phone on its side is ~390px tall. The fixed header (72px), fixed subject
+     bar (44px), breadcrumb (44px) and bottom sticky CTA (60px) took nearly
+     half of it. The header drops to 56px here, the subject bar and sticky CTAs
+     are hidden in their own components (the menu lists every subject and the
+     header already carries the CTA), and nav-offset loses the bar's 44px. */
+  :root {
+    --header-height: 56px;
+    --nav-offset: var(--header-height);
+  }
+  /* The subject hero stacks its mascot above the headline below 1024px; at
+     200px wide it filled a landscape screen on its own and pushed the
+     headline below the fold. Size it by height instead. */
+  .hero-card img.sticker {
+    width: auto;
+    max-height: 112px;
   }
   .section {
     padding: 2rem 0;

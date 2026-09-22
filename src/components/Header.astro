@@ -557,7 +557,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     const current = html.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
     updateToggleLabel();
   });
 
