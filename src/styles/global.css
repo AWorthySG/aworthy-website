@@ -672,6 +672,17 @@ input, textarea, select {
   appearance: none;
 }
 input::placeholder, textarea::placeholder { color: var(--text-tertiary); opacity: 1; }
+/* appearance: none drops the native arrow — draw an ink chevron instead */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322304A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 16px 16px;
+  padding-right: 2.6rem;
+}
+[data-theme="dark"] select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F0EEE8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
 
 /* Red focus ring, as on the LMS */
 input:focus, textarea:focus, select:focus {
@@ -823,6 +834,55 @@ label {
   padding: 1.25rem;
 }
 .divider-dashed { border: 0; border-top: 2px dashed var(--ink-faint); margin: 1.25rem 0; }
+
+/* WhatsApp sticker pill — green fill with the ink outline and hard shadow;
+   dark text because white on WhatsApp green fails AA in both themes */
+.btn-whatsapp {
+  background: #25D366;
+  color: #0E2B19;
+  border-color: var(--color-ink);
+  box-shadow: 0 4px 0 var(--ink-shadow);
+}
+@media (hover: hover) {
+  .btn-whatsapp:hover, a.btn-whatsapp:hover { background: #4BE07F; color: #0E2B19; }
+}
+
+/* Chip states and sizes */
+.chip--lg { font-size: 1.05rem; padding: 0.4rem 1rem; letter-spacing: 0.02em; text-transform: none; font-weight: 900; }
+.chip.is-active, .chip--selected { background: var(--color-accent); color: #fff; border-color: var(--color-ink); }
+
+/* Numbered step dot — red circle on an ink ring */
+.step-dot {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  border: 2px solid var(--color-ink);
+  box-shadow: 0 3px 0 var(--color-accent-press);
+  font-weight: 900;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* Card modifiers */
+.card--static, .card--static:hover, .card--static:active { transform: none; box-shadow: 0 3px 0 var(--ink-shadow); }
+.card--popular { border-color: var(--color-accent); }
+
+/* Soft pastel wash behind any hero (sun top-left, sky bottom-right) */
+.hero-wash { position: relative; overflow: hidden; }
+.hero-wash::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(245, 184, 46, 0.16) 0%, transparent 42%),
+    radial-gradient(circle at 88% 82%, rgba(95, 174, 227, 0.14) 0%, transparent 42%);
+  pointer-events: none;
+}
+.hero-wash > * { position: relative; }
 
 /* ===== Subject artwork (LMS dashboard "Your subjects" cards) =====
    Every subject has a sticker, a dot colour and a pastel panel tint. Put a
@@ -995,50 +1055,41 @@ label {
    2. prefers-reduced-motion: no-preference — reduced-motion users get fully
       visible content with no reveal choreography at all. */
 @media (prefers-reduced-motion: no-preference) {
+  /* Reveals use the individual `translate` / `scale` properties (not `transform`)
+     so a revealed card can still lift on hover via its own transform. */
   html.js [data-animate] {
     opacity: 0;
-    transform: translateY(40px);
+    translate: 0 40px;
     transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+                translate 1s cubic-bezier(0.16, 1, 0.3, 1),
+                scale 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.22s ease;
   }
 
   html.js [data-animate].is-visible {
     opacity: 1;
-    transform: none;
-  }
-
-  html.js [data-animate="fade-up"].is-visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  html.js [data-animate="fade-in"].is-visible {
-    opacity: 1;
-    transform: none;
+    translate: 0 0;
   }
 
   html.js [data-animate="fade-left"] {
-    transform: translateX(-24px);
+    translate: -24px 0;
   }
-  html.js [data-animate="fade-left"].is-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
   html.js [data-animate="fade-right"] {
-    transform: translateX(24px);
+    translate: 24px 0;
   }
+  html.js [data-animate="fade-left"].is-visible,
   html.js [data-animate="fade-right"].is-visible {
     opacity: 1;
-    transform: translateX(0);
+    translate: 0 0;
   }
 
   html.js [data-animate="scale-in"] {
-    transform: scale(0.95);
+    scale: 0.95;
   }
   html.js [data-animate="scale-in"].is-visible {
     opacity: 1;
-    transform: scale(1);
+    scale: 1;
   }
 }
 
@@ -1101,6 +1152,8 @@ label {
   [data-animate] {
     opacity: 1;
     transform: none;
+    translate: none;
+    scale: none;
     transition: none;
     -webkit-clip-path: none;
     clip-path: none;
@@ -1695,6 +1748,8 @@ html {
   [data-animate] {
     opacity: 1 !important;
     transform: none !important;
+    translate: none !important;
+    scale: none !important;
     -webkit-clip-path: none !important;
     clip-path: none !important;
   }

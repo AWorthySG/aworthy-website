@@ -31,12 +31,13 @@ export interface StudySubject {
 }
 
 export const studySubjects: StudySubject[] = [
-  { id: 'english', label: 'O-Level English', short: 'English', accent: '#3B7DD8', accentDark: '#6FA4E8', href: '/o-level-english/' },
-  { id: 'gp', label: 'H1 General Paper', short: 'GP', accent: '#4A8C6F', accentDark: '#77B79A', href: '/h1-general-paper/' },
-  { id: 'econs', label: 'H2 Economics', short: 'Economics', accent: '#2B8A8A', accentDark: '#5FB8B8', href: '/h2-economics/' },
-  { id: 'maths', label: 'O-Level Mathematics', short: 'Maths', accent: '#7B5EA7', accentDark: '#9B7EC7', href: '/o-level-mathematics/' },
-  { id: 'pre-ib', label: 'Pre-IB Mathematics', short: 'Pre-IB', accent: '#B0436A', accentDark: '#D06D91', href: '/pre-ib-mathematics/' },
-  { id: 'general', label: 'Study Skills', short: 'Study Skills', accent: '#D4853A', accentDark: '#E09850' },
+  // Accents are the LMS subject tokens from global.css (they already swap for dark mode).
+  { id: 'english', label: 'O-Level English', short: 'English', accent: 'var(--subject-english)', accentDark: 'var(--subject-english)', href: '/o-level-english/' },
+  { id: 'gp', label: 'H1 General Paper', short: 'GP', accent: 'var(--subject-gp)', accentDark: 'var(--subject-gp)', href: '/h1-general-paper/' },
+  { id: 'econs', label: 'H2 Economics', short: 'Economics', accent: 'var(--subject-econ)', accentDark: 'var(--subject-econ)', href: '/h2-economics/' },
+  { id: 'maths', label: 'O-Level Mathematics', short: 'Maths', accent: 'var(--subject-maths)', accentDark: 'var(--subject-maths)', href: '/o-level-mathematics/' },
+  { id: 'pre-ib', label: 'Pre-IB Mathematics', short: 'Pre-IB', accent: 'var(--subject-preib)', accentDark: 'var(--subject-preib)', href: '/pre-ib-mathematics/' },
+  { id: 'general', label: 'Study Skills', short: 'Study Skills', accent: 'var(--subject-coaching)', accentDark: 'var(--subject-coaching)' },
 ];
 
 export interface StudyMaterialMeta {
