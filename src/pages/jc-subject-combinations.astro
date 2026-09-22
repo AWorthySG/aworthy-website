@@ -103,9 +103,13 @@ import '../styles/global.css';
   .jc-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; align-items: start; }
   /* Until a result exists the lone form card sits centred instead of hugging the left edge */
   .jc-grid:has(> .jc-result[hidden]) { grid-template-columns: minmax(0, 640px); justify-content: center; }
-  /* The global sun blob (520px, top -32%) is taller than this short hero, so its dense band was
-     clipped into a hard edge — shrink it and centre it on the sticker so it fades out inside the hero */
-  section.jc-hero::before { top: 50%; translate: 0 -50%; right: -2rem; width: 380px; height: 380px; }
+  /* The global sun blob (520px, top -32%) is taller than this short hero, so its dense band was clipped
+     into a hard edge — span the hero's own height instead and fade the blob out before the top/bottom edges */
+  section.jc-hero::before {
+    top: 0; height: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+  }
 
   /* ── Form card — white sticker card with a 2px ink outline ── */
   .jc-card { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; }
