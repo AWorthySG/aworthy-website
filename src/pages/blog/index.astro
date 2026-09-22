@@ -14,7 +14,7 @@ import '../../styles/global.css';
         <div>
           <span class="eyebrow" data-animate="reveal-up">Blog</span>
           <h1 class="page-title" data-animate="reveal-up">Study tips, exam strategies &amp; <span class="accent-word">guides</span></h1>
-          <p class="page-subtitle" data-animate="reveal-up">Expert insights from our SHARP Method tutors to help your child excel in O-Level English &amp; Maths, H1 General Paper, and H2 Economics.</p>
+          <p class="page-subtitle" data-animate="reveal-up">Expert insights from our SHARP Method tutors to help your child excel in <span class="nobreak">O-Level</span> English &amp; Maths, H1 General Paper, and H2 Economics.</p>
         </div>
         <img src="/images/mascots/mascot-reading.webp" alt="" width="477" height="640" class="blog-head__sticker sticker sticker--right" />
       </div>
@@ -280,12 +280,17 @@ import '../../styles/global.css';
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    max-width: 640px;
+    /* rem, not px: 640px at the 16px root (unchanged ≤1440) and it grows with the
+       root font above 1440, so the subtitle keeps ~67 characters per line instead
+       of breaking into three 44-character lines at 2560. */
+    max-width: 40rem;
     margin-bottom: 3rem;
   }
+  /* From 1024px up the subtitle line broke at the hyphen ("excel in O-" / "Level") */
+  .nobreak { white-space: nowrap; }
   .blog-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
     margin-bottom: 4rem;
   }
@@ -337,6 +342,9 @@ import '../../styles/global.css';
     color: var(--text-secondary);
     flex: 1;
   }
+  /* The featured card spans the whole grid: without a cap its excerpt ran ~150
+     characters on a single line from 1280px up. */
+  .blog-card--featured p { max-width: 68ch; }
   .blog-meta {
     margin-top: 1.25rem;
     padding-top: 1rem;
@@ -391,12 +399,24 @@ import '../../styles/global.css';
   }
   @media (max-width: 1024px) {
     .blog-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
+  }
+  /* Two-column range (tablets): the featured card fills row 1, so an odd number of
+     regular cards left the last one alone beside an empty slot. Let that lone last
+     card span the row (it only matches when it really is alone: an even child index). */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .blog-card:last-child:nth-child(even) { grid-column: 1 / -1; }
+    .blog-card:last-child:nth-child(even) p { max-width: 68ch; }
+  }
+  /* Laptops/desktops: card excerpts and the subscribe blurb were 14.4px */
+  @media (min-width: 1024px) {
+    .blog-card p,
+    .blog-subscribe p { font-size: 0.95rem; }
   }
   @media (max-width: 640px) {
     .blog-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .blog-card { padding: 1.5rem; }
     .blog-card--featured {

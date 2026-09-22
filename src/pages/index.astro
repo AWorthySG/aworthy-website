@@ -209,8 +209,8 @@ import '../styles/global.css';
         </a>
       </div>
 
-      <p class="programmes-pricing-link" data-animate="reveal-up"><a href="/pricing/">Compare all plans &amp; fees &mdash; transparent, all-inclusive &rarr;</a></p>
-      <p class="programmes-pricing-link" data-animate="reveal-up"><a href="/kitchen/">Or explore them the fun way &mdash; step into the A-Worthy Kitchen &#127859; &rarr;</a></p>
+      <p class="programmes-pricing-link" data-animate="reveal-up"><a href="/pricing/">Compare all plans &amp; fees &mdash; transparent, <span class="nobr">all-inclusive &rarr;</span></a></p>
+      <p class="programmes-pricing-link" data-animate="reveal-up"><a href="/kitchen/">Or explore them the fun way &mdash; step into the <span class="nobr">A-Worthy Kitchen &#127859; &rarr;</span></a></p>
 
       <!-- Programme Selector Quiz (#8) -->
       <div class="quiz-section" data-animate="reveal-up">
@@ -944,7 +944,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: var(--text-primary);
     line-height: 1.08;
     margin-bottom: 0.75rem;
-    max-width: 700px;
+    /* rem, not px: the cap has to grow with the root font at >=1441px, or the
+       headings wrap to 3-4 lines on 1920/2560 screens (700px at 16px). */
+    max-width: 43.75rem;
     letter-spacing: -0.03em;
   }
 
@@ -1255,11 +1257,16 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .sticky-cta-btn {
-    flex: 0 1 360px;
+    /* rem so the pill grows with the root font — at 2560 (150%) a 360px
+       basis wrapped "Book Free Assessment" onto two lines */
+    flex: 0 1 22.5rem;
     text-align: center;
     display: block;
   }
-  @media (max-width: 640px) {
+  /* <=768 the bar is display:block and the button full width, so the
+     absolutely-placed dismiss needs its 44px reserved up to 768 (it sat on
+     top of the red pill at 641-768). */
+  @media (max-width: 768px) {
     .sticky-cta-btn { flex: 1; margin-right: 44px; }
   }
 
@@ -1286,8 +1293,19 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: var(--text-primary);
   }
 
+  @media (max-width: 768px) {
+    .sticky-cta {
+      display: block;
+    }
+    .section {
+      padding: 1.5rem 0;
+    }
+  }
+
   /* Landscape phones: the header already carries the CTA; a bottom bar here
-     only eats a ~390px-tall screen (same rule as the global sticky CTA). */
+     only eats a ~390px-tall screen (same rule as the global sticky CTA).
+     Must come AFTER the <=768 display:block above, or 667x375 / 740x360
+     landscape phones still got the bar. */
   @media (max-height: 500px) and (orientation: landscape) {
     .sticky-cta {
       display: none;
@@ -1298,15 +1316,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   @media (min-width: 1025px) and (max-height: 820px) {
     .sticky-cta {
       display: none;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .sticky-cta {
-      display: block;
-    }
-    .section {
-      padding: 1.5rem 0;
     }
   }
 
@@ -1343,6 +1352,34 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     .hero-btns {
       flex-direction: column;
       align-items: stretch;
+    }
+  }
+
+  /* Short landscape screens (1366x768, 1280x800, 1536x864, iPad landscape):
+     tighten the hero's vertical rhythm and cap the display size by height so
+     the hero's own CTAs land above the fold instead of ~60-100px below it. */
+  @media (min-width: 1024px) and (max-height: 900px) {
+    .hero {
+      padding-top: calc(var(--nav-offset) + 0.75rem);
+    }
+    .hero-kicker {
+      margin-bottom: 1rem;
+    }
+    .hero-display {
+      margin-bottom: 1.25rem;
+    }
+    .hero-tagline {
+      font-size: clamp(4rem, min(12vw, 15vh), 8.5rem);
+    }
+    .hero-sub {
+      margin-bottom: 1rem;
+    }
+    .hero-proof-row {
+      padding: 0.75rem 0;
+      margin-bottom: 1rem;
+    }
+    .hero-meta {
+      margin-bottom: 1.25rem;
     }
   }
 
@@ -1413,10 +1450,17 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   .programmes-pricing-link a {
+    /* inline-block + padding = a 40px+ tap target (was 30px on touch) */
+    display: inline-block;
+    padding-block: 0.625rem;
     color: var(--color-accent-text);
     text-decoration: none;
     font-weight: 700;
     font-size: 0.95rem;
+  }
+
+  .programmes-pricing-link + .programmes-pricing-link {
+    margin-top: 0.5rem;
   }
 
   .programmes-pricing-link a:hover {
@@ -1464,6 +1508,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: var(--text-secondary);
     margin-bottom: 1rem;
     line-height: 1.65;
+    /* Nunito's "0" is wide (ch ~ 1.35 avg chars): 60ch ~ 80 characters a
+       line, down from ~99 in the 760px column at 1180-1440 */
+    max-width: 60ch;
   }
 
   .founder-band__lead strong {
@@ -1519,12 +1566,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     align-items: center;
     justify-content: center;
     gap: 2.5rem;
-    max-width: 920px;
+    max-width: 57.5rem;
     margin: 0 auto 2.5rem;
   }
 
+  /* rem caps (920px / 720px at 16px) so the heading keeps its 2-line break
+     when the root font scales up at >=1441px */
   .wb-head__text {
-    max-width: 720px;
+    max-width: 45rem;
   }
   .wb-head .section-heading::before {
     margin-left: auto;
@@ -1557,7 +1606,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    max-width: 880px;
+    max-width: 55rem;
     margin: 0 auto;
   }
 
@@ -1901,6 +1950,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: var(--text-primary);
     letter-spacing: -0.03em;
     line-height: 1;
+    white-space: nowrap;
+  }
+  /* Four across in a ~180-220px cell: 2.5rem broke "3 months" onto two
+     lines at 769-1100 (iPad portrait 820, landscape phones, iPad 1024). */
+  @media (min-width: 769px) and (max-width: 1180px) {
+    .result-stat-number {
+      font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+    }
   }
   .result-stat-label {
     display: block;
@@ -2057,12 +2114,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-bottom: 0;
   }
   .required { color: var(--color-accent-text); }
-  .form-group select {
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6760' fill='none' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    padding-right: 2.5rem;
-  }
   .btn-submit {
     width: 100%;
     margin-top: 0.5rem;
@@ -2241,15 +2292,35 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
       grid-template-columns: 1fr;
     }
   }
+  /* Two columns x three quotes left the third card hanging under the first
+     (768, 820, 844, 1024): centre it at single-column width instead. */
+  @media (min-width: 481px) and (max-width: 1024px) {
+    .testimonial-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: calc(50% - 0.75rem);
+    }
+  }
 
   /* TV / Large screens */
   @media (min-width: 1921px) {
     .hero-display {
       font-size: clamp(7rem, 10vw, 12rem);
     }
+    /* The hero's px caps don't grow with the 125%/150% root: at 2560 the
+       subtitle ran 8 lines in a 600px column, the proof labels and intake
+       bubble wrapped, and the CTAs sat on the fold. Same caps in rem. */
+    .hero-centre {
+      max-width: 56.25rem;
+    }
     .hero-sub {
       font-size: 1.3rem;
-      max-width: 600px;
+    }
+    .hero-proof-row {
+      max-width: 35rem;
+    }
+    .hero-meta {
+      max-width: 40rem;
     }
     .section {
       padding: 2.25rem 0;
@@ -2286,7 +2357,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     border-radius: var(--radius-md);
     padding: 2.5rem;
     text-align: center;
-    max-width: 640px;
+    max-width: 40rem;
     margin: 0 auto;
     position: relative;
   }
@@ -2309,7 +2380,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    max-width: 400px;
+    max-width: 25rem;
     margin: 0 auto;
   }
 
@@ -2344,7 +2415,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1.5rem;
-    max-width: 400px;
+    max-width: 25rem;
     margin-left: auto;
     margin-right: auto;
   }
@@ -2379,10 +2450,14 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   /* ===== FEATURE 2: AUDIENCE TOGGLE — the LMS segmented control ===== */
+  /* rem cap so the track grows with the root font (a 300px track wrapped both
+     labels at 1536-2560); slimmer side padding + nowrap keeps "I'm a Student"
+     on one line in the 296px hero column at 360. flex:1 still splits the
+     track evenly, so the pills look the same. */
   .audience-toggle {
     display: flex;
     margin: 2rem auto 1rem;
-    max-width: 300px;
+    max-width: 20rem;
   }
   .audience-btn {
     display: inline-flex;
@@ -2391,8 +2466,9 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     gap: 0.35rem;
     flex: 1;
     min-height: 42px;
-    padding: 0.55rem 1rem;
+    padding: 0.55rem 0.75rem;
     font-size: 0.85rem;
+    white-space: nowrap;
   }
   .audience-btn__icon {
     height: 0.95rem;
@@ -2410,7 +2486,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .audience-msg {
     text-align: center;
-    max-width: 520px;
+    max-width: 32.5rem;
     margin: 0 auto 1rem;
     font-size: 0.9rem;
     line-height: 1.6;
@@ -2422,12 +2498,15 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
 
   /* ===== FEATURE 5: GRADE TRANSFORMATION CARDS ===== */
+  /* Three across from tablet up (auto-fit left a 2 + 1 orphan at 768-844),
+     one column on phones. The rem cap gives each card room for its
+     one-line label (it wrapped "... — 3 / MONTHS" at 1024-2560 in 800px). */
   .grade-transforms {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
     margin: 2rem auto;
-    max-width: 800px;
+    max-width: 52.5rem;
   }
   .grade-card {
     display: flex;
@@ -2465,6 +2544,23 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    text-wrap: balance;
+  }
+  @media (max-width: 1024px) {
+    .grade-transforms {
+      gap: 1rem;
+    }
+    .grade-card {
+      padding: 1.25rem 0.75rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .grade-transforms {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .grade-card {
+      padding: 1.5rem;
+    }
   }
 
   /* ===== SECTION INTRO VARIETY — left-aligned headings ===== */
@@ -2477,6 +2573,12 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .results-section .results-sub-heading {
     text-align: left;
+  }
+  /* The contact eyebrow + heading are left-aligned; the global subtitle is
+     centred, so it floated off-axis under them at every width. */
+  .contact-section .section-subtitle {
+    text-align: left;
+    margin-left: 0;
   }
 </style>
 

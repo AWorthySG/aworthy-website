@@ -12,7 +12,7 @@ import '../styles/global.css';
   <section class="r-hero">
     <div class="r-container">
       <span class="eyebrow">Results</span>
-      <h1>Proven tuition <span class="accent-word">results</span><br />that speak for themselves</h1>
+      <h1>Proven tuition <span class="accent-word">results</span> <br />that speak for themselves</h1>
       <p class="r-hero-sub">
         Year after year, A-Worthy students achieve outstanding O-Level English results &mdash; outperforming national averages across every component through the SHARP Method.
       </p>
@@ -275,7 +275,7 @@ import '../styles/global.css';
       <h2 class="r-heading squiggle" data-animate="reveal-up">Real transformations, real students</h2>
       <p class="r-subtitle">See how A-Worthy made the difference.</p>
 
-      <div class="r-cards-3">
+      <div class="r-cards-3 r-stories">
         <div class="r-card r-story-card card-lift" data-animate="reveal-up" data-animate-delay="1">
           <span class="r-story-badge chip chip--blue">O-Level English</span>
           <h3 class="r-story-name">Sarah</h3>
@@ -464,18 +464,28 @@ import '../styles/global.css';
   /* ===== CARDS GRID ===== */
   .r-cards-3 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
   }
 
-  /* One card should not sit in a third of the row with two empty cells. */
-  .r-cards-solo {
-    grid-template-columns: minmax(0, 720px);
+  /* One card should not sit in a third of the row with two empty cells.
+     Two classes so the 2-column tablet rule for .r-cards-3 can't override it
+     (it used to, leaving the chart in the left half at 769–1024px). */
+  .r-cards-3.r-cards-solo {
+    grid-template-columns: minmax(0, 45rem);
     justify-content: center;
   }
 
-  .r-cards-5 {
-    grid-template-columns: repeat(3, 1fr);
+  /* Five cards → 3 + 2 with the short last row centred instead of leaving an
+     empty cell: six half-width tracks, every card spans two. */
+  .r-cards-3.r-cards-5 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .r-cards-5 > .r-card {
+    grid-column: span 2;
+  }
+  .r-cards-5 > .r-card:nth-child(4) {
+    grid-column: 2 / span 2;
   }
 
   /* Ink card — white sticker on the paper, 3px hard rest shadow, lifts on hover */
@@ -704,7 +714,7 @@ import '../styles/global.css';
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    max-width: 880px;
+    max-width: 55rem;
   }
 
   .journey-card {
@@ -828,7 +838,36 @@ import '../styles/global.css';
     }
 
     .r-cards-3 {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Two columns: 5 cards → 2 + 2 + 1 and 3 stories → 2 + 1. Four
+       half-width tracks let the odd card out sit centred under the pair
+       above it instead of leaving an empty cell beside it. */
+    .r-cards-3.r-cards-5,
+    .r-cards-3.r-stories {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .r-stories > .r-card,
+    .r-cards-5 > .r-card:nth-child(4) {
+      grid-column: span 2;
+    }
+    .r-cards-5 > .r-card:nth-child(5),
+    .r-stories > .r-card:nth-child(3) {
+      grid-column: 2 / span 2;
+    }
+  }
+
+  /* One column only on phones — tablets in portrait keep two (a 700px-wide
+     single card with a centred grade pair was mostly empty space). */
+  @media (max-width: 700px) {
+    .r-cards-3,
+    .r-cards-3.r-cards-5,
+    .r-cards-3.r-stories {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .r-cards-3 > .r-card:nth-child(n) {
+      grid-column: auto;
     }
   }
 
@@ -849,11 +888,6 @@ import '../styles/global.css';
       font-size: 2.2rem;
     }
 
-    .r-cards-3,
-    .r-cards-5 {
-      grid-template-columns: 1fr;
-    }
-
     .r-cta {
       padding: 1.75rem 0;
     }
@@ -862,6 +896,16 @@ import '../styles/global.css';
   @media (max-width: 480px) {
     .r-hero {
       padding: 1.5rem 0 1rem;
+    }
+
+    /* Phone display size (as global.css steps h1 down); the forced break
+       after "results" is dropped so the headline wraps naturally to 3 lines
+       instead of 4 with "results" stranded on a line of its own. */
+    .r-hero h1 {
+      font-size: clamp(1.9rem, 8.5vw, 2.4rem);
+    }
+    .r-hero h1 br {
+      display: none;
     }
 
     .r-stats-row {
@@ -893,8 +937,11 @@ import '../styles/global.css';
 
   /* ===== LARGE SCREENS ===== */
   @media (min-width: 1921px) {
+    /* rem, not px: html is 125–150% here, so a fixed 1400px squeezed the
+       3-up story cards until "O-Level Result" wrapped and the grade pills
+       fell out of line at 2560px. */
     .r-container {
-      max-width: 1400px;
+      max-width: 75rem;
     }
     .r-section {
       padding: 2.25rem 0;
@@ -914,9 +961,6 @@ import '../styles/global.css';
   @media (min-width: 481px) and (max-width: 768px) {
     .r-stats-row {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .r-cards-3 {
-      grid-template-columns: 1fr;
     }
   }
 </style>

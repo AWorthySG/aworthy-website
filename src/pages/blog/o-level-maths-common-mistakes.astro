@@ -36,9 +36,9 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>Cambridge examiners award <em>method</em> marks, not just answer marks. A student who reaches the wrong final number through correct, clearly-shown working still earns most of the marks. A student who does three steps mentally and writes only the final (wrong) answer earns nothing. Mental arithmetic under pressure is also where careless slips multiply.</p>
         <p><strong>The fix &mdash; one operation per line:</strong> Train the habit of writing a single operation per line, nothing skipped. It feels slower in practice and is faster in the exam, because checking becomes trivial and method marks are banked even when the final answer slips. This one discipline routinely recovers 4&ndash;8 marks across a paper.</p>
 
-        <h2>3. Reaching for SOH-CAH-TOA on a non-right-angled triangle</h2>
-        <p>Trigonometry is where students most often pick the wrong method &mdash; applying SOH-CAH-TOA to a triangle that has no right angle, or using the sine rule when the cosine rule was required. The working looks confident and earns nothing.</p>
-        <p><strong>The fix &mdash; RULE:</strong> Run a right-angle check first. If the triangle is right-angled, use SOH-CAH-TOA. If not, decide between the cosine rule (you have two sides and the included angle) and the sine rule (you have a matching side-and-angle pair). Label sides and angles with the standard convention, execute, then sense-check: is the angle acute or obtuse as expected? Is the bearing measured clockwise from north? RULE turns the most feared topic into the most systematic one.</p>
+        <h2>3. Reaching for <span class="nobr">SOH-CAH-TOA</span> on a non-right-angled triangle</h2>
+        <p>Trigonometry is where students most often pick the wrong method &mdash; applying <span class="nobr">SOH-CAH-TOA</span> to a triangle that has no right angle, or using the sine rule when the cosine rule was required. The working looks confident and earns nothing.</p>
+        <p><strong>The fix &mdash; RULE:</strong> Run a right-angle check first. If the triangle is right-angled, use <span class="nobr">SOH-CAH-TOA</span>. If not, decide between the cosine rule (you have two sides and the included angle) and the sine rule (you have a matching side-and-angle pair). Label sides and angles with the standard convention, execute, then sense-check: is the angle acute or obtuse as expected? Is the bearing measured clockwise from north? RULE turns the most feared topic into the most systematic one.</p>
 
         <h2>4. Rounding too early &mdash; and dropping the units</h2>
         <p>Rounding an intermediate value to 3 significant figures and then feeding it into the next step compounds the error, and the final answer drifts outside the accepted range. On the O-Level paper, unless a question states otherwise, final answers are given to 3 significant figures (and angles in degrees to 1 decimal place) &mdash; but <em>intermediate</em> values should keep full calculator precision. Forgetting units (cm, cm&sup2;, degrees) is a separate, needless mark-dropper.</p>
@@ -124,3 +124,9 @@ import AuthorBio from '../../components/AuthorBio.astro';
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<style>
+  /* Keep the SOH-CAH-TOA mnemonic on one line: the heading was balancing to
+     "Reaching for SOH-CAH-" / "TOA on a…" at most widths from phone to laptop. */
+  .nobr { white-space: nowrap; }
+</style>

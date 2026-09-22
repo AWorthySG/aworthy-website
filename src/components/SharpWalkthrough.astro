@@ -95,7 +95,7 @@ const steps = [
     margin: 0 0 1.25rem;
     max-width: 600px;
   }
-  .sharp-walk__sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 640px; }
+  .sharp-walk__sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 60ch; }
 
   /* Tabs — the LMS segmented control (track = muted well, active = red pill) */
   .sharp-walk__tabs {
@@ -205,6 +205,13 @@ const steps = [
     color: var(--text-primary);
     font-size: 0.92rem;
     line-height: 1.55;
+  }
+  /* Panel copy ran 115–145 characters a line from 1024px up; hold it to a
+     readable measure and lift the example to the 15px body floor on wide screens. */
+  .sharp-walk__panel-summary,
+  .sharp-walk__panel-example p { max-width: 60ch; }
+  @media (min-width: 1024px) {
+    .sharp-walk__panel-example p { font-size: 0.95rem; }
   }
   @media (max-width: 540px) {
     .sharp-walk__tabs { border-radius: var(--radius-md); }

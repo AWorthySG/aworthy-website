@@ -134,7 +134,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
 <style>
   .calc-hero { padding: 1.5rem 0 0.75rem; text-align: center; }
   .calc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: var(--text-primary); margin-bottom: 0.75rem; }
-  .calc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
+  .calc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 40rem; margin: 0 auto; }
   .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
   /* Until a result exists the lone form card sits centred instead of leaving the right column blank */
   .calc-grid:has(> .calc-result[hidden]) { grid-template-columns: minmax(0, 640px); justify-content: center; }
@@ -206,9 +206,21 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-cta-link { color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.9rem; min-height: 40px; display: inline-flex; align-items: center; gap: 0.45rem; }
   .calc-cta-link:hover { text-decoration: underline; text-underline-offset: 3px; }
   .calc-explainer { text-align: center; }
-  .calc-explainer__note { max-width: 640px; margin: 0 auto; }
+  .calc-explainer__note { max-width: 40rem; margin: 0 auto; }
   .calc-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
+  /* Side by side, the sticky result card (~740px) is taller than the room under the fixed chrome on short
+     screens (1024×768, 1280×800, 1366×768), so after Calculate it sat bottom-aligned beside the button with the
+     Gross → Net score under the header and SubjectBar, and the global sticky CTA covered its foot on tablets.
+     Cap it to the space between the chrome and any bottom bar; it scrolls inside only when it doesn't fit. */
+  @media (min-width: 901px) {
+    .calc-result {
+      max-height: calc(100vh - var(--nav-offset) - var(--sticky-bar-h, 0px) - 2rem);
+      max-height: calc(100dvh - var(--nav-offset) - var(--sticky-bar-h, 0px) - 2rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+  }
   @media (max-width: 900px) {
     .calc-grid { grid-template-columns: 1fr; }
     .calc-result { position: static; }

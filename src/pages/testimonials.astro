@@ -245,7 +245,7 @@ const testimonials = [
   <section class="t-section t-cta">
     <div class="t-container t-cta-inner">
       <span class="eyebrow">Get Started</span>
-      <h2 class="t-cta-heading squiggle squiggle--center" data-animate="reveal-up">Experience the A-Worthy difference</h2>
+      <h2 class="t-cta-heading squiggle squiggle--center" data-animate="reveal-up">Experience the <span class="t-nowrap">A-Worthy</span> difference</h2>
       <p class="t-cta-subtitle">Join the hundreds of families who trust A-Worthy. Book a free trial lesson and see the results for yourself.</p>
       <div class="t-cta-actions">
         <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
@@ -577,6 +577,12 @@ const testimonials = [
     margin: 0 0 16px;
   }
 
+  /* Keeps the brand name whole — the heading otherwise broke at its hyphen
+     ("Experience the A-" / "Worthy difference") on phones and laptops. */
+  .t-nowrap {
+    white-space: nowrap;
+  }
+
   .t-cta-subtitle {
     font-size: 1.05rem;
     line-height: 1.7;
@@ -662,17 +668,39 @@ const testimonials = [
     }
   }
 
+  /* Landscape phones (~390px tall): the 160px sticker pushed the headline
+     below the first screen. */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .t-hero-mascot {
+      height: 80px;
+      margin-bottom: 0.5rem;
+    }
+  }
+
   @media (min-width: 1921px) {
+    /* rem, not px: html is 125–150% here, and a fixed 1400px left the 3-up
+       review cards ~24 characters wide at 2560px. */
     .t-container {
-      max-width: 1400px;
+      max-width: 75rem;
     }
 
     .t-hero-inner {
       max-width: 900px;
     }
 
+    /* The .t-container rule above would otherwise override these narrow
+       wrappers (same specificity, later in the file) — the CTA subtitle ran
+       to ~110 characters on one line. */
+    .t-google-inner {
+      max-width: 45rem;
+    }
+
+    .t-cta-inner {
+      max-width: 40rem;
+    }
+
     .t-testimonials-grid {
-      max-width: 1400px;
+      max-width: 75rem;
       margin: 0 auto;
     }
   }

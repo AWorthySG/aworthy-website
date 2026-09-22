@@ -95,6 +95,12 @@
   line-height: 1.5;
 }
 
+/* 901–1024 (iPad landscape): the six column minimums above need ~890px and the
+   container has 817–880, so overflow:hidden clipped the Practise column. */
+@media (min-width: 901px) and (max-width: 1024px) {
+  .playbook-matrix { grid-template-columns: minmax(150px, 1.3fr) repeat(5, minmax(0, 1fr)); }
+}
+
 @media (max-width: 900px) {
   .playbook-matrix {
     display: flex;
@@ -163,7 +169,9 @@
 
 .playbook-cta {
   text-align: center;
-  padding: 1.25rem 0 0;
+  /* Sits outside .container, so it needs the page gutter itself — its full-width
+     phone button used to run edge to edge. */
+  padding: 1.25rem var(--page-padding) 0;
 }
 .playbook-cta p {
   font-family: var(--prog-font, var(--font-body));

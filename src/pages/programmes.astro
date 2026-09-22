@@ -567,6 +567,15 @@ import '../styles/global.css';
     padding-right: 2.4rem;
   }
 
+  /* Step copy: no trailing gap under the last line (the card padding already
+     closes the card — the extra 1.25rem made every step bottom-heavy), and a
+     readable measure when a card runs wide (full-row card on tablets, 2560).
+     60ch ≈ 80 characters in Nunito, whose "0" is unusually wide */
+  .prog-card--step .prog-card__desc {
+    margin-bottom: 0;
+    max-width: 60ch;
+  }
+
   /* ===== CTA ===== */
   .prog-cta {
     border-top: 1px solid var(--prog-border);
@@ -575,7 +584,10 @@ import '../styles/global.css';
 
   .prog-cta__inner {
     text-align: center;
-    max-width: 600px;
+    /* rem, not px: the container padding scales with the root font on large
+       desktops, so a px cap squeezed the copy to ~456px at 1920 and broke the
+       heading over two lines */
+    max-width: 38rem;
     margin: 0 auto;
   }
 
@@ -638,7 +650,9 @@ import '../styles/global.css';
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     margin: 1.25rem auto 0;
-    max-width: 700px;
+    /* rem, not px: 704px up to 1440, then it grows with the root font so the
+       headers and row labels stop wrapping at 1920 / 2560 */
+    max-width: 44rem;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
@@ -769,6 +783,34 @@ import '../styles/global.css';
     .prog-cta__btn {
       width: 100%;
       text-align: center;
+    }
+  }
+
+  /* Tablet landscape and up: card copy at the 15px body floor */
+  @media (min-width: 1024px) {
+    .prog-card__desc {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* SHARP steps — five cards, never an orphan. Two-up tablets let the odd
+     last card run the full row; laptops and up set them 3 + 2 on a six-track
+     grid. (Phones are one column, where spanning 1 / -1 is a no-op.) */
+  @media (max-width: 1024px) {
+    .card-grid--steps > .prog-card--step:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .card-grid--steps {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+    .card-grid--steps > .prog-card--step {
+      grid-column: span 2;
+    }
+    .card-grid--steps > .prog-card--step:nth-child(n+4) {
+      grid-column: span 3;
     }
   }
 </style>

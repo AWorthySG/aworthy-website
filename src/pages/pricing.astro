@@ -487,7 +487,10 @@ import '../styles/global.css';
   }
 
   .pricing-table__label-col {
-    width: 160px;
+    /* rem, not px: 160px up to 1440, then it grows with the root font so the
+       uppercase row labels ("ASSESSMENT") stop spilling into the English
+       column at 2560 */
+    width: 10rem;
   }
 
   .pricing-table__programme-name {
@@ -576,8 +579,9 @@ import '../styles/global.css';
   .pricing-table__sticker {
     display: block;
     /* sized by HEIGHT so all six stickers share a baseline despite different
-       source aspect ratios */
-    height: 64px;
+       source aspect ratios; rem so they keep pace with the header text on
+       large desktops instead of shrinking to specks in 250px-wide cells */
+    height: 4rem;
     width: auto;
     margin: 0 auto 0.4rem;
     filter: drop-shadow(0 1px 1px rgba(34, 48, 74, 0.12));
@@ -686,7 +690,18 @@ import '../styles/global.css';
     padding: 0.8rem 1.5rem;
   }
 
-  @media (max-width: 768px) {
+  /* Every card sticker sized by height so the six panels are one height (the
+     teacher pose is squarer, so width-sizing left the Coaching panel short) */
+  .pricing-card__panel img {
+    height: 128px;
+    width: auto;
+  }
+
+  /* The seven-column table needs ~864px inside its wrapper; the tablet
+     container (max 960px, 2.5rem padding) only gives that from ~944px. Below
+     960px (iPad portrait 810–834px, iPad mini) the table scrolled sideways
+     with no cue and hid the 1-to-1 Coaching column, so the cards take over */
+  @media (max-width: 959px) {
     .pricing-table-wrap {
       display: none;
     }
@@ -697,9 +712,22 @@ import '../styles/global.css';
     }
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media (min-width: 481px) and (max-width: 959px) {
     .pricing-cards {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    /* Two-up: equal-height cards with the CTA pinned to the bottom, so the
+       buttons line up across a row even though only English carries the
+       "Most popular" chip */
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card__popular-badge {
+      align-self: center;
+    }
+    .pricing-card__cta {
+      margin-top: auto;
     }
   }
 
@@ -717,11 +745,41 @@ import '../styles/global.css';
   @media (max-width: 640px) {
     .includes-head__sticker { display: none; }
   }
+  /* Five cards, never an orphan (auto-fit left 3 + 2-with-a-hole at 768 and
+     4 + 1 at 1024): 3 + 2 on a six-track grid on tablets and laptops, one row
+     of five on large desktops, 2 + 2 + 1 on large phones, one column on phones */
   .includes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 1rem;
     margin-top: var(--space-xl);
+  }
+  .includes-grid > .includes-item {
+    grid-column: span 2;
+  }
+  .includes-grid > .includes-item:nth-child(n+4) {
+    grid-column: span 3;
+  }
+  @media (min-width: 1441px) {
+    .includes-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .includes-grid > .includes-item,
+    .includes-grid > .includes-item:nth-child(n+4) {
+      grid-column: auto;
+    }
+  }
+  @media (max-width: 768px) {
+    .includes-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .includes-grid > .includes-item,
+    .includes-grid > .includes-item:nth-child(n+4) {
+      grid-column: auto;
+    }
+    .includes-grid > .includes-item:last-child {
+      grid-column: 1 / -1;
+    }
   }
 
   /* LMS feature cards: tinted icon circle, bold title, small copy */
@@ -751,6 +809,18 @@ import '../styles/global.css';
     line-height: 1.6;
     color: var(--text-secondary);
     margin: 0;
+  }
+
+  /* Laptops (100% root): copy up to the 15px body floor now the 3 + 2 cards
+     have room; the title steps up with it to keep the hierarchy. From 1441px
+     the 112.5% root already puts 0.85rem at 15.3px in the five-up row. */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    .includes-item h3 {
+      font-size: 1.05rem;
+    }
+    .includes-item p {
+      font-size: 0.95rem;
+    }
   }
 
   /* ===== COMPARISON ===== */
@@ -828,11 +898,14 @@ import '../styles/global.css';
     border-left: 2px solid var(--color-leaf);
   }
   .compare-footnote {
-    font-size: 0.8rem;
+    /* 14px: legible, but still a step below the 0.92rem table copy it
+       annotates. Measure in ch, not px — 680px of 12.8px italic ran ~117
+       characters a line */
+    font-size: 0.875rem;
     color: var(--text-muted);
     text-align: center;
     margin: 1.5rem auto 0;
-    max-width: 680px;
+    max-width: 60ch;
     line-height: 1.6;
     font-style: italic;
   }

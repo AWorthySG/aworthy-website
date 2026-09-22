@@ -99,7 +99,7 @@ import '../styles/global.css';
 <style>
   .jc-hero { padding: 1.5rem 0 0.75rem; text-align: center; }
   .jc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: var(--text-primary); margin-bottom: 0.75rem; }
-  .jc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
+  .jc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 40rem; margin: 0 auto; }
   .jc-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; align-items: start; }
   /* Until a result exists the lone form card sits centred instead of hugging the left edge */
   .jc-grid:has(> .jc-result[hidden]) { grid-template-columns: minmax(0, 640px); justify-content: center; }
@@ -123,7 +123,10 @@ import '../styles/global.css';
   .jc-error { color: var(--color-accent-text); font-weight: 600; font-size: 0.85rem; margin-top: 0.75rem; }
 
   /* ── Result card ── */
-  .jc-result { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; }
+  /* The recommendation is taller than most screens, so the script's scrollIntoView({ block: 'nearest' })
+     aligns its top edge with the viewport top, and the "Suggested for" chip and title landed under the fixed
+     header + SubjectBar. The margin makes it stop just below that chrome (--nav-offset), as the L1R5 card does. */
+  .jc-result { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; scroll-margin-top: calc(var(--nav-offset) + 1rem); }
   .jc-rec-title { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0.6rem 0 1rem; }
   /* Combination rows are built by the script, so they are :global — ink-outlined rows with a green subject edge */
   .jc-combos { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.1rem; }
@@ -148,7 +151,7 @@ import '../styles/global.css';
   .jc-cta-cards .subject-panel--sm { height: 160px; }
   .jc-cta-cards .subject-panel--sm img { width: auto; height: 128px; max-width: 100%; }
   .jc-explainer { text-align: center; }
-  .jc-explainer__note { max-width: 640px; margin: 0 auto; }
+  .jc-explainer__note { max-width: 40rem; margin: 0 auto; }
   .jc-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
   /* Side by side the short form card leaves ~660px of blank column beside a long recommendation, and it

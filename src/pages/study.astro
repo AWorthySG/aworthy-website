@@ -204,6 +204,8 @@ const count = materials.length;
     margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em; color: var(--text-primary);
   }
   .sh-hero__lead { max-width: 680px; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); margin: 0; }
+  /* The root font scales up from 1441px; a px cap made the lead a narrow ~40-character column at 2560 */
+  @media (min-width: 1441px) { .sh-hero__lead { max-width: 42.5rem; } }
 
   /* ── Bar: count + filters ── */
   .sh-bar {
@@ -228,7 +230,7 @@ const count = materials.length;
   }
 
   /* ── Card grid — white ink cards with a subject-coloured top edge ── */
-  .sh-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem; }
+  .sh-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.15rem; }
   .sh-card {
     display: flex; flex-direction: column; gap: 0.55rem; padding: 1.35rem 1.4rem;
     background: var(--bg-card); border: 2px solid var(--color-ink); border-top: 6px solid var(--sub);
@@ -259,7 +261,8 @@ const count = materials.length;
   .sh-empty__title { font-size: 1.25rem; font-weight: 800; margin: 0 0 0.5rem; }
   .sh-empty__body { margin: 0 auto; max-width: 46ch; color: var(--text-secondary); line-height: 1.6; }
 
-  .sh-note { margin: 2rem 0 0; font-size: 0.9rem; color: var(--text-secondary); text-align: center; }
+  /* Capped measure: uncapped it ran as one ~150-character line on laptops and desktops */
+  .sh-note { max-width: 68ch; margin: 2rem auto 0; font-size: 0.9375rem; line-height: 1.6; color: var(--text-secondary); text-align: center; }
   .sh-note a, .sh-empty__body a { color: var(--color-accent-text); font-weight: 700; }
 
   /* ── Full-screen viewer ── */
@@ -271,6 +274,8 @@ const count = materials.length;
   .sh-viewer__bar {
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     padding: 0.7rem 1rem; padding-top: max(0.7rem, env(safe-area-inset-top));
+    /* viewport-fit=cover: in landscape the notch / rounded corners sit over the sides */
+    padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));
     background: var(--bg-card); border-bottom: 2px solid var(--color-ink); flex: 0 0 auto;
   }
   .sh-viewer__meta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; min-width: 0; }
@@ -303,11 +308,18 @@ const count = materials.length;
   .sh-viewer:not(.is-loading) .sh-viewer__loading { display: none; }
 
   /* ── Responsive ── */
-  @media (max-width: 1024px) { .sh-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 1024px) { .sh-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 768px) {
     .sh-hero { padding: 2.25rem 0 1.5rem; }
-    .sh-grid { grid-template-columns: 1fr; }
     .sh-bar { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  }
+  /* One column only on phones: at 641–768px (iPad portrait) a single column made ~700px-wide cards */
+  @media (max-width: 640px) { .sh-grid { grid-template-columns: minmax(0, 1fr); } }
+  /* Landscape phones are ~390px tall: put the chip and title on one row so the bar is ~55px, not 75px */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .sh-viewer__bar { padding-top: max(0.4rem, env(safe-area-inset-top)); padding-bottom: 0.4rem; }
+    .sh-viewer__meta { flex-direction: row; align-items: center; gap: 0.6rem; }
+    .sh-viewer__chip { flex: 0 0 auto; }
   }
   @media (max-width: 480px) {
     .sh-viewer__btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -317,6 +329,13 @@ const count = materials.length;
     .sh-card, .sh-card__cta svg { transition: none; }
     .sh-card:hover { transform: none; }
   }
+</style>
+
+<style is:global>
+  /* BaseLayout's scroll-progress bar sits above modals (z-index), so while the
+     viewer is open it drew a red line across the viewer bar. Global block:
+     the bar lives in BaseLayout, outside this page's scope. */
+  body:has(#sh-viewer:not([hidden])) .scroll-progress { display: none; }
 </style>
 
 <script is:inline>

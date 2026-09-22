@@ -187,9 +187,9 @@ const stories = [
 
   <!-- ===== CTA ===== -->
   <section class="section cta-section">
-    <div class="container" style="text-align: center; max-width: 640px;">
+    <div class="container" style="text-align: center; max-width: 40rem;">
       <span class="eyebrow">Your Turn</span>
-      <h2 class="section-heading">Your child could be next</h2>
+      <h2 class="section-heading text-center">Your child could be next</h2>
       <p class="cta-desc">Every success story started with a free diagnostic assessment. Book one today and discover your child&rsquo;s potential.</p>
       <a href="/contact/" class="btn btn-accent plausible-event-name=CTA+Click">Book Free Assessment</a>
     </div>
@@ -312,6 +312,8 @@ const stories = [
     line-height: 1.8;
     color: var(--text-primary);
     margin-bottom: 1rem;
+    /* ~80 characters a line (Nunito's "0" is wide, so 62ch ≈ 80 chars) */
+    max-width: 62ch;
   }
   .story-body p:last-child {
     margin-bottom: 0;
@@ -418,6 +420,48 @@ const stories = [
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 1.25rem;
+  }
+  /* The heading sat flush on the paragraph below it (0px gap) */
+  .cta-section .section-heading {
+    margin-bottom: 1rem;
+  }
+
+  /* Tablet landscape and up: the story reads at a comfortable measure on the
+     left while milestones + quote become a sidebar. As one full-width column
+     the paragraphs ran 115–190 characters a line (1024px → 2560px) with the
+     right half of every card's lower sections empty. */
+  @media (min-width: 1024px) {
+    .story-card {
+      display: grid;
+      grid-template-columns: minmax(0, 62ch) minmax(18rem, 1fr);
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        "head head"
+        "body timeline"
+        "body quote";
+      column-gap: 2.5rem;
+    }
+    .story-header { grid-area: head; }
+    .story-body { grid-area: body; }
+    .story-timeline {
+      grid-area: timeline;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .story-quote {
+      grid-area: quote;
+      align-self: start;
+    }
+  }
+
+  /* The global container widens to 1600–2200px here; a single column of
+     stories stays at a readable width instead (rem, so it scales with the
+     112.5–150% root size). */
+  @media (min-width: 1441px) {
+    .stories-section .container {
+      max-width: 72rem;
+    }
   }
 
   /* Responsive */

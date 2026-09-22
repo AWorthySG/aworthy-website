@@ -13,7 +13,7 @@ import '../../styles/global.css';
       <div class="hero-card lp-hero-card subject--gp">
         <div class="lp-hero-copy">
           <span class="eyebrow">H1 General Paper Tuition</span>
-          <h1 class="lp-title squiggle">Struggling with GP essays?<br/><span class="accent-word">88% of our students</span> improve at least one grade band</h1>
+          <h1 class="lp-title squiggle">Struggling with GP essays?<br/> <span class="accent-word">88% of our students</span> improve at least one grade band</h1>
           <p class="lp-subtitle">The SHARP Method brings legal-analytical precision to GP essay writing, comprehension, and AQ. Small groups of 6, live on the A-Worthy Whiteboard &mdash; personalised feedback every session. <a href="/h1-general-paper/#playbook">See the full SHARP Playbook&nbsp;&rarr;</a></p>
           <div class="lp-cta-row">
             <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
@@ -70,7 +70,7 @@ import '../../styles/global.css';
   <section class="section section--sand lp-final-cta">
     <div class="container" style="text-align:center;">
       <h2 class="squiggle squiggle--center">Ready to improve your GP grade?</h2>
-      <p style="max-width:540px;margin:0 auto 2rem;color:var(--text-secondary);">Book a free 20-minute diagnostic assessment. We&rsquo;ll identify your specific gaps and recommend the right programme.</p>
+      <p style="max-width:33.75rem;margin:0 auto 2rem;color:var(--text-secondary);">Book a free 20-minute diagnostic assessment. We&rsquo;ll identify your specific gaps and recommend the right programme.</p>
       <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
     </div>
   </section>
@@ -88,7 +88,9 @@ import '../../styles/global.css';
   .lp-hero-art { order: -1; width: 140px; margin: 0 auto 1rem; }
   .lp-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.25rem; }
   .lp-title::after { margin-inline: auto; }
-  .lp-subtitle { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto 1.25rem; text-wrap: pretty; }
+  /* max-widths are in rem (not px) so they grow with the root font-size step-ups
+     at ≥1441 / ≥1921 / ≥2560 instead of squeezing the scaled-up text */
+  .lp-subtitle { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 40rem; margin: 0 auto 1.25rem; text-wrap: pretty; }
   .lp-subtitle a { color: var(--color-accent-text); text-decoration: underline; text-underline-offset: 0.15em; }
   .lp-cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
@@ -100,19 +102,41 @@ import '../../styles/global.css';
   .lp-stat-num { display: inline-block; font-family: var(--font-heading); font-size: 2.5rem; font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: var(--text-primary); }
   .lp-stat-label { display: block; margin-top: 0.4rem; font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
 
-  @media (min-width: 1024px) {
+  /* Side-by-side welcome card on desktops AND on landscape phones: stacked, the
+     sticker filled most of a ~390px-tall screen and pushed the headline below it */
+  @media (min-width: 1024px), (orientation: landscape) and (max-height: 500px) {
     .lp-hero-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: clamp(1.5rem, 3vw, 3rem); text-align: left; }
-    .lp-hero-art { order: 0; width: clamp(150px, 15vw, 180px); margin: 0; }
+    .lp-hero-art { order: 0; margin: 0; }
     .lp-title::after { margin-inline: 0; }
     .lp-subtitle { margin-inline: 0; }
     .lp-cta-row { justify-content: flex-start; }
     .lp-stats { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1rem 2.5rem; }
     .lp-stat { text-align: left; }
   }
+  /* Landscape phones: global.css sizes the sticker by height (max 112px); keep it
+     beside the headline at the top of the card and scale the title to the width */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .lp-hero-art { align-self: start; }
+    .lp-title { font-size: clamp(1.75rem, 4.2vw, 2.2rem); }
+  }
+  @media (min-width: 1024px) {
+    .lp-hero-art { width: clamp(150px, 15vw, 11.25rem); }
+  }
+  /* Large desktops: cap the hero card so it keeps the laptop proportions with the
+     50rem column below instead of stretching to the 1600–2200px container */
+  @media (min-width: 1441px) {
+    .lp-hero-card { max-width: 68rem; margin-inline: auto; }
+  }
+  /* Short laptops (1366×768, 1280×800): trim the vertical padding so the whole
+     card, proof row included, fits the first screen (GP ran ~20px past it) */
+  @media (min-width: 1024px) and (max-height: 800px) {
+    .lp-hero { padding-top: 1rem; }
+    .lp-hero-card { padding-block: 2rem; }
+  }
 
   /* ── Testimonial — a white ink card with a red squiggle above the quote ── */
   .lp-testimonial {
-    max-width: 800px;
+    max-width: 50rem;
     margin: 0 auto;
     padding: 1.75rem 2rem;
     text-align: center;
@@ -134,11 +158,14 @@ import '../../styles/global.css';
 
   /* ── Feature grid — white ink cards that lift, numbered icon circles ── */
   .lp-features h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; text-align: center; margin-bottom: 1.5rem; }
-  .lp-features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto; }
+  .lp-features-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; max-width: 50rem; margin: 0 auto; }
   .lp-feature { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.25rem; }
   .lp-feature .icon-circle { margin-bottom: 0.75rem; font-family: var(--font-heading); font-size: 0.9rem; font-weight: 800; }
   .lp-feature h3 { font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
   .lp-feature p { font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary); }
+  @media (min-width: 1024px) {
+    .lp-feature p { font-size: 1rem; }
+  }
 
   /* ── Final CTA — sand band, one red button ── */
   .lp-final-cta h2 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
@@ -150,10 +177,18 @@ import '../../styles/global.css';
     .lp-stat-num { font-size: clamp(1.4rem, 6.7vw, 2.1rem); }
     .lp-stat-label { font-size: 0.72rem; letter-spacing: 0.06em; }
     .lp-testimonial { padding: 1.5rem 1.25rem; }
-    .lp-features-grid { grid-template-columns: 1fr; }
+    .lp-features-grid { grid-template-columns: minmax(0, 1fr); }
   }
 
   @media (max-width: 480px) {
     .lp-hero-card { padding: 1.25rem; }
+    /* Headline + primary CTA on the first screen of a phone: smaller sticker,
+       title scaled to the width (the GP headline ran 6 lines at 390px), and the
+       forced line break dropped so the two halves share lines */
+    .lp-hero { padding-top: 1rem; }
+    .lp-hero-art { width: 104px; margin-bottom: 0.75rem; }
+    .lp-title { font-size: clamp(1.75rem, 7.8vw, 2.2rem); margin-bottom: 1rem; }
+    .lp-title br { display: none; }
+    .lp-subtitle { font-size: 1rem; line-height: 1.6; }
   }
 </style>

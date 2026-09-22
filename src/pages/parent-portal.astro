@@ -93,12 +93,14 @@ import '../styles/global.css';
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    max-width: 640px;
+    /* rem, not px: the root size steps up at >=1441px, and a px cap wrapped
+       this to three lines (orphan "journey.") on 1920 screens */
+    max-width: 40rem;
     margin-bottom: 1rem;
   }
   .portal-features {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
   }
@@ -122,9 +124,10 @@ import '../styles/global.css';
     margin-bottom: 0.5rem;
   }
   .portal-feature p {
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* >= 15px body copy */
     line-height: 1.6;
     color: var(--text-secondary);
+    margin-bottom: 0; /* the global p margin left dead space at the card foot */
   }
   .portal-cta {
     text-align: center;
@@ -133,7 +136,7 @@ import '../styles/global.css';
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-md);
     box-shadow: 0 4px 0 var(--ink-shadow);
-    max-width: 640px;
+    max-width: 40rem;
     margin: 0 auto;
   }
   .portal-cta__mascot {
@@ -163,8 +166,20 @@ import '../styles/global.css';
     justify-content: center;
     flex-wrap: wrap;
   }
+  /* Tablets (portrait and landscape): two columns, 3 even rows of 2. A single
+     column stretched each card to ~700px with a 2-line paragraph in it; three
+     columns at 1024 squeezed the text to ~200px. */
+  @media (max-width: 1024px) {
+    .portal-features { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-bottom: 3rem; }
+    .portal-feature { padding: 1.5rem; }
+  }
   @media (max-width: 768px) {
-    .portal-features { grid-template-columns: 1fr; }
     .portal-cta { padding: 2rem 1.25rem; }
+  }
+  /* Phones: one column, tighter cards so six features don't run ~1,800px */
+  @media (max-width: 560px) {
+    .portal-features { grid-template-columns: minmax(0, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .portal-feature { padding: 1.25rem; }
+    .portal-feature-icon { margin-bottom: 0.75rem; }
   }
 </style>

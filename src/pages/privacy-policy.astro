@@ -105,8 +105,11 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 </BaseLayout>
 
 <style>
+  /* 45rem = 720px up to 1440px; in rem so the measure grows with the root
+     size at >=1441px (a px cap left ~55-character lines and a 3-line h1 on
+     1920/2560 screens once the type had scaled up) */
   .policy-content {
-    max-width: 720px;
+    max-width: 45rem;
     font-size: 1.05rem;
     line-height: 1.8;
     color: var(--text-primary);
@@ -169,9 +172,14 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.15em;
   }
+  /* Touch: each contact line becomes a 40px row and the email / phone links
+     fill it (they were 31px targets), without the padded boxes overlapping */
   @media (pointer: coarse) {
+    .policy-content address {
+      line-height: 2.4;
+    }
     .policy-content address a {
-      padding-block: 0.25rem;
+      padding-block: 0.55rem;
     }
   }
   .policy-content code {

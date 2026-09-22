@@ -540,7 +540,7 @@ li {
   color: var(--text-secondary);
   font-size: 1.05rem;
   margin-bottom: var(--space-lg);
-  max-width: 640px;
+  max-width: 40rem; /* rem, not px: holds ~70 characters a line at every root size */
   margin-left: auto;
   margin-right: auto;
 }
@@ -1490,7 +1490,7 @@ label {
 /* ─── Subject Receipts Stats Rail (claudedesign E.3) ─── */
 .subject-receipts {
   margin: var(--space-2xl) auto;
-  max-width: 960px;
+  max-width: 60rem; /* rem: scales with the big-screen root (960px at 16px) */
 }
 .subject-receipts dl {
   display: grid;
@@ -1886,7 +1886,7 @@ html {
 .ba-mark { align-self: flex-start; margin-top: auto; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; }
 .ba-mark--before { color: var(--text-secondary); }
 .ba-mark--after { color: var(--tint-green-fg); }
-.ba-footnote { font-size: 0.78rem; color: var(--text-secondary); margin-top: 1rem; font-style: italic; }
+.ba-footnote { font-size: 0.78rem; color: var(--text-secondary); margin-top: 1rem; font-style: italic; max-width: 60ch; } /* ran 155–247 characters a line on laptops */
 @media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════════════════════════════

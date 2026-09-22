@@ -989,8 +989,11 @@ const playbookRows = [
   }
 
   .prog-hero .container { position: relative; z-index: 1; max-width: 1080px; }
-  /* Narrowed at 1280px+ so the hero card clears the fixed "On this page" TOC */
-  @media (min-width: 1280px) { .prog-hero .container { max-width: min(1080px, 100vw - 360px); } }
+  /* Narrowed at 1280px+ so the hero card clears the fixed "On this page" TOC.
+     The cap is in rem (67.5rem = 1080px at the 16px root) so it grows with the
+     112.5% / 125% / 150% root on large monitors — as a px cap the 150% type at
+     2560px squeezed the copy column to a 4-line headline and a wrapped intake bubble. */
+  @media (min-width: 1280px) { .prog-hero .container { max-width: min(67.5rem, 100vw - 360px); } }
 
   .prog-hero__card {
     display: flex;
@@ -1043,12 +1046,31 @@ const playbookRows = [
     .prog-hero { text-align: left; }
     .prog-hero__card {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 180px;
+      grid-template-columns: minmax(0, 1fr) 11.25rem;
       align-items: center;
       gap: 2rem;
     }
-    .prog-hero__sticker { order: 0; width: 180px; margin: 0; }
+    .prog-hero__sticker { order: 0; width: 11.25rem; margin: 0; }
     .prog-hero__heading { font-size: clamp(2.2rem, 3.1vw, 2.6rem); }
+    .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
+    .prog-hero__sub { margin: 0; }
+    .prog-hero__intake { margin: 1rem 0 0.75rem; }
+  }
+
+  /* Landscape phones (~360–390px tall): the stacked sticker and eyebrow put the
+     headline at y≈320, so its second line fell below the first screen. Use the
+     welcome-card layout here too — sticker in its own column (sized by
+     global.css's landscape rule), copy left-aligned, a smaller headline. */
+  @media (max-height: 500px) and (orientation: landscape) and (max-width: 1023px) {
+    .prog-hero { text-align: left; }
+    .prog-hero__card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start; /* the card is taller than the screen: keep the sticker beside the headline */
+      gap: 1.5rem;
+    }
+    .prog-hero__sticker { order: 0; margin: 0; }
+    .prog-hero__heading { font-size: 2rem; }
     .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
     .prog-hero__sub { margin: 0; }
     .prog-hero__intake { margin: 1rem 0 0.75rem; }
@@ -1194,6 +1216,9 @@ const playbookRows = [
     line-height: 1.65;
     color: var(--text-secondary);
     margin-bottom: 0.75rem;
+    /* Nunito's "0" is ~1.33x its average glyph, so 62ch ≈ 80–85 characters.
+       The single programme cards are 800px wide (~115 cpl uncapped). */
+    max-width: 62ch;
   }
 
   .prog-card__topics {
@@ -1316,6 +1341,7 @@ const playbookRows = [
     color: var(--prog-text-secondary);
     margin: 0;
     text-wrap: pretty;
+    max-width: 62ch; /* ~80 cpl; the 964px step column ran 110–125 cpl on laptops */
   }
   .lesson-step__desc em { font-style: italic; color: var(--subject-accent-text); font-weight: 700; }
   .lesson-flow__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
@@ -1326,7 +1352,13 @@ const playbookRows = [
   }
 
   /* ===== INLINE CTA ===== */
-  .prog-inline-cta { text-align: center; padding: 1rem 0 0; }
+  /* These two CTA strips sit outside a .container, so on phones (where the
+     global .btn goes width:100%) the button ran edge to edge with no gutter;
+     the side padding restores it, the bottom padding keeps the next section's
+     eyebrow from butting against the button's shadow. .playbook-cta's base
+     rule lives in playbook.css — the scoped selector outranks it. */
+  .prog-inline-cta { text-align: center; padding: 1rem var(--page-padding) 0.75rem; }
+  .playbook-cta { padding-inline: var(--page-padding); padding-bottom: 0.75rem; }
 
   /* ===== CTA ===== */
   .prog-cta {
@@ -1704,6 +1736,7 @@ const playbookRows = [
   }
   .faq-answer p {
     margin: 0;
+    max-width: 62ch;
   }
 
   /* ===== RECOMMENDED READING — ink cards ===== */
@@ -1887,7 +1920,7 @@ const playbookRows = [
 
   .if-framework { margin-bottom: 2rem; }
   .if-framework__title { font-family: var(--prog-font); font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin: 0 0 0.4rem; }
-  .if-framework__sub { font-size: 0.95rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 640px; margin: 0 0 1rem; }
+  .if-framework__sub { font-size: 0.95rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 62ch; margin: 0 0 1rem; }
   .if-steps { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem; line-height: 1.55; color: var(--prog-text-secondary); }
   .if-steps :global(strong) { color: var(--text-primary); }
   .if-steps :global(sub) { font-size: 0.75em; }
@@ -1902,7 +1935,7 @@ const playbookRows = [
   .if-diagram-wrap { margin: 0; background: var(--bg-muted); border: 2px solid var(--color-ink); border-radius: var(--radius-sm); padding: 0.75rem; }
   .if-diagram { display: block; width: 100%; height: auto; }
   .if-diagram-wrap figcaption { font-size: 0.8rem; line-height: 1.5; color: var(--text-muted); margin-top: 0.6rem; }
-  .if-worked__narrative { font-size: 0.98rem; line-height: 1.7; color: var(--prog-text-secondary); margin: 0; }
+  .if-worked__narrative { font-size: 0.98rem; line-height: 1.7; color: var(--prog-text-secondary); margin: 0; max-width: 62ch; }
   .if-worked__narrative :global(strong) { color: var(--text-primary); }
 
   .if-also { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-top: 1.5rem; }
@@ -1918,8 +1951,8 @@ const playbookRows = [
   }
 
   /* ===== REAL MATERIALS GALLERY — ink cards that lift, dark lightbox ===== */
-  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.25rem; }
-  .notes-gallery--two { grid-template-columns: repeat(2, 1fr); }
+  .notes-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem; }
+  .notes-gallery--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .notes-shot {
     display: flex; flex-direction: column; padding: 0; border: 2px solid var(--color-ink); border-radius: var(--radius-md);
     background: var(--prog-bg-card); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
@@ -1931,7 +1964,7 @@ const playbookRows = [
   .notes-shot:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
   .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 2px solid var(--color-ink); }
   .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.4; color: var(--prog-text-secondary); }
-  .notes-footnote { font-size: 0.92rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 680px; margin: 0; }
+  .notes-footnote { font-size: 0.92rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 62ch; margin: 0; }
 
   .notes-lightbox {
     position: fixed; inset: 0; z-index: var(--z-modal); display: none; align-items: center; justify-content: center;
@@ -1946,8 +1979,26 @@ const playbookRows = [
   }
   .notes-lightbox__close:hover { background: rgba(255, 255, 255, 0.2); }
 
+  /* Tablets and landscape phones: two columns. A single column made each page
+     700–760px wide (≈950px tall, six of them ≈6,000px of scroll) and upscaled
+     the 1100px files on 2x screens; one column only on phones. */
   @media (max-width: 900px) {
-    .notes-gallery, .notes-gallery--two { grid-template-columns: 1fr; }
+    .notes-gallery, .notes-gallery--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .notes-gallery, .notes-gallery--two { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* Shared before/after footnote (global.css) had no measure — ~230 cpl at 1920px */
+  .ba-footnote { max-width: 62ch; }
+
+  /* Laptops and up: running copy at >= 15px (0.9–0.92rem rendered 14.4–14.7px
+     at the 16px root used up to 1440px) */
+  @media (min-width: 1024px) {
+    .prog-card__desc,
+    .if-tax-card p,
+    .notes-footnote,
+    .prog-midcta__sub { font-size: 0.95rem; }
   }
 </style>
 
