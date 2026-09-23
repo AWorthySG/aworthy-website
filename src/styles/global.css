@@ -1416,6 +1416,41 @@ label {
 }
 
 /* ─── Subject Receipts Stats Rail (claudedesign E.3) ─── */
+/* ─── Subject pages: hero booking row and collapsible long samples ───
+   The five subject pages ran 23,000–42,500px on a phone. Long sample
+   material (framework lists past the first four, sample-page galleries,
+   the SHARP playbook matrix, the English oral model answer) sits inside
+   <details class="prog-more">: closed by default, opens without JavaScript,
+   and the content is still in the page for search and for readers who
+   want it. */
+.prog-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 1rem;
+  margin-top: 1rem;
+}
+.prog-hero__fee {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+@media (min-width: 1024px) {
+  .prog-hero__actions { justify-content: flex-start; }
+}
+.prog-more { margin-top: 1rem; }
+.prog-more > summary { list-style: none; }
+.prog-more > summary::-webkit-details-marker { display: none; }
+.prog-more > summary.btn { display: flex; width: fit-content; margin-inline: auto; }
+.prog-more[open] > summary.btn { margin-bottom: 1rem; }
+.prog-more__hide,
+.prog-more[open] .prog-more__show { display: none; }
+.prog-more[open] .prog-more__hide { display: inline; }
+@media (max-width: 480px) {
+  .prog-more > summary.btn { width: 100%; justify-content: center; }
+}
+
 .subject-receipts {
   margin: var(--space-2xl) auto;
   max-width: 60rem; /* rem: scales with the big-screen root (960px at 16px) */

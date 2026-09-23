@@ -27,6 +27,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
       <span class="eyebrow">Free Tool</span>
       <h1 class="calc-title">L1R5 <span class="accent-word">Calculator</span></h1>
       <p class="calc-sub">Work out your net L1R5 aggregate in seconds, apply your CCA and Higher Mother Tongue bonus points, and see which junior colleges you&rsquo;d qualify for under the 2026 cut-off points. Built by A-Worthy&rsquo;s Singapore tutors.</p>
+      <p class="calc-sub calc-sub--note">For this year&rsquo;s Sec 4 students, who apply in the 2027 JAE. From the 2028 JAE, JC admission uses L1R4 &le; 16 instead &mdash; <a href="/blog/sec-examination-guide/">see our SEC guide</a>.</p>
     </div>
     <img src="/images/mascots/mascot-cheer.webp" alt="" width="455" height="508" class="sticker sticker--hero" />
   </section>
@@ -124,7 +125,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
     <div class="container">
       <h2 class="section-title">How L1R5 works</h2>
       <p class="section-subtitle">L1R5 = 1 Language + 5 Relevant subjects &mdash; the aggregate of your six best grades, selected by MOE&rsquo;s rules. Each grade is worth points (A1&nbsp;=&nbsp;1 up to F9&nbsp;=&nbsp;9), so a <em>lower</em> score is better, and bonus points for CCA and Higher Mother Tongue are subtracted to give your net aggregate.</p>
-      <p class="calc-explainer__note">For the full breakdown, bonus-point rules, and the complete 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points-2026/">complete L1R5 &amp; cut-off points guide</a>. Already heading to JC? Plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>.</p>
+      <p class="calc-explainer__note">For the full breakdown, bonus-point rules, and the complete 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points/">complete L1R5 &amp; cut-off points guide</a>. Already heading to JC? Plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>.</p>
     </div>
   </section>
 
@@ -135,6 +136,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-hero { padding: 1.5rem 0 0.75rem; text-align: center; }
   .calc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: var(--text-primary); margin-bottom: 0.75rem; }
   .calc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 40rem; margin: 0 auto; }
+  .calc-sub--note { margin-top: 0.6rem; font-size: 0.95rem; font-weight: 600; }
   .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
   /* Until a result exists the lone form card sits centred instead of leaving the right column blank */
   .calc-grid:has(> .calc-result[hidden]) { grid-template-columns: minmax(0, 640px); justify-content: center; }
