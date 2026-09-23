@@ -36,9 +36,9 @@ const subjects = [
     left: 0;
     right: 0;
     z-index: var(--z-subject-bar);
-    background: rgba(250, 246, 238, 0.86);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    /* Solid, not frosted: the LMS system retires translucent panels. The
+       token resolves per theme, so no dark-mode override is needed. */
+    background: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
   }
 
@@ -106,10 +106,6 @@ const subjects = [
     border-color: var(--color-ink);
     background: var(--bg-hover);
     opacity: 1;
-  }
-
-  :global([data-theme="dark"]) .subject-bar {
-    background: rgba(23, 22, 20, 0.85);
   }
 
   /* Active chip takes its subject's colour (LMS sidebar dots) */

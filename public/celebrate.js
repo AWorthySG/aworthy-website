@@ -18,8 +18,8 @@
     function size() { canvas.width = innerWidth * dpr; canvas.height = innerHeight * dpr; }
     size();
 
-    // Brand-leaning palette (gold/blue) plus a couple of pops.
-    var colors = ['#D4853A', '#E09850', '#2B5A8C', '#4A8C6F', '#B0436A', '#f0b878'];
+    // LMS palette: the action red, the four feature colours and sticker ink.
+    var colors = ['#C0392B', '#3DAA5C', '#F5B82E', '#EF476F', '#5FAEE3', '#22304A'];
     var originX = (opts.x != null ? opts.x : innerWidth / 2) * dpr;
     var originY = (opts.y != null ? opts.y : innerHeight * 0.28) * dpr;
     var count = opts.count || 110;

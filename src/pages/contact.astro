@@ -232,6 +232,7 @@ import '../styles/global.css';
   <!-- ===== HOW TO ENROL ===== -->
   <section class="section enrol-section">
     <div class="container">
+      <img src="/images/mascots/mascot-on-my-way.webp" alt="" width="415" height="480" class="enrol-mascot sticker" loading="lazy" />
       <p class="eyebrow">How to Enrol</p>
       <h2 class="enrol-heading squiggle squiggle--center" data-animate="reveal-up">Three simple steps to get started</h2>
 
@@ -798,6 +799,15 @@ import '../styles/global.css';
   .enrol-section .eyebrow {
     display: block;
     text-align: center;
+  }
+
+  .enrol-mascot {
+    width: 130px;
+    margin: 0 auto 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .enrol-mascot { width: 104px; }
   }
 
   .enrol-heading {

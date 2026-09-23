@@ -578,9 +578,14 @@ import '../styles/global.css';
 
   <section id="contact" class="section contact-section">
     <div class="container">
-      <span class="eyebrow" data-animate="reveal-up">Get Started</span>
-      <h2 class="section-heading" data-animate="reveal-up">Book your child&rsquo;s free diagnostic assessment today</h2>
-      <p class="section-subtitle" data-animate="reveal-up">A free 20-minute diagnostic &mdash; we&rsquo;ll review your child&rsquo;s recent paper and pinpoint exactly where the marks are slipping. No obligation, no sales pitch.</p>
+      <div class="contact-head">
+        <div>
+          <span class="eyebrow" data-animate="reveal-up">Get Started</span>
+          <h2 class="section-heading" data-animate="reveal-up">Book your child&rsquo;s free diagnostic assessment today</h2>
+          <p class="section-subtitle" data-animate="reveal-up">A free 20-minute diagnostic &mdash; we&rsquo;ll review your child&rsquo;s recent paper and pinpoint exactly where the marks are slipping. No obligation, no sales pitch.</p>
+        </div>
+        <img src="/images/mascots/mascot-lets-go.webp" alt="" width="383" height="480" class="contact-head__mascot sticker sticker--right" loading="lazy" />
+      </div>
 
       <div class="contact-grid">
         <!-- Enquiry Form -->
@@ -965,6 +970,23 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   @media (max-width: 768px) {
     .testimonials-head__mascot { display: none; }
+  }
+
+  .contact-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .contact-head__mascot {
+    height: 140px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .contact-head__mascot { display: none; }
   }
 
   /* ===== SECTION SPACING ===== */
