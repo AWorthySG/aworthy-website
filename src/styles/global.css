@@ -115,7 +115,7 @@
   --container-max: 1200px;
   --page-padding: 4rem;
   /* Radius scale — the LMS's 14 / 20 / 26 / pill */
-  --radius-sm: 14px;    /* input, chip, small tile, logo tile */
+  --radius-sm: 14px;    /* input, chip, small tile */
   --radius-md: 20px;    /* card, modal, well */
   --radius-lg: 26px;    /* hero panels, feature blocks */
   --radius-pill: 999px; /* buttons, tags */
@@ -848,21 +848,6 @@ label {
 .icon-circle--blue  { background: var(--tint-blue-bg);  color: var(--tint-blue-fg);  border-color: var(--color-sky); }
 .icon-circle--gold  { background: var(--tint-gold-bg);  color: var(--tint-gold-fg);  border-color: var(--color-sun); }
 .icon-circle--red   { background: var(--color-danger-bg); color: var(--color-accent-text); border-color: var(--color-accent); }
-
-/* Logo tile — the mascot in a small ink-bordered white square (LMS header) */
-.logo-tile {
-  display: inline-grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: #fff;
-  border: 2px solid var(--color-ink);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.logo-tile img { width: 32px; height: auto; }
-[data-theme="dark"] .logo-tile { background: var(--bg-card); }
 
 /* Segmented control — LMS "Sign In | Register" */
 .segmented {

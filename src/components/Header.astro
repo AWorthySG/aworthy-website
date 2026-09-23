@@ -31,7 +31,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   <div class="container header-inner">
     <!-- Logo -->
     <a href="/" class="logo" aria-label="A-Worthy — Home">
-      <span class="logo-tile"><img src="/images/logo-grade-a.webp" alt="" class="logo-img" width="240" height="248" /></span>
+      <img src="/images/logo-grade-a.webp" alt="" class="logo-img" width="233" height="320" />
       <span class="logo-words"><span class="logo-text">A-Worthy</span><span class="logo-sub">Education</span></span>
     </a>
 
@@ -170,9 +170,12 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     flex-shrink: 0;
   }
 
+  /* The full grade-a sticker, caption included; sized to the header so it
+     follows the 56px landscape/PWA header and the 88–96px big-screen one. */
   .logo-img {
-    width: 32px;
-    height: auto;
+    height: calc(var(--header-height) - 12px);
+    width: auto;
+    flex-shrink: 0;
   }
 
   .logo-words {
@@ -534,9 +537,6 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
 
   /* TV / Large screen — larger nav text and logo */
   @media (min-width: 1921px) {
-    .logo-img {
-      width: 36px;
-    }
     .desktop-nav a,
     .desktop-nav .nav-trigger {
       font-size: 0.8rem;
