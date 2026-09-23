@@ -31,32 +31,22 @@ import '../styles/global.css';
           <img src="/images/mascots/mascot-heart-alt.webp" alt="" width="278" height="406" class="contact-form-col__mascot sticker sticker--right" />
         </div>
 
-        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xgoppwye" method="POST" novalidate>
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xgoppwye" method="POST" novalidate data-lead-form data-track="contact-form">
           <!-- Honeypot — hidden from real users, catches bots -->
           <div class="form-hp" aria-hidden="true" tabindex="-1">
             <label for="website">Website</label>
             <input type="text" name="_gotcha" id="website" tabindex="-1" autocomplete="off" />
           </div>
+          <input type="hidden" name="_subject" value="Contact form enquiry" />
 
           <div class="form-row">
             <div class="form-group">
               <label for="parent-name">What should we call you? <span class="required">*</span></label>
-              <input type="text" id="parent-name" name="parentName" required aria-describedby="form-errors" placeholder="e.g. Sarah" />
-            </div>
-            <div class="form-group">
-              <label for="student-name">Your child's name <span class="optional">(optional)</span></label>
-              <input type="text" id="student-name" name="studentName" placeholder="e.g. Ethan" />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Best email to reach you <span class="required">*</span></label>
-              <input type="email" id="email" name="email" required aria-describedby="form-errors" placeholder="e.g. sarah@gmail.com" />
+              <input type="text" id="parent-name" name="parentName" required autocomplete="name" aria-describedby="form-errors" placeholder="e.g. Sarah" />
             </div>
             <div class="form-group">
               <label for="phone">WhatsApp or phone number <span class="required">*</span></label>
-              <input type="tel" id="phone" name="phone" required aria-describedby="form-errors" placeholder="+65 9123 4567" />
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" aria-describedby="form-errors" placeholder="+65 9123 4567" />
             </div>
           </div>
 
@@ -76,40 +66,61 @@ import '../styles/global.css';
               </select>
             </div>
             <div class="form-group">
-              <label for="referral">How did you find us?</label>
-              <select id="referral" name="referral">
-                <option value="">-- Select --</option>
-                <option value="Google">Google</option>
-                <option value="Facebook">Facebook</option>
-                <option value="Friend/Family">Friend / Family</option>
-                <option value="School">School</option>
-                <option value="Other">Other</option>
-              </select>
+              <label for="email">Email <span class="optional">(optional)</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" aria-describedby="form-errors" placeholder="e.g. sarah@gmail.com" />
             </div>
           </div>
 
           <fieldset class="form-group form-fieldset" id="subjects-fieldset" aria-describedby="form-errors">
             <legend>Which subject(s)? <span class="required">*</span></legend>
             <div class="checkbox-group">
-              <label class="check-label"><input type="checkbox" name="subjects" value="O-Level English (Sec 1-4)" /><span class="check-box" aria-hidden="true"></span><span>O-Level English (Sec 1&ndash;4)</span></label>
-              <label class="check-label"><input type="checkbox" name="subjects" value="O-Level Mathematics (Sec 1-4)" /><span class="check-box" aria-hidden="true"></span><span>O-Level Mathematics (Sec 1&ndash;4)</span></label>
-              <label class="check-label"><input type="checkbox" name="subjects" value="Pre-IB Mathematics (Year 3-4)" /><span class="check-box" aria-hidden="true"></span><span>Pre-IB Mathematics (Year 3&ndash;4)</span></label>
-              <label class="check-label"><input type="checkbox" name="subjects" value="H1 General Paper (JC)" /><span class="check-box" aria-hidden="true"></span><span>H1 General Paper (JC)</span></label>
-              <label class="check-label"><input type="checkbox" name="subjects" value="H2 Economics (JC)" /><span class="check-box" aria-hidden="true"></span><span>H2 Economics (JC)</span></label>
-              <label class="check-label"><input type="checkbox" name="subjects" value="One-to-one coaching" /><span class="check-box" aria-hidden="true"></span><span>One-to-one coaching</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="O-Level English (Sec 1-4)" data-key="english" data-name="O-Level English" /><span class="check-box" aria-hidden="true"></span><span>O-Level English (Sec 1&ndash;4)</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="O-Level Mathematics (Sec 1-4)" data-key="maths" data-name="O-Level Mathematics" /><span class="check-box" aria-hidden="true"></span><span>O-Level Mathematics (Sec 1&ndash;4)</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="Pre-IB Mathematics (Year 3-4)" data-key="preib" data-name="Pre-IB Mathematics" /><span class="check-box" aria-hidden="true"></span><span>Pre-IB Mathematics (Year 3&ndash;4)</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="H1 General Paper (JC)" data-key="gp" data-name="H1 General Paper" /><span class="check-box" aria-hidden="true"></span><span>H1 General Paper (JC)</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="H2 Economics (JC)" data-key="econ" data-name="H2 Economics" /><span class="check-box" aria-hidden="true"></span><span>H2 Economics (JC)</span></label>
+              <label class="check-label"><input type="checkbox" name="subjects" value="One-to-one coaching" data-key="coaching" data-name="One-to-one coaching" /><span class="check-box" aria-hidden="true"></span><span>One-to-one coaching</span></label>
             </div>
           </fieldset>
 
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="What would you like us to know about your child? Any specific challenges or goals..."></textarea>
-          </div>
+          <details class="form-more">
+            <summary class="form-more__summary">More details (optional)</summary>
+            <div class="form-more__body">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="student-name">Your child's name</label>
+                  <input type="text" id="student-name" name="studentName" autocomplete="off" placeholder="e.g. Ethan" />
+                </div>
+                <div class="form-group">
+                  <label for="referral">How did you find us?</label>
+                  <select id="referral" name="referral">
+                    <option value="">-- Select --</option>
+                    <option value="Google search">Google search</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Online advert">Online advert</option>
+                    <option value="Friend or family">Friend or family</option>
+                    <option value="School or teacher">School or teacher</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="What would you like us to know about your child? Any specific challenges or goals..."></textarea>
+              </div>
+            </div>
+          </details>
 
           <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Book Free Assessment</span></button>
 
-          <div id="form-success" class="form-success" hidden>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-            Thank you. Jeremy will WhatsApp you within 24 hours to fix a 20-minute Zoom slot for the free assessment. Before the call, please send a photo of your child's latest marked paper to +65 8991 3181. You'll receive a written summary of the gaps afterwards.
+          <div id="form-success" class="form-success" role="status" tabindex="-1" hidden>
+            <p class="form-success__text">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Thank you. Jeremy will WhatsApp you within 24 hours to fix a 20-minute Zoom slot for the free assessment. Before the call, please send a photo of your child's latest marked paper. You'll receive a written summary of the gaps afterwards.</span>
+            </p>
+            <a id="form-success-wa" class="btn btn-whatsapp form-success__wa" href="https://wa.me/6589913181" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Send on WhatsApp</a>
           </div>
           <div id="form-errors" class="form-errors" role="alert" hidden></div>
         </form>
@@ -307,90 +318,132 @@ import '../styles/global.css';
 <!-- ===== CLIENT-SIDE SCRIPTS ===== -->
 <script>
   // --- Form Validation & Submission ---
+  // The lead event fires only when Formspree answers OK. After a send the
+  // button stays disabled and a pre-filled WhatsApp button asks for the marked
+  // paper. Works with or without the sitewide helpers (aworthyWaRef,
+  // aworthyAttachAttribution, plausible).
+  const w = window as any;
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const successMsg = document.getElementById('form-success') as HTMLDivElement;
+  const successWa = document.getElementById('form-success-wa') as HTMLAnchorElement;
   const errorsMsg = document.getElementById('form-errors') as HTMLDivElement;
+  const submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement;
+  const subjectBoxes = Array.from(form.querySelectorAll<HTMLInputElement>('input[name="subjects"]'));
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function waHref(text: string): string {
+    let ref = 'WEB';
+    try { if (typeof w.aworthyWaRef === 'function') ref = w.aworthyWaRef() || 'WEB'; } catch { /* keep WEB */ }
+    return 'https://wa.me/6589913181?text=' + encodeURIComponent(text + ' [ref: ' + ref + ']');
+  }
+
+  function showErrors(nodes: HTMLElement[]) {
+    errorsMsg.textContent = '';
+    nodes.forEach((n) => errorsMsg.appendChild(n));
+    errorsMsg.hidden = false;
+    successMsg.hidden = true;
+    errorsMsg.scrollIntoView({ block: 'center' });
+  }
+
+  function para(text: string): HTMLParagraphElement {
+    const p = document.createElement('p');
+    p.textContent = text;
+    return p;
+  }
+
+  // /contact/?subject=english|maths|preib|gp|econ ticks that subject
+  // (comma-separated values tick several; unknown values are ignored).
+  try {
+    const wanted = (new URLSearchParams(location.search).get('subject') || '').toLowerCase().split(',').map((v) => v.trim());
+    subjectBoxes.forEach((box) => { if (wanted.includes(box.dataset.key || '')) box.checked = true; });
+  } catch { /* no preselection */ }
 
   form.addEventListener('submit', async (e: Event) => {
     e.preventDefault();
     const errors: string[] = [];
 
-    const parentName = (form.querySelector('#parent-name') as HTMLInputElement).value.trim();
-    const email = (form.querySelector('#email') as HTMLInputElement).value.trim();
-    const phone = (form.querySelector('#phone') as HTMLInputElement).value.trim();
-    const studentLevel = (form.querySelector('#student-level') as HTMLSelectElement).value;
-    const subjectsChosen = form.querySelectorAll('input[name="subjects"]:checked').length;
+    const nameInput = form.querySelector('#parent-name') as HTMLInputElement;
+    const emailInput = form.querySelector('#email') as HTMLInputElement;
+    const phoneInput = form.querySelector('#phone') as HTMLInputElement;
+    const levelSelect = form.querySelector('#student-level') as HTMLSelectElement;
+    const subjectsFieldset = form.querySelector('#subjects-fieldset') as HTMLFieldSetElement;
+    const parentName = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const studentLevel = levelSelect.value;
+    const chosen = subjectBoxes.filter((b) => b.checked).map((b) => b.dataset.name || b.value);
+    const digits = phone.replace(/\D/g, '');
+    const phoneOk = !!phone && digits.length >= 8 && digits.length <= 15;
+    const emailOk = !email || EMAIL_RE.test(email);
+
     if (!parentName) errors.push('Please tell us what to call you.');
-    if (!email) {
-      errors.push('Please enter your email address.');
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-      errors.push('Please enter a valid email address.');
-    }
     if (!phone) {
       errors.push('Please enter your WhatsApp or phone number.');
-    } else if (!/^\+?[\d][\d\s\-()]{6,14}$/.test(phone)) {
-      errors.push('Please enter a valid phone number.');
+    } else if (!phoneOk) {
+      errors.push('Please enter a valid WhatsApp or phone number.');
     }
     if (!studentLevel) errors.push('Please choose your child\'s level.');
-    if (!subjectsChosen) errors.push('Please choose at least one subject.');
+    if (!chosen.length) errors.push('Please choose at least one subject.');
+    if (!emailOk) errors.push('Please enter a valid email address, or leave the email blank.');
 
-    const requiredFields = form.querySelectorAll('[required]');
-    requiredFields.forEach(f => f.removeAttribute('aria-invalid'));
-    if (!parentName) (form.querySelector('#parent-name') as HTMLInputElement).setAttribute('aria-invalid', 'true');
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) (form.querySelector('#email') as HTMLInputElement).setAttribute('aria-invalid', 'true');
-    if (!phone || !/^\+?[\d][\d\s\-()]{6,14}$/.test(phone)) (form.querySelector('#phone') as HTMLInputElement).setAttribute('aria-invalid', 'true');
-    if (!studentLevel) (form.querySelector('#student-level') as HTMLSelectElement).setAttribute('aria-invalid', 'true');
-    const subjectsFieldset = form.querySelector('#subjects-fieldset') as HTMLFieldSetElement;
-    if (subjectsChosen) subjectsFieldset.removeAttribute('aria-invalid'); else subjectsFieldset.setAttribute('aria-invalid', 'true');
+    const flags: [Element, boolean][] = [
+      [nameInput, !parentName],
+      [phoneInput, !phoneOk],
+      [levelSelect, !studentLevel],
+      [subjectsFieldset, !chosen.length],
+      [emailInput, !emailOk],
+    ];
+    flags.forEach(([el, bad]) => { if (bad) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); });
 
     if (errors.length > 0) {
-      errorsMsg.hidden = false;
-      errorsMsg.textContent = '';
-      errors.forEach(err => {
-        const p = document.createElement('p');
-        p.textContent = err;
-        errorsMsg.appendChild(p);
-      });
-      successMsg.hidden = true;
-      errorsMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      showErrors(errors.map(para));
       return;
     }
 
-    // Submit form data
-    var submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement;
+    const subjectLabel = chosen.join(', ');
+    (form.querySelector('[name="_subject"]') as HTMLInputElement).value = 'Contact form enquiry: ' + subjectLabel;
+    if (typeof w.aworthyAttachAttribution === 'function') {
+      try { w.aworthyAttachAttribution(form); } catch { /* attribution is optional */ }
+    }
+
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
 
+    let ok = false;
     try {
-      const formData = new FormData(form);
       const response = await fetch(form.action, {
         method: 'POST',
-        body: formData,
+        body: new FormData(form),
         headers: { 'Accept': 'application/json' },
       });
-
-      if (response.ok) {
-        errorsMsg.hidden = true;
-        successMsg.hidden = false;
-        if ((window as any).plausible) (window as any).plausible('Lead: Contact Form');
-        if ((window as any).aworthyCelebrate) (window as any).aworthyCelebrate();
-        form.reset();
-        requiredFields.forEach(f => f.removeAttribute('aria-invalid'));
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        throw new Error('Submission failed');
-      }
+      ok = response.ok;
     } catch {
-      errorsMsg.hidden = false;
-      errorsMsg.textContent = '';
-      const p = document.createElement('p');
-      p.textContent = 'Something went wrong. Please try again or contact us via WhatsApp.';
-      errorsMsg.appendChild(p);
-      successMsg.hidden = true;
-      errorsMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } finally {
+      ok = false;
+    }
+
+    if (ok) {
+      if (typeof w.plausible === 'function') {
+        try { w.plausible('Lead: Contact Form', { props: { subject: subjectLabel } }); } catch { /* analytics only */ }
+      }
+      if (w.aworthyCelebrate) w.aworthyCelebrate();
+      // stays disabled: one enquiry per visit, and the WhatsApp button is the next step
+      submitBtn.innerHTML = '<span>Sent</span>';
+      errorsMsg.hidden = true;
+      successWa.href = waHref('Hi Jeremy, I\'m ' + parentName + '. I\'ve just asked for a free assessment for my child (' + studentLevel + ', ' + subjectLabel + '). Here is the latest marked paper.');
+      successMsg.hidden = false;
+      successMsg.focus({ preventScroll: true });
+      successMsg.scrollIntoView({ block: 'center' });
+    } else {
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<span>Book Free Assessment</span>';
+      const p = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = waHref('Hi Jeremy, I\'m ' + parentName + '. I\'d like to book a free assessment for my child (' + studentLevel + ', ' + subjectLabel + ').');
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = 'send your request on WhatsApp';
+      p.append('Your message could not be sent. Please try again, or ', a, '.');
+      showErrors([p]);
     }
   });
 
@@ -533,18 +586,11 @@ import '../styles/global.css';
     letter-spacing: 0;
   }
 
-  /* Inputs inherit the global look (muted fill, 2px ink, red focus ring).
-     Only the select chevron is page-specific because the global rule strips
-     the native arrow. */
+  /* Inputs inherit the global look (muted fill, 2px ink, red focus ring), and
+     global.css draws the select chevron in both themes. (A page-level grey
+     chevron here replaced the global one and was faint on dark mode.) */
   .form-group textarea {
     min-height: 120px;
-  }
-
-  .form-group select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6760' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    padding-right: 2.5rem;
   }
 
   /* Checkbox group — check rows in a 2-column grid (1 column on phones) */
@@ -632,6 +678,44 @@ import '../styles/global.css';
     padding: 1rem 2rem;
   }
 
+  /* "More details (optional)" — the optional fields fold away under a dashed
+     well; the summary is a 44px row with the same +/− as the FAQ accordions */
+  .form-more {
+    margin-bottom: var(--space-md);
+    border: 2px dashed var(--ink-faint);
+    border-radius: var(--radius-sm);
+  }
+  .form-more__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    touch-action: manipulation;
+  }
+  .form-more__summary::-webkit-details-marker { display: none; }
+  .form-more__summary::after {
+    content: '+';
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-secondary);
+  }
+  .form-more[open] > .form-more__summary::after { content: '\2212'; }
+  @media (hover: hover) {
+    .form-more__summary:hover { color: var(--color-accent-text); }
+  }
+  .form-more__body {
+    padding: 0.25rem 1rem 1rem;
+  }
+  .form-more__body > .form-group:last-child { margin-bottom: 0; }
+
   /* Success & Error Messages — tinted status wells */
   .form-success {
     margin-top: var(--space-lg);
@@ -641,15 +725,23 @@ import '../styles/global.css';
     border: 2px solid var(--color-leaf);
     border-radius: var(--radius-sm);
     font-weight: 600;
-    text-align: center;
     display: none;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: var(--space-sm);
     font-size: 0.95rem;
   }
   .form-success[hidden] { display: none; }
   .form-success:not([hidden]) { display: flex; }
+  .form-success:focus { outline: none; }
+  .form-success__text {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .form-success__text svg { flex-shrink: 0; margin-top: 0.15rem; }
 
   .form-errors {
     margin-top: var(--space-lg);
@@ -665,6 +757,12 @@ import '../styles/global.css';
   .form-errors p {
     margin: 0.3rem 0;
     color: var(--color-accent-text);
+  }
+
+  .form-errors a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
   }
 
   /* ===== CONTACT INFO COLUMN ===== */
@@ -1140,6 +1238,6 @@ import '../styles/global.css';
 
   .btn-submit:disabled {
     opacity: 0.7;
-    cursor: wait;
+    cursor: default;
   }
 </style>

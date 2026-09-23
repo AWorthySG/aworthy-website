@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
+
+const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, I'd like to ask about H2 Economics tuition.");
 ---
 
 <BaseLayout title="H2 Economics Tuition for JC Students | A-Worthy Singapore" description="H2 Economics tuition for JC students in groups of up to 6. The SHARP Method for diagrams, essay technique and case studies. Book a free assessment." ogImage="/images/og-econs.png" noindex={true}>
@@ -15,17 +17,64 @@ import '../../styles/global.css';
           <span class="eyebrow">H2 Economics Tuition</span>
           <h1 class="lp-title squiggle">Master H2 Economics with<br/> <span class="accent-word">analytical precision</span></h1>
           <p class="lp-subtitle">The SHARP Method applies legal reasoning to economic analysis: diagram accuracy, essay structure and case study evaluation. Small groups of 6, live on the A-Worthy Whiteboard. <a href="/h2-economics/#playbook">See the full SHARP Playbook&nbsp;&rarr;</a></p>
-          <div class="lp-cta-row">
-            <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
-            <a href="/h2-economics/" class="btn">View Full Programme</a>
+          <div class="lp-cta-row" data-track="hero">
+            <a href="#lp-form" class="btn btn-accent plausible-event-name=LP+CTA+Click" data-cta>Book Free Assessment</a>
+            <a href={waAsk} class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Ask on WhatsApp</a>
           </div>
           <div class="lp-stats">
-                        <div class="lp-stat"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span><span class="lp-stat-num">6</span><span class="lp-stat-label">max per class</span></div>
+            <div class="lp-stat"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span><span class="lp-stat-num">6</span><span class="lp-stat-label">max per class</span></div>
             <div class="lp-stat"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span class="lp-stat-num" data-count="4.9">4.9</span><span class="lp-stat-label">Google rating</span></div>
-            <div class="lp-stat"><span class="stat-dot stat-dot--blue" aria-hidden="true"></span><span class="lp-stat-num">S$360</span><span class="lp-stat-label">from / month</span></div>
+            <div class="lp-stat"><span class="stat-dot stat-dot--gold" aria-hidden="true"></span><span class="lp-stat-num">S$360</span><span class="lp-stat-label">from / month</span></div>
           </div>
         </div>
         <img class="sticker sticker--right lp-hero-art" src="/images/mascots/mascot-economics.webp" width="426" height="551" alt="" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENQUIRY FORM — four fields, subject fixed; about one phone screen below the hero ===== -->
+  <section class="section lp-form-section" id="lp-form">
+    <div class="container">
+      <div class="lp-form-card">
+        <h2 class="lp-form-title squiggle squiggle--center">Book a free assessment</h2>
+        <p class="lp-form-lead">A 20-minute Zoom call on your child&rsquo;s latest marked Economics paper, followed by a written summary of the gaps.</p>
+        <form id="lp-enquiry" class="lp-form" action="https://formspree.io/f/xgoppwye" method="POST" novalidate data-lead-form data-track="lp-form">
+          <div class="form-hp" aria-hidden="true">
+            <label for="lp-website">Website</label>
+            <input type="text" name="_gotcha" id="lp-website" tabindex="-1" autocomplete="off" />
+          </div>
+          <input type="hidden" name="subject" value="H2 Economics" />
+          <input type="hidden" name="_subject" value="Landing page enquiry: H2 Economics" />
+          <div class="lp-form__grid">
+            <div class="lp-form__field">
+              <label for="lp-name">Parent&rsquo;s name <span class="lp-form__req" aria-hidden="true">*</span></label>
+              <input type="text" id="lp-name" name="parentName" required autocomplete="name" placeholder="e.g. Sarah" aria-describedby="lp-form-errors" />
+            </div>
+            <div class="lp-form__field">
+              <label for="lp-phone">WhatsApp number <span class="lp-form__req" aria-hidden="true">*</span></label>
+              <input type="tel" id="lp-phone" name="phone" required autocomplete="tel" placeholder="+65 9123 4567" aria-describedby="lp-form-errors" />
+            </div>
+            <div class="lp-form__field">
+              <label for="lp-level">Child&rsquo;s level <span class="lp-form__req" aria-hidden="true">*</span></label>
+              <select id="lp-level" name="studentLevel" required aria-describedby="lp-form-errors">
+                <option value="">Select level</option>
+                <option value="JC 1">JC 1</option>
+                <option value="JC 2">JC 2</option>
+              </select>
+            </div>
+            <div class="lp-form__field">
+              <label for="lp-email">Email <span class="lp-form__optional">(optional)</span></label>
+              <input type="email" id="lp-email" name="email" autocomplete="email" placeholder="e.g. sarah@gmail.com" aria-describedby="lp-form-errors" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-accent lp-form__submit">Book Free Assessment</button>
+          <div id="lp-form-errors" class="lp-form__errors" role="alert" hidden></div>
+        </form>
+        <div id="lp-form-success" class="lp-form__success" role="status" tabindex="-1" hidden>
+          <p class="lp-form__success-title">Request received</p>
+          <p class="lp-form__success-text" id="lp-form-success-text">Thank you. Please send a photo of your child&rsquo;s latest marked paper on WhatsApp, so that Jeremy can review it before the assessment call.</p>
+          <a id="lp-form-success-wa" class="btn btn-whatsapp lp-form__wa" href="https://wa.me/6589913181" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Send on WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
@@ -67,16 +116,117 @@ import '../../styles/global.css';
     </div>
   </section>
 
-  <section class="section section--sand lp-final-cta">
+  <section class="section section--sand lp-final-cta" data-track="final-cta">
     <div class="container" style="text-align:center;">
       <h2 class="squiggle squiggle--center">Ready to improve your Economics grade?</h2>
       <p style="max-width:33.75rem;margin:0 auto 2rem;color:var(--text-secondary);">Book a free 20-minute diagnostic assessment. We&rsquo;ll identify your specific gaps and recommend the right programme.</p>
-      <a href="/contact/" class="btn btn-accent plausible-event-name=LP+CTA+Click">Book Free Assessment</a>
+      <a href="#lp-form" class="btn btn-accent plausible-event-name=LP+CTA+Click" data-cta>Book Free Assessment</a>
     </div>
   </section>
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<!-- Enquiry form: validation, Formspree submit, lead event on success only,
+     pre-filled WhatsApp button afterwards. Works whether or not the sitewide
+     helpers (aworthyWaRef, aworthyAttachAttribution, plausible) are present. -->
+<script is:inline>
+(function () {
+  var form = document.getElementById('lp-enquiry');
+  if (!form) return;
+  var btn = form.querySelector('.lp-form__submit');
+  var errorsEl = document.getElementById('lp-form-errors');
+  var successEl = document.getElementById('lp-form-success');
+  var successText = document.getElementById('lp-form-success-text');
+  var successWa = document.getElementById('lp-form-success-wa');
+  var BTN_LABEL = btn.textContent;
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function field(name) { return form.elements.namedItem(name); }
+  function waHref(text) {
+    var ref = 'WEB';
+    try { if (typeof window.aworthyWaRef === 'function') ref = window.aworthyWaRef() || 'WEB'; } catch (e) {}
+    return 'https://wa.me/6589913181?text=' + encodeURIComponent(text + ' [ref: ' + ref + ']');
+  }
+  function showErrors(nodes) {
+    errorsEl.textContent = '';
+    nodes.forEach(function (n) { errorsEl.appendChild(n); });
+    errorsEl.hidden = false;
+  }
+  function para(text) { var p = document.createElement('p'); p.textContent = text; return p; }
+
+  // "Book Free Assessment" buttons jump here (the browser scrolls, with the
+  // section's scroll-margin); keyboard focus follows into the first field.
+  // After a tick: the fragment navigation itself moves focus to the page.
+  document.querySelectorAll('a[href="#lp-form"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      setTimeout(function () {
+        var target = form.hidden ? successEl : field('parentName');
+        try { target.focus({ preventScroll: true }); } catch (e) { target.focus(); }
+      }, 0);
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = field('parentName'), phone = field('phone'), level = field('studentLevel'), email = field('email');
+    var subject = field('subject').value;
+    var errors = [], invalid = [];
+    [name, phone, level, email].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+    var digits = phone.value.replace(/\D/g, '');
+    if (!name.value.trim()) { errors.push('Please enter the parent\u2019s name.'); invalid.push(name); }
+    if (!phone.value.trim()) { errors.push('Please enter a WhatsApp number.'); invalid.push(phone); }
+    else if (digits.length < 8 || digits.length > 15) { errors.push('Please enter a valid WhatsApp number.'); invalid.push(phone); }
+    if (!level.value) { errors.push('Please choose the child\u2019s level.'); invalid.push(level); }
+    if (email.value.trim() && !EMAIL_RE.test(email.value.trim())) { errors.push('Please enter a valid email address, or leave the email blank.'); invalid.push(email); }
+    if (errors.length) {
+      showErrors(errors.map(para));
+      invalid.forEach(function (f) { f.setAttribute('aria-invalid', 'true'); });
+      invalid[0].focus();
+      return;
+    }
+
+    errorsEl.hidden = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    if (typeof window.aworthyAttachAttribution === 'function') {
+      try { window.aworthyAttachAttribution(form); } catch (err) {}
+    }
+    var who = name.value.trim(), lvl = level.value;
+
+    function sent() {
+      if (typeof window.plausible === 'function') {
+        try { window.plausible('Lead: Landing Page Form', { props: { subject: subject } }); } catch (err) {}
+      }
+      successText.textContent = 'Thank you, ' + who + '. Please send a photo of your child\u2019s latest marked paper on WhatsApp, so that Jeremy can review it before the assessment call.';
+      successWa.href = waHref('Hi Jeremy, I\'m ' + who + '. I\'ve just asked for a free assessment for my child (' + lvl + ', ' + subject + '). Here is the latest marked paper.');
+      form.hidden = true;
+      successEl.hidden = false;
+      // centred: clear of the fixed header and of the bottom bar on phones
+      try { successEl.focus({ preventScroll: true }); } catch (err) { successEl.focus(); }
+      successEl.scrollIntoView({ block: 'center' });
+    }
+    function failed() {
+      btn.disabled = false;
+      btn.textContent = BTN_LABEL;
+      var p = document.createElement('p');
+      var a = document.createElement('a');
+      a.href = waHref('Hi Jeremy, I\'m ' + who + '. I\'d like to book a free assessment for my child (' + lvl + ', ' + subject + ').');
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = 'send your request on WhatsApp';
+      p.appendChild(document.createTextNode('Your request could not be sent. Please try again, or '));
+      p.appendChild(a);
+      p.appendChild(document.createTextNode('.'));
+      showErrors([p]);
+      errorsEl.scrollIntoView({ block: 'center' });
+    }
+
+    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (r.ok) sent(); else failed(); }, failed);
+  });
+})();
+</script>
 
 <style>
   /* ── Hero — the LMS welcome card: a white ink card with the subject-tint wash,
@@ -169,6 +319,54 @@ import '../../styles/global.css';
     .lp-feature p { font-size: 1rem; }
   }
 
+  /* ── Enquiry form — a white ink card straight after the hero. Inputs take the
+     global look (muted fill, 2px ink, red focus ring); labels are grey
+     micro-labels. The section's scroll-margin keeps the heading clear of the
+     fixed header when the hero / final buttons jump here. ── */
+  .lp-form-section { scroll-margin-top: var(--nav-offset); }
+  .lp-form-card {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.75rem 2rem;
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
+  }
+  .lp-form-title { font-family: var(--font-heading); font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; letter-spacing: -0.02em; text-align: center; margin-bottom: 0.75rem; }
+  .lp-form-lead { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); text-align: center; max-width: 32rem; margin: 0 auto 1.25rem; text-wrap: pretty; }
+  .lp-form__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .lp-form__field { display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
+  .lp-form__field label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); }
+  .lp-form__req { color: var(--color-accent-text); }
+  .lp-form__optional { font-weight: 600; text-transform: none; letter-spacing: 0; }
+  .lp-form__submit { width: 100%; margin-top: 1.25rem; }
+  .lp-form__submit:disabled { opacity: 0.7; cursor: wait; }
+  .form-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .lp-form__errors {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    background: var(--color-danger-bg);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    color: var(--color-accent-text);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .lp-form__errors p { margin: 0.2rem 0; }
+  .lp-form__errors a { color: inherit; text-decoration: underline; text-underline-offset: 0.15em; }
+  /* Success — green status well with the WhatsApp button (the form is hidden) */
+  .lp-form__success {
+    padding: 1.25rem;
+    background: var(--tint-green-bg);
+    border: 2px solid var(--color-leaf);
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+  .lp-form__success:focus { outline: none; }
+  .lp-form__success-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--tint-green-fg); margin-bottom: 0.4rem; }
+  .lp-form__success-text { font-size: 0.95rem; line-height: 1.6; color: var(--text-primary); margin-bottom: 1rem; }
+
   /* ── Final CTA — sand band, one red button ── */
   .lp-final-cta h2 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
 
@@ -180,6 +378,8 @@ import '../../styles/global.css';
     .lp-stat-label { font-size: 0.72rem; letter-spacing: 0.06em; }
     .lp-testimonial { padding: 1.5rem 1.25rem; }
     .lp-features-grid { grid-template-columns: minmax(0, 1fr); }
+    .lp-form-card { padding: 1.25rem 1rem; }
+    .lp-form__grid { grid-template-columns: minmax(0, 1fr); gap: 0.85rem; }
   }
 
   @media (max-width: 480px) {
