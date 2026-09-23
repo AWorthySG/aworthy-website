@@ -4,7 +4,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import '../styles/playbook.css';
-import { nextIntakeLabel } from '../data/site-config';
 
 const sharpSteps = [
   { letter: 'S', name: 'See' },
@@ -100,7 +99,7 @@ const playbookRows = [
           <p class="eyebrow">H2 Economics</p>
           <h1 class="prog-hero__heading squiggle">Best H2 <span class="accent-word">Economics</span> Tuition <br />in Singapore for JC Students</h1>
           <p class="prog-hero__sub">Master the A-Level H2 Economics 9570 syllabus with the SHARP Method &mdash; a five-step analytical system that gives your child precision frameworks for diagram accuracy, DEED essay structure, Extract-Link-Apply case study technique, and the higher-order evaluation that separates L2 from L3 in the Cambridge mark scheme.</p>
-          <p class="speech-bubble prog-hero__intake">Next intake: <strong>{nextIntakeLabel}</strong> &middot; JC 1 &amp; JC 2 &middot; max 6 per class</p>
+          <p class="speech-bubble prog-hero__intake">JC 1 &amp; JC 2 &middot; max 6 per class</p>
         </div>
         <img class="sticker sticker--right prog-hero__sticker" src="/images/mascots/mascot-economics.webp" alt="" width="426" height="551" loading="eager" decoding="async" />
       </div>
@@ -705,7 +704,7 @@ const playbookRows = [
         </details>
         <details class="faq-item">
           <summary class="faq-question">What is the difference between H1 and H2 Economics?</summary>
-          <div class="faq-answer"><p>H2 Economics covers microeconomics and macroeconomics in greater depth, with a compulsory case study paper. H1 covers similar topics but at a broader level with no case study component.</p></div>
+          <div class="faq-answer"><p>H2 Economics (9570) covers microeconomics and macroeconomics in greater depth and is examined through a case study paper and an essay paper. H1 Economics (8843) covers a narrower range of topics and is examined through case study questions only, with no essay paper.</p></div>
         </details>
         <details class="faq-item">
           <summary class="faq-question">How can I improve my H2 Economics essays?</summary>
@@ -773,19 +772,8 @@ const playbookRows = [
   <section class="prog-section" id="schedule">
     <div class="container">
       <span class="eyebrow">Schedule</span>
-      <h2 class="prog-section__heading">Class Schedule &amp; Availability</h2>
+      <h2 class="prog-section__heading">Class Schedule</h2>
       <p class="prog-section__sub">All classes run live on the A-Worthy Whiteboard. Limited to 6 students per class for personalised attention.</p>
-
-      <div class="slots-banner">
-        <div class="slots-indicator">
-          <span class="stat-dot stat-dot--gold" aria-hidden="true"></span>
-          <span class="slots-text"><strong>JC1 H2 Economics:</strong> 3 of 6 slots remaining</span>
-        </div>
-        <div class="slots-indicator">
-          <span class="stat-dot stat-dot--gold" aria-hidden="true"></span>
-          <span class="slots-text"><strong>JC2 H2 Economics:</strong> 2 of 6 slots remaining</span>
-        </div>
-      </div>
 
       <div class="schedule-table-wrap">
         <table class="schedule-table">
@@ -794,7 +782,6 @@ const playbookRows = [
               <th scope="col">Programme</th>
               <th scope="col">Day &amp; Time</th>
               <th scope="col">Duration</th>
-              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -802,24 +789,21 @@ const playbookRows = [
               <td data-label="Programme">JC 1 Foundation</td>
               <td data-label="Day &amp; time">Saturday, 10:00 AM &ndash; 11:30 AM</td>
               <td data-label="Duration">90 min</td>
-              <td data-label="Status"><span class="chip chip--gold">3 slots left</span></td>
             </tr>
             <tr>
               <td data-label="Programme">JC 2 Intensive</td>
               <td data-label="Day &amp; time">Sunday, 2:00 PM &ndash; 3:30 PM</td>
               <td data-label="Duration">90 min</td>
-              <td data-label="Status"><span class="chip chip--gold">2 slots left</span></td>
             </tr>
             <tr>
               <td data-label="Programme">One-to-One</td>
               <td data-label="Day &amp; time">Flexible &ndash; by arrangement</td>
               <td data-label="Duration">60&ndash;90 min</td>
-              <td data-label="Status"><span class="chip chip--green">Available</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="schedule-note">Next intake: <strong>Term 3, July 2026</strong>. <a href="/contact/">Book Free Assessment</a> to secure your slot.</p>
+      <p class="schedule-note"><a href="/contact/">Book Free Assessment</a> to secure your slot.</p>
     </div>
   </section>
 
@@ -850,7 +834,7 @@ const playbookRows = [
       {
         "@type": "Question",
         "name": "What is the difference between H1 and H2 Economics?",
-        "acceptedAnswer": { "@type": "Answer", "text": "H2 Economics covers microeconomics and macroeconomics in greater depth, with a compulsory case study paper. H1 covers similar topics but at a broader level with no case study component." }
+        "acceptedAnswer": { "@type": "Answer", "text": "H2 Economics (9570) covers microeconomics and macroeconomics in greater depth and is examined through a case study paper and an essay paper. H1 Economics (8843) covers a narrower range of topics and is examined through case study questions only, with no essay paper." }
       },
       {
         "@type": "Question",
@@ -1864,34 +1848,6 @@ const playbookRows = [
     .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; }
     .subject-receipts-section .subject-receipts dt { font-size: clamp(1.9rem, 7vw, 2.4rem); }
     .subject-receipts-section .subject-receipts dl > div:last-child { grid-column: 1 / -1; }
-  }
-
-  /* ===== SLOTS BANNER — a muted well ===== */
-  .slots-banner {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    background: var(--bg-muted);
-    border: 2px solid var(--color-ink);
-    border-radius: var(--radius-md);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-  .slots-indicator {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  /* Availability is data, not an action: the gold stat dot matches the
-     "slots left" chips in the table (red stays reserved for buttons) */
-  .slots-indicator .stat-dot { width: 12px; height: 12px; margin-right: 0; }
-  .slots-text {
-    font-size: 0.9rem;
-    color: var(--text-primary);
-  }
-  .slots-text strong {
-    color: var(--text-primary);
-    font-weight: 800;
   }
 
   /* ===== MID-PAGE CTA BAND — ink card with a subject-coloured rail ===== */

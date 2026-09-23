@@ -940,19 +940,8 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   <section class="prog-section" id="schedule">
     <div class="container">
       <span class="eyebrow">Schedule</span>
-      <h2 class="prog-section__heading">Class Schedule &amp; Availability</h2>
+      <h2 class="prog-section__heading">Class Schedule</h2>
       <p class="prog-section__sub">All classes run live on the A-Worthy Whiteboard. Limited to 6 students per class for personalised attention.</p>
-
-      <div class="slots-banner">
-        <div class="slots-indicator">
-          <span class="slots-dot pulse"></span>
-          <span class="slots-text"><strong>Sec 1&ndash;2 English:</strong> 4 of 6 slots remaining</span>
-        </div>
-        <div class="slots-indicator">
-          <span class="slots-dot pulse"></span>
-          <span class="slots-text"><strong>Sec 3&ndash;4 O-Level English:</strong> 3 of 6 slots remaining</span>
-        </div>
-      </div>
 
       <div class="schedule-table-wrap">
         <table class="schedule-table">
@@ -961,7 +950,6 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
               <th scope="col">Programme</th>
               <th scope="col">Day &amp; Time</th>
               <th scope="col">Duration</th>
-              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -969,30 +957,26 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
               <td data-label="Programme">Sec 1&ndash;2 Foundation</td>
               <td data-label="Day &amp; time">Saturday, 10:00 AM &ndash; 11:30 AM</td>
               <td data-label="Duration">90 min</td>
-              <td data-label="Status"><span class="slot-badge chip chip--gold">4 slots left</span></td>
             </tr>
             <tr>
               <td data-label="Programme">Sec 3&ndash;4 Intensive</td>
               <td data-label="Day &amp; time">Saturday, 2:00 PM &ndash; 3:30 PM</td>
               <td data-label="Duration">90 min</td>
-              <td data-label="Status"><span class="slot-badge chip chip--gold">3 slots left</span></td>
             </tr>
             <tr>
               <td data-label="Programme">Sunday Revision</td>
               <td data-label="Day &amp; time">Sunday, 10:00 AM &ndash; 11:30 AM</td>
               <td data-label="Duration">90 min</td>
-              <td data-label="Status"><span class="slot-badge chip chip--gold">4 slots left</span></td>
             </tr>
             <tr>
               <td data-label="Programme">One-to-One</td>
               <td data-label="Day &amp; time">Flexible &ndash; by arrangement</td>
               <td data-label="Duration">60&ndash;90 min</td>
-              <td data-label="Status"><span class="slot-badge chip chip--green">Available</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="schedule-note">Next intake: <strong>Term 3, July 2026</strong>. <a href="/contact/">Book Free Assessment</a> to secure your slot.</p>
+      <p class="schedule-note"><a href="/contact/">Book Free Assessment</a> to secure your slot.</p>
     </div>
   </section>
 
@@ -1664,46 +1648,6 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; }
     .subject-receipts-section .subject-receipts dt { font-size: clamp(1.9rem, 7vw, 2.4rem); }
     .subject-receipts-section .subject-receipts dl > div:last-child { grid-column: 1 / -1; }
-  }
-
-  /* ===== SLOTS BANNER — a muted well ===== */
-  .slots-banner {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    background: var(--bg-muted);
-    border: 2px solid var(--color-ink);
-    border-radius: var(--radius-md);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-  .slots-indicator {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .slots-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    border: 1.5px solid var(--color-ink);
-    flex-shrink: 0;
-  }
-  .slots-dot.pulse {
-    animation: slot-pulse 2s ease-in-out infinite;
-  }
-  @keyframes slot-pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--color-accent-soft); }
-    50% { opacity: 0.75; box-shadow: 0 0 0 6px transparent; }
-  }
-  .slots-text {
-    font-size: 0.9rem;
-    color: var(--text-primary);
-  }
-  .slots-text strong {
-    color: var(--text-primary);
-    font-weight: 800;
   }
 
   /* ===== ORAL COMMUNICATION ===== */

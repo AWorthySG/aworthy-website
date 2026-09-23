@@ -3,18 +3,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { googleReviewsUrl } from '../data/site-config';
 
+// One entry per person, one wording per quote. The homepage and the English
+// landing page quote these entries word for word, so edit them here and there
+// together. Names are shortened to first name + surname initial; students are
+// minors. `featured` entries fill the carousel, the rest fill the grid, so no
+// quote appears twice on this page.
 const testimonials = [
   {
-    name: 'Mrs. Linda Tan',
-    context: 'Mother of Sec 4 student',
+    name: 'Linda T.',
+    context: 'Mother of a Sec 4 student',
     initials: 'LT',
     stars: 5,
     quote: 'My son\'s English went from C5 to A2 in three months. The moment he learned the SHARP Method\'s "See" step for inference questions, his comprehension marks jumped from 12/25 to 20/25 — no more guessing.',
     featured: true,
   },
   {
-    name: 'Ethan Lim',
+    name: 'Ethan L.',
     context: 'Sec 4 student',
     initials: 'EL',
     stars: 5,
@@ -22,23 +28,23 @@ const testimonials = [
     featured: false,
   },
   {
-    name: 'Mr. Rajesh Kumar',
-    context: 'Father of Sec 3 student',
+    name: 'Rajesh K.',
+    context: 'Father of a Sec 3 student',
     initials: 'RK',
     stars: 5,
     quote: 'What impressed me most was how the SHARP Method\'s "See" and "Hit" steps made inference questions click for my daughter. She went from losing 8 marks per paper to losing only 2.',
     featured: false,
   },
   {
-    name: 'Mrs. Angela Wong',
-    context: 'Mother of Sec 4 student',
+    name: 'Angela W.',
+    context: 'Mother of a Sec 4 student',
     initials: 'AW',
     stars: 5,
     quote: 'After switching to A-Worthy, my daughter\'s English jumped from D7 to B3. The small class size means real attention.',
     featured: true,
   },
   {
-    name: 'Mr. Muhammad Faisal',
+    name: 'Muhammad F.',
     context: 'Father of Sec 2 twins',
     initials: 'MF',
     stars: 5,
@@ -46,15 +52,15 @@ const testimonials = [
     featured: false,
   },
   {
-    name: 'Ms. Jennifer Lee',
-    context: 'Mother of Sec 3 student',
+    name: 'Jennifer L.',
+    context: 'Mother of a Sec 3 student',
     initials: 'JL',
     stars: 5,
     quote: 'We switched from a large tuition chain. The difference is night and day — focused, systematic, and my son actually understands why he\'s learning what he\'s learning.',
     featured: false,
   },
   {
-    name: 'Ryan Ong',
+    name: 'Ryan O.',
     context: 'Sec 4 student',
     initials: 'RO',
     stars: 5,
@@ -62,8 +68,8 @@ const testimonials = [
     featured: false,
   },
   {
-    name: 'Mrs. Deepa Nair',
-    context: 'Mother of Sec 2 student',
+    name: 'Deepa N.',
+    context: 'Mother of a Sec 2 student',
     initials: 'DN',
     stars: 5,
     quote: 'I appreciate the detailed feedback after every mock paper. I can see exactly what my daughter needs to work on.',
@@ -77,39 +83,30 @@ const testimonials = [
     quote: 'Got A2 for O-Level English! The SHARP Method\'s "Refine" step taught me to self-check my answers — I stopped losing careless marks and my Paper 2 score jumped by 15 marks.',
     featured: true,
   },
+  {
+    name: 'Sarah G.',
+    context: 'Mother of a JC 1 student',
+    initials: 'SG',
+    stars: 5,
+    quote: 'A-Worthy is the only tuition centre that actually teaches thinking, not just content. My daughter went from struggling to scoring distinctions.',
+    featured: true,
+  },
+  {
+    name: 'David O.',
+    context: 'Father of a Sec 3 student',
+    initials: 'DO',
+    stars: 5,
+    quote: 'The small class size means my son can\'t hide. He gets feedback every single session — something his previous tuition centre never offered.',
+    featured: true,
+  },
 ];
+
+const featured = testimonials.filter((t) => t.featured);
+const gridTestimonials = testimonials.filter((t) => !t.featured);
 ---
 
-<BaseLayout title="Tuition Reviews & Testimonials | A-Worthy Singapore" description="127 five-star reviews from Singapore parents and students. Real grade improvements: C5→A2, D7→B3. Trusted for O-Level English, H1 GP & H2 Economics." >
+<BaseLayout title="Tuition Reviews & Testimonials | A-Worthy Singapore" description="What Singapore parents and students say about A-Worthy. Real grade improvements: C5→A2, D7→B3, across O-Level English, H1 GP and H2 Economics." >
   <Header slot="header" />
-
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://a-worthy.com/#organization",
-    "name": "A-Worthy",
-    "url": "https://a-worthy.com/",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": testimonials.map((t) => ({
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": String(t.stars),
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": t.name
-      },
-      "reviewBody": t.quote
-    }))
-  })} />
 
   <!-- ===== HERO ===== -->
   <section class="t-hero">
@@ -127,13 +124,13 @@ const testimonials = [
   <section class="t-stats-bar">
     <div class="t-container t-stats-inner">
       <div class="t-stat" data-animate="reveal-up" data-animate-delay="1">
-        <span class="t-stat-number"><span class="stat-dot stat-dot--green" aria-hidden="true"></span>127</span>
-        <span class="t-stat-label">Five-Star Reviews</span>
+        <span class="t-stat-number"><span class="stat-dot stat-dot--green" aria-hidden="true"></span>500+</span>
+        <span class="t-stat-label">Students Taught</span>
       </div>
       <div class="t-stat-divider"></div>
       <div class="t-stat" data-animate="reveal-up" data-animate-delay="2">
-        <span class="t-stat-number"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span>98%</span>
-        <span class="t-stat-label">Parent Satisfaction</span>
+        <span class="t-stat-number"><span class="stat-dot stat-dot--pink" aria-hidden="true"></span>6</span>
+        <span class="t-stat-label">Max Class Size</span>
       </div>
       <div class="t-stat-divider"></div>
       <div class="t-stat" data-animate="reveal-up" data-animate-delay="3">
@@ -152,26 +149,12 @@ const testimonials = [
     <div class="carousel-wrap" data-animate="reveal-up">
       <div class="carousel" id="testimonial-carousel">
         <div class="carousel-track" id="carousel-track">
-          <div class="carousel-slide">
-            <div class="carousel-quote">&ldquo;My son's English improved from C5 to A2 in just three months. The SHARP Method&rsquo;s &ldquo;See&rdquo; step gave him a systematic way to approach every comprehension question.&rdquo;</div>
-            <div class="carousel-author"><strong>Mrs. Linda Tan</strong> &mdash; Mother of Sec 4 student</div>
-          </div>
-          <div class="carousel-slide">
-            <div class="carousel-quote">&ldquo;I used to hate essay writing. Now I actually enjoy it because I know how to structure my arguments properly.&rdquo;</div>
-            <div class="carousel-author"><strong>Ethan Lim</strong> &mdash; Sec 4 student</div>
-          </div>
-          <div class="carousel-slide">
-            <div class="carousel-quote">&ldquo;What impressed me most was how the legal reasoning approach made inference questions click for my daughter.&rdquo;</div>
-            <div class="carousel-author"><strong>Mr. Rajesh Kumar</strong> &mdash; Father of Sec 3 student</div>
-          </div>
-          <div class="carousel-slide">
-            <div class="carousel-quote">&ldquo;A-Worthy is the only tuition centre that actually teaches thinking, not just content. My daughter went from struggling to scoring distinctions.&rdquo;</div>
-            <div class="carousel-author"><strong>Mrs. Sarah Goh</strong> &mdash; Mother of JC 1 student</div>
-          </div>
-          <div class="carousel-slide">
-            <div class="carousel-quote">&ldquo;The small class size means my son can&rsquo;t hide. He gets feedback every single session — something his previous tuition centre never offered.&rdquo;</div>
-            <div class="carousel-author"><strong>Mr. David Ong</strong> &mdash; Father of Sec 3 student</div>
-          </div>
+          {featured.map((t) => (
+            <div class="carousel-slide">
+              <div class="carousel-quote">&ldquo;{t.quote}&rdquo;</div>
+              <div class="carousel-author"><strong>{t.name}</strong> &mdash; {t.context}</div>
+            </div>
+          ))}
         </div>
       </div>
       <div class="carousel-dots" id="carousel-dots"></div>
@@ -183,7 +166,7 @@ const testimonials = [
   <section class="t-section t-testimonials-section">
     <div class="t-container">
       <div class="t-testimonials-grid">
-        {testimonials.map((t, i) => (
+        {gridTestimonials.map((t, i) => (
           <div class:list={['t-card', { 't-card--featured': t.featured }]} data-animate="reveal-up" data-animate-delay={String((i % 3) + 1)}>
             <div class="t-card-stars" aria-label={`${t.stars} out of 5 stars`}>
               {Array.from({ length: t.stars }).map(() => (
@@ -206,35 +189,24 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- ===== GOOGLE REVIEWS ===== -->
+  <!-- ===== REVIEWS ===== -->
   <section class="t-section t-google-section">
     <div class="t-container t-google-inner">
-      <span class="eyebrow" data-animate="reveal-up">Verified on Google</span>
-      <h2 class="t-google-heading squiggle squiggle--center" data-animate="reveal-up">Don&rsquo;t take our word for it &mdash; read what families say on Google</h2>
-      <p class="t-google-sub" data-animate="reveal-up">Every review on our Google Business Profile is from a verified <span class="t-nowrap">A-Worthy</span> family. We don&rsquo;t curate them, we don&rsquo;t hide the difficult ones, and we don&rsquo;t pay for them.</p>
-
-      <div class="t-google-badge" data-animate="scale-in">
-        <div class="t-google-logo">
-          <span class="t-g t-g-blue">G</span><span class="t-g t-g-red">o</span><span class="t-g t-g-yellow">o</span><span class="t-g t-g-blue">g</span><span class="t-g t-g-green">l</span><span class="t-g t-g-red">e</span>
-        </div>
-        <div class="t-google-rating">
-          <div class="t-google-stars" aria-label="4.9 out of 5 stars">
-            <span class="t-star">&#9733;</span>
-            <span class="t-star">&#9733;</span>
-            <span class="t-star">&#9733;</span>
-            <span class="t-star">&#9733;</span>
-            <span class="t-star">&#9733;</span>
-          </div>
-          <span class="t-google-score">4.9 out of 5</span>
-          <span class="t-google-count">Based on 127 verified reviews</span>
-        </div>
-      </div>
+      <span class="eyebrow" data-animate="reveal-up">Your Feedback</span>
+      {googleReviewsUrl ? (
+        <h2 class="t-google-heading squiggle squiggle--center" data-animate="reveal-up">Read what families say on Google</h2>
+      ) : (
+        <h2 class="t-google-heading squiggle squiggle--center" data-animate="reveal-up">Tell us how we did</h2>
+      )}
+      <p class="t-google-sub" data-animate="reveal-up">A-Worthy families rate us 4.9 out of 5 on Google. If your child learns with us, we would value a short review.</p>
 
       <div class="t-google-actions" data-animate="reveal-up">
-        <a href="https://g.page/r/aworthy-sg" class="btn btn-accent" target="_blank" rel="noopener noreferrer">
-          Read all reviews on Google &rarr;
-        </a>
-        <a href="/review/" class="btn">
+        {googleReviewsUrl && (
+          <a href={googleReviewsUrl} class="btn btn-accent" target="_blank" rel="noopener noreferrer">
+            Read all reviews on Google &rarr;
+          </a>
+        )}
+        <a href="/review/" class:list={['btn', { 'btn-accent': !googleReviewsUrl }]}>
           Leave us a review
         </a>
       </div>
@@ -246,7 +218,7 @@ const testimonials = [
     <div class="t-container t-cta-inner">
       <span class="eyebrow">Get Started</span>
       <h2 class="t-cta-heading squiggle squiggle--center" data-animate="reveal-up">Experience the <span class="t-nowrap">A-Worthy</span> difference</h2>
-      <p class="t-cta-subtitle">Join the hundreds of families who trust <span class="t-nowrap">A-Worthy</span>. Book a free trial lesson and see the results for yourself.</p>
+      <p class="t-cta-subtitle">Join the families who trust <span class="t-nowrap">A-Worthy</span>. Book a free assessment and see the results for yourself.</p>
       <div class="t-cta-actions">
         <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
         <a href="https://wa.me/6589913181" class="btn" target="_blank" rel="noopener noreferrer">
@@ -505,56 +477,6 @@ const testimonials = [
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 1rem;
-  }
-
-  .t-google-badge {
-    text-align: center;
-    background: var(--bg-card);
-    border: 2px solid var(--color-ink);
-    border-radius: var(--radius-md);
-    box-shadow: 0 3px 0 var(--ink-shadow);
-    padding: 1.75rem 2.5rem;
-  }
-
-  .t-google-logo {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-  }
-
-  /* Google's own brand colours — third-party mark, kept verbatim */
-  .t-g { font-family: var(--font-body); }
-  .t-g-blue { color: #4285F4; }
-  .t-g-red { color: #EA4335; }
-  .t-g-yellow { color: #FBBC05; }
-  .t-g-green { color: #34A853; }
-
-  .t-google-rating {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .t-google-stars {
-    display: flex;
-    gap: 4px;
-  }
-
-  .t-google-stars .t-star {
-    font-size: 1.5rem;
-  }
-
-  .t-google-score {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--text-primary);
-  }
-
-  .t-google-count {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
   }
 
   /* ===== CTA ===== */

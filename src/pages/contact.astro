@@ -165,67 +165,6 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <!-- ===== TRIAL BOOKING ===== -->
-      <div class="trial-booking" data-animate="reveal-up">
-        <span class="eyebrow">Free Trial</span>
-        <h3 class="squiggle">Book a free trial lesson</h3>
-        <p class="trial-desc">Experience the SHARP Method first-hand. Select your subject and preferred timeslot &mdash; we&rsquo;ll confirm within 24 hours.</p>
-        <form class="trial-form" action="https://formspree.io/f/xgoppwye" method="POST">
-          <input type="hidden" name="_subject" value="Trial Lesson Booking" />
-          <div class="form-group">
-            <label for="trial-parent">What should we call you? <span class="required">*</span></label>
-            <input type="text" id="trial-parent" name="parentName" required placeholder="e.g. Sarah" />
-          </div>
-          <div class="form-group">
-            <label for="trial-student">Your child's name <span class="required">*</span></label>
-            <input type="text" id="trial-student" name="studentName" required placeholder="e.g. Ethan" />
-          </div>
-          <div class="form-group">
-            <label for="trial-email">Best email <span class="required">*</span></label>
-            <input type="email" id="trial-email" name="email" required placeholder="e.g. sarah@gmail.com" />
-          </div>
-          <div class="form-group">
-            <label for="trial-phone">WhatsApp number <span class="required">*</span></label>
-            <input type="tel" id="trial-phone" name="phone" required placeholder="+65 8991 3181" />
-          </div>
-          <div class="form-group">
-            <label for="trial-level">Student Level <span class="required">*</span></label>
-            <select id="trial-level" name="studentLevel" required>
-              <option value="">-- Select --</option>
-              <option value="Sec 1">Sec 1</option>
-              <option value="Sec 2">Sec 2</option>
-              <option value="Sec 3">Sec 3</option>
-              <option value="Sec 4">Sec 4</option>
-              <option value="JC 1">JC 1</option>
-              <option value="JC 2">JC 2</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="trial-subject">Subject <span class="required">*</span></label>
-            <select id="trial-subject" name="subject" required>
-              <option value="">-- Select Subject --</option>
-              <option value="O-Level English">O-Level English</option>
-              <option value="H1 General Paper">H1 General Paper</option>
-              <option value="H2 Economics">H2 Economics</option>
-              <option value="O-Level Mathematics">O-Level Mathematics</option>
-              <option value="Pre-IB Mathematics">Pre-IB Mathematics</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="trial-timeslot">Preferred Timeslot</label>
-            <select id="trial-timeslot" name="timeslot">
-              <option value="">-- Select Timeslot --</option>
-              <option value="Sat 10AM-12PM">Saturday 10:00 AM – 12:00 PM</option>
-              <option value="Sat 2PM-4PM">Saturday 2:00 PM – 4:00 PM</option>
-              <option value="Sun 10AM-12PM">Sunday 10:00 AM – 12:00 PM</option>
-              <option value="Sun 2PM-4PM">Sunday 2:00 PM – 4:00 PM</option>
-              <option value="Flexible">Flexible / Discuss with me</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-accent plausible-event-name=Lead+Trial+Booking" style="width:100%;">Reserve My Child's Spot</button>
-        </form>
-      </div>
-
     </div>
   </section>
 
@@ -316,7 +255,7 @@ import '../styles/global.css';
             </span>
           </button>
           <div class="faq-answer" hidden>
-            <p>Our lessons are aligned to the MOE/Cambridge syllabuses &mdash; O-Level English (1184), O-Level Mathematics (4048), H1 General Paper (8807), and H2 Economics (9570) &mdash; and use our proprietary SHARP Method framework.</p>
+            <p>Our lessons are aligned to the MOE/Cambridge syllabuses &mdash; O-Level English (1184), O-Level Mathematics (4052), H1 General Paper (8881), and H2 Economics (9570) &mdash; and use our proprietary SHARP Method framework.</p>
           </div>
         </div>
 
@@ -794,7 +733,7 @@ import '../styles/global.css';
   }
 
   /* ===== ENROL TIMELINE ===== */
-  /* Head is centred like the neighbouring trial / FAQ / CTA bands;
+  /* Head is centred like the neighbouring FAQ / CTA bands;
      the steps themselves stay left-aligned inside the centred column. */
   .enrol-section .eyebrow {
     display: block;
@@ -1182,41 +1121,5 @@ import '../styles/global.css';
   .btn-submit:disabled {
     opacity: 0.7;
     cursor: wait;
-  }
-
-  /* ===== TRIAL BOOKING CARD — white ink card (no hover lift: it's a form) ===== */
-  .trial-booking {
-    grid-column: 1 / -1;
-    margin-top: var(--space-3xl);
-    background: var(--bg-card);
-    border: 2px solid var(--color-ink);
-    border-radius: var(--radius-md);
-    box-shadow: 0 3px 0 var(--ink-shadow);
-    padding: 2.25rem 2rem;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .trial-booking h3 {
-    font-family: var(--font-heading);
-    font-size: clamp(1.4rem, 2.5vw, 1.75rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-    margin: 0.5rem 0 0.75rem;
-  }
-  .trial-desc {
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--text-secondary);
-    margin-bottom: 1.75rem;
-    max-width: 540px;
-  }
-
-  @media (max-width: 768px) {
-    .trial-booking {
-      padding: 1.75rem 1.25rem;
-      margin-top: var(--space-2xl);
-    }
   }
 </style>
