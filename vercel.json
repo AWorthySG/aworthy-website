@@ -1,12 +1,6 @@
 {
   "trailingSlash": true,
   "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.a-worthy.com" }],
-      "destination": "https://a-worthy.com/:path*",
-      "permanent": true
-    },
     { "source": "/blog/o-level-english-tips-2026", "destination": "/blog/o-level-english-tips/", "permanent": true },
     { "source": "/blog/o-level-english-tips-2026/", "destination": "/blog/o-level-english-tips/", "permanent": true },
     { "source": "/blog/o-level-cut-off-points-2026", "destination": "/blog/o-level-cut-off-points/", "permanent": true },
