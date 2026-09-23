@@ -123,6 +123,7 @@ const heading = preset ? `Get the free ${preset.title}` : 'Free subject guides';
       </div>
       <button type="submit" class="btn btn-accent guide-form__submit" data-guide-submit>Get the guide</button>
     </div>
+    <p class="guide-form__privacy">We use your email address to send you A-Worthy study guides. <a href="/privacy-policy/">Privacy policy</a></p>
   </form>
 
   <div class="guide-form__status" role="status" data-guide-status>
@@ -196,6 +197,14 @@ const heading = preset ? `Get the free ${preset.title}` : 'Free subject guides';
     margin: 0 0 0.4rem;
   }
   .guide-form__field { min-width: 0; }
+  /* PDPA purpose notice: why the email is collected */
+  .guide-form__privacy {
+    margin: 0.75rem 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+  .guide-form__privacy a { color: var(--color-accent-text); }
   /* The titles run long for a phone: end the closed select with an ellipsis
      rather than cutting a word in half (the subject name always shows). */
   .guide-form__field select {
