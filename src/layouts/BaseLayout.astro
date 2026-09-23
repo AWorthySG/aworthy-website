@@ -70,6 +70,20 @@ const breadcrumbLabels: Record<string, string> = {
   'does-my-child-need-tuition': 'Does My Child Need Tuition?',
   'review': 'Leave a Review',
 };
+const crumbLabel = (segment: string) =>
+  breadcrumbLabels[segment] || segment.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+// 'lp' is a folder, not a page, so it gets no crumb of its own in the schema.
+const schemaCrumbs = pathSegments
+  .map((segment, i) => ({ segment, name: crumbLabel(segment), item: `https://a-worthy.com/${pathSegments.slice(0, i + 1).join('/')}/` }))
+  .filter(c => c.segment !== 'lp');
+const breadcrumbSchema = pathSegments.length > 0 && !noindex ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://a-worthy.com/" },
+    ...schemaCrumbs.map((c, i) => ({ "@type": "ListItem", "position": i + 2, "name": c.name, "item": c.item })),
+  ],
+} : null;
 
 const schemaData = {
   "@context": "https://schema.org",
@@ -191,25 +205,9 @@ const schemaData = {
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
-  <!-- BreadcrumbList Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://a-worthy.com/"
-      },
-      ...(Astro.url.pathname !== "/" ? [{
-        "@type": "ListItem",
-        "position": 2,
-        "name": title,
-        "item": `https://a-worthy.com${Astro.url.pathname}`
-      }] : [])
-    ]
-  })} />
+  <!-- BreadcrumbList Structured Data: the same crumbs as the visible trail.
+       Left out on the homepage and on noindex pages (404, /lp/*, /review/). -->
+  {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 
   {/* Fonts — Nunito is self-hosted (@font-face in global.css, files in
        public/fonts/). Preload the one file every page needs so it arrives with
@@ -343,7 +341,7 @@ const schemaData = {
         <li><a href="/">Home</a></li>
         {pathSegments.map((segment, index) => {
           const href = '/' + pathSegments.slice(0, index + 1).join('/') + '/';
-          const label = breadcrumbLabels[segment] || segment.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          const label = crumbLabel(segment);
           const isLast = index === pathSegments.length - 1;
           // 'lp' is a folder, not a page — linking it would 404
           const noPage = segment === 'lp';

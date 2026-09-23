@@ -319,7 +319,8 @@ Do NOT add `data-animate` back to subject pages, landing pages, programmes, or s
 
 - File-based: `src/pages/about.astro` → `/about/`
 - Subject pages: `src/pages/h2-economics.astro` → `/h2-economics/`
-- Trailing slashes enforced (`trailingSlash: 'always'` in astro.config.mjs)
+- Trailing slashes enforced (`trailingSlash: 'always'` in astro.config.mjs, and `"trailingSlash": true` in vercel.json so production redirects `/about` → `/about/` instead of serving both)
+- One host: vercel.json redirects `www.a-worthy.com/*` to `https://a-worthy.com/*` (308). Before this, every page answered at four addresses (www / apex × slash / no slash), and www was a separate origin for the service worker and localStorage
 - Build format: `directory` (creates `/page/index.html` not `/page.html`)
 - Active nav link detection uses `Astro.url.pathname`
 - Sitemap auto-generated via `@astrojs/sitemap` integration (filters out `/parent-portal/`, `/lp/*`, `/404`)
@@ -378,7 +379,7 @@ Current sections in order:
 4. "Meet Your Tutor" founder-credibility band (Jeremy Lim → SHARP Method; links to `/about/`)
 5. Testimonials (3 quotes) + grade-transformation strip (3 anonymised grade jumps linking to `/success-stories/`)
 6. Results statistics
-7. Contact form (risk-reversal subtitle — "no obligation, no sales pitch"; FAQ JSON-LD schema in head)
+7. Contact form (risk-reversal subtitle — "no obligation, no sales pitch"). The homepage carries **no** FAQPage JSON-LD: it has no visible FAQ, and the old block broke Google's rule (removed September 2026)
 
 ## Study Hub (`/study/`)
 
@@ -484,9 +485,9 @@ A real, unrelated bug was found and fixed while wiring up the audience-toggle ic
 - **H2 Economics courseCode**: `"9570"`
 - **O-Level English courseCode**: `"1184"` (the current SEAB syllabus code; the site was migrated from the older `1128`)
 - **OG images**: `og-english.png`, `og-gp.png`, `og-econs.png`, `og-maths.png` — the four national-stream subject pages have dedicated OG images. Source SVGs are in `public/images/og-*.svg`; PNGs are generated at build time by `scripts/convert-og-images.mjs`. `pre-ib-mathematics.astro` currently reuses `og-maths.png` (no dedicated OG yet).
-- **Breadcrumbs**: Rendered entirely server-side by Astro in BaseLayout (lines ~226–242). There is no client-side JS breadcrumb script — do not add one, as it would duplicate items. The `breadcrumbLabels` map must include every page slug to avoid bad auto-capitalisation.
+- **Breadcrumbs**: The BreadcrumbList JSON-LD is built from the same `pathSegments` / `crumbLabel()` as the visible trail (Home › Blog › post on blog posts; `lp` gets no crumb) and is omitted on `/` and on every `noindex` page. It used to name the second crumb with the full `<title>` and always had two levels. Rendered entirely server-side by Astro in BaseLayout (lines ~226–242). There is no client-side JS breadcrumb script — do not add one, as it would duplicate items. The `breadcrumbLabels` map must include every page slug to avoid bad auto-capitalisation.
 - **LocalBusiness `geo`**: the EducationalOrganization/LocalBusiness JSON-LD includes a `GeoCoordinates` block. Keep its lat/long in sync with the `geo.position`/`ICBM` meta tags in `<head>`. No `streetAddress` — the centre is online-only via Zoom, so do not add a fabricated physical address.
-- **FAQPage schema**: the five subject pages (incl. `pre-ib-mathematics.astro`) and `pricing.astro` carry `FAQPage` JSON-LD backed by their visible FAQ sections; the homepage has a `FAQPage` block in its `<head>`. Per Google's guidelines, only add `FAQPage` entries that mirror FAQ content actually visible on the same page, and keep the schema answer text in sync with the visible copy (and with pricing/stats).
+- **FAQPage schema**: the five subject pages (incl. `pre-ib-mathematics.astro`) and `pricing.astro` carry `FAQPage` JSON-LD backed by their visible FAQ sections; the homepage has none (it has no visible FAQ). Per Google's guidelines, only add `FAQPage` entries that mirror FAQ content actually visible on the same page, and keep the schema answer text in sync with the visible copy (and with pricing/stats).
 
 ## Annual content freshness
 
