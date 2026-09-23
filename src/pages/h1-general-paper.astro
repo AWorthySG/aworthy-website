@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import GuideForm from '../components/GuideForm.astro';
 import '../styles/global.css';
 import '../styles/playbook.css';
 
@@ -100,7 +101,7 @@ const playbookRows = [
           <p class="eyebrow">H1 General Paper</p>
           <h1 class="prog-hero__heading">H1 <span class="accent-word">GP</span> Tuition<br />in Singapore for JC Students</h1>
           <p class="prog-hero__sub">Master A-Level General Paper with the SHARP Method, a five-step analytical system adapted from legal reasoning. It gives your child a named framework for every GP question type: thesis-driven essays, balanced discursive arguments, criteria-led evaluations, SAQ comprehension, summary, and the Application Question that most students leave marks on.</p>
-          <div class="prog-hero__actions">
+          <div class="prog-hero__actions" data-track="hero">
             <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
             <span class="prog-hero__fee">From SGD 360/month &middot; groups of up to 6</span>
           </div>
@@ -435,7 +436,7 @@ const playbookRows = [
   </div>
 
   <!-- ===== MID-PAGE CTA (cuts scroll inertia; the full CTA remains at the end) ===== -->
-  <section class="prog-section prog-midcta" aria-label="Book a free assessment">
+  <section class="prog-section prog-midcta" aria-label="Book a free assessment" data-track="mid-cta">
     <div class="container">
       <div class="prog-midcta__inner">
         <div class="prog-midcta__copy">
@@ -670,8 +671,15 @@ const playbookRows = [
     </div>
   </section>
 
+  <!-- ===== FREE SUBJECT GUIDE ===== -->
+  <section class="prog-section prog-guide" id="free-guide">
+    <div class="container">
+      <GuideForm subject="gp" id="guide-gp" />
+    </div>
+  </section>
+
   <!-- ===== FREE DIAGNOSTIC ASSESSMENT CTA ===== -->
-  <section class="prog-cta">
+  <section class="prog-cta" data-track="final-cta">
     <div class="container prog-cta__inner">
       <p class="eyebrow">Get Started</p>
       <h2 class="prog-cta__heading">Not sure which programme?</h2>

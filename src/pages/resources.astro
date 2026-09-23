@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PdfPreviewModal from '../components/PdfPreviewModal.astro';
+import GuideForm from '../components/GuideForm.astro';
 import '../styles/global.css';
 
 // Order matters: entries with a samplePdf (taller cards with the faux-page tile)
@@ -132,6 +133,13 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
       <p class="r-hero-sub">Download free O-Level English study guides, checklists, and exam frameworks curated by A-Worthy&rsquo;s Singapore tutors. Samples open instantly, and full versions are sent on request.</p>
     </div>
     <img src="/images/mascots/mascot-reading.webp" alt="" width="477" height="640" class="sticker sticker--hero" />
+  </section>
+
+  <!-- ===== FREE SUBJECT GUIDES ===== -->
+  <section class="r-guide" id="free-guide">
+    <div class="r-container">
+      <GuideForm id="guide-resources" />
+    </div>
   </section>
 
   <!-- ===== SEARCH + FILTERS ===== -->
@@ -273,7 +281,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
         <span class="eyebrow">Stay Updated</span>
         <h2 class="r-newsletter-heading">Get new resources in your inbox</h2>
         <p class="r-newsletter-sub">Free worksheets, study tips, and exam prep materials delivered weekly.</p>
-        <form class="r-newsletter-form" id="newsletter-form" action="https://formspree.io/f/xreoozkk" method="POST">
+        <form class="r-newsletter-form" id="newsletter-form" action="https://formspree.io/f/xreoozkk" method="POST" data-lead-form>
           <div class="r-newsletter-row">
             <label for="newsletter-email" class="sr-only">Email address</label>
             <input
@@ -294,7 +302,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="r-cta">
+  <section class="r-cta" data-track="final-cta">
     <div class="r-container">
       <span class="eyebrow">Next Step</span>
       <h2 class="r-cta-heading" data-animate="reveal-up">Want personalised guidance?</h2>
@@ -531,9 +539,16 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
         mode: mode,
         _subject: 'Resource Download Request: ' + title
       };
+      if (typeof window.aworthyAttribution === 'function') {
+        try {
+          var attr = window.aworthyAttribution() || {};
+          Object.keys(attr).forEach(function(k) { if (!(k in payload)) payload[k] = attr[k]; });
+        } catch (err) {}
+      }
 
       submitLead(payload).then(function(res) {
         if (!res.ok) throw new Error('submit-failed');
+        if (typeof window.plausible === 'function') window.plausible('Lead: Resource Gate');
         storeLead(email, phone, name);
         close();
         deliverResource(mode, url, title);
@@ -864,6 +879,12 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     line-height: 1.7;
     max-width: 540px;
     margin: 0 auto;
+  }
+
+  /* ===== FREE SUBJECT GUIDES ===== */
+  .r-guide {
+    padding: 0 0 2rem;
+    scroll-margin-top: var(--nav-offset);
   }
 
   /* ===== SEARCH + FILTERS ===== */

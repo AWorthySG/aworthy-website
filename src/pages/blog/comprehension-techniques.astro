@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="10 O-Level Comprehension Techniques to Score A1 | A-Worthy" description="10 comprehension techniques top O-Level English students use to score A1. Strategies for inference, vocabulary-in-context and summary questions. From A-Worthy." ogImage="/images/og-english.png">
@@ -96,7 +97,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>If your child consistently loses marks on comprehension despite understanding the passage, the issue is almost certainly technique, not ability.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm subject="english" headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Ready to improve your grades?</h3>
         <p>Book a free diagnostic assessment and see how the SHARP Method can help.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>

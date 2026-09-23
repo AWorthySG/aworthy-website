@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import GuideForm from '../components/GuideForm.astro';
 import '../styles/global.css';
 import '../styles/playbook.css';
 
@@ -167,7 +168,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
           <p class="eyebrow">O-Level English</p>
           <h1 class="prog-hero__heading">O-Level <span class="accent-word">English</span> Tuition<br />in Singapore</h1>
           <p class="prog-hero__sub">Our students achieve a 90% A1&ndash;B3 rate with the SHARP Method, a five-step system adapted from legal analytical reasoning. It gives your child a named, repeatable framework for every question type across Paper 1 (editing, situational writing, continuous writing), Paper 2 (comprehension, summary), and Paper 4 (oral communication).</p>
-          <div class="prog-hero__actions">
+          <div class="prog-hero__actions" data-track="hero">
             <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
             <span class="prog-hero__fee">From SGD 280/month &middot; groups of up to 6</span>
           </div>
@@ -536,7 +537,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   </section>
 
   <!-- ===== MID-PAGE CTA (cuts scroll inertia; the full CTA remains at the end) ===== -->
-  <section class="prog-section prog-midcta" aria-label="Book a free assessment">
+  <section class="prog-section prog-midcta" aria-label="Book a free assessment" data-track="mid-cta">
     <div class="container">
       <div class="prog-midcta__inner">
         <div class="prog-midcta__copy">
@@ -973,8 +974,15 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     </div>
   </section>
 
+  <!-- ===== FREE SUBJECT GUIDE ===== -->
+  <section class="prog-section prog-guide" id="free-guide">
+    <div class="container">
+      <GuideForm subject="english" id="guide-english" />
+    </div>
+  </section>
+
   <!-- ===== FREE DIAGNOSTIC ASSESSMENT CTA ===== -->
-  <section class="prog-cta">
+  <section class="prog-cta" data-track="final-cta">
     <div class="container prog-cta__inner">
       <p class="eyebrow">Get Started</p>
       <h2 class="prog-cta__heading">Ready to improve your child&rsquo;s O-Level English grade?</h2>

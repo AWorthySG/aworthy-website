@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="H2 Econs Case Study: Score L3 Every Time | A-Worthy" description="Step-by-step approach to H2 Economics case study questions. Master extract analysis, data interpretation, diagrams & evaluation to score L3." ogImage="/images/og-econs.png">
@@ -107,7 +108,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>Write the time allocation next to each question before you start. This one habit prevents the most common failure on the case study paper: running out of time on the highest-value questions.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm subject="econ" headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Want to consistently score L3?</h3>
         <p>Book a free diagnostic assessment to find out where your case study answers lose marks, and how the SHARP Method (See, Hit, Apply, Refine, Practise) and its paper-matched frameworks deal with each gap.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>

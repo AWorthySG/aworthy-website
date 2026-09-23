@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="Does My Child Need Tuition? An Honest Guide | A-Worthy" description="Not every child needs tuition. An honest guide for Singapore parents on when tuition helps and which problems it won’t fix." ogImage="/images/og-blog.png">
@@ -53,7 +54,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>At A-Worthy we offer that assessment free, with no obligation. If your child doesn&rsquo;t need us, we&rsquo;ll tell you. And if they do, you&rsquo;ll leave knowing exactly what we&rsquo;d work on and why.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Find out where your child actually stands</h3>
         <p>Book a free 20-minute diagnostic assessment. We&rsquo;ll review a recent paper and give you an honest read on whether tuition will help. No obligation, no sales pitch.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>

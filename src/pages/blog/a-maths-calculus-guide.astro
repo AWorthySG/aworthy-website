@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="A-Maths Calculus: Differentiation & Integration | A-Worthy" description="A plain-English guide to O-Level A-Maths (4049) calculus: what differentiation and integration do, where the marks are, and the traps to avoid." ogImage="/images/og-maths.png">
@@ -66,7 +67,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>Once the decision procedure is automatic, calculus becomes one of the most reliable sources of marks on the A-Maths paper. It is also the foundation for A-Level H2 Mathematics, where your child will use it again.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm subject="maths" headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Make calculus your child&rsquo;s strongest topic</h3>
         <p>Book a free diagnostic assessment. We&rsquo;ll see where your child stands on differentiation and integration, and show how the SHARP Method turns calculus into a reliable mark-earner. No obligation, no sales pitch.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>
