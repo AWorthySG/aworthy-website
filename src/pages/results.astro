@@ -485,7 +485,6 @@ import '../styles/global.css';
     height: 100%;
     background: var(--color-sun);
     border-radius: var(--radius-pill);
-    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
 
@@ -699,17 +698,21 @@ import '../styles/global.css';
     overflow: visible;
   }
 
+  /* Grows on the compositor (scaleX), not by animating width, which re-laid
+     out the page on every frame of the 1.5s fill */
   .journey-line-fill {
     height: 100%;
-    width: 0;
+    width: var(--journey-progress);
     background: var(--color-leaf);
     border-radius: 2px;
-    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
   }
 
   .journey-card.is-visible .journey-line-fill,
   .journey-card [data-animate].is-visible .journey-line-fill {
-    width: var(--journey-progress);
+    transform: scaleX(1);
   }
 
   .journey-milestone {

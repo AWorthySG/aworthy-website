@@ -273,18 +273,59 @@ const schemaData = {
      * screen — the cookie notice, the global sticky CTA, the homepage's own
      * sticky CTA. Each reports its visible height here (0 when hidden) and the
      * tallest is published as --sticky-bar-h, which the WhatsApp float, chatbot
-     * and back-to-top add to their `bottom` so they ride above whichever bar is
-     * showing. Previously each bar wrote the variable directly and the cookie
+     * and back-to-top use in their `translate` so they ride above whichever bar
+     * is showing. Previously each bar wrote the variable directly and the cookie
      * notice not at all, so the floats sat on top of the notice's text and
-     * buttons for every first-time visitor on a phone.
+     * buttons for every first-time visitor on a phone. The variable is written
+     * only when the tallest height changes: it lives on <html>, so every write
+     * is a style change for the whole document.
      */
     window.aworthyBottomBar = function (name, px) {
       var bars = window.__aworthyBars || (window.__aworthyBars = {});
       bars[name] = px > 0 ? Math.round(px) : 0;
       var tallest = 0;
       for (var k in bars) if (bars[k] > tallest) tallest = bars[k];
+      if (tallest === window.__aworthyBarH) return;
+      window.__aworthyBarH = tallest;
       document.documentElement.style.setProperty('--sticky-bar-h', tallest + 'px');
     };
+
+    /*
+     * Shared scroll loop. Every scroll-driven widget (header, progress bar,
+     * back-to-top, sticky CTAs, the subject pages' TOC) subscribes here instead
+     * of adding its own listener. There is one passive listener and at most one
+     * requestAnimationFrame per frame; the scroll position is read once, before
+     * any subscriber writes, so the widgets never force a layout on each other.
+     * Subscribers must only write when their own state changes.
+     *
+     * While the page is scrolling on a mouse/trackpad device, <html> carries
+     * .is-scrolling (removed 150ms after the last scroll event) and global.css
+     * turns off pointer events for the body, so cards don't lift and drop as
+     * they pass under a still cursor.
+     */
+    (function () {
+      var subs = [], queued = false, root = document.documentElement, idle = 0;
+      var hoverDevice = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      function run() {
+        queued = false;
+        var y = window.scrollY;
+        for (var i = 0; i < subs.length; i++) subs[i](y);
+      }
+      function queue() {
+        if (!queued) { queued = true; requestAnimationFrame(run); }
+      }
+      function endScroll() { root.classList.remove('is-scrolling'); }
+      window.addEventListener('scroll', function () {
+        queue();
+        if (hoverDevice) {
+          if (!idle) root.classList.add('is-scrolling');
+          clearTimeout(idle);
+          idle = setTimeout(function () { idle = 0; endScroll(); }, 150);
+        }
+      }, { passive: true });
+      window.addEventListener('resize', queue, { passive: true });
+      window.aworthyOnScroll = function (fn) { subs.push(fn); queue(); };
+    })();
   </script>
 </head>
 <body>
@@ -366,12 +407,16 @@ const schemaData = {
   </div>
 
   <style>
+    /* Rides above the bottom bars on `translate`, not `bottom`: a moving
+       `bottom` re-laid out the page on every frame of the slide and logged a
+       layout shift each time a sticky bar appeared. */
     .whatsapp-widget {
       position: fixed;
-      bottom: calc(2rem + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px));
+      bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
       right: calc(2rem + env(safe-area-inset-right, 0px));
+      translate: 0 calc(var(--sticky-bar-h, 0px) * -1);
       z-index: var(--z-fixed-widget);
-      transition: bottom 0.35s ease;
+      transition: translate 0.35s ease;
     }
     .whatsapp-float-btn {
       width: 56px;
@@ -388,12 +433,15 @@ const schemaData = {
       position: relative;
       text-decoration: none;
     }
+    /* Attention ring: animates transform + opacity only, so the compositor runs
+       it without repainting (the old box-shadow pulse repainted every frame). */
     .whatsapp-float-btn::before {
       content: '';
       position: absolute;
-      inset: 0;
+      inset: -2px;
       border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      border: 3px solid rgba(37, 211, 102, 0.45);
+      opacity: 0;
       pointer-events: none;
     }
     @media (prefers-reduced-motion: no-preference) {
@@ -402,9 +450,9 @@ const schemaData = {
       }
     }
     @keyframes wa-attention {
-      0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.35); }
-      60%  { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      0%   { transform: scale(1); opacity: 0.9; }
+      60%  { transform: scale(1.4); opacity: 0; }
+      100% { transform: scale(1.4); opacity: 0; }
     }
     .whatsapp-float-btn:hover {
       transform: translateY(-2px);
@@ -415,7 +463,7 @@ const schemaData = {
       box-shadow: 0 1px 0 var(--ink-shadow);
     }
     @media (max-width: 768px) {
-      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px)); }
+      .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); }
     }
     @media (max-width: 480px) {
       .whatsapp-float-btn { width: 52px; height: 52px; }
@@ -509,19 +557,15 @@ const schemaData = {
       bottom: 0;
       left: 0;
       right: 0;
-      /* Cream glass strip with an ink rule — the LMS glass header, flipped */
-      background: rgba(250, 246, 238, 0.92);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
+      /* Solid cream strip with an ink rule. No backdrop blur: it repainted
+         the page under the bar on every scroll frame (see Header.astro). */
+      background: var(--bg-primary);
       padding: 0.65rem 1.5rem;
       padding-bottom: calc(0.65rem + env(safe-area-inset-bottom, 0px));
       z-index: var(--z-sticky-bar);
       transform: translateY(100%);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       border-top: 2px solid var(--color-ink);
-    }
-    :global([data-theme="dark"]) .sticky-cta-global {
-      background: rgba(23, 22, 20, 0.92);
     }
 
     .sticky-cta-global.is-visible {
@@ -761,10 +805,12 @@ const schemaData = {
       top: 0;
       left: 0;
       height: 3px;
-      width: 0%;
+      width: 100%;
       background: var(--color-accent);
       z-index: var(--z-scroll-progress);
-      transition: width var(--transition-instant);
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      will-change: transform;
       pointer-events: none;
     }
 
@@ -781,7 +827,10 @@ const schemaData = {
          underneath the header on every page. */
       margin-top: var(--nav-offset);
     }
-    body:has(.breadcrumb) #main-content {
+    /* Sibling combinator, not body:has(.breadcrumb): a :has() on <body> is
+       re-checked after every DOM change anywhere on the page, so each tick of
+       the stat counters re-matched the styles of <main> while scrolling. */
+    .breadcrumb ~ #main-content {
       padding-top: 0;
     }
     .breadcrumb-list {
@@ -937,7 +986,10 @@ const schemaData = {
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      // threshold 0: a tall section starts revealing as soon as its top edge
+      // is 40px into view. At 0.1 a 2000px section waited until 200px of it
+      // was on screen, leaving a blank band under the reader.
+      }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
       document.querySelectorAll('[data-animate]:not(.is-visible)').forEach(function(el) {
         observer.observe(el);
@@ -950,12 +1002,20 @@ const schemaData = {
     function initCounters() {
       var counters = document.querySelectorAll('[data-count]');
       if (!counters.length) return;
+      // Reduced motion: the markup already holds the final number, so leave it.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       var animated = new Set();
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (!entry.isIntersecting || animated.has(entry.target)) return;
           animated.add(entry.target);
           var el = entry.target;
+          // Hold the width of the final number while it counts up, so the
+          // label and its neighbours don't shuffle sideways on every frame.
+          if (!el.style.minWidth) {
+            if (getComputedStyle(el).display === 'inline') el.style.display = 'inline-block';
+            el.style.minWidth = el.getBoundingClientRect().width + 'px';
+          }
           var target = parseFloat(el.getAttribute('data-count'));
           var isDecimal = target % 1 !== 0;
           var suffix = el.getAttribute('data-count-suffix') || el.getAttribute('data-suffix') || '';
@@ -989,15 +1049,10 @@ const schemaData = {
     (function(){
       var btn=document.getElementById('back-to-top');
       if(!btn)return;
-      var topTicking=false;
-      window.addEventListener('scroll',function(){
-        if(!topTicking){
-          requestAnimationFrame(function(){
-            btn.classList.toggle('is-visible',window.scrollY>600);
-            topTicking=false;
-          });
-          topTicking=true;
-        }
+      var shown=false;
+      window.aworthyOnScroll(function(y){
+        var next=y>600;
+        if(next!==shown){shown=next;btn.classList.toggle('is-visible',next);}
       });
       btn.addEventListener('click',function(){
         window.scrollTo({top:0,behavior:'smooth'});
@@ -1011,25 +1066,24 @@ const schemaData = {
     if (!el) return;
     if (window.location.pathname === '/' || window.location.pathname === '/index.html') return;
     var dismissed = false;
-    var ticking = false;
+    var shown = false;
     // Looked up on each call: the notice's markup comes after this script, so
     // a lookup at start-up found nothing and the bar showed on top of it.
     function isPrivacyVisible() {
       var notice = document.getElementById('privacy-notice');
       return !!(notice && !notice.hidden);
     }
-    window.addEventListener('scroll', function(){
+    window.aworthyOnScroll(function(y){
       if (dismissed) return;
-      if (!ticking) {
-        requestAnimationFrame(function(){
-          var visible = window.scrollY > window.innerHeight * 0.5 && !isPrivacyVisible();
-          el.classList.toggle('is-visible', visible);
-          // Floating widgets read this to ride up above the bar
-          window.aworthyBottomBar('cta', visible ? el.offsetHeight : 0);
-          ticking = false;
-        });
-        ticking = true;
-      }
+      var visible = y > window.innerHeight * 0.5 && !isPrivacyVisible();
+      if (visible === shown) return;
+      shown = visible;
+      // Measured before the class flips (it only changes a transform), so the
+      // read never waits on a layout this frame's writes have invalidated.
+      var h = visible ? el.offsetHeight : 0;
+      el.classList.toggle('is-visible', visible);
+      // Floating widgets read this to ride up above the bar
+      window.aworthyBottomBar('cta', h);
     });
     dismiss?.addEventListener('click', function(){
       dismissed = true;
@@ -1088,17 +1142,21 @@ const schemaData = {
   (function(){
     var bar = document.getElementById('scroll-progress');
     if (!bar) return;
-    var ticking = false;
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(function() {
-          var scrollTop = window.scrollY;
-          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
-          ticking = false;
-        });
-        ticking = true;
-      }
+    // The bar scales on the compositor (transform), so a scroll frame costs no
+    // layout. The scroll range is measured only when the page or window
+    // changes size, not on every frame.
+    var range = 1;
+    function measure() { range = Math.max(1, document.documentElement.scrollHeight - window.innerHeight); }
+    measure();
+    window.addEventListener('resize', measure, { passive: true });
+    window.addEventListener('load', measure);
+    if ('ResizeObserver' in window) new ResizeObserver(measure).observe(document.body);
+    var last = -1;
+    window.aworthyOnScroll(function(y) {
+      var ratio = Math.min(1, Math.max(0, y / range));
+      if (Math.abs(ratio - last) < 0.001) return;
+      last = ratio;
+      bar.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
     });
   })();
   </script>
@@ -1247,10 +1305,11 @@ const schemaData = {
   <style>
     .chatbot-widget {
       position: fixed;
-      bottom: calc(2rem + 68px + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px));
+      bottom: calc(2rem + 68px + env(safe-area-inset-bottom, 0px));
       right: calc(2rem + env(safe-area-inset-right, 0px));
+      translate: 0 calc(var(--sticky-bar-h, 0px) * -1);
       z-index: var(--z-chatbot);
-      transition: bottom 0.35s ease;
+      transition: translate 0.35s ease;
     }
     .chatbot-toggle {
       width: 48px;
@@ -1328,6 +1387,7 @@ const schemaData = {
     .chatbot-body {
       flex: 1;
       overflow-y: auto;
+      overscroll-behavior: contain; /* reaching the end of an answer must not scroll the page behind */
       padding: 1rem;
       display: flex;
       flex-direction: column;
@@ -1379,11 +1439,11 @@ const schemaData = {
       color: var(--color-accent-text);
     }
     @media (max-width: 768px) {
-      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + 68px + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px)); }
+      .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + 68px + env(safe-area-inset-bottom, 0px)); }
     }
     @media (max-width: 480px) {
       .chatbot-panel { width: calc(100vw - 2rem); right: -1rem; }
-      .chatbot-widget { bottom: calc(1.25rem + 64px + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px)); }
+      .chatbot-widget { bottom: calc(1.25rem + 64px + env(safe-area-inset-bottom, 0px)); }
     }
   </style>
 
@@ -1488,15 +1548,12 @@ const schemaData = {
       return;
     }
     var shown = false;
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 600 && !shown) {
-        sel.classList.add('visible');
-        shown = true;
-      } else if (window.scrollY <= 600 && shown) {
-        sel.classList.remove('visible');
-        shown = false;
-      }
-    }, { passive: true });
+    window.aworthyOnScroll(function(y) {
+      var next = y > 600;
+      if (next === shown) return;
+      shown = next;
+      sel.classList.toggle('visible', next);
+    });
   })();
   </script>
 
