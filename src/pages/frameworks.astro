@@ -8,7 +8,7 @@ import '../styles/global.css';
 const stampCategories = [
   { letter: 'S', name: 'Subject-Verb Agreement', check: 'Does the verb agree with the subject in number?', error: 'The average age of caregivers <strong>are</strong> about 62.', fix: 'The average age of caregivers <strong>is</strong> about 62.', why: 'Cover “of caregivers” — the true subject “the average age” is singular.' },
   { letter: 'T', name: 'Tense', check: 'Is the verb in the correct tense? Check the time markers.', error: 'I <strong>have seen</strong> that film last night.', fix: 'I <strong>saw</strong> that film last night.', why: 'A specific past-time marker (“last night”) locks the event in the past — Past Simple, not Present Perfect.' },
-  { letter: 'A', sup: '1', name: 'Articles', check: 'Is a / an / the correct — by sound, not spelling?', error: 'He is <strong>a</strong> honest student.', fix: 'He is <strong>an</strong> honest student.', why: '“Honest” opens with a silent H — a vowel sound — so it takes “an”.' },
+  { letter: 'A', sup: '1', name: 'Articles', check: 'Is a / an / the correct — by sound, not spelling?', error: 'He is <strong>a</strong> honest student.', fix: 'He is <strong>an</strong> honest student.', why: '“Honest” opens with a silent H (a vowel sound), so it takes “an”.' },
   { letter: 'M', name: 'Match Pronouns', check: 'Does the pronoun match its antecedent in number, gender and form?', error: 'The teacher gave the book to John and <strong>I</strong>.', fix: 'The teacher gave the book to John and <strong>me</strong>.', why: 'After the preposition “to”, use the object form “me”.' },
   { letter: 'P', name: 'Prepositions', check: 'Is the right preposition used? Watch the fixed phrases.', error: 'She is interested <strong>on</strong> the new project.', fix: 'She is interested <strong>in</strong> the new project.', why: 'Fixed collocation: interested <strong>in</strong>.' },
   { letter: 'C', name: 'Connectors', check: 'Is the linking word logically correct?', error: '<strong>Although</strong> he was tired, <strong>but</strong> he kept working.', fix: '<strong>Although</strong> he was tired, he kept working.', why: '“Although” and “but” both signal contrast — they cannot co-exist. Delete one.' },
@@ -91,7 +91,7 @@ const frameworkIndex = [
     <div class="container">
       <p class="eyebrow">The A-Worthy Method</p>
       <h1 class="fw-hero__title">A named framework for <span class="accent-word">every mark</span> on the O-Level English paper</h1>
-      <p class="fw-hero__lead">Most tuition teaches students to “write better.” We teach your child exactly which tool to reach for — and exactly how to use it — for every question on the GCE O-Level English Language (1184) paper. No guessing. No blank-page panic. A method, every time.</p>
+      <p class="fw-hero__lead">Most tuition tells students to “write better”. We teach your child which tool to use for each question on the GCE O-Level English Language (1184) paper, and exactly how to use it, so no answer starts from a blank page.</p>
       <div class="fw-index">
         {frameworkIndex.map((f) => (
           <a class="fw-index__card card-lift" href={f.href}>
@@ -166,7 +166,7 @@ const frameworkIndex = [
     <div class="container">
       <p class="eyebrow">Paper 2 · Comprehension (Sections B &amp; C)</p>
       <h2 class="fw-section__title squiggle">SWIFT sorts it. FLIP or EIL answers it.</h2>
-      <p class="fw-section__sub">Comprehension marks are lost before a single word is written — by answering the wrong <em>kind</em> of question. SWIFT is a five-second test that decides whether the answer is already in the passage (Category A) or has to be inferred (Category B). Once the category is set, the method is fixed.</p>
+      <p class="fw-section__sub">Comprehension marks are lost before a single word is written, when a student misjudges what <em>kind</em> of question it is. SWIFT is a five-second test that decides whether the answer is already in the passage (Category A) or has to be inferred (Category B). Once the category is set, the method is fixed.</p>
 
       <!-- SWIFT signal words -->
       <div class="swift-words">
@@ -248,7 +248,7 @@ const frameworkIndex = [
     <div class="container">
       <p class="eyebrow">Paper 2 · Summary</p>
       <h2 class="fw-section__title squiggle">CAPS — secure the language mark</h2>
-      <p class="fw-section__sub">The summary question rewards students who genuinely re-express the passage — not those who lift the writer’s words. After identifying and sorting the content points, CAPS is four paraphrasing moves that transform them. Each card shows a real before → after.</p>
+      <p class="fw-section__sub">The summary question rewards students who re-express the passage rather than lift the writer’s words. Once the content points are found and sorted, CAPS gives four paraphrasing moves for rewriting them. Each card shows a real before → after.</p>
 
       <div class="caps-grid">
         {capsTechniques.map((t) => (
@@ -269,7 +269,7 @@ const frameworkIndex = [
       <div class="caps-extra">
         <div class="caps-structure">
           <h3 class="caps-extra__title">One paragraph, or two?</h3>
-          <p class="caps-extra__lead">Both types use the same four techniques. A single-part summary covers one theme in about 80 words. A two-part summary covers two sides — split roughly 40 words each — with one transition sentence marking the shift.</p>
+          <p class="caps-extra__lead">Both types use the same four techniques. A single-part summary covers one theme in about 80 words. A two-part summary covers two sides (roughly 40 words each), with one transition sentence marking the shift.</p>
           <div class="caps-parts">
             <div class="caps-part">
               <span class="caps-part__label">Single-part</span>
