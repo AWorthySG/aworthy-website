@@ -18,7 +18,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description = "Singapore's top-rated tuition for O-Level English & Maths, GP & H2 Economics. 90% A1–B3 rate, max 6 per class. Book a free assessment.", ogImage, noindex = false } = Astro.props;
+const { title, description = "Online tuition in Singapore for O-Level English & Maths, Pre-IB Maths, H1 GP and H2 Economics. Groups of up to 6, taught by Jeremy Lim. Book a free assessment.", ogImage, noindex = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
@@ -77,7 +77,7 @@ const schemaData = {
   "name": "A-Worthy",
   "url": Astro.site?.toString(),
   "logo": new URL('/images/logo.png', Astro.site).toString(),
-  "description": "Singapore's top-rated tuition centre for O-Level English & Maths, H1 General Paper & H2 Economics. Small classes, proven SHARP Method, 90% A1–B3 rate.",
+  "description": "Online tuition centre in Singapore for O-Level English and Mathematics, Pre-IB Mathematics, H1 General Paper and H2 Economics, in classes of up to 6.",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "SG",
@@ -1476,7 +1476,7 @@ const schemaData = {
       trial: 'Yes! We offer a free diagnostic assessment for all new students. This helps us understand your child\'s needs before recommending a programme. <a href="/contact/">Book free assessment \u2192</a>',
       online: 'All classes are 100% online, on the A-Worthy Whiteboard. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>',
       classsize: 'We cap every class at 6 students \u2014 no exceptions. This means your child gets personal feedback on their work every single session, and the tutor knows their specific strengths and weaknesses. <a href="/about/">Learn more about our approach \u2192</a>',
-      results: '90% of our students score A1\u2013B3 for O-Level English. Many students improve by 2\u20133 grades within their first term. <a href="/results/">See our full results \u2192</a>',
+      results: '90% of our O-Level English students scored A1\u2013B3. Our six documented case studies improved by 2\u20135 grades over 2\u20138 months. <a href="/results/">See our full results \u2192</a>',
       tutor: 'All classes are taught by Jeremy Lim, our founder. He\u2019s an NUS Law graduate (LLB Hons) who left corporate law to teach full-time. He created the SHARP Method based on the analytical skills used in legal practice. <a href="/about/">Read his story \u2192</a>',
       subjects: 'We teach five programmes: O-Level English (Sec 1\u20134), O-Level Mathematics (Sec 1\u20134), Pre-IB Mathematics (Year 3\u20134), H1 General Paper (JC 1\u20132), and H2 Economics (JC 1\u20132). All use the same SHARP Method framework. <a href="/programmes/">View all programmes \u2192</a>',
       location: 'We\u2019re 100% online \u2014 no physical centre. Students join from anywhere in Singapore on the A-Worthy Whiteboard, with every lesson recorded. No commute, no wasted time. <a href="/programmes/">View programmes \u2192</a>',
