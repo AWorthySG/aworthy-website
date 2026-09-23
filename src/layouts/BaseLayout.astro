@@ -1002,8 +1002,18 @@ const schemaData = {
     function initCounters() {
       var counters = document.querySelectorAll('[data-count]');
       if (!counters.length) return;
-      // Reduced motion: the markup already holds the final number, so leave it.
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      function finalText(el) {
+        var target = parseFloat(el.getAttribute('data-count'));
+        var suffix = el.getAttribute('data-count-suffix') || el.getAttribute('data-suffix') || '';
+        return (target % 1 !== 0 ? target.toFixed(1) : String(target)) + suffix;
+      }
+      // Reduced motion: write the final number straight away. Don't trust the
+      // markup to hold it — the landing pages shipped "0", which reduced-motion
+      // visitors then saw as "0 A1–B3 rate".
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        counters.forEach(function(el) { el.textContent = finalText(el); });
+        return;
+      }
       var animated = new Set();
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -1013,6 +1023,7 @@ const schemaData = {
           // Hold the width of the final number while it counts up, so the
           // label and its neighbours don't shuffle sideways on every frame.
           if (!el.style.minWidth) {
+            el.textContent = finalText(el); // measure the final number, whatever the markup holds
             if (getComputedStyle(el).display === 'inline') el.style.display = 'inline-block';
             el.style.minWidth = el.getBoundingClientRect().width + 'px';
           }
