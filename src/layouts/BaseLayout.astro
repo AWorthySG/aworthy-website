@@ -1075,7 +1075,9 @@ const schemaData = {
     var el = document.getElementById('sticky-cta-global');
     var dismiss = document.getElementById('sticky-cta-global-dismiss');
     if (!el) return;
-    if (window.location.pathname === '/' || window.location.pathname === '/index.html') return;
+    // Hidden on the homepage (it has its own bar) and on /contact/, where it
+    // would link to the page the parent is already on.
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html' || window.location.pathname.indexOf('/contact') === 0) return;
     var dismissed = false;
     var shown = false;
     // Looked up on each call: the notice's markup comes after this script, so
@@ -1297,7 +1299,7 @@ const schemaData = {
           <button class="chatbot-option" data-q="schedule">What are the class schedules?</button>
           <button class="chatbot-option" data-q="method">What is the SHARP Method?</button>
           <button class="chatbot-option" data-q="enrol">How do I enrol?</button>
-          <button class="chatbot-option" data-q="trial">Can I try a free lesson?</button>
+          <button class="chatbot-option" data-q="trial">Is there a free trial?</button>
           <button class="chatbot-option" data-q="online">Are classes online or in-person?</button>
           <button class="chatbot-option" data-q="classsize">What are the class sizes?</button>
           <button class="chatbot-option" data-q="results">What results do your students get?</button>
@@ -1473,7 +1475,7 @@ const schemaData = {
       schedule: 'Classes run Mon\u2013Fri 2pm\u20139:30pm and Sat\u2013Sun 9am\u20136pm. All sessions run live on the A-Worthy Whiteboard. <a href="/contact/">Contact us for available slots \u2192</a>',
       method: 'The SHARP Method is our proprietary 5-step system: See, Hit, Apply, Refine, Practise. Adapted from legal reasoning, it teaches students how to think systematically. <a href="/programmes/">Learn more \u2192</a>',
       enrol: 'Step 1: Book a free diagnostic assessment. Step 2: Get a personalised learning plan. Step 3: Start learning! <a href="/contact/">Book Free Assessment \u2192</a>',
-      trial: 'Yes! We offer a free diagnostic assessment for all new students. This helps us understand your child\'s needs before recommending a programme. <a href="/contact/">Book free assessment \u2192</a>',
+      trial: 'We don\u2019t run trial lessons. Instead, every new student gets a free 20-minute diagnostic assessment of a recent marked paper, and the first month of lessons is covered by our first-month money-back guarantee. <a href="/contact/">Book free assessment \u2192</a>',
       online: 'All classes are 100% online, on the A-Worthy Whiteboard. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>',
       classsize: 'We cap every class at 6 students \u2014 no exceptions. This means your child gets personal feedback on their work every single session, and the tutor knows their specific strengths and weaknesses. <a href="/about/">Learn more about our approach \u2192</a>',
       results: '90% of our O-Level English students scored A1\u2013B3. Our six documented case studies improved by 2\u20135 grades over 2\u20138 months. <a href="/results/">See our full results \u2192</a>',

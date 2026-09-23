@@ -554,8 +554,8 @@ import { googleReviewsUrl } from '../data/site-config';
                 <input type="text" id="parent-name" name="parentName" required placeholder="e.g. Sarah" />
               </div>
               <div class="form-group">
-                <label for="student-name">Your child's name <span class="required">*</span></label>
-                <input type="text" id="student-name" name="studentName" required placeholder="e.g. Ethan" />
+                <label for="student-name">Your child's name <span class="optional">(optional)</span></label>
+                <input type="text" id="student-name" name="studentName" placeholder="e.g. Ethan" />
               </div>
             </div>
             <div class="form-row">
@@ -577,19 +577,23 @@ import { googleReviewsUrl } from '../data/site-config';
                   <option value="Sec 2">Sec 2</option>
                   <option value="Sec 3">Sec 3</option>
                   <option value="Sec 4">Sec 4</option>
+                  <option value="Year 3 (IB)">Year 3 (IB)</option>
+                  <option value="Year 4 (IB)">Year 4 (IB)</option>
                   <option value="JC 1">JC 1</option>
                   <option value="JC 2">JC 2</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="referral">How did you find us?</label>
-                <select id="referral" name="referral">
-                  <option value="">-- Select --</option>
-                  <option value="Google">Google</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="Friend/Family">Friend / Family</option>
-                  <option value="School">School</option>
-                  <option value="Other">Other</option>
+                <label for="subject">Which subject? <span class="required">*</span></label>
+                <select id="subject" name="subject" required>
+                  <option value="">-- Select Subject --</option>
+                  <option value="O-Level English">O-Level English</option>
+                  <option value="O-Level Mathematics">O-Level Mathematics</option>
+                  <option value="Pre-IB Mathematics">Pre-IB Mathematics</option>
+                  <option value="H1 General Paper">H1 General Paper</option>
+                  <option value="H2 Economics">H2 Economics</option>
+                  <option value="One-to-one coaching">One-to-one coaching</option>
+                  <option value="More than one subject">More than one subject</option>
                 </select>
               </div>
             </div>
@@ -600,7 +604,7 @@ import { googleReviewsUrl } from '../data/site-config';
             <button type="submit" id="form-submit-btn" class="btn btn-accent btn-submit"><span>Book Free Assessment</span></button>
             <div id="form-success" class="form-success" hidden>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-              Thanks! We've received your message and will get back to you within 24 hours — usually much sooner. Keep an eye on your inbox (and spam folder, just in case).
+              Thank you. Jeremy will WhatsApp you within 24 hours to fix a 20-minute Zoom slot for the free assessment. Before the call, please send a photo of your child's latest marked paper to +65 8991 3181. You'll receive a written summary of the gaps afterwards.
             </div>
             <div id="form-errors" class="form-errors" role="alert" hidden></div>
           </form>
@@ -700,15 +704,15 @@ import { googleReviewsUrl } from '../data/site-config';
     errorsEl.hidden = true;
     var errors = [];
     var parentName = form.querySelector('[name="parentName"]');
-    var studentName = form.querySelector('[name="studentName"]');
     var email = form.querySelector('[name="email"]');
     var phone = form.querySelector('[name="phone"]');
     var level = form.querySelector('[name="studentLevel"]');
-    if (!parentName.value.trim()) errors.push('Parent name is required');
-    if (!studentName.value.trim()) errors.push('Student name is required');
-    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) errors.push('Valid email is required');
-    if (!phone.value.trim()) errors.push('Phone number is required');
-    if (!level.value) errors.push('Student level is required');
+    var subject = form.querySelector('[name="subject"]');
+    if (!parentName.value.trim()) errors.push('Please tell us what to call you.');
+    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) errors.push('Please enter a valid email address.');
+    if (!phone.value.trim()) errors.push('Please enter your WhatsApp or phone number.');
+    if (!level.value) errors.push('Please choose your child\'s level.');
+    if (!subject.value) errors.push('Please choose a subject.');
     if (errors.length) {
       errorsEl.innerHTML = errors.join('<br>');
       errorsEl.hidden = false;
@@ -2025,6 +2029,7 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-bottom: 0;
   }
   .required { color: var(--color-accent-text); }
+  .optional { color: var(--text-secondary); font-weight: 600; text-transform: none; letter-spacing: 0; }
   .btn-submit {
     width: 100%;
     margin-top: 0.5rem;
