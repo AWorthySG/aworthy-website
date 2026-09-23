@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const gradeOptions = [
-  { v: '', label: '— Not taken —' },
+  { v: '', label: 'Not taken' },
   { v: 1, label: 'A1' }, { v: 2, label: 'A2' }, { v: 3, label: 'B3' },
   { v: 4, label: 'B4' }, { v: 5, label: 'C5' }, { v: 6, label: 'C6' },
   { v: 7, label: 'D7' }, { v: 8, label: 'E8' }, { v: 9, label: 'F9' },
@@ -108,9 +108,9 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
         <div class="calc-breakdown" id="calc-breakdown"></div>
         <h3 class="calc-jc-heading squiggle">JCs you&rsquo;d qualify for <span>(2026 JAE, indicative)</span></h3>
         <div class="calc-jc" id="calc-jc"></div>
-        <p class="calc-disclaimer">Cut-off points change every year and depend on stream and choice order. This is an indicative guide only &mdash; always verify the latest figures on <a href="https://www.moe.gov.sg/schoolfinder" target="_blank" rel="noopener noreferrer">MOE SchoolFinder</a>.</p>
+        <p class="calc-disclaimer">Cut-off points change every year and depend on stream and choice order. Treat this as an indicative guide and check the latest figures on <a href="https://www.moe.gov.sg/schoolfinder" target="_blank" rel="noopener noreferrer">MOE SchoolFinder</a>.</p>
         <div class="calc-cta">
-          <p><strong>English and Maths affect every L1R5.</strong> They&rsquo;re the two subjects every student takes &mdash; so every grade you raise there shifts your whole aggregate.</p>
+          <p><strong>English and Maths affect every L1R5.</strong> They&rsquo;re the two subjects every student takes, so every grade you raise there shifts your whole aggregate.</p>
           <div class="calc-cta-links">
             <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
             <a href="/o-level-english/" class="calc-cta-link subject--english"><span class="subject-dot" aria-hidden="true"></span>O-Level English &rarr;</a>
@@ -125,7 +125,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
     <div class="container">
       <h2 class="section-title">How L1R5 works</h2>
       <p class="section-subtitle">L1R5 = 1 Language + 5 Relevant subjects &mdash; the aggregate of your six best grades, selected by MOE&rsquo;s rules. Each grade is worth points (A1&nbsp;=&nbsp;1 up to F9&nbsp;=&nbsp;9), so a <em>lower</em> score is better, and bonus points for CCA and Higher Mother Tongue are subtracted to give your net aggregate.</p>
-      <p class="calc-explainer__note">For the full breakdown, bonus-point rules, and the complete 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points/">complete L1R5 &amp; cut-off points guide</a>. Already heading to JC? Plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>.</p>
+      <p class="calc-explainer__note">For the full breakdown, bonus-point rules, and the 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points/">L1R5 &amp; cut-off points guide</a>. Already heading to JC? Plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>.</p>
     </div>
   </section>
 
@@ -267,12 +267,12 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
 
     function calculate() {
       var english = collect('english');
-      if (!english.length) { showError('Please enter your English Language grade — it is your L1.'); return; }
+      if (!english.length) { showError('Please enter your English Language grade. English is your L1.'); return; }
 
       var mathsci = collect('mathsci').sort(function (a, b) { return a.pts - b.pts; });
       var hums = collect('humanities').sort(function (a, b) { return a.pts - b.pts; });
-      if (!mathsci.length) { showError('Add at least one Mathematics or Science subject — it is required for R2.'); return; }
-      if (!hums.length) { showError('Add at least one Humanities subject — it is required for R1.'); return; }
+      if (!mathsci.length) { showError('Add at least one Mathematics or Science subject. R2 must come from this group.'); return; }
+      if (!hums.length) { showError('Add at least one Humanities subject. R1 must come from this group.'); return; }
 
       var L1 = english[0];
       var R2 = mathsci[0];
@@ -312,7 +312,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
       var html = '';
       if (sci.length) html += '<div><strong style="font-size:0.8rem;color:var(--text-secondary);">Science stream:</strong><div class="calc-jc" style="margin-top:0.4rem;">' + sci.map(function (n) { return '<span class="calc-jc-chip">' + n + '</span>'; }).join('') + '</div></div>';
       if (arts.length) html += '<div style="margin-top:0.6rem;"><strong style="font-size:0.8rem;color:var(--text-secondary);">Arts stream:</strong><div class="calc-jc" style="margin-top:0.4rem;">' + arts.map(function (n) { return '<span class="calc-jc-chip">' + n + '</span>'; }).join('') + '</div></div>';
-      if (!sci.length && !arts.length) html = '<p class="calc-jc-none">With a net L1R5 of ' + net + ', none of the JCs in our 2026 table are within range &mdash; but Millennia Institute (a 3-year programme) and polytechnic routes remain open. Raising English and Maths is the fastest way to bring this down.</p>';
+      if (!sci.length && !arts.length) html = '<p class="calc-jc-none">With a net L1R5 of ' + net + ', none of the JCs in our 2026 table is within range, but Millennia Institute (a 3-year programme) and polytechnic routes remain open. Raising English and Maths is the fastest way to bring this down.</p>';
       jcEl.innerHTML = html;
 
       resultEl.hidden = false;

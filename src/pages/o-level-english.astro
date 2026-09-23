@@ -87,8 +87,8 @@ const playbookRows = [
 const oralQuestionTypes = [
   { tag: 'Position', prompt: '“What is your view?” / “Do you agree?”', desc: 'Take a clear stand, defend it with two points, concede the other side fairly, then reaffirm.' },
   { tag: 'Recommendation', prompt: '“What can be done?” / “What suggestions?”', desc: 'Offer specific, practical actions and explain why each one would work.' },
-  { tag: 'Reflective', prompt: '“Why do you say so?” / “What might they feel?”', desc: 'Explore the idea thoughtfully; weigh more than one possibility before settling.' },
-  { tag: 'Personal', prompt: '“Tell me about…” / “What do you like…?”', desc: 'Share a genuine experience with vivid, sincere detail; explain why it matters.' },
+  { tag: 'Reflective', prompt: '“Why do you say so?” / “What might they feel?”', desc: 'Weigh more than one possibility before settling on a view.' },
+  { tag: 'Personal', prompt: '“Tell me about…” / “What do you like…?”', desc: 'Share a genuine experience in vivid, sincere detail, then explain why it matters.' },
 ];
 
 const oralSpheres = [
@@ -100,12 +100,12 @@ const oralSpheres = [
 ];
 
 const oralAnatomy = [
-  { stage: 'STAND', label: 'Commit → signpost → flag balance', text: '“Yes, I strongly believe we should keep our street hawkers in Singapore, and I would defend this through two points, while addressing a common concern.”', why: 'The position is committed in the first breath — a clear “Yes” — and the answer signals its own structure (“two points”) and its fairness (“a common concern”). The examiner now knows exactly what is coming.' },
-  { stage: 'P', label: 'Point', text: '“Firstly, hawkers are a treasured part of our culture and identity.”', why: 'A single, clear claim. It is not yet explained; it simply states what this paragraph will argue, so the reasoning has a spine.' },
+  { stage: 'STAND', label: 'Commit → signpost → flag balance', text: '“Yes, I strongly believe we should keep our street hawkers in Singapore, and I would defend this through two points, while addressing a common concern.”', why: 'The position is committed in the first breath (a clear “Yes”), and the answer signals its own structure (“two points”) and its fairness (“a common concern”). The examiner now knows exactly what is coming.' },
+  { stage: 'P', label: 'Point', text: '“Firstly, hawkers are a treasured part of our culture and identity.”', why: 'A single, clear claim. It is not explained yet. It states what this paragraph will argue, so the reasoning has a spine.' },
   { stage: 'E', label: 'Evidence', text: '“Hawker food is something Singaporeans of all backgrounds enjoy and take pride in, so much so that our hawker culture has been recognised by UNESCO.”', why: 'Concrete, not vague: a shared national experience plus a verifiable fact. Specific evidence is far more persuasive than a general assertion.' },
   { stage: 'E', label: 'Explanation', text: '“This matters because hawker culture is woven into who we are as a nation… UNESCO recognition confirms this is not merely local sentiment but something of real cultural significance.”', why: 'This is where the marks are won. The answer explains why the evidence matters, lifting the point from opinion to genuine cultural significance.' },
   { stage: 'L', label: 'Link', text: '“So we should keep hawkers because they are a living part of our national identity.”', why: 'A one-line link returns to the exact terms of the question. It keeps the paragraph disciplined and on task.' },
-  { stage: 'COUNTER', label: 'Fair concession', text: '“Some might worry about hygiene or the hardships of the trade, but these can be managed through proper regulation and support, as Singapore already does well, rather than by giving hawkers up.”', why: 'A fair concession shows balanced judgement: the answer names the real objection, then rebuts it. Acknowledging the other side strengthens the case.' },
+  { stage: 'COUNTER', label: 'Fair concession', text: '“Some might worry about hygiene or the hardships of the trade, but these can be managed through proper regulation and support, as Singapore already does well, rather than by giving hawkers up.”', why: 'A fair concession shows balanced judgement: the answer names the real objection, then rebuts it.' },
   { stage: 'LINK', label: 'Final reaffirm', text: '“So overall, I firmly believe we should keep our street hawkers, because they nourish us, preserve our heritage and unite our community.”', why: 'The conclusion gathers the threads and reaffirms the stand with a memorable final image — answering the question fully without repeating earlier wording.' },
 ];
 
@@ -166,7 +166,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
         <div class="prog-hero__copy">
           <p class="eyebrow">O-Level English</p>
           <h1 class="prog-hero__heading">O-Level <span class="accent-word">English</span> Tuition<br />in Singapore</h1>
-          <p class="prog-hero__sub">Our students achieve a 90% A1&ndash;B3 rate using the SHARP Method &mdash; a proven five-step system adapted from legal analytical reasoning that gives your child a named, repeatable framework for every question type across Paper 1 (editing, situational writing, continuous writing), Paper 2 (comprehension, summary), and Paper 4 (oral communication).</p>
+          <p class="prog-hero__sub">Our students achieve a 90% A1&ndash;B3 rate with the SHARP Method, a five-step system adapted from legal analytical reasoning. It gives your child a named, repeatable framework for every question type across Paper 1 (editing, situational writing, continuous writing), Paper 2 (comprehension, summary), and Paper 4 (oral communication).</p>
           <div class="prog-hero__actions">
             <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
             <span class="prog-hero__fee">From SGD 280/month &middot; groups of up to 6</span>
@@ -196,12 +196,12 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     <div class="container">
       <p class="eyebrow">Sec 1 &ndash; 2</p>
       <h2 class="prog-section__heading">Build an A-Grade Foundation from Secondary 1</h2>
-      <p class="prog-section__sub">Start building strong English comprehension and writing skills early &mdash; the earlier your child begins, the stronger their O-Level foundation.</p>
+      <p class="prog-section__sub">Start comprehension and writing work in Secondary 1, and your child reaches the O-Level years with the basics already in place.</p>
 
       <div class="card-grid card-grid--1">
         <div class="prog-card">
           <h3 class="prog-card__title">Foundation Programme</h3>
-          <p class="prog-card__desc">Small group online sessions designed to develop the core English skills that underpin O-Level success &mdash; starting from Secondary 1. Your child builds inference and close-reading habits early, learns essay structure fundamentals through guided composition practice, and develops the grammar precision that prevents marks from slipping away in the editing section. Every session uses real Cambridge-aligned materials, so the transition to O-Level exam preparation in Sec 3 is seamless.</p>
+          <p class="prog-card__desc">Small-group online sessions that build the core skills O-Level English tests, starting from Secondary 1. Your child builds inference and close-reading habits early, learns essay structure through guided composition practice, and develops the grammar accuracy the editing section rewards. Every session uses Cambridge-aligned materials, so the format is already familiar when O-Level exam preparation starts in Sec 3.</p>
           <ul class="prog-card__topics">
             <li>Close reading and inference techniques</li>
             <li>Essay structure fundamentals (narrative, expository)</li>
@@ -225,12 +225,12 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     <div class="container">
       <p class="eyebrow">Sec 3 &ndash; 4</p>
       <h2 class="prog-section__heading">Push Your Grade from C to A with Intensive Sec 3&ndash;4 Prep</h2>
-      <p class="prog-section__sub">Targeted exam preparation with monthly mock papers, detailed marker-style feedback, and proven techniques to push grades from C to A.</p>
+      <p class="prog-section__sub">Exam preparation with monthly mock papers, detailed marker-style feedback, and a named technique for each paper section.</p>
 
       <div class="card-grid card-grid--1">
         <div class="prog-card">
           <h3 class="prog-card__title">O-Level Intensive Programme</h3>
-          <p class="prog-card__desc">Rigorous, exam-aligned preparation covering every component of the GCE O-Level English paper &mdash; with monthly mock papers graded against Cambridge band descriptors and individualised feedback on each student&rsquo;s specific weaknesses. Your child practises with real past-paper questions every week, receives detailed written comments on composition structure, grammar accuracy, and comprehension technique, and builds the timed writing stamina that separates exam-ready students from those who run out of time on Paper 1.</p>
+          <p class="prog-card__desc">Preparation for every component of the GCE O-Level English paper, with monthly mock papers graded against Cambridge band descriptors and individual feedback on each student&rsquo;s weak areas. Your child practises with real past-paper questions every week, receives written comments on composition structure, grammar accuracy and comprehension technique, and builds the timed-writing stamina needed to finish Paper 1 on time.</p>
           <ul class="prog-card__topics">
             <li>Paper 1 Situational Writing (format, purpose, audience, register)</li>
             <li>Paper 1 Continuous Writing (narrative, expository, argumentative)</li>
@@ -255,12 +255,12 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     <div class="container">
       <p class="eyebrow">One-to-One</p>
       <h2 class="prog-section__heading">One-to-One English Coaching</h2>
-      <p class="prog-section__sub">For students requiring tailored support or intensive exam preparation.</p>
+      <p class="prog-section__sub">For students who need individual support or intensive exam preparation.</p>
 
       <div class="card-grid card-grid--1">
         <div class="prog-card">
           <h3 class="prog-card__title">Individual Coaching</h3>
-          <p class="prog-card__desc">Fully customised to the student&rsquo;s specific gaps &mdash; whether it&rsquo;s comprehension, composition, oral, or editing. Individual online sessions on the A-Worthy Whiteboard, scheduled at your convenience.</p>
+          <p class="prog-card__desc">Fully customised to the student&rsquo;s specific gaps, whether in comprehension, composition, oral or editing. Individual online sessions on the A-Worthy Whiteboard, scheduled at your convenience.</p>
           <div class="prog-card__meta">
             <span>60&ndash;90 min / session</span>
             <span>1 student</span>
@@ -332,7 +332,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
         </details>
         <details class="faq-item">
           <summary class="faq-question">How to score A1 for O-Level English?</summary>
-          <div class="faq-answer"><p>Master all four components &mdash; editing, situational writing, continuous writing, and comprehension. Focus on grammar accuracy, vocabulary range, and structured argumentation. The SHARP Method (See the question type, Hit the right framework, Apply it correctly, Refine through feedback, Practise via retrieval) deploys paper-matched frameworks (FLIP/EIL, CAPS, P-E-E-L, RAWCP, STAMP CARD) at step H so your child has the right precision tool for every paper section.</p></div>
+          <div class="faq-answer"><p>Master all four components &mdash; editing, situational writing, continuous writing, and comprehension. Focus on grammar accuracy, vocabulary range, and structured argumentation. The SHARP Method (See the question type, Hit the right framework, Apply it correctly, Refine through feedback, Practise via retrieval) uses paper-matched frameworks (FLIP/EIL, CAPS, P-E-E-L, RAWCP, STAMP CARD) at step H, so your child has the right tool for every paper section.</p></div>
         </details>
         <details class="faq-item">
           <summary class="faq-question">Is English tuition necessary for O-Levels?</summary>
@@ -340,7 +340,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
         </details>
         <details class="faq-item">
           <summary class="faq-question">What is tested in O-Level English Paper 1?</summary>
-          <div class="faq-answer"><p>Paper 1 has three sections &mdash; editing (10 marks), situational writing (30 marks), and continuous writing (30 marks). Each requires different skills and strategies, which our programme covers systematically.</p></div>
+          <div class="faq-answer"><p>Paper 1 has three sections: editing (10 marks), situational writing (30 marks), and continuous writing (30 marks). Our programme gives each one its own framework: STAMP CARD for editing, RAWCP for situational writing, and a story-spine plan or P-E-E-L for continuous writing.</p></div>
         </details>
         <details class="faq-item">
           <summary class="faq-question">When should I start O-Level English tuition?</summary>
@@ -348,7 +348,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
         </details>
         <details class="faq-item">
           <summary class="faq-question">Can my child join mid-term?</summary>
-          <div class="faq-answer"><p>Yes. Because our classes are small (max 6 students), we can onboard new students at any point in the term. Jeremy will provide a brief diagnostic to identify gaps and tailor initial sessions accordingly.</p></div>
+          <div class="faq-answer"><p>Yes. Because our classes are small (max 6 students), we can take in new students at any point in the term. Jeremy runs a short diagnostic to find the gaps and plans the first sessions around them.</p></div>
         </details>
         <details class="faq-item">
           <summary class="faq-question">What happens if my child misses a class?</summary>
@@ -367,7 +367,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     <div class="container">
       <p class="eyebrow">1184 Syllabus</p>
       <h2 class="prog-section__heading">Complete GCE O-Level English Language (1184) Syllabus Coverage</h2>
-      <p class="prog-section__sub">Every component of the GCE O-Level English Language syllabus (1184), taught with precision and exam alignment.</p>
+      <p class="prog-section__sub">Every component of the GCE O-Level English Language syllabus (1184), mapped paper by paper.</p>
 
       <div class="card-grid card-grid--2">
         <div class="prog-card">
@@ -407,22 +407,22 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
       <div class="card-grid card-grid--2">
         <div class="prog-card">
           <h3 class="prog-card__title">See</h3>
-          <p class="prog-card__desc">Most students lose marks before they write a single word &mdash; because they misread what the question is actually asking. In the See step, your child learns to decode every O-Level question the way a lawyer reads a contract: what is the command word? What text type does the examiner expect? What are the hidden constraints buried in the rubric? For comprehension, this means identifying whether a question is literal (answer is in the text), inferential (answer must be deduced), or evaluative (answer requires judgement). For composition, it means spotting whether the prompt calls for narrative, expository, or argumentative writing &mdash; and what register, audience, and purpose are implied. By the time your child puts pen to paper, they already know exactly what success looks like.</p>
+          <p class="prog-card__desc">Most students lose marks before they write a single word, because they misread what the question is asking. In the See step, your child learns to read every O-Level question the way a lawyer reads a contract. What is the command word? What text type does the examiner expect? What constraints are buried in the rubric? For comprehension, this means identifying whether a question is literal (the answer is in the text), inferential (the answer must be deduced) or evaluative (the answer requires judgement). For composition, it means spotting whether the prompt calls for narrative, expository or argumentative writing, and which register, audience and purpose it implies.</p>
         </div>
 
         <div class="prog-card">
           <h3 class="prog-card__title">Hit</h3>
-          <p class="prog-card__desc">Once the question type is clear, your child selects the precise framework built for that question. This isn&rsquo;t generic advice &mdash; it&rsquo;s a specific, named tool for each paper section: STAMP CARD for editing (a 9-category error sweep), RAWCP for situational writing (Register, Audience, Writing format, Content points, Purpose), a story-spine plan for narrative composition (character, arc, plot, setting), P-E-E-L for expository and argumentative writing (Point, Evidence, Explanation, Link), SWIFT then FLIP or EIL for comprehension (a five-second category test, then Find-Lift-Interpret-Paraphrase or Evidence-Implication-Link), CAPS for summary (Combine, Alter word class, rePurpose, Swap), and ACED for visual text comprehension (Audience, Content, Effect, Design). Each framework maps directly to the Cambridge mark scheme &mdash; so every mark your child earns is deliberate, not accidental.</p>
+          <p class="prog-card__desc">Once the question type is clear, your child picks the framework built for it. Each paper section has its own named tool: STAMP CARD for editing (a 9-category error sweep), RAWCP for situational writing (Register, Audience, Writing format, Content points, Purpose), a story-spine plan for narrative composition (character, arc, plot, setting), P-E-E-L for expository and argumentative writing (Point, Evidence, Explanation, Link), SWIFT then FLIP or EIL for comprehension (a five-second category test, then Find-Lift-Interpret-Paraphrase or Evidence-Implication-Link), CAPS for summary (Combine, Alter word class, rePurpose, Swap), and ACED for visual text comprehension (Audience, Content, Effect, Design). Each framework maps to the Cambridge mark scheme, so every step of your child&rsquo;s answer is aimed at a specific mark.</p>
         </div>
 
         <div class="prog-card">
           <h3 class="prog-card__title">Apply</h3>
-          <p class="prog-card__desc">This is where frameworks become actual writing. Your child applies the chosen tool to a real past-paper question under guided conditions &mdash; not passively watching a model answer, but actively constructing their own response with live tutor intervention. For composition, this means building a full outline using the story spine or P-E-E-L before writing the first sentence, so the piece has structure before it has words. For comprehension, it means writing clean FLIP or EIL answers where every sentence earns a mark. Jeremy provides real-time feedback on screen-shared documents &mdash; flagging weak topic sentences, vague evidence, and missing content points as they happen, not a week later when the moment has passed. The small class size (max 6) means every student gets at least three individual feedback touches per session.</p>
+          <p class="prog-card__desc">Here the framework becomes writing. Your child applies the chosen tool to a real past-paper question and builds their own response while the tutor steps in live, instead of watching a model answer being written. For composition, this means a full outline using the story spine or P-E-E-L before the first sentence. For comprehension, it means clean FLIP or EIL answers in which every sentence earns a mark. Jeremy gives feedback in real time on screen-shared documents, flagging weak topic sentences, vague evidence and missing content points as they happen rather than a week later. The small class size (max 6) means every student gets at least three individual feedback touches per session.</p>
         </div>
 
         <div class="prog-card">
           <h3 class="prog-card__title">Refine &amp; Practise</h3>
-          <p class="prog-card__desc">The steps that turn B-grade students into A-grade students. Your child self-checks every response against a paper-specific checklist: Did the situational writing match the correct register? Does the comprehension answer include a text reference? Is the summary under 80 words without dropping content points? Are verb tenses consistent throughout the narrative? Then comes retrieval practice &mdash; the most underrated study technique in education. Your child rewrites key answers from memory, reinforcing the framework until the process becomes automatic. This is how exam technique transfers from the classroom to the exam hall: not through last-minute revision, but through spaced, deliberate repetition that locks each framework into long-term memory.</p>
+          <p class="prog-card__desc">Your child self-checks every response against a paper-specific checklist. Did the situational writing match the correct register? Does the comprehension answer include a text reference? Is the summary under 80 words without dropping content points? Are verb tenses consistent throughout the narrative? Then comes retrieval practice: your child rewrites key answers from memory until using the framework is automatic. Spaced repetition over the term, rather than last-minute revision, is what carries the technique into the exam hall.</p>
         </div>
 
 
@@ -435,27 +435,27 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     <div class="container">
       <p class="eyebrow">Question-Type Frameworks</p>
       <h2 class="prog-section__heading">A named framework for every question type on the O-Level paper</h2>
-      <p class="prog-section__sub">Most tuition centres teach &ldquo;how to write better.&rdquo; We teach your child exactly which tool to reach for &mdash; and exactly how to use it &mdash; for every section of every paper.</p>
+      <p class="prog-section__sub">Most tuition centres teach &ldquo;how to write better.&rdquo; We teach your child which tool to reach for in every section of every paper, and exactly how to use it.</p>
 
       <div class="card-grid card-grid--2">
         <div class="prog-card">
           <h3 class="prog-card__title">Editing &mdash; STAMP CARD</h3>
-          <p class="prog-card__desc">The editing passage hides eight grammar errors, with two lines left deliberately clean. STAMP CARD gives your child a nine-category sweep &mdash; Subject-verb agreement, Tense, Articles, Match pronouns, Prepositions, Connectors, Adjective/adverb word form, Right number, Degree of comparison &mdash; checked in order on every numbered line, like stamping off a bubble-tea card until all eight are caught. Instead of reading the passage once and hoping errors reveal themselves, your child works one focused lens at a time, front-loading the three that appear in almost every passage: Tense, Subject-verb agreement, and Adjective/adverb. The method catches the silent errors native speakers miss &mdash; the singular subject paired with a plural verb three clauses away, the tense shift buried mid-paragraph, &lsquo;less&rsquo; where &lsquo;fewer&rsquo; belongs. <a href="/frameworks/#stamp-card">See STAMP CARD worked, letter by letter &rarr;</a></p>
+          <p class="prog-card__desc">The editing passage hides eight grammar errors, with two lines left deliberately clean. STAMP CARD gives your child a nine-category sweep (Subject-verb agreement, Tense, Articles, Match pronouns, Prepositions, Connectors, Adjective/adverb word form, Right number, Degree of comparison), checked in order on every numbered line, like stamping off a bubble-tea card until all eight are caught. Instead of reading the passage once and hoping the errors stand out, your child checks one category at a time, starting with the three that appear in almost every passage: Tense, Subject-verb agreement, and Adjective/adverb. The method catches the silent errors native speakers miss: a singular subject paired with a plural verb three clauses away, a tense shift buried mid-paragraph, &lsquo;less&rsquo; where &lsquo;fewer&rsquo; belongs. <a href="/frameworks/#stamp-card">See STAMP CARD worked, letter by letter &rarr;</a></p>
         </div>
 
         <div class="prog-card">
           <h3 class="prog-card__title">Situational Writing &mdash; RAWCP + P-A-R</h3>
-          <p class="prog-card__desc">Paper 1B asks students to write in a specific format for a specific audience &mdash; but most students jump straight to content and forget about register, format, and tone. RAWCP (Register, Audience, Writing format, Content points, Purpose) is a pre-writing checklist your child runs before the first sentence. P-A-R (Purpose, Audience, Register) then guides every word choice: is this a formal letter to a principal, or an informal email to a friend? Should the tone be persuasive, informative, or advisory? Your child learns to match vocabulary, sentence structure, and closing conventions to the exact text type the examiner has specified &mdash; whether it&rsquo;s a formal proposal, an informal email, a report, or a speech. The 30 marks here reward precision of format as much as quality of content.</p>
+          <p class="prog-card__desc">Paper 1B asks students to write in a specific format for a specific audience, but most students jump straight to content and forget about register, format, and tone. RAWCP (Register, Audience, Writing format, Content points, Purpose) is a pre-writing checklist your child runs before the first sentence. P-A-R (Purpose, Audience, Register) then guides every word choice: is this a formal letter to a principal, or an informal email to a friend? Should the tone be persuasive, informative, or advisory? Your child learns to match vocabulary, sentence structure, and closing conventions to the exact text type the examiner has specified: a formal proposal, an informal email, a report or a speech. The 30 marks here reward precision of format as much as quality of content.</p>
         </div>
 
         <div class="prog-card">
           <h3 class="prog-card__title">Narrative Composition &mdash; Story Spine</h3>
-          <p class="prog-card__desc">Paper 1C narrative prompts require a story with structure &mdash; not a rambling sequence of events. Before writing, your child plans four things in five minutes: character (who is the protagonist, and what do they want?), arc (what tension or conflict drives the story?), plot (the three key beats &mdash; setup, complication, resolution), and setting (where and when the story takes place, and how that shapes the mood). The result is a composition that reads like a story examiners want to keep reading &mdash; with a clear turning point, sensory detail, and a resolution that doesn&rsquo;t feel rushed.</p>
+          <p class="prog-card__desc">Paper 1C narrative prompts need a story with structure rather than a rambling sequence of events. Before writing, your child plans four things in five minutes: character (who is the protagonist, and what do they want?), arc (what tension or conflict drives the story?), plot (the three key beats: setup, complication, resolution), and setting (where and when the story takes place, and how that shapes the mood). The finished composition has a clear turning point, sensory detail, and a resolution that doesn&rsquo;t feel rushed.</p>
         </div>
 
         <div class="prog-card">
           <h3 class="prog-card__title">Expository &amp; Argumentative &mdash; P-E-E-L</h3>
-          <p class="prog-card__desc">For Paper 1C expository and argumentative prompts, P-E-E-L (Point, Evidence, Explanation, Link) structures every body paragraph into a unit that earns full marks. Point: a clear topic sentence that directly addresses the question. Evidence: a specific example, statistic, or real-world reference &mdash; not a vague generalisation. Explanation: two to three sentences that explain how the evidence supports the point, showing the examiner your child can reason, not just assert. Link: a sentence that connects back to the thesis and transitions to the next paragraph. Most students can make a point and give an example. The marks are in the explanation &mdash; the analytical layer where your child demonstrates why the evidence matters.</p>
+          <p class="prog-card__desc">For Paper 1C expository and argumentative prompts, P-E-E-L (Point, Evidence, Explanation, Link) turns every body paragraph into a complete unit. Point: a clear topic sentence that directly addresses the question. Evidence: a specific example, statistic, or real-world reference, not a vague generalisation. Explanation: two to three sentences on how the evidence supports the point, showing the examiner that your child can reason as well as assert. Link: a sentence that connects back to the thesis and leads into the next paragraph. Most students can make a point and give an example. The marks are in the explanation, where your child shows why the evidence matters.</p>
         </div>
       </div>
       <details class="prog-more">
@@ -464,7 +464,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
 
         <div class="prog-card">
           <h3 class="prog-card__title">Comprehension &mdash; SWIFT &rarr; FLIP / EIL</h3>
-          <p class="prog-card__desc">Most comprehension marks are lost before a word is written &mdash; by answering the wrong <em>kind</em> of question. SWIFT is a five-second test: if the question contains Suggest, Why, Impression, Feeling or Tone, the answer must be inferred (Category B); if not, it is already in the passage (Category A). Category A is solved with FLIP &mdash; Find the lines, Lift the words, Interpret them, Paraphrase only if asked. Category B is solved with EIL &mdash; name the Evidence, state its Implication in your own words, then Link back to exactly what the question asked. Sixteen named question types (A1&ndash;A8, B1&ndash;B8) sit under those two methods, so your child always knows the move. <a href="/frameworks/#comprehension">Try the SWIFT classifier &rarr;</a></p>
+          <p class="prog-card__desc">Most comprehension marks are lost before a word is written, by answering the wrong <em>kind</em> of question. SWIFT is a five-second test. If the question contains Suggest, Why, Impression, Feeling or Tone, the answer must be inferred (Category B). If not, it is already in the passage (Category A). Category A is solved with FLIP: Find the lines, Lift the words, Interpret them, Paraphrase only if asked. Category B is solved with EIL: name the Evidence, state its Implication in your own words, then Link back to exactly what the question asked. Sixteen named question types (A1&ndash;A8, B1&ndash;B8) sit under those two methods, so your child always knows which one to use. <a href="/frameworks/#comprehension">Try the SWIFT classifier &rarr;</a></p>
         </div>
 
         <div class="prog-card">
@@ -474,12 +474,12 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
 
         <div class="prog-card">
           <h3 class="prog-card__title">Summary &mdash; CAPS</h3>
-          <p class="prog-card__desc">Paper 2 summary asks your child to compress a passage to about 80 words while keeping every content point &mdash; and the language mark is won by genuinely re-expressing the text, not lifting it. After numbering and sorting the points, CAPS is four paraphrasing moves: Combine &amp; condense (fuse related sentences, or replace a list with a category term), Alter word class (turn a noun into a verb and rebuild the sentence), rePurpose structure (reorder clauses or flip active/passive, no words swapped), and Swap words (register-appropriate synonyms &mdash; never technical terms or proper nouns). Two-part summaries add a single transition sentence between the halves. We drill sixty graded items per technique until the moves are automatic. <a href="/frameworks/#caps">See CAPS with real before &amp; after &rarr;</a></p>
+          <p class="prog-card__desc">Paper 2 summary asks your child to compress a passage to about 80 words while keeping every content point. The language mark goes to answers that re-express the text instead of lifting it. After numbering and sorting the points, CAPS is four paraphrasing moves: Combine &amp; condense (fuse related sentences, or replace a list with a category term), Alter word class (turn a noun into a verb and rebuild the sentence), rePurpose structure (reorder clauses or flip active/passive, no words swapped), and Swap words (register-appropriate synonyms &mdash; never technical terms or proper nouns). Two-part summaries add a single transition sentence between the halves. We drill sixty graded items per technique until the moves are automatic. <a href="/frameworks/#caps">See CAPS with real before &amp; after &rarr;</a></p>
         </div>
 
         <div class="prog-card">
           <h3 class="prog-card__title">Oral Communication &mdash; PEEL &amp; STAND</h3>
-          <p class="prog-card__desc">Paper 4 is 30 marks in two parts &mdash; a planned two-minute response, then a live discussion with the examiner &mdash; and it rewards structure, not scripts. STAND opens every response in three moves: commit to a position in the first breath, signpost how many points are coming, then flag that the other side will be addressed fairly. Each point that follows is built in PEEL &mdash; Point, Evidence, Explanation, Link &mdash; the same structure used for GP and continuous-writing paragraphs, so the reasoning stays visible under pressure. Your child also learns to widen an answer across the Spheres of Influence (Self, Family, School, Singapore, Global) and reach for an analytical lens (Social, Political, Economic&hellip;) instead of running out of things to say. We drill through recorded mock orals with playback review. <a href="#oral">See a real model answer, annotated &rarr;</a></p>
+          <p class="prog-card__desc">Paper 4 is 30 marks in two parts (a planned two-minute response, then a live discussion with the examiner), and it rewards structure rather than scripts. STAND opens every response in three moves: commit to a position in the first breath, signpost how many points are coming, then flag that the other side will be addressed fairly. Each point that follows is built in PEEL (Point, Evidence, Explanation, Link), the same structure used for GP and continuous-writing paragraphs, so the reasoning stays visible under pressure. Your child also learns to widen an answer across the Spheres of Influence (Self, Family, School, Singapore, Global) and reach for an analytical lens (Social, Political, Economic&hellip;) instead of running out of things to say. We drill through recorded mock orals with playback review. <a href="#oral">See a real model answer, annotated &rarr;</a></p>
         </div>
       </div>
       </details>
@@ -494,7 +494,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     <div class="container">
       <p class="eyebrow">Inside The Materials</p>
       <h2 class="prog-section__heading">Real pages from A-Worthy&rsquo;s English materials</h2>
-      <p class="prog-section__sub">The frameworks above aren&rsquo;t slideware &mdash; each one lives in a full teaching document your child works from. Eight excerpts, two from each document, unedited. Click to enlarge.</p>
+      <p class="prog-section__sub">Each framework above is written up in a full teaching document your child works from. Eight excerpts, two from each document, unedited. Click to enlarge.</p>
       <details class="prog-more">
         <summary class="btn btn--sm prog-more__toggle"><span class="prog-more__show">Show the sample pages</span><span class="prog-more__hide">Hide the sample pages</span></summary>
       <div class="notes-gallery notes-gallery--mixed">
@@ -541,7 +541,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
       <div class="prog-midcta__inner">
         <div class="prog-midcta__copy">
           <h2 class="prog-midcta__heading">See the method working on your child&rsquo;s own paper</h2>
-          <p class="prog-midcta__sub">Free 20-minute diagnostic &mdash; we analyse a recent paper, map the specific gaps, and recommend the right programme. No obligation, no sales pitch.</p>
+          <p class="prog-midcta__sub">Free 20-minute diagnostic: we analyse a recent paper, map the specific gaps, and recommend the right programme. No obligation, no sales pitch.</p>
         </div>
         <div class="prog-midcta__actions">
           <a href="/contact/" class="btn btn-accent prog-cta__btn prog-cta__btn--primary">Book Free Assessment</a>
@@ -634,7 +634,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
         </div>
       </div>
 
-      <p class="ba-footnote">Illustrative teaching example, not a real student script. The technique &mdash; EIL: Evidence, Implication, Link &mdash; is what we drill at the <strong>Hit</strong> step of the SHARP Method.</p>
+      <p class="ba-footnote">Illustrative teaching example, not a real student script. The technique, EIL (Evidence, Implication, Link), is what we drill at the <strong>Hit</strong> step of the SHARP Method.</p>
     </div>
   </section>
 
@@ -643,7 +643,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     <div class="container">
       <p class="eyebrow">Paper 4 &middot; Oral Communication</p>
       <h2 class="prog-section__heading">STAND, PEEL &amp; the Spheres of Influence &mdash; a real model answer, annotated</h2>
-      <p class="prog-section__sub">Excerpted from A-Worthy&rsquo;s own STAND/PEEL model-answer book &mdash; built from genuine SEAB Spoken Interaction prompts (2022&ndash;2025). Every excerpt below is real teaching material, not a marketing mock-up.</p>
+      <p class="prog-section__sub">Excerpted from A-Worthy&rsquo;s own STAND/PEEL model-answer book, built from genuine SEAB Spoken Interaction prompts (2022&ndash;2025). Every excerpt below is real teaching material, not a marketing mock-up.</p>
 
       <div class="oral-quickref">
         <div class="oral-peel">
@@ -788,7 +788,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
             </div>
           ))}
         </div>
-        <p class="oral-planned__note">Each reason then develops in full P&ndash;E&ndash;E&ndash;L &mdash; the model&rsquo;s Evidence rows even read the film itself (&ldquo;the film deliberately moves from calm into a section of overwhelming intensity, and only returns to peace once that intensity is released&rdquo;) &mdash; omitted here for length.</p>
+        <p class="oral-planned__note">Each reason then develops in full P&ndash;E&ndash;E&ndash;L (omitted here for length). The model&rsquo;s Evidence rows even read the film itself: &ldquo;the film deliberately moves from calm into a section of overwhelming intensity, and only returns to peace once that intensity is released&rdquo;.</p>
       </div>
 
       <!-- Real Part 2 exchanges, one PEEL unit each -->
@@ -813,7 +813,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
             </div>
           ))}
         </div>
-        <p class="oral-exchange__note">Each Link is deliberately forward-looking &mdash; it leaves the examiner something to respond to, which is how a discussion is sustained rather than restarted question by question.</p>
+        <p class="oral-exchange__note">Each Link is deliberately forward-looking: it leaves the examiner something to respond to, which is how a discussion is sustained rather than restarted question by question.</p>
       </div>
 
       <div class="oral-sets">
@@ -829,7 +829,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
 
       <div class="oral-tip">
         <span class="oral-tip__tag">Common mistake</span>
-        <p>Avoid answering only at the level of the video. Weak responses describe what the participants are doing; strong ones explain why the activity has lasting value beyond the clip &mdash; and reciting a model answer word for word sounds unnatural, so adapt the ideas to the exact stimulus shown.</p>
+        <p>Avoid answering only at the level of the video. Weak responses describe what the participants are doing, while strong ones explain why the activity has lasting value beyond the clip. Reciting a model answer word for word also sounds unnatural, so adapt the ideas to the exact stimulus shown.</p>
       </div>
       </details>
     </div>
@@ -845,7 +845,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     <div class="container">
       <p class="eyebrow">Inside a Lesson</p>
       <h2 class="prog-section__heading">What 90 minutes at A-Worthy actually looks like</h2>
-      <p class="prog-section__intro">Most parents have never seen the inside of a tuition lesson. Here&rsquo;s exactly how a Tuesday-night O-Level English session unfolds &mdash; from the first warm-up question to the homework that gets set before students log off.</p>
+      <p class="prog-section__intro">Most parents have never seen the inside of a tuition lesson. Here&rsquo;s how a Tuesday-night O-Level English session runs, from the first warm-up question to the homework set before students log off.</p>
 
       <ol class="lesson-timeline">
         <li class="lesson-step">
@@ -853,7 +853,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
           <div class="lesson-step__body">
             <span class="lesson-step__time">0 &ndash; 5 min &middot; Retrieval warm-up</span>
             <h3 class="lesson-step__title">Five questions, ninety seconds each</h3>
-            <p class="lesson-step__desc">Five questions on last week&rsquo;s techniques &mdash; vocabulary, grammar, or a quick inference. Students answer in the chat. Anyone who fumbles gets a one-line reminder before we move on. Retrieval is the most underrated study habit, so we build it into every session.</p>
+            <p class="lesson-step__desc">Five questions on last week&rsquo;s techniques &mdash; vocabulary, grammar, or a quick inference. Students answer in the chat. Anyone who fumbles gets a one-line reminder before we move on. Every session opens with this recall round.</p>
           </div>
         </li>
         <li class="lesson-step">
@@ -861,7 +861,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
           <div class="lesson-step__body">
             <span class="lesson-step__time">5 &ndash; 15 min &middot; Question of the week</span>
             <h3 class="lesson-step__title">Read the question before you write</h3>
-            <p class="lesson-step__desc">We project a real past-paper question on screen and walk through the <em>See</em> step together. What command word is being used? What text type does the question expect? Which framework will we reach for? By minute fifteen, every student knows what success looks like before they write a single word.</p>
+            <p class="lesson-step__desc">We project a real past-paper question on screen and walk through the <em>See</em> step together. What command word is being used? What text type does the question expect? Which framework will we reach for? By minute fifteen, every student knows what a full-mark answer needs before writing a word.</p>
           </div>
         </li>
         <li class="lesson-step">
@@ -877,7 +877,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
           <div class="lesson-step__body">
             <span class="lesson-step__time">30 &ndash; 60 min &middot; Live writing &amp; feedback</span>
             <h3 class="lesson-step__title">Three feedback touches per student</h3>
-            <p class="lesson-step__desc">Students attempt the question on screen-shared documents. Jeremy moves between answers in real time, flagging issues as they happen &mdash; before bad habits are reinforced. This is where the small class size matters: every student gets at least three feedback touches in thirty minutes.</p>
+            <p class="lesson-step__desc">Students attempt the question on screen-shared documents. Jeremy moves between answers in real time, flagging issues as they happen, before bad habits are reinforced. This is where the small class size matters: every student gets at least three feedback touches in thirty minutes.</p>
           </div>
         </li>
         <li class="lesson-step">
@@ -885,7 +885,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
           <div class="lesson-step__body">
             <span class="lesson-step__time">60 &ndash; 80 min &middot; Peer marking</span>
             <h3 class="lesson-step__title">Train the examiner&rsquo;s eye</h3>
-            <p class="lesson-step__desc">Students swap answers and mark each other&rsquo;s work against the official Cambridge band descriptors. Marking trains the examiner&rsquo;s eye &mdash; the moment a student sees what loses marks in someone else&rsquo;s essay, they stop making the same mistake in their own.</p>
+            <p class="lesson-step__desc">Students swap answers and mark each other&rsquo;s work against the official Cambridge band descriptors. Once a student sees what loses marks in someone else&rsquo;s essay, they start catching the same mistake in their own.</p>
           </div>
         </li>
         <li class="lesson-step">
@@ -893,7 +893,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
           <div class="lesson-step__body">
             <span class="lesson-step__time">80 &ndash; 90 min &middot; Exit ticket</span>
             <h3 class="lesson-step__title">No busywork goes home</h3>
-            <p class="lesson-step__desc">A two-question exit ticket confirms what stuck. Jeremy sets one focused practice piece &mdash; usually fifteen minutes of work &mdash; with a model answer dropped on WhatsApp the next morning. No busywork. Every assignment maps to a specific weakness.</p>
+            <p class="lesson-step__desc">A two-question exit ticket confirms what stuck. Jeremy sets one focused practice piece (usually fifteen minutes of work), and a model answer follows on WhatsApp the next morning. Every assignment targets a specific weakness.</p>
           </div>
         </li>
       </ol>
@@ -994,7 +994,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "O-Level English Tuition",
-    "description": "Comprehensive O-Level English tuition for Secondary 1-4 using the SHARP Method. Master comprehension, composition, oral, and editing.",
+    "description": "O-Level English tuition for Secondary 1-4 using the SHARP Method, covering comprehension, composition, oral and editing.",
     "provider": {"@type": "EducationalOrganization", "name": "A-Worthy", "url": "https://a-worthy.com"},
     "offers": {"@type": "Offer", "price": "280", "priceCurrency": "SGD", "availability": "https://schema.org/InStock"},
     "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT6H/month"}
@@ -1012,7 +1012,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
       {
         "@type": "Question",
         "name": "How to score A1 for O-Level English?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Master all four components — editing, situational writing, continuous writing, and comprehension. Focus on grammar accuracy, vocabulary range, and structured argumentation. The SHARP Method (See the question type, Hit the right framework, Apply it correctly, Refine through feedback, Practise via retrieval) deploys paper-matched frameworks (FLIP/EIL, CAPS, P-E-E-L, RAWCP, STAMP CARD) at step H so your child has the right precision tool for every paper section." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Master all four components — editing, situational writing, continuous writing, and comprehension. Focus on grammar accuracy, vocabulary range, and structured argumentation. The SHARP Method (See the question type, Hit the right framework, Apply it correctly, Refine through feedback, Practise via retrieval) uses paper-matched frameworks (FLIP/EIL, CAPS, P-E-E-L, RAWCP, STAMP CARD) at step H, so your child has the right tool for every paper section." }
       },
       {
         "@type": "Question",
@@ -1022,7 +1022,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
       {
         "@type": "Question",
         "name": "What is tested in O-Level English Paper 1?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Paper 1 has three sections — editing (10 marks), situational writing (30 marks), and continuous writing (30 marks). Each requires different skills and strategies, which our programme covers systematically." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Paper 1 has three sections: editing (10 marks), situational writing (30 marks), and continuous writing (30 marks). Our programme gives each one its own framework: STAMP CARD for editing, RAWCP for situational writing, and a story-spine plan or P-E-E-L for continuous writing." }
       },
       {
         "@type": "Question",
@@ -1032,7 +1032,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
       {
         "@type": "Question",
         "name": "Can my child join mid-term?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Because our classes are small (max 6 students), we can onboard new students at any point in the term. Jeremy will provide a brief diagnostic to identify gaps and tailor initial sessions accordingly." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Because our classes are small (max 6 students), we can take in new students at any point in the term. Jeremy runs a short diagnostic to find the gaps and plans the first sessions around them." }
       },
       {
         "@type": "Question",

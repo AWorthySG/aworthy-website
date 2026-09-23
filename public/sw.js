@@ -24,12 +24,12 @@
  * Bump VERSION whenever this file's behaviour changes. Activating a new
  * version deletes every other cache, which is how stale data gets purged.
  */
-const VERSION = 'aworthy-v8';
+const VERSION = 'aworthy-v9';
 const OFFLINE_URL = '/offline.html';
 const PRECACHE = [
   OFFLINE_URL,
   '/fonts/nunito-latin-wght-normal.woff2',
-  '/images/logo.webp',
+  '/images/logo-grade-a.webp',
   '/favicon.ico',
 ];
 
