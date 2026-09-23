@@ -410,7 +410,7 @@ Cards are real `<a href>` links, so every material is also its own standalone pa
 ## Key Stats (keep consistent across all pages)
 
 - **O-Level English pass rate**: 90% A1–B3 (the 2025 figure on /results/). Always label it as O-Level English ("O-Level English A1–B3"), never as a bare "A1–B3 rate" beside GP or Economics, which don't use A1–B3 grades. Add the year and cohort size once the owner supplies the cohort size
-- **Improvement speed (one line, used everywhere)**: "Our six documented case studies improved by 2–5 grades over 2–8 months" — derived from the success-stories records. The old "3 months avg. improvement", "2–3 grades within the first term", "2 grades within one term" and "results in weeks" claims were removed
+- **Improvement speed (one line, used everywhere)**: "Our six documented case studies improved by 2–6 grades over 2–8 months" — derived from the success-stories records (A-Level grades run U, S, E, D, C, B, A, so Daniel O.'s U→A is six grades; it was first published as 2–5 in error). The old "3 months avg. improvement", "2–3 grades within the first term", "2 grades within one term" and "results in weeks" claims were removed
 - **No unsourced figures or superlatives**: "47 frameworks", "52 essay frameworks", GP "88% move up a band", Economics "96% pass" / "85% score B" and every "Best …" / "Top-rated …" headline were removed in September 2026 (the Singapore Code of Advertising Practice requires superlatives to be substantiated). Don't reintroduce a figure without its source
 - **O-Level Mathematics lesson duration**: 90 min / week
 - **H2 Economics lesson duration**: 90 min / week
