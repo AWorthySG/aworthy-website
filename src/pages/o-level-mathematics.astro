@@ -992,11 +992,12 @@ const playbookRows = [
     .prog-hero__intake { margin: 1rem 0 0.75rem; }
   }
 
-  /* ===== NAV — glass strip, grey tabs, red active rule ===== */
+  /* ===== NAV — solid strip, grey tabs, red active rule ===== */
+  /* Solid, never translucent (the LMS system retires frosted panels): a
+     translucent fill let section headings read through the bar while
+     scrolling. Matches the English and GP pages. */
   .prog-nav {
-    background: color-mix(in srgb, var(--bg-primary) 86%, transparent);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    background: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
     padding: 0.5rem 0;
     position: sticky;
