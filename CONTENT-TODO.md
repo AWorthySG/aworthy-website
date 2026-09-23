@@ -58,3 +58,45 @@ Until then, the review page asks for feedback on WhatsApp instead.
 Each testimonial now has a single wording, used everywhere, and names are shortened to first name plus surname initial.
 
 **Needed:** confirmation that each quoted person agreed to be quoted, especially the students, who are minors.
+
+## 6. Accuracy questions from the September 2026 copy edit
+
+The copy edit changed wording only. These points look wrong or unsupported, and were left as they are because they need your knowledge of the syllabus, the classes or the source.
+
+**O-Level English page**
+- "Inside a Lesson" describes a "Tuesday-night" session; no English class runs on Tuesday.
+- The warm-up is "five questions, ninety seconds each" (7.5 minutes) in a 0–5 minute slot.
+- The syllabus card puts Editing (Paper 1) and Oral (Paper 4) under "Paper 2 — Comprehension", and omits Paper 3 (Listening).
+- The FAQ's "four components" leaves out summary and oral, and says English is "the most heavily weighted O-Level subject" (L1R5 weights subjects equally).
+- ACED is described as "the four lenses examiners use"; it is A-Worthy's own mnemonic.
+
+**Mathematics pages**
+- The O-Level Mathematics (4052) page shows A-Maths (4049) notes and a 4049 marker's report as its samples.
+- The READ card says "A percentage can't exceed 100", which is not true in general (a 150% increase).
+- The Pre-IB FAQ says calculus comes "earlier than the O-Level syllabus"; O-Level Mathematics (4052) has no calculus.
+
+**H1 GP and H2 Economics pages**
+- GP summary practice: the card says one timed summary per session; the playbook says three per week.
+- Economics JC 1 card: "18 core microeconomics diagrams", but the list of 18 includes macro diagrams (AD-AS, Phillips curve); the topic list says essays use PEEL, the card teaches DEED; one lesson step says "SEAB mark scheme", elsewhere "Cambridge".
+- Economics landing page: case studies are "the component where most marks are won or lost"; the essay paper carries more marks.
+- Unsupported lines left in: DEED "consistently scores top marks"; "Cambridge examiners consistently report…"; "the single biggest mark differentiator in GP"; online tuition is "often more effective" (FAQs on all subject pages); "at least three feedback touches"; "180+ past-paper questions per term"; recordings "within 24 hours".
+
+**Blog posts**
+- GP essay structure: the sample question is marked "[25 marks]" and the introduction "approximately 2 marks"; GP essays are marked out of 50.
+- Exam prep timeline: "AQ … 8 marks in 20 minutes" (the AQ is usually 10 marks); "one full Economics essay in 35 minutes".
+- Economics essay diagrams: "diagrams account for up to 30% of your essay marks" (no source); "supply curves should not start from the origin"; confirm the Phillips curve and J-curve are in 9570.
+- H2 Economics case study tips: "two questions totalling 40 marks in 90 minutes"; 9570 Paper 1 is longer.
+- GP essay examples: statistics inside the model introductions (13.7m renewable jobs in 2024; the top 1% taking 38% of new wealth; Rwanda's arts share of GDP) need a source; datePublished (1 May) differs from the visible date (10 May).
+- Cut-off points: "4 points is the gap between CJC and NYJC, or TMJC and TJC" does not match the post's own table.
+- IB vs JC: the fee table says $3,000–$6,000 a year, the text $3,000–$3,600; ACS(I) is described as offering both A-Levels and IB.
+- Why smart students fail: mentions "a 12-mark 'discuss' question in GP".
+- Comprehension techniques: the title promises "10 techniques"; the article walks through five SHARP steps.
+- E-Maths vs A-Maths: "dropping A-Maths later is straightforward" depends on the school.
+
+**Site-wide**
+- Resources: the title and description promise Maths guides (there are none); "sample any title in full" (6 of 17 have samples); the chatbot says "just an email address" but the form also asks for a phone number; the newsletter's "Join 3,000+ parents and students" has no source.
+- Case studies: Aisha's "six months" (end of JC 1 to an A-Level B) and Daniel's "eight months" (JC 1 promos to an A-Level A) look short; the homepage's Aisha quote paraphrases her Success Stories quote.
+- Subject-page quotes are credited only as "Parent of Sec 4 student" and similar; confirm consent and source (see item 5).
+- The Maths landing page puts A-Worthy's own words in the testimonial slot, credited to "The A-Worthy method".
+- The privacy notice says no tracking cookies are used; that stops being true if Microsoft Clarity is switched on.
+- The L1R5 calculator says "English and Maths affect every L1R5"; Maths counts only when it is among the best relevant subjects.
