@@ -1124,12 +1124,14 @@ label {
 @media (prefers-reduced-motion: no-preference) {
   /* Reveals use the individual `translate` / `scale` properties (not `transform`)
      so a revealed card can still lift on hover via its own transform. */
+  /* 0.7s over 24px: at 1s over 40px a reader scrolling at normal speed
+     overtook the reveal and read half-faded text. */
   html.js [data-animate] {
     opacity: 0;
-    translate: 0 40px;
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                translate 1s cubic-bezier(0.16, 1, 0.3, 1),
-                scale 1s cubic-bezier(0.16, 1, 0.3, 1),
+    translate: 0 24px;
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                translate 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                scale 0.7s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.22s ease;
   }
@@ -1160,12 +1162,6 @@ label {
   }
 }
 
-/* Staggered delays for child elements */
-[data-animate-delay="1"] { transition-delay: 0.1s; }
-[data-animate-delay="2"] { transition-delay: 0.2s; }
-[data-animate-delay="3"] { transition-delay: 0.3s; }
-[data-animate-delay="4"] { transition-delay: 0.4s; }
-[data-animate-delay="5"] { transition-delay: 0.5s; }
 
 /* Smooth section transitions */
 .section {
@@ -1344,12 +1340,14 @@ label {
    normal-motion browsers (the screenshot harness runs with reduced motion,
    which masked it). They now share the opacity + translate reveal above. */
 
-/* Stagger delays for reveal animations */
-[data-animate-delay="1"] { transition-delay: 0.1s; }
-[data-animate-delay="2"] { transition-delay: 0.25s; }
-[data-animate-delay="3"] { transition-delay: 0.4s; }
-[data-animate-delay="4"] { transition-delay: 0.55s; }
-[data-animate-delay="5"] { transition-delay: 0.7s; }
+/* Stagger delays for reveal animations. Kept short: the fifth card of a row
+   used to wait 0.7s before it even started. */
+[data-animate-delay="1"] { transition-delay: 0.06s; }
+[data-animate-delay="2"] { transition-delay: 0.12s; }
+[data-animate-delay="3"] { transition-delay: 0.18s; }
+[data-animate-delay="4"] { transition-delay: 0.24s; }
+[data-animate-delay="5"] { transition-delay: 0.3s; }
+[data-animate-delay="6"] { transition-delay: 0.36s; } /* used by the six-card programme grids; without it the sixth card went first */
 
 /* Film grain and custom cursor removed — caused lag */
 
@@ -1578,11 +1576,25 @@ label {
 }
 
 /* ─── Back to Top Button (LMS style) ─── */
+/* While the page scrolls on a mouse/trackpad device, BaseLayout's scroll loop
+   puts .is-scrolling on <html> (cleared 150ms after the last scroll event).
+   Pointer events are off for that moment, so cards don't lift and drop as
+   they pass under a still cursor, and hover styles aren't recalculated on
+   every frame. pointer-events is an independent inherited property, so the
+   toggle is cheap. */
+html.is-scrolling body { pointer-events: none; }
+
+/* Animated counters: digits of equal width, so the number doesn't jitter
+   while it counts up */
+[data-count] { font-variant-numeric: tabular-nums; }
+
 .back-to-top {
   position: fixed;
-  /* Sits left of the WhatsApp float and rides up with the sticky CTA bar
-     (--sticky-bar-h is set by BaseLayout's script) */
-  bottom: calc(2rem + var(--sticky-bar-h, 0px) + var(--safe-area-bottom));
+  /* Sits left of the WhatsApp float and rides up with the sticky CTA bar on
+     `translate` (--sticky-bar-h is set by BaseLayout's bottom-bar registry;
+     `bottom` stays fixed so the slide never triggers a layout) */
+  bottom: calc(2rem + var(--safe-area-bottom));
+  translate: 0 calc(var(--sticky-bar-h, 0px) * -1);
   right: calc(2rem + 68px + var(--safe-area-right));
   width: 44px;
   height: 44px;
@@ -1599,7 +1611,7 @@ label {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, bottom 0.35s ease, background-color 0.12s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, translate 0.35s ease, background-color 0.12s ease;
   z-index: 90;
   touch-action: manipulation;
 }
@@ -1614,7 +1626,7 @@ label {
 .back-to-top:active { transform: translateY(3px); box-shadow: 0 0 0 var(--ink-shadow); }
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: calc(5rem + var(--sticky-bar-h, 0px) + var(--safe-area-bottom));
+    bottom: calc(5rem + var(--safe-area-bottom));
     left: calc(1rem + var(--safe-area-left));
     right: auto;
   }

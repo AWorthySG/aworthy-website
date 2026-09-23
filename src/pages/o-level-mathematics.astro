@@ -1887,13 +1887,21 @@ const playbookRows = [
     var card = document.getElementById('sticky-toc');
     var nav = document.querySelector('.prog-nav');
     if (!card || !nav) return;
-    function sync() {
-      var past = nav.getBoundingClientRect().top <= (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-offset')) || 116) + 2;
+    // Runs on BaseLayout's shared scroll loop. The card only exists at 1920px+,
+    // so narrower screens skip the layout read entirely, and the nav offset is
+    // read once per resize rather than on every frame.
+    var wide = window.matchMedia('(min-width: 1920px)');
+    var offset = 116, ready = false;
+    function readOffset() { offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-offset')) || 116; }
+    readOffset();
+    window.addEventListener('resize', readOffset, { passive: true });
+    window.aworthyOnScroll(function () {
+      if (!wide.matches) return;
+      var past = nav.getBoundingClientRect().top <= offset + 2;
+      if (past === ready) return;
+      ready = past;
       card.classList.toggle('is-ready', past);
-    }
-    sync();
-    window.addEventListener('scroll', sync, { passive: true });
-    window.addEventListener('resize', sync);
+    });
   })();
 
   var observer = new IntersectionObserver(function(entries) {
