@@ -18,7 +18,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description = "Online tuition in Singapore for O-Level English & Maths, Pre-IB Maths, H1 GP and H2 Economics. Groups of up to 6, taught by Jeremy Lim. Book a free assessment.", ogImage, noindex = false } = Astro.props;
+const { title, description = "Online tuition in Singapore for O-Level English & Maths, Pre-IB Maths, H1 GP and H2 Economics. Groups of up to 6 with Jeremy Lim. Book a free assessment.", ogImage, noindex = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
@@ -384,7 +384,7 @@ const schemaData = {
   <!-- Global Sticky CTA Bar (#13) -->
   <div class="sticky-cta-global" id="sticky-cta-global">
     <div class="sticky-cta-global-inner">
-      <span class="sticky-cta-global-text">Book a free diagnostic assessment for O-Level English, Maths, GP, or H2 Economics</span>
+      <span class="sticky-cta-global-text">Free diagnostic assessment for O-Level English, Maths, H1 GP or H2 Economics</span>
       <a href="/contact/" class="sticky-cta-global-btn">Book Free Assessment</a>
       <a href="tel:+6589913181" class="sticky-cta-phone" aria-label="Call us">
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1110,7 +1110,7 @@ const schemaData = {
     <div class="privacy-notice-inner">
       <div class="privacy-notice-text">
         <strong>Your privacy matters</strong>
-        <p>We use analytics (Plausible) to understand how visitors use our site and improve your experience. We do not use tracking cookies or share data with third parties. By continuing, you agree to our use of privacy-respecting analytics.</p>
+        <p>We use analytics (Plausible) to see how visitors use our site, so we can improve it. We do not use tracking cookies or share data with third parties. By continuing, you agree to our use of privacy-respecting analytics.</p>
       </div>
       <div class="privacy-notice-actions">
         <button class="privacy-btn privacy-btn--accept" id="privacy-accept">Accept</button>
@@ -1180,7 +1180,7 @@ const schemaData = {
       <img src="/images/mascots/mascot-heart-icon.webp" alt="" class="email-popup-mascot" width="257" height="296" />
       <span class="eyebrow" style="text-align:center;display:block;">Free Download</span>
       <h3 class="email-popup-title" id="email-popup-title">Get our top-scoring essay framework</h3>
-      <p class="email-popup-desc">Download the same SHARP Method essay template our A1 students use &mdash; free for your email.</p>
+      <p class="email-popup-desc">Download the SHARP Method essay template our A1 students use, free in exchange for your email.</p>
       <form class="email-popup-form" id="email-popup-form">
         <input type="email" placeholder="Enter your email" required aria-label="Email address" />
         <button type="submit" class="btn btn-accent" style="width:100%;">Send Me the Guide</button>
@@ -1292,14 +1292,14 @@ const schemaData = {
         <button class="chatbot-close" id="chatbot-close" aria-label="Close">&times;</button>
       </div>
       <div class="chatbot-body" id="chatbot-body">
-        <div class="chatbot-msg chatbot-msg--bot">Hi! I can help answer common questions. What would you like to know?</div>
+        <div class="chatbot-msg chatbot-msg--bot">Hi! I can answer common questions. What would you like to know?</div>
         <div class="chatbot-options" id="chatbot-options">
           <button class="chatbot-option" data-q="pricing">How much does it cost?</button>
           <button class="chatbot-option" data-q="schedule">What are the class schedules?</button>
           <button class="chatbot-option" data-q="method">What is the SHARP Method?</button>
           <button class="chatbot-option" data-q="enrol">How do I enrol?</button>
           <button class="chatbot-option" data-q="trial">Is there a free trial?</button>
-          <button class="chatbot-option" data-q="online">Are classes online or in-person?</button>
+          <button class="chatbot-option" data-q="online">Are classes online or in person?</button>
           <button class="chatbot-option" data-q="classsize">What are the class sizes?</button>
           <button class="chatbot-option" data-q="results">What results do your students get?</button>
           <button class="chatbot-option" data-q="tutor">Who is the tutor?</button>
@@ -1473,22 +1473,22 @@ const schemaData = {
 
     var answers = {
       pricing: 'O-Level English, O-Level Maths and Pre-IB Maths: SGD 280/month (Sec 1\u20132, Year 3) or SGD 320/month (Sec 3\u20134, Year 4). H1 GP and H2 Economics: SGD 360/month (JC 1) or SGD 400/month (JC 2). One-to-one: SGD 120/session (O-Level, IB) or SGD 140/session (JC). Sibling discount 10%; two or more subjects 5%. <a href="/pricing/">View full pricing \u2192</a>',
-      schedule: 'Classes run Mon\u2013Fri 2pm\u20139:30pm and Sat\u2013Sun 9am\u20136pm. All sessions run live on the A-Worthy Whiteboard. <a href="/contact/">Contact us for available slots \u2192</a>',
-      method: 'The SHARP Method is our proprietary 5-step system: See, Hit, Apply, Refine, Practise. Adapted from legal reasoning, it teaches students how to think systematically. <a href="/programmes/">Learn more \u2192</a>',
-      enrol: 'Step 1: Book a free diagnostic assessment. Step 2: Get a personalised learning plan. Step 3: Start learning! <a href="/contact/">Book Free Assessment \u2192</a>',
-      trial: 'We don\u2019t run trial lessons. Instead, every new student gets a free 20-minute diagnostic assessment of a recent marked paper, and the first month of lessons is covered by our first-month money-back guarantee. <a href="/contact/">Book free assessment \u2192</a>',
-      online: 'All classes are 100% online, on the A-Worthy Whiteboard. This allows us to keep class sizes small (max 6) while serving students across all of Singapore. <a href="/programmes/">View programmes \u2192</a>',
-      classsize: 'We cap every class at 6 students \u2014 no exceptions. This means your child gets personal feedback on their work every single session, and the tutor knows their specific strengths and weaknesses. <a href="/about/">Learn more about our approach \u2192</a>',
-      results: '90% of our O-Level English students scored A1\u2013B3. Our six documented case studies improved by 2\u20135 grades over 2\u20138 months. <a href="/results/">See our full results \u2192</a>',
-      tutor: 'All classes are taught by Jeremy Lim, our founder. He\u2019s an NUS Law graduate (LLB Hons) who left corporate law to teach full-time. He created the SHARP Method based on the analytical skills used in legal practice. <a href="/about/">Read his story \u2192</a>',
-      subjects: 'We teach five programmes: O-Level English (Sec 1\u20134), O-Level Mathematics (Sec 1\u20134), Pre-IB Mathematics (Year 3\u20134), H1 General Paper (JC 1\u20132), and H2 Economics (JC 1\u20132). All use the same SHARP Method framework. <a href="/programmes/">View all programmes \u2192</a>',
-      location: 'We\u2019re 100% online \u2014 no physical centre. Students join from anywhere in Singapore on the A-Worthy Whiteboard, with every lesson recorded. No commute, no wasted time. <a href="/programmes/">View programmes \u2192</a>',
-      resources: 'Yes! We have free downloadable resources covering grammar, essay writing, comprehension, vocabulary, and more. No payment required \u2014 just an email address. <a href="/resources/">Browse the resource vault \u2192</a>',
-      payment: 'One fixed fee a month, paid by the 1st by PayNow, bank transfer or card (HitPay). A fifth-week lesson costs nothing extra. Lessons continue through the school holidays. Missed lessons: you get the recording; there are no make-ups. Sec 4 and JC 2 groups end after the national exams. To stop, give one month\u2019s notice. <a href="/pricing/#pricing-faq-pay">Payment terms \u2192</a>',
+      schedule: 'Classes run Mon\u2013Fri 2pm\u20139:30pm and Sat\u2013Sun 9am\u20136pm. All sessions are live on the A-Worthy Whiteboard. <a href="/contact/">Contact us for available slots \u2192</a>',
+      method: 'The SHARP Method is our proprietary 5-step system: See, Hit, Apply, Refine, Practise. Adapted from legal reasoning, it gives students the same steps to work through on every question. <a href="/programmes/">Learn more \u2192</a>',
+      enrol: 'Step 1: Book a free diagnostic assessment. Step 2: Get a written summary of the gaps and the programme we recommend. Step 3: Start lessons. <a href="/contact/">Book Free Assessment \u2192</a>',
+      trial: 'We don\u2019t run trial lessons. Instead, every new student gets a free 20-minute diagnostic assessment of a recent marked paper, and the first month of lessons is covered by our first-month money-back guarantee. <a href="/contact/">Book Free Assessment \u2192</a>',
+      online: 'All classes are 100% online, on the A-Worthy Whiteboard. That lets us keep every class to a maximum of 6 while teaching students from across Singapore. <a href="/programmes/">View programmes \u2192</a>',
+      classsize: 'We cap every class at 6 students, with no exceptions. Your child gets personal feedback on their work every session, and the tutor knows their strengths and weaknesses. <a href="/about/">Learn more about our approach \u2192</a>',
+      results: '90% of our O-Level English students scored A1\u2013B3. The six students in our documented case studies improved by 2\u20135 grades over 2\u20138 months. <a href="/results/">See our full results \u2192</a>',
+      tutor: 'Every class is taught by Jeremy Lim, our founder, an NUS Law graduate (LLB Hons) who left corporate law to teach full-time. He built the SHARP Method on the analytical skills used in legal practice. <a href="/about/">Read his story \u2192</a>',
+      subjects: 'We teach five programmes: O-Level English (Sec 1\u20134), O-Level Mathematics (Sec 1\u20134), Pre-IB Mathematics (Year 3\u20134), H1 General Paper (JC 1\u20132), and H2 Economics (JC 1\u20132). All five use the SHARP Method. <a href="/programmes/">View all programmes \u2192</a>',
+      location: 'We\u2019re 100% online, with no physical centre. Students join from anywhere in Singapore on the A-Worthy Whiteboard, and every lesson is recorded. There is no commute. <a href="/programmes/">View programmes \u2192</a>',
+      resources: 'Yes! We have free downloadable resources covering grammar, essay writing, comprehension, vocabulary, and more. No payment is required, just an email address. <a href="/resources/">Browse the resource vault \u2192</a>',
+      payment: 'One fixed fee a month, paid by the 1st by PayNow, bank transfer or card (HitPay). A fifth-week lesson costs nothing extra. Lessons continue through the school holidays. If your child misses a lesson, you get the recording. There are no make-up classes. Sec 4 and JC 2 groups end after the national exams. To stop, give one month\u2019s notice. <a href="/pricing/#pricing-faq-pay">Payment terms \u2192</a>',
       hold: 'Once a year, you can hold your child\u2019s place for up to four consecutive weeks, for travel or any other reason. Tell us in writing (WhatsApp or email) at least two weeks before the first missed lesson. No fee is charged for the weeks on hold, and the place is kept. <a href="/pricing/#pricing-faq-hold">Hold terms \u2192</a>',
       refund: 'Every new student starts with a free diagnostic assessment. If you\u2019re not satisfied after the first month of lessons, tell us within 7 days of that month\u2019s last lesson and we\u2019ll refund the first month\u2019s fees in full. <a href="/pricing/">See pricing \u2192</a>',
-      contact: 'You can reach us via WhatsApp, email, or the contact form on our website. We typically reply within a few hours. <a href="/contact/">Go to contact page \u2192</a>',
-      schools: 'Our students come from schools across Singapore \u2014 Raffles Institution, Hwa Chong, ACS, CHIJ, Victoria School, and many neighbourhood schools. The SHARP Method works regardless of starting level. <a href="/success-stories/">Read student stories \u2192</a>'
+      contact: 'You can reach us on WhatsApp, by email or through the contact form. We usually reply within a few hours. <a href="/contact/">Go to contact page \u2192</a>',
+      schools: 'Our students come from schools across Singapore, including Raffles Institution, Hwa Chong, ACS, CHIJ, Victoria School and many neighbourhood schools. The SHARP Method works from any starting level. <a href="/success-stories/">Read student stories \u2192</a>'
     };
 
     toggle.addEventListener('click', function() {
@@ -1543,7 +1543,7 @@ const schemaData = {
         .filter(function(e) { return e.days > 0; })
         .sort(function(a, b) { return a.days - b.days; })[0];
       if (next) {
-        el.textContent = next.days + ' days to ' + next.name + ' — every lesson counts';
+        el.textContent = next.days + (next.days === 1 ? ' day' : ' days') + ' to ' + next.name;
         countdown.hidden = false;
         countdown.setAttribute('aria-hidden', 'false');
       }
