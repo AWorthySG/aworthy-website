@@ -6,7 +6,13 @@
 
 export const academicYear = 2026;
 
-export const nextIntakeLabel = 'Term 3, July 2026';
+// Google Business Profile links. Leave a link empty until you have the real one:
+// every Google review button checks its link and hides itself while it is empty,
+// so no button can send a visitor to a dead or wrong page.
+//   googleReviewsUrl     — the profile's reviews (Google Maps → your profile → Reviews → Share)
+//   googleWriteReviewUrl — the "write a review" link (Business Profile → Ask for reviews)
+export const googleReviewsUrl = '';
+export const googleWriteReviewUrl = '';
 
 export const exams = [
   { name: 'O-Level English', date: '2026-10-19' },

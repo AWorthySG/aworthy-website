@@ -4,7 +4,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import '../styles/playbook.css';
-import { nextIntakeLabel } from '../data/site-config';
 
 const sharpSteps = [
   { letter: 'S', name: 'See' },
@@ -99,8 +98,8 @@ const playbookRows = [
         <div class="prog-hero__copy">
           <p class="eyebrow">O-Level Mathematics</p>
           <h1 class="prog-hero__heading squiggle">Best <span class="nb">O-Level</span> <span class="accent-word">Mathematics</span> Tuition <br />in Singapore</h1>
-          <p class="prog-hero__sub">Master every topic on the GCE O-Level Mathematics 4048 syllabus with the SHARP Method &mdash; a systematic five-step approach that gives your child named, repeatable frameworks for algebra and equations, geometry and mensuration, trigonometry and vectors, functions and graphs, and statistics and probability across both Paper 1 and Paper 2.</p>
-          <p class="speech-bubble prog-hero__intake">Next intake: <strong>{nextIntakeLabel}</strong> &middot; Sec 1&ndash;4 &middot; max 6 per class</p>
+          <p class="prog-hero__sub">Master every topic on the GCE O-Level Mathematics 4052 syllabus with the SHARP Method &mdash; a systematic five-step approach that gives your child named, repeatable frameworks for algebra and equations, geometry and mensuration, trigonometry and vectors, functions and graphs, and statistics and probability across both Paper 1 and Paper 2.</p>
+          <p class="speech-bubble prog-hero__intake">Sec 1&ndash;4 &middot; max 6 per class</p>
         </div>
         <img class="sticker sticker--right prog-hero__sticker" src="/images/mascots/mascot-maths.webp" alt="" width="417" height="553" loading="eager" decoding="async" />
       </div>
@@ -210,9 +209,9 @@ const playbookRows = [
   <!-- ===== SYLLABUS COVERAGE ===== -->
   <section class="prog-section" id="syllabus">
     <div class="container">
-      <p class="eyebrow">4048 Syllabus</p>
-      <h2 class="prog-section__heading">Complete GCE <span class="nb">O-Level</span> Mathematics (4048) Syllabus Coverage</h2>
-      <p class="prog-section__sub">Every topic in the GCE O-Level Mathematics syllabus (4048), taught with precision and exam alignment.</p>
+      <p class="eyebrow">4052 Syllabus</p>
+      <h2 class="prog-section__heading">Complete GCE <span class="nb">O-Level</span> Mathematics (4052) Syllabus Coverage</h2>
+      <p class="prog-section__sub">Every topic in the GCE O-Level Mathematics syllabus (4052), taught with precision and exam alignment.</p>
 
       <div class="card-grid card-grid--2">
         <div class="prog-card">
@@ -617,7 +616,7 @@ const playbookRows = [
         </details>
         <details class="faq-item">
           <summary class="faq-question">What is tested in O-Level Mathematics?</summary>
-          <div class="faq-answer"><p>The GCE O-Level Mathematics 4048 syllabus has two papers. Paper 1 (2 hours, 80 marks) and Paper 2 (2 hours 15 minutes, 100 marks) both contain short-answer and structured questions covering Number &amp; Algebra, Geometry &amp; Measurement, and Statistics &amp; Probability.</p></div>
+          <div class="faq-answer"><p>The GCE O-Level Mathematics 4052 syllabus has two papers, each 2 hours 15 minutes and worth 90 marks (50% each). Both cover Number &amp; Algebra, Geometry &amp; Measurement, and Statistics &amp; Probability.</p></div>
         </details>
         <details class="faq-item">
           <summary class="faq-question">When should I start O-Level Mathematics tuition?</summary>
@@ -689,19 +688,8 @@ const playbookRows = [
   <section class="prog-section" id="schedule">
     <div class="container">
       <span class="eyebrow">Schedule</span>
-      <h2 class="prog-section__heading">Class Schedule &amp; Availability</h2>
+      <h2 class="prog-section__heading">Class Schedule</h2>
       <p class="prog-section__sub">All classes run live on the A-Worthy Whiteboard. Limited to 6 students per class for personalised attention.</p>
-
-      <div class="slots-banner">
-        <div class="slots-indicator">
-          <span class="stat-dot stat-dot--gold" aria-hidden="true"></span>
-          <span class="slots-text"><strong>Sec 1&ndash;2 Mathematics:</strong> 5 of 6 slots remaining</span>
-        </div>
-        <div class="slots-indicator">
-          <span class="stat-dot stat-dot--gold" aria-hidden="true"></span>
-          <span class="slots-text"><strong>Sec 3&ndash;4 O-Level Mathematics:</strong> 4 of 6 slots remaining</span>
-        </div>
-      </div>
 
       <div class="schedule-table-wrap">
         <table class="schedule-table">
@@ -710,7 +698,6 @@ const playbookRows = [
               <th scope="col">Programme</th>
               <th scope="col">Day &amp; Time</th>
               <th scope="col">Duration</th>
-              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -718,24 +705,21 @@ const playbookRows = [
               <td data-label="Programme">Sec 1&ndash;2 Foundation</td>
               <td data-label="Day &amp; time">Sunday, 2:00 PM &ndash; 3:30 PM</td>
               <td data-label="Duration">90 min</td>
-              <td data-label="Status"><span class="chip chip--gold">5 slots left</span></td>
             </tr>
             <tr>
               <td data-label="Programme">Sec 3&ndash;4 Intensive</td>
               <td data-label="Day &amp; time">Wednesday, 7:30 PM &ndash; 9:00 PM</td>
               <td data-label="Duration">90 min</td>
-              <td data-label="Status"><span class="chip chip--gold">4 slots left</span></td>
             </tr>
             <tr>
               <td data-label="Programme">One-to-One</td>
               <td data-label="Day &amp; time">Flexible &ndash; by arrangement</td>
               <td data-label="Duration">60&ndash;90 min</td>
-              <td data-label="Status"><span class="chip chip--green">Available</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="schedule-note">Next intake: <strong>Term 3, July 2026</strong>. <a href="/contact/">Book Free Assessment</a> to secure your slot.</p>
+      <p class="schedule-note"><a href="/contact/">Book Free Assessment</a> to secure your slot.</p>
     </div>
   </section>
 
@@ -771,7 +755,7 @@ const playbookRows = [
       {
         "@type": "Question",
         "name": "What is tested in O-Level Mathematics?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The GCE O-Level Mathematics 4048 syllabus has two papers. Paper 1 (2 hours, 80 marks) and Paper 2 (2 hours 15 minutes, 100 marks) both contain short-answer and structured questions covering Number & Algebra, Geometry & Measurement, and Statistics & Probability." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The GCE O-Level Mathematics 4052 syllabus has two papers, each 2 hours 15 minutes and worth 90 marks (50% each). Both cover Number & Algebra, Geometry & Measurement, and Statistics & Probability." }
       },
       {
         "@type": "Question",
@@ -1795,34 +1779,6 @@ const playbookRows = [
     .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; }
     .subject-receipts-section .subject-receipts dt { font-size: clamp(1.9rem, 7vw, 2.4rem); }
     .subject-receipts-section .subject-receipts dl > div:last-child { grid-column: 1 / -1; }
-  }
-
-  /* ===== SLOTS BANNER — a muted well ===== */
-  .slots-banner {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    background: var(--bg-muted);
-    border: 2px solid var(--color-ink);
-    border-radius: var(--radius-md);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-  .slots-indicator {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  /* Availability is data, not an action: the gold stat dot matches the
-     "slots left" chips in the table (red stays reserved for buttons) */
-  .slots-indicator .stat-dot { width: 12px; height: 12px; margin-right: 0; }
-  .slots-text {
-    font-size: 0.9rem;
-    color: var(--text-primary);
-  }
-  .slots-text strong {
-    color: var(--text-primary);
-    font-weight: 800;
   }
 
   /* ===== MID-PAGE CTA BAND — ink card with a subject-coloured rail ===== */

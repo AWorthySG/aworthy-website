@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PenAnimation from '../components/PenAnimation.astro';
 import '../styles/global.css';
+import { googleReviewsUrl } from '../data/site-config';
 ---
 
 <BaseLayout title="English, Maths, GP & Econs Tuition Singapore | A-Worthy" description="Singapore's top-rated tuition for O-Level English & Maths, H1 GP & H2 Economics. 90% A1–B3 rate, max 6 per class, NUS Law graduate tutor. Book a free assessment.">
@@ -48,7 +49,7 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <p class="hero-meta speech-bubble hero-anim" style="--d:14">Next intake: <strong>Term 3, July 2026</strong> &middot; from <strong>S$280/mo</strong>, no registration fee &middot; <a href="/pricing/">See pricing &rarr;</a></p>
+      <p class="hero-meta speech-bubble hero-anim" style="--d:14">From <strong>S$280/mo</strong>, no registration fee &middot; <a href="/pricing/">See pricing &rarr;</a></p>
 
       <div class="hero-btns hero-anim" style="--d:15">
         <a href="/#contact" class="btn btn-accent hero-cta-primary">Book Free Assessment</a>
@@ -210,7 +211,6 @@ import '../styles/global.css';
       </div>
 
       <p class="programmes-pricing-link" data-animate="reveal-up"><a href="/pricing/">Compare all plans &amp; fees &mdash; transparent, <span class="nobr">all-inclusive &rarr;</span></a></p>
-      <p class="programmes-pricing-link" data-animate="reveal-up"><a href="/kitchen/">Or explore them the fun way &mdash; step into the <span class="nobr">A-Worthy Kitchen &#127859; &rarr;</span></a></p>
 
       <!-- Programme Selector Quiz (#8) -->
       <div class="quiz-section" data-animate="reveal-up">
@@ -350,15 +350,15 @@ import '../styles/global.css';
         <div class="testimonial-card card--elevated" data-animate="reveal-up" data-animate-delay="1">
           <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>
-            "My son's English improved from C5 to A2 in just three months. At the See step, he learned to spot inference traps he'd been falling for. The SHARP Method gave him a systematic way to approach every comprehension question."
+            "My son's English went from C5 to A2 in three months. The moment he learned the SHARP Method's &lsquo;See&rsquo; step for inference questions, his comprehension marks jumped from 12/25 to 20/25 — no more guessing."
           </blockquote>
           <div class="testimonial-author">
             <div class="testimonial-avatar-circle icon-circle icon-circle--gold">
               <span>LT</span>
             </div>
             <div>
-              <strong>Mrs. Linda Tan</strong>
-              <span>Mother of Sec 4 student</span>
+              <strong>Linda T.</strong>
+              <span>Mother of a Sec 4 student</span>
             </div>
           </div>
         </div>
@@ -366,14 +366,14 @@ import '../styles/global.css';
         <div class="testimonial-card card--elevated" data-animate="reveal-up" data-animate-delay="2">
           <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>
-            "I used to hate essay writing. The Hit step taught me to pick the right essay framework before I start writing. Now I actually enjoy it because I know how to structure my arguments properly."
+            "I used to dread essay writing. The SHARP Method's &lsquo;Apply&rsquo; step taught me how to plan and argue properly — my essay scores went from 18/30 to 26/30. Got A1 for O-Levels."
           </blockquote>
           <div class="testimonial-author">
             <div class="testimonial-avatar-circle icon-circle icon-circle--blue">
               <span>EL</span>
             </div>
             <div>
-              <strong>Ethan Lim</strong>
+              <strong>Ethan L.</strong>
               <span>Sec 4 student</span>
             </div>
           </div>
@@ -382,27 +382,29 @@ import '../styles/global.css';
         <div class="testimonial-card card--elevated" data-animate="reveal-up" data-animate-delay="3">
           <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>
-            "What impressed me most was how SHARP's See-then-Hit approach made inference questions click for my daughter. She now reads the question, identifies the type, and picks a framework before she even looks at the passage."
+            "What impressed me most was how the SHARP Method's &lsquo;See&rsquo; and &lsquo;Hit&rsquo; steps made inference questions click for my daughter. She went from losing 8 marks per paper to losing only 2."
           </blockquote>
           <div class="testimonial-author">
             <div class="testimonial-avatar-circle icon-circle icon-circle--green">
               <span>RK</span>
             </div>
             <div>
-              <strong>Mr. Rajesh Kumar</strong>
-              <span>Father of Sec 3 student</span>
+              <strong>Rajesh K.</strong>
+              <span>Father of a Sec 3 student</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="reviews-cta" data-animate="reveal-up">
-        <a href="https://g.page/r/aworthy-sg/review" target="_blank" rel="noopener noreferrer" class="btn reviews-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          Read all 127 reviews on Google
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a>
-      </div>
+      {googleReviewsUrl && (
+        <div class="reviews-cta" data-animate="reveal-up">
+          <a href={googleReviewsUrl} target="_blank" rel="noopener noreferrer" class="btn reviews-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Read our reviews on Google
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>
+      )}
 
       <div class="transformations" data-animate="reveal-up">
         <h3 class="transformations__title">Recent grade transformations</h3>
@@ -455,30 +457,6 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <h3 class="results-sub-heading" data-animate="reveal-up">Component Performance</h3>
-      <div class="results-bars" data-animate="reveal-up">
-        <div class="result-bar-item">
-          <div class="result-bar-header"><span>Comprehension</span><span class="result-bar-pct">92%</span></div>
-          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 92%"></div></div>
-        </div>
-        <div class="result-bar-item">
-          <div class="result-bar-header"><span>Continuous Writing</span><span class="result-bar-pct">88%</span></div>
-          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 88%"></div></div>
-        </div>
-        <div class="result-bar-item">
-          <div class="result-bar-header"><span>Summary</span><span class="result-bar-pct">90%</span></div>
-          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 90%"></div></div>
-        </div>
-        <div class="result-bar-item">
-          <div class="result-bar-header"><span>Situational Writing</span><span class="result-bar-pct">91%</span></div>
-          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 91%"></div></div>
-        </div>
-        <div class="result-bar-item">
-          <div class="result-bar-header"><span>Oral</span><span class="result-bar-pct">85%</span></div>
-          <div class="result-bar-track"><div class="result-bar-fill" style="--bar-width: 85%"></div></div>
-        </div>
-      </div>
-
       <h3 class="results-sub-heading" data-animate="reveal-up">Grade Transformations</h3>
       <div class="results-transforms" data-animate="reveal-up">
         <div class="transform-card card-lift">
@@ -508,32 +486,6 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <div class="grade-transforms" data-animate="reveal-up">
-        <div class="grade-card card-lift">
-          <div class="chip chip--pink grade-before-animated">C5</div>
-          <div class="grade-arrow-icon">
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-          <div class="chip chip--green grade-after-animated">A2</div>
-          <div class="grade-label">O-Level English&nbsp;&mdash; 3&nbsp;months</div>
-        </div>
-        <div class="grade-card card-lift">
-          <div class="chip chip--pink grade-before-animated">D</div>
-          <div class="grade-arrow-icon">
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-          <div class="chip chip--green grade-after-animated">B</div>
-          <div class="grade-label">H1 General Paper&nbsp;&mdash; 2&nbsp;terms</div>
-        </div>
-        <div class="grade-card card-lift">
-          <div class="chip chip--pink grade-before-animated">U</div>
-          <div class="grade-arrow-icon">
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-          <div class="chip chip--green grade-after-animated">B</div>
-          <div class="grade-label">H2 Economics&nbsp;&mdash; 1&nbsp;term</div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -562,7 +514,7 @@ import '../styles/global.css';
         "name": "What if my child doesn't improve?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We offer a free diagnostic assessment before any commitment. If after 3 months your child hasn't shown measurable improvement, we'll work with you on a revised plan at no extra cost."
+          "text": "We offer a free diagnostic assessment before any commitment. If you're not satisfied after the first month of lessons, tell us within 7 days of that month's last lesson and we'll refund the first month's fees in full."
         }
       },
       {
@@ -791,25 +743,6 @@ import '../styles/global.css';
       btn.innerHTML = '<span>Book Free Assessment</span>';
     });
   });
-})();
-</script>
-
-<!-- Parallax scroll effect on orbs -->
-<script is:inline>
-(function(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var bars = document.querySelectorAll('.result-bar-fill');
-
-  // Animate result bars when visible
-  var barObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.style.width = entry.target.style.getPropertyValue('--bar-width');
-        barObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  bars.forEach(function(bar) { barObserver.observe(bar); });
 })();
 </script>
 
@@ -2005,46 +1938,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     margin-bottom: 1.5rem;
     margin-top: 2rem;
   }
-  .results-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    max-width: 700px;
-    margin-bottom: 2rem;
-  }
-  .result-bar-item { display: flex; flex-direction: column; gap: 0.4rem; }
-  .result-bar-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-  }
-  .result-bar-pct {
-    font-weight: 800;
-    color: var(--text-primary);
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-  }
-  /* Progress track — a small ink-outlined well, sun-yellow data fill */
-  .result-bar-track {
-    height: 12px;
-    background: var(--bg-muted);
-    border: 1.5px solid var(--color-ink);
-    border-radius: var(--radius-pill);
-    overflow: hidden;
-  }
-  .result-bar-fill {
-    height: 100%;
-    width: 0;
-    background: var(--color-sun);
-    border-radius: var(--radius-pill);
-    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .results-section.is-visible .result-bar-fill,
-  .results-bars.is-visible .result-bar-fill {
-    width: var(--bar-width);
-  }
   /* Flex, not a 5-column 1fr grid: 1fr means minmax(auto, 1fr), so the grade
      chips' min-content width pushed the cards past the viewport (overflow at
      360, 820 and 844). Five across on wide screens, then 3 + 2 and 2 + 2 + 1
@@ -2362,7 +2255,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
 
   /* ── Reduced motion: settle every entrance/loop into its end state ── */
   @media (prefers-reduced-motion: reduce) {
-    .result-bar-fill { transition: none; width: var(--bar-width); }
     .hero-anim { opacity: 1; transform: none; animation: none; }
     .hero-prelude-word { opacity: 1; transform: none; animation: none; }
     .hero-letter { opacity: 1; transform: none; filter: none; animation: none; }
@@ -2519,72 +2411,6 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
   }
   .audience-msg[hidden] {
     display: none;
-  }
-
-  /* ===== FEATURE 5: GRADE TRANSFORMATION CARDS ===== */
-  /* Three across from tablet up (auto-fit left a 2 + 1 orphan at 768-844),
-     one column on phones. The rem cap gives each card room for its
-     one-line label (it wrapped "... — 3 / MONTHS" at 1024-2560 in 800px). */
-  .grade-transforms {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
-    margin: 2rem auto;
-    max-width: 52.5rem;
-  }
-  .grade-card {
-    display: flex;
-    align-items: center;
-    align-content: flex-start;
-    justify-content: center;
-    gap: 1rem;
-    background: var(--bg-card);
-    border: 2px solid var(--color-ink);
-    border-radius: var(--radius-md);
-    padding: 1.5rem;
-    flex-wrap: wrap;
-  }
-  /* Before / after pills — same size as the .transform-card chips above */
-  .grade-before-animated,
-  .grade-after-animated {
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
-    font-weight: 900;
-    letter-spacing: 0;
-    padding: 0.25rem 0.7rem;
-  }
-  .grade-arrow-icon {
-    flex-shrink: 0;
-    display: flex;
-    color: var(--text-primary);
-  }
-  .grade-label {
-    width: 100%;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-    margin-top: 0.25rem;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    text-wrap: balance;
-  }
-  @media (max-width: 1024px) {
-    .grade-transforms {
-      gap: 1rem;
-    }
-    .grade-card {
-      padding: 1.25rem 0.75rem;
-    }
-  }
-  @media (max-width: 640px) {
-    .grade-transforms {
-      grid-template-columns: minmax(0, 1fr);
-    }
-    .grade-card {
-      padding: 1.5rem;
-    }
   }
 
   /* ===== SECTION INTRO VARIETY — left-aligned headings ===== */

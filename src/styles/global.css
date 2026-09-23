@@ -1791,7 +1791,7 @@ html {
   .btn, .btn-accent {
     border: 2px solid ButtonText;
   }
-  .slot-badge, .blog-tag, .eyebrow {
+  .blog-tag, .eyebrow {
     border: 1px solid ButtonText;
   }
 }
@@ -1882,13 +1882,13 @@ html {
 
 /* ═══ Tool / utility page heroes — a soft sunlit blob, like the pastel
    washes behind the LMS login page. ═══ */
-.calc-hero, .jc-hero, .dec-hero, .review-hero,
+.calc-hero, .jc-hero, .review-hero,
 .prog-hero, .r-hero, .contact-hero,
 .t-hero, .pricing-hero {
   position: relative;
   overflow: hidden;
 }
-.calc-hero::before, .jc-hero::before, .dec-hero::before, .review-hero::before,
+.calc-hero::before, .jc-hero::before, .review-hero::before,
 .prog-hero::before, .r-hero::before, .contact-hero::before,
 .t-hero::before, .pricing-hero::before {
   content: '';
@@ -1908,7 +1908,6 @@ html {
 }
 [data-theme="dark"] .calc-hero::before,
 [data-theme="dark"] .jc-hero::before,
-[data-theme="dark"] .dec-hero::before,
 [data-theme="dark"] .review-hero::before,
 [data-theme="dark"] .prog-hero::before,
 [data-theme="dark"] .r-hero::before,
@@ -1918,7 +1917,7 @@ html {
   background: radial-gradient(circle, rgba(245, 184, 46, 0.06) 0%, transparent 60%);
 }
 .calc-hero > .container, .jc-hero > .container,
-.dec-hero > .container, .review-hero > .container,
+.review-hero > .container,
 .prog-hero > .container, .r-hero > .r-container,
 .contact-hero > .container,
 .t-hero > .t-container, .pricing-hero > .container {
