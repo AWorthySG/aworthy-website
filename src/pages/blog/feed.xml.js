@@ -1,5 +1,6 @@
 export function GET() {
   const posts = [
+    { title: "Choosing Your JC Subject Combination: Rules, Prerequisites and Strategy", slug: "choosing-jc-subject-combinations", date: "2026-09-23", description: "The contrasting-subject rule, the 70-point admission score, university subject requirements and how to choose a fourth subject, for students entering JC 1 in 2027." },
     { title: "The SEC Examination from 2027: What Changes for Your Child", slug: "sec-examination-guide", date: "2026-09-23", description: "From 2027 the O-Level becomes the SEC, and JC admission moves from L1R5 of 20 or better to L1R4 of 16 or better. What changes for today's Sec 3 students." },
     { title: "How to Choose a Tuition Centre in Singapore: A Parent's Guide", slug: "how-to-choose-a-tuition-centre-singapore", date: "2026-05-27", description: "The seven things that actually matter when choosing a tuition centre in Singapore — class size, method, the tutor, proof of results, fees — and the red flags to avoid." },
     { title: "Does My Child Actually Need Tuition? An Honest Guide", slug: "does-my-child-need-tuition", date: "2026-05-27", description: "Not every child needs tuition. An honest guide to the signs that tuition will genuinely help — and the problems it won't fix — so you can decide without guessing." },
