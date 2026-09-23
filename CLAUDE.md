@@ -401,6 +401,7 @@ Cards are real `<a href>` links, so every material is also its own standalone pa
 - **Students taught**: 500+
 - **Max class size**: 6 students (display as "6", never "6:1")
 - **Google rating**: 4.9
+- **Contact email**: `jeremy@a-worthy.com` (footer, contact page, homepage contact card, privacy policy DPO contact, schema.org `email`). The earlier `hello@aworthy.sg` never worked — the `aworthy.sg` domain does not exist. The Instagram and TikTok handles are still `aworthy.sg`; those are usernames, not the mail domain
 - **Subject accent colours**: every subject uses its LMS token from global.css (`--subject-english` / `-maths` / `-preib` / `-gp` / `-econ` / `-coaching`, each with a `-text` and `-tint` pair). Subject pages map them in their own `:root` (`--subject-accent: var(--subject-maths)`), never a literal — the old per-page hex accents (maths #7B5EA7, Pre-IB #B0436A, GP gold, English sky) are retired.
 - **SHARP step headings**: See, Hit, Apply, Refine, Practise — no time durations (e.g. not "See (5 min)")
 
