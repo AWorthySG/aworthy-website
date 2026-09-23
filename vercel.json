@@ -7,6 +7,10 @@
       "destination": "https://a-worthy.com/:path*",
       "permanent": true
     },
+    { "source": "/blog/o-level-english-tips-2026", "destination": "/blog/o-level-english-tips/", "permanent": true },
+    { "source": "/blog/o-level-english-tips-2026/", "destination": "/blog/o-level-english-tips/", "permanent": true },
+    { "source": "/blog/o-level-cut-off-points-2026", "destination": "/blog/o-level-cut-off-points/", "permanent": true },
+    { "source": "/blog/o-level-cut-off-points-2026/", "destination": "/blog/o-level-cut-off-points/", "permanent": true },
     { "source": "/kitchen", "destination": "/programmes/", "permanent": true },
     { "source": "/kitchen/", "destination": "/programmes/", "permanent": true },
     { "source": "/sharp-decoder", "destination": "/frameworks/", "permanent": true },

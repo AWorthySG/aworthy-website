@@ -63,8 +63,9 @@ src/
 │   │   ├── gp-essay-structure.astro
 │   │   ├── h2-econs-case-study-tips.astro
 │   │   ├── ib-vs-jc.astro
-│   │   ├── o-level-cut-off-points-2026.astro
-│   │   ├── o-level-english-tips-2026.astro
+│   │   ├── o-level-cut-off-points.astro  # was -2026; 301 from the old slug (vercel.json + _redirects)
+│   │   ├── o-level-english-tips.astro    # was -2026; 301 from the old slug
+│   │   ├── sec-examination-guide.astro   # SEC from 2027 and JC admission L1R4 ≤ 16 from the 2028 JAE (MOE/SEAB-sourced)
 │   │   ├── situational-writing-guide.astro
 │   │   └── why-smart-students-fail.astro
 │   ├── lp/                   # Landing pages for paid traffic
@@ -494,7 +495,8 @@ A real, unrelated bug was found and fixed while wiring up the audience-toggle ic
 When the academic year rolls over, update these in order — most date-sensitive content depends on them:
 
 1. **`src/data/site-config.ts`** — the single source for `academicYear`, the Google review links (`googleReviewsUrl`, `googleWriteReviewUrl`) and the `exams` array (used by the BaseLayout exam-countdown via `define:vars`). There is no intake line on the site at present: the "Next intake" text was removed in September 2026 after its date passed. If an intake is announced, add it back through this file, not as hard-coded copy.
-2. **Cut-off-points blog** (`src/pages/blog/o-level-cut-off-points-2026.astro`) — refresh the COP table, the year in the title/slug, and any references to "2025/2026" trends.
+2. **Cut-off-points blog** (`src/pages/blog/o-level-cut-off-points.astro`, an evergreen slug since September 2026) — refresh the COP table, the year in the title and any references to "2025/2026" trends. Don't put a year back into the slug: the old `-2026` slugs now 301 here
+2a. **SEC and L1R4 (from 2027)**: the GCE N(T)/N(A)/O-Levels become the Singapore-Cambridge Secondary Education Certificate (SEC) in 2027; subjects are taken at G1/G2/G3, which keep the N(T)/N(A)/O-Level format and standard; English and MTL written papers are in September; results in January. From the **2028 JAE** JC admission is **L1R4 ≤ 16** (MI ≤ 20), all aggregate subjects must be G3, the bonus-point cap is 3 (+2 for Language Elective Programmes). The 2027 JAE (this year's Sec 4, O-Level 2026) still uses L1R5 ≤ 20. The L1R5 calculator and the cut-off post say which cohort they cover and link `/blog/sec-examination-guide/`. When the 2028 JAE opens, the calculator needs an L1R4 mode
 3. **L1R5 calculator** (`src/pages/l1r5-calculator.astro`) — the embedded `JCS` array of cut-off points must match the blog table.
 4. **Subject pages** — schedule notes and syllabus year references.
 5. **Blog post titles/slugs** ending in `-2026` — decide whether to refresh in place or publish a new yearly post (and redirect/archive the old one).
