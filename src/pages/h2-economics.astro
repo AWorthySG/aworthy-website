@@ -989,8 +989,11 @@ const playbookRows = [
   }
 
   .prog-hero .container { position: relative; z-index: 1; max-width: 1080px; }
-  /* Narrowed at 1280px+ so the hero card clears the fixed "On this page" TOC */
-  @media (min-width: 1280px) { .prog-hero .container { max-width: min(1080px, 100vw - 360px); } }
+  /* Narrowed at 1280px+ so the hero card clears the fixed "On this page" TOC.
+     The cap is in rem (67.5rem = 1080px at the 16px root) so it grows with the
+     112.5% / 125% / 150% root on large monitors — as a px cap the 150% type at
+     2560px squeezed the copy column to a 4-line headline and a wrapped intake bubble. */
+  @media (min-width: 1280px) { .prog-hero .container { max-width: min(67.5rem, 100vw - 360px); } }
 
   .prog-hero__card {
     display: flex;
@@ -1002,6 +1005,7 @@ const playbookRows = [
 
   .prog-hero__sticker {
     order: -1;
+    z-index: 1; /* order:-1 paints it before the card's ::before tint wash, which greyed it out */
     width: min(200px, 48vw);
     height: auto;
     margin: 0 auto 0.75rem;
@@ -1025,7 +1029,7 @@ const playbookRows = [
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--prog-text-secondary);
-    max-width: 640px;
+    max-width: 40rem;
     margin: 0 auto;
   }
 
@@ -1043,12 +1047,31 @@ const playbookRows = [
     .prog-hero { text-align: left; }
     .prog-hero__card {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 180px;
+      grid-template-columns: minmax(0, 1fr) 11.25rem;
       align-items: center;
       gap: 2rem;
     }
-    .prog-hero__sticker { order: 0; width: 180px; margin: 0; }
+    .prog-hero__sticker { order: 0; width: min(11.25rem, 210px); justify-self: center; margin: 0; }
     .prog-hero__heading { font-size: clamp(2.2rem, 3.1vw, 2.6rem); }
+    .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
+    .prog-hero__sub { margin: 0; }
+    .prog-hero__intake { margin: 1rem 0 0.75rem; }
+  }
+
+  /* Landscape phones (~360–390px tall): the stacked sticker and eyebrow put the
+     headline at y≈320, so its second line fell below the first screen. Use the
+     welcome-card layout here too — sticker in its own column (sized by
+     global.css's landscape rule), copy left-aligned, a smaller headline. */
+  @media (max-height: 500px) and (orientation: landscape) and (max-width: 1023px) {
+    .prog-hero { text-align: left; }
+    .prog-hero__card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start; /* the card is taller than the screen: keep the sticker beside the headline */
+      gap: 1.5rem;
+    }
+    .prog-hero__sticker { order: 0; margin: 0; }
+    .prog-hero__heading { font-size: 2rem; }
     .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
     .prog-hero__sub { margin: 0; }
     .prog-hero__intake { margin: 1rem 0 0.75rem; }
@@ -1080,6 +1103,19 @@ const playbookRows = [
     gap: 2rem;
     flex-wrap: nowrap;
     min-width: max-content;
+  }
+  /* 769-1199px: the nine tabs are wider than the screen, so on a 1024px iPad
+     "Schedule" was hard-clipped with no hint that the strip scrolls. Same
+     treatment as phones: tighter gap, edge padding, right-edge fade. */
+  @media (min-width: 769px) and (max-width: 1199px) {
+    .prog-nav {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    }
+    .prog-nav__inner {
+      gap: 1.25rem;
+      padding-inline: var(--page-padding) 2.5rem;
+    }
   }
 
   .prog-nav__link {
@@ -1144,7 +1180,7 @@ const playbookRows = [
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--prog-text-secondary);
-    max-width: 600px;
+    max-width: 37.5rem;
     margin-bottom: 1rem;
   }
 
@@ -1155,12 +1191,18 @@ const playbookRows = [
   }
 
   .card-grid--1 {
-    grid-template-columns: 1fr;
-    max-width: 800px;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 50rem; /* 800px at the 16px root; as px the lone card shrank to a third of a 2560px screen */
   }
 
   .card-grid--2 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Two columns hold down to 721px: one full-width column on a 768px iPad ran
+     the SHARP and framework paragraphs at ~100 characters a line, and below
+     ~720 two columns drop them to ~35 */
+  @media (max-width: 720px) {
+    .card-grid--2 { grid-template-columns: minmax(0, 1fr); }
   }
 
   /* ===== PROGRAMME CARD — white sticker, ink outline, lifts on hover
@@ -1194,6 +1236,9 @@ const playbookRows = [
     line-height: 1.65;
     color: var(--text-secondary);
     margin-bottom: 0.75rem;
+    /* Nunito's "0" is ~1.33x its average glyph, so 62ch ≈ 80–85 characters.
+       The single programme cards are 800px wide (~115 cpl uncapped). */
+    max-width: 62ch;
   }
 
   .prog-card__topics {
@@ -1262,7 +1307,7 @@ const playbookRows = [
   .lesson-flow { background: var(--bg-secondary); }
   .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 1rem; }
   .prog-section__intro em { font-style: italic; color: var(--subject-accent-text); font-weight: 700; }
-  .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 1040px; }
+  .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 42rem; } /* ~80 characters a line, as on the GP and maths pages */
   .lesson-step {
     display: grid;
     grid-template-columns: 56px 1fr;
@@ -1316,9 +1361,10 @@ const playbookRows = [
     color: var(--prog-text-secondary);
     margin: 0;
     text-wrap: pretty;
+    max-width: 62ch; /* ~80 cpl; the 964px step column ran 110–125 cpl on laptops */
   }
   .lesson-step__desc em { font-style: italic; color: var(--subject-accent-text); font-weight: 700; }
-  .lesson-flow__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
+  .lesson-flow__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 60ch; }
   @media (max-width: 720px) {
     .lesson-step { grid-template-columns: 44px 1fr; gap: 0.9rem; padding: 1.25rem 0; }
     .lesson-step__num { width: 40px; height: 40px; font-size: 0.95rem; }
@@ -1326,7 +1372,13 @@ const playbookRows = [
   }
 
   /* ===== INLINE CTA ===== */
-  .prog-inline-cta { text-align: center; padding: 1rem 0 0; }
+  /* These two CTA strips sit outside a .container, so on phones (where the
+     global .btn goes width:100%) the button ran edge to edge with no gutter;
+     the side padding restores it, the bottom padding keeps the next section's
+     eyebrow from butting against the button's shadow. .playbook-cta's base
+     rule lives in playbook.css — the scoped selector outranks it. */
+  .prog-inline-cta { text-align: center; padding: 1rem var(--page-padding) 0.75rem; }
+  .playbook-cta { padding-inline: var(--page-padding); padding-bottom: 0.75rem; }
 
   /* ===== CTA ===== */
   .prog-cta {
@@ -1337,7 +1389,7 @@ const playbookRows = [
 
   .prog-cta__inner {
     text-align: center;
-    max-width: 600px;
+    max-width: 37.5rem;
     margin: 0 auto;
   }
 
@@ -1407,9 +1459,6 @@ const playbookRows = [
       padding-inline: var(--page-padding) 2.5rem;
     }
 
-    .card-grid--2 {
-      grid-template-columns: 1fr;
-    }
 
     .prog-card {
       padding: 1.25rem;
@@ -1491,8 +1540,20 @@ const playbookRows = [
     border-radius: var(--radius-md);
     padding: 0.9rem 1rem 0.9rem 0.9rem;
   }
-  @media (min-width: 1280px) {
-    .sticky-toc { display: block; }
+  /* Only where it fits beside the content. From 1280 to 1680px the 190px card
+     covered the page by 46–155px and ran into the WhatsApp, chat and
+     back-to-top floats; the sticky section-nav strip already gives in-page
+     navigation at those widths. On wide monitors it sits in the margin,
+     narrowed, and stops above the floats and the bottom sticky bar. */
+  @media (min-width: 1920px) {
+    .sticky-toc {
+      display: block;
+      right: 1rem;
+      max-width: 170px;
+      max-height: calc(100vh - (var(--nav-offset) + 44px + 1.5rem) - 12rem - var(--sticky-bar-h, 0px));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
   }
 
   /* The TOC only appears once the reader is past the hero. Until then the
@@ -1640,7 +1701,7 @@ const playbookRows = [
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
-    max-width: 800px;
+    max-width: 50rem; /* 800px at the 16px root */
     margin: 0 auto;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
@@ -1692,6 +1753,7 @@ const playbookRows = [
   }
   .faq-answer p {
     margin: 0;
+    max-width: 62ch;
   }
 
   /* ===== RECOMMENDED READING — ink cards ===== */
@@ -1835,7 +1897,7 @@ const playbookRows = [
   .prog-midcta { padding-top: 0; }
   .prog-midcta__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; border: 2px solid var(--color-ink); border-left: 6px solid var(--subject-accent); border-radius: var(--radius-md); background: var(--prog-bg-card); padding: 1.5rem 1.75rem; }
   .prog-midcta__heading { font-size: 1.25rem; font-weight: 800; margin: 0 0 0.3rem; font-family: var(--font-body); letter-spacing: -0.02em; }
-  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 560px; }
+  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 35rem; }
   .prog-midcta__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   @media (max-width: 700px) {
     .prog-midcta__inner { flex-direction: column; align-items: stretch; text-align: center; }
@@ -1856,6 +1918,10 @@ const playbookRows = [
     .playbook-matrix { gap: 0.75rem; background: transparent; border: none; }
     .playbook-matrix__row { border: 2px solid var(--color-ink); border-radius: var(--radius-md); }
   }
+  /* Tablet portrait: two topic cards per row instead of one ~2,400px column */
+  @media (min-width: 641px) and (max-width: 900px) {
+    .playbook-matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
 
   /* ===== WORKED EXAMPLE: INFORMATION FAILURE — ink cards, red numbered dots,
      muted wells for the sub-panels ===== */
@@ -1875,12 +1941,14 @@ const playbookRows = [
 
   .if-framework { margin-bottom: 2rem; }
   .if-framework__title { font-family: var(--prog-font); font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin: 0 0 0.4rem; }
-  .if-framework__sub { font-size: 0.95rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 640px; margin: 0 0 1rem; }
+  .if-framework__sub { font-size: 0.95rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 62ch; margin: 0 0 1rem; }
   .if-steps { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem; line-height: 1.55; color: var(--prog-text-secondary); }
   .if-steps :global(strong) { color: var(--text-primary); }
   .if-steps :global(sub) { font-size: 0.75em; }
 
   .if-worked { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.25rem; }
+  /* The second example is narrative only (capped at 62ch), so the card hugs it rather than leaving half of it empty */
+  .if-worked--alt { max-width: 44rem; }
   /* Subject-coloured chip (global .chip + the Econ brick) — the WORKED EXAMPLE
      tags and the "also covered" topic pills share it */
   .chip.if-chip { border-color: var(--subject-accent); background: color-mix(in srgb, var(--subject-accent) 12%, transparent); color: var(--subject-accent-text); }
@@ -1890,7 +1958,7 @@ const playbookRows = [
   .if-diagram-wrap { margin: 0; background: var(--bg-muted); border: 2px solid var(--color-ink); border-radius: var(--radius-sm); padding: 0.75rem; }
   .if-diagram { display: block; width: 100%; height: auto; }
   .if-diagram-wrap figcaption { font-size: 0.8rem; line-height: 1.5; color: var(--text-muted); margin-top: 0.6rem; }
-  .if-worked__narrative { font-size: 0.98rem; line-height: 1.7; color: var(--prog-text-secondary); margin: 0; }
+  .if-worked__narrative { font-size: 0.98rem; line-height: 1.7; color: var(--prog-text-secondary); margin: 0; max-width: 62ch; }
   .if-worked__narrative :global(strong) { color: var(--text-primary); }
 
   .if-also { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-top: 1.5rem; }
@@ -1906,8 +1974,8 @@ const playbookRows = [
   }
 
   /* ===== REAL MATERIALS GALLERY — ink cards that lift, dark lightbox ===== */
-  .notes-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.25rem; }
-  .notes-gallery--two { grid-template-columns: repeat(2, 1fr); }
+  .notes-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem; }
+  .notes-gallery--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .notes-shot {
     display: flex; flex-direction: column; padding: 0; border: 2px solid var(--color-ink); border-radius: var(--radius-md);
     background: var(--prog-bg-card); overflow: hidden; cursor: zoom-in; text-align: left; font: inherit; color: inherit;
@@ -1919,7 +1987,7 @@ const playbookRows = [
   .notes-shot:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
   .notes-shot img { display: block; width: 100%; height: auto; border-bottom: 2px solid var(--color-ink); }
   .notes-shot__cap { padding: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.4; color: var(--prog-text-secondary); }
-  .notes-footnote { font-size: 0.92rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 680px; margin: 0; }
+  .notes-footnote { font-size: 0.92rem; line-height: 1.6; color: var(--prog-text-secondary); max-width: 62ch; margin: 0; }
 
   .notes-lightbox {
     position: fixed; inset: 0; z-index: var(--z-modal); display: none; align-items: center; justify-content: center;
@@ -1934,8 +2002,26 @@ const playbookRows = [
   }
   .notes-lightbox__close:hover { background: rgba(255, 255, 255, 0.2); }
 
+  /* Tablets and landscape phones: two columns. A single column made each page
+     700–760px wide (≈950px tall, six of them ≈6,000px of scroll) and upscaled
+     the 1100px files on 2x screens; one column only on phones. */
   @media (max-width: 900px) {
-    .notes-gallery, .notes-gallery--two { grid-template-columns: 1fr; }
+    .notes-gallery, .notes-gallery--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .notes-gallery, .notes-gallery--two { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* Shared before/after footnote (global.css) had no measure — ~230 cpl at 1920px */
+  .ba-footnote { max-width: 62ch; }
+
+  /* Laptops and up: running copy at >= 15px (0.9–0.92rem rendered 14.4–14.7px
+     at the 16px root used up to 1440px) */
+  @media (min-width: 1024px) {
+    .prog-card__desc,
+    .if-tax-card p,
+    .notes-footnote,
+    .prog-midcta__sub { font-size: 0.95rem; }
   }
 </style>
 
@@ -1974,7 +2060,6 @@ const playbookRows = [
     sync();
     window.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
-    document.addEventListener('astro:page-load', sync);
   })();
 
   var observer = new IntersectionObserver(function(entries) {
@@ -2049,5 +2134,4 @@ function initNotesLightbox() {
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
 }
 initNotesLightbox();
-document.addEventListener('astro:page-load', initNotesLightbox);
 </script>

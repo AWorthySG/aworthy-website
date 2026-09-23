@@ -105,7 +105,9 @@ public/
 │   └── section-divider.svg   # Decorative section divider
 ├── docs/samples/             # Sample PDF resources (grammar, essays, vocabulary, etc.)
 ├── study/                    # Study Hub materials — self-contained .html files, auto-listed on /study/
-├── sw.js                     # Service worker (cache-first for assets, network-first for navigation) — precache list references favicon.ico + logo.webp by exact path; keep in sync if either changes
+├── sw.js                     # Service worker — network-first for pages, cache-first only for /_astro/ + /fonts/, never touches cross-origin; offline fallback /offline.html (see "Runtime")
+├── offline.html              # Self-contained page the service worker serves when offline with no cached copy
+├── fonts/                    # Self-hosted Nunito (variable woff2, latin + latin-ext, upright + italic) + OFL.txt licence
 ├── manifest.json             # PWA manifest
 ├── robots.txt                # Search engine directives
 ├── apple-touch-icon.png      # iOS home screen icon (180×180, opaque cream bg)
@@ -145,19 +147,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 All pages wrap content in `<BaseLayout>` which provides:
 - Meta tags (Open Graph with `ogImage` prop, Twitter Card, canonical URL)
 - Schema.org structured data (EducationalOrganization + LocalBusiness, Course, FAQPage, Person)
-- Google Fonts async loading
-- Theme initialization from localStorage (with `prefers-color-scheme` auto-detect)
-- ClientRouter for page transitions (`astro:transitions`)
+- Self-hosted Nunito: a preload of `/fonts/nunito-latin-wght-normal.woff2` (the `@font-face` rules live at the top of `global.css`)
+- Theme initialization from localStorage (with `prefers-color-scheme` auto-detect; storage access is guarded — it throws when blocked)
+- **No ClientRouter** — plain navigation with a native CSS cross-document fade and hover prefetch (see "Runtime")
 - Scroll progress bar (fixed top)
 - Breadcrumb navigation
-- Scroll-reveal animation observer (re-initializes on `astro:page-load` for view transitions)
-- Animated number counters (re-initializes on `astro:page-load`; bfcache `pageshow` fix)
+- Scroll-reveal animation observer
+- Animated number counters (bfcache `pageshow` fix)
 - Back-to-top button
 - Global sticky CTA bar (hidden on homepage; a single 60px row of CTA + call button + dismiss on phones/tablets, text label only on desktop)
 - WhatsApp chat widget (with preview bubble)
 - FAQ chatbot widget (pre-defined Q&A)
 - Email capture popup (exit-intent + 45s timer, localStorage dismissal) — submits to Formspree (`xreoozkk`) and delivers `/docs/samples/essay-framework-sample.pdf` with a fallback download link
 - Service worker registration
+- Bottom-bar registry `window.aworthyBottomBar(name, px)` (see "Fixed bottom chrome")
 - Privacy consent notice
 
 ## Design System (global.css)
@@ -193,6 +196,7 @@ All pages wrap content in `<BaseLayout>` which provides:
 
 ### Typography
 
+- **Self-hosted**: Nunito is served from `public/fonts/` (variable font, `wght` 200–1000, Latin + Latin Extended, upright + italic; SIL OFL in `OFL.txt`). `@font-face` rules sit at the top of `global.css`; BaseLayout preloads the Latin upright file. The font tokens fall back to `'Nunito Fallback'` — Arial with `size-adjust` / ascent / descent overrides measured from the woff2 at weight 400 — so text doesn't reflow when Nunito swaps in. **Never load it from Google Fonts again** (see "Runtime"). If a font file ever changes, give it a new filename: `/fonts/*` is served `immutable` and cached by the service worker.
 - **Headings**: `'Nunito'` (sans-serif, weights 200–900)
 - **Body**: `'Nunito'` (sans-serif)
 - **`--font-mono`**: `'Nunito'` — the whole site is Nunito. The token is still named `--font-mono` and used for uppercase letter-spaced labels/eyebrows/HUD, but it now resolves to Nunito (no monospace face is loaded).
@@ -229,12 +233,18 @@ Subject pages use hardcoded tight spacing (1.25rem desktop, 1rem tablet, 0.75rem
 | Token | Value | Purpose |
 |-------|-------|---------|
 | `--z-base` | 1 | Base layer |
-| `--z-sticky-cta` | 90 | Global sticky CTA bar |
-| `--z-subject-bar` | 100 | Subject navigation bar |
-| `--z-header` | 110 | Site header |
-| `--z-dropdown` | 120 | Nav dropdowns |
-| `--z-modal` | 130 | PDF preview modal, chatbot |
-| `--z-scroll-progress` | 140 | Scroll progress bar |
+| `--z-overlay` | 10 | Reserved (currently unused) |
+| `--z-subject-selector` | 90 | Subject selector and the subject pages' sticky section-nav strip |
+| `--z-sticky-bar` | 95 | Global and homepage sticky CTAs |
+| `--z-header` | 100 | Site header |
+| `--z-subject-bar` | 190 | Subject navigation bar |
+| `--z-dropdown` | 250 | Nav dropdowns |
+| `--z-fixed-widget` | 900 | WhatsApp float, back-to-top |
+| `--z-chatbot` | 950 | FAQ chatbot |
+| `--z-privacy` | 999 | Cookie notice |
+| `--z-scroll-progress` | 1990 | Scroll progress bar — above the chrome, **below modals** (at 9999 it drew a red line across every open overlay) |
+| `--z-modal` | 2000 | PDF preview, Study Hub viewer, email popup, resource gate, notes lightboxes |
+| `--z-toast` | 2100 | Toasts |
 
 Always use z-index tokens instead of hardcoded values for layered components.
 
@@ -251,8 +261,10 @@ Always use z-index tokens instead of hardcoded values for layered components.
 
 - **Display type steps down** in global.css: ≤768px h1 `clamp(2rem, 7.5vw, 3rem)` / h2 `clamp(1.6rem, 5.5vw, 2.25rem)`; ≤480px h1 `clamp(1.9rem, 8.5vw, 2.4rem)` / h2 `clamp(1.5rem, 6.5vw, 1.9rem)`, so long titles hold to ~3 lines on a phone. Page-scoped hero headings that set their own phone size (subject pages, tools) keep it.
 - **Legibility floor**: no running label smaller than **0.72rem** (11.5px) — eyebrows are 0.75rem on ≤768px, and every micro-label that used to sit at 0.55–0.68rem (hero proof labels, programme/pricing badges, `.blog-tag`, `.playbook-paper`, subject-bar chips, result stat labels, footer headings, the exam countdown) was raised. Don't add new 0.6rem labels.
-- **Touch targets**: everything tappable is ≥40px tall (44px for form controls). global.css has a `@media (pointer: coarse)` block that gives inline links in `main p / main li / .hero-meta / footer` extra *vertical padding* — on inline elements that enlarges the tap box without changing the line box, so it's layout-safe — and sets 44px minimums on selects/inputs/textareas and the FAQ summaries. Chips (`.r-filter-btn`, `.dec-chip`, `.sh-chip`, `.subject-bar-link`) carry `min-height: 40px`; the testimonials carousel dots are an 8px visual dot inside a 28px button (`::before` draws the dot) — reuse that pattern for any small indicator control.
-- **Fixed bottom chrome**: the global sticky CTA (BaseLayout) and the homepage's own `.sticky-cta` publish their visible height on `<html>` as `--sticky-bar-h` (set from JS when they toggle `is-visible`, `0px` when hidden/dismissed). The WhatsApp float, chatbot toggle and back-to-top button add `var(--sticky-bar-h, 0px)` to their `bottom`, so they ride up above the bar instead of overlapping it. **Any new fixed bottom widget must include that variable in its `bottom`.** Desktop back-to-top also sits left of the WhatsApp float (`right: 2rem + 68px`) rather than underneath it.
+- **Touch targets**: everything tappable is ≥40px tall (44px for form controls). global.css has a `@media (pointer: coarse)` block that gives inline links in `main p / main li / .hero-meta / footer` extra *vertical padding* — on inline elements that enlarges the tap box without changing the line box, so it's layout-safe — and sets 44px minimums on selects/inputs/textareas and the FAQ summaries. Chips (`.r-filter-btn`, `.dec-chip`, `.sh-chip`, `.subject-bar-link`) carry `min-height: 40px`; the testimonials carousel dots are an 8px visual dot inside a 40px button (`::before` draws the dot; the buttons touch, so the dots sit ~40px apart) — reuse that pattern for any small indicator control. On touch screens footer links are 40px `inline-flex` targets with tightened list spacing (Footer.astro), breadcrumb links get vertical padding (BaseLayout), and the author-bio link is a 40px target (AuthorBio.astro). Form controls (`button, input, select, textarea`) inherit the page font from global.css — without that, any button lacking its own `font-family` rendered in Arial.
+- **Fixed bottom chrome**: every bar that can occupy the bottom edge — the cookie notice, the global sticky CTA (BaseLayout) and the homepage's own `.sticky-cta` — reports its visible height through `window.aworthyBottomBar(name, px)` (defined in BaseLayout's head script; `0` when hidden or dismissed). The registry publishes the **tallest** as `--sticky-bar-h` on `<html>`, and the WhatsApp float, chatbot toggle and back-to-top add `var(--sticky-bar-h, 0px)` to their `bottom`, so they ride above whichever bar is showing. Never write `--sticky-bar-h` directly: each bar used to, the cookie notice didn't at all, and the floats sat on the notice's text and buttons for every first-time phone visitor. **Any new fixed bottom bar must report through the registry, and any new floating widget must include the variable in its `bottom`.** Both sticky CTAs stay hidden while the cookie notice is up (they look it up on each check — its markup comes after their scripts). Desktop back-to-top sits left of the WhatsApp float (`right: 2rem + 68px`).
+- **Landscape phones** (`(max-height: 500px) and (orientation: landscape)`, ~390px tall): the header drops to 56px, the subject bar and both bottom sticky CTAs are hidden (the menu lists every subject; the header shows the CTA), hero sections get compact padding, and the subject hero's mascot is sized by height (112px). Before this, headlines on the GP page, GP landing page and testimonials started below the first screen.
+- **Short laptops** (`(min-width: 1025px) and (max-height: 820px)`, e.g. 1366×768, 1280×800): the bottom sticky CTAs are hidden — from 1025px the header always shows the CTA, and the duplicate cost ~8% of every screen.
 - **Stats blocks** are 2×2 grids on phones (homepage `.stats-inner`, results `.r-stats-row`), never a single column of giant numbers.
 - **Header on tablets** (641–1024px): hamburger nav plus the gold CTA pill; the CTA is hidden only ≤640px.
 
@@ -288,7 +300,7 @@ Dark mode uses `[data-theme="dark"]` on `<html>` and swaps every token above to 
 
 **Motion layer** (bottom of `global.css`): cards lift off the paper on hover (`translateY(-2px)` + the 6px hard shadow) and settle on press; buttons do **not** bounce or lift — `.btn` is a quick colour change plus a physical press (`translateY(3px)`, shadow collapses), as on the LMS. Stickers straighten and scale 1.04 on hover with `--ease-bounce`. All of it is gated behind `@media (prefers-reduced-motion: no-preference)`. The full Overcooked-style world (chunky pots, steam, plating loop, confetti) lives only on `/kitchen/`; the celebration confetti helper is `window.aworthyCelebrate(opts)` from `public/celebrate.js`. Keep the trust pages (pricing, about, contact, subject pages) calm — heavy game styling belongs on `/kitchen/` and `/sharp-decoder/`, not sitewide.
 
-Scroll-triggered animations via IntersectionObserver (defined in BaseLayout). Both the scroll-reveal observer and animated counters are wrapped in named functions (`initScrollReveal`, `initCounters`) that run on initial load AND on `astro:page-load` to survive ClientRouter view transitions.
+Scroll-triggered animations via IntersectionObserver (defined in BaseLayout). `initScrollReveal` and `initCounters` run once per page load — there is no client-side router, so there is nothing to re-initialise after.
 
 The reveal styles animate the individual `translate` / `scale` properties, **not** `transform`, so a revealed card keeps its own hover `transform` lift; the reduced-motion and no-JS fallbacks reset `translate`/`scale` too. Don't rewrite them back to `transform: translateY(...)` — that overrides every card family's hover lift on the homepage, about, results, etc.
 
@@ -312,6 +324,20 @@ Do NOT add `data-animate` back to subject pages, landing pages, programmes, or s
 - Active nav link detection uses `Astro.url.pathname`
 - Sitemap auto-generated via `@astrojs/sitemap` integration (filters out `/parent-portal/`, `/lp/*`, `/404`)
 
+## Runtime: navigation, service worker, fonts, headers
+
+These four were rebuilt together after visitors reported that the site "sometimes fails to load" and that Nunito "sometimes turns into another font". Each rule below exists because the previous design caused one of those symptoms.
+
+- **Navigation** — no client-side router. Every link is a normal page load, so each page's scripts run exactly once. `global.css` ends with `@view-transition { navigation: auto; }` (inside `prefers-reduced-motion: no-preference`) for a native cross-fade in Chrome 126+ / Safari 18.2+; `astro.config.mjs` sets `prefetch: { prefetchAll: true, defaultStrategy: 'hover' }`.
+- **Service worker** (`public/sw.js`, `VERSION = 'aworthy-v8'`):
+  1. It never touches cross-origin requests. A worker's own `fetch()` is governed by the CSP sent with `sw.js`, and v7 re-fetched Google Fonts from inside the worker, where `connect-src` refused both hosts — Nunito fell back on every visit after the first.
+  2. Pages are network-first; the cache is only a fallback when the network fails, then `/offline.html`. v7 precached 14 pages at install and answered in-page fetches cache-first, so returning visitors got frozen copies — old content, the old phone number, and stylesheet hashes that no longer existed.
+  3. Only content-addressed files are cache-first: `/_astro/*` (hashed by the build) and `/fonts/*` (rename a font file if it changes).
+  Bump `VERSION` whenever the worker's behaviour changes: activation deletes every other cache, which is how stale data gets purged from returning visitors. Navigation preload is on.
+- **Fonts** — Nunito is same-origin (`public/fonts/`), so neither the worker nor any network/blocker/regional block on Google can take it down. `font-src 'self'`; no Google hosts remain in either CSP.
+- **Headers** — production is **Vercel** (`vercel.json`); Cloudflare Pages serves previews (`public/_headers`). Keep the two identical (they had drifted: Vercel's CSP lacked the Clarity hosts). `X-Frame-Options: SAMEORIGIN`, `frame-ancestors 'self'` (needed by the Study Hub in Safari — see there), `/fonts/*` and `/_astro/*` immutable, `/sw.js` `no-cache`.
+- **Verifying this layer** — Chromium only in the sandbox; Safari behaviour (e.g. inherited `frame-ancestors`) cannot be reproduced here. Test with a server that sends the production headers (`scratchpad/diag/prodserve.py` reads `vercel.json`), and test the *upgrade path*: install the old worker, then switch the same origin to the new build (`scratchpad/diag/switchserve.py` + `verify.mjs`). Beware test servers that answer `304` by mtime — they will hand the browser the previous build.
+
 ## Key Conventions
 
 1. **Minimal dependencies** — Astro, @astrojs/sitemap, sharp (build); no UI frameworks or CSS libraries. fuse.js was removed as unused.
@@ -324,8 +350,8 @@ Do NOT add `data-animate` back to subject pages, landing pages, programmes, or s
 8. **No build-time data fetching** — purely static, no API calls at build time
 9. **Safe area insets** — all fixed/sticky elements account for notched device insets
 10. **OG images** — source SVGs in `public/images/og-*.svg`, converted to PNG by `scripts/convert-og-images.mjs` at prebuild
-11. **Service worker** — `public/sw.js` provides offline caching; registered in BaseLayout
-12. **Storage keys** — localStorage: `theme` (dark/light), `email-popup-dismissed`, `privacy-accepted`, `resource-lead`. sessionStorage: `wa-shown` (WhatsApp bubble shown indicator).
+11. **Service worker** — `public/sw.js`, registered in BaseLayout. Network-first for pages, cache-first only for content-hashed `/_astro/*` and `/fonts/*`, hands-off for anything cross-origin; see "Runtime" before changing it
+12. **Storage keys** — localStorage: `theme` (dark/light), `email-popup-dismissed`, `privacy-accepted`, `resource-lead`. sessionStorage: `wa-shown` (WhatsApp bubble shown indicator). **Guard every read and write with `try/catch`** — storage throws (not just returns null) under Safari's "Block All Cookies" and in some in-app browsers, and an unguarded call kills the rest of its script
 
 ## Homepage Sections (index.astro)
 
@@ -346,16 +372,20 @@ Students open study materials live in the browser — no downloads. Public (no g
 
 **Adding a material** — two steps, the second optional:
 
-1. Drop a self-contained `.html` file into `public/study/`. It is auto-discovered at build time (`fs.readdirSync` in `study.astro`'s frontmatter) and appears on the page immediately. Title falls back to the file's own `<title>`, blurb to its `<meta name="description">`.
+1. Drop a self-contained `.html` file into `public/study/`. It is auto-discovered at build time (`fs.readdirSync` in `study.astro`'s frontmatter) and appears on the page immediately. Title falls back to the file's own `<title>`, blurb to its `<meta name="description">`. Style it like the two existing materials: LMS palette tokens in `:root` (a token is either a fill or a text colour, never both), Nunito via `@font-face` pointing at `/fonts/…`, and dark tokens under both `@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) }` and `:root[data-theme="dark"]`, with the one-line `<head>` script that copies `localStorage.theme` onto `data-theme` — so the material follows the site's theme toggle (the viewer also passes the current theme in).
 2. Optionally add an entry to `src/data/study-materials.ts`, keyed by the filename without `.html`, to set `subject`, `title`, `description`, `level` and `order`. Subject determines the card's accent colour and the filter chip it appears under.
 
 **How it renders — and why `srcdoc`, not `src`**: the viewer fetches the material and injects it into the iframe via **`srcdoc`**, with a `<base href="/study/">` prepended so relative asset URLs still resolve.
 
-This is deliberate and must not be "simplified" back to `iframe.src`. The site sends `X-Frame-Options: DENY` and `frame-ancestors 'none'` sitewide, which blocks any iframe — including same-origin ones. A path-scoped override does **not** fix it: **Cloudflare Pages merges `_headers` rules rather than replacing them**, so a `/study/*` block sends *both* `DENY` and `SAMEORIGIN` (and both `frame-ancestors` values), and browsers intersect the policies and block the frame anyway. This was verified against the real Cloudflare preview. `srcdoc` has no HTTP response of its own, so neither header applies. If the viewer ever renders as a browser "blocked" error page, this is why.
+This is deliberate and must not be "simplified" back to `iframe.src`. A `srcdoc` document has no HTTP response of its own, so a response header like `X-Frame-Options` never applies to it, and a path-scoped header override does **not** work on the host: **Cloudflare Pages merges `_headers` rules rather than replacing them**, so a `/study/*` block would send both values and browsers intersect them.
+
+**`frame-ancestors` must stay `'self'`, not `'none'`.** A `srcdoc` document *inherits* the parent page's CSP, and **Safari enforces the inherited `frame-ancestors` on it**: with the old `frame-ancestors 'none'` every material rendered as a blank white frame on iPhone and Mac while working in Chrome (Chromium does not enforce it there, which is why every Chromium test passed). The sitewide headers in `vercel.json` (production) and `public/_headers` (Cloudflare previews) are therefore `X-Frame-Options: SAMEORIGIN` and `frame-ancestors 'self'` — still no framing by other sites. Keep the two files identical.
+
+The viewer builds a **fresh iframe for every open**, with `srcdoc` set before it is inserted (one navigation, nothing left over from the last material). The frame is never `display: none` — the loading state is an overlay on top of it — and the overlay only lifts when the frame's `load` event confirms a document with content. If the frame comes up empty, or doesn't load within 5s, the viewer opens the material as its own page instead, so a reader never sits in front of a blank frame. The iframe is script-created, so its scoped styles use `:global(.sh-viewer__frame)` (it never gets Astro's scoping attribute). The viewer also injects the self-hosted Nunito `@font-face` into each material, since fonts don't cross document boundaries.
 
 The viewer also injects a small **anchor shim** into every material. In a `srcdoc` document, in-page links (`href="#section"`) resolve against the inherited base URL, so clicking one would *navigate the frame to `/study/#section`* instead of scrolling — silently breaking the table of contents in any long material. The shim intercepts same-document fragment clicks and scrolls instead, so materials need no modification.
 
-The injected document inherits *this page's* CSP (`default-src 'self'` with `'unsafe-inline'` for scripts and styles), so materials must be **self-contained** — inline CSS/JS is fine, external CDN scripts and remote fonts are blocked. It is not sandboxed, so materials keep full same-origin access (localStorage etc.) and behave exactly as they do standalone.
+The injected document inherits *this page's* CSP (`default-src 'self'` with `'unsafe-inline'` for scripts and styles), so materials must be **self-contained** — inline CSS/JS and same-origin files (e.g. `/fonts/…`) are fine; external CDN scripts and remote fonts are blocked. It is not sandboxed, so materials keep full same-origin access (localStorage etc.) and behave exactly as they do standalone.
 
 Cards are real `<a href>` links, so every material is also its own standalone page — it works with JS disabled, and the viewer falls back to navigating there if the fetch fails.
 
@@ -453,8 +483,8 @@ When the academic year rolls over, update these in order — most date-sensitive
 - The action red is the same #C0392B in both themes (fills never change); only red *text* lifts to coral `--color-accent-text` #E4796C in dark mode. Never bring gold back as an accent — the old #D4853A / #E09850 pair is retired
 - Font families: the entire site uses **Nunito only** — JetBrains Mono and Pinyon Script were both removed. The hero `PenAnimation.astro` and the `/about/` founder sign-off now render in Nunito too. Don't reintroduce a monospace or script font; keep mono-styled labels as uppercase + letter-spacing, and the pen animation / sign-off as Nunito.
 - BaseLayout is ~900+ lines — use offset/limit when reading; many widgets are appended before `</body>`
-- Astro 6.x uses `ClientRouter` from `astro:transitions`, NOT the old `ViewTransitions` export
-- Subject pages have a sticky "On this page" TOC (1280px+) built from each section's `.eyebrow` text (not truncated h2 text) — ensure sections have `id` attributes. It is **JS-gated to appear only once the reader scrolls past the hero** (`html.js .sticky-toc` starts hidden; the page script adds `.is-ready` when the section-nav strip reaches `--nav-offset`). Without that gate the fixed card sat over the hero card and the nav strip — which has a higher z-index — painted straight through it on the pages with a shorter hero. Its `top` is `calc(var(--nav-offset) + 44px + 1.5rem)` on all five pages: the 44px is the breadcrumb strip, the 1.5rem clears the stuck nav
+- **There is no ClientRouter — don't add it back.** Astro's router keeps a session-wide record of every inline script it has run and never runs the same one twice, and runs bundled scripts once per session: after a single link click the phone menu and theme toggle stopped responding, and any page revisited by clicking around came back with its toggles, quizzes and calculators unwired, with no error anywhere. Every navigation is now a normal page load, so page scripts simply run once on load — don't add `astro:page-load` / `astro:after-swap` listeners (nothing fires them). Page-to-page fades are the native `@view-transition { navigation: auto; }` at the end of `global.css`; `astro.config.mjs` prefetches links on hover
+- Subject pages have a sticky "On this page" TOC (**1920px+ only**) built from each section's `.eyebrow` text (not truncated h2 text) — ensure sections have `id` attributes. It is **JS-gated to appear only once the reader scrolls past the hero** (`html.js .sticky-toc` starts hidden; the page script adds `.is-ready` when the section-nav strip reaches `--nav-offset`). Without that gate the fixed card sat over the hero card and the nav strip — which has a higher z-index — painted straight through it on the pages with a shorter hero. Its `top` is `calc(var(--nav-offset) + 44px + 1.5rem)` on all five pages: the 44px is the breadcrumb strip, the 1.5rem clears the stuck nav. It shows only from 1920px because at every width from 1280 to 1680 the 190px card covered the page content by 46–155px and ran into the WhatsApp/chat/back-to-top floats; the sticky section-nav strip is the in-page navigation below that. At 1920+ it is 170px wide, `right: 1rem`, and its `max-height` stops it above the floats and `--sticky-bar-h`
 - The prebuild step (`scripts/convert-og-images.mjs`) requires `sharp` — run `npm install` if missing
 - Email popup and resource gating both collect emails but are independent systems with separate localStorage keys. Formspree endpoints: contact form + trial booking post to `xgoppwye`; resource gating, newsletter, and the email popup post to `xreoozkk`
 - **Analytics stack**: Plausible (`script.tagged-events.js`) is loaded unconditionally and tagged via `plausible-event-name=...` classes and `window.plausible('Event Name')` calls. Microsoft Clarity (heatmaps + session recordings) is gated on the `PUBLIC_CLARITY_PROJECT_ID` env var — the script only renders when the var is set, and the privacy-policy page's Clarity entries are conditional on the same var. To enable, set `PUBLIC_CLARITY_PROJECT_ID` in Vercel (and Cloudflare Pages) and redeploy. CSP in `public/_headers` already allows `*.clarity.ms` and `c.bing.com`.
@@ -462,15 +492,14 @@ When the academic year rolls over, update these in order — most date-sensitive
 - Nav links go to dedicated pages (`/programmes/`, `/resources/`, `/results/`, `/testimonials/`) — no in-page `/#anchors` from the header
 - SVG wave section dividers are disabled (`display: none` in global.css) — do not re-enable
 - Subject pages, landing pages, programmes, and success-stories use hardcoded tight spacing — do not revert to `var(--space-*)` tokens
-- Do NOT add `data-animate="reveal-up"` to subject pages, landing pages, programmes, or success-stories — `clip-path: inset(100% 0 0 0)` causes invisible content if the observer doesn't fire after view transitions
-- BaseLayout observers (`initScrollReveal`, `initCounters`) must listen to `astro:page-load` — wrapping in an IIFE breaks them after ClientRouter navigation
+- Do NOT add `data-animate="reveal-up"` to subject pages, landing pages, programmes, or success-stories — their content must never depend on an observer firing
 - When adding a new subject or programme, update: subject page, SubjectBar.astro, Footer.astro, BaseLayout.astro (breadcrumbLabels, knowsAbout, hasOfferCatalog, chatbot answers, exam countdown), programmes.astro, pricing.astro, index.astro (programme card, quiz), contact.astro, 404.astro, about.astro, all other subject pages' related links sections
 - `parent-portal.astro` is a coming-soon stub — it has `noindex={true}` and should remain that way until the portal launches
 - SHARP step card headings must not include time durations — use "See", "Hit", "Apply", "Refine & Practise" (not "See (5 min)" etc.)
 - Blog posts import shared styles from `src/styles/blog.css` — only page-specific styles (e.g., `.cop-table-*`, `.compare-table-*`) go in inline `<style>` blocks
 - PdfPreviewModal uses CSS custom properties (`--pdf-bg`, `--pdf-text`, etc.) for its intentionally dark media-viewer theme — do not tie these to the site's light/dark mode tokens
 - `404.astro` has `noindex={true}` — keep it excluded from search indexing
-- Study Hub materials live in `public/study/*.html` and are auto-discovered. The viewer loads them with `iframe.srcdoc`, **not** `iframe.src` — the sitewide `X-Frame-Options: DENY` / `frame-ancestors 'none'` blocks real iframe navigations, and a path-scoped header override does not help because Cloudflare Pages *merges* `_headers` rules instead of replacing them. Do not switch it back to `src`
+- Study Hub materials live in `public/study/*.html` and are auto-discovered. The viewer loads them with `iframe.srcdoc`, **not** `iframe.src`, and the sitewide `frame-ancestors` must stay `'self'` — Safari enforces the page's *inherited* `frame-ancestors` on the srcdoc document, so `'none'` blanks every material on iPhone. See "Study Hub"
 - The site logo (`public/images/logo.webp`/`.png`) is a hand-drawn mascot, not the old navy "A|W" SVG — see "Brand Mascots" above before touching Header/Footer logo markup, favicons, or the schema.org `logo` field
 - Never reintroduce `filter: brightness(0) invert(1)` on `.footer-logo-img` — it crushes the full-color mascot into a flat white silhouette. The footer is now a *light* sand band (`--bg-footer` #F3EDE0 with a 2px ink top rule; charcoal in dark mode), so nothing in it needs inverting; the wordmark ("A-Worthy") stays live text (`.footer-logo-text`) beside the `.logo-tile`
 - Mascot "full" variants now carry a white die-cut border, so their baked-in navy caption stays legible on dark surfaces — the old "use the `-icon` variant on navy" rule no longer applies. Reach for `-icon` only when a small caption-less mark is wanted (bullets, ticks, the logo)
@@ -482,3 +511,11 @@ When the academic year rolls over, update these in order — most date-sensitive
 - When a declaration seems not to apply, check for a **later declaration of the same property inside the same rule**: the homepage scroll cue had `display: none` added at the top of a block that already ended with `display: flex`, so the "fix" was a silent no-op. Verify with a computed-style probe, not by reading the source
 - The header CTA (`.header-cta`) is the red `.btn-accent` sticker pill (2px ink border, hard shadow); it used to be a ghost/outline button with a dark-mode override that re-asserted the ghost look. Don't resurrect that override — the filled pill has white text in both themes
 - index.astro has ~10 back-to-back inline `<script is:inline>` blocks. A missing `</script>` on any one of them silently merges it with every script after it into a single blob that fails to parse — breaking all of them with no obvious error (this happened for real: it took out both the programme quiz and the audience toggle at once, with the toggle's click handler simply never attaching). If an inline script on this page mysteriously does nothing, check for an unclosed `<script>` tag earlier in the file before assuming the handler logic itself is wrong
+- **Never select by a class *fragment* in shared CSS.** A landscape rule targeted `.hero, [class*="-hero"]`, which also matched every BEM child (`.sh-hero__title`, `.calc-hero__lead`) and the mascots (`sticker--hero`, `lp-hero-art`): each got a header-height of top padding and the art was squashed. Target the element you mean (`section[class*="-hero"]` at the very least)
+- Sizes in `px` next to content in `rem` break at the big-screen root sizes (112.5% ≥1441, 125% ≥1921, 150% ≥2560): the subject bar's 1200px cap made its five rem-sized chips overflow at 2560 and the hidden-scrollbar row cut Pre-IB Maths off, unreachable by mouse. Cap such rows in `rem` (the subject bar uses `75rem`), and keep a component's padding rules together across breakpoints (the header's "Library" trigger missed the ≥1921 padding the links got, and sat 9px high)
+- Elements created by script never get Astro's scoping attribute, so a plain scoped selector silently doesn't match them — style them with `:global()` inside the component's `<style>` (the Study Hub iframe fell back to the default 300×150 box until this was fixed)
+- Verification harnesses must exercise **navigation**, not just fresh page loads: every bug fixed in the loading round (dead menus, dead widgets, stale pages, fonts failing under the service worker) only appeared on the second page or the second visit. `scratchpad/diag/verify.mjs` from that round installs the old service worker, switches the origin to the new build, and clicks between pages
+- **A `var()` that names an undefined custom property invalidates the whole declaration, silently.** The homepage sticky CTA used `z-index: var(--z-sticky-cta)` — a token that never existed — so its z-index was `auto` and page content painted over the bar while scrolling. Use only tokens defined in `global.css` (the Z-Index table above is the real scale), or give `var()` a fallback. A scan for no-fallback `var(--x)` with no `--x:` definition anywhere in `src/` is quick and currently returns nothing
+- **`order: -1` on a `.hero-card` child paints it *under* the card's `::before` tint wash.** Flex items paint in order-modified document order, and the absolutely positioned `::before` counts as `order: 0`, so a sticker moved first with `order: -1` is painted before the wash and looks grey. The landing pages and the Economics / Maths / Pre-IB heroes stack the sticker this way on phones, so each carries `z-index: 1`. Any new hero-card child reordered with a negative `order` needs the same.
+- **global.css sets `.btn { width: 100% }` on phones (≤480px).** A button that must leave room beside it (the homepage sticky CTA reserves 44px for its ×) needs `width: auto` as well as its margin. Otherwise the 100% width wins, the margin pushes it past its box, and the × sits on top of the red pill.
+- **Rem caps on stickers need a px ceiling.** The subject stickers are only ~400–425px wide, so an `11.25rem` hero sticker (270px at the 150% root) is upscaled on a 2x screen. The heroes use `min(11.25rem, 200–210px)` to keep the art at no more than half its source width.

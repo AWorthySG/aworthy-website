@@ -134,7 +134,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
 <style>
   .calc-hero { padding: 1.5rem 0 0.75rem; text-align: center; }
   .calc-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: var(--text-primary); margin-bottom: 0.75rem; }
-  .calc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
+  .calc-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 40rem; margin: 0 auto; }
   .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
   /* Until a result exists the lone form card sits centred instead of leaving the right column blank */
   .calc-grid:has(> .calc-result[hidden]) { grid-template-columns: minmax(0, 640px); justify-content: center; }
@@ -174,7 +174,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   /* ── Result card ── */
   /* --nav-offset = header + SubjectBar (header alone ≤640px): the stuck card and the post-Calculate
      scrollIntoView both clear the fixed chrome instead of sliding under the programmes strip */
-  .calc-result { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; position: sticky; top: calc(var(--nav-offset) + 1rem); scroll-margin-top: calc(var(--nav-offset) + 1rem); }
+  .calc-result { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); padding: 1.5rem; position: sticky; top: calc(var(--nav-offset) + 1rem); scroll-margin-top: calc(var(--nav-offset) + 1rem); scroll-margin-bottom: calc(var(--sticky-bar-h, 0px) + 1rem); }
   .calc-score { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 1.25rem; }
   .calc-score-block { text-align: center; }
   .calc-score-num { display: flex; align-items: center; justify-content: center; gap: 0.1rem; font-family: var(--font-heading); font-size: 2.75rem; font-weight: 900; letter-spacing: -0.02em; color: var(--text-primary); line-height: 1; margin-bottom: 0.35rem; }
@@ -206,9 +206,15 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   .calc-cta-link { color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.9rem; min-height: 40px; display: inline-flex; align-items: center; gap: 0.45rem; }
   .calc-cta-link:hover { text-decoration: underline; text-underline-offset: 3px; }
   .calc-explainer { text-align: center; }
-  .calc-explainer__note { max-width: 640px; margin: 0 auto; }
+  .calc-explainer__note { max-width: 40rem; margin: 0 auto; }
   .calc-explainer a { color: var(--color-accent-text); font-weight: 700; }
 
+  /* Side by side, the sticky result card (~740px) is taller than the room under the fixed chrome on short
+     screens (1024×768, 1280×800, 1366×768): stuck, its foot was unreachable. There it scrolls with the page
+     instead, and Calculate scrolls to its top (below), so the Gross → Net score lands under the chrome. */
+  @media (min-width: 901px) and (max-height: 900px) {
+    .calc-result { position: static; }
+  }
   @media (max-width: 900px) {
     .calc-grid { grid-template-columns: 1fr; }
     .calc-result { position: static; }
@@ -308,7 +314,9 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
       jcEl.innerHTML = html;
 
       resultEl.hidden = false;
-      resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // 'start' (not 'nearest'): the score is at the card's top, and 'nearest' aligned the card's foot to
+      // the bottom of the screen, leaving the score under the header on short laptops
+      resultEl.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
       if (window.plausible) window.plausible('L1R5 Calculated');
     }
 
@@ -321,5 +329,4 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
   }
 
   initL1R5();
-  document.addEventListener('astro:page-load', initL1R5);
 </script>

@@ -211,7 +211,7 @@ const testimonials = [
     <div class="t-container t-google-inner">
       <span class="eyebrow" data-animate="reveal-up">Verified on Google</span>
       <h2 class="t-google-heading squiggle squiggle--center" data-animate="reveal-up">Don&rsquo;t take our word for it &mdash; read what families say on Google</h2>
-      <p class="t-google-sub" data-animate="reveal-up">Every review on our Google Business Profile is from a verified A-Worthy family. We don&rsquo;t curate them, we don&rsquo;t hide the difficult ones, and we don&rsquo;t pay for them.</p>
+      <p class="t-google-sub" data-animate="reveal-up">Every review on our Google Business Profile is from a verified <span class="t-nowrap">A-Worthy</span> family. We don&rsquo;t curate them, we don&rsquo;t hide the difficult ones, and we don&rsquo;t pay for them.</p>
 
       <div class="t-google-badge" data-animate="scale-in">
         <div class="t-google-logo">
@@ -245,8 +245,8 @@ const testimonials = [
   <section class="t-section t-cta">
     <div class="t-container t-cta-inner">
       <span class="eyebrow">Get Started</span>
-      <h2 class="t-cta-heading squiggle squiggle--center" data-animate="reveal-up">Experience the A-Worthy difference</h2>
-      <p class="t-cta-subtitle">Join the hundreds of families who trust A-Worthy. Book a free trial lesson and see the results for yourself.</p>
+      <h2 class="t-cta-heading squiggle squiggle--center" data-animate="reveal-up">Experience the <span class="t-nowrap">A-Worthy</span> difference</h2>
+      <p class="t-cta-subtitle">Join the hundreds of families who trust <span class="t-nowrap">A-Worthy</span>. Book a free trial lesson and see the results for yourself.</p>
       <div class="t-cta-actions">
         <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
         <a href="https://wa.me/6589913181" class="btn" target="_blank" rel="noopener noreferrer">
@@ -577,6 +577,12 @@ const testimonials = [
     margin: 0 0 16px;
   }
 
+  /* Keeps the brand name whole — the heading otherwise broke at its hyphen
+     ("Experience the A-" / "Worthy difference") on phones and laptops. */
+  .t-nowrap {
+    white-space: nowrap;
+  }
+
   .t-cta-subtitle {
     font-size: 1.05rem;
     line-height: 1.7;
@@ -662,17 +668,45 @@ const testimonials = [
     }
   }
 
+  /* Landscape phones (~390px tall): the 160px sticker pushed the headline
+     below the first screen. */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .t-hero-mascot {
+      height: 80px;
+      margin-bottom: 0.5rem;
+    }
+  }
+
   @media (min-width: 1921px) {
+    /* rem, not px: html is 125–150% here, and a fixed 1400px left the 3-up
+       review cards ~24 characters wide at 2560px. */
     .t-container {
-      max-width: 1400px;
+      max-width: 75rem;
     }
 
+    /* rem: at the 150% root the px caps ran the headline to 4 lines and the
+       lead to ~35 characters */
     .t-hero-inner {
-      max-width: 900px;
+      max-width: 45rem;
+    }
+    .t-hero-subtitle,
+    .t-google-sub {
+      max-width: 35rem;
+    }
+
+    /* The .t-container rule above would otherwise override these narrow
+       wrappers (same specificity, later in the file) — the CTA subtitle ran
+       to ~110 characters on one line. */
+    .t-google-inner {
+      max-width: 45rem;
+    }
+
+    .t-cta-inner {
+      max-width: 40rem;
     }
 
     .t-testimonials-grid {
-      max-width: 1400px;
+      max-width: 75rem;
       margin: 0 auto;
     }
   }
@@ -735,15 +769,16 @@ const testimonials = [
   .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0;
     margin-top: 1rem;
   }
-  /* 8px visual dot inside a 28px hit area. The dots are created by the
-     script below, so they carry no Astro scoping attribute — these rules
-     must be :global or they never match. */
+  /* 8px visual dot inside a 40px hit area (the site's touch-target standard;
+     it was 28px). The buttons touch, so the dots still sit ~40px apart. The
+     dots are created by the script below, so they carry no Astro scoping
+     attribute — these rules must be :global or they never match. */
   :global(.carousel-dot) {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: none;
     background: transparent;
@@ -793,20 +828,45 @@ const testimonials = [
     });
   }
 
+  // Auto-rotate every 6 seconds. Auto-advancing content must be pausable
+  // (WCAG 2.2.2): hover pauses it for mouse users, and any touch, swipe, dot tap
+  // or keyboard focus hands control to the reader for good — touch screens have
+  // no hover, so readers there previously could not stop it. Reduced-motion
+  // users get no auto-advance at all.
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer = null;
+  var readerControl = false;
+  function start() {
+    if (reduce || readerControl || timer) return;
+    timer = setInterval(function() { goTo((current + 1) % count); }, 6000);
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function takeControl() { readerControl = true; stop(); }
+  start();
+
   dots.addEventListener('click', function(e) {
     var dot = e.target.closest('.carousel-dot');
-    if (dot) goTo(parseInt(dot.getAttribute('data-index')));
+    if (!dot) return;
+    takeControl();
+    goTo(parseInt(dot.getAttribute('data-index')));
   });
 
-  // Auto-rotate every 6 seconds
-  var timer = setInterval(function() {
-    goTo((current + 1) % count);
-  }, 6000);
+  var frame = track.parentElement;
+  frame.addEventListener('mouseenter', stop);
+  frame.addEventListener('mouseleave', start);
+  frame.addEventListener('focusin', takeControl);
 
-  // Pause on hover
-  track.parentElement.addEventListener('mouseenter', function() { clearInterval(timer); });
-  track.parentElement.addEventListener('mouseleave', function() {
-    timer = setInterval(function() { goTo((current + 1) % count); }, 6000);
-  });
+  // Swipe between testimonials on touch screens.
+  var x0 = null, y0 = null;
+  frame.addEventListener('touchstart', function(e) {
+    takeControl();
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+  }, { passive: true });
+  frame.addEventListener('touchend', function(e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    x0 = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) goTo((current + (dx < 0 ? 1 : count - 1)) % count);
+  }, { passive: true });
 })();
 </script>

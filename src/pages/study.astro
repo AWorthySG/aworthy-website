@@ -187,8 +187,10 @@ const count = materials.length;
         </button>
       </div>
     </div>
-    <p class="sh-viewer__loading" id="sh-loading" role="status">Loading&hellip;</p>
-    <iframe class="sh-viewer__frame" id="sh-frame" src="about:blank" title="Study material"></iframe>
+    <div class="sh-viewer__stage" id="sh-stage">
+      <p class="sh-viewer__loading" id="sh-loading" role="status">Loading&hellip;</p>
+      <!-- The material's iframe is created per open by the script below. -->
+    </div>
   </div>
 
   <Footer slot="footer" />
@@ -202,6 +204,8 @@ const count = materials.length;
     margin: 0.5rem 0 0.75rem; letter-spacing: -0.02em; color: var(--text-primary);
   }
   .sh-hero__lead { max-width: 680px; font-size: 1.08rem; line-height: 1.65; color: var(--text-secondary); margin: 0; }
+  /* The root font scales up from 1441px; a px cap made the lead a narrow ~40-character column at 2560 */
+  @media (min-width: 1441px) { .sh-hero__lead { max-width: 42.5rem; } }
 
   /* ── Bar: count + filters ── */
   .sh-bar {
@@ -226,7 +230,7 @@ const count = materials.length;
   }
 
   /* ── Card grid — white ink cards with a subject-coloured top edge ── */
-  .sh-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem; }
+  .sh-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.15rem; }
   .sh-card {
     display: flex; flex-direction: column; gap: 0.55rem; padding: 1.35rem 1.4rem;
     background: var(--bg-card); border: 2px solid var(--color-ink); border-top: 6px solid var(--sub);
@@ -257,7 +261,8 @@ const count = materials.length;
   .sh-empty__title { font-size: 1.25rem; font-weight: 800; margin: 0 0 0.5rem; }
   .sh-empty__body { margin: 0 auto; max-width: 46ch; color: var(--text-secondary); line-height: 1.6; }
 
-  .sh-note { margin: 2rem 0 0; font-size: 0.9rem; color: var(--text-secondary); text-align: center; }
+  /* Capped measure: uncapped it ran as one ~150-character line on laptops and desktops */
+  .sh-note { max-width: 68ch; margin: 2rem auto 0; font-size: 0.9375rem; line-height: 1.6; color: var(--text-secondary); text-align: center; }
   .sh-note a, .sh-empty__body a { color: var(--color-accent-text); font-weight: 700; }
 
   /* ── Full-screen viewer ── */
@@ -269,6 +274,8 @@ const count = materials.length;
   .sh-viewer__bar {
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     padding: 0.7rem 1rem; padding-top: max(0.7rem, env(safe-area-inset-top));
+    /* viewport-fit=cover: in landscape the notch / rounded corners sit over the sides */
+    padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));
     background: var(--bg-card); border-bottom: 2px solid var(--color-ink); flex: 0 0 auto;
   }
   .sh-viewer__meta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; min-width: 0; }
@@ -282,20 +289,37 @@ const count = materials.length;
   /* Size-only tweaks — the pill, ink border and hard shadow come from the global .btn.btn--sm */
   .sh-viewer__btn { gap: 0.4rem; padding: 0.5rem 0.85rem; font-size: 0.82rem; }
   .sh-viewer__btn--close:hover { color: var(--color-accent-text); }
-  .sh-viewer__frame { flex: 1 1 auto; width: 100%; border: 0; background: #fff; }
+  /* The frame is absolutely positioned inside a stage that takes the rest of
+     the viewer's height. That sizes it identically in every engine (no
+     percentage-of-flex-item ambiguity), and the frame is never display:none —
+     the loading state is an overlay on top of it, because hiding an iframe
+     while it navigates is a known way to end up with a blank frame in Safari. */
+  .sh-viewer__stage { position: relative; flex: 1 1 auto; min-height: 0; background: var(--bg-primary); }
+  /* :global() because the iframe is created by script, so it never receives
+     Astro's scoping attribute — a plain scoped selector would not match it and
+     the frame would fall back to the browser's default 300×150 box. */
+  .sh-viewer__stage :global(.sh-viewer__frame) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
   .sh-viewer__loading {
-    margin: 0; padding: 2rem 1rem; text-align: center; color: var(--text-secondary);
+    position: absolute; inset: 0; z-index: 1;
+    display: grid; place-items: center; margin: 0; padding: 2rem 1rem;
+    background: var(--bg-primary); color: var(--text-secondary);
     font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
   }
   .sh-viewer:not(.is-loading) .sh-viewer__loading { display: none; }
-  .sh-viewer.is-loading .sh-viewer__frame { display: none; }
 
   /* ── Responsive ── */
-  @media (max-width: 1024px) { .sh-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 1024px) { .sh-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 768px) {
     .sh-hero { padding: 2.25rem 0 1.5rem; }
-    .sh-grid { grid-template-columns: 1fr; }
     .sh-bar { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  }
+  /* One column only on phones: at 641–768px (iPad portrait) a single column made ~700px-wide cards */
+  @media (max-width: 640px) { .sh-grid { grid-template-columns: minmax(0, 1fr); } }
+  /* Landscape phones are ~390px tall: put the chip and title on one row so the bar is ~55px, not 75px */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .sh-viewer__bar { padding-top: max(0.4rem, env(safe-area-inset-top)); padding-bottom: 0.4rem; }
+    .sh-viewer__meta { flex-direction: row; align-items: center; gap: 0.6rem; }
+    .sh-viewer__chip { flex: 0 0 auto; }
   }
   @media (max-width: 480px) {
     .sh-viewer__btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -307,6 +331,13 @@ const count = materials.length;
   }
 </style>
 
+<style is:global>
+  /* BaseLayout's scroll-progress bar sits above modals (z-index), so while the
+     viewer is open it drew a red line across the viewer bar. Global block:
+     the bar lives in BaseLayout, outside this page's scope. */
+  body:has(#sh-viewer:not([hidden])) .scroll-progress { display: none; }
+</style>
+
 <script is:inline>
   function initStudyHub() {
     var grid = document.getElementById('sh-grid');
@@ -314,26 +345,28 @@ const count = materials.length;
     if (!viewer || (grid && grid.dataset.bound === '1')) return;
     if (grid) grid.dataset.bound = '1';
 
-    var frame = document.getElementById('sh-frame');
+    var stage = document.getElementById('sh-stage');
+    var frame = null;          // the current material's iframe, created per open
+    var frameTimer = 0;
     var titleEl = document.getElementById('sh-viewer-title');
     var chipEl = document.getElementById('sh-viewer-chip');
     var newTab = document.getElementById('sh-newtab');
     var closeBtn = document.getElementById('sh-close');
     var filters = document.getElementById('sh-filters');
-    var loading = document.getElementById('sh-loading');
     var lastFocused = null;
     var loadToken = 0;
 
     /*
-     * Materials are injected via `srcdoc` rather than `src`.
-     *
-     * The site sends `X-Frame-Options: DENY` and `frame-ancestors 'none'`
-     * sitewide. A path-scoped override does NOT work: Cloudflare Pages MERGES
-     * `_headers` rules rather than replacing them, so the response carries both
-     * DENY and SAMEORIGIN, and browsers intersect the two policies and block
-     * the frame. `srcdoc` has no HTTP response of its own, so neither header
-     * applies. The document still inherits this page's CSP, which permits the
-     * inline CSS/JS that self-contained materials rely on.
+     * Materials are injected via `srcdoc` rather than `src`, so they render
+     * without the site's own framing restrictions ever being loosened for a
+     * real URL. A `srcdoc` document has no HTTP response, but it does INHERIT
+     * this page's CSP, including frame-ancestors. Safari enforces that
+     * inherited frame-ancestors on the srcdoc document, so with the old
+     * `frame-ancestors 'none'` every material rendered as a blank white frame
+     * on iPhone and Mac while working fine in Chrome. The header is now
+     * `frame-ancestors 'self'` (vercel.json and public/_headers) — keep it that
+     * way. As a last line of defence the loader below also detects an empty
+     * frame and opens the material as its own page instead.
      */
     /*
      * In a srcdoc document, in-page anchors (href="#section") resolve against
@@ -352,20 +385,61 @@ const count = materials.length;
       'if(t)t.scrollIntoView({behavior:"smooth",block:"start"});' +
       '});})();<\/script>';
 
+    /*
+     * Fonts do not cross document boundaries, so the material cannot use the
+     * page's Nunito. Give it the same self-hosted files (same-origin, allowed
+     * by font-src 'self'); a material that already declares them is unaffected.
+     */
+    var FONT_FACES =
+      '<style>' +
+      "@font-face{font-family:'Nunito';font-style:normal;font-weight:200 1000;font-display:swap;src:url('/fonts/nunito-latin-wght-normal.woff2') format('woff2')}" +
+      "@font-face{font-family:'Nunito';font-style:italic;font-weight:200 1000;font-display:swap;src:url('/fonts/nunito-latin-wght-italic.woff2') format('woff2')}" +
+      '</style>';
+
+    /*
+     * Hand the site's current theme to the material, so a reader who picked
+     * dark with the header toggle on a light-mode device doesn't get a bright
+     * page inside a dark site. Materials style both :root[data-theme="dark"]
+     * and their prefers-color-scheme block (see public/study/*.html).
+     */
+    function themeScript() {
+      var t = document.documentElement.getAttribute('data-theme');
+      return (t === 'dark' || t === 'light')
+        ? '<script>document.documentElement.dataset.theme=' + JSON.stringify(t) + '<\/script>'
+        : '';
+    }
+
     function prepareDoc(html) {
-      var baseTag = '<base href="/study/">';
+      var head = '<base href="/study/">' + themeScript() + FONT_FACES;
       var out = /<head[^>]*>/i.test(html)
-        ? html.replace(/<head([^>]*)>/i, '<head$1>' + baseTag)
-        : baseTag + html;
+        ? html.replace(/<head([^>]*)>/i, '<head$1>' + head)
+        : head + html;
       return /<\/body>/i.test(out)
         ? out.replace(/<\/body>/i, ANCHOR_SHIM + '</body>')
         : out + ANCHOR_SHIM;
     }
 
-    function loadIntoFrame(src) {
+    function removeFrame() {
+      clearTimeout(frameTimer);
+      if (frame) { frame.remove(); frame = null; }
+    }
+
+    function openStandalone(src) {
+      // The material is also a normal page; if the viewer cannot show it,
+      // go there rather than leave the reader looking at nothing.
+      window.location.href = src;
+    }
+
+    /*
+     * Each open builds a brand-new iframe with its srcdoc already set, then
+     * inserts it: exactly one navigation, nothing left over from a previous
+     * material, and no about:blank load racing the srcdoc one. The loading
+     * overlay stays up until the frame's own load event confirms there is a
+     * document with content in it.
+     */
+    function loadIntoFrame(src, title) {
       var token = ++loadToken;
-      frame.removeAttribute('srcdoc');
-      frame.setAttribute('src', 'about:blank');
+      removeFrame();
       viewer.classList.add('is-loading');
       fetch(src, { credentials: 'same-origin' })
         .then(function (r) {
@@ -374,13 +448,30 @@ const count = materials.length;
         })
         .then(function (html) {
           if (token !== loadToken) return; // a newer material was opened
-          frame.srcdoc = prepareDoc(html);
-          viewer.classList.remove('is-loading');
+          var f = document.createElement('iframe');
+          f.className = 'sh-viewer__frame';
+          f.title = title || 'Study material';
+          f.addEventListener('load', function () {
+            if (token !== loadToken || f !== frame) return;
+            var doc = null, url = '';
+            try { doc = f.contentDocument; url = f.contentWindow.location.href; } catch (e) {}
+            // Some engines report the initial about:blank before the srcdoc
+            // document; wait for the real one (the timer covers "never").
+            if (url === 'about:blank') return;
+            clearTimeout(frameTimer);
+            if (!doc || !doc.body || !doc.body.childElementCount) { openStandalone(src); return; }
+            viewer.classList.remove('is-loading');
+          });
+          f.srcdoc = prepareDoc(html);
+          frame = f;
+          stage.appendChild(f);
+          frameTimer = setTimeout(function () {
+            if (token === loadToken && viewer.classList.contains('is-loading')) openStandalone(src);
+          }, 5000);
         })
         .catch(function () {
           if (token !== loadToken) return;
-          // Fall back to the material's own standalone page.
-          window.location.href = src;
+          openStandalone(src);
         });
     }
 
@@ -403,8 +494,7 @@ const count = materials.length;
       chipEl.style.setProperty('--chip', cardStyle.getPropertyValue('--sub-text'));
       chipEl.style.setProperty('--chip-border', cardStyle.getPropertyValue('--sub'));
       newTab.setAttribute('href', src);
-      frame.setAttribute('title', card.dataset.title);
-      loadIntoFrame(src);
+      loadIntoFrame(src, card.dataset.title);
       viewer.hidden = false;
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
@@ -420,8 +510,7 @@ const count = materials.length;
       if (viewer.hidden) return;
       viewer.hidden = true;
       loadToken++; // cancel any in-flight load
-      frame.removeAttribute('srcdoc');
-      frame.setAttribute('src', 'about:blank');
+      removeFrame();
       viewer.classList.remove('is-loading');
       document.body.style.overflow = '';
       if (updateHash && window.location.hash) {
@@ -461,7 +550,7 @@ const count = materials.length;
       });
     }
 
-    // Escape closes — rebind cleanly so view transitions don't stack handlers.
+    // Escape closes the viewer (guarded so a second init cannot stack handlers).
     if (window.__shEscHandler) document.removeEventListener('keydown', window.__shEscHandler);
     window.__shEscHandler = function (e) {
       if (e.key === 'Escape' && !viewer.hidden) closeViewer(true);
@@ -480,13 +569,7 @@ const count = materials.length;
     window.addEventListener('popstate', window.__shPopHandler);
 
     if (window.location.hash) syncFromHash(false);
-
-    // Leaving the page mid-view must not leave the body scroll-locked.
-    document.addEventListener('astro:before-swap', function () {
-      document.body.style.overflow = '';
-    }, { once: true });
   }
 
   initStudyHub();
-  document.addEventListener('astro:page-load', initStudyHub);
 </script>

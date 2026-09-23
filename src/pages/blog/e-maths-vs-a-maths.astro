@@ -15,7 +15,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
       <div class="blog-post-header">
         <a href="/blog/" class="blog-back">&larr; Back to Blog</a>
         <span class="blog-tag chip chip--green">O-Level Mathematics</span>
-        <h1>O-Level E-Maths vs A-Maths: What&rsquo;s the Difference &mdash; and Should Your Child Take A-Maths?</h1>
+        <h1><span class="nobr">O-Level</span> <span class="nobr">E-Maths</span> vs <span class="nobr">A-Maths</span>: What&rsquo;s the Difference &mdash; and Should Your Child Take <span class="nobr">A-Maths</span>?</h1>
         <div class="blog-post-meta">
           <a class="blog-author" href="/about/" rel="author">By Jeremy Lim, Founder</a>
           <span>&middot;</span>
@@ -125,3 +125,10 @@ import AuthorBio from '../../components/AuthorBio.astro';
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<style>
+  /* The title's hyphenated names break at their hyphen: text-wrap: balance
+     split it "…vs A-" / "Maths: What's the" on phones, laptops and desktops.
+     Keep each name whole so lines break only at spaces. */
+  .nobr { white-space: nowrap; }
+</style>

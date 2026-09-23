@@ -262,10 +262,15 @@ import AuthorBio from '../../components/AuthorBio.astro';
     margin-bottom: 1.5rem;
   }
   .table-note a { color: var(--color-accent-text); }
+  /* Laptops/desktops: the footnote was 12.8px under 16.8px body copy */
+  @media (min-width: 1024px) {
+    .table-note { font-size: 0.95rem; }
+  }
   /* Phones: fixed layout with 76px score columns and wrapping JC names keeps all three
      columns inside the wrapper (no hidden horizontal scroll); the wrapper's overflow-x
-     stays only as a safety net. */
-  @media (max-width: 480px) {
+     stays only as a safety net. Runs to 540px: the auto-width nowrap table needs ~441px,
+     so at 481–515px it overflowed the wrapper and half-hid the Arts column. */
+  @media (max-width: 540px) {
     .cop-table { white-space: normal; table-layout: fixed; }
     .cop-table th:nth-child(n+2),
     .cop-table td:nth-child(n+2) { width: 76px; }

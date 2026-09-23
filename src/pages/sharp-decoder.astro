@@ -202,6 +202,22 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   .dec-feedback { margin-top: 1rem; padding: 0.75rem 1rem; border: 2px dashed var(--ink-faint); border-radius: var(--radius-sm); font-size: 0.92rem; line-height: 1.55; background: var(--bg-muted); color: var(--text-primary); }
   .dec-feedback :global(strong) { color: var(--color-accent-text); }
   .dec-next-btn { margin-top: 1rem; width: 100%; cursor: pointer; }
+  /* answer() focuses Next, and a focus scroll *centres* an off-screen button — on every screen
+     up to 1920 that pushed the HUD and question above the viewport, so the next question (timer
+     running) rendered out of sight and the results card opened scrolled past its score. A
+     scroll-margin box just under one screen tall turns that into a minimal scroll that parks Next
+     at the bottom edge with the question still in view above it. The bottom margin clears the
+     fixed CTA bar; on ≤768px that bar can appear *after* the scroll (it shows past half a
+     screen), so its ~60px is reserved there regardless. vh first, svh where supported. */
+  .dec-next-btn {
+    --dec-bar: var(--sticky-bar-h, 0px);
+    scroll-margin-bottom: calc(var(--dec-bar) + 1rem);
+    scroll-margin-top: calc(100vh - 6rem - var(--dec-bar));
+    scroll-margin-top: calc(100svh - 6rem - var(--dec-bar));
+  }
+  @media (max-width: 768px) {
+    .dec-next-btn { --dec-bar: max(var(--sticky-bar-h, 0px), 4rem); }
+  }
 
   .dec-end__line { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; }
   .dec-end__pitch { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.5rem; }
@@ -228,7 +244,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
     var dataEl = document.getElementById('dec-data');
     var stage = document.getElementById('dec-stage');
     if (!dataEl || !stage) return;
-    if (stage.getAttribute('data-init')) return; // avoid double-binding on initial astro:page-load
+    if (stage.getAttribute('data-init')) return; // guard against double-binding
     stage.setAttribute('data-init', '1');
     var ALL = JSON.parse(dataEl.textContent || '[]');
 
@@ -318,7 +334,21 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
         b.addEventListener('click', function () { answer(i); });
         elOpts.appendChild(b);
       });
+      revealPlay();
       if (!practice) startTimer();
+    }
+
+    // After Start or Next the play card could sit partly below the fold with the
+    // timer already running (short laptops, landscape phones). Bring the HUD,
+    // question and options into view — only when they're actually hidden, and
+    // offset for the fixed header.
+    function revealPlay() { revealScreen(screens.play); }
+    function revealScreen(el) {
+      var r = el.getBoundingClientRect();
+      var head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
+      if (r.top < head || r.bottom > window.innerHeight) {
+        window.scrollTo({ top: window.scrollY + r.top - head - 12, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
     }
 
     function stopTicker() {
@@ -390,6 +420,7 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
 
     function endGame() {
       show('end');
+      revealScreen(screens.end); // on landscape phones the card opened scrolled past its rating
       var pct = deck.length ? correctCount / deck.length : 0;
       var rating = pct >= 0.9 ? 'SHARP Method Master' : pct >= 0.7 ? 'Sharp Shooter' : pct >= 0.5 ? 'Getting Sharp' : 'Keep Practising';
       document.getElementById('dec-rating').textContent = rating;
@@ -418,5 +449,4 @@ const subjects = ['All', 'English', 'Maths', 'Pre-IB', 'GP', 'Econs'];
   }
 
   initDecoder();
-  document.addEventListener('astro:page-load', initDecoder);
 </script>

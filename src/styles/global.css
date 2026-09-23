@@ -1,3 +1,59 @@
+/* ===== Nunito — self-hosted ===== */
+/* Served from /fonts/ rather than Google Fonts. A third-party font stylesheet
+   failed in two ways: the service worker re-fetched it under a CSP whose
+   connect-src does not list the Google hosts (so Nunito silently fell back
+   after the first visit), and any network, blocker or regional block on
+   Google took the brand font down with it. Same-origin files have neither
+   problem. Variable font, weights 200–1000, Latin + Latin Extended subsets,
+   upright + italic; the browser downloads only the subsets a page uses.
+   Files and licence (SIL OFL 1.1): public/fonts/. The latin-normal file is
+   preloaded in BaseLayout — keep that <link> in sync if the filename changes. */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-ext-wght-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-wght-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-ext-wght-italic.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Metric-matched stand-in shown for the instant before Nunito arrives, so
+   text does not reflow when it swaps in. Arial scaled to Nunito's regular-
+   weight average glyph width (0.4555em vs Arial's 0.4414em) with Nunito's
+   vertical metrics (ascent 1011, descent 353, no line gap, per 1000 upm),
+   each divided by the size-adjust. Measured from the woff2 at wght 400. */
+@font-face {
+  font-family: 'Nunito Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 103.19%;
+  ascent-override: 97.97%;
+  descent-override: 34.21%;
+  line-gap-override: 0%;
+}
+
 /* ===== CSS Custom Properties ===== */
 /* A-Worthy — Warm, professional, and inviting. Premium education brand. */
 /* Breakpoints reference:
@@ -40,9 +96,9 @@
   --border-hover: rgba(28, 27, 25, 0.26);
   --header-height: 72px;
   --nav-offset: calc(var(--header-height) + 44px);
-  --font-heading: 'Nunito', -apple-system, sans-serif;
-  --font-body: 'Nunito', -apple-system, sans-serif;
-  --font-mono: 'Nunito', -apple-system, sans-serif;
+  --font-heading: 'Nunito', 'Nunito Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Nunito', 'Nunito Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Nunito', 'Nunito Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -127,7 +183,7 @@
   --z-privacy: 999;
   --z-modal: 2000;
   --z-toast: 2100;
-  --z-scroll-progress: 9999;
+  --z-scroll-progress: 1990; /* above the header, floats and cookie notice; below modals — at 9999 it drew a red line across every open overlay */
 
   /* ── Safe area insets for notched devices ── */
   --safe-area-top: env(safe-area-inset-top, 0px);
@@ -484,7 +540,7 @@ li {
   color: var(--text-secondary);
   font-size: 1.05rem;
   margin-bottom: var(--space-lg);
-  max-width: 640px;
+  max-width: 40rem; /* rem, not px: holds ~70 characters a line at every root size */
   margin-left: auto;
   margin-right: auto;
 }
@@ -654,6 +710,13 @@ li {
 }
 
 /* ===== Forms ===== */
+/* Form controls do not inherit the page font by default: any button, input,
+   select or textarea without its own font-family rendered in the browser's
+   (Arial on Chrome/Windows, system-ui on Apple) — another way the site showed
+   "another font" even with Nunito loaded. Family only, so size/weight rules on
+   individual controls are untouched. */
+button, input, select, textarea, optgroup { font-family: inherit; }
+
 input, textarea, select {
   font-family: var(--font-body);
   font-size: 1rem;
@@ -1244,6 +1307,9 @@ label {
   .container { max-width: 1800px; padding: 0 var(--space-2xl); }
   .section { padding: var(--space-3xl) 0; }
   .btn { padding: 1.1rem 2.5rem; font-size: 0.95rem; }
+  /* Same specificity and later than .btn--sm, so without this every compact pill
+     became a full-size button from 1921px up. */
+  .btn--sm { padding: 0.5rem 1.15rem; font-size: 0.85rem; }
 }
 
 /* Ultra-wide / 4K+ */
@@ -1434,7 +1500,7 @@ label {
 /* ─── Subject Receipts Stats Rail (claudedesign E.3) ─── */
 .subject-receipts {
   margin: var(--space-2xl) auto;
-  max-width: 960px;
+  max-width: 60rem; /* rem: scales with the big-screen root (960px at 16px) */
 }
 .subject-receipts dl {
   display: grid;
@@ -1648,10 +1714,34 @@ html {
 
 /* ─── Landscape phone optimizations ─── */
 @media (max-height: 500px) and (orientation: landscape) {
-  .hero, [class*="-hero"] {
+  /* Hero SECTIONS only, with compact padding. This used to be
+     `.hero, [class*="-hero"] { padding-top: calc(var(--header-height) + 1.5rem) }`,
+     and the attribute selector also matched every child with a BEM "-hero__"
+     class and the mascots (sticker--hero, lp-hero-art, t-hero-mascot): each
+     got ~96px of top padding, the art was squashed, and on a 390px-tall
+     screen the GP, landing-page and testimonials headlines started below the
+     first screen. Heroes already sit under the fixed header (main or the
+     breadcrumb carries that offset), so no header-height is added here. */
+  .hero, section[class*="-hero"] {
     min-height: auto;
-    padding-top: calc(var(--header-height) + 1.5rem);
-    padding-bottom: 1.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  /* A phone on its side is ~390px tall. The fixed header (72px), fixed subject
+     bar (44px), breadcrumb (44px) and bottom sticky CTA (60px) took nearly
+     half of it. The header drops to 56px here, the subject bar and sticky CTAs
+     are hidden in their own components (the menu lists every subject and the
+     header already carries the CTA), and nav-offset loses the bar's 44px. */
+  :root {
+    --header-height: 56px;
+    --nav-offset: var(--header-height);
+  }
+  /* The subject hero stacks its mascot above the headline below 1024px; at
+     200px wide it filled a landscape screen on its own and pushed the
+     headline below the fold. Size it by height instead. */
+  .hero-card img.sticker {
+    width: auto;
+    max-height: 112px;
   }
   .section {
     padding: 2rem 0;
@@ -1789,7 +1879,7 @@ html {
 /* Before/After answer-sample proof component (shared across subject pages) */
 .ba-question { background: var(--bg-muted); border: 2px solid var(--color-ink); border-left-width: 6px; border-left-color: var(--color-accent); border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin-bottom: 1.25rem; }
 .ba-q-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.35rem; }
-.ba-question p { color: var(--text-primary); font-size: 0.98rem; margin: 0; line-height: 1.55; }
+.ba-question p { color: var(--text-primary); font-size: 0.98rem; margin: 0; line-height: 1.55; max-width: 62ch; }
 .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 .ba-card { border: 2px solid var(--color-ink); border-radius: var(--radius-md); padding: 1.25rem; background: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; }
 .ba-card--before { border-top: 6px solid var(--color-berry); }
@@ -1806,7 +1896,7 @@ html {
 .ba-mark { align-self: flex-start; margin-top: auto; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; }
 .ba-mark--before { color: var(--text-secondary); }
 .ba-mark--after { color: var(--tint-green-fg); }
-.ba-footnote { font-size: 0.78rem; color: var(--text-secondary); margin-top: 1rem; font-style: italic; }
+.ba-footnote { font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem; font-style: italic; max-width: 60ch; } /* ran 155–247 characters a line on laptops */
 @media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1916,3 +2006,19 @@ html {
   z-index: 1;
 }
 
+
+/* ===== Page-to-page cross-fade =====
+   Native cross-document view transitions (Chrome 126+, Safari 18.2+): pure
+   CSS, no router. Browsers without support simply navigate normally, and
+   reduced-motion users get an instant switch. This replaces the fade that
+   Astro's ClientRouter used to provide — the router itself was removed
+   because it left page scripts unwired after navigation (see BaseLayout). */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.18s;
+  }
+}

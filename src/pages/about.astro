@@ -470,7 +470,7 @@ import '../styles/global.css';
   /* ===== VALUES ===== */
   .values-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
   }
 
@@ -546,6 +546,26 @@ import '../styles/global.css';
     .centre-card h3 {
       margin: 0;
     }
+  }
+
+  /* Body copy in the cards reads at ≥15px on tablets-landscape and up
+     (0.92rem was 14.7px on 1024–1440 screens). */
+  @media (min-width: 1024px) {
+    .subject-card__body p,
+    .value-item p,
+    .centre-card p {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Keep running text to ~78 characters a line. Nunito's "0" is wide, so
+     60ch ≈ 36em ≈ 78 average characters; the cards and the founder profile
+     otherwise ran 95–175 characters a line on laptops and desktops. */
+  .story-text p,
+  .founder-info p,
+  .centre-card p,
+  .value-item p {
+    max-width: 60ch;
   }
 
   /* ===== CTA ===== */
@@ -654,9 +674,8 @@ import '../styles/global.css';
       padding: 1.75rem 0;
     }
 
-    .values-grid,
     .centres-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .value-item,
@@ -681,9 +700,31 @@ import '../styles/global.css';
     }
   }
 
+  /* Values stay 2×2 on tablet portrait (matching the subjects grid above);
+     a single column only once the cards would drop under ~280px wide. */
+  @media (min-width: 641px) and (max-width: 768px) {
+    .value-item {
+      padding: 1.5rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .values-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
   @media (max-width: 480px) {
     .section {
       padding: 1.75rem 0;
+    }
+
+    /* Phone hero: use the site gutter and a phone-sized display face so the
+       headline holds to 4 lines (it ran 6 lines at 360px, 5 at 390px). */
+    .hero-content {
+      padding: 0 var(--page-padding);
+    }
+    .hero-content h1 {
+      font-size: clamp(1.75rem, 7.6vw, 2rem);
     }
 
     .section h2 {
@@ -709,6 +750,13 @@ import '../styles/global.css';
       max-width: 1400px;
     }
 
+    /* The 700px cap is px while the display type scales with the root font
+       (125–150% here), so at 2560 the headline broke into 6 lines. 43.75rem
+       is the same 700px at 16px and keeps the 4-line shape on 4K screens. */
+    .hero-content h1 {
+      max-width: 43.75rem;
+    }
+
     .section {
       padding: 1.75rem 0;
     }
@@ -729,6 +777,23 @@ import '../styles/global.css';
     .story-layout {
       grid-template-columns: 1fr;
     }
+  }
+  /* ≥1441 the container grows to 1600px+ but the layout stayed at a fixed
+     1100px, leaving a 350–1000px empty strip right of the founder card (and
+     wrapping its CTA at 2560). Let it span the container: the letter keeps
+     its 60ch measure and the card sits on the right edge, in line with the
+     full-width grids below. */
+  @media (min-width: 1441px) {
+    .story-layout {
+      max-width: none;
+      grid-template-columns: minmax(0, 1fr) minmax(20rem, 28rem);
+      column-gap: 3rem;
+    }
+  }
+  /* While the container is still full-bleed (to ~1680px) its right edge sits
+     12px inside the chat/WhatsApp/back-to-top lane; keep the sticky card out of it */
+  @media (min-width: 1441px) and (max-width: 1680px) {
+    .story-layout { padding-right: 1.5rem; }
   }
 
   /* ===== FOUNDER CARD — sticky white ink card ===== */
@@ -756,6 +821,12 @@ import '../styles/global.css';
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  /* Short tablet-landscape screens (1024x768): the sticky card's CTA ended in
+     the back-to-top / WhatsApp lane. A smaller photo and padding lift it clear. */
+  @media (min-width: 901px) and (max-width: 1100px) and (max-height: 820px) {
+    .founder-card { padding: 1.5rem; }
+    .founder-card__photo { width: 96px; height: 96px; margin-bottom: 0.75rem; }
   }
   .founder-card__initials {
     position: absolute;

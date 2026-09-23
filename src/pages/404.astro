@@ -11,8 +11,8 @@ import '../styles/global.css';
   <section class="error-page">
     <div class="error-bg">404</div>
     <section class="section error-section">
-      <div class="container" style="text-align: center; max-width: 600px;">
-        <img src="/images/mascots/mascot-avocado-wink.webp" alt="" width="292" height="407" class="sticker" style="height: 150px; width: auto; margin: 0 auto 0.75rem;" />
+      <div class="container" style="text-align: center; max-width: 37.5rem;">
+        <img src="/images/mascots/mascot-avocado-wink.webp" alt="" width="292" height="407" class="sticker error-mascot" />
         <span class="eyebrow">404</span>
         <h1 class="error-title">Oops</h1>
         <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
@@ -22,7 +22,7 @@ import '../styles/global.css';
           <a href="/contact/" class="btn btn-secondary" style="min-width: 240px; text-align: center;">Contact Us</a>
         </div>
         <p style="font-size: 0.85rem; color: var(--text-muted);">Popular pages:</p>
-        <div class="error-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 0.75rem;">
+        <div class="error-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 1.25rem; margin-top: 0.75rem;">
           <a href="/o-level-english/">O-Level English</a>
           <span style="color: var(--text-muted);">&middot;</span>
           <a href="/h1-general-paper/">H1 General Paper</a>
@@ -70,6 +70,7 @@ import '../styles/global.css';
   .error-page {
     position: relative;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,7 +94,14 @@ import '../styles/global.css';
     pointer-events: none;
   }
 
-  .error-section { position: relative; z-index: 1; }
+  /* A flex item's automatic min-width is its min-content width, and the
+     suggestion grid's auto-fit tracks (sized against its 800px max-width)
+     made that ~600px: on phones the whole column was forced to 600px wide,
+     centred, and clipped by overflow:hidden on both sides. Fill the row and
+     allow shrinking instead. */
+  .error-section { position: relative; z-index: 1; width: 100%; min-width: 0; }
+
+  .error-mascot { height: 150px; width: auto; margin: 0 auto 0.75rem; }
 
   .error-title {
     font-family: var(--font-heading);
@@ -112,6 +120,21 @@ import '../styles/global.css';
     text-decoration: none;
   }
   .error-links a:hover { text-decoration: underline; }
+  /* The middot separators are flex items too, so on every width one ended up
+     dangling at the end or start of a wrapped row; the column gap separates
+     the links instead. */
+  .error-links > span { display: none; }
+  /* Touch: the links were 26px tall — give them the site's 40px row */
+  @media (pointer: coarse) {
+    .error-links a { display: inline-flex; align-items: center; min-height: 40px; }
+  }
+
+  /* Landscape phones (~390px tall): shrink the sticker and the display "Oops"
+     so the headline sits on the first screen, not below it */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .error-mascot { height: 88px; }
+    .error-title { font-size: 3.5rem; margin-bottom: 0.75rem; }
+  }
 
   .suggestion-grid {
     display: grid;

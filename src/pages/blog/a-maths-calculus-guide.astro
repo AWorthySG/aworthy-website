@@ -129,3 +129,10 @@ import AuthorBio from '../../components/AuthorBio.astro';
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<style>
+  /* Exponents (e^x, (3x + 2)^5) were raising their own lines by ~3.6px, so the
+     paragraph rhythm stuttered. A zero line-height keeps the raised glyph from
+     growing the line box; it still clears the line above at every width. */
+  .blog-post-body sup { line-height: 0; }
+</style>

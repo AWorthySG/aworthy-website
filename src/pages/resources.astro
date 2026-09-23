@@ -587,6 +587,11 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   /* Email gate + toast are created by script at runtime, so this block is
      is:global — a scoped block would never match them. Sticker-book look:
      white ink card, muted inputs, one red submit. */
+  /* The overlay scrolls and the card centres with auto margins (not just
+     align-items: center): on a landscape phone the ~640px card is taller than
+     the screen, and a centred flex item overflows off the TOP where nothing can
+     scroll to it — the heading and close button were unreachable. Auto margins
+     collapse to 0 when the card does not fit, so it starts at the top instead. */
   .resource-gate-overlay {
     position: fixed;
     inset: 0;
@@ -596,6 +601,8 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .resource-gate {
     background: var(--bg-card);
@@ -605,6 +612,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     padding: 2rem 1.75rem 1.5rem;
     max-width: 420px;
     width: 100%;
+    margin: auto;
     position: relative;
   }
   .resource-gate-close {
@@ -1005,7 +1013,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 
   .r-card-desc {
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: var(--text-secondary);
     line-height: 1.65;
     flex-grow: 1;
@@ -1017,6 +1025,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
   .r-card-link {
     align-self: flex-start;
     margin-top: auto;
+    white-space: nowrap;
   }
 
   /* ===== CARD ACTIONS (preview = red pill, download = white pill) ===== */
@@ -1257,6 +1266,17 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     .r-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    /* The faux page's height follows its width (1 : 1.05). In the 2-column
+       tablet grid the tile is up to ~420px wide (iPad landscape), so it grew
+       ~440px tall with only ~190px of lines in it. Fixed height instead of the
+       ratio (a max-height
+       would shrink the WIDTH through the ratio and leave the fade overlay,
+       which fills the card, hanging off the tile). */
+    .r-prev-page {
+      aspect-ratio: auto;
+      height: 15rem;
+    }
   }
 
   @media (max-width: 640px) {
@@ -1294,9 +1314,46 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     }
   }
 
-  @media (min-width: 1921px) {
+  /* html font-size scales up from 1441px (112.5% / 125% / 150%) but these caps
+     were in px, so the grid and copy shrank relative to the type: at 2560 the
+     cards were ~420px wide for 24px text, eyebrows broke onto two lines and
+     "Request Free Copy" wrapped. rem caps keep the laptop proportions
+     (70rem = 1120px at 16px, the 1400px the old ≥1921 rule set at 20px). */
+  @media (min-width: 1441px) {
     .r-container {
-      max-width: 1400px;
+      max-width: 70rem;
+    }
+
+    /* 420px at 16px; in px, both gate buttons wrapped to two lines at 2560 */
+    .resource-gate {
+      max-width: 26.25rem;
+    }
+
+    .r-hero-sub {
+      max-width: 33.75rem;
+    }
+
+    .r-search-wrap {
+      max-width: 30rem;
+    }
+
+    .r-catalogue-head {
+      max-width: 47.5rem;
+    }
+
+    .r-newsletter-card {
+      max-width: 37.5rem;
+    }
+  }
+
+  /* global.css re-pads every .btn at ≥1921px, which also overrides .btn--sm;
+     keep the card actions compact so they fit their card */
+  @media (min-width: 1921px) {
+    .r-card-link,
+    .r-card-preview-btn,
+    .r-card-download-btn {
+      padding: 0.5rem 1.15rem;
+      font-size: 0.85rem;
     }
   }
 </style>

@@ -311,6 +311,11 @@
       max-width: 100%;
       height: 100vh;
       max-height: 100vh;
+      /* 100vh on iOS is the viewport with Safari's toolbar hidden, so the modal's
+         bottom (and the PDF's last lines) sat behind the toolbar. dvh tracks the
+         visible area; browsers without it keep the vh line above. */
+      height: 100dvh;
+      max-height: 100dvh;
       border-radius: 0;
     }
 
@@ -413,5 +418,4 @@
     });
   }
   initPdfModal();
-  document.addEventListener('astro:page-load', initPdfModal);
 </script>

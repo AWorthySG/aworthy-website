@@ -490,7 +490,9 @@ import '../styles/global.css';
   .contact-hero__subtitle {
     font-size: 1.15rem;
     color: var(--text-secondary);
-    max-width: 480px;
+    /* rem, not px: the same 480px at 16px, but it scales with the root font
+       on large screens (a px cap squeezed it to 6 lines at 2560). */
+    max-width: 30rem;
     margin: 0 auto;
   }
 
@@ -546,6 +548,9 @@ import '../styles/global.css';
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-lg);
+    /* When one label wraps to two lines (landscape phones ~481–600px, 4K),
+       bottom-align the pair so the two fields still sit level. */
+    align-items: end;
   }
 
   .form-group {
@@ -1011,6 +1016,36 @@ import '../styles/global.css';
     }
   }
 
+  /* Tablet landscape: once the grid stacks, the three contact cards were
+     full-width 880px bars holding one short line each. Set them side by
+     side (icon above text) with the "100% Online" well spanning below.
+     Starts at 900px — narrower, the hours line breaks mid-time. */
+  @media (min-width: 900px) and (max-width: 1024px) {
+    .contact-info-col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--space-md);
+    }
+    .contact-info-col > .eyebrow,
+    .contact-info-col__heading,
+    .online-badge {
+      grid-column: 1 / -1;
+    }
+    .info-card {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+  }
+
+  /* Body copy ≥15px from tablet landscape up (0.9rem was 14.4px) */
+  @media (min-width: 1024px) {
+    .enrol-step-content p,
+    .info-card p,
+    .contact-details li {
+      font-size: 0.95rem;
+    }
+  }
+
   @media (max-width: 640px) {
     .contact-hero {
       padding: var(--space-3xl) 0 var(--space-2xl);
@@ -1072,7 +1107,9 @@ import '../styles/global.css';
 
   @media (min-width: 1921px) {
     .contact-grid {
-      max-width: 1400px;
+      /* 70rem = the old 1400px at the 125% root, and grows with the 150%
+         root at 2560 so the form's paired labels no longer wrap */
+      max-width: 70rem;
       margin: 0 auto;
       gap: var(--space-3xl);
     }

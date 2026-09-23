@@ -1157,26 +1157,44 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
 
   /* ===== HERO — the LMS welcome card: a white ink card with the subject-tint
      wash (global .hero-card; .subject--english on the section resolves the
-     tint). Sticker centred above the copy on narrow screens; from 1025px the
+     tint). Sticker centred above the copy on narrow screens; from 1024px the
      copy sits left and the sticker in a right column. The section itself
      stays on the cream canvas. ===== */
   .prog-hero { background: var(--prog-bg); padding: 1.25rem 0 0.75rem; text-align: center; position: relative; overflow: hidden; }
   .prog-hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--subject-accent) 12%, transparent) 0%, transparent 70%); pointer-events: none; z-index: 0; }
   :global([data-theme="dark"]) .prog-hero::before { background: radial-gradient(circle, color-mix(in srgb, var(--subject-accent) 8%, transparent) 0%, transparent 70%); }
-  .prog-hero .container { position: relative; z-index: 1; max-width: 1080px; }
+  /* Card, copy measure and sticker are sized in rem (1080px / 640px / 180px at
+     the 16px root, so nothing changes up to 1440px): in px they stayed put
+     while html scales to 112.5–150% on big monitors, and at 2560 the hero was
+     a narrow box with a 7-line intro lost in the page's whitespace. */
+  .prog-hero .container { position: relative; z-index: 1; max-width: 67.5rem; }
   /* Keep the card clear of the fixed "On this page" TOC (190px + 1.5rem at the right edge from 1280px) */
-  @media (min-width: 1280px) { .prog-hero .container { max-width: min(1080px, 100vw - 360px); } }
   .prog-hero__copy { min-width: 0; }
   .prog-hero__sticker { width: min(200px, 48vw); margin: 0 auto 0.75rem; }
   .prog-hero__heading { font-family: var(--prog-font); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.12; color: var(--text-primary); margin-bottom: 0.75rem; letter-spacing: -0.03em; }
   /* Red marker squiggle under the headline (LMS: "Welcome to the A-Worthy World") */
   .prog-hero__heading::after { content: ''; display: block; width: 72px; height: 12px; margin: 0.45rem auto 0; background: var(--swash) left center / contain no-repeat; }
-  .prog-hero__sub { font-family: var(--prog-font); font-size: 1.1rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 640px; margin: 0 auto; }
-  @media (min-width: 1025px) {
+  .prog-hero__sub { font-family: var(--prog-font); font-size: 1.1rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 40rem; margin: 0 auto; }
+  /* From 1024px, not 1025: iPad landscape (1024x768) got the stacked
+     phone layout, a 700px-tall card that filled the whole first screen. */
+  @media (min-width: 1024px) {
     .prog-hero__card { display: flex; align-items: center; gap: 1.5rem; text-align: left; }
     .prog-hero__copy { flex: 1 1 auto; }
-    .prog-hero__sticker { order: 2; flex: 0 0 auto; width: 180px; margin: 0; }
+    .prog-hero__sticker { order: 2; flex: 0 0 auto; width: min(11.25rem, 207px); margin: 0; }
     .prog-hero__heading { font-size: clamp(2.2rem, 3vw, 2.8rem); }
+    .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
+    .prog-hero__sub { margin: 0; }
+  }
+  /* Landscape phones (~390px tall): the sticker stacked above the headline
+     pushed "in Singapore" below the first screen. Put it beside the copy
+     (global.css already caps it at 112px tall here) and step the headline
+     down so it holds to two lines. */
+  @media (max-height: 500px) and (orientation: landscape) and (max-width: 1023px) {
+    /* top-aligned: centred, the sticker sat under the WhatsApp and chat floats */
+    .prog-hero__card { display: flex; align-items: flex-start; gap: 1.25rem; text-align: left; }
+    .prog-hero__copy { flex: 1 1 auto; }
+    .prog-hero__sticker { order: 2; flex: 0 0 auto; margin: 0; }
+    .prog-hero__heading { font-size: clamp(1.75rem, 4.2vw, 2.2rem); }
     .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
     .prog-hero__sub { margin: 0; }
   }
@@ -1205,9 +1223,9 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .prog-section__heading { font-family: var(--prog-font); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
   /* Red marker squiggle under every section heading (the sitewide motif) */
   .prog-section__heading::after { content: ''; display: block; width: 72px; height: 12px; margin-top: 0.4rem; background: var(--swash) left center / contain no-repeat; }
-  .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 600px; margin-bottom: 1rem; }
+  .prog-section__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 37.5rem; margin-bottom: 1rem; }
   .card-grid { display: grid; gap: 1rem; }
-  .card-grid--1 { grid-template-columns: 1fr; max-width: 800px; }
+  .card-grid--1 { grid-template-columns: minmax(0, 1fr); max-width: 50rem; }
   .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
 
   /* ===== PROGRAMME CARD — white sticker card, 2px ink ===== */
@@ -1229,7 +1247,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .lesson-flow { background: var(--bg-secondary); }
   .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 1rem; }
   .prog-section__intro em { font-style: italic; color: var(--subject-accent-text); font-weight: 700; }
-  .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 1040px; }
+  .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 42rem; } /* ~80 characters a line, as on the GP and maths pages */
   .lesson-step {
     display: grid;
     grid-template-columns: 56px 1fr;
@@ -1286,7 +1304,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     text-wrap: pretty;
   }
   .lesson-step__desc em { font-style: italic; color: var(--subject-accent-text); font-weight: 700; }
-  .lesson-flow__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
+  .lesson-flow__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 60ch; }
   @media (max-width: 720px) {
     .lesson-step { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.25rem 0; }
     .lesson-step__desc { font-size: 0.92rem; }
@@ -1295,7 +1313,10 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   /* ===== CTAs — page-scoped classes only size the global .btn look ===== */
   .prog-inline-cta { text-align: center; padding: 1rem 0 0; }
   .prog-cta { background: var(--prog-bg); border-top: 1px solid var(--prog-border); padding: 1.25rem 0; }
-  .prog-cta__inner { text-align: center; max-width: 600px; margin: 0 auto; }
+  /* rem, not px: at 600px the box minus the container's 4rem gutters left
+     ~460px at 1920/2560, so the two CTA buttons stacked and the heading
+     broke "O-" / "Level" across lines. */
+  .prog-cta__inner { text-align: center; max-width: 42rem; margin: 0 auto; }
   .prog-cta__heading { font-family: var(--prog-font); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; letter-spacing: -0.02em; }
   .prog-cta__sub { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); margin-bottom: 1rem; }
   .prog-cta__actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
@@ -1319,8 +1340,20 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     border-radius: var(--radius-md);
     padding: 0.9rem 1rem;
   }
-  @media (min-width: 1280px) {
-    .sticky-toc { display: block; }
+  /* Only where it fits beside the content. From 1280 to 1680px the 190px card
+     covered the page by 46–155px and ran into the WhatsApp, chat and
+     back-to-top floats; the sticky section-nav strip already gives in-page
+     navigation at those widths. On wide monitors it sits in the margin,
+     narrowed, and stops above the floats and the bottom sticky bar. */
+  @media (min-width: 1920px) {
+    .sticky-toc {
+      display: block;
+      right: 1rem;
+      max-width: 170px;
+      max-height: calc(100vh - (var(--nav-offset) + 44px + 1.5rem) - 12rem - var(--sticky-bar-h, 0px));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
   }
 
   /* The TOC only appears once the reader is past the hero. Until then the
@@ -1466,7 +1499,7 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
-    max-width: 800px;
+    max-width: 50rem; /* 800px at the 16px root */
     margin: 0 auto;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
@@ -1619,7 +1652,13 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
      conspicuous empty third cell in row 2. Still 2-up on phones (the sitewide
      stats rule), with the odd fifth stat spanning the row. */
   .subject-receipts-section .subject-receipts { max-width: none; margin-inline: 0; }
-  .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1.5rem; }
+  /* Explicit tracks, not auto-fit: auto-fit(170px) fitted four columns at
+     820–1040px and orphaned "500+" alone on a second row (iPad landscape,
+     landscape phones). Tablets get an even 3 + 2; five across from 900px. */
+  .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+  @media (min-width: 900px) {
+    .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  }
   .subject-receipts-section .subject-receipts dt { font-size: clamp(2rem, 3.3vw, 3rem); }
   @media (max-width: 720px) {
     .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; }
@@ -1836,8 +1875,14 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   }
   .notes-lightbox__close:hover { background: var(--color-accent-hover); }
 
-  /* SHARP playbook matrix — page-level ink outline on the shared component */
-  @media (min-width: 901px) { .playbook-matrix { border: 2px solid var(--color-ink); } }
+  /* SHARP playbook matrix — page-level ink outline on the shared component.
+     playbook.css floors its tracks at 180px + 5 x 140px (890px with gaps), but
+     the matrix is only 817–876px wide at 901–1039px (iPad landscape
+     included), so the overflow:hidden card cut the Practise column off.
+     Zero-floor tracks keep the same 1.4 : 1 split and simply share the width. */
+  @media (min-width: 901px) {
+    .playbook-matrix { border: 2px solid var(--color-ink); grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)); }
+  }
   .playbook-matrix__col-label, .playbook-matrix__step { font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; }
   /* Light mode: header chrome is the ink navy (dark mode keeps playbook.css's light-accent flip) */
   :global(html:not([data-theme="dark"])) .playbook-matrix__col-label,
@@ -1869,11 +1914,57 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
   .prog-midcta { padding-top: 0; }
   .prog-midcta__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; border: 2px solid var(--color-ink); border-left: 6px solid var(--subject-accent); border-radius: var(--radius-md); background: var(--bg-card); padding: 1.5rem 1.75rem; }
   .prog-midcta__heading { font-size: 1.25rem; font-weight: 800; margin: 0 0 0.3rem; font-family: var(--font-body); letter-spacing: -0.015em; color: var(--text-primary); }
-  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 560px; }
+  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 35rem; }
   .prog-midcta__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   @media (max-width: 700px) {
     .prog-midcta__inner { flex-direction: column; align-items: stretch; text-align: center; }
     .prog-midcta__actions { justify-content: center; }
+  }
+
+  /* ===== RESPONSIVE PASS ===== */
+  /* The playbook CTA sits between sections, outside any .container, so on
+     phones its line touched the screen edges and the full-width button ran
+     edge to edge (same fix as the Maths pages). */
+  .playbook-cta { padding-inline: var(--page-padding); }
+
+  /* Materials galleries: one 700px-wide page per row on tablet portrait and
+     landscape phones made the nine oral pages ~9,000px of scrolling (and
+     upscaled the 1100px scans past retina sharpness). Two across from 560px;
+     an odd last page is centred in its own row rather than left hanging. */
+  @media (min-width: 560px) and (max-width: 900px) {
+    .notes-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .notes-gallery > .notes-shot:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 0.5rem); }
+  }
+  /* The eight excerpts are two per document: four across on wide screens
+     reads as two rows of document pairs instead of 3 + 3 + 2 with a hole. */
+  @media (min-width: 1024px) {
+    .notes-gallery--mixed { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+
+  /* Blog cards: auto-fit(280px) gave 2 + 1 with an orphan on every tablet
+     portrait width (and up to ~950px). One column, then three. */
+  @media (max-width: 900px) { .reading-grid { grid-template-columns: minmax(0, 1fr); } }
+  @media (min-width: 901px) { .reading-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+  /* Measure: running copy was set full-width in 750–1450px boxes (115–200
+     characters a line on laptops and desktops). Cap the text itself at ~80
+     characters (Nunito's 1ch is 0.6em); the boxes keep their width. */
+  .prog-card__desc, .prog-section__intro, .lesson-step__desc, .lesson-flow__note,
+  .oral-exam__facts, .oral-band p, .oral-part__desc, .oral-pages__sub,
+  .oral-planned__prompt, .oral-planned__text, .oral-planned__note,
+  .oral-exchange__text, .oral-exchange__note, .oral-source, .oral-tip p,
+  .oral-row__text, .oral-row__why, .oral-anatomy__note, .oral-spheres__sub,
+  .ba-question p, .ba-answer, .ba-footnote, .faq-answer p, .subject-quote p { max-width: 62ch; }
+  /* The disclaimer under Before/After was 12.5px (14px at 1920). */
+  .ba-footnote { font-size: 0.85rem; }
+
+  /* Laptops and iPad landscape (16px root): the long-form paragraphs sat at
+     13.8–14.7px. Lift them to ~15px; from 1441px the root scales up anyway. */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    .prog-card__desc, .prog-midcta__sub, .oral-exam__facts, .oral-part__desc,
+    .oral-band p, .oral-pages__sub, .oral-planned__text, .oral-exchange__text,
+    .oral-tip p, .oral-spheres__sub, .schedule-note { font-size: 0.95rem; }
+    .oral-row__why, .oral-type__desc { font-size: 0.94rem; }
   }
 </style>
 
@@ -1912,7 +2003,6 @@ const oralSets = ['The Rhythm of Daily Life', 'Being Present: Attendance', 'The 
     sync();
     window.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
-    document.addEventListener('astro:page-load', sync);
   })();
 
   var observer = new IntersectionObserver(function(entries) {
@@ -1987,5 +2077,4 @@ function initNotesLightbox() {
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
 }
 initNotesLightbox();
-document.addEventListener('astro:page-load', initNotesLightbox);
 </script>

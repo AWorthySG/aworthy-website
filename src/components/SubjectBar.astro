@@ -43,7 +43,11 @@ const subjects = [
   }
 
   .subject-bar-inner {
-    max-width: var(--container-max);
+    /* rem, not the 1200px token: the chips are sized in rem and grow with the
+       root font on big screens (125% ≥1921, 150% ≥2560). A px cap made the five
+       chips overflow at 2560 and the hidden-scrollbar row cut off Pre-IB Maths,
+       unreachable with a mouse. 75rem = 1200px at the default root size. */
+    max-width: 75rem;
     margin: 0 auto;
     padding: 0 var(--space-xl);
     display: flex;
@@ -135,6 +139,13 @@ const subjects = [
   }
 
   @media (max-width: 640px) {
+    .subject-bar {
+      display: none;
+    }
+  }
+  /* Landscape phones: too short for a second fixed bar (global.css drops
+     --nav-offset to match). Every subject is still in the header menu. */
+  @media (max-height: 500px) and (orientation: landscape) {
     .subject-bar {
       display: none;
     }

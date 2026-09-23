@@ -47,7 +47,9 @@ const whatsappFeedback = 'https://wa.me/6589913181?text=' + encodeURIComponent('
   .review-card__cta { display: inline-flex; }
   .review-alt { max-width: 480px; margin: 0 auto; }
   .review-alt p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
-  .review-alt__link { color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+  /* inline-block so its vertical padding grows the real hit box (on an inline
+     link the global coarse-pointer padding left it a 30px target) */
+  .review-alt__link { display: inline-block; color: var(--color-accent-text); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
   .review-alt__link:hover { text-decoration: underline; }
   .review-alt__or { display: block; margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-secondary); }
   /* The fallback contact link must read as a link (WCAG 1.4.1 — not colour
@@ -56,5 +58,9 @@ const whatsappFeedback = 'https://wa.me/6589913181?text=' + encodeURIComponent('
   .review-alt__or a { display: inline-block; color: var(--color-accent-text); font-weight: 700; text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1.5px; padding-block: 0.3rem; }
   @media (pointer: coarse) {
     .review-alt__or a { padding-block: 0.6rem; }
+    .review-alt__link { padding-block: 0.55rem; }
   }
+  /* Short centred copy: balance the lines so no paragraph ends on a lone
+     word ("better.") or starts a line with a dash */
+  .review-sub, .review-card__text, .review-alt p { text-wrap: balance; }
 </style>

@@ -16,6 +16,13 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  // Prefetch internal pages when a link is hovered or focused, so a normal
+  // (full) navigation feels as quick as the ClientRouter swap it replaced.
+  // Astro skips prefetching on data-saver and slow connections.
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
   vite: {
     build: {
       cssMinify: true,

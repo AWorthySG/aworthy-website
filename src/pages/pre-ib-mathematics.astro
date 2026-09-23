@@ -400,7 +400,7 @@ const playbookRows = [
 
         <div class="ba-card ba-card--after">
           <span class="ba-tag ba-tag--after">After SHARP</span>
-          <p class="ba-answer">States the definition; f(x + h) = (x + h)&sup2; = x&sup2; + 2xh + h&sup2;; so [f(x + h) &minus; f(x)] / h = (2xh + h&sup2;) / h = 2x + h; then lets h &rarr; 0 &rarr; <strong>f&prime;(x) = 2x</strong>.</p>
+          <p class="ba-answer">States the definition; <span class="nb">f(x + h)</span> = <span class="nb">(x + h)&sup2;</span> = <span class="nb">x&sup2; + 2xh + h&sup2;</span>; so <span class="nb">[f(x + h) &minus; f(x)] / h</span> = <span class="nb">(2xh + h&sup2;) / h</span> = <span class="nb">2x + h</span>; then lets <span class="nb">h &rarr; 0</span> &rarr; <strong class="nb">f&prime;(x) = 2x</strong>.</p>
           <ul class="ba-notes">
             <li>States the limit definition first</li>
             <li><strong>Cancels the h</strong> before letting h &rarr; 0 &mdash; the move the method hinges on</li>
@@ -828,7 +828,10 @@ const playbookRows = [
 
   .prog-hero .container { position: relative; z-index: 1; max-width: 1080px; }
   /* Narrowed at 1280px+ so the hero card clears the fixed "On this page" TOC */
-  @media (min-width: 1280px) { .prog-hero .container { max-width: min(1080px, 100vw - 360px); } }
+  /* The cap is in rem (67.5rem = 1080px at the 16px root) so it grows with the
+     112.5% / 125% / 150% root on large monitors — as a px cap the 150% type at
+     2560px squeezed the copy column and wrapped the intake bubble. */
+  @media (min-width: 1280px) { .prog-hero .container { max-width: min(67.5rem, 100vw - 360px); } }
 
   .prog-hero__card {
     display: flex;
@@ -840,6 +843,7 @@ const playbookRows = [
 
   .prog-hero__sticker {
     order: -1;
+    z-index: 1; /* order:-1 paints it before the card's ::before tint wash, which greyed it out */
     width: min(200px, 48vw);
     height: auto;
     margin: 0 auto 0.75rem;
@@ -863,7 +867,7 @@ const playbookRows = [
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--prog-text-secondary);
-    max-width: 640px;
+    max-width: 40rem; /* 640px at the 16px root; rem so the measure keeps pace with the 112.5–150% root on big monitors */
     margin: 0 auto;
   }
 
@@ -881,12 +885,31 @@ const playbookRows = [
     .prog-hero { text-align: left; }
     .prog-hero__card {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 180px;
+      grid-template-columns: minmax(0, 1fr) 11.25rem;
       align-items: center;
       gap: 2rem;
     }
-    .prog-hero__sticker { order: 0; width: 180px; margin: 0; }
+    .prog-hero__sticker { order: 0; width: min(11.25rem, 210px); justify-self: center; margin: 0; }
     .prog-hero__heading { font-size: clamp(2.2rem, 3.1vw, 2.6rem); }
+    .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
+    .prog-hero__sub { margin: 0; }
+    .prog-hero__intake { margin: 1rem 0 0.75rem; }
+  }
+
+  /* Landscape phones (~390px tall): the stacked sticker and eyebrow pushed the
+     headline to y≈320, so its second line fell below the first screen. Use the
+     desktop welcome-card layout here too — sticker in its own column (sized by
+     global.css's landscape rule), copy left-aligned — at desktop card size. */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .prog-hero { text-align: left; }
+    .prog-hero__card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start; /* the card is taller than the screen: keep the sticker up beside the headline */
+      gap: 1.5rem;
+    }
+    .prog-hero__sticker { order: 0; margin: 0; }
+    .prog-hero__heading { font-size: 2.2rem; }
     .prog-hero__heading::after { margin-left: 0; margin-right: 0; }
     .prog-hero__sub { margin: 0; }
     .prog-hero__intake { margin: 1rem 0 0.75rem; }
@@ -947,6 +970,21 @@ const playbookRows = [
     border-bottom-color: var(--color-accent);
   }
 
+  /* Tablets and small laptops (769–1199px): the nine tabs at a 2rem gap are ~1170px wide, so on
+     a 1024px iPad the strip was clipped at "FAQ" with "Schedule" off-screen
+     and no hint that it scrolls. Same treatment as phones (<=768px, below):
+     tighter gap, edge padding, and a right-edge fade that reads as scrollable. */
+  @media (min-width: 769px) and (max-width: 1199px) {
+    .prog-nav {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    }
+    .prog-nav__inner {
+      gap: 1.25rem;
+      padding-inline: var(--page-padding) 2.5rem;
+    }
+  }
+
   /* ===== SECTIONS ===== */
   .prog-section {
     background: transparent;
@@ -982,7 +1020,7 @@ const playbookRows = [
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--prog-text-secondary);
-    max-width: 600px;
+    max-width: 37.5rem; /* 600px at the 16px root; as px it fell to ~50 characters a line at 2560px */
     margin-bottom: 1rem;
   }
 
@@ -993,12 +1031,18 @@ const playbookRows = [
   }
 
   .card-grid--1 {
-    grid-template-columns: 1fr;
-    max-width: 800px;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 50rem; /* 800px at the 16px root; as px the lone programme card shrank to a third of a 2560px screen */
   }
 
   .card-grid--2 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Two columns hold down to 641px: a single full-width column on a 768px
+     iPad ran the SHARP and framework paragraphs at ~105 characters a line
+     (and the 820px iPad already got two columns). */
+  @media (max-width: 720px) {
+    .card-grid--2 { grid-template-columns: minmax(0, 1fr); }
   }
 
   /* ===== PROGRAMME CARD — white sticker, ink outline, lifts on hover
@@ -1032,6 +1076,14 @@ const playbookRows = [
     line-height: 1.65;
     color: var(--text-secondary);
     margin-bottom: 0.75rem;
+    /* ~80 characters a line (Nunito's "0" is 0.6em wide, so 60ch ≈ 36em).
+       In the 800px single-card programme sections the paragraph ran ~115
+       characters a line on laptops, ~100 on 1920px screens. */
+    max-width: 60ch;
+  }
+  /* Laptops and up: running copy at >=15px (0.9rem was 14.4px) */
+  @media (min-width: 1024px) {
+    .prog-card__desc { font-size: 0.95rem; }
   }
 
   .prog-card__topics {
@@ -1098,9 +1150,12 @@ const playbookRows = [
 
   /* ===== LESSON FLOW — red numbered dots on a timeline ===== */
   .lesson-flow { background: var(--bg-secondary); }
-  .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 720px; margin: 0 0 1rem; }
+  .prog-section__intro { font-family: var(--prog-font); font-size: 1.05rem; line-height: 1.7; color: var(--prog-text-secondary); max-width: 60ch; margin: 0 0 1rem; }
   .prog-section__intro em { font-style: italic; color: var(--subject-accent-text); font-weight: 700; }
-  .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 1040px; }
+  /* 42rem keeps each step's paragraph at ~85 characters a line; at 1040px it
+     ran ~135 on laptops and ~120 on 1920px screens. rem, so it scales with the
+     larger root on big monitors. */
+  .lesson-timeline { list-style: none; padding: 0; margin: 0; max-width: 42rem; }
   .lesson-step {
     display: grid;
     grid-template-columns: 56px 1fr;
@@ -1156,7 +1211,10 @@ const playbookRows = [
     text-wrap: pretty;
   }
   .lesson-step__desc em { font-style: italic; color: var(--subject-accent-text); font-weight: 700; }
-  .lesson-flow__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 720px; }
+  .lesson-flow__note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; max-width: 60ch; }
+  /* The shared footnote (global.css) has no measure: ~155–195 characters a
+     line from 1024px up */
+  .ba-footnote { max-width: 60ch; }
   @media (max-width: 720px) {
     .lesson-step { grid-template-columns: 44px 1fr; gap: 0.9rem; padding: 1.25rem 0; }
     .lesson-step__num { width: 40px; height: 40px; font-size: 0.95rem; }
@@ -1165,6 +1223,10 @@ const playbookRows = [
 
   /* ===== INLINE CTA ===== */
   .prog-inline-cta { text-align: center; padding: 1rem 0 0; }
+  /* The playbook CTA sits outside any .container (playbook.css gives it no
+     side padding), so on phones its full-width button ran edge to edge of
+     the screen and the line above it touched the edges */
+  .playbook-cta { padding-inline: var(--page-padding); }
 
   /* ===== CTA ===== */
   .prog-cta {
@@ -1175,7 +1237,10 @@ const playbookRows = [
 
   .prog-cta__inner {
     text-align: center;
-    max-width: 600px;
+    /* rem, not px (37.5rem = 600px at the 16px root): with the 112.5–150% root
+       on large monitors a 600px box minus the container padding squeezed the
+       heading to three lines and stacked the two buttons */
+    max-width: 37.5rem;
     margin: 0 auto;
   }
 
@@ -1243,10 +1308,6 @@ const playbookRows = [
       gap: 1rem;
       /* the last tab clears the 40px fade */
       padding-inline: var(--page-padding) 2.5rem;
-    }
-
-    .card-grid--2 {
-      grid-template-columns: 1fr;
     }
 
     .prog-card {
@@ -1329,8 +1390,20 @@ const playbookRows = [
     border-radius: var(--radius-md);
     padding: 0.9rem 1rem 0.9rem 0.9rem;
   }
-  @media (min-width: 1280px) {
-    .sticky-toc { display: block; }
+  /* Only where it fits beside the content. From 1280 to 1680px the 190px card
+     covered the page by 46–155px and ran into the WhatsApp, chat and
+     back-to-top floats; the sticky section-nav strip already gives in-page
+     navigation at those widths. On wide monitors it sits in the margin,
+     narrowed, and stops above the floats and the bottom sticky bar. */
+  @media (min-width: 1920px) {
+    .sticky-toc {
+      display: block;
+      right: 1rem;
+      max-width: 170px;
+      max-height: calc(100vh - (var(--nav-offset) + 44px + 1.5rem) - 12rem - var(--sticky-bar-h, 0px));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
   }
 
   /* The TOC only appears once the reader is past the hero. Until then the
@@ -1478,7 +1551,7 @@ const playbookRows = [
     scroll-margin-top: calc(var(--nav-offset) + 48px);
   }
   .faq-list {
-    max-width: 800px;
+    max-width: 50rem; /* 800px at the 16px root */
     margin: 0 auto;
     background: var(--bg-card);
     border: 2px solid var(--color-ink);
@@ -1530,6 +1603,7 @@ const playbookRows = [
   }
   .faq-answer p {
     margin: 0;
+    max-width: 60ch; /* ~100 characters a line in the 800px card on laptops */
   }
 
   /* ===== RECOMMENDED READING — ink cards ===== */
@@ -1634,6 +1708,10 @@ const playbookRows = [
      never a single column of giant numbers); the shared 3-column grid lives in
      global.css, so this override carries the section class for specificity */
   .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; }
+  /* The shared rail is capped at 960px; with the 150% root at 2560px the five
+     72px numbers overran their columns. Same width at the 16px root, scales
+     with the root above it. */
+  .subject-receipts-section .subject-receipts { max-width: 60rem; }
   .subject-receipts-section .subject-receipts dt { font-size: clamp(2rem, 3.3vw, 3rem); }
   @media (max-width: 720px) {
     .subject-receipts-section .subject-receipts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; }
@@ -1673,8 +1751,10 @@ const playbookRows = [
   .prog-midcta { padding-top: 0; }
   .prog-midcta__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; border: 2px solid var(--color-ink); border-left: 6px solid var(--subject-accent); border-radius: var(--radius-md); background: var(--prog-bg-card); padding: 1.5rem 1.75rem; }
   .prog-midcta__heading { font-size: 1.25rem; font-weight: 800; margin: 0 0 0.3rem; font-family: var(--font-body); letter-spacing: -0.02em; }
-  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 560px; }
+  .prog-midcta__sub { font-size: 0.92rem; line-height: 1.55; color: var(--prog-text-secondary); margin: 0; max-width: 35rem; }
   .prog-midcta__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  /* Laptops and up: running copy at >=15px (0.92rem was 14.7px) */
+  @media (min-width: 1024px) { .prog-midcta__sub { font-size: 0.95rem; } }
   @media (max-width: 700px) {
     .prog-midcta__inner { flex-direction: column; align-items: stretch; text-align: center; }
     .prog-midcta__actions { justify-content: center; }
@@ -1693,6 +1773,11 @@ const playbookRows = [
   @media (max-width: 900px) {
     .playbook-matrix { gap: 0.75rem; background: transparent; border: none; }
     .playbook-matrix__row { border: 2px solid var(--color-ink); border-radius: var(--radius-md); }
+  }
+  /* Tablet portrait: the stacked topic cards ran in one column of 700px-wide
+     cards; two per row (the header row is hidden here) */
+  @media (min-width: 641px) and (max-width: 900px) {
+    .playbook-matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 </style>
 
@@ -1731,7 +1816,6 @@ const playbookRows = [
     sync();
     window.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
-    document.addEventListener('astro:page-load', sync);
   })();
 
   var observer = new IntersectionObserver(function(entries) {

@@ -41,8 +41,11 @@ import '../styles/global.css';
 </BaseLayout>
 
 <style>
+  /* 45rem = 720px up to 1440px; in rem so the measure grows with the root
+     size at >=1441px (a px cap left ~55-character lines and a 3-line h1 on
+     1920/2560 screens once the type had scaled up) */
   .a11y-content {
-    max-width: 720px;
+    max-width: 45rem;
     font-size: 1.05rem;
     line-height: 1.8;
     color: var(--text-primary);
