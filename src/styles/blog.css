@@ -154,6 +154,28 @@
 }
 .blog-post-body td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border-color); vertical-align: top; }
 .blog-post-body tr:last-child td { border-bottom: 0; }
+/* Tables marked .table-stack become labelled cards on phones: a three- or
+   four-column table does not fit 390px, and a sideways-scrolling table hides
+   its last column. Each <td> needs a data-label naming its column. */
+@media (max-width: 640px) {
+  .blog-post-body table.table-stack thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  .blog-post-body table.table-stack tr { display: block; padding: 0.6rem 0; border-bottom: 1px solid var(--border-color); }
+  .blog-post-body table.table-stack tr:last-child { border-bottom: 0; }
+  .blog-post-body table.table-stack td { display: block; padding: 0.3rem 1rem; border-bottom: 0; }
+  .blog-post-body table.table-stack td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-bottom: 0.1rem;
+  }
+}
 
 /* End-of-post CTA — ink card, one red button */
 .blog-post-cta {

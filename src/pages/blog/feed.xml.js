@@ -15,7 +15,7 @@ export function GET() {
     { title: "GP Essay Structure: The Framework That Gets A", slug: "gp-essay-structure", date: "2026-03-18", description: "The P-E-E-L framework for structuring GP essays that consistently score well." },
     { title: "Economics Essay Diagrams: When and How to Use Them", slug: "economics-essay-diagrams", date: "2026-03-11", description: "Guide to selecting and drawing the right diagrams in H2 Economics essays." },
     { title: "Why Smart Students Still Fail Exams", slug: "why-smart-students-fail", date: "2026-03-04", description: "The gap between knowledge and exam technique, and how to bridge it." },
-    { title: "Situational Writing: The Complete Format Guide", slug: "situational-writing-guide", date: "2026-02-25", description: "Format conventions for formal letter, email, report, and speech with register tips." },
+    { title: "O-Level Situational Writing: Marks, Planning and Format", slug: "situational-writing-guide", date: "2026-02-25", description: "How the 30 marks are awarded, the PAC analysis, the four-move expansion, and the format for all seven text types." },
     { title: "The 12-Week Exam Prep Timeline", slug: "exam-prep-timeline", date: "2026-02-18", description: "A structured 12-week revision plan for O-Level and A-Level students." },
   ];
 
