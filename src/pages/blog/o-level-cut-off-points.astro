@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="2026 O-Level Cut-Off Points for JC: Full L1R5 Guide | A-Worthy" description="Complete 2026 JAE cut-off points for all Singapore JCs ranked by L1R5. Learn how L1R5 is calculated, bonus points, and strategies to lower your aggregate." ogImage="/images/og-blog.png">
@@ -136,7 +137,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>In the meantime, the most productive thing a Sec 4 student can do between now and October is close the gap in their weakest L1R5 subjects.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Need to lower your L1R5?</h3>
         <p>English and Maths are in every student&rsquo;s L1R5. Book a free diagnostic to see where your child is losing marks &mdash; and how the SHARP Method can recover them.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>
