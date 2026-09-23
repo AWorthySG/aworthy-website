@@ -362,20 +362,6 @@ const schemaData = {
   </div>
 
   <div class="whatsapp-widget" id="whatsapp-widget">
-    <div class="whatsapp-preview" id="whatsapp-preview" hidden>
-      <div class="whatsapp-preview-header">
-        <strong>A-Worthy</strong>
-        <span>Typically replies within an hour</span>
-      </div>
-      <div class="whatsapp-preview-msg">
-        <p>Hi! 👋 How can we help you today? Ask us about our programmes or book a free assessment.</p>
-        <span class="whatsapp-preview-time">Just now</span>
-      </div>
-      <a href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" class="whatsapp-preview-cta" aria-label="Chat on WhatsApp">
-        <span style="flex:1;color:var(--text-muted);font-size:0.8rem;" aria-hidden="true">Type a message...</span>
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent-text)"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </a>
-    </div>
     <a class="whatsapp-float-btn plausible-event-name=WhatsApp+Click" id="whatsapp-float-btn" href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
       <!-- Fixed sticker-ink navy for both themes (not currentColor) — the button's
            own green background doesn't change between themes, so the icon shouldn't
@@ -386,23 +372,6 @@ const schemaData = {
       </svg>
     </a>
   </div>
-
-  <script is:inline>
-  (function(){
-    var preview = document.getElementById('whatsapp-preview');
-    if (!preview) return;
-
-    var waShown = null;
-    try { waShown = sessionStorage.getItem('wa-shown'); } catch (e) {}
-    if (!waShown) {
-      setTimeout(function() {
-        preview.hidden = false;
-        try { sessionStorage.setItem('wa-shown', '1'); } catch (e) {}
-        setTimeout(function() { preview.hidden = true; }, 8000);
-      }, 10000);
-    }
-  })();
-  </script>
 
   <style>
     .whatsapp-widget {
@@ -453,61 +422,8 @@ const schemaData = {
       transform: translateY(2px);
       box-shadow: 0 1px 0 var(--ink-shadow);
     }
-    .whatsapp-preview {
-      position: absolute;
-      bottom: 64px;
-      right: 0;
-      width: 300px;
-      background: var(--bg-card);
-      border: 2px solid var(--color-ink);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: 0 6px 0 var(--ink-shadow), 0 12px 24px rgba(70, 50, 20, 0.12);
-      animation: wa-slide-up 0.3s ease;
-    }
-    @keyframes wa-slide-up {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .whatsapp-preview-header {
-      background: #075e54;
-      color: #fff;
-      padding: 0.75rem 1rem;
-    }
-    .whatsapp-preview-header strong { font-size: 0.85rem; display: block; }
-    .whatsapp-preview-header span { font-size: 0.7rem; opacity: 0.7; }
-    .whatsapp-preview-msg {
-      padding: 1rem;
-      background: var(--bg-muted);
-    }
-    .whatsapp-preview-msg p {
-      font-size: 0.82rem;
-      line-height: 1.5;
-      color: var(--text-primary);
-      background: var(--bg-card);
-      border: 1.5px solid var(--ink-faint);
-      padding: 0.6rem 0.8rem;
-      border-radius: 4px 14px 14px 14px;
-      position: relative;
-    }
-    .whatsapp-preview-time {
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-      display: block;
-      text-align: right;
-      margin-top: 0.25rem;
-    }
-    .whatsapp-preview-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 0.8rem;
-      text-decoration: none;
-      border-top: 1px solid var(--border-color);
-    }
     @media (max-width: 768px) {
       .whatsapp-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + var(--sticky-bar-h, 0px) + env(safe-area-inset-bottom, 0px)); }
-      .whatsapp-preview { width: min(300px, calc(100vw - 3rem)); }
     }
     @media (max-width: 480px) {
       .whatsapp-float-btn { width: 52px; height: 52px; }
