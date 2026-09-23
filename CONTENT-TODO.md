@@ -24,6 +24,8 @@ The same claim appears in several places:
 
 **Needed:** the real timetable, and who teaches each class. Then update the five `.schedule-table` blocks and the chatbot's `schedule` and `tutor` answers. If other tutors teach, name them.
 
+**Status (23 September 2026):** a clash-free 2027 timetable was proposed to the owner (ten groups, all taught by Jeremy, from the week of 4 January 2027; new JC 1 groups from 13–14 February; lessons run on public holidays). Once confirmed, keep it in `src/data/site-config.ts`, render the five tables and the chatbot's `schedule` answer from it, and close this item.
+
 ## 2. The founder photo is a placeholder
 
 The initials "JL" stand in for a photograph in three places:
@@ -100,3 +102,14 @@ The copy edit changed wording only. These points look wrong or unsupported, and 
 - The Maths landing page puts A-Worthy's own words in the testimonial slot, credited to "The A-Worthy method".
 - The privacy notice says no tracking cookies are used; that stops being true if Microsoft Clarity is switched on.
 - The L1R5 calculator says "English and Maths affect every L1R5"; Maths counts only when it is among the best relevant subjects.
+
+## 7. Inconsistencies found while writing the subject guides (September 2026)
+
+The guides use SEAB's syllabus wherever the site disagrees with it. These site points need the owner's decision:
+
+- **ACED** means Audience-Content-Effect-Design on the English page (visual text) but Answer-Cite-Explain-Develop in the comprehension blog post.
+- **SWIFT**: the rule says any signal word means Category B, but the site's own example ("explain why the town changed") is Category A.
+- **Editing**: the site says the passage has "eight errors, two clean lines"; SEAB gives no count. The English playbook's first step asks "grammar, vocabulary or spelling?", but SEAB does not test spelling in the editing section.
+- **Economics figures**: the Economics page and a blog post give different Singapore inflation figures (1.2% to 6.1%, and 1.2% to 4.8%), and neither matches MAS data. The case-study blog calls its framework Claim-Reason-Evidence-Evaluation; the subject page calls it Extract-Link-Apply.
+- **IB vs JC post**: "most JC students change their career plans at least once" has no source.
+- **Owner's Situational Writing Content Bank** (not on the website): page 4 gives Task Fulfilment 15 and Language and Organisation 15, and calls Paper 1 a two-hour paper. SEAB 1184 gives 10 and 20, and 1 hour 50 minutes. Its footer shows `hello@aworthy.sg`, a domain that does not exist; use `jeremy@a-worthy.com`.
