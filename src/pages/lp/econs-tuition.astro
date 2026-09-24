@@ -7,16 +7,16 @@ import '../../styles/global.css';
 const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, I'd like to ask about H2 Economics tuition.");
 ---
 
-<BaseLayout title="H2 Economics Tuition for JC Students | A-Worthy Singapore" description="H2 Economics tuition for JC students in groups of up to 6. The SHARP Method for diagrams, essay technique and case studies. Book a free assessment." ogImage="/images/og-econs.png" noindex={true}>
+<BaseLayout title="H2 Economics Tuition for JC Students | A-Worthy Singapore" description="H2 Economics tuition for JC students in groups of up to 6: a set method for diagrams, essays and case studies, and written feedback every week." ogImage="/images/og-econs.png" noindex={true}>
   <Header slot="header" />
 
   <section class="lp-hero">
     <div class="container">
       <div class="hero-card lp-hero-card subject--econ">
         <div class="lp-hero-copy">
-          <span class="eyebrow">H2 Economics Tuition</span>
-          <h1 class="lp-title squiggle">Master H2 Economics with<br/> <span class="accent-word">analytical precision</span></h1>
-          <p class="lp-subtitle">The SHARP Method applies legal reasoning to economic analysis: diagram accuracy, essay structure and case study evaluation. Small groups of 6, live on the A-Worthy Whiteboard. <a href="/h2-economics/#playbook">See the full SHARP Playbook&nbsp;&rarr;</a></p>
+          <span class="eyebrow">H2 Economics tuition</span>
+          <h1 class="lp-title squiggle">A <span class="accent-word">set method</span> for<br/> each Economics question type</h1>
+          <p class="lp-subtitle">Your child learns to draw each diagram correctly, write essays with DEED and answer case studies with Extract-Link-Apply. Groups of up to 6, live online. <a href="/h2-economics/#playbook">See the SHARP playbook&nbsp;&rarr;</a></p>
           <div class="lp-cta-row" data-track="hero">
             <a href="#lp-form" class="btn btn-accent plausible-event-name=LP+CTA+Click" data-cta>Book Free Assessment</a>
             <a href={waAsk} class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Ask on WhatsApp</a>
@@ -37,7 +37,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
     <div class="container">
       <div class="lp-form-card">
         <h2 class="lp-form-title squiggle squiggle--center">Book a free assessment</h2>
-        <p class="lp-form-lead">A 20-minute Zoom call on your child&rsquo;s latest marked Economics paper, followed by a written summary of the gaps.</p>
+        <p class="lp-form-lead">A 20-minute Zoom call with Jeremy on your child&rsquo;s latest marked Economics paper, then a written summary of the gaps.</p>
         <form id="lp-enquiry" class="lp-form" action="https://formspree.io/f/xgoppwye" method="POST" novalidate data-lead-form data-track="lp-form">
           <div class="form-hp" aria-hidden="true">
             <label for="lp-website">Website</label>
@@ -72,7 +72,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
         </form>
         <div id="lp-form-success" class="lp-form__success" role="status" tabindex="-1" hidden>
           <p class="lp-form__success-title">Request received</p>
-          <p class="lp-form__success-text" id="lp-form-success-text">Thank you. Please send a photo of your child&rsquo;s latest marked paper on WhatsApp, so that Jeremy can review it before the assessment call.</p>
+          <p class="lp-form__success-text" id="lp-form-success-text">Thank you. Jeremy will WhatsApp you within 24 hours to fix a 20-minute Zoom slot. Before the call, please send a photo of your child&rsquo;s latest marked paper.</p>
           <a id="lp-form-success-wa" class="btn btn-whatsapp lp-form__wa" href="https://wa.me/6589913181" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Send on WhatsApp</a>
         </div>
       </div>
@@ -90,27 +90,27 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
 
   <section class="section lp-features">
     <div class="container">
-      <h2 class="squiggle squiggle--center">Full 9570 syllabus mastery</h2>
+      <h2 class="squiggle squiggle--center">The whole 9570 syllabus</h2>
       <div class="lp-features-grid">
         <div class="lp-feature card-lift">
           <span class="icon-circle icon-circle--green" aria-hidden="true">1</span>
-          <h3>Diagram Precision</h3>
-          <p>Every core diagram drilled until it is correctly labelled and exam-ready: demand-supply, market failure, AD-AS, exchange rates, Phillips curve.</p>
+          <h3>Diagrams</h3>
+          <p>Every core diagram practised until your child labels it correctly: demand-supply, market failure, AD-AS, exchange rates, Phillips curve.</p>
         </div>
         <div class="lp-feature card-lift">
           <span class="icon-circle icon-circle--pink" aria-hidden="true">2</span>
-          <h3>Essay Technique</h3>
-          <p>The DEED structure (Define, Explain, Evaluate, Diagram) gives your child a repeatable framework for every essay question type. Lessons also show what examiners look for in each mark band.</p>
+          <h3>Essays</h3>
+          <p>DEED (Define, Explain, Evaluate, Diagram) gives every essay paragraph the same four parts. Lessons show what examiners look for in each mark band.</p>
         </div>
         <div class="lp-feature card-lift">
           <span class="icon-circle icon-circle--blue" aria-hidden="true">3</span>
-          <h3>Case Study Mastery</h3>
-          <p>The Extract-Link-Apply method for data interpretation and higher-order evaluation. The component where most marks are won or lost.</p>
+          <h3>Case studies</h3>
+          <p>Extract-Link-Apply: quote the data, connect it to theory, apply it to the question. Paper 1 is all case studies.</p>
         </div>
         <div class="lp-feature card-lift">
           <span class="icon-circle icon-circle--gold" aria-hidden="true">4</span>
-          <h3>Real-World Application</h3>
-          <p>Current Singapore and global examples for every topic. Examiners reward students who can connect theory to reality.</p>
+          <h3>Real examples</h3>
+          <p>Current Singapore and global examples for each topic, which examiners reward.</p>
         </div>
       </div>
     </div>
@@ -118,8 +118,8 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
 
   <section class="section section--sand lp-final-cta" data-track="final-cta">
     <div class="container" style="text-align:center;">
-      <h2 class="squiggle squiggle--center">Ready to improve your Economics grade?</h2>
-      <p style="max-width:33.75rem;margin:0 auto 2rem;color:var(--text-secondary);">Book a free 20-minute diagnostic assessment. We&rsquo;ll identify your specific gaps and recommend the right programme.</p>
+      <h2 class="squiggle squiggle--center">See where your child is losing Economics marks</h2>
+      <p style="max-width:33.75rem;margin:0 auto 2rem;color:var(--text-secondary);">If you join: a 90-minute lesson and written feedback every week, a monthly progress report, one month&rsquo;s notice to stop, and no fees after the last A-Level paper.</p>
       <a href="#lp-form" class="btn btn-accent plausible-event-name=LP+CTA+Click" data-cta>Book Free Assessment</a>
     </div>
   </section>
@@ -198,7 +198,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
       if (typeof window.plausible === 'function') {
         try { window.plausible('Lead: Landing Page Form', { props: { subject: subject } }); } catch (err) {}
       }
-      successText.textContent = 'Thank you, ' + who + '. Please send a photo of your child\u2019s latest marked paper on WhatsApp, so that Jeremy can review it before the assessment call.';
+      successText.textContent = 'Thank you, ' + who + '. Jeremy will WhatsApp you within 24 hours to fix a 20-minute Zoom slot. Before the call, please send a photo of your child\u2019s latest marked paper.';
       successWa.href = waHref('Hi Jeremy, I\'m ' + who + '. I\'ve just asked for a free assessment for my child (' + lvl + ', ' + subject + '). Here is the latest marked paper.');
       form.hidden = true;
       successEl.hidden = false;
@@ -215,7 +215,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
       a.textContent = 'send your request on WhatsApp';
-      p.appendChild(document.createTextNode('Your request could not be sent. Please try again, or '));
+      p.appendChild(document.createTextNode('Sorry, your request didn\u2019t go through. Please try again, or '));
       p.appendChild(a);
       p.appendChild(document.createTextNode('.'));
       showErrors([p]);

@@ -13,9 +13,9 @@ import '../styles/global.css';
 
   <section class="jc-hero">
     <div class="container">
-      <span class="eyebrow">Free Tool</span>
-      <h1 class="jc-title">JC Subject Combination <span class="accent-word">Advisor</span></h1>
-      <p class="jc-sub">Choosing your A-Level subjects? Pick your likely direction and where your strengths lie, and we&rsquo;ll suggest common, broadly applicable H2/H1 combinations to discuss with your school.</p>
+      <span class="eyebrow">Free tool</span>
+      <h1 class="jc-title">JC subject combination <span class="accent-word">advisor</span></h1>
+      <p class="jc-sub">Pick what you might want to study at university and the subjects you find easier, and we&rsquo;ll suggest a common H2/H1 combination to talk through with your school.</p>
     </div>
     <img src="/images/mascots/mascot-science.webp" alt="" width="406" height="553" class="sticker sticker--hero" />
   </section>
@@ -60,7 +60,7 @@ import '../styles/global.css';
         <p class="jc-note" id="jc-note"></p>
         <p class="jc-disclaimer">Subject offerings and combination rules vary by junior college, and MOE requires at least one <strong>contrasting subject</strong>, at H1 or H2: a humanities or arts subject for science students, and a mathematics or science subject for arts students. This is general guidance. Always confirm what your chosen JC offers.</p>
         <div class="jc-cta">
-          <p><strong>Already in JC?</strong> We coach the two subjects most students find hardest to lift on their own.</p>
+          <p><strong>For JC students:</strong> we teach H1 General Paper and H2 Economics in weekly 90-minute live lessons, in groups of at most 6.</p>
           <div class="jc-cta-links">
             <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
           </div>
@@ -89,7 +89,7 @@ import '../styles/global.css';
     <div class="container">
       <h2 class="section-title">How JC subject combinations work</h2>
       <p class="section-subtitle">Most Singapore JC students offer <strong>3 H2 + 1 H1</strong> content subjects, plus compulsory <strong>H1 General Paper</strong> and <strong>Project Work</strong> (graded pass or fail), and H1 <strong>Mother Tongue</strong> unless exempted by a D7 or better in Higher Mother Tongue. At least one of the four content subjects, at H1 or H2, must <em>contrast</em> with the others: science students often take Economics, and arts students often take Mathematics.</p>
-      <p class="jc-explainer__note">For the full rules, the 70-point admission score and each university course&rsquo;s subject requirements, read our <a href="/blog/choosing-jc-subject-combinations/">guide to choosing a JC subject combination</a>. Still weighing JC against other paths? Read our <a href="/blog/ib-vs-jc/">IB vs JC comparison</a>, or work out your eligibility with the <a href="/l1r5-calculator/">L1R5 calculator</a>.</p>
+      <p class="jc-explainer__note">For the full rules, the 70-point admission score and each university course&rsquo;s subject requirements, read our <a href="/blog/choosing-jc-subject-combinations/">guide to choosing a JC subject combination</a>. If you&rsquo;re still weighing JC against other paths, read our <a href="/blog/ib-vs-jc/">IB vs JC comparison</a>, or check your eligibility with the <a href="/l1r5-calculator/">L1R5 calculator</a>.</p>
     </div>
   </section>
 
@@ -241,14 +241,14 @@ import '../styles/global.css';
           return {
             title: 'Business, Economics & Accountancy',
             combos: [combo('H2 Economics · H2 Mathematics · H2 History (or Geography) + H1 (any subject)', 'H2 Mathematics already meets the contrasting-subject rule, so the H1 can follow your interest.')],
-            why: 'Economics with Mathematics is the strongest base for business, economics and accountancy. A humanities third subject plays to your strengths.',
+            why: 'Economics with Mathematics is a solid base for business, economics and accountancy. A humanities subject as the third H2 plays to your strengths.',
             note: 'Most business and economics degrees ask only for H1 Mathematics or O-Level Additional Mathematics, but business analytics and data-science courses require H2 Mathematics. Keep it if those are on your list.'
           };
         }
         return {
           title: 'Business, Economics & Accountancy',
           combos: [combo('H2 Economics · H2 Mathematics · H2 (Physics, Chemistry or a humanity) + H1 (any subject)', 'Choose the third H2 from your stronger area. Economics and Mathematics already meet the contrasting-subject rule.')],
-          why: 'Economics with Mathematics is the strongest base for business, economics and accountancy. The third H2 follows your strengths, and the H1 can follow your interest.',
+          why: 'Economics with Mathematics is a solid base for business, economics and accountancy. The third H2 follows your strengths, and the H1 can follow your interest.',
           note: 'Most business and economics degrees ask only for H1 Mathematics or O-Level Additional Mathematics, but business analytics and data-science courses require H2 Mathematics. Keep it if those are on your list.'
         };
       }
@@ -256,8 +256,8 @@ import '../styles/global.css';
       if (str === 'humanities') {
         return {
           title: 'Keeping your options open',
-          combos: [combo('H2 Economics · H2 Mathematics · H2 (a humanity) + H1 (any subject)', 'Retains Maths while playing to essay strengths. H2 Mathematics already meets the contrasting-subject rule.')],
-          why: 'Keeping Mathematics in your combination preserves the widest range of university courses. Pairing it with Economics and a humanity leaves business, social-science, law and arts routes all open.',
+          combos: [combo('H2 Economics · H2 Mathematics · H2 (a humanity) + H1 (any subject)', 'Keeps Maths while playing to your essay strengths. H2 Mathematics already meets the contrasting-subject rule.')],
+          why: 'Keeping Mathematics in your combination keeps the widest range of university courses open. Pairing it with Economics and a humanity leaves business, social-science, law and arts routes open too.',
           note: 'Whatever you pick, holding on to H2 Mathematics keeps the most doors open later.'
         };
       }

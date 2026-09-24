@@ -8,15 +8,15 @@ import { googleWriteReviewUrl } from '../data/site-config';
 const whatsappFeedback = 'https://wa.me/6589913181?text=' + encodeURIComponent('Hi A-Worthy, I have some feedback I’d like to share:');
 ---
 
-<BaseLayout title="Leave a Review | A-Worthy" description={googleWriteReviewUrl ? 'Share your experience with A-Worthy. Leave us a Google review, or send us private feedback — we read every message.' : 'Share your experience with A-Worthy. Send us your feedback on WhatsApp — we read every message.'} noindex={true}>
+<BaseLayout title="Leave a Review | A-Worthy" description={googleWriteReviewUrl ? 'Tell us how lessons with A-Worthy are going. Leave a short Google review, or send us private feedback on WhatsApp. We read every message.' : 'Tell us how lessons with A-Worthy are going. Send us a line or two on WhatsApp about what has helped and what could be better. We read every message.'} noindex={true}>
   <Header slot="header" />
 
   <section class="review-hero">
     <div class="container">
       <img src="/images/mascots/mascot-ok.webp" alt="" width="392" height="480" class="review-mascot sticker" />
-      <span class="eyebrow">Thank You</span>
+      <span class="eyebrow">Thank you</span>
       <h1 class="review-title squiggle squiggle--center">How did we do?</h1>
-      <p class="review-sub">Your experience helps us improve &mdash; and helps other Singapore families decide. It takes less than a minute.</p>
+      <p class="review-sub">Tell us honestly how lessons are going. Your answer helps us teach better, and helps other parents decide. It takes a minute.</p>
 
       {/* The Google card shows only once googleWriteReviewUrl is set in
           src/data/site-config.ts; until then WhatsApp feedback is the main action. */}
@@ -25,14 +25,14 @@ const whatsappFeedback = 'https://wa.me/6589913181?text=' + encodeURIComponent('
           <div class="review-card">
             <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <h2 class="review-card__title">Loved learning with A-Worthy?</h2>
-            <p class="review-card__text">A quick Google review is the kindest thing you can do for us &mdash; it helps the next parent find a tutor they can trust.</p>
+            <p class="review-card__text">A line or two on Google, in your own words, helps the next parent decide whether we&rsquo;re right for their child.</p>
             <a href={googleWriteReviewUrl} class="btn btn-accent review-card__cta plausible-event-name=Review+Click" target="_blank" rel="noopener noreferrer">Leave a Google review</a>
           </div>
 
           <div class="review-alt">
-            <p>Got feedback for us instead? We read every message and use it to get better.</p>
+            <p>Something we could do better? Tell us privately. We read every message.</p>
             <a href={whatsappFeedback} target="_blank" rel="noopener noreferrer" class="review-alt__link">Share private feedback on WhatsApp &rarr;</a>
-            <span class="review-alt__or">or <a href="/contact/">contact us here</a></span>
+            <span class="review-alt__or">or <a href="/contact/">send us a message</a></span>
           </div>
         </>
       ) : (
@@ -40,12 +40,12 @@ const whatsappFeedback = 'https://wa.me/6589913181?text=' + encodeURIComponent('
           <div class="review-card">
             <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <h2 class="review-card__title">Loved learning with A-Worthy?</h2>
-            <p class="review-card__text">Send us a short message about your child&rsquo;s progress. We read every one and use it to get better.</p>
+            <p class="review-card__text">Tell us how your child is getting on: what has helped, and what we could do better. We read every message.</p>
             <a href={whatsappFeedback} class="btn btn-accent review-card__cta plausible-event-name=Review+Click" target="_blank" rel="noopener noreferrer">Share your feedback on WhatsApp</a>
           </div>
 
           <div class="review-alt">
-            <span class="review-alt__or">or <a href="/contact/">contact us here</a></span>
+            <span class="review-alt__or">or <a href="/contact/">send us a message</a></span>
           </div>
         </>
       )}

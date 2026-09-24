@@ -60,7 +60,7 @@ const guides: { key: GuideKey; name: string; title: string; pdf: string; desc: s
   },
 ];
 
-const defaultDesc = 'One free PDF guide for each subject we teach, setting out the frameworks used in our lessons. Choose a guide to see what it covers.';
+const defaultDesc = 'A free PDF for each subject we teach, with the frameworks we use in lessons. Pick a guide to see what’s inside.';
 
 const preset = guides.find((g) => g.key === subject);
 const uid = id ?? `guide-${subject ?? 'all'}-${Math.random().toString(36).slice(2, 8)}`;
@@ -130,7 +130,7 @@ const heading = preset ? `Get the free ${preset.title}` : 'Free subject guides';
     <div class="guide-form__done" hidden data-guide-done>
       <p class="guide-form__done-text">Your copy of <strong data-guide-done-title></strong> is ready to download.</p>
       <a class="btn btn-accent guide-form__download" href={preset ? preset.pdf : guides[0].pdf} target="_blank" rel="noopener" download data-guide-download>Download the guide (PDF)</a>
-      <p class="guide-form__note" hidden data-guide-note>Your email address could not be recorded, but the guide is still available to download.</p>
+      <p class="guide-form__note" hidden data-guide-note>We couldn&rsquo;t save your email address, but you can still download the guide.</p>
       <button type="button" class="btn btn--sm guide-form__again" data-guide-again>Get another guide</button>
     </div>
   </div>

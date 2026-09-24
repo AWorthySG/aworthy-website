@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Contact & Book Free Assessment | A-Worthy Singapore" description="Book a free diagnostic assessment for O-Level English, O-Level Maths, GP or H2 Economics. Contact A-Worthy via WhatsApp, phone or email. Small groups of 6, online.">
+<BaseLayout title="Contact & Book Free Assessment | A-Worthy Singapore" description="Book a free 20-minute assessment for O-Level English or Maths, Pre-IB Maths, GP or Economics. Jeremy replies on WhatsApp within 24 hours. Groups of up to 6.">
   <Header slot="header" />
 
   <!-- ===== HERO ===== -->
@@ -13,7 +13,7 @@ import '../styles/global.css';
     <div class="container">
       <p class="eyebrow">Contact</p>
       <h1>Book a <span class="accent-word">free</span> diagnostic assessment</h1>
-      <p class="contact-hero__subtitle">Start with a free 20-minute assessment for O-Level English, O-Level Mathematics, Pre-IB Mathematics, H1 GP or H2 Economics. Jeremy replies on WhatsApp within 24 hours.</p>
+      <p class="contact-hero__subtitle">A free 20-minute Zoom call about your child&rsquo;s latest marked paper in O-Level English or Maths, Pre-IB Maths, GP or Economics. Jeremy replies on WhatsApp within 24 hours.</p>
     </div>
   </section>
 
@@ -25,7 +25,7 @@ import '../styles/global.css';
       <div class="contact-form-col" data-animate="reveal-left">
         <div class="contact-form-col__head">
           <div>
-            <p class="eyebrow">Enquiry Form</p>
+            <p class="eyebrow">Enquiry form</p>
             <h2 class="contact-form-col__heading squiggle">Send us a message</h2>
           </div>
           <img src="/images/mascots/mascot-heart-alt.webp" alt="" width="278" height="406" class="contact-form-col__mascot sticker sticker--right" />
@@ -54,7 +54,7 @@ import '../styles/global.css';
             <div class="form-group">
               <label for="student-level">What level is your child in? <span class="required">*</span></label>
               <select id="student-level" name="studentLevel" required aria-describedby="form-errors">
-                <option value="">-- Select Level --</option>
+                <option value="">Choose a level</option>
                 <option value="Sec 1">Sec 1</option>
                 <option value="Sec 2">Sec 2</option>
                 <option value="Sec 3">Sec 3</option>
@@ -94,7 +94,7 @@ import '../styles/global.css';
                 <div class="form-group">
                   <label for="referral">How did you find us?</label>
                   <select id="referral" name="referral">
-                    <option value="">-- Select --</option>
+                    <option value="">Choose one</option>
                     <option value="Google search">Google search</option>
                     <option value="Instagram">Instagram</option>
                     <option value="TikTok">TikTok</option>
@@ -107,8 +107,8 @@ import '../styles/global.css';
                 </div>
               </div>
               <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="What would you like us to know about your child? Any specific challenges or goals..."></textarea>
+                <label for="message">Anything else?</label>
+                <textarea id="message" name="message" rows="5" placeholder="For example, the topic your child finds hardest, or the grade they’re aiming for"></textarea>
               </div>
             </div>
           </details>
@@ -128,7 +128,7 @@ import '../styles/global.css';
 
       <!-- Contact Information -->
       <div class="contact-info-col" data-animate="reveal-right">
-        <p class="eyebrow">Contact Details</p>
+        <p class="eyebrow">Contact details</p>
         <h2 class="contact-info-col__heading squiggle">How to reach us</h2>
 
         <div class="info-card">
@@ -136,8 +136,8 @@ import '../styles/global.css';
             <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
           <div>
-            <h3>Online Lessons</h3>
-            <p>All lessons live on the A-Worthy Whiteboard, from anywhere in Singapore</p>
+            <h3>Online lessons</h3>
+            <p>Live on the A-Worthy Whiteboard, from home.</p>
           </div>
         </div>
 
@@ -146,7 +146,7 @@ import '../styles/global.css';
             <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
           <div>
-            <h3>Reach Us</h3>
+            <h3>Reach us</h3>
             <ul class="contact-details">
               <li><strong>Phone:</strong> <a href="tel:+6589913181">+65 8991 3181</a></li>
               <li><strong>WhatsApp:</strong> <a href="https://wa.me/6589913181">8991 3181</a></li>
@@ -160,7 +160,7 @@ import '../styles/global.css';
             <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div>
-            <h3>Operating Hours</h3>
+            <h3>Opening hours</h3>
             <ul class="contact-details">
               <li><strong>Mon &ndash; Fri:</strong> 2:00 PM &ndash; 9:30 PM</li>
               <li><strong>Sat &ndash; Sun:</strong> 9:00 AM &ndash; 6:00 PM</li>
@@ -171,7 +171,7 @@ import '../styles/global.css';
         <div class="online-badge">
           <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           <div>
-            <strong>100% Online</strong>
+            <strong>Fully online</strong>
             <span>No commuting. Students join from anywhere in Singapore.</span>
           </div>
         </div>
@@ -184,8 +184,8 @@ import '../styles/global.css';
   <section class="section enrol-section">
     <div class="container">
       <img src="/images/mascots/mascot-on-my-way.webp" alt="" width="415" height="480" class="enrol-mascot sticker" loading="lazy" />
-      <p class="eyebrow">How to Enrol</p>
-      <h2 class="enrol-heading squiggle squiggle--center" data-animate="reveal-up">Three simple steps to get started</h2>
+      <p class="eyebrow">How to enrol</p>
+      <h2 class="enrol-heading squiggle squiggle--center" data-animate="reveal-up">Three steps to get started</h2>
 
       <div class="enrol-timeline" data-animate="reveal-up">
         <div class="enrol-step">
@@ -198,15 +198,15 @@ import '../styles/global.css';
         <div class="enrol-step">
           <div class="enrol-step-num">2</div>
           <div class="enrol-step-content">
-            <h3>Send a recent paper</h3>
-            <p>Before the call, WhatsApp a photo of your child&rsquo;s latest marked paper (English, Maths, GP or Economics) to +65 8991 3181. Jeremy reviews it before you speak.</p>
+            <h3>Send the latest marked paper</h3>
+            <p>Before the call, WhatsApp a photo of it to +65 8991 3181. Jeremy goes through it first, so the call is about your child&rsquo;s actual mistakes.</p>
           </div>
         </div>
         <div class="enrol-step">
           <div class="enrol-step-num">3</div>
           <div class="enrol-step-content">
             <h3>Get a written summary</h3>
-            <p>After the call you receive a written summary of the gaps and the programme we recommend: a group of up to 6, or one-to-one coaching.</p>
+            <p>After the call you get a written summary of the gaps and the class we&rsquo;d recommend: a group of up to 6, or one-to-one. Then it&rsquo;s up to you.</p>
           </div>
         </div>
       </div>
@@ -225,13 +225,13 @@ import '../styles/global.css';
       <div class="faq-list">
         <div class="faq-item" data-animate="reveal-up" data-animate-delay="1">
           <button class="faq-question" aria-expanded="false">
-            <span>What is the maximum class size?</span>
+            <span>How big are the classes?</span>
             <span class="faq-icon" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </span>
           </button>
           <div class="faq-answer" hidden>
-            <p>Maximum 6 students per group class.</p>
+            <p>Six students at most.</p>
           </div>
         </div>
 
@@ -243,7 +243,7 @@ import '../styles/global.css';
             </span>
           </button>
           <div class="faq-answer" hidden>
-            <p>We don&rsquo;t run trial lessons. Instead you get a free 20-minute diagnostic assessment of your child&rsquo;s recent paper (English, Maths, GP or Economics), and the first month of lessons is covered by our first-month money-back guarantee.</p>
+            <p>No. You get a free 20-minute assessment of your child&rsquo;s latest marked paper instead, and the first month of lessons is covered by our first-month money-back guarantee.</p>
           </div>
         </div>
 
@@ -255,7 +255,7 @@ import '../styles/global.css';
             </span>
           </button>
           <div class="faq-answer" hidden>
-            <p>All lessons are recorded. Students receive the cloud recording within 24 hours.</p>
+            <p>Every lesson is recorded. The recording, worksheet and homework reach your child within 24 hours. There are no make-up classes.</p>
           </div>
         </div>
 
@@ -267,7 +267,7 @@ import '../styles/global.css';
             </span>
           </button>
           <div class="faq-answer" hidden>
-            <p>Our lessons are aligned to the MOE/Cambridge syllabuses for O-Level English (1184), O-Level Mathematics (4052), H1 General Paper (8881) and H2 Economics (9570), and are taught with our own SHARP Method.</p>
+            <p>The current MOE/Cambridge syllabuses: O-Level English (1184), O-Level Mathematics (4052), H1 General Paper (8881) and H2 Economics (9570), taught with our own SHARP Method.</p>
           </div>
         </div>
 
@@ -279,7 +279,7 @@ import '../styles/global.css';
             </span>
           </button>
           <div class="faq-answer" hidden>
-            <p>Fees are a fixed monthly amount, paid in advance by the 1st of each month by PayNow (preferred), bank transfer, or credit card via HitPay. A month with a fifth lesson costs the same. Lessons continue through the school holidays and on public holidays. If your child misses a lesson, you receive the recording. There are no make-up classes. Sec 4 and JC 2 groups end after the national examinations, and no fee is charged for the months after your child&rsquo;s last paper. To stop, give one month&rsquo;s notice.</p>
+            <p>In advance, by the 1st of each month, by PayNow (preferred), bank transfer or credit card via HitPay. The fee is fixed, so a month with a fifth lesson costs the same. Lessons carry on through the school holidays and on public holidays. Missed lessons get the recording, not a make-up class. Sec 4 and JC 2 groups end after the national examinations, and there&rsquo;s no fee for the months after your child&rsquo;s last paper. To stop, give one month&rsquo;s notice.</p>
           </div>
         </div>
         <div class="faq-item" data-animate="reveal-up" data-animate-delay="6">
@@ -290,7 +290,19 @@ import '../styles/global.css';
             </span>
           </button>
           <div class="faq-answer" hidden>
-            <p>Once a year, you can put your child&rsquo;s place on hold for up to four consecutive weeks, for travel or any other reason. Tell us in writing (WhatsApp or email) at least two weeks before the first lesson your child will miss. No fee is charged for the weeks on hold, and your child&rsquo;s place in the group is kept.</p>
+            <p>Once a calendar year, you can hold your child&rsquo;s place for up to four weeks in a row, for travel or any other reason. Tell us in writing (WhatsApp or email) at least two weeks before the first lesson your child will miss. There&rsquo;s no fee for the weeks on hold, and your child keeps their place in the group.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What does a normal week look like?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>One 90-minute live lesson with the same tutor. Your child gets written feedback every week and can WhatsApp questions between lessons. You get a monthly progress report by email.</p>
           </div>
         </div>
       </div>
@@ -300,9 +312,9 @@ import '../styles/global.css';
   <!-- ===== CTA ===== -->
   <section class="section cta-section">
     <div class="container cta-inner">
-      <p class="eyebrow">Enrol Now</p>
-      <h2 class="squiggle squiggle--center" data-animate="reveal-up">Ready to start?</h2>
-      <p class="cta-subtitle">Reach out on WhatsApp for the fastest response.</p>
+      <p class="eyebrow">Prefer WhatsApp?</p>
+      <h2 class="squiggle squiggle--center" data-animate="reveal-up">Just message us</h2>
+      <p class="cta-subtitle">Send your child&rsquo;s level and subject. Jeremy replies within 24 hours.</p>
       <a href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20assessment%20for%20my%20child." class="btn btn-accent" target="_blank" rel="noopener noreferrer">
         <span>
           <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -442,7 +454,7 @@ import '../styles/global.css';
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
       a.textContent = 'send your request on WhatsApp';
-      p.append('Your message could not be sent. Please try again, or ', a, '.');
+      p.append('Your message didn\u2019t go through. Please try again, or ', a, '.');
       showErrors([p]);
     }
   });

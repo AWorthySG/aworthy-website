@@ -113,3 +113,44 @@ The guides use SEAB's syllabus wherever the site disagrees with it. These site p
 - **Economics figures**: the Economics page and a blog post give different Singapore inflation figures (1.2% to 6.1%, and 1.2% to 4.8%), and neither matches MAS data. The case-study blog calls its framework Claim-Reason-Evidence-Evaluation; the subject page calls it Extract-Link-Apply.
 - **IB vs JC post**: "most JC students change their career plans at least once" has no source.
 - **Owner's Situational Writing Content Bank** (not on the website): page 4 gives Task Fulfilment 15 and Language and Organisation 15, and calls Paper 1 a two-hour paper. SEAB 1184 gives 10 and 20, and 1 hour 50 minutes. Its footer shows `hello@aworthy.sg`, a domain that does not exist; use `jeremy@a-worthy.com`.
+
+## 8. Questions from the voice and retention rewrite (24 September 2026)
+
+The whole site was rewritten to sound plain and confident, using only facts the site could stand behind. Claims about how lessons run that could not be confirmed were taken out; everything below needs the owner's answer.
+
+**Removed until confirmed. Restore them if they are true.**
+- O-Level Maths Sec 3–4: "a mock paper every month, marked against Cambridge mark schemes" (Maths page and the homepage quiz result). English still says it for English.
+- A short catch-up summary from Jeremy at the start of the next lesson for a student who missed one (English and Maths FAQs).
+- A model answer sent on WhatsApp the morning after a lesson (English lesson walkthrough). The Maths and Pre-IB lesson walkthroughs still say it, along with "at least three rounds of feedback in 30 minutes": confirm both or cut them there too.
+- ACS, CHIJ and Victoria School in the chatbot's "schools" answer. Raffles and Hwa Chong stay, as in the About story.
+- "Up to 30% of marks depend on diagrams" in the Economics diagrams post (no source).
+
+**Still on the site and needing confirmation**
+- The "Most popular" chip on O-Level English (homepage, pricing) needs enrolment figures behind it (Singapore Code of Advertising Practice), or a neutral label.
+- The line under the pricing page's final button, "Month-to-month · no lock-in · first-month money-back guarantee", predates the 23 September decision against lines under buttons. Keep it or remove it?
+- "500+ students taught since 2020" on the About founder card: is 2020 right?
+- The O-Level English A1–B3 figures (78% in 2023, 85% in 2024, 90% in 2025) need cohort sizes.
+- The chatbot now says "We reply within 24 hours" for every enquiry, not only assessment requests.
+- The opening hours on the contact page and homepage (Mon–Fri 2–9:30 pm, Sat–Sun 9 am–6 pm): lesson hours or reply hours?
+- Whether one-to-one lessons are recorded and get the weekly written feedback and the monthly report. Pricing currently claims these for group classes only.
+- Whether the sibling and multi-subject discounts combine.
+- Descriptions of how classes run, kept but not confirmed: GP "argument bank of 50+ examples across 12 themes" and "timed essays weekly"; "six to eight introductions per session" (GP essay examples post); Pre-IB "25 chapters" and the "120-question calculus set"; the English "Sunday Revision" row in the timetable, which no other part of the page mentions.
+- The O-Level Maths (4052) page shows A-Maths (4049) notes and a marker's report as its samples.
+
+**Quotes that clash with the site's rules** (protected, so left word for word)
+- Sarah T.'s parent: "C5 to A2 in just one term"; the case study says 3 months.
+- Linda T.: comprehension "12/25 to 20/25", a component-level result, quoted on the English landing page. The same applies to Ethan L., Wei Ling and Ryan O. on /testimonials/.
+- The Maths landing page's "quote" is our own marketing line credited to "The A-Worthy method". Replace it with a real Maths parent or student quote, or remove it.
+- The Economics student's "game changer" is their own words; keep or swap.
+
+**Blog items outside this rewrite** (titles, meta descriptions and JSON-LD were frozen)
+- "10 Comprehension Techniques That Top Students Use" covers one inference question; retitle or extend it.
+- "H2 Economics Case Study: How to Score L3 Every Time" promises a result in its title.
+- The tuition-centre guide's JSON-LD description still says "trial lessons".
+- Meta lengths: the cut-off-points title is 62 characters; the o-level-english-tips description is 105; the why-smart-students-fail description is in the old voice.
+
+**Questions a parent asks that the site can't answer yet**
+- When the JC 2 fee (SGD 400) starts for a continuing JC 1 student, and whether the group and slot carry over into the next year without re-enrolling.
+- How groups are formed: by level only, or by ability too ("my child is at C6; will they keep up?").
+- Whether the child joins the free 20-minute assessment call, or only the parent.
+- Any parent-facing progress contact besides the monthly email report, such as a short call each term. If it exists, it is the strongest retention line the site could add; the site must not claim it until it does.

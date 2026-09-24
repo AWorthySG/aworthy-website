@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Page Not Found | A-Worthy Singapore Tuition Centre" description="This page doesn't exist. Return to A-Worthy's homepage for O-Level English & Maths, H1 GP and H2 Economics tuition in Singapore." noindex={true}>
+<BaseLayout title="Page Not Found | A-Worthy Singapore Tuition Centre" description="This page has moved or doesn't exist. From here you can reach A-Worthy's O-Level English and Maths, Pre-IB Maths, H1 GP and H2 Economics tuition." noindex={true}>
   <Header slot="header" />
 
   <section class="error-page">
@@ -15,11 +15,11 @@ import '../styles/global.css';
         <img src="/images/mascots/mascot-sorry.webp" alt="" width="412" height="480" class="sticker error-mascot" />
         <span class="eyebrow">404</span>
         <h1 class="error-title">Page not found</h1>
-        <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">The page you're looking for doesn't exist or has moved. Try one of the links below.</p>
+        <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">Sorry, this page has moved or never existed. Try one of the links below.</p>
         <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; margin-bottom: 3rem;">
-          <a href="/" class="btn btn-primary" style="min-width: 240px; text-align: center;">Go to Homepage</a>
-          <a href="/programmes/" class="btn btn-secondary" style="min-width: 240px; text-align: center;">View Programmes</a>
-          <a href="/contact/" class="btn btn-secondary" style="min-width: 240px; text-align: center;">Contact Us</a>
+          <a href="/" class="btn btn-primary" style="min-width: 240px; text-align: center;">Go to homepage</a>
+          <a href="/programmes/" class="btn btn-secondary" style="min-width: 240px; text-align: center;">View programmes</a>
+          <a href="/contact/" class="btn btn-secondary" style="min-width: 240px; text-align: center;">Contact us</a>
         </div>
         <p style="font-size: 0.85rem; color: var(--text-muted);">Popular pages:</p>
         <div class="error-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 1.25rem; margin-top: 0.75rem;">
@@ -33,7 +33,7 @@ import '../styles/global.css';
           <span style="color: var(--text-muted);">&middot;</span>
           <a href="/pre-ib-mathematics/">Pre-IB Maths</a>
           <span style="color: var(--text-muted);">&middot;</span>
-          <a href="/resources/">Free Resources</a>
+          <a href="/resources/">Free resources</a>
           <span style="color: var(--text-muted);">&middot;</span>
           <a href="/results/">Results</a>
         </div>
@@ -43,19 +43,19 @@ import '../styles/global.css';
           <div class="suggestion-grid">
             <a href="/programmes/" class="suggestion-card card-lift">
               <h3>Programmes</h3>
-              <p>O-Level English, Maths, H1 GP & H2 Economics</p>
+              <p>O-Level English and Maths, Pre-IB Maths, GP, Economics</p>
             </a>
             <a href="/pricing/" class="suggestion-card card-lift">
               <h3>Pricing</h3>
-              <p>Transparent fees from SGD 280/month</p>
+              <p>Fees by level, from SGD 280 a month</p>
             </a>
             <a href="/resources/" class="suggestion-card card-lift">
-              <h3>Free Resources</h3>
+              <h3>Free resources</h3>
               <p>Study guides, checklists & worksheets</p>
             </a>
             <a href="/contact/" class="suggestion-card card-lift">
-              <h3>Contact Us</h3>
-              <p>Book a free diagnostic assessment</p>
+              <h3>Contact us</h3>
+              <p>Book a free 20-minute assessment</p>
             </a>
           </div>
         </div>
