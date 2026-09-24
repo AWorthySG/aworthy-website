@@ -1,0 +1,348 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+/*
+ * The A-Worthy Whiteboard page. Every feature named here is either stated
+ * elsewhere on the site or shown in the Whiteboard app's own interface
+ * (whiteboard.a-worthy.com): video/audio-only/whiteboard-only joining, a
+ * dockable or floating call, pages and board templates, "Bring everyone to
+ * my view", document upload, the Documents / Homework / Recordings drawers,
+ * stylus support, PDF export of every page, and link/QR invites with the
+ * host admitting guests. Don't add a feature here until the app has it.
+ */
+const whatsapp = 'https://wa.me/6589913181?text=' + encodeURIComponent('Hi A-Worthy, I’d like to know more about lessons on the A-Worthy Whiteboard.');
+---
+
+<BaseLayout
+  title="The A-Worthy Whiteboard | How Online Lessons Work"
+  description="How lessons run on the A-Worthy Whiteboard: live video, one shared page, past papers marked as your child writes, and every lesson recorded. Groups of up to 6."
+>
+  <Header slot="header" />
+
+  <section class="wbp-hero" data-track="hero">
+    <div class="container">
+      <span class="eyebrow">Our online classroom</span>
+      <h1 class="wbp-title">The A-Worthy <span class="accent-word">Whiteboard</span></h1>
+      <p class="wbp-sub">We built our own online classroom for exam subjects. Live video, a shared page to write on and your child&rsquo;s past papers sit together in one browser tab, and every lesson is recorded. It&rsquo;s where all our lessons happen, in groups and one to one.</p>
+      <div class="wbp-actions">
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+        <a href="#features" class="btn">See what&rsquo;s on it</a>
+      </div>
+    </div>
+    <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="sticker sticker--hero sticker--right" />
+  </section>
+
+  <section class="section wbp-demo-section">
+    <div class="container">
+      <figure class="wbp-demo">
+        <svg class="wbp-demo__svg" viewBox="0 0 640 380" role="img" aria-labelledby="wbp-demo-title">
+          <title id="wbp-demo-title">A lesson on the A-Worthy Whiteboard: a maths question on a shared page, the student's handwritten working with the tutor's ticks and a note, and the video call beside it.</title>
+          <rect class="d-frame" x="2" y="2" width="636" height="376" rx="18" />
+          <line class="d-rule" x1="2" y1="46" x2="638" y2="46" />
+          <rect class="d-pill d-pill--on" x="18" y="13" width="64" height="22" rx="11" />
+          <text class="d-pill-text d-pill-text--on" x="50" y="28" text-anchor="middle">Page 1</text>
+          <rect class="d-pill" x="90" y="13" width="64" height="22" rx="11" />
+          <text class="d-pill-text" x="122" y="28" text-anchor="middle">Page 2</text>
+          <rect class="d-pill" x="162" y="13" width="26" height="22" rx="11" />
+          <text class="d-pill-text" x="175" y="28" text-anchor="middle">+</text>
+          <rect class="d-pill" x="330" y="13" width="84" height="22" rx="11" />
+          <text class="d-pill-text" x="372" y="28" text-anchor="middle">Documents</text>
+          <rect class="d-pill" x="420" y="13" width="84" height="22" rx="11" />
+          <text class="d-pill-text" x="462" y="28" text-anchor="middle">Homework</text>
+          <rect class="d-pill" x="510" y="13" width="112" height="22" rx="11" />
+          <text class="d-pill-text" x="566" y="28" text-anchor="middle">Recordings</text>
+
+          <rect class="d-paper" x="20" y="62" width="428" height="298" rx="12" />
+          <text class="d-q" x="40" y="94">Q3. Solve 2x² − 5x − 3 = 0.</text>
+          <line class="d-line" x1="40" y1="106" x2="428" y2="106" />
+          <text class="d-hand" x="52" y="146">2x² − 6x + x − 3 = 0</text>
+          <text class="d-hand" x="52" y="186">2x(x − 3) + 1(x − 3) = 0</text>
+          <text class="d-hand" x="52" y="226">(2x + 1)(x − 3) = 0</text>
+          <text class="d-hand" x="52" y="266">x = −½  or  x = 3</text>
+          <path class="d-tick" d="M300 176 l9 10 l18 -22" />
+          <path class="d-tick" d="M300 216 l9 10 l18 -22" />
+          <path class="d-tick" d="M300 256 l9 10 l18 -22" />
+          <rect class="d-note" x="232" y="290" width="196" height="52" rx="10" />
+          <text class="d-note-text" x="244" y="312">Good: split the middle term</text>
+          <text class="d-note-text" x="244" y="330">first, then factorise.</text>
+
+          <rect class="d-video" x="464" y="62" width="156" height="92" rx="12" />
+          <circle class="d-avatar d-avatar--tutor" cx="542" cy="100" r="22" />
+          <text class="d-avatar-text" x="542" y="106" text-anchor="middle">JL</text>
+          <text class="d-video-label" x="476" y="144">Tutor</text>
+          <rect class="d-video" x="464" y="164" width="74" height="60" rx="10" />
+          <circle class="d-avatar" cx="501" cy="190" r="14" />
+          <rect class="d-video" x="546" y="164" width="74" height="60" rx="10" />
+          <circle class="d-avatar" cx="583" cy="190" r="14" />
+          <rect class="d-video" x="464" y="232" width="74" height="60" rx="10" />
+          <circle class="d-avatar" cx="501" cy="258" r="14" />
+          <rect class="d-video" x="546" y="232" width="74" height="60" rx="10" />
+          <circle class="d-avatar" cx="583" cy="258" r="14" />
+          <rect class="d-rec" x="464" y="304" width="156" height="30" rx="15" />
+          <circle class="d-rec-dot" cx="482" cy="319" r="5" />
+          <text class="d-rec-text" x="494" y="324">Recording</text>
+        </svg>
+        <figcaption class="wbp-demo__caption">A maths lesson on the Whiteboard: the question and your child&rsquo;s working on one shared page, marked as it&rsquo;s written, with the video call beside it.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--sand" id="features">
+    <div class="container">
+      <span class="eyebrow">What&rsquo;s on it</span>
+      <h2 class="section-title">Everything a lesson needs, in one tab</h2>
+      <div class="wbp-grid">
+        <article class="card card--static wbp-card">
+          <span class="icon-circle icon-circle--green" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M22 8l-6 4 6 4z"/></svg></span>
+          <h3>Live video, your way</h3>
+          <p>Tutor and students see and hear each other in real time. Your child can join with video, with audio only, or on the board alone, and the video can sit beside the board or float in its own window.</p>
+        </article>
+        <article class="card card--static wbp-card">
+          <span class="icon-circle icon-circle--pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span>
+          <h3>One shared page</h3>
+          <p>The tutor&rsquo;s working appears line by line as it&rsquo;s written, and your child writes on the same page. Everyone sees every change the moment it&rsquo;s made.</p>
+        </article>
+        <article class="card card--static wbp-card">
+          <span class="icon-circle icon-circle--blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3.5-1 11-11-2.5-2.5-11 11z"/><path d="M14 5l2.5 2.5"/><path d="M17 3l4 4"/></svg></span>
+          <h3>Written by hand</h3>
+          <p>With a tablet and stylus, your child writes and draws by hand, the way they will in the exam hall. It suits maths working, diagrams and annotated passages.</p>
+        </article>
+        <article class="card card--static wbp-card">
+          <span class="icon-circle icon-circle--gold" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg></span>
+          <h3>Your child&rsquo;s paper, on the board</h3>
+          <p>The tutor puts a past paper or worksheet straight onto the board and marks your child&rsquo;s answer on it, paragraph by paragraph, diagram by diagram.</p>
+        </article>
+        <article class="card card--static wbp-card">
+          <span class="icon-circle icon-circle--green" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/></svg></span>
+          <h3>Everyone on the same page</h3>
+          <p>One tap brings every student&rsquo;s view to the tutor&rsquo;s, so nobody is looking somewhere else when the key step goes up.</p>
+        </article>
+        <article class="card card--static wbp-card">
+          <span class="icon-circle icon-circle--pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="13" height="16" rx="2"/><path d="M8 21h11a2 2 0 0 0 2-2V7"/><line x1="8" y1="8" x2="13" y2="8"/><line x1="8" y1="12" x2="13" y2="12"/></svg></span>
+          <h3>A page for every question</h3>
+          <p>The tutor adds and names a page for each question, starting from a ready-made template when it helps. At the end of the lesson, every page can be saved as one PDF.</p>
+        </article>
+        <article class="card card--static wbp-card">
+          <span class="icon-circle icon-circle--blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
+          <h3>Every lesson recorded</h3>
+          <p>Recordings, homework and documents each have their own drawer in the room. Miss a lesson, and the recording, worksheet and homework reach your child within 24 hours.</p>
+        </article>
+        <article class="card card--static wbp-card">
+          <span class="icon-circle icon-circle--gold" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <h3>Nothing to install, no sign-up</h3>
+          <p>It runs in a browser tab. Students don&rsquo;t need an account: they join by link or QR code, and the tutor lets each one in.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="why">
+    <div class="container wbp-narrow">
+      <span class="eyebrow">Why it works</span>
+      <h2 class="section-title">Why it works for exam subjects</h2>
+      <p class="wbp-lead">Most marks are lost in the working: a step skipped, a point made too vaguely, a label missing from a diagram. The Whiteboard puts that working in front of the tutor while your child is still writing it.</p>
+      <ol class="wbp-reasons">
+        <li>
+          <h3>Mistakes are caught while they&rsquo;re being made</h3>
+          <p>The tutor sees every line as your child writes it. A sign error, a missing reason or vague evidence is flagged on the spot, not a week later when the marked homework comes back.</p>
+        </li>
+        <li>
+          <h3>Marked the way an examiner marks</h3>
+          <p>Answers are marked on the question paper itself, with marker-style notes, so your child sees where each mark was gained and where it slipped away.</p>
+        </li>
+        <li>
+          <h3>Nobody sits at the back</h3>
+          <p>With at most 6 in a group and every student&rsquo;s work on the board, the tutor can comment on each answer during the lesson. A quiet student gets the same attention as a confident one.</p>
+        </li>
+        <li>
+          <h3>Nothing gets lost</h3>
+          <p>Recordings, homework and the lesson&rsquo;s pages stay in the room. A student who was ill, or wants to see a step again before a test, can go back to it.</p>
+        </li>
+        <li>
+          <h3>No travelling</h3>
+          <p>Students join from anywhere in Singapore. The time that would go on getting to a centre goes on rest or revision instead.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--sand" id="subjects">
+    <div class="container">
+      <span class="eyebrow">In each subject</span>
+      <h2 class="section-title">What it looks like in each subject</h2>
+      <div class="wbp-subjects">
+        <a href="/o-level-english/" class="card card--accent-left wbp-subject subject--english">
+          <h3>O-Level English</h3>
+          <p>Passages go up on the board and students annotate them together, marking the words an inference question turns on. Editing passages are checked line by line with STAMP CARD.</p>
+          <span class="wbp-subject__more">O-Level English &rarr;</span>
+        </a>
+        <a href="/o-level-mathematics/" class="card card--accent-left wbp-subject subject--maths">
+          <h3>O-Level Mathematics</h3>
+          <p>Working goes down by hand, line by line, as it would on the paper. Jeremy sees each step as it&rsquo;s written and catches a sign error or a missing reason on the spot.</p>
+          <span class="wbp-subject__more">O-Level Mathematics &rarr;</span>
+        </a>
+        <a href="/pre-ib-mathematics/" class="card card--accent-left wbp-subject subject--preib">
+          <h3>Pre-IB Mathematics</h3>
+          <p>Every solution is written out in full with a short reason on each line, the habit the IB rewards. Calculus is built up from first principles on the board.</p>
+          <span class="wbp-subject__more">Pre-IB Mathematics &rarr;</span>
+        </a>
+        <a href="/h1-general-paper/" class="card card--accent-left wbp-subject subject--gp">
+          <h3>H1 General Paper</h3>
+          <p>Students write in a shared document while Jeremy annotates it, flagging a weak topic sentence, vague evidence or a lazy link as it happens.</p>
+          <span class="wbp-subject__more">H1 General Paper &rarr;</span>
+        </a>
+        <a href="/h2-economics/" class="card card--accent-left wbp-subject subject--econ">
+          <h3>H2 Economics</h3>
+          <p>Students draw their diagrams live and share them on screen, and Jeremy checks every label and arrow as closely as he would in a classroom.</p>
+          <span class="wbp-subject__more">H2 Economics &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="setup">
+    <div class="container wbp-narrow">
+      <span class="eyebrow">Getting set up</span>
+      <h2 class="section-title">What your child needs</h2>
+      <ul class="wbp-needs">
+        <li>A laptop, desktop or tablet with a web browser.</li>
+        <li>An internet connection that can hold a video call. On a weak connection, your child can join with audio only.</li>
+        <li>A camera and microphone, if your child joins with video.</li>
+        <li>A stylus, if your child works on a tablet. It&rsquo;s optional, and helps most with maths working and diagrams.</li>
+        <li>That&rsquo;s all: no app to install and no account to create.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--sand" id="faq">
+    <div class="container wbp-narrow">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="section-title">Questions parents ask about online lessons</h2>
+      <div class="wbp-faq">
+        <details>
+          <summary>Is learning online as effective as in person?</summary>
+          <p>For a group of at most 6, yes. Your child&rsquo;s work is on the board, where the tutor sees every line as it&rsquo;s written and responds straight away, and every lesson is recorded, so nothing is missed. That&rsquo;s what the Whiteboard was built for.</p>
+        </details>
+        <details>
+          <summary>My child is quiet. Will they get noticed?</summary>
+          <p>Yes. Their work is on the page, so the tutor sees it and comments on it whether or not they speak up.</p>
+        </details>
+        <details>
+          <summary>Can we look back at a lesson?</summary>
+          <p>Yes. Your child can rewatch any lesson from its recording, and you get a progress report by email every month covering strengths, what to work on and next steps.</p>
+        </details>
+        <details>
+          <summary>What if the internet drops?</summary>
+          <p>Your child rejoins with the same link, or switches to audio only if the connection is weak. The lesson is recorded, so anything missed can be watched afterwards.</p>
+        </details>
+        <details>
+          <summary>Does my child need to install anything?</summary>
+          <p>No. The Whiteboard runs in a web browser, and students don&rsquo;t need an account.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wbp-cta">
+    <div class="container wbp-narrow">
+      <div class="hero-card wbp-cta__card">
+        <h2>Find out where your child is losing marks</h2>
+        <p>Book a free assessment. Send us a photo of your child&rsquo;s latest test or exam paper, and Jeremy sends you a written feedback report on what went wrong and what to work on first.</p>
+        <div class="wbp-actions">
+          <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+          <a href={whatsapp} class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .wbp-hero { position: relative; overflow: hidden; padding: 2.5rem 0 1rem; text-align: center; }
+  .wbp-hero > .container { position: relative; z-index: 1; max-width: 46rem; }
+  .wbp-title { margin: 0.5rem 0 0.75rem; }
+  .wbp-sub { color: var(--text-secondary); font-size: 1.08rem; line-height: 1.7; margin: 0 auto 1.5rem; }
+  .wbp-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+
+  .wbp-demo-section { padding-top: 1rem; }
+  .wbp-demo { margin: 0 auto; max-width: 46rem; }
+  .wbp-demo__svg { display: block; width: 100%; height: auto; }
+  .wbp-demo__caption { margin-top: 0.75rem; text-align: center; color: var(--text-secondary); font-size: 0.92rem; }
+  .d-frame { fill: var(--bg-card); stroke: var(--color-ink); stroke-width: 2.5; }
+  .d-rule, .d-line { stroke: var(--ink-faint); stroke-width: 2; }
+  .d-line { stroke-dasharray: 5 5; }
+  .d-pill { fill: var(--bg-muted); stroke: var(--ink-faint); stroke-width: 1.5; }
+  .d-pill--on { fill: var(--color-accent); stroke: var(--color-accent); }
+  .d-pill-text { font: 700 12px var(--font-body); fill: var(--text-secondary); }
+  .d-pill-text--on { fill: #fff; }
+  .d-paper { fill: var(--bg-primary); stroke: var(--ink-faint); stroke-width: 1.5; }
+  .d-q { font: 800 17px var(--font-heading); fill: var(--text-primary); }
+  .d-hand { font: italic 600 19px var(--font-body); fill: var(--tint-blue-fg); }
+  .d-tick { fill: none; stroke: var(--color-accent-text); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .d-note { fill: var(--tint-gold-bg); stroke: var(--color-sun); stroke-width: 1.5; }
+  .d-note-text { font: 700 12.5px var(--font-body); fill: var(--tint-gold-fg); }
+  .d-video { fill: var(--bg-muted); stroke: var(--ink-faint); stroke-width: 1.5; }
+  .d-avatar { fill: var(--tint-green-bg); stroke: var(--color-leaf); stroke-width: 2; }
+  .d-avatar--tutor { fill: var(--tint-pink-bg); stroke: var(--color-berry); }
+  .d-avatar-text { font: 800 14px var(--font-heading); fill: var(--text-primary); }
+  .d-video-label { font: 700 11px var(--font-body); fill: var(--text-secondary); letter-spacing: 0.06em; text-transform: uppercase; }
+  .d-rec { fill: var(--color-accent-soft); stroke: var(--color-accent); stroke-width: 1.5; }
+  .d-rec-dot { fill: var(--color-accent); }
+  .d-rec-text { font: 800 12.5px var(--font-body); fill: var(--color-accent-text); }
+
+  #features .section-title, #subjects .section-title { margin-bottom: 1.5rem; }
+  #features > .container, #subjects > .container { text-align: center; }
+  .wbp-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; text-align: left; }
+  .wbp-card { padding: 1.25rem; }
+  .wbp-card h3 { font-size: 1.08rem; margin: 0.75rem 0 0.35rem; }
+  .wbp-card p { margin: 0; color: var(--text-secondary); line-height: 1.6; font-size: 0.97rem; }
+
+  .wbp-narrow { max-width: 46rem; }
+  #why > .container, #setup > .container, #faq > .container { text-align: center; }
+  .wbp-lead { color: var(--text-secondary); line-height: 1.7; margin: 0 auto 1.5rem; }
+  .wbp-reasons { list-style: none; counter-reset: why; margin: 0; padding: 0; display: grid; gap: 1rem; text-align: left; }
+  .wbp-reasons li { counter-increment: why; position: relative; padding-left: 3.25rem; }
+  .wbp-reasons li::before {
+    content: counter(why);
+    position: absolute; left: 0; top: 0;
+    width: 2.25rem; height: 2.25rem; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--color-accent); color: #fff; font-weight: 900;
+    border: 2px solid var(--color-ink); box-shadow: 0 3px 0 var(--color-accent-press);
+  }
+  .wbp-reasons h3 { font-size: 1.08rem; margin: 0.2rem 0 0.3rem; }
+  .wbp-reasons p { margin: 0; color: var(--text-secondary); line-height: 1.65; }
+
+  .wbp-subjects { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; text-align: left; }
+  .wbp-subject { display: block; padding: 1.25rem; color: inherit; text-decoration: none; }
+  .wbp-subject h3 { font-size: 1.08rem; margin: 0 0 0.35rem; color: var(--subject-accent-text, var(--text-primary)); }
+  .wbp-subject p { margin: 0 0 0.6rem; color: var(--text-secondary); line-height: 1.6; font-size: 0.97rem; }
+  .wbp-subject__more { font-weight: 800; color: var(--color-accent-text); font-size: 0.92rem; }
+
+  .wbp-needs { text-align: left; margin: 0 auto; padding-left: 1.25rem; display: grid; gap: 0.6rem; line-height: 1.6; }
+
+  .wbp-faq { display: grid; gap: 0.75rem; text-align: left; }
+  .wbp-faq details { background: var(--bg-card); border: 2px solid var(--color-ink); border-radius: var(--radius-md); box-shadow: 0 3px 0 var(--ink-shadow); }
+  .wbp-faq summary { cursor: pointer; font-weight: 800; padding: 0.9rem 1.1rem; min-height: 44px; list-style-position: inside; }
+  .wbp-faq details p { margin: 0; padding: 0 1.1rem 1rem; color: var(--text-secondary); line-height: 1.65; }
+
+  .wbp-cta__card { text-align: center; padding: 1.75rem 1.25rem; }
+  .wbp-cta__card h2 { margin: 0 0 0.6rem; }
+  .wbp-cta__card p { color: var(--text-secondary); line-height: 1.7; margin: 0 auto 1.25rem; max-width: 36rem; }
+
+  @media (min-width: 641px) {
+    .wbp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wbp-subjects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1025px) {
+    .wbp-hero { padding: 3.5rem 0 1.5rem; }
+    .wbp-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .wbp-subjects { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .wbp-cta__card { padding: 2.25rem 2rem; }
+  }
+</style>

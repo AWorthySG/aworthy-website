@@ -345,6 +345,7 @@ import { googleReviewsUrl } from '../data/site-config';
           <p class="wb-feature__desc">Rewatch any lesson. Miss one, and the recording, worksheet and homework reach your child within 24 hours.</p>
         </div>
       </div>
+      <p class="wb-more"><a href="/whiteboard/">How lessons work on the Whiteboard &rarr;</a></p>
     </div>
   </section>
 
@@ -508,7 +509,7 @@ import { googleReviewsUrl } from '../data/site-config';
         <div>
           <span class="eyebrow" data-animate="reveal-up">Get started</span>
           <h2 class="section-heading" data-animate="reveal-up">Book a free assessment for your child</h2>
-          <p class="section-subtitle" data-animate="reveal-up">Send us a photo of your child&rsquo;s latest marked paper. On a 20-minute Zoom call, Jeremy shows you where the marks are being lost. A written summary of the gaps follows. No obligation, no sales pitch.</p>
+          <p class="section-subtitle" data-animate="reveal-up">Send us a photo of your child&rsquo;s latest test or exam paper. Jeremy goes through it and sends you a written report on where the marks are being lost and what to work on first. No obligation, no sales pitch.</p>
         </div>
         <img src="/images/mascots/mascot-lets-go.webp" alt="" width="383" height="480" class="contact-head__mascot sticker sticker--right" loading="lazy" />
       </div>
@@ -599,7 +600,7 @@ import { googleReviewsUrl } from '../data/site-config';
             <div id="form-success" class="form-success" role="status" tabindex="-1" hidden>
               <p class="form-success__text">
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                <span>Thank you, we&rsquo;ve got your details. Jeremy will WhatsApp you within 24 hours to fix a 20-minute Zoom slot for the free assessment. Before the call, please send a photo of your child&rsquo;s latest marked paper. You&rsquo;ll get a written summary of the gaps afterwards.</span>
+                <span>Thank you, we&rsquo;ve got your details. Jeremy will WhatsApp you within 24 hours. For the free assessment, please send a photo of your child&rsquo;s latest test or exam paper, and he&rsquo;ll send you a written feedback report on what went wrong.</span>
               </p>
               <a id="form-success-wa" class="btn btn-whatsapp form-success__wa" href="https://wa.me/6589913181" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Send on WhatsApp</a>
             </div>
@@ -641,8 +642,8 @@ import { googleReviewsUrl } from '../data/site-config';
           <!-- Enrol Steps -->
           <div class="enrol-steps">
             <h4 class="enrol-steps-heading">How to enrol</h4>
-            <div class="enrol-step"><span class="enrol-num">1</span><span>Book a free 20-minute Zoom assessment</span></div>
-            <div class="enrol-step"><span class="enrol-num">2</span><span>Get a written summary of the gaps</span></div>
+            <div class="enrol-step"><span class="enrol-num">1</span><span>Send a recent test or exam paper</span></div>
+            <div class="enrol-step"><span class="enrol-num">2</span><span>Get a written report on what went wrong</span></div>
             <div class="enrol-step"><span class="enrol-num">3</span><span>Start weekly lessons in a group of up to 6</span></div>
           </div>
         </div>
@@ -691,7 +692,7 @@ import { googleReviewsUrl } from '../data/site-config';
 
 <!-- Contact form handling. The lead event fires only when Formspree answers OK;
      after a send the button stays disabled and a pre-filled WhatsApp button
-     asks for the marked paper. Works with or without the sitewide helpers
+     asks for the test or exam paper. Works with or without the sitewide helpers
      (aworthyWaRef, aworthyAttachAttribution, plausible). -->
 <script is:inline>
 (function(){
@@ -753,7 +754,7 @@ import { googleReviewsUrl } from '../data/site-config';
       if (window.aworthyCelebrate) window.aworthyCelebrate();
       // stays disabled: one enquiry per visit, and the WhatsApp button is the next step
       btn.innerHTML = '<span>Sent</span>';
-      successWa.href = waHref('Hi Jeremy, I\'m ' + who + '. I\'ve just asked for a free assessment for my child (' + lvl + ', ' + subj + '). Here is the latest marked paper.');
+      successWa.href = waHref('Hi Jeremy, I\'m ' + who + '. I\'ve just asked for a free assessment for my child (' + lvl + ', ' + subj + '). Here is the latest test or exam paper.');
       successEl.hidden = false;
       // centred: clear of the fixed header and of the sticky bar on phones
       try { successEl.focus({ preventScroll: true }); } catch (err) { successEl.focus(); }
@@ -1642,6 +1643,10 @@ document.querySelectorAll('.audience-btn').forEach(function(btn) {
     line-height: 1.65;
     color: var(--text-secondary);
   }
+
+  .wb-more { text-align: center; margin: 1.5rem 0 0; font-weight: 800; }
+
+  .wb-more a { color: var(--color-accent-text); }
 
   .wb-grid {
     display: grid;
