@@ -380,6 +380,47 @@ li {
   color: var(--text-secondary);
 }
 
+/* ===== Sticker bullets =====
+   Every bulleted list marks its items with a mascot sticker, and the stickers
+   rotate through five poses so neighbouring items differ (owner's request,
+   25 September 2026). Only caption-free icons with opaque bodies are in the
+   rotation: avocado-wink, icecream, rocket-fly, sunglasses and fishing have
+   see-through bodies that turn into grey ghosts on the dark theme. Every <li>
+   carries its pose in --sticker-bullet. Plain lists opt in with .sticker-list
+   (blog posts get it through .blog-post-body ul), and the page-scoped bullet
+   rules (.prog-card__topics, the founder creds, .pricing-card__details) read
+   the same variable. Numbered lists, the tick-and-cross before-and-after notes
+   and the results timeline keep their own markers. */
+li { --sticker-bullet: url('/images/mascots/mascot-heart-alt-icon.webp'); }
+li:nth-child(5n+2) { --sticker-bullet: url('/images/mascots/mascot-rocket-icon.webp'); }
+li:nth-child(5n+3) { --sticker-bullet: url('/images/mascots/mascot-avocado-hug-icon.webp'); }
+li:nth-child(5n+4) { --sticker-bullet: url('/images/mascots/mascot-grade-a-icon.webp'); }
+li:nth-child(5n) { --sticker-bullet: url('/images/mascots/mascot-heart-icon.webp'); }
+
+.sticker-list,
+.blog-post-body ul {
+  list-style: none;
+  padding-left: 0;
+}
+.sticker-list > li,
+.blog-post-body ul > li {
+  position: relative;
+  padding-left: 1.75em;
+}
+.sticker-list > li::before,
+.blog-post-body ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  /* Centre the sticker on the first line; 0.3em is the fallback for
+     browsers without the lh unit (right for line-height 1.8) */
+  top: 0.3em;
+  top: calc(0.5lh - 0.6em);
+  width: 1.2em;
+  height: 1.2em;
+  background: var(--sticker-bullet) center / contain no-repeat;
+}
+
 /* ===== Eyebrow Text ===== */
 /* Micro-label above a heading — grey, like the LMS's "WELCOME BACK"; red is
    reserved for the action colour and the emphasised word. */
