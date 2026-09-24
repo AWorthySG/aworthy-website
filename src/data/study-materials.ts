@@ -58,18 +58,18 @@ export interface StudyMaterialMeta {
 /** Keyed by the HTML filename in `public/study/`, without the `.html`. */
 export const studyMaterialMeta: Record<string, StudyMaterialMeta> = {
   'o-level-english-editing-notes': {
-    title: 'Editing — The STAMP CARD Framework',
+    title: 'Editing: the STAMP CARD framework',
     subject: 'english',
     description:
-      'The complete editing guide: a 50-sentence diagnostic that finds your weakest categories, all nine error types with worked examples, a full annotated exam passage, and a confusables cheat strip. Your answers save as you type.',
+      'Everything for the editing question: a 50-sentence check that shows which error types trip you up, all nine error types with worked examples, a full exam passage marked up line by line, and a cheat strip of commonly confused words. Your answers save as you type.',
     level: 'Paper 1 · Sec 3–4',
     order: 1,
   },
   'sharp-method-quick-reference': {
-    title: 'The SHARP Method — Quick Reference',
+    title: 'The SHARP Method: quick reference',
     subject: 'general',
     description:
-      'The five steps of the SHARP Method on one screen, with the question every step answers. Open it beside your practice paper and work down the list.',
+      'The five steps of the SHARP Method on one screen, with the question each step answers. Keep it open next to your practice paper and work down the list.',
     level: 'All subjects',
     order: 2,
   },

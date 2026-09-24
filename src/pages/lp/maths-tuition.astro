@@ -7,16 +7,16 @@ import '../../styles/global.css';
 const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, I'd like to ask about O-Level Mathematics tuition.");
 ---
 
-<BaseLayout title="O-Level Maths Tuition in Singapore | A-Worthy" description="O-Level Mathematics tuition with the SHARP Method — a named framework for every question type. Max 6 per class, NUS Law graduate tutor, free assessment." ogImage="/images/og-maths.png" noindex={true}>
+<BaseLayout title="O-Level Maths Tuition in Singapore | A-Worthy" description="O-Level Maths tuition in groups of up to 6: a named method for each question type, and working set out to earn the method marks. Book a free assessment." ogImage="/images/og-maths.png" noindex={true}>
   <Header slot="header" />
 
   <section class="lp-hero">
     <div class="container">
       <div class="hero-card lp-hero-card subject--maths">
         <div class="lp-hero-copy">
-          <span class="eyebrow">O-Level Mathematics Tuition</span>
-          <h1 class="lp-title squiggle">Your child deserves an <span class="accent-word">A for Maths</span></h1>
-          <p class="lp-subtitle">The SHARP Method gives your child a named, examiner-aligned framework for every question type, so they know which method to reach for. Small groups of 6, live on the A-Worthy Whiteboard. <a href="/o-level-mathematics/#playbook">See the full SHARP Playbook&nbsp;&rarr;</a></p>
+          <span class="eyebrow">O-Level Mathematics tuition</span>
+          <h1 class="lp-title squiggle">Your child knows the formulas. We teach <span class="accent-word">which one to use</span></h1>
+          <p class="lp-subtitle">A named method for each O-Level Maths question type, with working set out for the method marks. Groups of up to 6, live online. <a href="/o-level-mathematics/#playbook">See the SHARP playbook&nbsp;&rarr;</a></p>
           <div class="lp-cta-row" data-track="hero">
             <a href="#lp-form" class="btn btn-accent plausible-event-name=LP+CTA+Click" data-cta>Book Free Assessment</a>
             <a href={waAsk} class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Ask on WhatsApp</a>
@@ -37,7 +37,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
     <div class="container">
       <div class="lp-form-card">
         <h2 class="lp-form-title squiggle squiggle--center">Book a free assessment</h2>
-        <p class="lp-form-lead">A 20-minute Zoom call on your child&rsquo;s latest marked Maths paper, followed by a written summary of the gaps.</p>
+        <p class="lp-form-lead">A 20-minute Zoom call with Jeremy on your child&rsquo;s latest marked Maths paper, then a written summary of the gaps.</p>
         <form id="lp-enquiry" class="lp-form" action="https://formspree.io/f/xgoppwye" method="POST" novalidate data-lead-form data-track="lp-form">
           <div class="form-hp" aria-hidden="true">
             <label for="lp-website">Website</label>
@@ -74,7 +74,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
         </form>
         <div id="lp-form-success" class="lp-form__success" role="status" tabindex="-1" hidden>
           <p class="lp-form__success-title">Request received</p>
-          <p class="lp-form__success-text" id="lp-form-success-text">Thank you. Please send a photo of your child&rsquo;s latest marked paper on WhatsApp, so that Jeremy can review it before the assessment call.</p>
+          <p class="lp-form__success-text" id="lp-form-success-text">Thank you. Jeremy will WhatsApp you within 24 hours to fix a 20-minute Zoom slot. Before the call, please send a photo of your child&rsquo;s latest marked paper.</p>
           <a id="lp-form-success-wa" class="btn btn-whatsapp lp-form__wa" href="https://wa.me/6589913181" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Send on WhatsApp</a>
         </div>
       </div>
@@ -96,23 +96,23 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
       <div class="lp-features-grid">
         <div class="lp-feature card-lift">
           <span class="icon-circle icon-circle--green" aria-hidden="true">1</span>
-          <h3>Algebra &amp; Word Problems</h3>
-          <p>READ (Read, Extract, Assign, Derive) turns wordy questions into precise equations, with line-by-line working that earns every method mark.</p>
+          <h3>Algebra &amp; word problems</h3>
+          <p>READ (Read, Extract, Assign, Derive) turns a word problem into an equation, set out line by line for the method marks.</p>
         </div>
         <div class="lp-feature card-lift">
           <span class="icon-circle icon-circle--pink" aria-hidden="true">2</span>
-          <h3>Geometry &amp; Trigonometry</h3>
-          <p>LABEL for geometry and RULE for trigonometry — a right-angle check decides SOH-CAH-TOA, sine rule, or cosine rule, so your child never picks the wrong method.</p>
+          <h3>Geometry &amp; trigonometry</h3>
+          <p>LABEL for geometry, RULE for trigonometry. One right-angle check tells your child whether to use SOH-CAH-TOA, the sine rule or the cosine rule.</p>
         </div>
         <div class="lp-feature card-lift">
           <span class="icon-circle icon-circle--blue" aria-hidden="true">3</span>
-          <h3>Functions &amp; Graphs</h3>
-          <p>PLOT (Parameters, Locate, Obtain, Trace) for accurate sketching of linear, quadratic, cubic, and exponential functions — intercepts, turning points, and symmetry every time.</p>
+          <h3>Functions &amp; graphs</h3>
+          <p>PLOT (Parameters, Locate, Obtain, Trace) for sketching linear, quadratic, cubic and exponential graphs with intercepts, turning points and symmetry.</p>
         </div>
         <div class="lp-feature card-lift">
           <span class="icon-circle icon-circle--gold" aria-hidden="true">4</span>
-          <h3>Statistics, Probability &amp; Proofs</h3>
-          <p>DATA (Define, Arrange, Tabulate, Answer) maximises method marks in statistics. SHOW (State, Hunt, Order, Write) turns intimidating &ldquo;show that&rdquo; questions into a structured chain of reasoning.</p>
+          <h3>Statistics, probability &amp; proofs</h3>
+          <p>DATA (Define, Arrange, Tabulate, Answer) for statistics. SHOW (State, Hunt, Order, Write) for &ldquo;show that&rdquo; questions, one justified line at a time.</p>
         </div>
       </div>
     </div>
@@ -121,7 +121,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
   <section class="section section--sand lp-final-cta" data-track="final-cta">
     <div class="container" style="text-align:center;">
       <h2 class="squiggle squiggle--center">See where your child is losing marks</h2>
-      <p style="max-width:33.75rem;margin:0 auto 2rem;color:var(--text-secondary);">Book a free 20-minute diagnostic assessment. We&rsquo;ll review your child&rsquo;s recent Maths paper, identify their specific gaps, and recommend the right programme &mdash; no obligation, no sales pitch.</p>
+      <p style="max-width:33.75rem;margin:0 auto 2rem;color:var(--text-secondary);">No obligation, no sales pitch. If you join: a 90-minute lesson and written feedback every week, a progress report each month, and one month&rsquo;s notice to stop.</p>
       <a href="#lp-form" class="btn btn-accent plausible-event-name=LP+CTA+Click" data-cta>Book Free Assessment</a>
     </div>
   </section>
@@ -200,7 +200,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
       if (typeof window.plausible === 'function') {
         try { window.plausible('Lead: Landing Page Form', { props: { subject: subject } }); } catch (err) {}
       }
-      successText.textContent = 'Thank you, ' + who + '. Please send a photo of your child\u2019s latest marked paper on WhatsApp, so that Jeremy can review it before the assessment call.';
+      successText.textContent = 'Thank you, ' + who + '. Jeremy will WhatsApp you within 24 hours to fix a 20-minute Zoom slot. Before the call, please send a photo of your child\u2019s latest marked paper.';
       successWa.href = waHref('Hi Jeremy, I\'m ' + who + '. I\'ve just asked for a free assessment for my child (' + lvl + ', ' + subject + '). Here is the latest marked paper.');
       form.hidden = true;
       successEl.hidden = false;
@@ -217,7 +217,7 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
       a.textContent = 'send your request on WhatsApp';
-      p.appendChild(document.createTextNode('Your request could not be sent. Please try again, or '));
+      p.appendChild(document.createTextNode('Sorry, your request didn\u2019t go through. Please try again, or '));
       p.appendChild(a);
       p.appendChild(document.createTextNode('.'));
       showErrors([p]);

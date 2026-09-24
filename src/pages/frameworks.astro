@@ -6,15 +6,15 @@ import '../styles/global.css';
 
 // ── STAMP CARD — the 9-category editing sweep (Paper 1, Editing) ──
 const stampCategories = [
-  { letter: 'S', name: 'Subject-Verb Agreement', check: 'Does the verb agree with the subject in number?', error: 'The average age of caregivers <strong>are</strong> about 62.', fix: 'The average age of caregivers <strong>is</strong> about 62.', why: 'Cover “of caregivers” — the true subject “the average age” is singular.' },
-  { letter: 'T', name: 'Tense', check: 'Is the verb in the correct tense? Check the time markers.', error: 'I <strong>have seen</strong> that film last night.', fix: 'I <strong>saw</strong> that film last night.', why: 'A specific past-time marker (“last night”) locks the event in the past — Past Simple, not Present Perfect.' },
-  { letter: 'A', sup: '1', name: 'Articles', check: 'Is a / an / the correct — by sound, not spelling?', error: 'He is <strong>a</strong> honest student.', fix: 'He is <strong>an</strong> honest student.', why: '“Honest” opens with a silent H (a vowel sound), so it takes “an”.' },
+  { letter: 'S', name: 'Subject-Verb Agreement', check: 'Does the verb agree with the subject in number?', error: 'The average age of caregivers <strong>are</strong> about 62.', fix: 'The average age of caregivers <strong>is</strong> about 62.', why: 'Cover “of caregivers”: the true subject, “the average age”, is singular.' },
+  { letter: 'T', name: 'Tense', check: 'Is the verb in the correct tense? Check the time markers.', error: 'I <strong>have seen</strong> that film last night.', fix: 'I <strong>saw</strong> that film last night.', why: 'A specific past-time marker (“last night”) fixes the event in the past, so the verb needs the Past Simple, not the Present Perfect.' },
+  { letter: 'A', sup: '1', name: 'Articles', check: 'Is a / an / the correct? Go by sound, not spelling.', error: 'He is <strong>a</strong> honest student.', fix: 'He is <strong>an</strong> honest student.', why: '“Honest” opens with a silent H (a vowel sound), so it takes “an”.' },
   { letter: 'M', name: 'Match Pronouns', check: 'Does the pronoun match its antecedent in number, gender and form?', error: 'The teacher gave the book to John and <strong>I</strong>.', fix: 'The teacher gave the book to John and <strong>me</strong>.', why: 'After the preposition “to”, use the object form “me”.' },
   { letter: 'P', name: 'Prepositions', check: 'Is the right preposition used? Watch the fixed phrases.', error: 'She is interested <strong>on</strong> the new project.', fix: 'She is interested <strong>in</strong> the new project.', why: 'Fixed collocation: interested <strong>in</strong>.' },
-  { letter: 'C', name: 'Connectors', check: 'Is the linking word logically correct?', error: '<strong>Although</strong> he was tired, <strong>but</strong> he kept working.', fix: '<strong>Although</strong> he was tired, he kept working.', why: '“Although” and “but” both signal contrast — they cannot co-exist. Delete one.' },
-  { letter: 'A', sup: '2', name: 'Adjective / Adverb', check: 'Describing a noun (adjective) or a verb (adverb, usually -ly)?', error: 'She speaks <strong>fluent</strong> during the presentation.', fix: 'She speaks <strong>fluently</strong> during the presentation.', why: 'It modifies the verb “speaks” — an adverb is required.' },
-  { letter: 'R', name: 'Right Number', check: 'Is the noun singular or plural? Does the quantifier match?', error: '<strong>Less</strong> students passed the exam this year.', fix: '<strong>Fewer</strong> students passed the exam this year.', why: '“Students” is a countable plural — use “fewer”, not “less”.' },
-  { letter: 'D', name: 'Degree of Comparison', check: 'Comparative or superlative correct — and never doubled?', error: 'She is <strong>more smarter</strong> than her brother.', fix: 'She is <strong>smarter</strong> than her brother.', why: 'Double comparative. “Smart” takes “-er” only.' },
+  { letter: 'C', name: 'Connectors', check: 'Is the linking word logically correct?', error: '<strong>Although</strong> he was tired, <strong>but</strong> he kept working.', fix: '<strong>Although</strong> he was tired, he kept working.', why: '“Although” and “but” both signal contrast, so they can’t both stay. Delete one.' },
+  { letter: 'A', sup: '2', name: 'Adjective / Adverb', check: 'Describing a noun (adjective) or a verb (adverb, usually -ly)?', error: 'She speaks <strong>fluent</strong> during the presentation.', fix: 'She speaks <strong>fluently</strong> during the presentation.', why: 'It describes the verb “speaks”, so it needs an adverb.' },
+  { letter: 'R', name: 'Right Number', check: 'Is the noun singular or plural? Does the quantifier match?', error: '<strong>Less</strong> students passed the exam this year.', fix: '<strong>Fewer</strong> students passed the exam this year.', why: '“Students” is a countable plural, so use “fewer”, not “less”.' },
+  { letter: 'D', name: 'Degree of Comparison', check: 'Is the comparative or superlative correct, and not doubled?', error: 'She is <strong>more smarter</strong> than her brother.', fix: 'She is <strong>smarter</strong> than her brother.', why: 'Double comparative. “Smart” takes “-er” only.' },
 ];
 
 // ── SWIFT — the five-second category test (Paper 2, Comprehension) ──
@@ -29,11 +29,11 @@ const swiftWords = [
 // Live classifier examples — each routes to Category A (FLIP) or B (EIL)
 const swiftExamples = [
   { q: 'Give one detail that shows the writer was nervous.', cat: 'A', reason: 'No SWIFT word, and you could underline the answer in the passage.' },
-  { q: 'What does “she pressed her lips together” suggest about her mood?', cat: 'B', reason: 'Contains “suggest” — you must work the meaning out.' },
+  { q: 'What does “she pressed her lips together” suggest about her mood?', cat: 'B', reason: 'Contains “suggest”, so you have to work the meaning out.' },
   { q: 'In your own words, explain why the town changed.', cat: 'A', reason: 'The point is stated in the text; you are only rewording it.' },
-  { q: 'What is the writer’s attitude towards the city?', cat: 'B', reason: 'Contains “attitude” (Tone) — an inference about voice.' },
-  { q: 'Identify the phrase that tells us the storm was severe.', cat: 'A', reason: 'A clean lift — the phrase is already there.' },
-  { q: 'How do you think the boy felt when he read the letter?', cat: 'B', reason: 'Contains “feel / think” — an inference about a state of mind.' },
+  { q: 'What is the writer’s attitude towards the city?', cat: 'B', reason: 'Contains “attitude” (Tone): an inference about the writer’s voice.' },
+  { q: 'Identify the phrase that tells us the storm was severe.', cat: 'A', reason: 'A clean lift: the phrase is already there.' },
+  { q: 'How do you think the boy felt when he read the letter?', cat: 'B', reason: 'Contains “feel / think”: an inference about a state of mind.' },
 ];
 
 const catA = [
@@ -73,9 +73,9 @@ const transitions = [
 ];
 
 const frameworkIndex = [
-  { tag: 'Paper 1 · Editing', name: 'STAMP CARD', blurb: 'A nine-category sweep that catches every grammar error the passage can hide.', href: '#stamp-card' },
-  { tag: 'Paper 2 · Comprehension', name: 'SWIFT → FLIP / EIL', blurb: 'A five-second test that sorts every question, then one fixed method for each type.', href: '#comprehension' },
-  { tag: 'Paper 2 · Summary', name: 'CAPS', blurb: 'Four paraphrasing moves that secure the language mark without dropping content.', href: '#caps' },
+  { tag: 'Paper 1 · Editing', name: 'STAMP CARD', blurb: 'Nine categories to check on every line, so your child finds the grammar errors instead of guessing.', href: '#stamp-card' },
+  { tag: 'Paper 2 · Comprehension', name: 'SWIFT → FLIP / EIL', blurb: 'A five-second test that sorts each question, then one fixed method for each type.', href: '#comprehension' },
+  { tag: 'Paper 2 · Summary', name: 'CAPS', blurb: 'Four ways to put the passage in your own words, so your child earns the language mark without losing content points.', href: '#caps' },
 ];
 ---
 
@@ -91,7 +91,7 @@ const frameworkIndex = [
     <div class="container">
       <p class="eyebrow">The A-Worthy Method</p>
       <h1 class="fw-hero__title">A named framework for <span class="accent-word">every mark</span> on the O-Level English paper</h1>
-      <p class="fw-hero__lead">Most tuition tells students to “write better”. We teach your child which tool to use for each question on the GCE O-Level English Language (1184) paper, and exactly how to use it, so no answer starts from a blank page.</p>
+      <p class="fw-hero__lead">Students are often told to “write better” and left to work out how. We teach your child which method to use for each question on the GCE O-Level English Language (1184) paper, and how to use it, so no answer starts from a blank page.</p>
       <div class="fw-index">
         {frameworkIndex.map((f) => (
           <a class="fw-index__card card-lift" href={f.href}>
@@ -110,7 +110,7 @@ const frameworkIndex = [
     <div class="container">
       <p class="eyebrow">Paper 1 · Editing</p>
       <h2 class="fw-section__title squiggle">STAMP CARD — collect all the errors</h2>
-      <p class="fw-section__sub">The editing question hides eight grammar errors across the passage, with two lines left deliberately clean. STAMP CARD gives your child nine categories to check on every numbered line — like stamping off a bubble-tea card until every error is caught. Tap a letter to see the category, the quick-check question, and a worked fix.</p>
+      <p class="fw-section__sub">The editing question hides eight grammar errors in the passage and leaves two lines clean on purpose. STAMP CARD gives your child nine categories to check on each numbered line, like stamping a bubble-tea card until it&rsquo;s full. Tap a letter to see the category, its quick-check question and a worked fix.</p>
 
       <div class="stamp">
         <div class="stamp__tabs" role="tablist" aria-label="STAMP CARD categories">
@@ -157,7 +157,7 @@ const frameworkIndex = [
         </div>
       </div>
 
-      <p class="fw-tip"><strong>First-pass filter:</strong> T, S and A<sup>2</sup> appear in almost every passage. Sweep those three first, then work the rest of the letters in order — stopping the moment you find the one error on each line.</p>
+      <p class="fw-tip"><strong>First-pass filter:</strong> T, S and A<sup>2</sup> turn up in almost every passage. Check those three first, then go through the other letters in order, and stop as soon as you&rsquo;ve found the error on that line.</p>
     </div>
   </section>
 
@@ -166,7 +166,7 @@ const frameworkIndex = [
     <div class="container">
       <p class="eyebrow">Paper 2 · Comprehension (Sections B &amp; C)</p>
       <h2 class="fw-section__title squiggle">SWIFT sorts it. FLIP or EIL answers it.</h2>
-      <p class="fw-section__sub">Comprehension marks are lost before a single word is written, when a student misjudges what <em>kind</em> of question it is. SWIFT is a five-second test that decides whether the answer is already in the passage (Category A) or has to be inferred (Category B). Once the category is set, the method is fixed.</p>
+      <p class="fw-section__sub">Many comprehension marks are lost before a word is written, because the student misjudges what <em>kind</em> of question it is. SWIFT is a five-second test that tells your child whether the answer is already in the passage (Category A) or has to be inferred (Category B). Once the category is clear, so is the method.</p>
 
       <!-- SWIFT signal words -->
       <div class="swift-words">
@@ -182,7 +182,7 @@ const frameworkIndex = [
 
       <!-- Interactive classifier -->
       <div class="classifier" id="classifier">
-        <p class="classifier__prompt">Try it — pick a question and see how SWIFT routes it:</p>
+        <p class="classifier__prompt">Try it: pick a question and see how SWIFT sorts it.</p>
         <div class="classifier__qs">
           {swiftExamples.map((e, i) => (
             <button type="button" class="classifier__q" data-cat={e.cat} data-reason={e.reason} data-index={i}>{e.q}</button>
@@ -221,7 +221,7 @@ const frameworkIndex = [
       </div>
 
       <!-- A/B question-type map -->
-      <p class="fw-tip fw-tip--plain">Sixteen question types sit under those two methods. The type only changes <em>what</em> you look for — the method stays FLIP or EIL.</p>
+      <p class="fw-tip fw-tip--plain">Sixteen question types sit under those two methods. The type only changes <em>what</em> you look for. The method stays FLIP or EIL.</p>
       <div class="qtype-grid">
         <div class="qtype-col">
           <h4 class="qtype-col__head"><span class="cat-a">Category A</span> · Locate &amp; paraphrase</h4>
@@ -248,7 +248,7 @@ const frameworkIndex = [
     <div class="container">
       <p class="eyebrow">Paper 2 · Summary</p>
       <h2 class="fw-section__title squiggle">CAPS — secure the language mark</h2>
-      <p class="fw-section__sub">The summary question rewards students who re-express the passage rather than lift the writer’s words. Once the content points are found and sorted, CAPS gives four paraphrasing moves for rewriting them. Each card shows a real before → after.</p>
+      <p class="fw-section__sub">The summary question rewards students who put the passage in their own words instead of copying the writer’s. Once your child has found and sorted the content points, CAPS gives four ways to rewrite them. Each card shows a real before and after.</p>
 
       <div class="caps-grid">
         {capsTechniques.map((t) => (
@@ -304,21 +304,21 @@ const frameworkIndex = [
   <!-- ===== REAL PAGES FROM THE MATERIALS ===== -->
   <section class="fw-section" id="materials">
     <div class="container">
-      <p class="eyebrow">Straight From The Materials</p>
+      <p class="eyebrow">Straight from the materials</p>
       <h2 class="fw-section__title squiggle">The frameworks, on the actual pages</h2>
-      <p class="fw-section__sub">Each framework above lives in a full teaching document. Three pages, unedited&nbsp;&mdash; click to enlarge.</p>
+      <p class="fw-section__sub">Each framework above comes from a full set of teaching notes. Three pages, unedited. Tap one to enlarge it.</p>
       <div class="notes-gallery">
         <button type="button" class="notes-shot card-lift" data-full="/images/english-mat-stampcard.webp" aria-label="Enlarge: STAMP CARD nine-category quick reference from the editing notes">
           <img src="/images/english-mat-stampcard.webp" alt="The STAMP CARD quick-reference table from A-Worthy's editing notes: nine error types from Subject-Verb Agreement to Degree of Comparison, each with its quick check question" loading="lazy" width="1100" height="758" />
-          <span class="notes-shot__cap">STAMP CARD &mdash; the nine-category table, from the editing notes</span>
+          <span class="notes-shot__cap">STAMP CARD: the nine-category table, from the editing notes</span>
         </button>
         <button type="button" class="notes-shot card-lift" data-full="/images/english-mat-swift.webp" aria-label="Enlarge: SWIFT five-second category test from the comprehension toolkit">
           <img src="/images/english-mat-swift.webp" alt="The SWIFT card from A-Worthy's Paper 2 comprehension toolkit: the five signal words and the rule routing questions to Category A (FLIP) or Category B (EIL)" loading="lazy" width="1100" height="593" />
-          <span class="notes-shot__cap">SWIFT &mdash; the five-second test, from the comprehension toolkit</span>
+          <span class="notes-shot__cap">SWIFT: the five-second test, from the comprehension toolkit</span>
         </button>
         <button type="button" class="notes-shot notes-shot--tall card-lift" data-full="/images/english-mat-caps-cheatsheet.webp" aria-label="Enlarge: single-part vs two-part summary page from the CAPS cheatsheet">
           <img src="/images/english-mat-caps-cheatsheet.webp" alt="A page from A-Worthy's CAPS summary cheatsheet showing the single-part versus two-part summary structures, with the transition sentence marking the shift" loading="lazy" width="1100" height="1555" />
-          <span class="notes-shot__cap">CAPS &mdash; single-part vs two-part, from the summary cheatsheet</span>
+          <span class="notes-shot__cap">CAPS: single-part vs two-part, from the summary cheatsheet</span>
         </button>
       </div>
     </div>
@@ -327,7 +327,7 @@ const frameworkIndex = [
   <section class="fw-cta section--ink">
     <div class="container">
       <h2 class="fw-cta__title">See these frameworks taught live</h2>
-      <p class="fw-cta__sub">Every framework here is drilled line-by-line on the A-Worthy Whiteboard, on real past papers, in small groups of six. Book a free assessment and we’ll show your child exactly where the method wins back marks.</p>
+      <p class="fw-cta__sub">We teach every framework here on real past papers, in weekly 90-minute live lessons on the A-Worthy Whiteboard, in groups of at most 6. Book a free assessment, send us a recent marked paper, and we&rsquo;ll show you which questions cost your child marks and which framework each one needs.</p>
       <div class="fw-cta__actions">
         <a href="/contact/" class="btn btn-accent plausible-event-name=Frameworks+CTA"><span>Book Free Assessment</span></a>
         <a href="/o-level-english/" class="btn btn-outline-light"><span>Explore O-Level English →</span></a>
