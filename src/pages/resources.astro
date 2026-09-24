@@ -53,7 +53,7 @@ const resources = [
   },
   {
     title: "Oral Preparation Checklist",
-    description: "Structure, timing, topic vocabulary and a self-assessment rubric for the video stimulus response. Use it to practise on your own before each session.",
+    description: "Structure, timing, topic vocabulary and a self-assessment rubric for the video stimulus response. Use it to practise on your own before the oral exam.",
     category: "Exam Prep",
     type: "Checklist",
   },
@@ -95,7 +95,7 @@ const resources = [
   },
   {
     title: "H2 Economics Case Study Toolkit",
-    description: "A step-by-step way to answer A-Level Economics case study questions: reading the extracts, using the data, and 3 fully worked case studies with model answers.",
+    description: "A step-by-step way to answer A-Level Economics case study questions, from reading the extracts to using the data. With three fully worked case studies and model answers.",
     category: "Economics",
     type: "Toolkit",
   },
@@ -269,7 +269,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
       <!-- No Results -->
       <div class="r-no-results" id="no-results" style="display: none;">
         <p class="r-no-results-heading">No guides found</p>
-        <p class="r-no-results-sub">Try another search term or category.</p>
+        <p class="r-no-results-sub">Try a different word, or choose All.</p>
       </div>
     </div>
   </section>
@@ -306,7 +306,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     <div class="r-container">
       <span class="eyebrow">Next step</span>
       <h2 class="r-cta-heading" data-animate="reveal-up">Find out where your child is losing marks</h2>
-      <p class="r-cta-sub">The guides explain the methods. In the free 20-minute assessment on Zoom, Jeremy goes through your child&rsquo;s latest marked paper, then sends a written summary of the gaps.</p>
+      <p class="r-cta-sub">The guides explain the methods. To see which ones your child needs, book the free 20-minute assessment: Jeremy goes through their latest marked paper on Zoom, then sends a written summary of the gaps.</p>
       <a href="/contact/" class="r-btn-cta btn btn-accent">Book Free Assessment</a>
     </div>
   </section>
@@ -367,7 +367,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     if (!emailInput.value) return;
 
     newsletterSubmit.disabled = true;
-    newsletterSubmit.textContent = 'Subscribing...';
+    newsletterSubmit.textContent = 'Subscribing…';
 
     try {
       const formData = new FormData(newsletterForm);
@@ -385,7 +385,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
       }
     } catch {
       newsletterSuccess.hidden = false;
-      newsletterSuccess.textContent = 'Something went wrong. Please try again.';
+      newsletterSuccess.textContent = 'Sorry, that didn’t go through. Please try again.';
     } finally {
       newsletterSubmit.disabled = false;
       newsletterSubmit.textContent = 'Subscribe';
@@ -445,7 +445,7 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
     overlay.className = 'resource-gate-overlay';
     var ctaLabel = mode === 'download' ? 'Send me the guide' : 'Email me the full version';
     var heading = mode === 'download'
-      ? 'Open the sample now, get the full version by email'
+      ? 'Open the sample now and get the full version by email'
       : 'Get the full version by email';
     var subline = mode === 'download'
       ? 'Leave your details and the sample opens straight away. We’ll also email you the full version of "' + title + '".'
@@ -517,19 +517,19 @@ const categories = ["All", "English", "General Paper", "Economics", "Exam Prep",
 
       var phoneDigits = phone.replace(/\D/g, '');
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.textContent = 'That email address doesn’t look complete. Please check it.';
         errorEl.hidden = false;
         return;
       }
       if (phoneDigits.length < 8) {
-        errorEl.textContent = 'Please enter a valid phone number.';
+        errorEl.textContent = 'Please enter a phone number with at least 8 digits.';
         errorEl.hidden = false;
         return;
       }
       errorEl.hidden = true;
 
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
+      submitBtn.textContent = 'Sending…';
 
       var payload = {
         email: email,

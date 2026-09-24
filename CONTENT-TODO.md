@@ -154,3 +154,20 @@ The whole site was rewritten to sound plain and confident, using only facts the 
 - How groups are formed: by level only, or by ability too ("my child is at C6; will they keep up?").
 - Whether the child joins the free 20-minute assessment call, or only the parent.
 - Any parent-facing progress contact besides the monthly email report, such as a short call each term. If it exists, it is the strongest retention line the site could add; the site must not claim it until it does.
+
+## 9. From the warmth and clarity proofread (24 September 2026)
+
+New points only; section 8 still stands.
+
+- **A "should we continue?" FAQ.** No subject page speaks to a family deciding whether to carry on into Sec 4 or JC 2. A short FAQ ("Should my child continue into JC 2?": same frameworks, same tutor, classes end after the last paper, one month's notice) would help keep families. The subject pages must not grow, so it needs a trim elsewhere: your call.
+- **Testimonial credits** read "JC2 student", "Parent of JC1 student" and "Parent of Sec 4 student". The site style is "JC 2" and "Sec 4". They sit inside protected quote blocks, so they are unchanged until you approve the spacing.
+- **GP FAQ "What topics come out for GP 2026?"** (visible text and schema) should become 2027 once this year's A-Levels are over.
+- **GP bands.** The GP page's examples mention Band 1–2, Band 3 and Band 4 but never say which is the top band. Please confirm they match the 8881 descriptors you teach to.
+- **Economics JC 1 card.** It teaches DEED paragraphs, but its topic list says "paragraph structure (PEEL)". Which is taught?
+- **Pre-IB FAQ.** It says calculus and logarithms come "earlier than the O-Level syllabus", but O-Level Additional Mathematics covers both in Sec 3–4. Reword it?
+- **Pricing FAQ** calls JC 1 a "foundation year". Please confirm the label.
+- **Homepage price tile** "From S$280/mo" is right for Sec 1–2, but a Sec 3 parent pays SGD 320; the English and pricing pages make this clear. Keep it or change it?
+- **Review page** heading "Loved learning with A-Worthy?" assumes the answer. Its Google button stays hidden until `googleWriteReviewUrl` is set.
+- **Who teaches.** The chatbot says "Every class is taught by Jeremy Lim", and the Pre-IB hero says "taught by Jeremy Lim". Elsewhere the site says "the same tutor". Please confirm Jeremy teaches every class.
+- **Homepage quiz.** It ignores the "biggest problem" answer and has no Pre-IB option. Fixing it needs a logic change, not a copy change.
+- **The English page's STAND** (oral) has no expansion anywhere on the site. Give one if you want it explained.

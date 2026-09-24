@@ -110,7 +110,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
         <div class="calc-jc" id="calc-jc"></div>
         <p class="calc-disclaimer">Cut-off points change every year and depend on stream and choice order. Treat this as an indicative guide and check the latest figures on <a href="https://www.moe.gov.sg/schoolfinder" target="_blank" rel="noopener noreferrer">MOE SchoolFinder</a>.</p>
         <div class="calc-cta">
-          <p><strong>English is almost always your L1, and Maths usually counts too.</strong> Each grade raised in a subject that counts takes a point off your aggregate. Send us a recent marked paper and we&rsquo;ll show you where the marks are going.</p>
+          <p><strong>English is almost always your L1, and Maths usually counts too.</strong> Every grade you raise in a subject that counts takes a point off your aggregate. Send us a recent marked paper and we&rsquo;ll show you where the marks are going.</p>
           <div class="calc-cta-links">
             <a href="/contact/" class="btn btn-accent plausible-event-name=Tool+CTA+Click">Book Free Assessment</a>
             <a href="/o-level-english/" class="calc-cta-link subject--english"><span class="subject-dot" aria-hidden="true"></span>O-Level English &rarr;</a>
@@ -125,7 +125,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
     <div class="container">
       <h2 class="section-title">How L1R5 works</h2>
       <p class="section-subtitle">L1R5 means 1 Language + 5 Relevant subjects: the total of your best six grades that fit MOE&rsquo;s rules. Each grade is worth points (A1&nbsp;=&nbsp;1 up to F9&nbsp;=&nbsp;9), so a <em>lower</em> score is better. Bonus points for CCA and Higher Mother Tongue are then taken off to give your net aggregate.</p>
-      <p class="calc-explainer__note">For the full breakdown, bonus-point rules, and the 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points/">L1R5 &amp; cut-off points guide</a>. For JC, plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>.</p>
+      <p class="calc-explainer__note">For the full breakdown, the bonus-point rules and the 2026 cut-off table, read our <a href="/blog/o-level-cut-off-points/">L1R5 &amp; cut-off points guide</a>. If you&rsquo;re aiming for JC, plan your subjects with the <a href="/jc-subject-combinations/">JC subject combination advisor</a>.</p>
     </div>
   </section>
 
@@ -312,7 +312,7 @@ const others = ['Mother Tongue Language', 'Principles of Accounts', 'Other subje
       var html = '';
       if (sci.length) html += '<div><strong style="font-size:0.8rem;color:var(--text-secondary);">Science stream:</strong><div class="calc-jc" style="margin-top:0.4rem;">' + sci.map(function (n) { return '<span class="calc-jc-chip">' + n + '</span>'; }).join('') + '</div></div>';
       if (arts.length) html += '<div style="margin-top:0.6rem;"><strong style="font-size:0.8rem;color:var(--text-secondary);">Arts stream:</strong><div class="calc-jc" style="margin-top:0.4rem;">' + arts.map(function (n) { return '<span class="calc-jc-chip">' + n + '</span>'; }).join('') + '</div></div>';
-      if (!sci.length && !arts.length) html = '<p class="calc-jc-none">With a net L1R5 of ' + net + ', none of the JCs in our 2026 table is within range, but Millennia Institute (a 3-year programme) and polytechnic routes remain open. English almost always counts and Maths usually does, so those two are the place to start.</p>';
+      if (!sci.length && !arts.length) html = '<p class="calc-jc-none">With a net L1R5 of ' + net + ', none of the JCs in our 2026 table is within range yet. Millennia Institute (a 3-year programme) and polytechnic routes are still open. English almost always counts and Maths usually does, so start with those two.</p>';
       jcEl.innerHTML = html;
 
       resultEl.hidden = false;
