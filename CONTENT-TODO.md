@@ -152,7 +152,7 @@ The whole site was rewritten to sound plain and confident, using only facts the 
 **Questions a parent asks that the site can't answer yet**
 - When the JC 2 fee (SGD 400) starts for a continuing JC 1 student, and whether the group and slot carry over into the next year without re-enrolling.
 - How groups are formed: by level only, or by ability too ("my child is at C6; will they keep up?").
-- Whether the child joins the free 20-minute assessment call, or only the parent.
+- ~~Whether the child joins the free 20-minute assessment call, or only the parent.~~ No longer applies: the assessment is now a written report, with no call (section 10).
 - Any parent-facing progress contact besides the monthly email report, such as a short call each term. If it exists, it is the strongest retention line the site could add; the site must not claim it until it does.
 
 ## 9. From the warmth and clarity proofread (24 September 2026)
@@ -171,3 +171,11 @@ New points only; section 8 still stands.
 - **Who teaches.** The chatbot says "Every class is taught by Jeremy Lim", and the Pre-IB hero says "taught by Jeremy Lim". Elsewhere the site says "the same tutor". Please confirm Jeremy teaches every class.
 - **Homepage quiz.** It ignores the "biggest problem" answer and has no Pre-IB option. Fixing it needs a logic change, not a copy change.
 - **The English page's STAND** (oral) has no expansion anywhere on the site. Give one if you want it explained.
+
+## 10. The free assessment is now a written report (24 September 2026)
+
+At the owner's request, the free assessment is no longer a 20-minute Zoom call. The parent sends a photo of a test or exam the child did recently, and Jeremy sends a written feedback report on what went wrong. Every page, the chatbot, the forms' confirmation messages and the five guide PDFs now say this. Two points need your answer:
+
+- **How long the report takes.** The site says Jeremy replies on WhatsApp within 24 hours, but gives no time for the report itself. Tell us the usual turnaround (for example, "within 3 days") and it can go on the contact page and in the form confirmations.
+- **The button label.** "Book Free Assessment" suggests booking a time slot. It still works, but "Get Free Assessment" or "Get a Free Report" would match the new process. It is on every page, so change it only if you want to.
+
