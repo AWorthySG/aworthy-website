@@ -61,7 +61,7 @@ export const studyMaterialMeta: Record<string, StudyMaterialMeta> = {
     title: 'Editing: the STAMP CARD framework',
     subject: 'english',
     description:
-      'Everything for the editing question: a 50-sentence check that shows which error types trip you up, all nine error types with worked examples, a full exam passage marked up line by line, and a cheat strip of commonly confused words. Your answers save as you type.',
+      'Everything you need for the editing question. Start with a 50-sentence check that shows which error types trip you up. Then work through all nine error types with worked examples, a full exam passage marked up line by line and a cheat strip of commonly confused words. Your answers save as you type.',
     level: 'Paper 1 · Sec 3–4',
     order: 1,
   },

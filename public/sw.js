@@ -24,7 +24,7 @@
  * Bump VERSION whenever this file's behaviour changes. Activating a new
  * version deletes every other cache, which is how stale data gets purged.
  */
-const VERSION = 'aworthy-v9';
+const VERSION = 'aworthy-v10';
 const OFFLINE_URL = '/offline.html';
 const PRECACHE = [
   OFFLINE_URL,

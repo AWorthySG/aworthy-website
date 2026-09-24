@@ -128,9 +128,9 @@ const heading = preset ? `Get the free ${preset.title}` : 'Free subject guides';
 
   <div class="guide-form__status" role="status" data-guide-status>
     <div class="guide-form__done" hidden data-guide-done>
-      <p class="guide-form__done-text">Your copy of <strong data-guide-done-title></strong> is ready to download.</p>
+      <p class="guide-form__done-text">Thank you. Your copy of <strong data-guide-done-title></strong> is ready to download.</p>
       <a class="btn btn-accent guide-form__download" href={preset ? preset.pdf : guides[0].pdf} target="_blank" rel="noopener" download data-guide-download>Download the guide (PDF)</a>
-      <p class="guide-form__note" hidden data-guide-note>We couldn&rsquo;t save your email address, but you can still download the guide.</p>
+      <p class="guide-form__note" hidden data-guide-note>We couldn&rsquo;t save your email address, but the guide is still yours to download.</p>
       <button type="button" class="btn btn--sm guide-form__again" data-guide-again>Get another guide</button>
     </div>
   </div>
