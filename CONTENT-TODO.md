@@ -159,7 +159,7 @@ The whole site was rewritten to sound plain and confident, using only facts the 
 
 New points only; section 8 still stands.
 
-- **A "should we continue?" FAQ.** No subject page speaks to a family deciding whether to carry on into Sec 4 or JC 2. A short FAQ ("Should my child continue into JC 2?": same frameworks, same tutor, classes end after the last paper, one month's notice) would help keep families. The subject pages must not grow, so it needs a trim elsewhere: your call.
+- **A "should we continue?" FAQ.** Done on 24 September 2026, at the owner's request: each subject page now asks "Should my child continue into Sec 4?" (English, Maths), "…into Year 4?" (Pre-IB) or "…into JC 2?" (GP, Economics), with matching FAQ schema. It tells parents it is the same frameworks and the same tutor, gives the next level's fee, says classes end after the national papers with no fees after the last one (not on Pre-IB), and suggests a WhatsApp message if unsure. Still open: when the JC 2 fee starts for a continuing JC 1 student, and whether the group and slot carry over without re-enrolling (section 8).
 - **Testimonial credits** read "JC2 student", "Parent of JC1 student" and "Parent of Sec 4 student". The site style is "JC 2" and "Sec 4". They sit inside protected quote blocks, so they are unchanged until you approve the spacing.
 - **GP FAQ "What topics come out for GP 2026?"** (visible text and schema) should become 2027 once this year's A-Levels are over.
 - **GP bands.** The GP page's examples mention Band 1–2, Band 3 and Band 4 but never say which is the top band. Please confirm they match the 8881 descriptors you teach to.
