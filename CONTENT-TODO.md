@@ -177,5 +177,5 @@ New points only; section 8 still stands.
 At the owner's request, the free assessment is no longer a 20-minute Zoom call. The parent sends a photo of a test or exam the child did recently, and Jeremy sends a written feedback report on what went wrong. Every page, the chatbot, the forms' confirmation messages and the five guide PDFs now say this. Two points need your answer:
 
 - **How long the report takes.** The site says Jeremy replies on WhatsApp within 24 hours, but gives no time for the report itself. Tell us the usual turnaround (for example, "within 3 days") and it can go on the contact page and in the form confirmations.
-- **The button label.** "Book Free Assessment" suggests booking a time slot. It still works, but "Get Free Assessment" or "Get a Free Report" would match the new process. It is on every page, so change it only if you want to.
+- **The button label.** Done on 24 September 2026: every "Book Free Assessment" button now reads "Get a Free Report", and "Book a free assessment" in running copy reads "Get a free assessment".
 
