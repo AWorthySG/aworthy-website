@@ -966,11 +966,11 @@ const playbookRows = [
     .prog-card__desc { font-size: 0.95rem; }
   }
   .prog-card__topics { list-style: none; padding: 0; margin: 0 0 auto; flex-grow: 1; }
-  .prog-card__topics li { font-family: var(--prog-font); font-size: 0.82rem; line-height: 1.5; color: var(--prog-text-secondary); padding: 0.45rem 0; border-bottom: 1px solid var(--border-color); padding-left: 1rem; position: relative; }
+  .prog-card__topics li { font-family: var(--prog-font); font-size: 0.82rem; line-height: 1.5; color: var(--prog-text-secondary); padding: 0.45rem 0; border-bottom: 1px solid var(--border-color); padding-left: 1.3rem; position: relative; }
   /* Pinned to the FIRST line (0.45rem padding + half the 1.23rem line box - half
      the marker), not the li's centre — a wrapped item used to float the mascot
      in the gap between its lines. */
-  .prog-card__topics li::before { content: ''; position: absolute; left: 0; top: 0.64rem; width: 0.85rem; height: 0.85rem; background: url('/images/mascots/mascot-heart-alt-icon.webp') center / contain no-repeat; }
+  .prog-card__topics li::before { content: ''; position: absolute; left: 0; top: 0.64rem; width: 0.85rem; height: 0.85rem; background: var(--sticker-bullet) center / contain no-repeat; }
   .prog-card__topics li:last-child { border-bottom: none; }
   .prog-card__meta { display: flex; gap: 1.25rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 2px dashed var(--ink-faint); flex-wrap: wrap; }
   .prog-card__meta span { font-family: var(--prog-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); }
