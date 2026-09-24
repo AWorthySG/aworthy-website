@@ -16,6 +16,9 @@ import '../styles/global.css';
       <p class="r-hero-sub">
         Grade improvements from A-Worthy students in O-Level English, H1 General Paper and H2 Economics, taught with the SHARP Method.
       </p>
+      <div class="r-hero-actions" data-track="hero">
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+      </div>
     </div>
   </section>
 
@@ -272,7 +275,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="r-cta">
+  <section class="r-cta" data-track="final-cta">
     <div class="r-container">
       <span class="eyebrow">Get Started</span>
       <h2 class="r-cta-heading" data-animate="reveal-up">Your child could see results like these</h2>
@@ -320,6 +323,12 @@ import '../styles/global.css';
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
+  }
+
+  .r-hero-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
   }
 
   /* ===== SECTIONS ===== */
@@ -818,6 +827,10 @@ import '../styles/global.css';
   @media (max-width: 480px) {
     .r-hero {
       padding: 1.5rem 0 1rem;
+    }
+
+    .r-hero-actions {
+      margin-top: 1.25rem;
     }
 
     /* Phone display size (as global.css steps h1 down); the forced break

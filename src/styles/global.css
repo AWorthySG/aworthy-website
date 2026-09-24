@@ -180,10 +180,9 @@
   --z-dropdown: 250;
   --z-fixed-widget: 900;
   --z-chatbot: 950;
-  --z-privacy: 999;
   --z-modal: 2000;
   --z-toast: 2100;
-  --z-scroll-progress: 1990; /* above the header, floats and cookie notice; below modals — at 9999 it drew a red line across every open overlay */
+  --z-scroll-progress: 1990; /* above the header and floats; below modals — at 9999 it drew a red line across every open overlay */
 
   /* ── Safe area insets for notched devices ── */
   --safe-area-top: env(safe-area-inset-top, 0px);
@@ -1651,6 +1650,10 @@ html.is-scrolling body { pointer-events: none; }
     right: auto;
   }
 }
+/* Phones: the WhatsApp float is the only floating button */
+@media (max-width: 640px) {
+  .back-to-top { display: none; }
+}
 
 /* ─── FAQ Focus Styles ─── */
 details summary:focus-visible {
@@ -1719,7 +1722,6 @@ html {
   .sticky-cta-global,
   .whatsapp-widget,
   .chatbot-widget,
-  .email-popup-overlay,
   .marquee,
   .hero-actions,
   .cta-section,
@@ -1728,7 +1730,6 @@ html {
   .t-cta,
   .back-to-top,
   .scroll-progress,
-  .privacy-notice,
   .breadcrumb {
     display: none !important;
   }

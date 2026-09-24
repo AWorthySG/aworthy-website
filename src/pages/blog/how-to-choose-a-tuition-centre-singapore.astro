@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="How to Choose a Tuition Centre in Singapore | A-Worthy" description="The seven things that actually matter when choosing a tuition centre in Singapore — class size, method, tutor, proof of results, fees, and red flags." ogImage="/images/og-blog.png">
@@ -61,7 +62,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>At A-Worthy we built around exactly these criteria: a maximum of six per class, the SHARP Method rather than endless worksheets, the same tutor every week, transparent month-to-month fees, and a free assessment so you can judge the teaching before you commit a cent.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>See the teaching before you commit</h3>
         <p>Book a free 20-minute diagnostic assessment. We&rsquo;ll review your child&rsquo;s recent paper, show you exactly how we&rsquo;d help, and recommend the right programme &mdash; no obligation, no sales pitch.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>

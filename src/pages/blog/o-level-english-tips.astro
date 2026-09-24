@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="10 O-Level English Tips to Score A1 | A-Worthy" description="10 O-Level English tips covering Paper 1 editing, situational writing, continuous writing, Paper 2 comprehension & summary." ogImage="/images/og-english.png">
@@ -25,7 +26,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
         </div>
       </div>
       <div class="blog-post-body">
-        <p>An A1 in O-Level English comes from knowing exactly what the examiner wants and delivering it in every component. At A-Worthy we teach the SHARP Method &mdash; five steps your child takes for every question: See the question type, Hit the right framework, Apply it correctly, Refine through guided feedback, Practise via retrieval. At step H, SHARP deploys paper-matched frameworks (FLIP/EIL, RAWCP, P-E-E-L, CAPS, STAMP CARD). Below are ten tips from that coaching, five for Paper 1 and five for Paper 2, for students at B3 or B4 who are aiming for an A1.</p>
+        <p>An A1 in O-Level English comes from knowing exactly what the examiner wants and delivering it in every component. At A-Worthy we teach the SHARP Method &mdash; five steps your child takes for every question: See the question type, Hit the right framework, Apply it correctly, Refine through guided feedback, Practise via retrieval. At step H, SHARP deploys paper-matched frameworks (FLIP/EIL, PAC, P-E-E-L, CAPS, STAMP CARD). Below are ten tips from that coaching, five for Paper 1 and five for Paper 2, for students at B3 or B4 who are aiming for an A1.</p>
 
         <h2>Paper 1: Writing</h2>
 
@@ -43,8 +44,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         </ul>
         <p>Spend the first two minutes of Situational Writing setting up the format skeleton. Only then fill in the content points from the question.</p>
 
-        <h2>3. Use RAWCP and REED to structure your Situational Writing content</h2>
-        <p>Beyond format, Situational Writing marks come from addressing every task requirement with clear reasoning. Plan with <strong>RAWCP</strong> (Register, Audience, Word-choice, Content, Purpose), then elaborate every content bullet with <strong>REED</strong>: <strong>R</strong>estate the point, <strong>E</strong>xplain why it matters, <strong>E</strong>laborate with a specific detail or scenario from the stimulus, <strong>D</strong>evelop the implication or expected outcome. This ensures each content point is developed rather than merely mentioned. A single REED-developed point earns more than three surface-level points strung together.</p>
+        <h2>3. Plan Situational Writing with PAC and develop every point in four moves</h2>
+        <p>Situational Writing is marked for Task Fulfilment (10 marks) and Language (20 marks). There is no separate format mark. Before writing, answer the <strong>PAC</strong> analysis: the <strong>P</strong>urpose (the verb in the instruction), the <strong>A</strong>udience (the named reader) and the <strong>C</strong>ontext (what has happened, and your standing). Split every bullet into its separate instructions: missing one caps Task Fulfilment at Band 3. Then develop each point in four moves: <strong>State</strong> it, <strong>Specify</strong> a detail from the visual text, <strong>Show</strong> what follows, and <strong>Sell</strong> it to the reader. Most answers stop after the first two moves; the last two show awareness of the reader. Our <a href="/blog/situational-writing-guide/">situational writing guide</a> sets out the full routine.</p>
 
         <h2>4. Choose your Continuous Writing topic in under 3 minutes</h2>
         <p>Students who deliberate too long over topic choice waste time and create anxiety. Use this rapid selection method: read all four or five topics, immediately eliminate any you cannot think of two concrete personal examples for, then from the remaining options choose the one where you can visualise the ending. Having a clear ending in mind before you start writing prevents the rambling, inconclusive narratives that cap students at Content marks of 14 to 16 out of 30.</p>
@@ -80,7 +81,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>If your child understands English but keeps scoring below expectations, the issue is almost certainly technique. The right framework closes the gap faster than more practice papers ever will.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm subject="english" headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Ready to score A1?</h3>
         <p>Book a free diagnostic assessment to find out which components are costing your child marks, and how the SHARP Method (See, Hit, Apply, Refine, Practise) and its paper-matched frameworks deal with each one.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>
@@ -100,7 +102,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
         </a>
         <a href="/blog/situational-writing-guide/" class="blog-related-card">
           <span class="related-card-tag">O-Level English</span>
-          <h3>Situational Writing: The Format Guide Every Student Needs</h3>
+          <h3>O-Level Situational Writing: Marks, Planning and Format</h3>
           <p>Complete guide to formal letters, emails, reports, and speeches with format requirements and examples.</p>
         </a>
         <a href="/o-level-english/" class="blog-related-card blog-related-card--programme">

@@ -14,6 +14,9 @@ import '../styles/global.css';
       <p class="eyebrow">Programmes</p>
       <h1 class="prog-hero__heading">Singapore tuition <span class="accent-word">programmes</span> for <span class="prog-hero__nobr">O-Level</span> English, Maths, GP &amp; H2 Economics</h1>
       <p class="prog-hero__sub">Every A-Worthy programme is taught with the SHARP Method (See, Hit, Apply, Refine, Practise) in groups of up to 6, online on the A-Worthy Whiteboard, with personalised feedback every session.</p>
+      <div class="prog-hero__actions" data-track="hero">
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+      </div>
     </div>
     <img src="/images/mascots/mascot-teacher.webp" alt="" width="560" height="640" class="sticker sticker--hero" />
   </section>
@@ -175,7 +178,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== FREE DIAGNOSTIC ASSESSMENT CTA ===== -->
-  <section class="prog-cta">
+  <section class="prog-cta" data-track="final-cta">
     <div class="container prog-cta__inner">
       <p class="eyebrow">Get Started</p>
       <h2 class="prog-cta__heading">Not sure which programme?</h2>
@@ -238,6 +241,12 @@ import '../styles/global.css';
     color: var(--prog-text-secondary);
     max-width: 640px;
     margin: 0 auto;
+  }
+
+  .prog-hero__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
   }
   /* Below 1280 the sticker sits inline under the copy, so the 860px cap that
      clears the floating sticker only made the hero taller: widen the copy and

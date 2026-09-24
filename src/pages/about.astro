@@ -14,6 +14,9 @@ import '../styles/global.css';
     <div class="hero-content">
       <span class="eyebrow">About A-Worthy</span>
       <h1>Singapore&rsquo;s analytical tuition centre &mdash; where legal precision meets academic <span class="accent-word">results</span></h1>
+      <div class="hero-actions" data-track="hero">
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+      </div>
     </div>
   </section>
 
@@ -272,7 +275,7 @@ import '../styles/global.css';
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="section cta">
+  <section class="section cta" data-track="final-cta">
     <div class="container cta-inner">
       <span class="eyebrow" data-animate="reveal-up">Get Started</span>
       <h2 class="squiggle squiggle--center" data-animate="reveal-up">Book a free diagnostic assessment</h2>
@@ -369,6 +372,12 @@ import '../styles/global.css';
     max-width: 700px;
     margin: 0 auto;
     letter-spacing: -0.03em;
+  }
+
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
   }
 
   /* ===== SECTIONS ===== */
@@ -724,6 +733,9 @@ import '../styles/global.css';
     }
     .hero-content h1 {
       font-size: clamp(1.75rem, 7.6vw, 2rem);
+    }
+    .hero-actions {
+      margin-top: 1.25rem;
     }
 
     .section h2 {

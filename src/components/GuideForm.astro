@@ -1,0 +1,395 @@
+---
+// Inline card offering the five free subject guides (it replaced the email
+// pop-up). The reader picks a guide, gives an email address, and always gets
+// the download link: the email is posted to Formspree, and the link appears
+// whether or not that post succeeds.
+//
+// Several instances can share a page: the script below works by event
+// delegation from each card's root, and every id carries a per-instance suffix.
+type GuideKey = 'english' | 'maths' | 'preib' | 'gp' | 'econ';
+
+interface Props {
+  /** Preselects this guide and names it in the heading. */
+  subject?: GuideKey;
+  /** Heading level, so the card fits the host page's outline. */
+  headingLevel?: 2 | 3;
+  /** Base for the element ids; a random suffix is used when omitted. */
+  id?: string;
+}
+
+const { subject, headingLevel = 2, id } = Astro.props;
+
+// Titles and file paths are fixed by the September 2026 contract (the PDFs
+// live in public/docs/guides/). Each description names only frameworks that
+// the matching subject page names.
+const guides: { key: GuideKey; name: string; title: string; pdf: string; desc: string }[] = [
+  {
+    key: 'english',
+    name: 'O-Level English',
+    title: 'O-Level English: A Framework for Every Question',
+    pdf: '/docs/guides/o-level-english-guide.pdf',
+    desc: 'The frameworks we teach for the O-Level English papers: STAMP CARD for editing, SWIFT with FLIP and EIL for comprehension, CAPS for summary writing, and PAC with the four-move expansion for situational writing.',
+  },
+  {
+    key: 'maths',
+    name: 'O-Level Mathematics',
+    title: 'O-Level Mathematics: Six Question Types, Six Frameworks',
+    pdf: '/docs/guides/o-level-mathematics-guide.pdf',
+    desc: 'The six frameworks we teach for the O-Level Mathematics papers: READ for word problems, LABEL for geometry, PLOT for graphs, DATA for statistics, RULE for trigonometry and SHOW for proofs.',
+  },
+  {
+    key: 'preib',
+    name: 'Pre-IB Mathematics',
+    title: 'Pre-IB Mathematics: Calculus from First Principles',
+    pdf: '/docs/guides/pre-ib-mathematics-guide.pdf',
+    desc: 'The Year 3 and 4 calculus we teach for the IB track: differentiation from first principles, the rules of differentiation, tangents and stationary points, and integration with areas under curves.',
+  },
+  {
+    key: 'gp',
+    name: 'H1 General Paper',
+    title: 'H1 General Paper: Essay and Comprehension Frameworks',
+    pdf: '/docs/guides/h1-general-paper-guide.pdf',
+    desc: 'The frameworks we teach for H1 General Paper: P-E-E-L for argumentative, discursive and evaluative essays, Quote + Explain for short-answer questions, our summary method and the AQ Response Template.',
+  },
+  {
+    key: 'econ',
+    name: 'H2 Economics',
+    title: 'H2 Economics: Essay and Case-Study Frameworks',
+    pdf: '/docs/guides/h2-economics-guide.pdf',
+    desc: 'The frameworks we teach for H2 Economics: DEED for essay paragraphs, the Evaluation Chain for higher-order evaluation, Extract-Link-Apply for case-study data and the Diagram-First Approach for diagram questions.',
+  },
+];
+
+const defaultDesc = 'One free PDF guide for each subject we teach, setting out the frameworks used in our lessons. Choose a guide to see what it covers.';
+
+const preset = guides.find((g) => g.key === subject);
+const uid = id ?? `guide-${subject ?? 'all'}-${Math.random().toString(36).slice(2, 8)}`;
+const Heading = headingLevel === 3 ? 'h3' : 'h2';
+const heading = preset ? `Get the free ${preset.title}` : 'Free subject guides';
+---
+
+<div
+  class="guide-form"
+  id={uid}
+  data-guide-form
+  data-preset={preset ? preset.key : undefined}
+  data-default-desc={defaultDesc}
+>
+  <div class="guide-form__head">
+    <span class="icon-circle icon-circle--blue guide-form__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 12v6"/><path d="m9 15 3 3 3-3"/></svg>
+    </span>
+    <div class="guide-form__intro">
+      <span class="eyebrow guide-form__eyebrow">Free guide</span>
+      <Heading class="guide-form__title" id={`${uid}-title`} data-guide-heading>{heading}</Heading>
+      <p class="guide-form__desc" id={`${uid}-desc`} data-guide-desc>{preset ? preset.desc : defaultDesc}</p>
+    </div>
+  </div>
+
+  <form
+    class="guide-form__form"
+    action="https://formspree.io/f/xreoozkk"
+    method="POST"
+    data-lead-form
+    data-track="guide-form"
+  >
+    <div class="guide-form__hp" aria-hidden="true">
+      <label for={`${uid}-hp`}>Website</label>
+      <input type="text" name="_gotcha" id={`${uid}-hp`} tabindex="-1" autocomplete="off" />
+    </div>
+    <input type="hidden" name="_subject" value={preset ? `Guide request: ${preset.name}` : 'Guide request'} data-guide-subject />
+
+    <div class="guide-form__field">
+      <label class="guide-form__label" for={`${uid}-guide`}>Guide</label>
+      <select id={`${uid}-guide`} name="guide" required aria-describedby={`${uid}-desc`} data-guide-select>
+        {!preset && <option value="">Choose a guide</option>}
+        {guides.map((g) => (
+          <option
+            value={g.key}
+            selected={preset?.key === g.key}
+            data-name={g.name}
+            data-title={g.title}
+            data-pdf={g.pdf}
+            data-desc={g.desc}
+          >{g.title}</option>
+        ))}
+      </select>
+    </div>
+
+    <div class="guide-form__row">
+      <div class="guide-form__field">
+        <label class="guide-form__label" for={`${uid}-email`}>Email address</label>
+        <input type="email" id={`${uid}-email`} name="email" required autocomplete="email" placeholder="you@example.com" />
+      </div>
+      <button type="submit" class="btn btn-accent guide-form__submit" data-guide-submit>Get the guide</button>
+    </div>
+    <p class="guide-form__privacy">We use your email address to send you A-Worthy study guides. <a href="/privacy-policy/">Privacy policy</a></p>
+  </form>
+
+  <div class="guide-form__status" role="status" data-guide-status>
+    <div class="guide-form__done" hidden data-guide-done>
+      <p class="guide-form__done-text">Your copy of <strong data-guide-done-title></strong> is ready to download.</p>
+      <a class="btn btn-accent guide-form__download" href={preset ? preset.pdf : guides[0].pdf} target="_blank" rel="noopener" download data-guide-download>Download the guide (PDF)</a>
+      <p class="guide-form__note" hidden data-guide-note>Your email address could not be recorded, but the guide is still available to download.</p>
+      <button type="button" class="btn btn--sm guide-form__again" data-guide-again>Get another guide</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* White ink card at rest (3px hard shadow), no hover lift: it holds a form. */
+  .guide-form {
+    background: var(--bg-card);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 0 var(--ink-shadow);
+    padding: 1.5rem;
+    max-width: 45rem;
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .guide-form__head {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .guide-form__icon { margin-top: 0.1rem; }
+  .guide-form__intro { min-width: 0; }
+  .guide-form__eyebrow {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .guide-form__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--text-primary);
+    margin: 0.3rem 0 0.5rem;
+  }
+  .guide-form__desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .guide-form__form {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 2px dashed var(--ink-faint);
+  }
+
+  /* Grey micro-label, as on the site's other forms */
+  .guide-form__label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin: 0 0 0.4rem;
+  }
+  .guide-form__field { min-width: 0; }
+  /* PDPA purpose notice: why the email is collected */
+  .guide-form__privacy {
+    margin: 0.75rem 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+  .guide-form__privacy a { color: var(--color-accent-text); }
+  /* The titles run long for a phone: end the closed select with an ellipsis
+     rather than cutting a word in half (the subject name always shows). */
+  .guide-form__field select {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* Email and button share a row; the select above takes the full width */
+  .guide-form__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: end;
+  }
+  .guide-form__submit { white-space: nowrap; }
+
+  /* Honeypot: off-screen for people, still in the form for bots */
+  .guide-form__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .guide-form__done {
+    display: grid;
+    justify-items: start;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+    padding: 1.1rem 1.25rem 1.25rem;
+    background: var(--color-success-bg);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+  }
+  .guide-form__done-text {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+  .guide-form__note {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 560px) {
+    .guide-form { padding: 1.25rem; }
+    .guide-form__icon { display: none; }
+    .guide-form__row { grid-template-columns: minmax(0, 1fr); }
+    .guide-form__submit,
+    .guide-form__download { width: 100%; }
+    .guide-form__done { padding: 1rem; }
+  }
+</style>
+
+<script>
+  // Delegated from the document, so every card on the page (including one
+  // added after load) works on its own: each handler finds its card with
+  // closest('[data-guide-form]') and queries only inside it.
+  const ENDPOINT = 'https://formspree.io/f/xreoozkk';
+  const TIMEOUT_MS = 10000;
+
+  type Win = Window & {
+    plausible?: (name: string, opts?: { props?: Record<string, string> }) => void;
+    aworthyAttachAttribution?: (form: HTMLFormElement) => void;
+  };
+  const w = window as Win;
+
+  function parts(root: HTMLElement) {
+    return {
+      form: root.querySelector('form') as HTMLFormElement,
+      select: root.querySelector('[data-guide-select]') as HTMLSelectElement,
+      heading: root.querySelector('[data-guide-heading]') as HTMLElement,
+      desc: root.querySelector('[data-guide-desc]') as HTMLElement,
+      subjectField: root.querySelector('[data-guide-subject]') as HTMLInputElement,
+      submit: root.querySelector('[data-guide-submit]') as HTMLButtonElement,
+      done: root.querySelector('[data-guide-done]') as HTMLElement,
+      doneTitle: root.querySelector('[data-guide-done-title]') as HTMLElement,
+      download: root.querySelector('[data-guide-download]') as HTMLAnchorElement,
+      note: root.querySelector('[data-guide-note]') as HTMLElement,
+    };
+  }
+
+  function chosen(select: HTMLSelectElement): HTMLOptionElement | null {
+    const opt = select.selectedOptions[0];
+    return opt && opt.value ? opt : null;
+  }
+
+  // Keep the description, the heading (on a preset card) and the hidden
+  // _subject in step with the select.
+  function sync(root: HTMLElement) {
+    const p = parts(root);
+    if (!p.select) return;
+    const opt = chosen(p.select);
+    if (opt) {
+      p.desc.textContent = opt.dataset.desc || '';
+      p.subjectField.value = 'Guide request: ' + (opt.dataset.name || opt.value);
+      if (root.dataset.preset) p.heading.textContent = 'Get the free ' + (opt.dataset.title || '');
+    } else {
+      p.desc.textContent = root.dataset.defaultDesc || '';
+      p.subjectField.value = 'Guide request';
+    }
+  }
+
+  function showDone(root: HTMLElement, opt: HTMLOptionElement, recorded: boolean) {
+    const p = parts(root);
+    p.doneTitle.textContent = opt.dataset.title || '';
+    p.download.href = opt.dataset.pdf || '';
+    p.note.hidden = recorded;
+    p.form.hidden = true;
+    p.done.hidden = false;
+    p.download.focus();
+  }
+
+  async function send(form: HTMLFormElement): Promise<boolean> {
+    const controller = typeof AbortController === 'function' ? new AbortController() : null;
+    const timer = controller ? window.setTimeout(() => controller.abort(), TIMEOUT_MS) : 0;
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+        signal: controller ? controller.signal : undefined,
+      });
+      return response.ok;
+    } catch {
+      return false;
+    } finally {
+      if (timer) window.clearTimeout(timer);
+    }
+  }
+
+  document.addEventListener('change', (e) => {
+    const target = e.target as HTMLElement | null;
+    if (!target || !target.matches('[data-guide-select]')) return;
+    const root = target.closest('[data-guide-form]') as HTMLElement | null;
+    if (root) sync(root);
+  });
+
+  document.addEventListener('submit', async (e) => {
+    const form = e.target as HTMLFormElement | null;
+    const root = form && (form.closest('[data-guide-form]') as HTMLElement | null);
+    if (!form || !root || form !== root.querySelector('form')) return;
+    e.preventDefault();
+
+    const p = parts(root);
+    const opt = chosen(p.select);
+    if (!opt || p.submit.disabled) return;
+
+    // Attribution fields (landing page, UTM tags, ...) travel with the form.
+    // BaseLayout attaches them on load; this covers a card added later.
+    if (typeof w.aworthyAttachAttribution === 'function') {
+      try { w.aworthyAttachAttribution(form); } catch { /* optional */ }
+    }
+    sync(root);
+
+    p.submit.disabled = true;
+    p.submit.textContent = 'Sending…';
+    const ok = await send(form);
+    p.submit.disabled = false;
+    p.submit.textContent = 'Get the guide';
+
+    if (ok && typeof w.plausible === 'function') {
+      w.plausible('Lead: Guide', { props: { subject: opt.value } });
+    }
+    // The guide is delivered whether or not the email was recorded.
+    showDone(root, opt, ok);
+  });
+
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement | null)?.closest('[data-guide-again]');
+    if (!btn) return;
+    const root = btn.closest('[data-guide-form]') as HTMLElement | null;
+    if (!root) return;
+    const p = parts(root);
+    p.done.hidden = true;
+    p.note.hidden = true;
+    p.form.hidden = false;
+    p.select.focus();
+  });
+
+  // A restored form (Back, reload) can hold a different choice than the markup.
+  document.querySelectorAll<HTMLElement>('[data-guide-form]').forEach(sync);
+</script>

@@ -16,7 +16,7 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
     <div class="container policy-content">
       <span class="eyebrow">Privacy Policy</span>
       <h1 class="policy-title squiggle">Privacy Policy&nbsp;&mdash; <span class="nowrap">A-Worthy</span> Pte Ltd</h1>
-      <p class="policy-updated">Last updated: May 2026</p>
+      <p class="policy-updated">Last updated: September 2026</p>
 
       <p>A-Worthy Pte Ltd (&ldquo;A-Worthy&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) operates the website at <a href="https://a-worthy.com">a-worthy.com</a>. This Privacy Policy explains how we collect, use, disclose, and protect your personal data in accordance with Singapore&rsquo;s <strong>Personal Data Protection Act 2012 (PDPA)</strong>.</p>
 
@@ -25,21 +25,22 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
       <h2>1. Data we collect</h2>
       <p>We collect personal data only when you actively provide it to us. This includes:</p>
       <ul>
-        <li><strong>Contact and enquiry forms</strong> &mdash; your name, email address, phone number, and any details you include in your message (e.g. your child&rsquo;s level, subject of interest).</li>
-        <li><strong>Email capture (resource downloads)</strong> &mdash; your email address when you request a free resource from our Resource Vault.</li>
-        <li><strong>WhatsApp</strong> &mdash; if you contact us via WhatsApp, your phone number and message content are processed through WhatsApp LLC under its own privacy policy.</li>
+        <li><strong>Contact and enquiry forms</strong> &mdash; your name, email address, phone number, and any details you include in your message (e.g. your child&rsquo;s level, subject of interest). Each enquiry also carries the page it was sent from and how you reached our website (see &ldquo;Enquiry source&rdquo; in Section 2).</li>
+        <li><strong>Resource and guide requests</strong> &mdash; your email address, and any other details the form asks for, when you request a free resource or subject guide.</li>
+        <li><strong>WhatsApp</strong> &mdash; if you contact us via WhatsApp, your phone number and message content are processed through WhatsApp LLC under its own privacy policy. A message started from a button on our website includes a short reference, such as <code>[ref: PRICING]</code>, naming the page you wrote from and, where there is one, the advertising source.</li>
       </ul>
       <p>We do not collect payment card data. All payment processing, if applicable, is handled by third-party providers under their own privacy policies.</p>
       <p>We do not knowingly collect personal data from children under 13 without verifiable parental consent.</p>
 
       <h2>2. Cookies and analytics</h2>
-      <p>Our website uses the following types of cookies and scripts:</p>
+      <p>Our website uses the following cookies, browser storage and scripts:</p>
       <ul>
         <li><strong>Essential cookies</strong> &mdash; required for the site to function correctly (e.g. your theme preference stored in <code>localStorage</code>).</li>
         <li><strong>Service worker cache</strong> &mdash; a service worker caches static assets for faster load times and offline access. No personal data is stored in this cache.</li>
-        <li><strong>Plausible Analytics</strong> &mdash; we use Plausible, a privacy-friendly, GDPR-compliant analytics tool that does not use cookies and does not collect personally identifiable information. Aggregate traffic data (page views, referrers, country) is recorded anonymously.</li>
+        <li><strong>Plausible Analytics</strong> &mdash; we use Plausible, a privacy-friendly, GDPR-compliant analytics tool that does not use cookies and does not collect personally identifiable information. Aggregate traffic data (page views, referrers, country) is recorded anonymously. We also count clicks on our WhatsApp, telephone and booking links, and the questions chosen in our help chat, together with the page on which they occurred; these counts are anonymous too.</li>
+        <li><strong>Enquiry source</strong> &mdash; while you browse, your browser keeps a note (in <code>sessionStorage</code>, which is cleared when you close the tab) of the first page you opened on our website, the website that sent you, if any, and any advertising tags in the link you followed (for example <code>utm_source</code>, or a Google or Facebook click ID). If you send us an enquiry or request a guide, this note is sent with the form, so that we know which page or advertisement led to it. It is not shared with anyone else.</li>
         {clarityEnabled && (
-          <li><strong>Microsoft Clarity</strong> &mdash; we use Clarity for anonymised heatmaps and session recordings to understand how visitors use the site and improve it. Clarity sets first-party cookies and, by default, masks sensitive content (text input is recorded as asterisks). Microsoft processes the data on our behalf and does not use it for advertising. See <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft&rsquo;s Privacy Statement</a>.</li>
+          <li><strong>Microsoft Clarity</strong> &mdash; we use Clarity for anonymised heatmaps and session recordings to understand how visitors use the site and improve it. Clarity sets first-party cookies and, by default, masks sensitive content (text input is recorded as asterisks). Microsoft processes the data on our behalf and does not use it for advertising. Clarity loads on every visit; if you prefer not to be recorded, you can block scripts from <code>clarity.ms</code> with a content-blocking extension or your browser&rsquo;s tracking protection, and the website works fully without it. See <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft&rsquo;s Privacy Statement</a>.</li>
         )}
       </ul>
       <p>We do not use Google Analytics, Facebook Pixel, or other third-party advertising trackers.</p>
@@ -48,7 +49,8 @@ const clarityEnabled = !!import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
       <p>We use the information you provide solely to:</p>
       <ul>
         <li>Respond to your enquiry or programme question</li>
-        <li>Send you the free resource you requested</li>
+        <li>Send you the free resource or guide you requested</li>
+        <li>Understand which pages and advertisements lead to enquiries, so that we can improve them</li>
         <li>Provide updates about our programmes, if you have opted in</li>
         <li>Improve our website and services based on aggregate usage data</li>
       </ul>

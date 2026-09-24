@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="IB or JC? Choosing the Right Path After O-Levels | A-Worthy" description="Honest IB Diploma vs JC A-Level comparison for Singapore: curriculum, assessment, workload, university recognition, and which suits your child." ogImage="/images/og-blog.png">
@@ -30,12 +31,12 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>We teach A-Level subjects at A-Worthy (H1 GP and H2 Economics), so our experience is grounded in the JC system. Several of our former students chose IB, though, and we have seen students do well on both paths.</p>
 
         <h2>The A-Level pathway (JC)</h2>
-        <p>The A-Level route is a <strong>2-year programme</strong> at one of Singapore&rsquo;s 15 government or government-aided junior colleges. Students choose 3 H2 subjects and 1 H1 subject (plus H1 General Paper and H1 Mother Tongue), for a total of roughly 5&ndash;6 examinable subjects. The curriculum is set by the Singapore-Cambridge GCE examination board, and assessment is almost entirely through <strong>final written exams</strong> at the end of JC2.</p>
+        <p>The A-Level route is a <strong>2-year programme</strong> at one of Singapore&rsquo;s 15 government or government-aided junior colleges. Students normally choose 3 H2 subjects and 1 H1 subject (four H2 subjects if the college&rsquo;s criteria are met), plus H1 General Paper, Project Work (graded pass or fail) and H1 Mother Tongue unless exempted. The curriculum is set by the Singapore-Cambridge GCE examination board, and assessment is almost entirely through <strong>final written exams</strong> at the end of JC2.</p>
 
         <h3>Key features</h3>
         <ul>
           <li><strong>Deep specialisation:</strong> Three H2 subjects studied in depth. Students who know they want to pursue medicine, law, or engineering can focus their subject combination accordingly.</li>
-          <li><strong>Exam-centric assessment:</strong> 85&ndash;100% of the grade comes from the final A-Level exams in November. There are no internal assessments, coursework submissions, or extended essays that count toward the final grade.</li>
+          <li><strong>Exam-centric assessment:</strong> 85&ndash;100% of each subject grade comes from the final A-Level exams in November. The main exception is Project Work, a group project graded pass or fail in JC 1, which every student must pass to be eligible for university.</li>
           <li><strong>Clear university prerequisites:</strong> Singapore&rsquo;s local universities (NUS, NTU, SMU) publish specific A-Level subject requirements for every course. The pathway is well-mapped.</li>
           <li><strong>Structured timetable:</strong> Schools set the schedule. Students attend lectures and tutorials with defined syllabi and assessment objectives.</li>
           <li><strong>Cost:</strong> JC tuition fees for Singapore citizens are nominal (around $25/month before subsidies).</li>
@@ -73,7 +74,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
               </tr>
               <tr>
                 <td class="compare-label">Subjects</td>
-                <td>3 H2 + 1 H1 + GP + MTL</td>
+                <td>3 H2 + 1 H1 (or 4 H2) + GP + MTL + Project Work</td>
                 <td>6 subjects (3 HL + 3 SL) + TOK + EE + CAS</td>
               </tr>
               <tr>
@@ -88,12 +89,12 @@ import AuthorBio from '../../components/AuthorBio.astro';
               </tr>
               <tr>
                 <td class="compare-label">Research component</td>
-                <td>None (for most subjects)</td>
+                <td>Project Work (group, pass or fail); optional H3 research programmes</td>
                 <td>Extended Essay (4,000 words)</td>
               </tr>
               <tr>
                 <td class="compare-label">Max score</td>
-                <td>90 rank points (with MTL &amp; PW)</td>
+                <td>70 points: 3 H2 + GP (the fourth subject and MTL count only if they raise the score)</td>
                 <td>45 points</td>
               </tr>
               <tr>
@@ -118,7 +119,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <h2>Five questions to help you decide</h2>
 
         <h3>1. Does your child already know what they want to study at university?</h3>
-        <p>If the answer is <strong>yes</strong>, the A-Level track has a structural advantage. Three H2 subjects studied in depth let students build a strong foundation in their target field. Medical schools want H2 Chemistry and H2 Biology. Engineering wants H2 Mathematics and H2 Physics. The pathway from subject choice to university requirement is direct.</p>
+        <p>If the answer is <strong>yes</strong>, the A-Level track has a structural advantage. Three H2 subjects studied in depth let students build a strong foundation in their target field. NUS and NTU Medicine require H2 Chemistry with H2 Biology or Physics. NUS Engineering requires H2 Mathematics; NTU Engineering requires H2 Mathematics and an H2 science. The pathway from subject choice to university requirement is direct.</p>
         <p>If the answer is <strong>no</strong> or <strong>not sure</strong>, the IB&rsquo;s breadth can be an advantage. Studying six subjects across disciplines gives students more time to discover where their interests lie. The Extended Essay also lets students explore a niche topic without committing to an entire subject combination around it.</p>
 
         <h3>2. How does your child handle long-term projects?</h3>
@@ -144,7 +145,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>Not true. NUS, NTU, SMU, and SUTD all accept IB scores. Many top-scoring IB students choose to study in Singapore. The IB is a valid pathway for any post-secondary destination.</p>
 
         <h3>&ldquo;A-Levels lock you into one career path&rdquo;</h3>
-        <p>Also not true. While A-Level subject combinations do influence university course eligibility, most JC students change their career plans at least once during or after JC. A strong A-Level score in any combination opens a wide range of university options. Heading to JC yourself? Our <a href="/jc-subject-combinations/">JC subject combination advisor</a> suggests common H2/H1 pairings by direction.</p>
+        <p>Also not true. While A-Level subject combinations do influence university course eligibility, most JC students change their career plans at least once during or after JC. A strong A-Level score in any combination opens a wide range of university options. Heading to JC yourself? Our <a href="/jc-subject-combinations/">JC subject combination advisor</a> suggests common H2/H1 pairings by direction, and our <a href="/blog/choosing-jc-subject-combinations/">guide to choosing a JC subject combination</a> sets out the rules and each university&rsquo;s subject requirements.</p>
 
         <h3>&ldquo;You should pick whichever has the higher cut-off point&rdquo;</h3>
         <p>Cut-off points measure demand, not quality of education. A JC with a COP of 12 may be a better fit for a particular student than one with a COP of 6. Use cut-off points as eligibility filters, not as rankings of educational value.</p>
@@ -155,7 +156,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>The best preparation for either pathway is the same: build exam skills in the subjects that count, close the gap between what your child knows and what they can demonstrate under pressure, and keep options open until results day.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Preparing for either pathway?</h3>
         <p>English and Maths count in every student&rsquo;s L1R5, for JC and IB alike. Book a free diagnostic to see where your child can gain points.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>

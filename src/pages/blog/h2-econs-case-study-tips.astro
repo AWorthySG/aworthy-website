@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="H2 Econs Case Study: Score L3 Every Time | A-Worthy" description="Step-by-step approach to H2 Economics case study questions. Master extract analysis, data interpretation, diagrams & evaluation to score L3." ogImage="/images/og-econs.png">
@@ -95,19 +96,20 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>This answer moves through all four stages: definition (L1), application with reasoning (L2), case-specific evidence (L2-L3), and conditional evaluation with data support (L3). Notice that every claim is anchored to the case material — no point is made in the abstract.</p>
 
         <h2>Time management for the case study paper</h2>
-        <p>The case study paper gives you two questions totalling 40 marks in 90 minutes. A common mistake is spending too long on the first question's sub-parts (which tend to be lower-value) and rushing the higher-value parts at the end. Allocate time strictly:</p>
+        <p>Paper 1 gives you two case studies of 30 marks each: 60 marks in 2 hours 30 minutes, or about 75 minutes per case study. A common mistake is spending too long on the first question's sub-parts (which tend to be lower-value) and rushing the higher-value parts at the end. Allocate time strictly:</p>
         <ul>
-          <li><strong>Initial reading and annotation:</strong> 10 minutes</li>
+          <li><strong>Initial reading and annotation:</strong> 10 minutes per case study</li>
           <li><strong>2-mark parts:</strong> 4 minutes each</li>
           <li><strong>4-mark parts:</strong> 7 minutes each</li>
           <li><strong>6-mark parts:</strong> 10 minutes each</li>
           <li><strong>8- to 10-mark parts:</strong> 15 minutes each</li>
-          <li><strong>Review:</strong> 5 minutes</li>
+          <li><strong>Review:</strong> 5 minutes per case study</li>
         </ul>
         <p>Write the time allocation next to each question before you start. This one habit prevents the most common failure on the case study paper: running out of time on the highest-value questions.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm subject="econ" headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Want to consistently score L3?</h3>
         <p>Book a free diagnostic assessment to find out where your case study answers lose marks, and how the SHARP Method (See, Hit, Apply, Refine, Practise) and its paper-matched frameworks deal with each gap.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>

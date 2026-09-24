@@ -11,6 +11,7 @@ const stories = [
     after: 'A2',
     duration: '3 months',
     subject: 'O-Level English',
+    subjectKey: 'english',
     quote: '"I used to dread comprehension passages. Now I actually enjoy pulling them apart — it\'s like solving a puzzle."',
     quoteAttr: '— Sarah T., Sec 4',
     paragraphs: [
@@ -30,6 +31,7 @@ const stories = [
     after: 'B3',
     duration: '4 months',
     subject: 'O-Level English',
+    subjectKey: 'english',
     quote: '"My parents couldn\'t believe the change. I went from failing English to actually looking forward to the exam."',
     quoteAttr: '— Marcus L., Sec 4',
     paragraphs: [
@@ -49,6 +51,7 @@ const stories = [
     after: 'A1',
     duration: '5 months',
     subject: 'O-Level English',
+    subjectKey: 'english',
     quote: '"The SHARP Method didn\'t just help me in English — it changed how I think about every subject."',
     quoteAttr: '— Priya K., Sec 4',
     paragraphs: [
@@ -68,6 +71,7 @@ const stories = [
     after: 'A2',
     duration: '2 months',
     subject: 'O-Level English',
+    subjectKey: 'english',
     quote: '"I was so close to an A but couldn\'t figure out what was missing. A-Worthy showed me exactly what examiners want."',
     quoteAttr: '— Wei Jie C., Sec 4',
     paragraphs: [
@@ -87,6 +91,7 @@ const stories = [
     after: 'B',
     duration: '6 months',
     subject: 'H1 General Paper',
+    subjectKey: 'gp',
     quote: '"GP felt like a guessing game until A-Worthy. The frameworks made every question answerable — I always knew where to start."',
     quoteAttr: '— Aisha M., JC2',
     paragraphs: [
@@ -106,6 +111,7 @@ const stories = [
     after: 'A',
     duration: '8 months',
     subject: 'H2 Economics',
+    subjectKey: 'econ',
     quote: '"I went from blank-staring at case studies to actually enjoying them. The DEED structure changed everything for me."',
     quoteAttr: '— Daniel O., JC2',
     paragraphs: [
@@ -131,6 +137,9 @@ const stories = [
       <span class="eyebrow">Success Stories</span>
       <h1>Real students, real <span class="accent-word">transformations</span></h1>
       <p class="hero-subtitle">Six students across O-Level English, H1 General Paper and H2 Economics: where each one started, what changed with the SHARP Method (See, Hit, Apply, Refine, Practise), and the grade they finished with.</p>
+      <div class="hero-actions" data-track="hero">
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+      </div>
     </div>
     <img src="/images/mascots/mascot-family.webp" alt="" width="480" height="477" class="sticker sticker--hero" />
   </section>
@@ -143,7 +152,7 @@ const stories = [
           <div class="story-header">
             <div class="story-grade-change">
               <span class="grade grade-before chip chip--pink">{story.before}</span>
-              <span class="grade-arrow" aria-label="to">
+              <span class="grade-arrow"><span class="sr-only">to</span>
                 <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </span>
               <span class="grade grade-after chip chip--green">{story.after}</span>
@@ -180,18 +189,22 @@ const stories = [
             <p>{story.quote}</p>
             <cite>{story.quoteAttr}</cite>
           </blockquote>
+
+          <div class="story-cta" data-track="story">
+            <a href={`/contact/?subject=${story.subjectKey}`} class="btn btn-accent">Book Free Assessment</a>
+          </div>
         </article>
       ))}
     </div>
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="section cta-section">
+  <section class="section cta-section" data-track="final-cta">
     <div class="container" style="text-align: center; max-width: 40rem;">
       <span class="eyebrow">Your Turn</span>
       <h2 class="section-heading text-center">Your child could be next</h2>
       <p class="cta-desc">Every story on this page started with a free diagnostic assessment. Book one and you&rsquo;ll receive a written summary of your child&rsquo;s gaps and the programme we recommend.</p>
-      <a href="/contact/" class="btn btn-accent plausible-event-name=CTA+Click">Book Free Assessment</a>
+      <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
     </div>
   </section>
 
@@ -229,6 +242,11 @@ const stories = [
     line-height: 1.7;
     max-width: 500px;
     margin: 0 auto;
+  }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
   }
 
   /* ===== STORY CARDS — white ink stickers that lift on hover ===== */
@@ -411,6 +429,11 @@ const stories = [
     font-weight: 700;
   }
 
+  /* Booking button closing each story */
+  .story-cta {
+    margin-top: 1.25rem;
+  }
+
   /* CTA */
   .cta-section {
     background: var(--bg-secondary);
@@ -434,11 +457,12 @@ const stories = [
     .story-card {
       display: grid;
       grid-template-columns: minmax(0, 62ch) minmax(18rem, 1fr);
-      grid-template-rows: auto auto 1fr;
+      grid-template-rows: auto auto auto 1fr;
       grid-template-areas:
         "head head"
         "body timeline"
-        "body quote";
+        "body quote"
+        "body cta";
       column-gap: 2.5rem;
     }
     .story-header { grid-area: head; }
@@ -451,6 +475,10 @@ const stories = [
     }
     .story-quote {
       grid-area: quote;
+      align-self: start;
+    }
+    .story-cta {
+      grid-area: cta;
       align-self: start;
     }
   }

@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+import '../../styles/blog.css';
+import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
+---
+
+<BaseLayout title="How to Choose a JC Subject Combination | A-Worthy" description="The rules, university prerequisites and strategic choices behind a JC subject combination, for students entering JC 1 in 2027. From MOE, NUS and NTU." ogImage="/images/og-blog.png">
+  <Header slot="header" />
+
+  <article class="blog-post">
+    <div class="container">
+      <div class="blog-post-header">
+        <a href="/blog/" class="blog-back">&larr; Back to Blog</a>
+        <span class="blog-tag chip chip--gold">Admissions</span>
+        <h1>Choosing Your JC Subject Combination: Rules, Prerequisites and Strategy</h1>
+        <div class="blog-post-meta">
+          <a class="blog-author" href="/about/" rel="author">By Jeremy Lim, Founder</a>
+          <span>&middot;</span>
+          <time datetime="2026-09-23">23 September 2026</time>
+          <span>&middot;</span>
+          <span class="blog-reading-time">11 min read</span>
+        </div>
+      </div>
+      <div class="blog-post-body">
+        <p>This guide is for students entering JC 1 in February 2027 and their parents. That cohort sits the A-Level in 2028 and applies to university for the 2029 intake. Most junior colleges ask students to register their subject combination in the first days of JC 1, so the decision comes quickly, often before a student has attended a single lesson.</p>
+        <p>The guide covers the rules every combination must meet, how the university admission score is calculated, which university courses require which subjects, and the strategic choices that follow. The rules come from the Ministry of Education (MOE); the course requirements come from NUS, NTU and SUTD. The sources are listed at the end, all checked on 23 September 2026.</p>
+
+        <h2>What every JC student takes</h2>
+        <table class="table-stack">
+          <thead><tr><th>Component</th><th>Rule for the 2027 JC 1 cohort</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Component">Four content-based subjects</td><td data-label="Rule for the 2027 JC 1 cohort">Normally three at H2 and one at H1. MOE calls this the &ldquo;norm subject combination&rdquo;. Four H2 subjects are possible if the college&rsquo;s entry criteria are met.</td></tr>
+            <tr><td data-label="Component">A contrasting subject</td><td data-label="Rule for the 2027 JC 1 cohort">At least one of the four, at H1 or H2, must come from outside the student&rsquo;s main domain. See the next section.</td></tr>
+            <tr><td data-label="Component">H1 General Paper</td><td data-label="Rule for the 2027 JC 1 cohort">Compulsory for every student. Knowledge and Inquiry is no longer taken in place of GP.</td></tr>
+            <tr><td data-label="Component">Project Work</td><td data-label="Rule for the 2027 JC 1 cohort">Taken in JC 1 and graded Pass or Fail. It no longer counts as an H1 subject, but a Pass is required for admission to the autonomous universities.</td></tr>
+            <tr><td data-label="Component">H1 Mother Tongue</td><td data-label="Rule for the 2027 JC 1 cohort">Required unless the student scored D7 or better in Higher Mother Tongue at O-Level. Students on the Mother Tongue &lsquo;B&rsquo; syllabus continue with it.</td></tr>
+            <tr><td data-label="Component">H3 (optional)</td><td data-label="Rule for the 2027 JC 1 cohort">Taken in JC 2 with the matching H2 subject, by selection. Each college sets its own bar.</td></tr>
+          </tbody>
+        </table>
+        <p>In total a student carries 10 to 12 academic units: 2 for each H2 subject, 1 for each H1 subject and 1 for Project Work.</p>
+
+        <h2>How universities score the A-Level</h2>
+        <p>Since the 2025 A-Level, the University Admission Score (UAS) has a maximum of <strong>70 points</strong>. MOE states it is &ldquo;calculated from the candidate&rsquo;s performance for their 3 H2 subjects and H1 General Paper&rdquo;: 20 points for each H2 and 10 for GP.</p>
+        <ul>
+          <li>The <strong>fourth content subject</strong> and <strong>Mother Tongue</strong> are included only if they raise the score, which is then rebased to 70.</li>
+          <li><strong>Project Work</strong> is not scored, but a student who fails it is not eligible for university admission.</li>
+          <li><strong>H3</strong> is not counted in the score. NTU states that H3 work may support an application under aptitude-based admissions.</li>
+        </ul>
+        <p>Three H2 grades and GP therefore carry the score. MOE&rsquo;s stated aim for the change was to let students choose their fourth subject &ldquo;by interest without being overly concerned by examination grades&rdquo;.</p>
+
+        <h2>The contrasting-subject rule</h2>
+        <p>MOE groups A-Level subjects into two domains:</p>
+        <ul>
+          <li><strong>Mathematics and Sciences:</strong> Mathematics, Further Mathematics, Physics, Chemistry, Biology, Computing, and Principles of Accounting.</li>
+          <li><strong>Humanities and the Arts:</strong> Economics, Geography, History, Literature in English, Art, Music, Theatre Studies and Drama, China Studies, English Language and Linguistics, the Language and Literature subjects, and the H2 foreign languages.</li>
+        </ul>
+        <p>A science student must offer at least one subject from the humanities domain, and an arts student at least one from the mathematics and sciences domain. Three details are often misunderstood:</p>
+        <ol>
+          <li><strong>The contrasting subject can be H1 or H2.</strong> It does not have to be the H1.</li>
+          <li><strong>A combination that already mixes domains meets the rule.</strong> H2 Physics, H2 Chemistry and H2 Economics already contains a humanities subject, so the H1 can come from either domain. The same applies to H2 Economics, H2 Mathematics and H2 History.</li>
+          <li><strong>Knowledge and Inquiry counts as contrasting for both streams.</strong> An H1 foreign language counts as a content subject but not as a contrasting one, unless it is taken in place of Mother Tongue.</li>
+        </ol>
+
+        <h2>What the colleges ask for</h2>
+        <p>MOE assumes O-Level knowledge for four A-Level subjects: Mathematics, Physics, Chemistry and Biology. SEAB&rsquo;s H2 Mathematics syllabus assumes O-Level Additional Mathematics. Students without the assumed knowledge may still take the subject but must close the gap themselves. Colleges set their own bars on top of this. Two published examples:</p>
+        <ul>
+          <li>Eunoia JC gives an indicative cut-off of B3 in the O-Level subject for H2 Biology, Chemistry and Physics, and A1 in Additional Mathematics for H2 Further Mathematics.</li>
+          <li>Tampines Meridian JC lists O-Level Additional Mathematics as assumed knowledge for H2 Mathematics, and requires an L1R5 raw score of 11 or better to offer four H2 subjects.</li>
+        </ul>
+        <p>Several subjects need no O-Level background at all: Economics, Geography, History, Literature in English and China Studies are open to any student. Computing, Further Mathematics, Knowledge and Inquiry, Theatre Studies and Art usually require a college selection or diagnostic test. Not every college offers every subject, and a combination runs only if enough students choose it. Tampines Meridian JC, for example, sets a minimum of 15.</p>
+
+        <h2>What the universities require</h2>
+        <p>The table lists the subject requirements the universities published for the 2026 intake. They can change before the 2029 intake, so check them again in JC 2. NUS describes some grades as a &ldquo;good pass&rdquo; or &ldquo;very good pass&rdquo;, and NTU as a &ldquo;good grade&rdquo;, without defining them as letter grades.</p>
+        <table class="table-stack">
+          <thead><tr><th>Course</th><th>Subject requirement</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Course">Medicine (NUS, NTU) and Dentistry (NUS)</td><td data-label="Subject requirement">H2 Chemistry, and H2 Biology or H2 Physics. NTU also requires the UCAT and an interview; NUS requires a portfolio and interview.</td></tr>
+            <tr><td data-label="Course">Pharmacy (NUS)</td><td data-label="Subject requirement">Very good pass in H2 Chemistry, and a very good pass in H2 Biology, Physics, Mathematics or Further Mathematics</td></tr>
+            <tr><td data-label="Course">Engineering (NUS)</td><td data-label="Subject requirement">H2 Mathematics or Further Mathematics. Physics is not required.</td></tr>
+            <tr><td data-label="Course">Engineering (NTU)</td><td data-label="Subject requirement">H2 Mathematics, and H2 Physics, Chemistry, Biology or Computing</td></tr>
+            <tr><td data-label="Course">Computer Science (NUS)</td><td data-label="Subject requirement">H2 Computing, Mathematics, Further Mathematics or Physics; or a good pass in H1 Mathematics</td></tr>
+            <tr><td data-label="Course">Computer Science (NTU)</td><td data-label="Subject requirement">H2 Mathematics, or H2 Physics or Computing</td></tr>
+            <tr><td data-label="Course">Business Analytics (NUS); Data Science and Economics (NUS)</td><td data-label="Subject requirement">H2 Mathematics (Data Science and Economics: a very good pass)</td></tr>
+            <tr><td data-label="Course">Business Administration (NUS)</td><td data-label="Subject requirement">H1 Mathematics, or O-Level Additional Mathematics</td></tr>
+            <tr><td data-label="Course">Business and Accountancy (NTU)</td><td data-label="Subject requirement">H1 Mathematics or O-Level Additional Mathematics, and a good grade in GP</td></tr>
+            <tr><td data-label="Course">Economics and Psychology (NTU)</td><td data-label="Subject requirement">A good grade in H1 Mathematics, and a good grade in GP. NTU&rsquo;s Economics double majors with data science need a good grade in H2 Mathematics.</td></tr>
+            <tr><td data-label="Course">Biological Sciences (NTU)</td><td data-label="Subject requirement">H1 Mathematics, and H2 Physics, Chemistry or Biology</td></tr>
+            <tr><td data-label="Course">Nursing (NUS)</td><td data-label="Subject requirement">H2 passes in any two of Biology, Chemistry, Computing, Physics and Mathematics</td></tr>
+            <tr><td data-label="Course">Architecture (NUS)</td><td data-label="Subject requirement">H1 Chemistry, Mathematics or Physics, or O-Level Additional Mathematics</td></tr>
+            <tr><td data-label="Course">Law (NUS)</td><td data-label="Subject requirement">No subject requirement. At least a B in GP (or an SAT reading and writing score of 700 with at least an E in GP), plus an interview.</td></tr>
+            <tr><td data-label="Course">SUTD (all programmes)</td><td data-label="Subject requirement">No required subject. H2 Mathematics with H2 Physics or Chemistry is recommended.</td></tr>
+          </tbody>
+        </table>
+        <p>SMU&rsquo;s admissions pages could not be checked for this article. Check SMU&rsquo;s requirements directly at admissions.smu.edu.sg.</p>
+        <p>Four patterns stand out.</p>
+        <ul>
+          <li><strong>H2 Chemistry is the gate to medicine, dentistry and pharmacy.</strong> Biology is not strictly required for medicine: Physics is accepted in its place. H1 Biology does not meet an H2 requirement.</li>
+          <li><strong>H2 Mathematics is required mainly for engineering, business analytics and data science.</strong> Most business, accountancy, economics and psychology courses ask only for H1 Mathematics or O-Level Additional Mathematics.</li>
+          <li><strong>Economics is not a prerequisite for any course listed here</strong>, including business.</li>
+          <li><strong>GP carries direct requirements</strong> for NUS Law and for NTU Business, Accountancy, Economics and Psychology, on top of its 10 points in the score.</li>
+        </ul>
+
+        <h2>Strategic choices</h2>
+        <h3>1. Protect the gate subjects first</h3>
+        <p>A missing prerequisite cannot be repaired after the A-Level. If medicine, dentistry or pharmacy is a real possibility, H2 Chemistry is fixed, with H2 Biology or Physics beside it. If engineering or data science is possible, H2 Mathematics is fixed. H2 Chemistry, H2 Mathematics and either H2 Biology or H2 Physics meet the subject requirements for every health, engineering and computing course in the table above.</p>
+
+        <h3>2. Choose the H2 subjects the student can sustain</h3>
+        <p>The score rests on three H2 grades and GP. Each H2 runs for two years and is examined in one sitting at the end. A subject chosen for how it looks on paper, but disliked or weak at O-Level, is a risk to the score that no fourth subject can offset. Where no prerequisite forces the choice, choose from the student&rsquo;s strongest O-Level results and genuine interest.</p>
+
+        <h3>3. Use the fourth subject as a hedge or for interest</h3>
+        <p>Because the fourth subject counts only if it raises the score, it can do one of two jobs:</p>
+        <ul>
+          <li><strong>A hedge.</strong> An arts student with no H2 Mathematics who might apply for economics or psychology at NTU needs a good grade in H1 Mathematics. Taking H1 Mathematics as the fourth subject keeps those routes open, and also covers NUS Business and NTU Business without relying on an O-Level Additional Mathematics grade.</li>
+          <li><strong>Interest.</strong> A subject the student would enjoy, such as Literature, Geography or History for a science student, with little risk to the score.</li>
+        </ul>
+
+        <h3>4. Take four H2 subjects only for a clear reason</h3>
+        <p>Colleges admit students to four H2 subjects only above an L1R5 bar. The colleges checked set it between 9 and 12, sometimes with subject grades as well. The score still rests on the best three H2 grades and GP. A fourth H2 adds a full subject&rsquo;s workload for two years and raises the score only if it helps. It makes sense when a student is undecided between two routes that need different H2 subjects, such as Biology for medicine and Physics for engineering, and can carry the load. Some colleges let a student drop the fourth H2 to H1 later; others require a C or better in every H2 at the JC 1 promotional examinations to keep all four. Check the college&rsquo;s rule before relying on it.</p>
+
+        <h3>5. Treat Economics as a new subject</h3>
+        <p>Economics is the most common contrasting subject for science students and a core subject for many arts students. No O-Level background is assumed. It asks for skills that differ from Social Studies: defining terms precisely, explaining a chain of cause and effect, drawing and reading diagrams, and weighing policy options. Students who choose it should expect a new way of writing, not a continuation of an O-Level subject.</p>
+
+        <h3>6. Plan H3 for JC 2, not JC 1</h3>
+        <p>H3 is taken in JC 2 with the matching H2, usually after strong JC 1 promotional results. Colleges set their own bar: one requires a distinction in the subject and at least a B in every other H2; another offers H3 to about the top tenth of its cohort. H3 does not count in the score, so it is worth taking only when the H2 grades are secure.</p>
+
+        <h3>7. Check the college before you rank it</h3>
+        <p>If a subject such as Computing, Further Mathematics, Theatre Studies, a Language and Literature subject or a foreign language matters to the student, confirm that the college offers it and how students are selected before listing that college in the Joint Admissions Exercise. Combinations are allocated in the first days of JC 1 according to O-Level results and vacancies, and a switch later depends on the college and on space.</p>
+
+        <h2>A decision sequence</h2>
+        <ol>
+          <li>List two or three degree areas the student might apply for.</li>
+          <li>Note each one&rsquo;s subject requirement from the university table.</li>
+          <li>Mark the subjects that appear in every list. These are the fixed H2 subjects.</li>
+          <li>Fill the remaining H2 places with the student&rsquo;s strongest and most interesting subjects.</li>
+          <li>Check the contrasting-subject rule across all four subjects.</li>
+          <li>Choose the fourth subject as a hedge or for interest.</li>
+          <li>Check the college&rsquo;s offer, its entry criteria and its registration dates.</li>
+          <li>Recheck the university requirements in JC 2, before applying.</li>
+        </ol>
+
+        <h2>Common combinations and what they keep open</h2>
+        <table class="table-stack">
+          <thead><tr><th>Combination</th><th>Meets the subject requirements for</th><th>Rules out</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Combination">H2 Physics, Chemistry, Mathematics + H1 Economics</td><td data-label="Meets the subject requirements for">Medicine and dentistry (Chemistry with Physics), pharmacy, engineering at NUS and NTU, computer science, nursing</td><td data-label="Rules out">None of the health, engineering or computing courses in the table</td></tr>
+            <tr><td data-label="Combination">H2 Biology, Chemistry, Mathematics + H1 Economics</td><td data-label="Meets the subject requirements for">Medicine, dentistry, pharmacy, nursing, biological sciences, engineering at NUS and NTU, computer science at NUS and NTU</td><td data-label="Rules out">None of the health, engineering or computing courses in the table</td></tr>
+            <tr><td data-label="Combination">H2 Chemistry, Mathematics, Economics + H1 Biology</td><td data-label="Meets the subject requirements for">Pharmacy, engineering at NUS and NTU, computer science, business analytics, nursing</td><td data-label="Rules out">Medicine and dentistry, which need H2 Biology or H2 Physics beside Chemistry. H1 Biology does not count.</td></tr>
+            <tr><td data-label="Combination">H2 Economics, Mathematics, History (or Geography or Literature) + H1 subject</td><td data-label="Meets the subject requirements for">Business analytics and data science courses that need H2 Mathematics, NUS Engineering (H2 Mathematics), law, and the business, economics and psychology courses in the table</td><td data-label="Rules out">Medicine, dentistry, pharmacy, nursing, NTU Engineering, NTU Biological Sciences</td></tr>
+            <tr><td data-label="Combination">H2 Economics, History, Literature + H1 Mathematics</td><td data-label="Meets the subject requirements for">Law, NUS Business, NTU Business and Accountancy, NTU Economics and Psychology (with good H1 Mathematics and GP grades), NUS Architecture</td><td data-label="Rules out">Medicine, dentistry, pharmacy, nursing, engineering, computer science at NTU, business analytics and data science</td></tr>
+          </tbody>
+        </table>
+        <p>Meeting a subject requirement makes an application eligible. Admission still depends on the score, and for some courses on interviews, tests or portfolios.</p>
+
+        <h2>Where A-Worthy fits</h2>
+        <p>We teach <a href="/h1-general-paper/">H1 General Paper</a>, which every student takes and which carries 10 of the 70 points, and <a href="/h2-economics/">H2 Economics</a>, the subject most students meet for the first time in JC 1. Both are taught in groups of up to six, with the same named frameworks for every question type. Our <a href="/jc-subject-combinations/">JC subject-combination advisor</a> suggests combinations to discuss with your college.</p>
+
+        <h3>Sources</h3>
+        <ul>
+          <li>MOE, <a href="https://www.moe.gov.sg/post-secondary/a-level-curriculum-and-subject-syllabuses" rel="noopener" target="_blank">A-Level curriculum and subject syllabuses</a>, and &ldquo;Important Notes on Subjects Offered for Pre-U Course&rdquo; (August 2023)</li>
+          <li>MOE, <a href="https://www.moe.gov.sg/news/press-releases/20230301-learn-for-life-forging-our-collective-future-nurturing-diverse-talents-and-expanding-pathways" rel="noopener" target="_blank">Learn for Life: forging our collective future</a> (1 March 2023)</li>
+          <li>MOE, <a href="https://www.moe.gov.sg/news/press-releases/20260227-release-of-the-2025-singapore-cambridge-gce-a-level-examination-results" rel="noopener" target="_blank">Release of the 2025 GCE A-Level examination results</a> (27 February 2026)</li>
+          <li>NUS Office of Admissions, <a href="https://nus.edu.sg/oam/docs/default-source/admissions/h1-h2-sdp.pdf" rel="noopener" target="_blank">A-Level subject prerequisites</a> (December 2025) and <a href="https://www.nus.edu.sg/oam/docs/default-source/singapore-cambridge-gce-a-level/faqs-on-revised-uas-computation.pdf" rel="noopener" target="_blank">FAQs on the revised UAS computation</a> (February 2026)</li>
+          <li>NTU, <a href="https://www.ntu.edu.sg/media/docs/default-source/undergraduate-admissions/msr/emsr_alevel.pdf" rel="noopener" target="_blank">Minimum subject requirements, A-Level</a> (February 2026)</li>
+          <li>SUTD, <a href="https://www.sutd.edu.sg/admissions/undergraduate/singapore-cambridge-gce-a-level/criteria-for-admission" rel="noopener" target="_blank">Criteria for admission, A-Level</a></li>
+          <li>College pages: <a href="https://www.eunoiajc.moe.edu.sg/subject-combinations/" rel="noopener" target="_blank">Eunoia JC</a>, <a href="https://www.tmjc.moe.edu.sg/our-total-curriculum/instructional-programmes/subject-combinations/" rel="noopener" target="_blank">Tampines Meridian JC</a>, <a href="https://www.yijc.moe.edu.sg/curriculum/subject-combi-and-eligibility/subject-combinations-criteria/" rel="noopener" target="_blank">Yishun Innova JC</a>, <a href="https://www.standrewsjc.moe.edu.sg/admissions/subject-combinations/" rel="noopener" target="_blank">St Andrew&rsquo;s JC</a>, <a href="https://www.cjc.moe.edu.sg/education/humanities/economics/" rel="noopener" target="_blank">Catholic JC</a></li>
+        </ul>
+        <p>Rules and requirements change. Where a source above and this summary differ, the source is correct.</p>
+      </div>
+      <AuthorBio />
+      <GuideForm headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
+        <h3>Starting JC in 2027?</h3>
+        <p>Book a free 20-minute assessment for H1 General Paper or H2 Economics. We&rsquo;ll look at a recent essay or O-Level paper and tell you where to start.</p>
+        <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>
+        <p class="cta-secondary">Still deciding? Try our <a href="/jc-subject-combinations/">JC subject-combination advisor</a>.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="blog-related">
+    <div class="container">
+      <h2 class="related-heading">Related Articles</h2>
+      <div class="blog-related-grid">
+        <a href="/blog/ib-vs-jc/" class="blog-related-card">
+          <span class="related-card-tag">Admissions</span>
+          <h3>IB or JC? How to Choose the Right Path After O-Levels</h3>
+          <p>Curriculum, assessment, workload and university recognition, compared.</p>
+        </a>
+        <a href="/blog/o-level-cut-off-points/" class="blog-related-card">
+          <span class="related-card-tag">Admissions</span>
+          <h3>O-Level Cut-Off Points for JC</h3>
+          <p>The L1R5 cut-off for every JC, and how the aggregate is calculated.</p>
+        </a>
+        <a href="/h2-economics/" class="blog-related-card blog-related-card--programme">
+          <span class="related-card-tag">Programme</span>
+          <h3>H2 Economics Tuition</h3>
+          <p>The DEED essay structure, case-study frameworks and diagram practice, for JC 1 and JC 2.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Choosing Your JC Subject Combination: Rules, Prerequisites and Strategy",
+    "description": "The rules, university prerequisites and strategic choices behind a JC subject combination, for students entering JC 1 in 2027. From MOE, NUS and NTU.",
+    "image": "https://a-worthy.com/images/og-blog.png",
+    "inLanguage": "en-SG",
+    "articleSection": "Admissions",
+    "wordCount": 2329,
+    "author": {
+      "@type": "Person",
+      "name": "Jeremy Lim",
+      "jobTitle": "Founder & Lead Tutor",
+      "url": "https://a-worthy.com/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "A-Worthy",
+      "url": "https://a-worthy.com",
+      "logo": {"@type": "ImageObject", "url": "https://a-worthy.com/images/logo-grade-a.png"}
+    },
+    "datePublished": "2026-09-23",
+    "dateModified": "2026-09-23",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://a-worthy.com/blog/choosing-jc-subject-combinations/"
+    }
+  })} />
+
+  <Footer slot="footer" />
+</BaseLayout>

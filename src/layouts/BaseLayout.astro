@@ -60,6 +60,7 @@ const breadcrumbLabels: Record<string, string> = {
   'o-level-english-tips': 'O-Level English Tips',
   'o-level-cut-off-points': 'O-Level Cut-Off Points',
   'sec-examination-guide': 'SEC Examination Guide',
+  'choosing-jc-subject-combinations': 'Choosing JC Subjects',
   'ib-vs-jc': 'IB vs JC',
   'maths-tuition': 'Maths Tuition',
   'o-level-maths-common-mistakes': 'O-Level Maths Mistakes',
@@ -219,8 +220,176 @@ const schemaData = {
 
   <link rel="preconnect" href="https://plausible.io" />
 
-  <!-- Analytics -->
+  <!-- Analytics. The queue stub comes first, so any script may call
+       window.plausible(name, { props }) before Plausible has loaded; the
+       script sends the queued events when it arrives. -->
+  <script is:inline>
+    window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };
+  </script>
   <script defer data-domain="a-worthy.com" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+  <!-- Attribution, WhatsApp reference codes and click tracking -->
+  <script is:inline>
+    (function () {
+      /*
+       * First-touch attribution for the browser session (sessionStorage
+       * 'aw-attr'): the first page of the session, the referrer when it is
+       * another site, and the advert tags. A later page view that carries
+       * advert tags fills them in only if the record has none. Enquiry forms
+       * (form[data-lead-form]) receive the record as hidden inputs, so the
+       * owner's inbox shows which page and advert each enquiry came from.
+       * Storage throws when a browser blocks it, so every call is guarded;
+       * without storage the record simply describes the current page view.
+       */
+      var STORE = 'aw-attr';
+      var TAGS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+      var FIELDS = ['landing_page', 'referrer'].concat(TAGS);
+      var i;
+      function clip(v, max) { return String(v).slice(0, max || 200); }
+
+      var params = null;
+      try { params = new URLSearchParams(location.search); } catch (e) {}
+      var incoming = {}, incomingAny = false;
+      for (i = 0; i < TAGS.length; i++) {
+        var v = params ? params.get(TAGS[i]) : null;
+        incoming[TAGS[i]] = v ? clip(v) : '';
+        if (v) incomingAny = true;
+      }
+
+      var rec = null;
+      try { rec = JSON.parse(sessionStorage.getItem(STORE) || 'null'); } catch (e) {}
+      var changed = false;
+      if (!rec || typeof rec !== 'object') {
+        var ref = '';
+        try {
+          if (document.referrer && new URL(document.referrer).host !== location.host) ref = clip(document.referrer, 300);
+        } catch (e) {}
+        rec = { landing_page: location.pathname, referrer: ref };
+        for (i = 0; i < TAGS.length; i++) rec[TAGS[i]] = incoming[TAGS[i]];
+        changed = true;
+      } else if (incomingAny) {
+        var storedAny = false;
+        for (i = 0; i < TAGS.length; i++) if (rec[TAGS[i]]) storedAny = true;
+        if (!storedAny) {
+          for (i = 0; i < TAGS.length; i++) rec[TAGS[i]] = incoming[TAGS[i]];
+          changed = true;
+        }
+      }
+      if (changed) { try { sessionStorage.setItem(STORE, JSON.stringify(rec)); } catch (e) {} }
+
+      window.aworthyAttribution = function () {
+        var out = {};
+        for (var j = 0; j < FIELDS.length; j++) out[FIELDS[j]] = rec[FIELDS[j]] ? String(rec[FIELDS[j]]) : '';
+        out.source_page = location.pathname;
+        return out;
+      };
+
+      // Hidden inputs for a lead form, skipping any name the form already has.
+      window.aworthyAttachAttribution = function (form) {
+        if (!form || !form.elements) return;
+        var data = window.aworthyAttribution();
+        for (var k in data) {
+          if (form.elements.namedItem(k)) continue;
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = k;
+          input.value = data[k];
+          form.appendChild(input);
+        }
+      };
+
+      // WhatsApp reference code for this page, plus the session's advert source.
+      var WA_CODES = {
+        '/': 'HOME', '/contact/': 'CONTACT', '/pricing/': 'PRICING',
+        '/o-level-english/': 'EN', '/o-level-mathematics/': 'MA', '/pre-ib-mathematics/': 'PIB',
+        '/h1-general-paper/': 'GP', '/h2-economics/': 'EC',
+        '/lp/english-tuition/': 'LP-EN', '/lp/maths-tuition/': 'LP-MA',
+        '/lp/gp-tuition/': 'LP-GP', '/lp/econs-tuition/': 'LP-EC'
+      };
+      window.aworthyWaRef = function () {
+        var p = location.pathname.replace(/index\.html$/, '');
+        if (p.charAt(p.length - 1) !== '/') p += '/';
+        var code = WA_CODES[p] || (p.indexOf('/blog/') === 0 ? 'BLOG' : 'WEB');
+        var src = rec.utm_source ? String(rec.utm_source).replace(/[^\w.-]/g, '').slice(0, 30) : '';
+        return src ? code + '/' + src : code;
+      };
+
+      // Appends " [ref: CODE]" to a wa.me link's text once; a link with no
+      // text gets the default greeting first.
+      var WA_TEXT = "Hi A-Worthy, I'd like to find out more about your classes.";
+      function tagWhatsApp(a) {
+        var href = a.getAttribute('href') || '';
+        if (href.indexOf('wa.me/') === -1) return;
+        var u;
+        try { u = new URL(href, location.href); } catch (e) { return; }
+        var text = u.searchParams.get('text');
+        if (text && text.indexOf('[ref:') !== -1) return;
+        text = (text ? text.replace(/\s+$/, '') : WA_TEXT) + ' [ref: ' + window.aworthyWaRef() + ']';
+        var parts = [], placed = false;
+        u.searchParams.forEach(function (val, key) {
+          if (key !== 'text') parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(val));
+          else if (!placed) { parts.push('text=' + encodeURIComponent(text)); placed = true; }
+        });
+        if (!placed) parts.push('text=' + encodeURIComponent(text));
+        a.setAttribute('href', u.origin + u.pathname + '?' + parts.join('&') + u.hash);
+      }
+
+      function onReady() {
+        var forms = document.querySelectorAll('form[data-lead-form]');
+        for (var f = 0; f < forms.length; f++) window.aworthyAttachAttribution(forms[f]);
+        var links = document.querySelectorAll('a[href*="wa.me/"]');
+        for (var l = 0; l < links.length; l++) tagWhatsApp(links[l]);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', onReady);
+      else onReady();
+
+      /*
+       * One delegated listener for every WhatsApp, phone and booking click,
+       * so no page sends these events itself. `location` names where on the
+       * page the click happened: the nearest [data-track], else the id of the
+       * enclosing section, else header / footer / nav / aside, else "page".
+       */
+      function where(el) {
+        var t = el.closest('[data-track]');
+        if (t && t.getAttribute('data-track')) return t.getAttribute('data-track');
+        var s = el.closest('section[id]');
+        if (s) return s.id;
+        var areas = ['header', 'footer', 'nav', 'aside'];
+        for (var n = 0; n < areas.length; n++) if (el.closest(areas[n])) return areas[n];
+        return 'page';
+      }
+      function isContactLink(href) {
+        if (!href || href.charAt(0) === '#') return false;
+        try {
+          var u = new URL(href, location.href);
+          return u.host === location.host && /^\/contact\/?$/.test(u.pathname);
+        } catch (e) { return false; }
+      }
+      document.addEventListener('click', function (e) {
+        var target = e.target;
+        if (!target || !target.closest) return;
+        var el = target.closest('a[href]');
+        var name = '';
+        if (el) {
+          var href = el.getAttribute('href') || '';
+          if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+            name = 'WhatsApp Click';
+            tagWhatsApp(el); // links built after load that missed their reference code
+          } else if (/^tel:/i.test(href)) {
+            name = 'Phone Click';
+          } else if (isContactLink(href)) {
+            name = 'CTA Click';
+          }
+        }
+        if (!name) {
+          el = target.closest('[data-cta]');
+          if (el) name = 'CTA Click';
+        }
+        if (!name) return;
+        try { window.plausible(name, { props: { page: location.pathname, location: where(el) } }); } catch (err) {}
+      }, { capture: true, passive: true });
+    })();
+  </script>
 
   {clarityId && <meta name="clarity-id" content={clarityId} />}
   {clarityId && <script async src="/clarity.js"></script>}
@@ -268,16 +437,16 @@ const schemaData = {
     })();
 
     /*
-     * Bottom-bar registry. Several fixed bars can occupy the bottom of the
-     * screen — the cookie notice, the global sticky CTA, the homepage's own
-     * sticky CTA. Each reports its visible height here (0 when hidden) and the
-     * tallest is published as --sticky-bar-h, which the WhatsApp float, chatbot
-     * and back-to-top use in their `translate` so they ride above whichever bar
-     * is showing. Previously each bar wrote the variable directly and the cookie
-     * notice not at all, so the floats sat on top of the notice's text and
-     * buttons for every first-time visitor on a phone. The variable is written
-     * only when the tallest height changes: it lives on <html>, so every write
-     * is a style change for the whole document.
+     * Bottom-bar registry. More than one fixed bar can occupy the bottom of
+     * the screen — the global sticky CTA and the homepage's own sticky CTA.
+     * Each reports its visible height here (0 when hidden) and the tallest is
+     * published as --sticky-bar-h, which the WhatsApp float, chatbot and
+     * back-to-top use in their `translate` so they ride above whichever bar is
+     * showing. <html> also carries .has-bottom-bar while any bar shows: on
+     * phones the WhatsApp float and the subject pill fade out then, because
+     * the bar carries its own WhatsApp button. Both are written only when they
+     * change: they live on <html>, so every write is a style change for the
+     * whole document.
      */
     window.aworthyBottomBar = function (name, px) {
       var bars = window.__aworthyBars || (window.__aworthyBars = {});
@@ -285,8 +454,11 @@ const schemaData = {
       var tallest = 0;
       for (var k in bars) if (bars[k] > tallest) tallest = bars[k];
       if (tallest === window.__aworthyBarH) return;
+      var had = window.__aworthyBarH > 0;
       window.__aworthyBarH = tallest;
-      document.documentElement.style.setProperty('--sticky-bar-h', tallest + 'px');
+      var root = document.documentElement;
+      root.style.setProperty('--sticky-bar-h', tallest + 'px');
+      if ((tallest > 0) !== had) root.classList.toggle('has-bottom-bar', tallest > 0);
     };
 
     /*
@@ -382,19 +554,21 @@ const schemaData = {
   </div>
 
   <!-- Global Sticky CTA Bar (#13) -->
-  <div class="sticky-cta-global" id="sticky-cta-global">
+  <div class="sticky-cta-global" id="sticky-cta-global" data-track="sticky-bar">
     <div class="sticky-cta-global-inner">
       <span class="sticky-cta-global-text">Free diagnostic assessment for O-Level English, Maths, H1 GP or H2 Economics</span>
       <a href="/contact/" class="sticky-cta-global-btn">Book Free Assessment</a>
-      <a href="tel:+6589913181" class="sticky-cta-phone" aria-label="Call us">
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <!-- Phones and tablets: the bar's own WhatsApp button (the float hides
+           while the bar shows on phones). Same ink-on-green icon as the float. -->
+      <a href="https://wa.me/6589913181?text=Hi%20A-Worthy%2C%20I%27d%20like%20to%20book%20a%20free%20assessment." class="sticky-cta-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="#22304A"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </a>
     </div>
     <button class="sticky-cta-global-dismiss" id="sticky-cta-global-dismiss" aria-label="Dismiss">&times;</button>
   </div>
 
-  <div class="whatsapp-widget" id="whatsapp-widget">
-    <a class="whatsapp-float-btn plausible-event-name=WhatsApp+Click" id="whatsapp-float-btn" href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <div class="whatsapp-widget" id="whatsapp-widget" data-track="whatsapp-float">
+    <a class="whatsapp-float-btn" id="whatsapp-float-btn" href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
       <!-- Fixed sticker-ink navy for both themes (not currentColor) — the button's
            own green background doesn't change between themes, so the icon shouldn't
            either. White-on-green was 1.98:1, failing WCAG 1.4.11 (needs 3:1 for
@@ -415,7 +589,7 @@ const schemaData = {
       right: calc(2rem + env(safe-area-inset-right, 0px));
       translate: 0 calc(var(--sticky-bar-h, 0px) * -1);
       z-index: var(--z-fixed-widget);
-      transition: translate 0.35s ease;
+      transition: translate 0.35s ease, opacity 0.25s ease, visibility 0.25s;
     }
     .whatsapp-float-btn {
       width: 56px;
@@ -467,90 +641,26 @@ const schemaData = {
     @media (max-width: 480px) {
       .whatsapp-float-btn { width: 52px; height: 52px; }
     }
-    .email-popup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: var(--z-modal);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-    }
-    .email-popup-overlay[hidden] {
-      display: none;
-    }
-    .email-popup-overlay:not([hidden]) {
-      display: flex;
-    }
-    .email-popup {
-      background: var(--bg-card);
-      border: 2px solid var(--color-ink);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      max-width: min(400px, calc(100vw - 2rem));
-      width: 100%;
-      position: relative;
-      box-shadow: 0 8px 0 var(--ink-shadow), 0 24px 48px rgba(0, 0, 0, 0.18);
-    }
-    .email-popup-close {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--text-muted);
-      cursor: pointer;
-      min-width: 44px;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .email-popup-mascot {
-      display: block;
-      height: 64px;
-      width: auto;
-      margin: 0 auto 0.5rem;
-    }
-    .email-popup-title {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      text-align: center;
-      margin: 0.5rem 0;
-    }
-    .email-popup-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      text-align: center;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .email-popup-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .email-popup-form input {
-      min-height: 44px;
-    }
-    .email-popup-note {
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-      text-align: center;
-      margin-top: 0.75rem;
-    }
-    @media (max-width: 480px) {
-      .email-popup {
-        padding: 1.5rem;
+    /* Phones: one floating button at a time. While a bottom bar shows (the
+       global sticky CTA or the homepage's own), the bar's WhatsApp button
+       stands in for the float, and the subject pill steps aside too. Faded
+       with opacity/visibility, so nothing is laid out again. */
+    @media (max-width: 640px) {
+      :global(html.has-bottom-bar) .subject-selector {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
       }
     }
-
+    /* The bar carries its WhatsApp button up to 768px, so the float steps
+       aside up to the same width. */
+    @media (max-width: 768px) {
+      :global(html.has-bottom-bar) .whatsapp-widget {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
     .sticky-cta-global {
       position: fixed;
       bottom: 0;
@@ -634,12 +744,13 @@ const schemaData = {
       color: var(--text-primary);
     }
 
-    .sticky-cta-phone {
+    /* WhatsApp-green circle with the float's ink icon (ink on this green
+       clears 5:1; white on it fails 3:1) */
+    .sticky-cta-wa {
       display: none;
       align-items: center;
       justify-content: center;
-      color: var(--text-primary);
-      background: var(--bg-card);
+      background: var(--color-whatsapp);
       border: 2px solid var(--color-ink);
       box-shadow: 0 3px 0 var(--ink-shadow);
       border-radius: 50%;
@@ -647,13 +758,17 @@ const schemaData = {
       height: 44px;
       text-decoration: none;
       flex-shrink: 0;
-      transition: background 0.12s ease;
+      transition: background 0.12s ease, transform 0.1s ease, box-shadow 0.1s ease;
       touch-action: manipulation;
     }
 
-    .sticky-cta-phone:hover {
-      background: var(--bg-hover);
+    .sticky-cta-wa:hover {
+      background: var(--color-whatsapp-dark);
       opacity: 1;
+    }
+    .sticky-cta-wa:active {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 var(--ink-shadow);
     }
 
     /* Landscape phones (~390px tall): the header already shows the CTA, so a
@@ -669,7 +784,7 @@ const schemaData = {
       .sticky-cta-global { display: none; }
     }
 
-    /* Phone / tablet: a single 60px row — the CTA, a call button and the
+    /* Phone / tablet: a single 60px row — the CTA, a WhatsApp button and the
        dismiss — so the bar costs as little of the viewport as possible. */
     @media (max-width: 768px) {
       .sticky-cta-global {
@@ -692,110 +807,13 @@ const schemaData = {
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
       }
-      .sticky-cta-phone {
+      .sticky-cta-wa {
         display: flex;
       }
       .sticky-cta-global-dismiss {
         top: 50%;
         right: 0.25rem;
         transform: translateY(-50%);
-      }
-    }
-
-    /* Privacy / Cookie Notice */
-    .privacy-notice {
-      display: none;
-    }
-    .privacy-notice[hidden] {
-      display: none;
-    }
-    .privacy-notice:not([hidden]) {
-      display: block;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: var(--z-privacy);
-      background: var(--bg-card);
-      border-top: 2px solid var(--color-ink);
-      padding: 1rem 1.5rem;
-      /* Keep the buttons clear of the iPhone home indicator. */
-      padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-      box-shadow: 0 -6px 0 var(--ink-shadow);
-    }
-    .privacy-notice-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-    .privacy-notice-text strong {
-      display: block;
-      margin-bottom: 0.25rem;
-      color: var(--text-primary);
-      font-size: 0.9rem;
-    }
-    .privacy-notice-text p {
-      margin: 0;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-    .privacy-notice-actions {
-      display: flex;
-      gap: 0.75rem;
-      flex-shrink: 0;
-    }
-    .privacy-btn {
-      padding: 0.5rem 1.25rem;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      border-radius: var(--radius-pill);
-      font-size: 0.85rem;
-      font-weight: 800;
-      cursor: pointer;
-      text-decoration: none;
-      white-space: nowrap;
-      border: 2px solid var(--color-ink);
-      transition: background var(--transition-fast), transform 0.1s ease, box-shadow 0.1s ease;
-      touch-action: manipulation;
-    }
-    .privacy-btn:active { transform: translateY(3px); box-shadow: none !important; }
-    .privacy-btn--accept {
-      background: var(--color-accent);
-      color: #fff;
-      box-shadow: 0 3px 0 var(--color-accent-press);
-    }
-    .privacy-btn--accept:hover {
-      background: var(--color-accent-hover);
-      color: #fff;
-    }
-    .privacy-btn--learn {
-      background: var(--bg-card);
-      color: var(--text-primary);
-      box-shadow: 0 3px 0 var(--ink-shadow);
-    }
-    .privacy-btn--learn:hover {
-      background: var(--bg-hover);
-      color: var(--text-primary);
-      opacity: 1;
-    }
-    @media (max-width: 600px) {
-      .privacy-notice:not([hidden]) {
-        padding: 0.8rem 1rem;
-        padding-bottom: calc(0.8rem + env(safe-area-inset-bottom, 0px));
-      }
-      .privacy-notice-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.75rem;
-      }
-      .privacy-notice-actions {
-        width: 100%;
-        justify-content: center;
       }
     }
 
@@ -928,7 +946,7 @@ const schemaData = {
         box-shadow: 0 3px 0 var(--ink-shadow);
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease, visibility 0.3s;
       }
       .subject-selector.visible {
         opacity: 1;
@@ -1079,15 +1097,10 @@ const schemaData = {
     if (window.location.pathname === '/' || window.location.pathname === '/index.html' || window.location.pathname.indexOf('/contact') === 0) return;
     var dismissed = false;
     var shown = false;
-    // Looked up on each call: the notice's markup comes after this script, so
-    // a lookup at start-up found nothing and the bar showed on top of it.
-    function isPrivacyVisible() {
-      var notice = document.getElementById('privacy-notice');
-      return !!(notice && !notice.hidden);
-    }
+    // Shows after half a screen of scrolling, on first and later visits alike.
     window.aworthyOnScroll(function(y){
       if (dismissed) return;
-      var visible = y > window.innerHeight * 0.5 && !isPrivacyVisible();
+      var visible = y > window.innerHeight * 0.5;
       if (visible === shown) return;
       shown = visible;
       // Measured before the class flips (it only changes a transform), so the
@@ -1102,51 +1115,6 @@ const schemaData = {
       el.classList.remove('is-visible');
       window.aworthyBottomBar('cta', 0);
     });
-  })();
-  </script>
-
-  <!-- Privacy / Cookie Notice -->
-  <div class="privacy-notice" id="privacy-notice" hidden>
-    <div class="privacy-notice-inner">
-      <div class="privacy-notice-text">
-        <strong>Your privacy matters</strong>
-        <p>We use analytics (Plausible) to see how visitors use our site, so we can improve it. We do not use tracking cookies or share data with third parties. By continuing, you agree to our use of privacy-respecting analytics.</p>
-      </div>
-      <div class="privacy-notice-actions">
-        <button class="privacy-btn privacy-btn--accept" id="privacy-accept">Accept</button>
-        <a href="/privacy-policy/" class="privacy-btn privacy-btn--learn">Privacy Policy</a>
-      </div>
-    </div>
-  </div>
-
-  <script is:inline>
-  (function(){
-    function init() {
-      var notice = document.getElementById('privacy-notice');
-      var btn = document.getElementById('privacy-accept');
-      if (!notice || !btn) return;
-      var accepted = null;
-      try { accepted = localStorage.getItem('privacy-accepted'); } catch (e) {}
-      if (accepted) return;
-      notice.hidden = false;
-      // Report the notice's height so the WhatsApp/chatbot/back-to-top floats
-      // sit above it instead of on top of its text and buttons.
-      function report() { window.aworthyBottomBar('privacy', notice.hidden ? 0 : notice.offsetHeight); }
-      report();
-      // The notice appears on idle (up to 3s after load). A visitor who has
-      // already scrolled has a sticky CTA showing; the CTAs only re-check the
-      // notice on scroll, so nudge them now or both bars stack until the next one.
-      window.dispatchEvent(new Event('scroll'));
-      window.addEventListener('resize', report, { passive: true });
-      btn.addEventListener('click', function() {
-        try { localStorage.setItem('privacy-accepted', '1'); } catch (e) {}
-        notice.hidden = true;
-        window.removeEventListener('resize', report);
-        window.aworthyBottomBar('privacy', 0);
-      });
-    }
-    if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 3000 });
-    else setTimeout(init, 1500);
   })();
   </script>
 
@@ -1173,113 +1141,8 @@ const schemaData = {
   })();
   </script>
 
-  <!-- Email Capture Popup -->
-  <div class="email-popup-overlay" id="email-popup" hidden>
-    <div class="email-popup" role="dialog" aria-modal="true" aria-labelledby="email-popup-title">
-      <button class="email-popup-close" id="email-popup-close" aria-label="Close">&times;</button>
-      <img src="/images/mascots/mascot-heart-icon.webp" alt="" class="email-popup-mascot" width="257" height="296" />
-      <span class="eyebrow" style="text-align:center;display:block;">Free Download</span>
-      <h3 class="email-popup-title" id="email-popup-title">Get our top-scoring essay framework</h3>
-      <p class="email-popup-desc">Download the SHARP Method essay template our A1 students use, free in exchange for your email.</p>
-      <form class="email-popup-form" id="email-popup-form">
-        <input type="email" placeholder="Enter your email" required aria-label="Email address" />
-        <button type="submit" class="btn btn-accent" style="width:100%;">Send Me the Guide</button>
-      </form>
-      <p class="email-popup-note">We respect your privacy. Unsubscribe anytime.</p>
-    </div>
-  </div>
-
-  <script is:inline>
-  (function(){
-    // Defer setup until the browser is idle — this widget has a 45s timer
-    // before it actually fires, so there's no benefit to running its init
-    // during the critical render path.
-    function init() {
-      var popup = document.getElementById('email-popup');
-      var closeBtn = document.getElementById('email-popup-close');
-      var form = document.getElementById('email-popup-form');
-      if (!popup) return;
-
-      // Don't show if already dismissed or on contact page
-      var dismissed = null;
-      try { dismissed = localStorage.getItem('email-popup-dismissed'); } catch (e) { return; } // can't remember a dismissal: don't nag
-      if (dismissed) return;
-      if (window.location.pathname.indexOf('/contact') > -1) return;
-
-      function showPopup() {
-      popup.hidden = false;
-      document.body.style.overflow = 'hidden';
-      if (closeBtn) closeBtn.focus();
-    }
-
-    function hidePopup() {
-      popup.hidden = true;
-      document.body.style.overflow = '';
-      try { localStorage.setItem('email-popup-dismissed', '1'); } catch (e) {}
-    }
-
-    // Show after 45 seconds
-    var timer = setTimeout(showPopup, 45000);
-
-    // Or on exit intent (mouse leaves viewport)
-    document.addEventListener('mouseout', function(e) {
-      if (e.clientY < 5 && popup.hidden) {
-        clearTimeout(timer);
-        showPopup();
-      }
-    }, { once: true });
-
-    closeBtn.addEventListener('click', hidePopup);
-    popup.addEventListener('click', function(e) { if (e.target === popup) hidePopup(); });
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !popup.hidden) hidePopup(); });
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var input = form.querySelector('input');
-      var email = ((input && input.value) || '').trim();
-      var submitBtn = form.querySelector('button[type="submit"]');
-      var PDF_URL = '/docs/samples/essay-framework-sample.pdf';
-
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        if (input) { input.setAttribute('aria-invalid', 'true'); input.focus(); }
-        return;
-      }
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-
-      function deliver() {
-        // Honour the promise: open the framework now, with a reliable fallback link.
-        try { window.open(PDF_URL, '_blank', 'noopener'); } catch (err) {}
-        if (window.plausible) window.plausible('Lead: Email Popup');
-        if (window.aworthyCelebrate) window.aworthyCelebrate();
-        form.innerHTML = '<p style="text-align:center;color:var(--color-accent);font-weight:500;">' +
-          'Your SHARP essay framework is opening in a new tab. If it doesn’t, ' +
-          '<a href="' + PDF_URL + '" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;">download it here</a>. ' +
-          'We’ll also email you the full version shortly.</p>';
-        try { localStorage.setItem('email-popup-dismissed', '1'); } catch (e) {}
-        setTimeout(hidePopup, 6000);
-      }
-
-      fetch('https://formspree.io/f/xreoozkk', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, resource: 'SHARP Essay Writing Framework', _subject: 'Email popup lead — SHARP essay framework' })
-      }).then(function(res) {
-        if (!res.ok) throw new Error('submit-failed');
-        deliver();
-      }).catch(function() {
-        // Don't block the visitor on a Formspree outage — still deliver the framework.
-        deliver();
-      });
-    });
-    }
-    if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 5000 });
-    else setTimeout(init, 2000);
-  })();
-  </script>
-
-
   <!-- FAQ Chatbot -->
-  <div class="chatbot-widget" id="chatbot-widget">
+  <div class="chatbot-widget" id="chatbot-widget" data-track="chatbot">
     <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open FAQ chat">
       <img src="/images/logo-grade-a.webp" alt="" class="chatbot-toggle-img" width="233" height="320" />
     </button>
@@ -1455,9 +1318,10 @@ const schemaData = {
     @media (max-width: 768px) {
       .chatbot-widget { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + 68px + env(safe-area-inset-bottom, 0px)); }
     }
-    @media (max-width: 480px) {
-      .chatbot-panel { width: calc(100vw - 2rem); right: -1rem; }
-      .chatbot-widget { bottom: calc(1.25rem + 64px + env(safe-area-inset-bottom, 0px)); }
+    /* Phones: the WhatsApp float is the one floating button; the FAQ answers
+       are on the pages themselves. */
+    @media (max-width: 640px) {
+      .chatbot-widget { display: none; }
     }
   </style>
 
@@ -1484,7 +1348,7 @@ const schemaData = {
       subjects: 'We teach five programmes: O-Level English (Sec 1\u20134), O-Level Mathematics (Sec 1\u20134), Pre-IB Mathematics (Year 3\u20134), H1 General Paper (JC 1\u20132), and H2 Economics (JC 1\u20132). All five use the SHARP Method. <a href="/programmes/">View all programmes \u2192</a>',
       location: 'We\u2019re 100% online, with no physical centre. Students join from anywhere in Singapore on the A-Worthy Whiteboard, and every lesson is recorded. There is no commute. <a href="/programmes/">View programmes \u2192</a>',
       resources: 'Yes! We have free downloadable resources covering grammar, essay writing, comprehension, vocabulary, and more. No payment is required, just an email address. <a href="/resources/">Browse the resource vault \u2192</a>',
-      payment: 'One fixed fee a month, paid by the 1st by PayNow, bank transfer or card (HitPay). A fifth-week lesson costs nothing extra. Lessons continue through the school holidays. If your child misses a lesson, you get the recording. There are no make-up classes. Sec 4 and JC 2 groups end after the national exams. To stop, give one month\u2019s notice. <a href="/pricing/#pricing-faq-pay">Payment terms \u2192</a>',
+      payment: 'One fixed fee a month, paid by the 1st by PayNow, bank transfer or card (HitPay). A fifth-week lesson costs nothing extra. Lessons continue through the school holidays and on public holidays. If your child misses a lesson, you get the recording. There are no make-up classes. Sec 4 and JC 2 groups end after the national exams. To stop, give one month\u2019s notice. <a href="/pricing/#pricing-faq-pay">Payment terms \u2192</a>',
       hold: 'Once a year, you can hold your child\u2019s place for up to four consecutive weeks, for travel or any other reason. Tell us in writing (WhatsApp or email) at least two weeks before the first missed lesson. No fee is charged for the weeks on hold, and the place is kept. <a href="/pricing/#pricing-faq-hold">Hold terms \u2192</a>',
       refund: 'Every new student starts with a free diagnostic assessment. If you\u2019re not satisfied after the first month of lessons, tell us within 7 days of that month\u2019s last lesson and we\u2019ll refund the first month\u2019s fees in full. <a href="/pricing/">See pricing \u2192</a>',
       contact: 'You can reach us on WhatsApp, by email or through the contact form. We usually reply within a few hours. <a href="/contact/">Go to contact page \u2192</a>',
@@ -1493,7 +1357,10 @@ const schemaData = {
 
     toggle.addEventListener('click', function() {
       panel.hidden = !panel.hidden;
-      if (!panel.hidden) toggle.style.display = 'none';
+      if (!panel.hidden) {
+        toggle.style.display = 'none';
+        try { window.plausible('Chatbot Open', { props: { page: location.pathname } }); } catch (e) {}
+      }
     });
     close.addEventListener('click', function() {
       panel.hidden = true;
@@ -1505,6 +1372,7 @@ const schemaData = {
       if (!btn) return;
       var q = btn.getAttribute('data-q');
       var questionText = btn.textContent;
+      try { window.plausible('Chatbot Question', { props: { q: q } }); } catch (err) {}
       // Add user message
       var userMsg = document.createElement('div');
       userMsg.className = 'chatbot-msg chatbot-msg--user';

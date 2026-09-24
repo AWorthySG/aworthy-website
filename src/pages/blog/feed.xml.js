@@ -1,5 +1,6 @@
 export function GET() {
   const posts = [
+    { title: "Choosing Your JC Subject Combination: Rules, Prerequisites and Strategy", slug: "choosing-jc-subject-combinations", date: "2026-09-23", description: "The contrasting-subject rule, the 70-point admission score, university subject requirements and how to choose a fourth subject, for students entering JC 1 in 2027." },
     { title: "The SEC Examination from 2027: What Changes for Your Child", slug: "sec-examination-guide", date: "2026-09-23", description: "From 2027 the O-Level becomes the SEC, and JC admission moves from L1R5 of 20 or better to L1R4 of 16 or better. What changes for today's Sec 3 students." },
     { title: "How to Choose a Tuition Centre in Singapore: A Parent's Guide", slug: "how-to-choose-a-tuition-centre-singapore", date: "2026-05-27", description: "The seven things that actually matter when choosing a tuition centre in Singapore — class size, method, the tutor, proof of results, fees — and the red flags to avoid." },
     { title: "Does My Child Actually Need Tuition? An Honest Guide", slug: "does-my-child-need-tuition", date: "2026-05-27", description: "Not every child needs tuition. An honest guide to the signs that tuition will genuinely help — and the problems it won't fix — so you can decide without guessing." },
@@ -15,7 +16,7 @@ export function GET() {
     { title: "GP Essay Structure: The Framework That Gets A", slug: "gp-essay-structure", date: "2026-03-18", description: "The P-E-E-L framework for structuring GP essays that consistently score well." },
     { title: "Economics Essay Diagrams: When and How to Use Them", slug: "economics-essay-diagrams", date: "2026-03-11", description: "Guide to selecting and drawing the right diagrams in H2 Economics essays." },
     { title: "Why Smart Students Still Fail Exams", slug: "why-smart-students-fail", date: "2026-03-04", description: "The gap between knowledge and exam technique, and how to bridge it." },
-    { title: "Situational Writing: The Complete Format Guide", slug: "situational-writing-guide", date: "2026-02-25", description: "Format conventions for formal letter, email, report, and speech with register tips." },
+    { title: "O-Level Situational Writing: Marks, Planning and Format", slug: "situational-writing-guide", date: "2026-02-25", description: "How the 30 marks are awarded, the PAC analysis, the four-move expansion, and the format for all seven text types." },
     { title: "The 12-Week Exam Prep Timeline", slug: "exam-prep-timeline", date: "2026-02-18", description: "A structured 12-week revision plan for O-Level and A-Level students." },
   ];
 

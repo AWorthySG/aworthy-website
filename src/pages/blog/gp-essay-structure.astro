@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/blog.css';
 import AuthorBio from '../../components/AuthorBio.astro';
+import GuideForm from '../../components/GuideForm.astro';
 ---
 
 <BaseLayout title="How to Structure a GP Essay for Band 3+ | A-Worthy" description="GP essay structure that consistently produces Band 3 and above. Covers thesis statements, PEEL paragraphs, counter-arguments & conclusion techniques." ogImage="/images/og-gp.png">
@@ -30,7 +31,7 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>At A-Worthy, we use the <strong>SHARP Method</strong> to give students a repeatable system for every essay. <strong>S</strong>ee the question type, <strong>H</strong>it the right framework, <strong>A</strong>pply it to the text, <strong>R</strong>efine through feedback, and <strong>P</strong>ractise via retrieval. Below, we walk through a GP essay question step by step so you can see how SHARP turns loose ideas into a structured essay.</p>
 
         <h2>The question</h2>
-        <p><strong>"Science is a threat to humanity. Discuss." [25 marks]</strong></p>
+        <p><strong>"Science is a threat to humanity. Discuss." [50 marks]</strong></p>
         <p>Let us walk through SHARP.</p>
 
         <h2>S — See the question type</h2>
@@ -98,7 +99,8 @@ import AuthorBio from '../../components/AuthorBio.astro';
         <p>A fixed structure frees up thinking time. Once the framework is second nature, students can spend their effort under exam pressure on generating ideas instead of organising them.</p>
       </div>
       <AuthorBio />
-      <div class="blog-post-cta">
+      <GuideForm subject="gp" headingLevel={3} id="guide-post" />
+      <div class="blog-post-cta" data-track="post-cta">
         <h3>Ready to improve your grades?</h3>
         <p>Book a free diagnostic assessment and see how the SHARP Method can help.</p>
         <a href="/contact/" class="btn btn-accent plausible-event-name=Blog+CTA+Click">Book Free Assessment</a>

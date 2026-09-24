@@ -117,6 +117,9 @@ const gridTestimonials = testimonials.filter((t) => !t.featured);
       <p class="t-hero-subtitle">
         Real reviews from families whose children improved their O-Level English, GP, and H2 Economics grades with A-Worthy&rsquo;s SHARP Method tuition.
       </p>
+      <div class="t-hero-actions" data-track="hero">
+        <a href="/contact/" class="btn btn-accent">Book Free Assessment</a>
+      </div>
     </div>
   </section>
 
@@ -214,7 +217,7 @@ const gridTestimonials = testimonials.filter((t) => !t.featured);
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="t-section t-cta">
+  <section class="t-section t-cta" data-track="final-cta">
     <div class="t-container t-cta-inner">
       <span class="eyebrow">Get Started</span>
       <h2 class="t-cta-heading squiggle squiggle--center" data-animate="reveal-up">Experience the <span class="t-nowrap">A-Worthy</span> difference</h2>
@@ -292,6 +295,12 @@ const gridTestimonials = testimonials.filter((t) => !t.featured);
     max-width: 560px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .t-hero-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
   }
 
   /* ===== STATS BAR — coloured stat dots before 900-weight numbers ===== */
