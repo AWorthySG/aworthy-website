@@ -16,9 +16,13 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  /** Blog posts pass their BlogPosting dates: og:type becomes "article" with
+      article:published_time / modified_time (ISO dates, as in their JSON-LD). */
+  published?: string;
+  modified?: string;
 }
 
-const { title, description = "Online tuition in Singapore for O-Level English & Maths, Pre-IB Maths, H1 GP and H2 Economics. Groups of up to 6 with Jeremy Lim. Get a free assessment.", ogImage, noindex = false } = Astro.props;
+const { title, description = "Online tuition in Singapore for O-Level English & Maths, Pre-IB Maths, H1 GP and H2 Economics. Groups of up to 6 with Jeremy Lim. Get a free assessment.", ogImage, noindex = false, published, modified } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage || '/images/og-default.png', Astro.site);
@@ -184,11 +188,15 @@ const schemaData = {
 
   <!-- Canonical -->
   <link rel="canonical" href={canonicalURL.toString()} />
+  <link rel="alternate" type="application/rss+xml" title="A-Worthy blog" href="/blog/feed.xml" />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={published ? 'article' : 'website'} />
+  {published && <meta property="article:published_time" content={published} />}
+  {published && <meta property="article:modified_time" content={modified || published} />}
+  {published && <meta property="article:author" content="Jeremy Lim" />}
   <meta property="og:locale" content="en_SG" />
   <meta property="og:url" content={canonicalURL.toString()} />
   <meta property="og:image" content={ogImageURL.toString()} />
@@ -501,6 +509,11 @@ const schemaData = {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
       }
+      // The phone's address bar and Safari's tab bar take this colour; it used
+      // to stay cream above a charcoal page in dark mode. The theme button in
+      // Header.astro updates it too.
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+      if (themeColor) themeColor.setAttribute('content', document.documentElement.getAttribute('data-theme') === 'dark' ? '#171614' : '#FAF6EE');
     })();
 
     /*
@@ -595,14 +608,15 @@ const schemaData = {
     </nav>
   )}
 
-  <!-- Mobile Subject Selector -->
-  <div class="subject-selector" id="subject-selector">
+  <!-- Mobile Subject Selector (a labelled nav, so screen readers that move by
+       landmark reach it; axe flagged it as content outside any landmark) -->
+  <nav class="subject-selector" id="subject-selector" aria-label="Subjects">
     <a href="/o-level-english/" class="subject-pill">English</a>
     <a href="/h1-general-paper/" class="subject-pill">GP</a>
     <a href="/h2-economics/" class="subject-pill">Econs</a>
     <a href="/o-level-mathematics/" class="subject-pill">Maths</a>
     <a href="/pre-ib-mathematics/" class="subject-pill">Pre-IB Maths</a>
-  </div>
+  </nav>
 
   <main id="main-content">
     <slot />
@@ -611,17 +625,17 @@ const schemaData = {
   <slot name="footer" />
 
   <!-- Exam Countdown Bar -->
-  <div class="exam-countdown" id="exam-countdown" aria-hidden="true" hidden>
+  <aside class="exam-countdown" id="exam-countdown" aria-label="Exam countdown" aria-hidden="true" hidden>
     <div class="exam-countdown-inner">
       <span class="exam-countdown-icon">
         <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       </span>
       <span class="exam-countdown-text" id="exam-countdown-text"></span>
     </div>
-  </div>
+  </aside>
 
   <!-- Global Sticky CTA Bar (#13) -->
-  <div class="sticky-cta-global" id="sticky-cta-global" data-track="sticky-bar">
+  <aside class="sticky-cta-global" id="sticky-cta-global" aria-label="Get a Free Report" data-track="sticky-bar">
     <div class="sticky-cta-global-inner">
       <span class="sticky-cta-global-text">A free written report on your child&rsquo;s latest test or exam</span>
       <a href="/contact/" class="sticky-cta-global-btn" data-astro-prefetch="viewport">Get a Free Report</a>
@@ -632,9 +646,9 @@ const schemaData = {
       </a>
     </div>
     <button class="sticky-cta-global-dismiss" id="sticky-cta-global-dismiss" aria-label="Hide this bar">&times;</button>
-  </div>
+  </aside>
 
-  <div class="whatsapp-widget" id="whatsapp-widget" data-track="whatsapp-float">
+  <aside class="whatsapp-widget" id="whatsapp-widget" aria-label="WhatsApp" data-track="whatsapp-float">
     <a class="whatsapp-float-btn" id="whatsapp-float-btn" href="https://wa.me/6589913181?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20A-Worthy%20tuition" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
       <!-- Fixed sticker-ink navy for both themes (not currentColor) — the button's
            own green background doesn't change between themes, so the icon shouldn't
@@ -644,7 +658,7 @@ const schemaData = {
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
     </a>
-  </div>
+  </aside>
 
   <style>
     /* Rides above the bottom bars on `translate`, not `bottom`: a moving
@@ -1377,7 +1391,11 @@ const schemaData = {
     }
   </style>
 
-  <script is:inline>
+  <!-- Processed, not is:inline: Astro emits the chatbot as one hashed /_astro
+       file that the browser and the service worker cache, instead of 7.7 KB of
+       inline script re-sent with every page. It runs as a module, after the
+       page is parsed; nothing else calls into it. -->
+  <script>
   (function(){
     function init() {
     var toggle = document.getElementById('chatbot-toggle');

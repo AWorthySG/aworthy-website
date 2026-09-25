@@ -23,7 +23,7 @@ const currentYear = new Date().getFullYear();
 
       <!-- Quick Links -->
       <div class="footer-links">
-        <h4>Programmes</h4>
+        <h2>Programmes</h2>
         <ul>
           <li><a href="/o-level-english/">O-Level English tuition</a></li>
           <li><a href="/h1-general-paper/">H1 GP tuition</a></li>
@@ -37,7 +37,7 @@ const currentYear = new Date().getFullYear();
 
       <!-- About -->
       <div class="footer-links">
-        <h4>About</h4>
+        <h2>About</h2>
         <ul>
           <li><a href="/about/">Our story</a></li>
           <li><a href="/whiteboard/">Our online classroom</a></li>
@@ -54,7 +54,7 @@ const currentYear = new Date().getFullYear();
 
       <!-- Contact -->
       <div class="footer-contact">
-        <h4>Contact</h4>
+        <h2>Contact</h2>
         <ul>
           <li>Live online on the A-Worthy Whiteboard, Singapore-wide</li>
           <li><a href="tel:+6589913181">+65 8991 3181</a></li>
@@ -161,8 +161,11 @@ const currentYear = new Date().getFullYear();
     opacity: 1;
   }
 
-  .footer-links h4,
-  .footer-contact h4 {
+  /* h2, not h4: the footer follows the page's h2 sections, and h4 there broke
+     the heading order on 25 pages. This rule sets every property the global
+     h2 size would otherwise change, so the micro-label look is unchanged. */
+  .footer-links h2,
+  .footer-contact h2 {
     font-family: var(--font-mono);
     color: var(--text-primary);
     margin-bottom: var(--space-md);
@@ -173,8 +176,8 @@ const currentYear = new Date().getFullYear();
   }
 
   /* Marker swash under footer column headings — same motif as section titles */
-  .footer-links h4::after,
-  .footer-contact h4::after {
+  .footer-links h2::after,
+  .footer-contact h2::after {
     content: '';
     display: block;
     width: 44px;
