@@ -41,7 +41,8 @@ import { googleReviewsUrl } from '../data/site-config';
         <span class="hero-underline" aria-hidden="true"></span>
       </h1>
       <div class="hero-sticker hero-anim" style="--d:9" aria-hidden="true">
-        <img src="/images/mascots/mascot-cheer.webp" alt="" width="455" height="508" class="sticker sticker--right" />
+        <!-- lazy: hidden below 1280px, and a hidden lazy image is never fetched (it cost phones 41 KB) -->
+        <img src="/images/mascots/mascot-cheer.webp" alt="" width="455" height="508" class="sticker sticker--right" loading="lazy" decoding="async" />
       </div>
       <p class="hero-sub hero-anim" style="--d:10">Your child works hard, but the grades don&rsquo;t move. They know the content but can&rsquo;t show it under exam pressure. That&rsquo;s a skill we can teach. Our five-step SHARP Method shows them how to read what each question wants, pick the framework for it and write an answer that earns the marks.</p>
 

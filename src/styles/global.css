@@ -144,11 +144,14 @@
 
   /* ── Subject colours — sampled from the LMS dashboard: each subject has a
      dot colour (sidebar), a text-safe variant, and a pastel panel tint the
-     subject sticker sits on. ── */
-  --subject-english: #3F72AB;  --subject-english-text: #3F72AB;  --subject-english-tint: #E4ECF3;
-  --subject-maths: #3B7A73;    --subject-maths-text: #3B7A73;    --subject-maths-tint: #D9E5E4;
-  --subject-preib: #647836;    --subject-preib-text: #647836;    --subject-preib-tint: #EDEFDC;
-  --subject-gp: #53945F;       --subject-gp-text: #3F7A4B;       --subject-gp-tint: #E3ECE1;
+     subject sticker sits on. The -text values are darker than the dots where
+     the dot colour missed 4.5:1 as text: English, Maths, Pre-IB and GP were
+     4.20–4.39 on the sand band and 3.86–4.24 on their own tints (September
+     2026). Each -text now clears 4.6:1 on sand, muted and its tint. ── */
+  --subject-english: #3F72AB;  --subject-english-text: #3B6BA0;  --subject-english-tint: #E4ECF3;
+  --subject-maths: #3B7A73;    --subject-maths-text: #346C66;    --subject-maths-tint: #D9E5E4;
+  --subject-preib: #647836;    --subject-preib-text: #5E7133;    --subject-preib-tint: #EDEFDC;
+  --subject-gp: #53945F;       --subject-gp-text: #3C7347;       --subject-gp-tint: #E3ECE1;
   --subject-econ: #993F36;     --subject-econ-text: #993F36;     --subject-econ-tint: #EFE1DA;
   --subject-coaching: #A18234; --subject-coaching-text: #7A6220; --subject-coaching-tint: #F3EBD3;
   /* Hand-drawn red marker stroke — the sitewide heading underline */
@@ -247,6 +250,10 @@
 }
 
 html {
+  /* Keep the scrollbar's width reserved: opening a Study Hub note, the PDF
+     preview or the tablet menu hides the page scrollbar (overflow: hidden on
+     body), which shifted everything 7px sideways on Windows. */
+  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   font-size: 100%;
   /* Prevent font size inflation on mobile landscape */
@@ -806,6 +813,18 @@ textarea {
   resize: vertical;
   min-height: 150px;
 }
+
+/* "Still deciding?" line linking the two parent-decision blog posts (pricing
+   and contact FAQs, About CTA). Before September 2026 only the blog index
+   linked to them. */
+.reading-nudge {
+  max-width: 44rem;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.reading-nudge a { color: var(--color-accent-text); font-weight: 700; }
 
 /* Enquiry forms after a failed send (window.aworthyFieldErrors in BaseLayout):
    the control turns red and its message sits directly under it. */
