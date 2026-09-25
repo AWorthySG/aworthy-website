@@ -171,18 +171,23 @@ const waAsk = 'https://wa.me/6589913181?text=' + encodeURIComponent("Hi Jeremy, 
     e.preventDefault();
     var name = field('parentName'), phone = field('phone'), level = field('studentLevel'), email = field('email');
     var subject = field('subject').value;
-    var errors = [], invalid = [];
-    [name, phone, level, email].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+    // In form order, so the first one is the field the page moves to.
+    var problems = [];
     var digits = phone.value.replace(/\D/g, '');
-    if (!name.value.trim()) { errors.push('Please enter your name.'); invalid.push(name); }
-    if (!phone.value.trim()) { errors.push('Please enter your WhatsApp number.'); invalid.push(phone); }
-    else if (digits.length < 8 || digits.length > 15) { errors.push('That WhatsApp number doesn\u2019t look right. Please check it.'); invalid.push(phone); }
-    if (!level.value) { errors.push('Please choose your child\u2019s level.'); invalid.push(level); }
-    if (email.value.trim() && !EMAIL_RE.test(email.value.trim())) { errors.push('Please check the email address, or leave it blank.'); invalid.push(email); }
-    if (errors.length) {
-      showErrors(errors.map(para));
-      invalid.forEach(function (f) { f.setAttribute('aria-invalid', 'true'); });
-      invalid[0].focus();
+    if (!name.value.trim()) problems.push([name, 'Please enter your name.']);
+    if (!phone.value.trim()) problems.push([phone, 'Please enter your WhatsApp number.']);
+    else if (digits.length < 8 || digits.length > 15) problems.push([phone, 'That WhatsApp number doesn\u2019t look right. Please check it.']);
+    if (!level.value) problems.push([level, 'Please choose your child\u2019s level.']);
+    if (email.value.trim() && !EMAIL_RE.test(email.value.trim())) problems.push([email, 'Please check the email address, or leave it blank.']);
+    if (typeof window.aworthyFieldErrors === 'function') {
+      window.aworthyFieldErrors(form, problems);
+      if (problems.length) {
+        showErrors([para(problems.length === 1 ? 'Please check the field above.' : 'Please check the ' + problems.length + ' fields above.')]);
+        return;
+      }
+    } else if (problems.length) {
+      showErrors(problems.map(function (x) { x[0].setAttribute('aria-invalid', 'true'); return para(x[1]); }));
+      problems[0][0].focus();
       return;
     }
 
