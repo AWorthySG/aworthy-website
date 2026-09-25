@@ -66,6 +66,7 @@ const breadcrumbLabels: Record<string, string> = {
   'o-level-cut-off-points': 'O-Level Cut-Off Points',
   'sec-examination-guide': 'SEC Examination Guide',
   'choosing-jc-subject-combinations': 'Choosing JC Subjects',
+  'ib-maths-aa-vs-ai': 'IB Maths: AA or AI',
   'ib-vs-jc': 'IB vs JC',
   'maths-tuition': 'Maths Tuition',
   'o-level-maths-common-mistakes': 'O-Level Maths Mistakes',
@@ -950,10 +951,12 @@ const schemaData = {
     .breadcrumb-list li:last-child::after {
       display: none;
     }
+    /* No text-transform: every label is written out in breadcrumbLabels (or
+       title-cased by crumbLabel), and capitalize turned "Choosing a Tuition
+       Centre" into "Choosing A Tuition Centre". */
     .breadcrumb-list a {
       color: var(--text-muted);
       text-decoration: none;
-      text-transform: capitalize;
     }
     .breadcrumb-list a:hover {
       color: var(--color-accent);
@@ -962,7 +965,6 @@ const schemaData = {
     .breadcrumb-list li [aria-current="page"] {
       color: var(--text-secondary);
       font-weight: 500;
-      text-transform: capitalize;
     }
     @media (max-width: 768px) {
       .breadcrumb-list { padding: 0 var(--space-lg); }
