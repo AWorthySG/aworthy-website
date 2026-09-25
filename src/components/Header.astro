@@ -83,7 +83,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
       </button>
 
       <!-- CTA -->
-      <a href="/contact/" class="btn btn-accent header-cta"><span>Get a Free Report</span></a>
+      <a href="/contact/" class="btn btn-accent header-cta" data-astro-prefetch="viewport"><span>Get a Free Report</span></a>
 
       <!-- Mobile Hamburger -->
       <button
@@ -124,7 +124,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
         </li>
       ))}
     </ul>
-    <a href="/contact/" class="btn btn-accent mobile-cta"><span>Get a Free Report</span></a>
+    <a href="/contact/" class="btn btn-accent mobile-cta" data-astro-prefetch="viewport"><span>Get a Free Report</span></a>
   </nav>
 </header>
 
@@ -422,7 +422,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   .mobile-nav {
     position: fixed;
     top: 0;
-    right: -320px;
+    right: 0;
     width: min(320px, 90vw);
     /* Use dvh for mobile browser chrome awareness, fallback to vh */
     height: 100vh;
@@ -430,7 +430,14 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     background: var(--bg-primary);
     border-left: 2px solid var(--color-ink);
     z-index: calc(var(--z-dropdown) + 1);
-    transition: right var(--transition-slow);
+    /* Closed: slid past the right edge AND out of the keyboard order. The
+       visibility step waits for the slide to finish when closing and flips at
+       once when opening. Until September 2026 the closed menu only sat at
+       right: -320px, so Tab walked through its 11 links off screen, and the
+       0.65s slide moved the right edge, laying the page out on every frame. */
+    transform: translateX(calc(100% + 4px));
+    visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.3s;
     padding: calc(5rem + env(safe-area-inset-top, 0px)) 2rem calc(2rem + env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
     /* Smooth momentum scrolling on iOS */
@@ -439,7 +446,9 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   }
 
   .mobile-nav.open {
-    right: 0;
+    transform: none;
+    visibility: visible;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
   }
 
   .mobile-nav ul {
@@ -522,7 +531,6 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   @media (min-width: 481px) and (max-width: 1024px) {
     .mobile-nav {
       width: min(400px, 80vw);
-      right: -400px;
     }
   }
 
@@ -573,11 +581,14 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   const mobileNav = document.getElementById('mobile-nav');
   const overlay = document.getElementById('mobile-nav-overlay');
 
-  function closeMobileNav() {
+  // Escape and a tap on the overlay hand focus back to the menu button, so a
+  // keyboard user doesn't stay on a link inside the now-hidden menu.
+  function closeMobileNav(returnFocus = false) {
     hamburger?.setAttribute('aria-expanded', 'false');
     mobileNav?.classList.remove('open');
     overlay?.classList.remove('open');
     document.body.style.overflow = '';
+    if (returnFocus) hamburger?.focus();
   }
 
   hamburger?.addEventListener('click', () => {
@@ -592,7 +603,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
     }
   });
 
-  overlay?.addEventListener('click', closeMobileNav);
+  overlay?.addEventListener('click', () => closeMobileNav(true));
 
   // Desktop nav dropdown — sync aria-expanded with hover/focus so screen
   // readers know when the menu is open (CSS handles visibility on its own).
@@ -612,7 +623,7 @@ const isGroupActive = (group: NavGroup) => group.children.some(c => isActive(c.h
   // Close mobile nav on Escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && mobileNav?.classList.contains('open')) {
-      closeMobileNav();
+      closeMobileNav(true);
     }
   });
 

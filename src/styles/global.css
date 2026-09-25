@@ -390,12 +390,15 @@ li {
    (blog posts get it through .blog-post-body ul), and the page-scoped bullet
    rules (.prog-card__topics, the founder creds, .pricing-card__details) read
    the same variable. Numbered lists, the tick-and-cross before-and-after notes
-   and the results timeline keep their own markers. */
-li { --sticker-bullet: url('/images/mascots/mascot-heart-alt-icon.webp'); }
-li:nth-child(5n+2) { --sticker-bullet: url('/images/mascots/mascot-rocket-icon.webp'); }
-li:nth-child(5n+3) { --sticker-bullet: url('/images/mascots/mascot-avocado-hug-icon.webp'); }
-li:nth-child(5n+4) { --sticker-bullet: url('/images/mascots/mascot-grade-a-icon.webp'); }
-li:nth-child(5n) { --sticker-bullet: url('/images/mascots/mascot-heart-icon.webp'); }
+   and the results timeline keep their own markers. The -bullet.webp files are
+   80px-tall copies of the -icon poses (22 KB for all five instead of 84 KB):
+   bullets are drawn at 14-20px, so the full icons were three times too big.
+   Keep the -icon files for the checkboxes, toggles and favicon source. */
+li { --sticker-bullet: url('/images/mascots/mascot-heart-alt-bullet.webp'); }
+li:nth-child(5n+2) { --sticker-bullet: url('/images/mascots/mascot-rocket-bullet.webp'); }
+li:nth-child(5n+3) { --sticker-bullet: url('/images/mascots/mascot-avocado-hug-bullet.webp'); }
+li:nth-child(5n+4) { --sticker-bullet: url('/images/mascots/mascot-grade-a-bullet.webp'); }
+li:nth-child(5n) { --sticker-bullet: url('/images/mascots/mascot-heart-bullet.webp'); }
 
 .sticker-list,
 .blog-post-body ul {
@@ -803,6 +806,32 @@ textarea {
   resize: vertical;
   min-height: 150px;
 }
+
+/* Enquiry forms after a failed send (window.aworthyFieldErrors in BaseLayout):
+   the control turns red and its message sits directly under it. */
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+  border-color: var(--color-accent);
+}
+.field-error {
+  margin: 0.4rem 0 0;
+  color: var(--color-accent-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* A focused field scrolls clear of the fixed header (plus the subject bar
+   above 640px, which --nav-offset includes) and of the sticky bottom bar, with
+   room for its label. Browsers apply this when focus or native validation has
+   to scroll; window.aworthyFieldErrors (BaseLayout) also reads it to spot a
+   field that is on screen but covered, which the browser won't scroll for.
+   Subject pages add their 48px section strip. */
+input, select, textarea, fieldset {
+  scroll-margin-top: calc(var(--nav-offset) + 2.5rem);
+  scroll-margin-bottom: calc(var(--sticky-bar-h, 0px) + 1.5rem);
+}
+input[type="checkbox"], input[type="radio"] { scroll-margin-top: calc(var(--nav-offset) + 4.5rem); }
+.prog-section :is(input, select, textarea) { scroll-margin-top: calc(var(--nav-offset) + 48px + 2.5rem); }
 
 label {
   display: block;
@@ -2005,7 +2034,12 @@ html {
    CSS, no router. Browsers without support simply navigate normally, and
    reduced-motion users get an instant switch. This replaces the fade that
    Astro's ClientRouter used to provide — the router itself was removed
-   because it left page scripts unwired after navigation (see BaseLayout). */
+   because it left page scripts unwired after navigation (see BaseLayout).
+   Only the duration is set here. Never give the old and new snapshots their
+   own keyframes or easing: the browser's cross-fade blends the two halves so
+   they always add up to full strength, but separate ease-out / ease-in fades
+   (as BaseLayout had until September 2026) left each half at ~31% at the
+   midpoint, and the whole page, header included, blinked on every click. */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;

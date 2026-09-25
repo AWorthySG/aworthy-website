@@ -349,12 +349,13 @@ import '../styles/global.css';
     return 'https://wa.me/6589913181?text=' + encodeURIComponent(text + ' [ref: ' + ref + ']');
   }
 
-  function showErrors(nodes: HTMLElement[]) {
+  // scroll: false when focus has already moved to the first missing field
+  function showErrors(nodes: HTMLElement[], scroll = true) {
     errorsMsg.textContent = '';
     nodes.forEach((n) => errorsMsg.appendChild(n));
     errorsMsg.hidden = false;
     successMsg.hidden = true;
-    errorsMsg.scrollIntoView({ block: 'center' });
+    if (scroll) errorsMsg.scrollIntoView({ block: 'center' });
   }
 
   function para(text: string): HTMLParagraphElement {
@@ -372,8 +373,6 @@ import '../styles/global.css';
 
   form.addEventListener('submit', async (e: Event) => {
     e.preventDefault();
-    const errors: string[] = [];
-
     const nameInput = form.querySelector('#parent-name') as HTMLInputElement;
     const emailInput = form.querySelector('#email') as HTMLInputElement;
     const phoneInput = form.querySelector('#phone') as HTMLInputElement;
@@ -388,27 +387,24 @@ import '../styles/global.css';
     const phoneOk = !!phone && digits.length >= 8 && digits.length <= 15;
     const emailOk = !email || EMAIL_RE.test(email);
 
-    if (!parentName) errors.push('Please tell us what to call you.');
-    if (!phone) {
-      errors.push('Please enter your WhatsApp or phone number.');
-    } else if (!phoneOk) {
-      errors.push('Please enter a valid WhatsApp or phone number.');
-    }
-    if (!studentLevel) errors.push('Please choose your child\u2019s level.');
-    if (!chosen.length) errors.push('Please choose at least one subject.');
-    if (!emailOk) errors.push('Please enter a valid email address, or leave the email blank.');
+    // In form order, so the first one is the field the page moves to.
+    const problems: [HTMLElement, string][] = [];
+    if (!parentName) problems.push([nameInput, 'Please tell us what to call you.']);
+    if (!phone) problems.push([phoneInput, 'Please enter your WhatsApp or phone number.']);
+    else if (!phoneOk) problems.push([phoneInput, 'Please enter a valid WhatsApp or phone number.']);
+    if (!studentLevel) problems.push([levelSelect, 'Please choose your child\u2019s level.']);
+    if (!chosen.length) problems.push([subjectsFieldset, 'Please choose at least one subject.']);
+    if (!emailOk) problems.push([emailInput, 'Please enter a valid email address, or leave the email blank.']);
 
-    const flags: [Element, boolean][] = [
-      [nameInput, !parentName],
-      [phoneInput, !phoneOk],
-      [levelSelect, !studentLevel],
-      [subjectsFieldset, !chosen.length],
-      [emailInput, !emailOk],
-    ];
-    flags.forEach(([el, bad]) => { if (bad) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); });
-
-    if (errors.length > 0) {
-      showErrors(errors.map(para));
+    if (typeof w.aworthyFieldErrors === 'function') {
+      w.aworthyFieldErrors(form, problems);
+      if (problems.length) {
+        showErrors([para(problems.length === 1 ? 'Please check the field above.' : 'Please check the ' + problems.length + ' fields above.')], false);
+        return;
+      }
+    } else if (problems.length) {
+      problems.forEach(([el]) => el.setAttribute('aria-invalid', 'true'));
+      showErrors(problems.map(([, text]) => para(text)));
       return;
     }
 

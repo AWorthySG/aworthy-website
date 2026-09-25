@@ -392,6 +392,72 @@ const schemaData = {
     })();
   </script>
 
+  <!-- window.aworthyFieldErrors(form, [[control, message], ...]) is used by every
+       enquiry form after a failed send. It clears the form's old messages, marks
+       each control aria-invalid, writes its message directly under it (inside a
+       fieldset for a checkbox group) and links it with aria-describedby. A message
+       goes as soon as its control changes. It then focuses the first control and
+       brings it to the middle of the screen if the fixed header or the sticky bar
+       covers it. It returns the number of controls marked. Before
+       this, the messages sat in one box under the button, and the landing-page
+       form scrolled its first missing field behind the header. -->
+  <script is:inline>
+    (function () {
+      var seq = 0;
+      function clear(el) {
+        el.removeAttribute('aria-invalid');
+        var id = el.getAttribute('data-error-id');
+        if (!id) return;
+        var msg = document.getElementById(id);
+        if (msg) msg.remove();
+        var ids = (el.getAttribute('aria-describedby') || '').split(/\s+/).filter(function (x) { return x && x !== id; });
+        if (ids.length) el.setAttribute('aria-describedby', ids.join(' '));
+        else el.removeAttribute('aria-describedby');
+        el.removeAttribute('data-error-id');
+      }
+      window.aworthyFieldErrors = function (form, items) {
+        var marked = form.querySelectorAll('[aria-invalid="true"]');
+        for (var i = 0; i < marked.length; i++) clear(marked[i]);
+        items = items || [];
+        items.forEach(function (item) {
+          var el = item[0], id = 'field-error-' + (++seq);
+          var p = document.createElement('p');
+          p.className = 'field-error';
+          p.id = id;
+          p.textContent = item[1];
+          if (el.tagName === 'FIELDSET') el.appendChild(p);
+          else el.insertAdjacentElement('afterend', p);
+          el.setAttribute('aria-invalid', 'true');
+          el.setAttribute('data-error-id', id);
+          el.setAttribute('aria-describedby', ((el.getAttribute('aria-describedby') || '') + ' ' + id).trim());
+        });
+        if (!form.hasAttribute('data-field-errors')) {
+          form.setAttribute('data-field-errors', '');
+          var onChange = function (e) {
+            var el = e.target && e.target.closest ? e.target.closest('[aria-invalid="true"]') : null;
+            if (el && form.contains(el)) clear(el);
+          };
+          form.addEventListener('input', onChange);
+          form.addEventListener('change', onChange);
+        }
+        if (items.length) {
+          var box = items[0][0];
+          var first = box.tagName === 'FIELDSET' ? (box.querySelector('input, select, textarea') || box) : box;
+          try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); }
+          // focus() scrolls only when the field is outside the viewport, not
+          // when it is inside but under the fixed header or the sticky bar
+          // (the landing-page case). The field's own scroll margins (set in
+          // global.css) mark the covered bands; centre it if it touches one.
+          var cs = getComputedStyle(first), r = box.getBoundingClientRect();
+          if (r.top < parseFloat(cs.scrollMarginTop) || r.bottom > innerHeight - parseFloat(cs.scrollMarginBottom)) {
+            box.scrollIntoView({ block: 'center' });
+          }
+        }
+        return items.length;
+      };
+    })();
+  </script>
+
   {clarityId && <meta name="clarity-id" content={clarityId} />}
   {clarityId && <script async src="/clarity.js"></script>}
 
@@ -558,7 +624,7 @@ const schemaData = {
   <div class="sticky-cta-global" id="sticky-cta-global" data-track="sticky-bar">
     <div class="sticky-cta-global-inner">
       <span class="sticky-cta-global-text">A free written report on your child&rsquo;s latest test or exam</span>
-      <a href="/contact/" class="sticky-cta-global-btn">Get a Free Report</a>
+      <a href="/contact/" class="sticky-cta-global-btn" data-astro-prefetch="viewport">Get a Free Report</a>
       <!-- Phones and tablets: the bar's own WhatsApp button (the float hides
            while the bar shows on phones). Same ink-on-green icon as the float. -->
       <a href="https://wa.me/6589913181?text=Hi%20A-Worthy%2C%20I%27d%20like%20a%20free%20assessment." class="sticky-cta-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
@@ -974,21 +1040,6 @@ const schemaData = {
       color: #fff;
       opacity: 1;
     }
-
-    ::view-transition-old(root) {
-      animation: fade-out 0.2s ease-out;
-    }
-    ::view-transition-new(root) {
-      animation: fade-in 0.3s ease-in;
-    }
-    @keyframes fade-out {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
-    @keyframes fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
   </style>
 
   <!-- Scroll reveal animation observer -->
@@ -1144,10 +1195,10 @@ const schemaData = {
 
   <!-- FAQ Chatbot -->
   <div class="chatbot-widget" id="chatbot-widget" data-track="chatbot">
-    <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open quick answers">
+    <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open quick answers" aria-expanded="false" aria-controls="chatbot-panel">
       <img src="/images/logo-grade-a.webp" alt="" class="chatbot-toggle-img" width="233" height="320" />
     </button>
-    <div class="chatbot-panel" id="chatbot-panel" role="dialog" aria-modal="true" aria-labelledby="chatbot-title" hidden>
+    <div class="chatbot-panel" id="chatbot-panel" role="dialog" aria-labelledby="chatbot-title" hidden>
       <div class="chatbot-header">
         <span class="chatbot-header-brand">
           <img src="/images/logo-grade-a.webp" alt="" class="chatbot-header-img" width="233" height="320" />
@@ -1356,16 +1407,30 @@ const schemaData = {
       schools: 'Our students come from schools all over Singapore, from Raffles and Hwa Chong to neighbourhood schools. The SHARP Method starts from wherever your child is now. <a href="/success-stories/">Read student stories \u2192</a>'
     };
 
-    toggle.addEventListener('click', function() {
-      panel.hidden = !panel.hidden;
-      if (!panel.hidden) {
-        toggle.style.display = 'none';
-        try { window.plausible('Chatbot Open', { props: { page: location.pathname } }); } catch (e) {}
-      }
-    });
-    close.addEventListener('click', function() {
+    // The panel is a non-modal dialog: opening it moves focus to the first
+    // question, and closing it (the x or Escape) hands focus back to the
+    // round button. The button hides while the panel is open, so without the
+    // hand-back a keyboard user was left on <body>.
+    function openPanel() {
+      panel.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.style.display = 'none';
+      var first = opts.querySelector('.chatbot-option') || close;
+      try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); }
+      try { window.plausible('Chatbot Open', { props: { page: location.pathname } }); } catch (e) {}
+    }
+    function closePanel() {
       panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
       toggle.style.display = 'flex';
+      toggle.focus();
+    }
+    toggle.addEventListener('click', function() {
+      if (panel.hidden) openPanel(); else closePanel();
+    });
+    close.addEventListener('click', closePanel);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !panel.hidden) closePanel();
     });
 
     opts.addEventListener('click', function(e) {
@@ -1390,8 +1455,10 @@ const schemaData = {
       body.scrollTop = body.scrollHeight;
     });
     }
-    if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 5000 });
-    else setTimeout(init, 2000);
+    // At once, not on idle: waiting for idle (up to 5s on a slow device)
+    // left the visible button dead to an early click. Wiring three listeners
+    // costs well under a millisecond.
+    init();
   })();
   </script>
 

@@ -724,19 +724,24 @@ import { googleReviewsUrl } from '../data/site-config';
     var phone = form.querySelector('[name="phone"]');
     var level = form.querySelector('[name="studentLevel"]');
     var subject = form.querySelector('[name="subject"]');
-    var errors = [], invalid = [];
-    [parentName, email, phone, level, subject].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+    // In form order, so the first one is the field the page moves to.
+    var problems = [];
     var digits = phone.value.replace(/\D/g, '');
-    if (!parentName.value.trim()) { errors.push('Please tell us what to call you.'); invalid.push(parentName); }
-    if (!phone.value.trim()) { errors.push('Please enter your WhatsApp or phone number.'); invalid.push(phone); }
-    else if (digits.length < 8 || digits.length > 15) { errors.push('Please enter a valid WhatsApp or phone number.'); invalid.push(phone); }
-    if (!level.value) { errors.push('Please choose your child’s level.'); invalid.push(level); }
-    if (!subject.value) { errors.push('Please choose a subject.'); invalid.push(subject); }
-    if (email.value.trim() && !EMAIL_RE.test(email.value.trim())) { errors.push('Please enter a valid email address, or leave the email blank.'); invalid.push(email); }
-    if (errors.length) {
-      showErrors(errors.map(para));
-      invalid.forEach(function (f) { f.setAttribute('aria-invalid', 'true'); });
-      invalid[0].focus();
+    if (!parentName.value.trim()) problems.push([parentName, 'Please tell us what to call you.']);
+    if (!phone.value.trim()) problems.push([phone, 'Please enter your WhatsApp or phone number.']);
+    else if (digits.length < 8 || digits.length > 15) problems.push([phone, 'Please enter a valid WhatsApp or phone number.']);
+    if (!level.value) problems.push([level, 'Please choose your child’s level.']);
+    if (!subject.value) problems.push([subject, 'Please choose a subject.']);
+    if (email.value.trim() && !EMAIL_RE.test(email.value.trim())) problems.push([email, 'Please enter a valid email address, or leave the email blank.']);
+    if (typeof window.aworthyFieldErrors === 'function') {
+      window.aworthyFieldErrors(form, problems);
+      if (problems.length) {
+        showErrors([para(problems.length === 1 ? 'Please check the field above.' : 'Please check the ' + problems.length + ' fields above.')]);
+        return;
+      }
+    } else if (problems.length) {
+      showErrors(problems.map(function (x) { x[0].setAttribute('aria-invalid', 'true'); return para(x[1]); }));
+      problems[0][0].focus();
       return;
     }
     var who = parentName.value.trim(), lvl = level.value, subj = subject.value;
